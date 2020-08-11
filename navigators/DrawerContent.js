@@ -7,14 +7,14 @@ import {IsSignedInContext, ThemeContext} from '../shared/Context';
 
 export default function DrawerContent({navigation}) {
   const {setIsSignedIn} = useContext(IsSignedInContext);
-  const {constants} = React.useContext(ThemeContext);
+  const {constants, darkTheme} = React.useContext(ThemeContext);
 
   return (
     <View
       style={{
         width: constants.width * 0.2,
         flex: 1,
-        backgroundColor: '#0f0f0f',
+        backgroundColor: darkTheme ? '#0f0f0f' : '#4640C1',
         paddingTop: 50,
       }}>
       <View style={styles.drawerContent}>

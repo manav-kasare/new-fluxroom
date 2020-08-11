@@ -6,6 +6,7 @@ import {
   Text,
   TouchableOpacity,
   TouchableWithoutFeedbackBase,
+  Image,
 } from 'react-native';
 
 import CachedImage from '../../../shared/CachedImage';
@@ -96,9 +97,10 @@ export default function HostedRooms({navigation}) {
                     },
                   })
                 }>
-                <CachedImage
+                <Image
                   style={{width: 75, height: 75, borderRadius: 75 / 2}}
-                  uri={item.profilePhoto}
+                  source={{uri: item.profilePhoto}}
+                  // uri={item.profilePhoto}
                 />
               </TouchableOpacity>
               <Text
