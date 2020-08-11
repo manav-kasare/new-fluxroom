@@ -4,15 +4,16 @@ import {Searchbar} from 'react-native-paper';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import _ from 'lodash';
 
-import constants from '../../../shared/constants';
 import UserTile from './UserTile';
 import OptionsModal from './OptionsModal';
 import {getUsers} from '../../../backend/database/apiCalls';
+import {ThemeContext} from '../../../shared/Context';
 
 export default function Search() {
   const [users, setUsers] = useState(null);
   const [filteredUsers, setFilteredUsers] = useState(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const {constants} = React.useContext(ThemeContext);
 
   useEffect(() => {
     getUsers().then((data) => {

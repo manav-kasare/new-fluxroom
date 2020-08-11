@@ -1,31 +1,31 @@
-import React from "react";
-import { createDrawerNavigator } from "@react-navigation/drawer";
+import React from 'react';
+import {createDrawerNavigator} from '@react-navigation/drawer';
 
-import EditProfile from "../screens/app/UserProfile/EditProfile";
-import DrawerContent from "./DrawerContent";
-import Friends from "../screens/app/UserProfile/Friends";
-import JoinRoom from "../screens/app/JoinCreateRoom/JoinRoom";
-import CreateRoom from "../screens/app/JoinCreateRoom/CreateRoom";
-import SettingsNavigator from "./SettingsNavigator";
-import HomeNavigator from "./HomeNavigator";
-import constants from "../shared/constants";
+import EditProfile from '../screens/app/UserProfile/EditProfile';
+import DrawerContent from './DrawerContent';
+import Friends from '../screens/app/UserProfile/Friends';
+import JoinRoom from '../screens/app/JoinCreateRoom/JoinRoom';
+import CreateRoom from '../screens/app/JoinCreateRoom/CreateRoom';
+import SettingsNavigator from './SettingsNavigator';
+import HomeNavigator from './HomeNavigator';
+import {ThemeContext} from '../shared/Context';
 
 const Drawer = createDrawerNavigator();
 
 export default function DrawerNavigator() {
+  const {constants} = React.useContext(ThemeContext);
   return (
     <Drawer.Navigator
       edgeWidth={constants.width}
       drawerType="back"
       drawerPosition="right"
-      drawerContent={({ navigation }) => (
+      drawerContent={({navigation}) => (
         <DrawerContent navigation={navigation} />
       )}
       drawerStyle={{
         width: constants.width * 0.2,
       }}
-      initialRouteName="Home"
-    >
+      initialRouteName="Home">
       <Drawer.Screen name="Home" component={HomeNavigator} />
       <Drawer.Screen name="SettingsNavigator" component={SettingsNavigator} />
       <Drawer.Screen name="EditProfile" component={EditProfile} />

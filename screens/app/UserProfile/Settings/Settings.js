@@ -5,11 +5,29 @@ import {Appbar} from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
 
-import constants from '../../../../shared/constants';
 import {ThemeContext} from '../../../../shared/Context';
 
 export default function Settings({navigation}) {
-  const {darkTheme, toggleTheme} = React.useContext(ThemeContext);
+  const {darkTheme, toggleTheme, constants} = React.useContext(ThemeContext);
+
+  const styles = {
+    view: {
+      width: constants.width,
+      height: constants.height * 0.075,
+      marginVertical: 10,
+      backgroundColor: constants.background3,
+      paddingHorizontal: 25,
+      borderRadius: 5,
+      justifyContent: 'center',
+    },
+    view_text: {color: constants.text1, marginLeft: 10, fontSize: 14},
+    view_touchable: {
+      flex: 1,
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+    },
+  };
 
   return (
     <SafeAreaView
@@ -58,22 +76,3 @@ export default function Settings({navigation}) {
     </SafeAreaView>
   );
 }
-
-const styles = {
-  view: {
-    width: constants.width,
-    height: constants.height * 0.075,
-    marginVertical: 10,
-    backgroundColor: constants.background3,
-    paddingHorizontal: 25,
-    borderRadius: 5,
-    justifyContent: 'center',
-  },
-  view_text: {color: constants.text1, marginLeft: 10, fontSize: 14},
-  view_touchable: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-};

@@ -2,8 +2,6 @@ import React from 'react';
 import {TouchableOpacity} from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 
-import constants from '../../shared/constants';
-
 export default function Phone() {
   return (
     <TouchableOpacity

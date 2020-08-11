@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect, useReducer } from "react";
+import React, {useState, useContext, useEffect, useReducer} from 'react';
 import {
   View,
   FlatList,
@@ -6,19 +6,15 @@ import {
   Text,
   TouchableOpacity,
   TouchableWithoutFeedbackBase,
-} from "react-native";
+} from 'react-native';
 
-import constants from "../../../shared/constants";
-import CachedImage from "../../../shared/CachedImage";
-import {
-  getUserInfo,
-  getChatroomInfo,
-} from "../../../backend/database/apiCalls";
-import { UserDetailsContext } from "../../../shared/Context";
+import CachedImage from '../../../shared/CachedImage';
+import {getUserInfo, getChatroomInfo} from '../../../backend/database/apiCalls';
+import {UserDetailsContext, ThemeContext} from '../../../shared/Context';
 
 function reducer(state, action) {
   switch (action.type) {
-    case "append":
+    case 'append':
       return {
         hostedRooms: [
           ...state.hostedRooms,
@@ -29,7 +25,7 @@ function reducer(state, action) {
           },
         ],
       };
-    case "clear":
+    case 'clear':
       return {
         hostedRooms: [],
       };
@@ -38,9 +34,10 @@ function reducer(state, action) {
   }
 }
 
-export default function HostedRooms({ navigation }) {
-  const { user } = useContext(UserDetailsContext);
-  const [{ hostedRooms }, dispatch] = useReducer(reducer, { hostedRooms: [] });
+export default function HostedRooms({navigation}) {
+  const {user} = useContext(UserDetailsContext);
+  const {constants} = React.useContext(ThemeContext);
+  const [{hostedRooms}, dispatch] = useReducer(reducer, {hostedRooms: []});
 
   useEffect(() => {
     getUserInfo(user.id).then((data) => {
@@ -50,13 +47,13 @@ export default function HostedRooms({ navigation }) {
       });
     });
 
-    return () => dispatch({ type: "clear" });
+    return () => dispatch({type: 'clear'});
   }, []);
 
   const handleChatroomInfo = (id) => {
-    getChatroomInfo(id, "room").then((data) => {
+    getChatroomInfo(id, 'room').then((data) => {
       dispatch({
-        type: "append",
+        type: 'append',
         id: data.id,
         name: data.name,
         profilePhoto: data.profile_photo,
@@ -69,41 +66,38 @@ export default function HostedRooms({ navigation }) {
       style={{
         height: constants.height * 0.15,
         width: constants.width,
-        justifyContent: "center",
+        justifyContent: 'center',
         paddingHorizontal: 10,
-      }}
-    >
+      }}>
       <FlatList
         data={hostedRooms}
         horizontal={true}
-        renderItem={({ item }) => (
+        renderItem={({item}) => (
           <TouchableWithoutFeedback>
             <View
               style={{
                 marginHorizontal: 10,
                 marginTop: 10,
-                alignItems: "center",
-              }}
-            >
+                alignItems: 'center',
+              }}>
               <TouchableOpacity
                 style={{
                   width: 77,
                   height: 77,
                   borderRadius: 77 / 2,
-                  borderColor: "grey",
+                  borderColor: 'grey',
                   borderWidth: 1,
                 }}
                 onPress={() =>
-                  navigation.navigate("ChatRoomNavigator", {
-                    screen: "Room",
+                  navigation.navigate('ChatRoomNavigator', {
+                    screen: 'Room',
                     params: {
                       roomID: item.id,
                     },
                   })
-                }
-              >
+                }>
                 <CachedImage
-                  style={{ width: 75, height: 75, borderRadius: 75 / 2 }}
+                  style={{width: 75, height: 75, borderRadius: 75 / 2}}
                   uri={item.profilePhoto}
                 />
               </TouchableOpacity>
@@ -111,9 +105,8 @@ export default function HostedRooms({ navigation }) {
                 style={{
                   color: constants.text1,
                   marginTop: 5,
-                  fontWeight: "300",
-                }}
-              >
+                  fontWeight: '300',
+                }}>
                 {item.name}
               </Text>
             </View>

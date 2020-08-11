@@ -7,13 +7,14 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import ChatRoomNavigator from './ChatRoomNavigator';
 import Search from '../screens/app/Search/Search';
-import constants from '../shared/constants';
 import ProfileNavigator from './ProfileNavigator';
+import {ThemeContext} from '../shared/Context';
 
 const BottomTabs = createBottomTabNavigator();
 
 export default function HomeNavigator() {
   const [isLoading, setIsLoading] = useState(true);
+  const {constants} = React.useContext(ThemeContext);
 
   useEffect(() => {
     setTimeout(() => {

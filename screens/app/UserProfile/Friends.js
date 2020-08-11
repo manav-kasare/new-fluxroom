@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState, useCallback } from "react";
+import React, {useEffect, useContext, useState, useCallback} from 'react';
 import {
   SafeAreaView,
   View,
@@ -6,14 +6,13 @@ import {
   FlatList,
   TouchableOpacity,
   RefreshControl,
-} from "react-native";
-import { Appbar } from "react-native-paper";
+} from 'react-native';
+import {Appbar} from 'react-native-paper';
 
-import constants from "../../../shared/constants";
-import CustomToast from "../../../shared/CustomToast";
-import UserTile from "../Search/UserTile";
-import { getUserInfo, removeFriend } from "../../../backend/database/apiCalls";
-import { UserDetailsContext } from "../../../shared/Context";
+import CustomToast from '../../../shared/CustomToast';
+import UserTile from '../Search/UserTile';
+import {getUserInfo, removeFriend} from '../../../backend/database/apiCalls';
+import {UserDetailsContext, ThemeContext} from '../../../shared/Context';
 
 const wait = (timeout) => {
   return new Promise((resolve) => {
@@ -21,8 +20,9 @@ const wait = (timeout) => {
   });
 };
 
-export default function Friends({ navigation }) {
-  const { user } = useContext(UserDetailsContext);
+export default function Friends({navigation}) {
+  const {constants} = React.useContext(ThemeContext);
+  const {user} = useContext(UserDetailsContext);
   const [idList, setIdList] = useState([]);
   const [onpress, setOnPress] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
@@ -43,14 +43,14 @@ export default function Friends({ navigation }) {
   const handleRemove = (ID) => {
     setOnPress(!onpress);
     removeFriend(user.id, ID).then((responseText) => {
-      if (responseText !== "success") {
-        CustomToast("An Error Occured");
+      if (responseText !== 'success') {
+        CustomToast('An Error Occured');
       }
     });
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: constants.background1 }}>
+    <SafeAreaView style={{flex: 1, backgroundColor: constants.background1}}>
       <Appbar.Header style={constants.header}>
         <Appbar.Content title="Friends" titleStyle={constants.headerText} />
         <Appbar.Action
@@ -59,21 +59,20 @@ export default function Friends({ navigation }) {
           onPress={() => navigation.openDrawer()}
         />
       </Appbar.Header>
-      <View style={{ flex: 1, backgroundColor: constants.background1 }}>
+      <View style={{flex: 1, backgroundColor: constants.background1}}>
         <FlatList
           data={idList}
           keyExtractor={(item, index) => index.toString()}
-          renderItem={({ item }) => (
+          renderItem={({item}) => (
             <>
-              <View style={{ marginLeft: 10, marginBottom: 5 }}>
+              <View style={{marginLeft: 10, marginBottom: 5}}>
                 <TouchableOpacity onPress={() => handleRemove(item)}>
                   <Text
                     style={{
                       fontSize: 16,
-                      color: "crimson",
-                      fontFamily: "Helvetica",
-                    }}
-                  >
+                      color: 'crimson',
+                      fontFamily: 'Helvetica',
+                    }}>
                     Remove
                   </Text>
                 </TouchableOpacity>
@@ -94,10 +93,10 @@ export default function Friends({ navigation }) {
   );
 }
 
-function FriendsList({ id }) {
+function FriendsList({id}) {
   const [details, setDetails] = useState({
-    username: "",
-    description: "",
+    username: '',
+    description: '',
     profilePhoto: undefined,
   });
 
@@ -112,7 +111,7 @@ function FriendsList({ id }) {
   }, []);
 
   return (
-    <View style={{ paddingVertical: 10 }}>
+    <View style={{paddingVertical: 10}}>
       <UserTile
         username={details.username}
         description={details.description}

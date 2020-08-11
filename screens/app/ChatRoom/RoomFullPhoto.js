@@ -10,11 +10,12 @@ import {
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import constants from '../../../shared/constants';
 import CachedImage from '../../../shared/CachedImage';
+import {ThemeContext} from '../../../shared/Context';
 
 export default function RoomFullPhoto({navigation, route}) {
   const {url} = route.params;
+  const {constants} = React.useContext(ThemeContext);
   const [isHost, setIsHost] = useState(true);
 
   const pickImage = async () => {

@@ -7,12 +7,13 @@ import {
   Animated,
 } from 'react-native';
 
-import constants from '../../shared/constants';
 import CustomToast from '../../shared/CustomToast';
 import {getUserInfo, emailConfirmation} from '../../backend/database/apiCalls';
+import {ThemeContext} from '../../shared/Context';
 
 export default function EmailVerification({route, navigation}) {
   const {email, id} = route.params;
+  const {constants} = React.useContext(ThemeContext);
   const [isVerified, setIsVerified] = useState(false);
   const position = useState(new Animated.Value(constants.width))[0];
 

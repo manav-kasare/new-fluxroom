@@ -9,12 +9,12 @@ import {
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import constants from '../../../shared/constants';
 import CustomToast from '../../../shared/CustomToast';
 import {sendFriendRequest} from '../../../backend/database/apiCalls';
-import {UserDetailsContext} from '../../../shared/Context';
+import {UserDetailsContext, ThemeContext} from '../../../shared/Context';
 
 const OptionsModal = React.memo(({isModalVisible, setIsModalVisible, id}) => {
+  const {constants} = React.useContext(ThemeContext);
   const {user} = useContext(UserDetailsContext);
 
   const handleRequest = () => {

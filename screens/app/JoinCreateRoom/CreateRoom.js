@@ -13,12 +13,12 @@ import {Appbar} from 'react-native-paper';
 import {PickImage} from '../../../shared/PickImage';
 import Feather from 'react-native-vector-icons/Feather';
 
-import constants from '../../../shared/constants';
 import randomID from '../../../backend/database/randomID';
 import {createRoom} from '../../../backend/database/apiCalls';
-import {UserDetailsContext} from '../../../shared/Context';
+import {UserDetailsContext, ThemeContext} from '../../../shared/Context';
 
 export default function CreateRoom({navigation}) {
+  const {constants} = React.useContext(ThemeContext);
   const {user} = useContext(UserDetailsContext);
   const [_createRoom, setCreateRoom] = useState(false);
   const [room, setRoom] = useState({

@@ -12,14 +12,14 @@ import JoinRoomWithLink from '../screens/app/JoinCreateRoom/JoinRoomWithLink';
 import ShareRoomLink from '../screens/app/JoinCreateRoom/ShareRoomLink';
 import RoomSettings from '../screens/app/ChatRoom/RoomSettings';
 import ChangeRoomSettings from '../screens/app/ChatRoom/ChangeRoomSettings';
-import constants from '../shared/constants';
-import {UserDetailsContext} from '../shared/Context';
+import {UserDetailsContext, ThemeContext} from '../shared/Context';
 import RequestIcon from '../screens/app/ChatRoom/RequestIcon';
 
 const ChatRoomStack = createStackNavigator();
 
 export default function ChatRoomNavigator({route, navigation}) {
   const {user} = React.useContext(UserDetailsContext);
+  const {constants} = React.useContext(ThemeContext);
 
   if (route.state && route.state.index > 0) {
     navigation.setOptions({tabBarVisible: false});

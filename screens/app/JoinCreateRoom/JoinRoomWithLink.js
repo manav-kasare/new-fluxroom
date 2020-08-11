@@ -10,9 +10,10 @@ import {
 import {Appbar} from 'react-native-paper';
 
 import {getChatroomInfo} from '../../../backend/database/apiCalls';
-import constants from '../../../shared/constants';
+import {ThemeContext} from '../../../shared/Context';
 
 export default function JoinRoomWithLink({navigation}) {
+  const {constants} = React.useContext(ThemeContext);
   const [room, setRoom] = React.useState({
     id: '',
     name: '',

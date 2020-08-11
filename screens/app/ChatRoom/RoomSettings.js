@@ -9,14 +9,31 @@ import {
 } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-import constants from '../../../shared/constants';
 import {getChatroomInfo} from '../../../backend/database/apiCalls';
+import {ThemeContext} from '../../../shared/Context';
 
 export default function RoomSettings({route, navigation}) {
   const {room} = route.params;
+  const {constants} = React.useContext(ThemeContext);
   const link = useState(
     'asjdf;asfnksnfsdlfknafdlsajflsadfkaskfjaslkfakfjkashsafnasfnas;fdsajdfhwenfasdhfksnfa;fashjf',
   )[0];
+
+  const styles = {
+    container: {
+      width: constants.width,
+      height: constants.height * 0.075,
+      marginBottom: 25,
+      backgroundColor: constants.background4,
+      borderBottomWidth: 0.2,
+      borderTopWidth: 0.2,
+      borderColor: constants.lineColor,
+      paddingHorizontal: 25,
+      alignItems: 'center',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+    },
+  };
 
   return (
     <SafeAreaView style={constants.screen}>
@@ -95,19 +112,3 @@ export default function RoomSettings({route, navigation}) {
     </SafeAreaView>
   );
 }
-
-const styles = {
-  container: {
-    width: constants.width,
-    height: constants.height * 0.075,
-    marginBottom: 25,
-    backgroundColor: constants.background4,
-    borderBottomWidth: 0.2,
-    borderTopWidth: 0.2,
-    borderColor: constants.lineColor,
-    paddingHorizontal: 25,
-    alignItems: 'center',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-};

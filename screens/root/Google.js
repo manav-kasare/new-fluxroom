@@ -2,8 +2,6 @@ import React from 'react';
 import {TouchableOpacity} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
-import constants from '../../shared/constants';
-
 export default function Google() {
   return (
     <TouchableOpacity

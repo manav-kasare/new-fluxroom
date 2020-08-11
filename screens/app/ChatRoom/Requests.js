@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useCallback } from "react";
+import React, {useState, useEffect, useContext, useCallback} from 'react';
 import {
   SafeAreaView,
   View,
@@ -6,17 +6,16 @@ import {
   TouchableOpacity,
   Text,
   RefreshControl,
-} from "react-native";
+} from 'react-native';
 
-import constants from "../../../shared/constants";
-import CustomToast from "../../../shared/CustomToast";
-import UserTile from "../Search/UserTile";
+import CustomToast from '../../../shared/CustomToast';
+import UserTile from '../Search/UserTile';
 import {
   getUserInfo,
   acceptFriendRequest,
   declineFriendRequest,
-} from "../../../backend/database/apiCalls";
-import { UserDetailsContext } from "../../../shared/Context";
+} from '../../../backend/database/apiCalls';
+import {UserDetailsContext, ThemeContext} from '../../../shared/Context';
 
 const wait = (timeout) => {
   return new Promise((resolve) => {
@@ -25,7 +24,8 @@ const wait = (timeout) => {
 };
 
 export default function Requests() {
-  const { user } = useContext(UserDetailsContext);
+  const {constants} = React.useContext(ThemeContext);
+  const {user} = useContext(UserDetailsContext);
   const [idList, setIdList] = useState([]);
   const [onpress, setOnPress] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
@@ -46,8 +46,8 @@ export default function Requests() {
   const handleAccept = (ID) => {
     setOnPress(!onpress);
     acceptFriendRequest(user.id, ID).then((responseText) => {
-      if (responseText !== "success") {
-        CustomToast("An Error Occured");
+      if (responseText !== 'success') {
+        CustomToast('An Error Occured');
       }
     });
   };
@@ -55,34 +55,32 @@ export default function Requests() {
   const handleDecline = (ID) => {
     setOnPress(!onpress);
     declineFriendRequest(user.id, ID).then((responseText) => {
-      if (responseText !== "success") {
-        CustomToast("An Error Occured");
+      if (responseText !== 'success') {
+        CustomToast('An Error Occured');
       }
     });
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: constants.background1 }}>
+    <SafeAreaView style={{flex: 1, backgroundColor: constants.background1}}>
       <FlatList
         data={idList}
         keyExtractor={(item, index) => index.toString()}
-        renderItem={({ item }) => (
+        renderItem={({item}) => (
           <View>
             <View
               style={{
-                flexDirection: "row",
+                flexDirection: 'row',
                 marginLeft: 10,
                 marginBottom: 5,
-              }}
-            >
+              }}>
               <TouchableOpacity onPress={() => handleAccept(item)}>
                 <Text
                   style={{
                     fontSize: 18,
-                    color: "dodgerblue",
-                    fontFamily: "Helvetica",
-                  }}
-                >
+                    color: 'dodgerblue',
+                    fontFamily: 'Helvetica',
+                  }}>
                   Accept
                 </Text>
               </TouchableOpacity>
@@ -90,20 +88,18 @@ export default function Requests() {
                 style={{
                   fontSize: 18,
                   color: constants.text1,
-                  fontFamily: "Helvetica",
+                  fontFamily: 'Helvetica',
                   marginHorizontal: 5,
-                }}
-              >
+                }}>
                 |
               </Text>
               <TouchableOpacity onPress={() => handleDecline(item)}>
                 <Text
                   style={{
                     fontSize: 18,
-                    color: "crimson",
-                    fontFamily: "Helvetica",
-                  }}
-                >
+                    color: 'crimson',
+                    fontFamily: 'Helvetica',
+                  }}>
                   Decline
                 </Text>
               </TouchableOpacity>
@@ -123,9 +119,9 @@ export default function Requests() {
   );
 }
 
-function RequestUserTile({ user }) {
+function RequestUserTile({user}) {
   return (
-    <View style={{ paddingVertical: 10 }}>
+    <View style={{paddingVertical: 10}}>
       <UserTile
         username={user.username}
         description={user.description}

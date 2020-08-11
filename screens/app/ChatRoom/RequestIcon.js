@@ -2,10 +2,11 @@ import React, {useState, useEffect} from 'react';
 import {TouchableOpacity, View, Text} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import constants from '../../../shared/constants';
 import {getUserInfo} from '../../../backend/database/apiCalls';
+import {ThemeContext} from '../../../shared/Context';
 
 export default function RequestIcon({navigation, id}) {
+  const {constants} = React.useContext(ThemeContext);
   const [requests, setRequests] = useState(0);
 
   useEffect(() => {

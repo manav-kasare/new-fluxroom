@@ -1,10 +1,11 @@
-import React from "react";
-import { View, Image } from "react-native";
+import React from 'react';
+import {View, Image} from 'react-native';
 
-import constants from "../../../shared/constants";
-import CachedImage from "../../../shared/CachedImage";
+import CachedImage from '../../../shared/CachedImage';
+import {ThemeContext} from '../../../shared/Context';
 
-export default function RoomUserPhoto({ profilePhoto, borderColor }) {
+export default function RoomUserPhoto({profilePhoto, borderColor}) {
+  const {constants} = React.useContext(ThemeContext);
   const outerRadius = constants.width * 0.35;
   const innerRadius = constants.width * 0.33;
   return (
@@ -14,11 +15,10 @@ export default function RoomUserPhoto({ profilePhoto, borderColor }) {
         height: outerRadius,
         borderRadius: outerRadius / 2,
         borderColor: borderColor,
-        alignItems: "center",
-        justifyContent: "center",
+        alignItems: 'center',
+        justifyContent: 'center',
         borderWidth: 3,
-      }}
-    >
+      }}>
       {profilePhoto === undefined ? (
         <View
           style={{

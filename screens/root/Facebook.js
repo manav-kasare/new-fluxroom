@@ -2,8 +2,6 @@ import React from 'react';
 import {TouchableOpacity} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
-import constants from '../../shared/constants';
-
 export default function Facebook() {
   return (
     <TouchableOpacity

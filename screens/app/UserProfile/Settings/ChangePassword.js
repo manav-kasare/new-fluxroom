@@ -8,15 +8,15 @@ import {
 } from 'react-native';
 import {Appbar} from 'react-native-paper';
 
-import constants from '../../../../shared/constants';
 import CustomToast from '../../../../shared/CustomToast';
 import {
   verifyPassword,
   changePassword,
 } from '../../../../backend/database/apiCalls';
-import {UserDetailsContext} from '../../../../shared/Context';
+import {UserDetailsContext, ThemeContext} from '../../../../shared/Context';
 
 export default function ChangePassword({navigation}) {
+  const {constants} = React.useContext(ThemeContext);
   const {user} = useContext(UserDetailsContext);
   const [currentPass, setCurrentPass] = useState('');
   const [newPass, setNewPass] = useState('');

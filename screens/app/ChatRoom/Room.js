@@ -1,23 +1,19 @@
-import React, { useEffect, useContext, useReducer } from "react";
-import { SafeAreaView, StatusBar, FlatList } from "react-native";
+import React, {useEffect, useContext, useReducer} from 'react';
+import {SafeAreaView, StatusBar, FlatList} from 'react-native';
 
-import RoomPhotoTile from "./RoomPhotoTile";
-import constants from "../../../shared/constants";
-import Host from "./Host";
-import MemberYou from "./MemberYou";
-import Member from "./Member";
+import RoomPhotoTile from './RoomPhotoTile';
+import Host from './Host';
+import MemberYou from './MemberYou';
+import Member from './Member';
 
-import {
-  getUserInfo,
-  getChatroomInfo,
-} from "../../../backend/database/apiCalls";
-import { UserDetailsContext } from "../../../shared/Context";
-import RoomUserPhoto from "./RoomUserPhoto";
+import {getUserInfo, getChatroomInfo} from '../../../backend/database/apiCalls';
+import {UserDetailsContext, ThemeContext} from '../../../shared/Context';
+import RoomUserPhoto from './RoomUserPhoto';
 
 // Reducer function
 function reducer(state, action) {
   switch (action.type) {
-    case "append":
+    case 'append':
       return {
         membersInfo: [
           ...state.membersInfo,
@@ -33,10 +29,11 @@ function reducer(state, action) {
   }
 }
 
-export default function Room({ route, navigation }) {
-  const { room } = route.params;
-  const { user } = useContext(UserDetailsContext);
-  const [{ membersInfo }, dispatch] = useReducer(reducer, {
+export default function Room({route, navigation}) {
+  const {room} = route.params;
+  const {constants} = React.useContext(ThemeContext);
+  const {user} = useContext(UserDetailsContext);
+  const [{membersInfo}, dispatch] = useReducer(reducer, {
     membersInfo: [],
   });
   const test = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -50,7 +47,7 @@ export default function Room({ route, navigation }) {
   const handleFetch = (id) => {
     getUserInfo(id).then((data) => {
       dispatch({
-        type: "append",
+        type: 'append',
         id: data.id,
         username: data.username,
         profilePhoto: data.profile_photo,
@@ -64,20 +61,19 @@ export default function Room({ route, navigation }) {
         height: constants.height,
         width: constants.width,
         backgroundColor: constants.background1,
-      }}
-    >
+      }}>
       <StatusBar barStyle="default" />
       <FlatList
         data={test}
         columnWrapperStyle={{
-          justifyContent: "space-evenly",
+          justifyContent: 'space-evenly',
           width: constants.width,
           marginVertical: 10,
         }}
-        style={{ flex: 1, marginTop: 10 }}
+        style={{flex: 1, marginTop: 10}}
         numColumns={2}
         keyExtractor={(item, index) => index.toString()}
-        renderItem={({ item, index }) => {
+        renderItem={({item, index}) => {
           // if (index === 0) {
           //   return <RoomUserPhoto profilePhoto={item.profilePhoto} />;
           // } else if (item.id === user.id && item.id !== hostID) {

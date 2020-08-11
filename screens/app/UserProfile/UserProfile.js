@@ -1,82 +1,75 @@
-import React, { useContext } from "react";
+import React, {useContext} from 'react';
 
-import { SafeAreaView, View, Text, TouchableOpacity } from "react-native";
+import {SafeAreaView, View, Text, TouchableOpacity} from 'react-native';
 
-import { UserDetailsContext } from "../../../shared/Context";
-import constants from "../../../shared/constants";
-import UserPhoto from "./UserPhoto";
-import HostedRooms from "./HostedRooms";
+import {UserDetailsContext, ThemeContext} from '../../../shared/Context';
+import UserPhoto from './UserPhoto';
+import HostedRooms from './HostedRooms';
 
-export default function UserProfile({ navigation }) {
-  const { user } = useContext(UserDetailsContext);
+export default function UserProfile({navigation}) {
+  const {user} = useContext(UserDetailsContext);
+  const {constants} = React.useContext(ThemeContext);
 
   return (
     <SafeAreaView
       style={{
         flex: 1,
         backgroundColor: constants.background1,
-        alignItems: "center",
-        justifyContent: "space-between",
-      }}
-    >
+        alignItems: 'center',
+        justifyContent: 'space-between',
+      }}>
       <View
         style={{
-          flexDirection: "row",
-          alignItems: "center",
+          flexDirection: 'row',
+          alignItems: 'center',
           width: constants.width,
           marginTop: 25,
-          justifyContent: "space-between",
+          justifyContent: 'space-between',
           paddingHorizontal: 10,
-        }}
-      >
+        }}>
         <View
           style={{
-            flexDirection: "row",
-            alignItems: "center",
-          }}
-        >
+            flexDirection: 'row',
+            alignItems: 'center',
+          }}>
           <UserPhoto />
           <View
             style={{
               height: 40,
               marginLeft: 20,
-            }}
-          >
+            }}>
             <Text
               style={{
                 color: constants.text1,
-                fontWeight: "400",
-                fontFamily: "Helvetica",
+                fontWeight: '400',
+                fontFamily: 'Helvetica',
                 fontSize: 25,
-              }}
-            >
+              }}>
               {user.username}
             </Text>
             <Text
               style={{
-                color: "grey",
-                fontFamily: "Helvetica",
-                fontWeight: "300",
+                color: 'grey',
+                fontFamily: 'Helvetica',
+                fontWeight: '300',
                 fontSize: 15,
-              }}
-            >
+              }}>
               {user.description}
             </Text>
           </View>
         </View>
         <TouchableOpacity
           style={{
-            alignItems: "center",
-            justifyContent: "center",
+            alignItems: 'center',
+            justifyContent: 'center',
             width: 100,
             height: 30,
             borderColor: constants.lineColor,
             borderWidth: 0.5,
             borderRadius: 5,
           }}
-          onPress={() => navigation.navigate("EditProfile")}
-        >
-          <Text style={{ color: constants.text1 }}>Edit</Text>
+          onPress={() => navigation.navigate('EditProfile')}>
+          <Text style={{color: constants.text1}}>Edit</Text>
         </TouchableOpacity>
       </View>
       <View
@@ -90,13 +83,12 @@ export default function UserProfile({ navigation }) {
         <Text
           style={{
             color: constants.text1,
-            fontWeight: "400",
+            fontWeight: '400',
             fontSize: 30,
-            fontFamily: "Helvetica",
+            fontFamily: 'Helvetica',
             marginLeft: 25,
             marginBottom: 25,
-          }}
-        >
+          }}>
           Hosted Rooms
         </Text>
         <HostedRooms navigation={navigation} />

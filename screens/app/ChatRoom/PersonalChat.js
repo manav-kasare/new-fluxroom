@@ -2,10 +2,11 @@ import React from 'react';
 import {SafeAreaView, View, Text, TouchableOpacity} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import constants from '../../../shared/constants';
 import RoomPhotoTile from '../ChatRoom/RoomPhotoTile';
+import {ThemeContext} from '../../../shared/Context';
 
 export default function PersonalChat({navigation, route}) {
+  const {constants} = React.useContext(ThemeContext);
   const {username} = route.params;
   const {profilePhoto} = route.params;
 

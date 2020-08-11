@@ -5,7 +5,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {
   UserDetailsContext,
   IsSignedInContext,
-  ThemeProvider,
+  ThemeContext,
 } from '../shared/Context';
 import LogIn from '../screens/root/LogIn';
 import SignUp from '../screens/root/SignUp';
@@ -15,7 +15,6 @@ import EmailVerification from '../screens/root/EmailVerification';
 import ForgotPassword from '../screens/root/ForgotPassword';
 import SplashScreen from '../screens/root/SplashScreen';
 import DrawerNavigator from './DrawerNavigator';
-import constants from '../shared/constants';
 
 const Stack = createStackNavigator();
 
@@ -37,23 +36,21 @@ export default function RootNavigator() {
   }
 
   return (
-    <ThemeProvider>
-      <UserDetailsContext.Provider value={userDetailsValue}>
-        <NavigationContainer>
-          {!isSignedIn ? (
-            <AuthStackNavigator />
-          ) : (
-            <Stack.Navigator>
-              <Stack.Screen
-                name="DrawerNavigator"
-                component={DrawerNavigator}
-                options={{headerShown: false}}
-              />
-            </Stack.Navigator>
-          )}
-        </NavigationContainer>
-      </UserDetailsContext.Provider>
-    </ThemeProvider>
+    <UserDetailsContext.Provider value={userDetailsValue}>
+      <NavigationContainer>
+        {!isSignedIn ? (
+          <AuthStackNavigator />
+        ) : (
+          <Stack.Navigator>
+            <Stack.Screen
+              name="DrawerNavigator"
+              component={DrawerNavigator}
+              options={{headerShown: false}}
+            />
+          </Stack.Navigator>
+        )}
+      </NavigationContainer>
+    </UserDetailsContext.Provider>
   );
 }
 

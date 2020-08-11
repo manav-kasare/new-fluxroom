@@ -9,13 +9,13 @@ import {
 import {Appbar} from 'react-native-paper';
 import {useFocusEffect} from '@react-navigation/native';
 
-import constants from '../../../shared/constants';
 import CustomToast from '../../../shared/CustomToast';
 import Loading from '../../../shared/Loading';
 import {updateDescription} from '../../../backend/database/apiCalls';
-import {UserDetailsContext} from '../../../shared/Context';
+import {UserDetailsContext, ThemeContext} from '../../../shared/Context';
 
 export default function EditProfile({navigation}) {
+  const {constants} = React.useContext(ThemeContext);
   const {user} = useContext(UserDetailsContext);
   const [description, setDescription] = useState('');
   const [isLoading, setIsLoading] = useState(false);

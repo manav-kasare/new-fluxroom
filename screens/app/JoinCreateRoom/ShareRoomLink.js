@@ -9,10 +9,10 @@ import {
   Linking,
 } from 'react-native';
 import {Appbar} from 'react-native-paper';
-
-import constants from '../../../shared/constants';
+import {ThemeContext} from '../../../shared/Context';
 
 export default function ShareRoomLink({route, navigation}) {
+  const {constants} = React.useContext(ThemeContext);
   const {roomName, roomID} = route.params;
   const [url, setUrl] = React.useState(null);
 

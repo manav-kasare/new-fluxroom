@@ -1,4 +1,6 @@
-import React from "react";
+import React from 'react';
+import {light, dark} from '../shared/constants';
+import {constant} from 'lodash';
 
 export const IsSignedInContext = React.createContext(false);
 
@@ -12,18 +14,25 @@ export const UserDetailsContext = React.createContext({
   requests: null,
 });
 
-export const ThemeContext = React.createContext("light");
+export const ThemeContext = React.createContext('light');
 
-export const ThemeProvider = ({ children }) => {
+export const ThemeProvider = React.memo(({children}) => {
   const [darkTheme, setDarkTheme] = React.useState(false);
+  const [constants, setContants] = React.useState(light);
 
   const toggleTheme = () => {
-    setDarkTheme(!darkTheme);
+    if (darkTheme === false) {
+      setDarkTheme(true);
+      setContants(dark);
+    } else {
+      setDarkTheme(false);
+      setContants(light);
+    }
   };
 
   return (
-    <ThemeContext.Provider value={{ darkTheme, toggleTheme }}>
+    <ThemeContext.Provider value={{constants, darkTheme, toggleTheme}}>
       {children}
     </ThemeContext.Provider>
   );
-};
+});

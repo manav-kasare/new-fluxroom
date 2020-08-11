@@ -1,21 +1,22 @@
-import React, { useEffect, useState } from "react";
-import { View, TouchableOpacity, Text } from "react-native";
+import React, {useEffect, useState} from 'react';
+import {View, TouchableOpacity, Text} from 'react-native';
 
-import constants from "../../../shared/constants";
-import RoomPhotoTile from "./RoomPhotoTile";
-import { getChatroomInfo } from "../../../backend/database/apiCalls";
+import RoomPhotoTile from './RoomPhotoTile';
+import {getChatroomInfo} from '../../../backend/database/apiCalls';
+import {ThemeContext} from '../../../shared/Context';
 
-export default function RoomTile({ id, navigation }) {
+export default function RoomTile({id, navigation}) {
+  const {constants} = React.useContext(ThemeContext);
   const [room, setRoom] = useState({
     name: null,
     description: null,
-    profilePhoto: "",
+    profilePhoto: '',
     members: [],
     host: null,
   });
 
   useEffect(() => {
-    getChatroomInfo(id, "room").then((data) => {
+    getChatroomInfo(id, 'room').then((data) => {
       setRoom({
         name: data.name,
         description: data.description,
@@ -31,60 +32,55 @@ export default function RoomTile({ id, navigation }) {
       style={{
         width: constants.width,
         height: constants.height * 0.1,
-        justifyContent: "center",
+        justifyContent: 'center',
         marginHorizontal: 10,
-        flexDirection: "row",
+        flexDirection: 'row',
       }}
       onPress={() =>
-        navigation.navigate("ChatRoomNavigator", {
-          screen: "Room",
+        navigation.navigate('ChatRoomNavigator', {
+          screen: 'Room',
           params: {
             room: room,
           },
         })
-      }
-    >
+      }>
       <View
         style={{
           width: constants.width,
           height: constants.height * 0.1,
           marginLeft: 25,
-          alignItems: "center",
-          flexDirection: "row",
+          alignItems: 'center',
+          flexDirection: 'row',
           borderBottomColor: constants.lineColor,
           borderBottomWidth: 0.2,
-        }}
-      >
+        }}>
         <View
           style={{
             width: 50,
             height: 50,
             borderRadius: 50 / 2,
-            alignItems: "center",
-            justifyContent: "center",
+            alignItems: 'center',
+            justifyContent: 'center',
           }}
-          onPress={() => navigation.navigate("RoomFullPhoto")}
-        ></View>
+          onPress={() => navigation.navigate('RoomFullPhoto')}></View>
 
-        <View style={{ flexDirection: "column" }}>
+        <View style={{flexDirection: 'column'}}>
           <Text
             style={{
               color: constants.text1,
               marginLeft: 10,
               fontSize: 20,
-              fontWeight: "600",
-            }}
-          >
+              fontWeight: '600',
+            }}>
             {room.name}
           </Text>
           <Text
             style={{
-              color: "grey",
+              color: 'grey',
               marginLeft: 10,
               fontSize: 14,
-              fontWeight: "400",
-            }}
-          >
+              fontWeight: '400',
+            }}>
             {room.description}
           </Text>
         </View>

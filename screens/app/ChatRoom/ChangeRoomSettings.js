@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   SafeAreaView,
   TouchableOpacity,
@@ -7,13 +7,12 @@ import {
   View,
   TextInput,
   Text,
-} from "react-native";
-import { Appbar } from "react-native-paper";
+} from 'react-native';
+import {ThemeContext} from '../../../shared/Context';
 
-import constants from "../../../shared/constants";
-
-export default function ChangeRoomSettings({ route, navigation }) {
-  const { room } = route.params;
+export default function ChangeRoomSettings({route, navigation}) {
+  const {constants} = React.useContext(ThemeContext);
+  const {room} = route.params;
   const [roomDetails, setRoomDetails] = React.useState(room);
   const [editingDescription, setEditingDescription] = React.useState(false);
 
@@ -53,9 +52,9 @@ export default function ChangeRoomSettings({ route, navigation }) {
           <></>
         )}
       </Appbar.Header> */}
-      <View style={{ flex: 1, alignItems: "center", paddingVertical: 25 }}>
-        <TouchableWithoutFeedback onPress={() => console.log("Pressed")}>
-          <View style={{ alignItems: "center" }}>
+      <View style={{flex: 1, alignItems: 'center', paddingVertical: 25}}>
+        <TouchableWithoutFeedback onPress={() => console.log('Pressed')}>
+          <View style={{alignItems: 'center'}}>
             <View
               style={{
                 width: constants.height * 0.15,
@@ -63,10 +62,9 @@ export default function ChangeRoomSettings({ route, navigation }) {
                 borderRadius: (constants.height * 0.15) / 2,
                 borderWidth: 1,
                 borderColor: constants.background2,
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
               <Image
                 style={{
                   width: constants.height * 0.145,
@@ -78,7 +76,7 @@ export default function ChangeRoomSettings({ route, navigation }) {
                 }}
               />
             </View>
-            <Text style={{ color: "dodgerblue", fontSize: 25, marginTop: 25 }}>
+            <Text style={{color: 'dodgerblue', fontSize: 25, marginTop: 25}}>
               Edit
             </Text>
           </View>
@@ -90,14 +88,13 @@ export default function ChangeRoomSettings({ route, navigation }) {
             marginTop: 30,
             backgroundColor: constants.background4,
             paddingHorizontal: 20,
-            alignItems: "center",
-            flexDirection: "row",
-            justifyContent: "space-between",
+            alignItems: 'center',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
             borderColor: constants.lineColor,
             borderBottomWidth: 0.2,
             borderTopWidth: 0.2,
-          }}
-        >
+          }}>
           <TextInput
             placeholder="Description"
             placeholderTextColor={constants.text1}
@@ -109,7 +106,7 @@ export default function ChangeRoomSettings({ route, navigation }) {
             }}
             value={roomDetails.description}
             onChangeText={(text) =>
-              setRoomDetails({ ...room, description: text })
+              setRoomDetails({...room, description: text})
             }
             onFocus={() => setEditingDescription(!editingDescription)}
             onBlur={() => setEditingDescription(!editingDescription)}

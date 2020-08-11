@@ -1,7 +1,7 @@
 import React from 'react';
 import {Provider as PaperProvider} from 'react-native-paper';
 import RootNavigator from './navigators/RootNavigator';
-import {IsSignedInContext} from './shared/Context';
+import {IsSignedInContext, ThemeProvider} from './shared/Context';
 
 function App() {
   const [isSignedIn, setIsSignedIn] = React.useState(false);
@@ -11,11 +11,13 @@ function App() {
   ]);
 
   return (
-    <IsSignedInContext.Provider value={isSignedInValue}>
-      <PaperProvider>
-        <RootNavigator />
-      </PaperProvider>
-    </IsSignedInContext.Provider>
+    <ThemeProvider>
+      <IsSignedInContext.Provider value={isSignedInValue}>
+        <PaperProvider>
+          <RootNavigator />
+        </PaperProvider>
+      </IsSignedInContext.Provider>
+    </ThemeProvider>
   );
 }
 

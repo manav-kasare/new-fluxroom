@@ -5,11 +5,13 @@ import Feather from 'react-native-vector-icons/Feather';
 
 import EditProfile from '../screens/app/UserProfile/EditProfile';
 import UserProfile from '../screens/app/UserProfile/UserProfile';
-import constants from '../shared/constants';
+import {ThemeContext} from '../shared/Context';
 
 const ProfileStack = createStackNavigator();
 
 export default function ProfileNavigator({route, navigation}) {
+  const {constants} = React.useContext(ThemeContext);
+
   if (route.state && route.state.index > 0) {
     navigation.setOptions({tabBarVisible: false});
   } else {

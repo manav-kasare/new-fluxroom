@@ -11,11 +11,10 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-import constants from '../../../shared/constants';
 import RoomTile from './RoomTile';
 import globalStyles from '../../../shared/GlobalStyles';
 import {getUserChatRooms} from '../../../backend/database/apiCalls';
-import {UserDetailsContext} from '../../../shared/Context';
+import {UserDetailsContext, ThemeContext} from '../../../shared/Context';
 
 const wait = (timeout) => {
   return new Promise((resolve) => {
@@ -25,6 +24,7 @@ const wait = (timeout) => {
 
 export default function ChatRooms({navigation}) {
   const {user} = useContext(UserDetailsContext);
+  const {constants} = useContext(ThemeContext);
   const [chatRoomList, setChatRoomList] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
   const [onFocusRefresh, setOnFocusRefresh] = useState(true);

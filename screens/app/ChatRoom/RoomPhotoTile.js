@@ -2,10 +2,10 @@ import React from 'react';
 import {View, Image} from 'react-native';
 import {CachedImage} from '../../../shared/CachedImage';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
-
-import constants from '../../../shared/constants';
+import {ThemeContext} from '../../../shared/Context';
 
 export default function RoomPhotoTile({profilePhoto}) {
+  const {constants} = React.useContext(ThemeContext);
   return (
     <View
       style={{
