@@ -7,8 +7,7 @@ import {
   TextInput,
   Keyboard,
 } from 'react-native';
-import {Appbar} from 'react-native-paper';
-import {MaterialCommunityIcons} from 'react-native-vector-icons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import constants from '../../shared/constants';
 import CustomToast from '../../shared/CustomToast';
@@ -52,25 +51,17 @@ export default function ForgotPassword({navigation}) {
     <SafeAreaView
       style={{
         flex: 1,
-        backgroundColor: 'transparent',
+        backgroundColor: 'white',
         alignItems: 'center',
       }}>
-      <Appbar.Header style={globalStyles.rootAppbarHeader}>
-        <Appbar.BackAction
-          onPress={() => navigation.goBack('LogIn')}
-          color="white"
-        />
-        <Appbar.Content
-          title="Forgot Password"
-          titleStyle={globalStyles.rootAppbarTitle}
-        />
-      </Appbar.Header>
       <View
         style={{
           backgroundColor: 'white',
           borderRadius: 10,
           padding: 25,
           marginTop: 50,
+          borderColor: 'grey',
+          borderWidth: 0.3,
         }}>
         <View
           style={{
@@ -111,7 +102,7 @@ export default function ForgotPassword({navigation}) {
             style={globalStyles.button}>
             <Text
               style={{
-                color: constants.text1,
+                color: 'white',
                 fontSize: 16,
                 letterSpacing: 1,
               }}>

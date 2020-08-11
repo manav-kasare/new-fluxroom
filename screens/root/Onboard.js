@@ -4,10 +4,9 @@ import {
   SafeAreaView,
   TouchableOpacity,
   View,
-  Image,
   Animated,
+  Image,
 } from 'react-native';
-import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import constants from '../../shared/constants';
 import globalStyles from '../../shared/GlobalStyles';
@@ -32,22 +31,26 @@ export default function Onboard({navigation}) {
       style={{
         flex: 1,
         flexDirection: 'column',
-        backgroundColor: 'black',
-        justifyContent: 'space-between',
+        backgroundColor: 'white',
       }}>
       <Animated.View
         style={{
           transform: [{translateX: position}],
           marginTop: 50,
         }}>
-        <View style={{marginLeft: 25}}>
+        <View style={{flexDirection: 'column', alignSelf: 'center'}}>
+          <Image
+            style={{width: 200, height: 200}}
+            resizeMode="cover"
+            source={require('/Users/manav/projects/fluxroom/assets/logo.png')}
+          />
           <Animated.Text
             style={{
               marginTop: 30,
-              color: 'white',
-              fontWeight: '100',
-              fontSize: 50,
-              letterSpacing: 5,
+              color: '#4640C1',
+              fontWeight: '800',
+              fontSize: 40,
+              letterSpacing: 2,
               fontFamily: 'Helvetica Neue',
               alignSelf: 'center',
               transform: [{translateX: position}],
@@ -55,18 +58,8 @@ export default function Onboard({navigation}) {
             FLUXROOM
           </Animated.Text>
         </View>
-        <Image
-          style={{
-            width: constants.width,
-            height: constants.height * 0.3,
-            marginTop: 25,
-            alignSelf: 'center',
-          }}
-          resizeMode="cover"
-          source={require('/Users/manav/projects/fluxroom/assets/real_time_collab.png')}
-        />
       </Animated.View>
-      <View>
+      <View style={{position: 'absolute', bottom: 10, alignSelf: 'center'}}>
         <Animated.View
           style={{
             alignSelf: 'center',
@@ -74,24 +67,16 @@ export default function Onboard({navigation}) {
           }}>
           <Animated.View style={{transform: [{translateX: position}]}}>
             <TouchableOpacity
-              style={globalStyles.lowOpacityTouchableButton}
+              style={globalStyles.screenButton}
               onPress={() => navigation.navigate('SignUp')}>
               <Text style={globalStyles.buttonText}>Register With Email</Text>
             </TouchableOpacity>
           </Animated.View>
           <Animated.View style={{transform: [{translateX: position}]}}>
             <TouchableOpacity
-              style={globalStyles.lowOpacityTouchableButton}
+              style={globalStyles.screenButton}
               onPress={() => navigation.navigate('LogIn')}>
-              <Text
-                style={{
-                  color: 'white',
-                  fontSize: 18,
-                  letterSpacing: 1,
-                  fontFamily: 'Helvetica',
-                }}>
-                Log In
-              </Text>
+              <Text style={globalStyles.buttonText}>Log In</Text>
             </TouchableOpacity>
           </Animated.View>
         </Animated.View>

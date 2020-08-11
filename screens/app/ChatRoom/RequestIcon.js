@@ -21,7 +21,6 @@ export default function RequestIcon({navigation, id}) {
         width: 40,
         height: 40,
         borderRadius: 8,
-        backgroundColor: constants.background3,
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'row',

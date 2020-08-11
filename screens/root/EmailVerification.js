@@ -6,10 +6,8 @@ import {
   Text,
   Animated,
 } from 'react-native';
-import {Appbar} from 'react-native-paper';
 
 import constants from '../../shared/constants';
-import globalStyles from '../../shared/GlobalStyles';
 import CustomToast from '../../shared/CustomToast';
 import {getUserInfo, emailConfirmation} from '../../backend/database/apiCalls';
 
@@ -47,33 +45,24 @@ export default function EmailVerification({route, navigation}) {
   };
 
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: 'transparent'}}>
-      <Animated.View
-        style={{
-          transform: [{translateX: position}],
-        }}>
-        <Appbar.Header style={globalStyles.rootAppbarHeader}>
-          <Appbar.Content
-            title="Verify your Email"
-            titleStyle={globalStyles.rootAppbarTitle}
-          />
-        </Appbar.Header>
-      </Animated.View>
+    <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
       <Animated.View
         style={{
           width: constants.width * 0.9,
-          backgroundColor: constants.background2,
+          backgroundColor: 'white',
           borderRadius: 10,
           paddingVertical: 50,
           transform: [{translateX: position}],
           alignSelf: 'center',
           marginTop: 100,
           paddingHorizontal: 10,
+          borderColor: 'grey',
+          borderWidth: 0.3,
         }}>
         <View>
           <Text
             style={{
-              color: constants.text2,
+              color: 'black',
               fontSize: 17,
               letterSpacing: 0,
               fontFamily: 'Helvetica Neue',
@@ -124,7 +113,7 @@ export default function EmailVerification({route, navigation}) {
             height: 30,
             alignItems: 'center',
             justifyContent: 'center',
-            backgroundColor: constants.primary,
+            backgroundColor: '#4640C1',
             borderRadius: 10,
           }}>
           <Text style={{color: 'white'}}>Check</Text>

@@ -10,7 +10,6 @@ import {
   Keyboard,
   Animated,
 } from 'react-native';
-import {Appbar} from 'react-native-paper';
 import Feather from 'react-native-vector-icons/Feather';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -26,7 +25,8 @@ import CustomToast from '../../shared/CustomToast';
 
 export default function SetUpProfile({route}) {
   const {user, setUser} = useContext(UserDetailsContext);
-  const {id} = route.params;
+  // const {id} = route.params;
+  const id = 'ksnfdkaf';
   const [username, setUsername] = useState('');
   const [description, setDescription] = useState('');
   const [profilePhoto, setProfilePhoto] = useState(null);
@@ -104,27 +104,15 @@ export default function SetUpProfile({route}) {
         }}>
         <Animated.View
           style={{
-            transform: [
-              {
-                translateX: position,
-              },
-            ],
-          }}>
-          <Appbar.Header style={globalStyles.rootAppbarHeader}>
-            <Appbar.Content
-              title="Set up your Profile"
-              titleStyle={globalStyles.rootAppbarTitle}
-            />
-          </Appbar.Header>
-        </Animated.View>
-        <Animated.View
-          style={{
             alignSelf: 'center',
             marginTop: 50,
             width: constants.width * 0.9,
-            backgroundColor: constants.background2,
+            backgroundColor: 'white',
             borderRadius: 10,
             paddingVertical: 25,
+            borderColor: 'grey',
+            borderWidth: 0.3,
+            paddingHorizontal: 25,
             transform: [
               {
                 translateX: position,
@@ -140,7 +128,7 @@ export default function SetUpProfile({route}) {
                 borderRadius: 100 / 2,
                 alignItems: 'center',
                 justifyContent: 'center',
-                backgroundColor: constants.primary,
+                backgroundColor: '#4640C1',
                 marginBottom: 10,
               }}
               onPress={pickImage}>

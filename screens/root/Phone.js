@@ -11,7 +11,7 @@ export default function Phone() {
         width: 50,
         height: 50,
         borderRadius: 50 / 2,
-        backgroundColor: 'rgba(255,255,255,0.1)',
+        backgroundColor: '#4640C1',
         alignItems: 'center',
         justifyContent: 'center',
       }}>

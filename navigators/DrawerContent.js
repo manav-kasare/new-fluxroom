@@ -2,6 +2,7 @@ import React, {useContext} from 'react';
 import {View, StyleSheet, TouchableOpacity} from 'react-native';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Feather from 'react-native-vector-icons/Feather';
 import constants from '../shared/constants';
 import {IsSignedInContext} from '../shared/Context';
 
@@ -30,7 +31,7 @@ export default function DrawerContent({navigation}) {
               navigation.navigate('SettingsNavigator');
             }}
             style={styles.iconBackground}>
-            <Icon name="settings" color="white" size={24} />
+            <Feather name="settings" size={24} color="white" />
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {

@@ -13,7 +13,6 @@ import {
   ImageBackground,
   KeyboardAvoidingView,
 } from 'react-native';
-import {Appbar} from 'react-native-paper';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
 
@@ -99,28 +98,14 @@ export default function SignUp({navigation}) {
         <SafeAreaView
           style={{
             flex: 1,
-            backgroundColor: 'transparent',
+            backgroundColor: 'white',
             alignItems: 'center',
             justifyContent: 'space-between',
           }}>
-          <Animated.View
-            style={{
-              transform: [{translateX: position}],
-            }}>
-            <Appbar.Header style={globalStyles.rootAppbarHeader}>
-              <Appbar.BackAction
-                onPress={() => navigation.goBack()}
-                color="white"
-              />
-              <Appbar.Content
-                title="Register"
-                titleStyle={globalStyles.rootAppbarTitle}
-              />
-            </Appbar.Header>
-          </Animated.View>
           <ImageBackground
             style={{
               width: constants.width,
+              marginTop: 50,
               height: constants.height * 0.2,
             }}
             resizeMode="contain"
@@ -140,6 +125,8 @@ export default function SignUp({navigation}) {
                 paddingVertical: 25,
                 marginBottom: 50,
                 transform: [{translateX: position}],
+                borderColor: '#777777',
+                borderWidth: 0.3,
               }}>
               <Animated.View
                 style={{
@@ -268,14 +255,7 @@ export default function SignUp({navigation}) {
                         <TouchableOpacity
                           style={globalStyles.button}
                           onPress={formikProps.handleSubmit}>
-                          <Text
-                            style={{
-                              color: 'white',
-                              fontSize: 16,
-                              letterSpacing: 1,
-                            }}>
-                            Register to FluxRoom
-                          </Text>
+                          <Text style={globalStyles.buttonText}>Sign Up</Text>
                         </TouchableOpacity>
                       )}
                     </Animated.View>

@@ -15,7 +15,6 @@ import {
   Platform,
   ImageBackground,
 } from 'react-native';
-import {Appbar} from 'react-native-paper';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
 
@@ -56,44 +55,56 @@ export default function LogIn({navigation}) {
     }).start();
   }, []);
 
-  const handleLogIn = () => {
-    setIsLoading(true);
+  // const handleLogIn = () => {
+  //   setIsLoading(true);
 
-    if (isEmail(usernameOrEmail)) {
-      loginUserWithEmail({
-        email: usernameOrEmail,
-        password: formPassword,
-      }).then((data) => {
-        setIsLoading(false);
-        if (data !== 'error') {
-          if (Boolean(data.confirmed)) {
-            setUser(data);
-            setIsSignedIn(true);
-          } else {
-            CustomToast('Please Verify your Email');
-          }
-        } else {
-          CustomToast('Email or Password is incorrect');
-        }
-      });
-    } else {
-      loginUserWithUsername({
-        username: usernameOrEmail,
-        password: formPassword,
-      }).then((data) => {
-        setIsLoading(false);
-        if (data !== 'error') {
-          if (Boolean(data.confirmed)) {
-            setUser(data);
-            setIsSignedIn(true);
-          } else {
-            CustomToast('Please verify your Email');
-          }
-        } else {
-          CustomToast('Username or Password is incorrect');
-        }
-      });
-    }
+  //   if (isEmail(usernameOrEmail)) {
+  //     loginUserWithEmail({
+  //       email: usernameOrEmail,
+  //       password: formPassword,
+  //     }).then((data) => {
+  //       setIsLoading(false);
+  //       if (data !== 'error') {
+  //         if (Boolean(data.confirmed)) {
+  //           setUser(data);
+  //           setIsSignedIn(true);
+  //         } else {
+  //           CustomToast('Please Verify your Email');
+  //         }
+  //       } else {
+  //         CustomToast('Email or Password is incorrect');
+  //       }
+  //     });
+  //   } else {
+  //     loginUserWithUsername({
+  //       username: usernameOrEmail,
+  //       password: formPassword,
+  //     }).then((data) => {
+  //       setIsLoading(false);
+  //       if (data !== 'error') {
+  //         if (Boolean(data.confirmed)) {
+  //           setUser(data);
+  //           setIsSignedIn(true);
+  //         } else {
+  //           CustomToast('Please verify your Email');
+  //         }
+  //       } else {
+  //         CustomToast('Username or Password is incorrect');
+  //       }
+  //     });
+  //   }
+  // };
+
+  const handleLogIn = () => {
+    setUser({
+      id: 'asdfdfsfa',
+      username: 'sdfafasdf',
+      description: 'sdfsafdsafs',
+      email: 'asdkfndasldfnasf',
+      profilePhoto:
+        'https://images.unsplash.com/photo-1597156287025-aa801be7d41c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
+    });
+    setIsSignedIn(true);
   };
 
   return (
@@ -108,29 +119,15 @@ export default function LogIn({navigation}) {
         <SafeAreaView
           style={{
             flex: 1,
-            backgroundColor: 'black',
+            backgroundColor: 'white',
             alignItems: 'center',
             justifyContent: 'space-between',
           }}>
-          <Animated.View
-            style={{
-              transform: [{translateX: position}],
-            }}>
-            <Appbar.Header style={globalStyles.rootAppbarHeader}>
-              <Appbar.BackAction
-                onPress={() => navigation.goBack()}
-                color="white"
-              />
-              <Appbar.Content
-                title="Log In"
-                titleStyle={globalStyles.rootAppbarTitle}
-              />
-            </Appbar.Header>
-          </Animated.View>
           <ImageBackground
             style={{
               width: constants.width,
               height: constants.height * 0.2,
+              marginTop: 50,
             }}
             resizeMode="contain"
             source={require('/Users/manav/projects/fluxroom/assets/receipt.png')}>
@@ -142,9 +139,11 @@ export default function LogIn({navigation}) {
                 width: constants.width * 0.9,
                 backgroundColor: 'white',
                 borderRadius: 10,
-                paddingVertical: 25,
                 transform: [{translateX: position}],
                 alignItems: 'center',
+                borderColor: 'grey',
+                borderWidth: 0.3,
+                paddingVertical: 25,
               }}>
               <Animated.View
                 style={{
@@ -163,6 +162,9 @@ export default function LogIn({navigation}) {
                       }
                     />
                     <TextInput
+                      autoCapitalize="none"
+                      textContentType="emailAddress"
+                      keyboardType="email-address"
                       onFocus={() =>
                         setOnFocus({usernameOrEmail: true, password: false})
                       }
@@ -221,20 +223,14 @@ export default function LogIn({navigation}) {
                     </View>
                   </Animated.View>
                   {isLoading ? (
-                    <View style={{height: 45, marginBottom: 25}}>
+                    <View style={{height: 50, marginVertical: 10}}>
                       <ActivityIndicator color="black" size="small" />
                     </View>
                   ) : (
                     <TouchableOpacity
                       style={globalStyles.button}
                       onPress={handleLogIn}>
-                      <Text
-                        style={{
-                          color: 'white',
-                          fontSize: 18,
-                          letterSpacing: 1,
-                          fontFamily: 'Helvetica',
-                        }}>
+                      <Text style={globalStyles.buttonText}>
                         Log In to FluxRoom
                       </Text>
                     </TouchableOpacity>
@@ -242,21 +238,20 @@ export default function LogIn({navigation}) {
                 </View>
               </Animated.View>
             </Animated.View>
-            <Animated.View style={{marginVertical: 20, alignSelf: 'center'}}>
-              <TouchableOpacity
-                style={globalStyles.lowOpacityTouchableButton}
-                onPress={() => navigation.navigate('ForgotPassword')}>
-                <Text
-                  style={{
-                    color: 'white',
-                    fontFamily: 'Helvetica',
-                    fontSize: 18,
-                    letterSpacing: 1,
-                  }}>
-                  Forgot Password ?
-                </Text>
-              </TouchableOpacity>
-            </Animated.View>
+            <TouchableOpacity
+              style={{
+                width: constants.width * 0.9,
+                height: 50,
+                backgroundColor: '#4640C1',
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderRadius: 10,
+                marginBottom: 25,
+                marginVertical: 20,
+              }}
+              onPress={() => navigation.navigate('ForgotPassword')}>
+              <Text style={globalStyles.buttonText}>Forgot Password ?</Text>
+            </TouchableOpacity>
           </Animated.View>
         </SafeAreaView>
       </KeyboardAvoidingView>

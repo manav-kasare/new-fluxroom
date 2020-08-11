@@ -39,8 +39,8 @@ export default function HomeNavigator() {
   return (
     <BottomTabs.Navigator
       tabBarOptions={{
-        activeTintColor: constants.background2,
-        inactiveTintColor: constants.lineColor,
+        activeTintColor: '#4640C1',
+        inactiveTintColor: constants.background2,
         showLabel: false,
         style: {
           backgroundColor: constants.background3,
