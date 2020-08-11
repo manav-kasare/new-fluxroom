@@ -1,6 +1,6 @@
 import React from 'react';
 import {TouchableOpacity, View} from 'react-native';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 export default function WhatsAppShare() {
   return (
@@ -13,7 +13,7 @@ export default function WhatsAppShare() {
         height: 45,
         borderRadius: 45 / 2,
       }}>
-      <FontAwesome name="whatsapp" size={24} color="black" />
+      <FontAwesome5 name="whatsapp" size={24} color="black" />
     </TouchableOpacity>
   );
 }
