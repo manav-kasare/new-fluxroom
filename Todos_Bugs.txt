@@ -1,0 +1,16 @@
+Todos: 
+    1. DONE . Email Verification
+    2. Check for duplicates in friends and requests.
+    3. Add a camera option while setting images.
+    4. Toggle Dark Theme
+    5. Audio Chat
+    6. Deep Linking
+
+Bugs: 
+    1. Can't re render ChatRooms with navigation.goBack().(possible with navigation.navigate())
+    2. FIXED . Friends screen won't go to modal state, sometimes even fucks up the UserProfile navigation.
+    3. Re rendering very slow.
+    4. Can't load images from database, they aren't uploaded in http but in file format.
+    5. Modal in Search pops up too slow.
+    6. FIXED .Cant't hide tab bar in ChatRoomNavigator after changing the navigation flow.
+    7. Error on Search query.

@@ -1,0 +1,21 @@
+import React from 'react';
+import {TouchableOpacity} from 'react-native';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+
+import constants from '../../shared/constants';
+
+export default function Google() {
+  return (
+    <TouchableOpacity
+      style={{
+        width: 50,
+        height: 50,
+        borderRadius: 50 / 2,
+        backgroundColor: 'rgba(255,255,255,0.1)',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}>
+      <AntDesign name="google" size={25} color="white" />
+    </TouchableOpacity>
+  );
+}
