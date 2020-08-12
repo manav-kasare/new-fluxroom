@@ -33,8 +33,6 @@ export default function ProfileNavigator({route, navigation}) {
                 marginRight: 15,
                 width: 40,
                 height: 40,
-                borderRadius: 8,
-                backgroundColor: constants.background3,
                 alignItems: 'center',
                 justifyContent: 'center',
               }}

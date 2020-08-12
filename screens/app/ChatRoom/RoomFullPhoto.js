@@ -5,7 +5,6 @@ import {
   Image,
   View,
   TouchableOpacity,
-  StatusBar,
   Platform,
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -53,7 +52,6 @@ export default function RoomFullPhoto({navigation, route}) {
         backgroundColor: constants.background3,
         flex: 1,
       }}>
-      <StatusBar backgroundColor={constants.background3} barStyle="default" />
       <SafeAreaView
         style={{width: constants.width, height: constants.height * 0.05}}
       />

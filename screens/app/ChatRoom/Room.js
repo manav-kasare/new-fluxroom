@@ -1,5 +1,5 @@
 import React, {useEffect, useContext, useReducer} from 'react';
-import {SafeAreaView, StatusBar, FlatList} from 'react-native';
+import {SafeAreaView, FlatList} from 'react-native';
 
 import RoomPhotoTile from './RoomPhotoTile';
 import Host from './Host';
@@ -62,7 +62,6 @@ export default function Room({route, navigation}) {
         width: constants.width,
         backgroundColor: constants.background1,
       }}>
-      <StatusBar barStyle="default" />
       <FlatList
         data={test}
         columnWrapperStyle={{

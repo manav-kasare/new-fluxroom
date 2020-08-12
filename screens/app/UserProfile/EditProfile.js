@@ -86,7 +86,6 @@ export default function EditProfile({navigation}) {
         style={{
           marginTop: 25,
           marginLeft: constants.width * 0.1,
-          width: 75,
         }}
         onPress={
           description.length > 0 && description.length < 150

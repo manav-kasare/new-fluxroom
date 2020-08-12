@@ -13,7 +13,7 @@ export default function RoomPhotoTile({profilePhoto}) {
         height: 50,
         borderRadius: 50 / 2,
         borderColor: constants.lineColor,
-        borderWidth: 0.2,
+        borderWidth: 0.3,
         alignItems: 'center',
         justifyContent: 'center',
       }}>

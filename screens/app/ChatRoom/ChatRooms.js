@@ -22,9 +22,14 @@ const wait = (timeout) => {
   });
 };
 
+var list = [];
+for (var i = 0; i < 10; i++) {
+  list.push(`${i}`);
+}
+
 export default function ChatRooms({navigation}) {
   const {user} = useContext(UserDetailsContext);
-  const {constants} = useContext(ThemeContext);
+  const {constants, darkTheme} = useContext(ThemeContext);
   const [chatRoomList, setChatRoomList] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
   const [onFocusRefresh, setOnFocusRefresh] = useState(true);
@@ -57,7 +62,7 @@ export default function ChatRooms({navigation}) {
         alignItems: 'center',
         justifyContent: 'flex-start',
       }}>
-      <StatusBar barStyle="dark-content" />
+      <StatusBar barStyle={darkTheme ? 'light-content' : 'dark-content'} />
       {onFocusRefresh ? (
         <View
           style={{
@@ -71,7 +76,7 @@ export default function ChatRooms({navigation}) {
       ) : (
         <FlatList
           style={{width: constants.width}}
-          data={chatRoomList}
+          data={list}
           keyExtractor={(item, index) => index.toString()}
           ListEmptyComponent={() => (
             <View
@@ -91,7 +96,12 @@ export default function ChatRooms({navigation}) {
                   resizeMode="contain"
                   source={require('/Users/manav/projects/fluxroom/assets/tree_swing.png')}
                 />
-                <Text style={{color: 'grey', fontSize: 20, fontWeight: '300'}}>
+                <Text
+                  style={{
+                    color: darkTheme ? 'white' : 'grey',
+                    fontSize: 20,
+                    fontWeight: '300',
+                  }}>
                   No Rooms :(
                 </Text>
               </View>

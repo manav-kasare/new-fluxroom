@@ -1,12 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {
-  SafeAreaView,
-  View,
-  Image,
-  Text,
-  TouchableOpacity,
-  StatusBar,
-} from 'react-native';
+import {SafeAreaView, View, Image, Text, TouchableOpacity} from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import {getChatroomInfo} from '../../../backend/database/apiCalls';
@@ -37,9 +30,6 @@ export default function RoomSettings({route, navigation}) {
 
   return (
     <SafeAreaView style={constants.screen}>
-      <StatusBar
-        barStyle={constants.isDark ? 'light-content' : 'dark-content'}
-      />
       <View style={{flex: 1}}>
         <TouchableOpacity
           style={styles.container}
