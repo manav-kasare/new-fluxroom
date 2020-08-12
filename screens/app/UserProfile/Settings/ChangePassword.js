@@ -65,7 +65,6 @@ export default function ChangePassword({navigation}) {
           backgroundColor: constants.background1,
         }}>
         <TextInput
-          keyboardType="visible-password"
           autoFocus={true}
           autoCompleteType="off"
           style={constants.input}
@@ -76,7 +75,6 @@ export default function ChangePassword({navigation}) {
           onChangeText={(text) => setCurrentPass(text)}
         />
         <TextInput
-          keyboardType="visible-password"
           style={constants.input}
           secureTextEntry={true}
           placeholder="New Password"
@@ -85,7 +83,6 @@ export default function ChangePassword({navigation}) {
           onChangeText={(text) => setNewPass(text)}
         />
         <TextInput
-          keyboardType="visible-password"
           style={constants.input}
           secureTextEntry={true}
           placeholder="Confirm New Password"

@@ -7,13 +7,18 @@ import {
   TextInput,
   Keyboard,
   TouchableWithoutFeedback,
+  Linking,
 } from 'react-native';
 import {Appbar} from 'react-native-paper';
 import {ThemeContext} from '../../../shared/Context';
 
 export default function JoinRoom({navigation}) {
-  const {constants} = React.useContext(ThemeContext);
-  const [link, setLink] = React.useState('');
+  const {constants, darkTheme} = React.useContext(ThemeContext);
+  const [link, setLink] = React.useState(null);
+
+  const handleJoin = () => {
+    Linking.openURL(link);
+  };
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -55,12 +60,13 @@ export default function JoinRoom({navigation}) {
               style={{
                 width: constants.width * 0.75,
                 height: 45,
-                backgroundColor: constants.background2,
+                backgroundColor: darkTheme ? 'white' : '#4640C1',
                 justifyContent: 'center',
                 alignItems: 'center',
                 borderRadius: 8,
-                marginTop: 5,
-              }}>
+                marginTop: 10,
+              }}
+              onPress={handleJoin}>
               <Text style={{color: constants.text2}}>Join</Text>
             </TouchableOpacity>
           </View>

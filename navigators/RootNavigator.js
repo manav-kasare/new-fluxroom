@@ -2,11 +2,7 @@ import React, {useState, useEffect, useMemo} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import {
-  UserDetailsContext,
-  IsSignedInContext,
-  ThemeContext,
-} from '../shared/Context';
+import {UserDetailsContext, IsSignedInContext} from '../shared/Context';
 import LogIn from '../screens/root/LogIn';
 import SignUp from '../screens/root/SignUp';
 import Onboard from '../screens/root/Onboard';
@@ -25,6 +21,19 @@ export default function RootNavigator() {
 
   const userDetailsValue = useMemo(() => ({user, setUser}), [user, setUser]);
 
+  const deepLinking = {
+    prefixes: ['fluxroom://'],
+    config: {
+      Home: 'ChatRooms',
+      Room: {
+        path: 'Room/:roomID',
+        params: {
+          roomID: 'whsdjfhaf',
+        },
+      },
+    },
+  };
+
   useEffect(() => {
     setTimeout(() => {
       setSplashScreen(false);
@@ -37,7 +46,7 @@ export default function RootNavigator() {
 
   return (
     <UserDetailsContext.Provider value={userDetailsValue}>
-      <NavigationContainer>
+      <NavigationContainer linking={deepLinking}>
         {!isSignedIn ? (
           <AuthStackNavigator />
         ) : (

@@ -1,68 +1,45 @@
 import React, {useContext} from 'react';
-import {View, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, StyleSheet} from 'react-native';
+import {
+  DrawerItem,
+  DrawerContentScrollView,
+  DrawerItemList,
+} from '@react-navigation/drawer';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Feather from 'react-native-vector-icons/Feather';
 import {IsSignedInContext, ThemeContext} from '../shared/Context';
 
-export default function DrawerContent({navigation}) {
+export default function DrawerContent(props) {
   const {setIsSignedIn} = useContext(IsSignedInContext);
   const {constants, darkTheme} = React.useContext(ThemeContext);
 
   return (
     <View
       style={{
-        width: constants.width * 0.2,
         flex: 1,
-        backgroundColor: darkTheme ? '#0f0f0f' : '#4640C1',
+        backgroundColor: darkTheme ? '#0f0f0f' : '#f5f5f5',
         paddingTop: 50,
       }}>
       <View style={styles.drawerContent}>
-        <View style={styles.drawerSection}>
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('Home');
-            }}
-            style={styles.iconBackground}>
-            <Icon name="home" color="white" size={24} />
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('SettingsNavigator');
-            }}
-            style={styles.iconBackground}>
-            <Feather name="settings" size={24} color="white" />
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('Friends');
-            }}
-            style={styles.iconBackground}>
-            <Icon name="account-plus" color="white" size={24} />
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('JoinRoom');
-            }}
-            style={styles.iconBackground}>
-            <Icon name="plus-circle" color="white" size={24} />
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('CreateRoom');
-            }}
-            style={styles.iconBackground}>
-            <Icon name="pencil" color="white" size={24} />
-          </TouchableOpacity>
-        </View>
+        <DrawerContentScrollView {...props} style={styles.drawerSection}>
+          <DrawerItemList
+            inactiveTintColor="grey"
+            activeBackgroundColor={constants.primary}
+            activeTintColor={constants.text2}
+            {...props}
+          />
+        </DrawerContentScrollView>
       </View>
 
       <View style={styles.bottomDrawerSection}>
-        <TouchableOpacity
+        <DrawerItem
+          icon={() => <Icon name="exit-to-app" color="grey" size={24} />}
+          style={{height: 50}}
           onPress={() => setIsSignedIn(false)}
-          style={styles.iconBackground}>
-          <Icon name="exit-to-app" color="white" size={24} />
-        </TouchableOpacity>
+          label="Sign Out"
+          labelStyle={{color: 'grey', fontSize: 15}}
+        />
       </View>
     </View>
   );
@@ -75,7 +52,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   drawerItem: {
-    paddingVertical: 5,
+    borderBottomColor: 'grey',
+    borderBottomWidth: 0.4,
+    height: 50,
   },
   drawerSection: {
     marginTop: 15,
@@ -94,5 +73,6 @@ const styles = StyleSheet.create({
     elevation: 1,
     shadowOpacity: 0.1,
     marginVertical: 10,
+    flexDirection: 'row',
   },
 });

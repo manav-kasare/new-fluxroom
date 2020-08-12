@@ -1,8 +1,8 @@
 Todos: 
-    1. DONE . Email Verification
+    1. DONE Email Verification
     2. Check for duplicates in friends and requests.
     3. Add a camera option while setting images.
-    4. Toggle Dark Theme
+    4. DONE Toggle Dark Theme
     5. Audio Chat
     6. Deep Linking
 

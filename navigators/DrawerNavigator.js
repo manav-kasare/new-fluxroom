@@ -1,5 +1,7 @@
 import React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Feather from 'react-native-vector-icons/Feather';
 
 import EditProfile from '../screens/app/UserProfile/EditProfile';
 import DrawerContent from './DrawerContent';
@@ -19,19 +21,53 @@ export default function DrawerNavigator() {
       edgeWidth={constants.width}
       drawerType="back"
       drawerPosition="right"
-      drawerContent={({navigation}) => (
-        <DrawerContent navigation={navigation} />
-      )}
-      drawerStyle={{
-        width: constants.width * 0.2,
-      }}
+      drawerContent={(props) => <DrawerContent {...props} />}
       initialRouteName="Home">
-      <Drawer.Screen name="Home" component={HomeNavigator} />
-      <Drawer.Screen name="SettingsNavigator" component={SettingsNavigator} />
-      <Drawer.Screen name="EditProfile" component={EditProfile} />
-      <Drawer.Screen name="Friends" component={Friends} />
-      <Drawer.Screen name="JoinRoom" component={JoinRoom} />
-      <Drawer.Screen name="CreateRoom" component={CreateRoom} />
+      <Drawer.Screen
+        name="Home"
+        component={HomeNavigator}
+        options={{
+          drawerIcon: ({color, size}) => (
+            <Icon name="home-outline" color={color} size={size} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="SettingsNavigator"
+        component={SettingsNavigator}
+        options={{
+          drawerIcon: ({color, size}) => (
+            <Feather name="settings" size={size} color={color} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="Friends"
+        component={Friends}
+        options={{
+          drawerIcon: ({color, size}) => (
+            <Icon name="account-plus" size={size} color={color} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="JoinRoom"
+        component={JoinRoom}
+        options={{
+          drawerIcon: ({color, size}) => (
+            <Icon name="plus" size={size} color={color} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="CreateRoom"
+        component={CreateRoom}
+        options={{
+          drawerIcon: ({color, size}) => (
+            <Icon name="pencil" size={size} color={color} />
+          ),
+        }}
+      />
     </Drawer.Navigator>
   );
 }

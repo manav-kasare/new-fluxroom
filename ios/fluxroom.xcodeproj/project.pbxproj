@@ -194,7 +194,6 @@
 				C760FF5010D834F275D96BC7 /* Pods-fluxroom-tvOSTests.debug.xcconfig */,
 				F22D705C7E4D97D100B7AC05 /* Pods-fluxroom-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
