@@ -60,7 +60,9 @@ export default function SignUp({navigation}) {
 
   const handleRegister = (formEmail, formPassword) => {
     setIsLoading(true);
+    console.log(formPassword, formEmail);
     checkIfEmailIsRegistered(formEmail).then((responseText) => {
+      Keyboard.dismiss();
       if (responseText == 'exists') {
         setIsLoading(false);
         CustomToast('Email Already in use');
@@ -70,9 +72,10 @@ export default function SignUp({navigation}) {
           id: id,
           email: formEmail,
           password: formPassword,
-        }).then((responseText) => {
+        }).then((_responseText) => {
+          console.log(_responseText);
           setIsLoading(false);
-          if (responseText === 'success') {
+          if (_responseText === 'success') {
             navigation.navigate('EmailVerification', {
               email: formEmail,
               id: id,

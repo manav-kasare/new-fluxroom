@@ -50,7 +50,7 @@ export default function Room({route, navigation}) {
         type: 'append',
         id: data.id,
         username: data.username,
-        profilePhoto: data.profile_photo,
+        profilePhoto: data.profilePhoto,
       });
     });
   };

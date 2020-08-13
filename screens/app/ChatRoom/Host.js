@@ -20,7 +20,7 @@ const Host = React.memo(({roomID}) => {
         setHost({
           username: data.username,
           description: data.description,
-          profilePhoto: data.profile_photo,
+          profilePhoto: data.profilePhoto,
         });
       });
     });

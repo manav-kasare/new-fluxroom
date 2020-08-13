@@ -28,7 +28,7 @@ export default function RoomTile({id, navigation}) {
   //     setRoom({
   //       name: data.name,
   //       description: data.description,
-  //       profilePhoto: data.profile_photo,
+  //       profilePhoto: data.profilePhoto,
   //       host: JSON.parse(data.members).host,
   //       members: JSON.parse(data.members).members,
   //     });

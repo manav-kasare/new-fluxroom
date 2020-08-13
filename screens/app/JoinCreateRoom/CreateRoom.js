@@ -135,8 +135,7 @@ export default function CreateRoom({navigation}) {
               style={{
                 width: constants.width * 0.75,
                 height: 45,
-                backgroundColor:
-                  room.name.length > 3 ? constants.background2 : 'crimson',
+                backgroundColor: constants.primary,
                 justifyContent: 'center',
                 alignItems: 'center',
                 borderRadius: 8,
@@ -146,9 +145,7 @@ export default function CreateRoom({navigation}) {
               <Text
                 style={{
                   fontFamily: 'Helvetica',
-                  color:
-                    room.name.length > 3 ? constants.text2 : constants.text1,
-                  fontSize: 20,
+                  color: constants.text2,
                 }}>
                 Create Room
               </Text>

@@ -18,7 +18,7 @@ export default function Member({id}) {
       setMemberInfo({
         username: data.username,
         description: data.description,
-        profilePhoto: data.profile_photo,
+        profilePhoto: data.profilePhoto,
       });
     });
   }, []);

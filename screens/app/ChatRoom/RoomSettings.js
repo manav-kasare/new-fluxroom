@@ -52,7 +52,7 @@ export default function RoomSettings({route, navigation}) {
               <Image
                 source={{
                   uri: `https://images.unsplash.com/photo-1596461097642-b697ec879ced?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80`,
-                  // uri: roomDetails.profile_photo,
+                  // uri: roomDetails.profilePhoto,
                 }}
                 style={{
                   width: 40,

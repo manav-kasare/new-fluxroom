@@ -36,8 +36,9 @@ export default function Search() {
         data={filteredUsers}
         ListHeaderComponent={() => (
           <Searchbar
-            inputStyle={{color: constants.text1}}
+            inputStyle={{color: constants.text1, fontSize: 15}}
             style={{
+              height: 40,
               backgroundColor: 'transparent',
               borderWidth: 2,
               borderColor: constants.lineColor,

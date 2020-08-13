@@ -34,11 +34,17 @@ export default function DrawerContent(props) {
 
       <View style={styles.bottomDrawerSection}>
         <DrawerItem
-          icon={() => <Icon name="exit-to-app" color="grey" size={24} />}
-          style={{height: 50}}
+          icon={() => (
+            <Icon name="exit-to-app" color={constants.text2} size={24} />
+          )}
+          style={{
+            height: 50,
+            backgroundColor: constants.primary,
+            justifyContent: 'center',
+          }}
           onPress={() => setIsSignedIn(false)}
           label="Sign Out"
-          labelStyle={{color: 'grey', fontSize: 15}}
+          labelStyle={{color: 'grey', fontSize: 14, color: constants.text2}}
         />
       </View>
     </View>
@@ -52,8 +58,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   drawerItem: {
-    borderBottomColor: 'grey',
-    borderBottomWidth: 0.4,
     height: 50,
   },
   drawerSection: {
@@ -62,17 +66,5 @@ const styles = StyleSheet.create({
   bottomDrawerSection: {
     marginBottom: 25,
     alignSelf: 'center',
-  },
-  iconBackground: {
-    width: 40,
-    height: 40,
-    borderRadius: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'rgba(255,255,255,0.1)',
-    elevation: 1,
-    shadowOpacity: 0.1,
-    marginVertical: 10,
-    flexDirection: 'row',
   },
 });

@@ -14,7 +14,7 @@ export default function UserPhoto() {
 
   useEffect(() => {
     setTimeout(() => {}, 100);
-    setProfilePhoto(user.profile_photo);
+    setProfilePhoto(user.profilePhoto);
   }, []);
 
   const pickImage = async () => {

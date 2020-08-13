@@ -11,9 +11,11 @@ const app = express();
 app.use(cors());
 
 // const IP = "192.168.43.89";
-// const IP = "192.168.1.23";
-const IP = '172.20.10.14';
+const IP = '192.168.1.23';
+// const IP = '172.20.10.14';
 const PORT = 8000;
+
+app.listen(PORT, () => console.log(`Server Running on ${PORT}`));
 
 // Should be in .env
 const SECRET_TOKEN =
@@ -29,11 +31,8 @@ let transporter = nodemailer.createTransport({
 });
 
 const connection = mysql.createConnection({
-  host: `localhost`,
-  // user: process.env.MYSQL_USER,
-  // password: process.env.MYSQL_PASSWORD,
-  // database: process.env.MYSQL_DATABASE,
-  user: 'root',
+  host: 'localhost',
+  username: 'root',
   password: 'xMySql@2020',
   database: 'fluxroom',
   multipleStatements: true,
@@ -152,7 +151,7 @@ app.get('/changePassword/:accessToken', (req, res) => {
 // Get users
 app.get('/users', (req, res) => {
   connection.query(`SELECT * FROM users`, (err, results) => {
-    if (err) res.send('Error occured', err);
+    if (err) res.send(err);
     else res.send({data: results});
   });
 });
@@ -241,11 +240,13 @@ app.get('/user/loginWithEmail', (req, res) => {
 
 // Add user to database
 app.get('/user/add', async (req, res) => {
-  const {email, password, id, profilePhoto} = req.query;
+  const {email, password, id} = req.query;
   const hashedPassword = await bcrypt.hash(password, 10);
+  console.log(hashedPassword);
   connection.query(
-    `INSERT INTO users (id ,email, password, profile_photo, chatrooms) VALUES ('${id}', '${email}','${hashedPassword}','${profilePhoto}', JSON_OBJECT('host', JSON_ARRAY(), 'chatrooms', JSON_ARRAY()))`,
+    `INSERT INTO fluxroom.users (id ,email, password, chatrooms) VALUES ('${id}', '${email}','${hashedPassword}', JSON_OBJECT('chatrooms', JSON_ARRAY()))`,
     (err, results) => {
+      console.log(results);
       if (err) res.send(err);
       else res.send('success');
     },
@@ -253,9 +254,9 @@ app.get('/user/add', async (req, res) => {
 });
 
 app.get('/user/updateProfilePhoto', (req, res) => {
-  const {id, profile_photo} = req.query;
+  const {id, profilePhoto} = req.query;
   connection.query(
-    `UPDATE fluxroom.users SET profile_photo='${profile_photo}' WHERE id='${id}'`,
+    `UPDATE fluxroom.users SET profilePhoto='${profilePhoto}' WHERE id='${id}'`,
     (err, results) => {
       if (err) res.send(err);
       else 'Updated Data Successfully !';
@@ -373,10 +374,10 @@ app.get('/chatroom/getInfo', (req, res) => {
 
 // Create Chatroom
 app.get('/chatroom/create', (req, res) => {
-  const {roomID, name, description, profile_photo, userID} = req.query;
+  const {roomID, name, description, profilePhoto, userID} = req.query;
   // Adding to chatrooms table and then adding to users table
   connection.query(
-    `INSERT INTO fluxroom.chatrooms(id, name, description, profile_photo, members) VALUES('${roomID}', '${name}', '${description}', '${profile_photo}',JSON_OBJECT('host', '${userID}', 'members', JSON_ARRAY('${userID}'))); UPDATE fluxroom.users SET chatrooms=JSON_OBJECT('host', JSON_ARRAY('${roomID}'), 'chatrooms', JSON_ARRAY('${roomID}')) WHERE id='${userID}';`,
+    `INSERT INTO fluxroom.chatrooms(id, name, description, profilePhoto, members) VALUES('${roomID}', '${name}', '${description}', '${profilePhoto}',JSON_OBJECT('host', '${userID}', 'members', JSON_ARRAY('${userID}'))); UPDATE fluxroom.users SET chatrooms=JSON_OBJECT('host', JSON_ARRAY('${roomID}'), 'chatrooms', JSON_ARRAY('${roomID}')) WHERE id='${userID}';`,
     (err, results) => {
       if (err) res.send(err);
       else res.send('success');
@@ -401,5 +402,3 @@ app.get('/', (req, res) => {
     'Go to /users to get the users list and /users/add to add a user to database',
   );
 });
-
-app.listen(PORT, () => console.log(`Server Running on ${PORT}`));

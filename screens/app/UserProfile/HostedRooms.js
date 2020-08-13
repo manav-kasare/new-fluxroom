@@ -57,7 +57,7 @@ export default function HostedRooms({navigation}) {
         type: 'append',
         id: data.id,
         name: data.name,
-        profilePhoto: data.profile_photo,
+        profilePhoto: data.profilePhoto,
       });
     });
   };

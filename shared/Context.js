@@ -8,7 +8,7 @@ export const UserDetailsContext = React.createContext({
   id: null,
   username: null,
   description: null,
-  profile_photo: null,
+  profilePhoto: null,
   email: null,
   friends: null,
   requests: null,

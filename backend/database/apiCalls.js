@@ -1,36 +1,36 @@
-import constants from "../../shared/constants";
+import constants from '../../shared/constants';
 
-export const loginUserWithUsername = ({ username, password }) => {
+export const loginUserWithUsername = ({username, password}) => {
   return fetch(
-    `http://${constants.localIP}:8000/user/loginWithUsername?username=${username}&password=${password}`
+    `http://${constants.localIP}:8000/user/loginWithUsername?username=${username}&password=${password}`,
   )
     .then((response) => response.json())
-    .then(({ data }) => {
+    .then(({data}) => {
       return data;
     });
 };
 
-export const loginUserWithEmail = ({ email, password }) => {
+export const loginUserWithEmail = ({email, password}) => {
   return fetch(
-    `http://${constants.localIP}:8000/user/loginWithEmail?email=${email}&password=${password}`
+    `http://${constants.localIP}:8000/user/loginWithEmail?email=${email}&password=${password}`,
   )
     .then((response) => response.json())
-    .then(({ data }) => {
+    .then(({data}) => {
       return data;
     });
 };
 
-export const registerUser = ({ id, email, password, profilePhoto }) => {
+export const registerUser = ({id, email, password}) => {
   return fetch(
-    `http://${constants.localIP}:8000/user/add/?email=${email}&password=${password}&id=${id}&profile_photo=${profilePhoto}`
+    `http://${constants.localIP}:8000/user/add?email=${email}&password=${password}&id=${id}`,
   )
     .then((response) => response.text())
     .then(async (responseText) => {
       const emailResponse = await emailConfirmation(id, email);
-      if (emailResponse === "success") {
+      if (emailResponse === 'success') {
         return responseText;
       } else {
-        return "error";
+        return 'error';
       }
     });
 };
@@ -38,7 +38,7 @@ export const registerUser = ({ id, email, password, profilePhoto }) => {
 export const getUsers = () => {
   return fetch(`http://${constants.localIP}:8000/users`)
     .then((response) => response.json())
-    .then(({ data }) => {
+    .then(({data}) => {
       return data;
     });
 };
@@ -46,7 +46,7 @@ export const getUsers = () => {
 export const getUserInfo = (id) => {
   return fetch(`http://${constants.localIP}:8000/user/info?id=${id}`)
     .then((response) => response.json())
-    .then(({ data }) => {
+    .then(({data}) => {
       return data[0];
     });
 };
@@ -66,11 +66,11 @@ export const getChatroomInfo = (id, reason) => {
     .then((response) => response.json())
     .then((data) => {
       switch (reason) {
-        case "host":
+        case 'host':
           const membersObject = JSON.parse(data[0].members);
           const hostID = membersObject.host;
           return hostID;
-        case "room":
+        case 'room':
           return data[0];
       }
     });
@@ -78,7 +78,7 @@ export const getChatroomInfo = (id, reason) => {
 
 export const sendFriendRequest = (fromID, toID) => {
   return fetch(
-    `http://${constants.localIP}:8000/sendRequest?fromID=${fromID}&toID=${toID}`
+    `http://${constants.localIP}:8000/sendRequest?fromID=${fromID}&toID=${toID}`,
   )
     .then((response) => response.text())
     .then((reponseText) => {
@@ -88,7 +88,7 @@ export const sendFriendRequest = (fromID, toID) => {
 
 export const acceptFriendRequest = (userID, friendID) => {
   return fetch(
-    `http://${constants.localIP}:8000/addFriend?friendID=${friendID}&userID=${userID}`
+    `http://${constants.localIP}:8000/addFriend?friendID=${friendID}&userID=${userID}`,
   )
     .then((response) => response.text())
     .then((reponseText) => {
@@ -98,7 +98,7 @@ export const acceptFriendRequest = (userID, friendID) => {
 
 export const declineFriendRequest = (userID, friendID) => {
   return fetch(
-    `http://${constants.localIP}:8000/declineRequest?friendID=${friendID}&userID=${userID}`
+    `http://${constants.localIP}:8000/declineRequest?friendID=${friendID}&userID=${userID}`,
   )
     .then((response) => response.text())
     .then((reponseText) => {
@@ -108,7 +108,7 @@ export const declineFriendRequest = (userID, friendID) => {
 
 export const removeFriend = (userID, friendID) => {
   return fetch(
-    `http://${constants.localIP}:8000/removeFriend?friendID=${friendID}&userID=${userID}`
+    `http://${constants.localIP}:8000/removeFriend?friendID=${friendID}&userID=${userID}`,
   )
     .then((response) => response.text())
     .then((responseText) => {
@@ -118,7 +118,7 @@ export const removeFriend = (userID, friendID) => {
 
 export const createRoom = (userID, room) => {
   return fetch(
-    `http://${constants.localIP}:8000/chatroom/create?userID=${userID}&roomID=${room.id}&name=${room.name}&profile_photo=${room.profilePhoto}&description=${room.description}`
+    `http://${constants.localIP}:8000/chatroom/create?userID=${userID}&roomID=${room.id}&name=${room.name}&profilePhoto=${room.profilePhoto}&description=${room.description}`,
   )
     .then((response) => response.text())
     .then((responseText) => {
@@ -128,7 +128,7 @@ export const createRoom = (userID, room) => {
 
 export const updateDescription = (id, description) => {
   return fetch(
-    `http://${constants.localIP}:8000/user/updateDescription?description=${description}&id=${id}`
+    `http://${constants.localIP}:8000/user/updateDescription?description=${description}&id=${id}`,
   )
     .then((response) => response.text())
     .then((responseText) => {
@@ -138,7 +138,7 @@ export const updateDescription = (id, description) => {
 
 export const updateProfilePhoto = (id, uri) => {
   return fetch(
-    `http://${constants.localIP}:8000/user/updateProfilePhoto?id=${id}&profile_photo=${uri}`
+    `http://${constants.localIP}:8000/user/updateProfilePhoto?id=${id}&profilePhoto=${uri}`,
   )
     .then((response) => response.text())
     .then((responseText) => {
@@ -146,9 +146,9 @@ export const updateProfilePhoto = (id, uri) => {
     });
 };
 
-export const updateUsernameDescription = ({ id, username, description }) => {
+export const updateUsernameDescription = ({id, username, description}) => {
   return fetch(
-    `http://${constants.localIP}:8000/user/updateUsernameDescription?userID=${id}&username=${username}&description=${description}`
+    `http://${constants.localIP}:8000/user/updateUsernameDescription?userID=${id}&username=${username}&description=${description}`,
   )
     .then((response) => response.text())
     .then((responseText) => {
@@ -158,7 +158,7 @@ export const updateUsernameDescription = ({ id, username, description }) => {
 
 export const checkIfEmailIsRegistered = (email) => {
   return fetch(
-    `http://${constants.localIP}:8000/isEmailRegistered?email=${email}`
+    `http://${constants.localIP}:8000/isEmailRegistered?email=${email}`,
   )
     .then((response) => response.text())
     .then((responseText) => {
@@ -168,7 +168,7 @@ export const checkIfEmailIsRegistered = (email) => {
 
 export const checkIfUsernameIsRegistered = (username) => {
   return fetch(
-    `http://${constants.localIP}:8000/isUsernameRegistered?username=${username}`
+    `http://${constants.localIP}:8000/isUsernameRegistered?username=${username}`,
   )
     .then((response) => response.text())
     .then((responseText) => {
@@ -178,7 +178,7 @@ export const checkIfUsernameIsRegistered = (username) => {
 
 export const emailConfirmation = (id, email) => {
   return fetch(
-    `http://${constants.localIP}:8000/emailConfirmation?toEmail=${email}&userID=${id}`
+    `http://${constants.localIP}:8000/emailConfirmation?toEmail=${email}&userID=${id}`,
   )
     .then((response) => response.text())
     .then((responseText) => {
@@ -188,7 +188,7 @@ export const emailConfirmation = (id, email) => {
 
 export const forgotPassword = (email) => {
   return fetch(
-    `http://${constants.localIP}:8000/forgotPassword?toEmail=${email}`
+    `http://${constants.localIP}:8000/forgotPassword?toEmail=${email}`,
   )
     .then((response) => response.text())
     .then((responseText) => {
@@ -198,7 +198,7 @@ export const forgotPassword = (email) => {
 
 export const verifyPassword = (id, currentPass) => {
   return fetch(
-    `http://${constants.localIP}:8000/user/verifyPassword?id=${id}&password=${currentPass}`
+    `http://${constants.localIP}:8000/user/verifyPassword?id=${id}&password=${currentPass}`,
   )
     .then((response) => response.text())
     .then((responseText) => {
@@ -208,7 +208,7 @@ export const verifyPassword = (id, currentPass) => {
 
 export const changePassword = (id, newPass) => {
   return fetch(
-    `http://${constants.localIP}:8000/user/changePassword?id=${id}&password=${newPass}`
+    `http://${constants.localIP}:8000/user/changePassword?id=${id}&password=${newPass}`,
   )
     .then((response) => response.text())
     .then((responseText) => {

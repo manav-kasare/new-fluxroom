@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Image} from 'react-native';
+import {View, Image, ImagePropTypes} from 'react-native';
 
 import CachedImage from '../../../shared/CachedImage';
 import {ThemeContext} from '../../../shared/Context';
@@ -29,13 +29,14 @@ export default function RoomUserPhoto({profilePhoto, borderColor}) {
           }}
         />
       ) : (
-        <CachedImage
+        <Image
           style={{
             width: innerRadius,
             height: innerRadius,
             borderRadius: innerRadius / 2,
           }}
-          uri={profilePhoto}
+          source={{uri: profilePhoto}}
+          // uri={profilePhoto}
         />
       )}
     </View>

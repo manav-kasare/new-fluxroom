@@ -105,7 +105,7 @@ function FriendsList({id}) {
       setDetails({
         username: data.username,
         description: data.description,
-        profilePhoto: data.profile_photo,
+        profilePhoto: data.profilePhoto,
       });
     });
   }, []);

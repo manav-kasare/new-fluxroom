@@ -27,6 +27,7 @@ export default function DrawerNavigator() {
         name="Home"
         component={HomeNavigator}
         options={{
+          drawerLabel: 'Home',
           drawerIcon: ({color, size}) => (
             <Icon name="home-outline" color={color} size={size} />
           ),
@@ -36,6 +37,7 @@ export default function DrawerNavigator() {
         name="SettingsNavigator"
         component={SettingsNavigator}
         options={{
+          drawerLabel: 'Settings',
           drawerIcon: ({color, size}) => (
             <Feather name="settings" size={size} color={color} />
           ),
@@ -45,6 +47,7 @@ export default function DrawerNavigator() {
         name="Friends"
         component={Friends}
         options={{
+          drawerLabel: 'Friends',
           drawerIcon: ({color, size}) => (
             <Icon name="account-plus" size={size} color={color} />
           ),
@@ -54,6 +57,7 @@ export default function DrawerNavigator() {
         name="JoinRoom"
         component={JoinRoom}
         options={{
+          drawerLabel: 'Join Room',
           drawerIcon: ({color, size}) => (
             <Icon name="plus" size={size} color={color} />
           ),
@@ -63,6 +67,7 @@ export default function DrawerNavigator() {
         name="CreateRoom"
         component={CreateRoom}
         options={{
+          drawerLabel: 'Create Room',
           drawerIcon: ({color, size}) => (
             <Icon name="pencil" size={size} color={color} />
           ),

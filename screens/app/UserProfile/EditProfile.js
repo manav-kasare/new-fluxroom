@@ -57,12 +57,7 @@ export default function EditProfile({navigation}) {
         }}>
         <TextInput
           autoFocus={true}
-          style={{
-            flex: 1,
-            color: 'grey',
-            fontSize: 25,
-            fontFamily: 'Helvetica',
-          }}
+          style={constants.input}
           placeholder="Description"
           placeholderTextColor="grey"
           value={description}
@@ -78,14 +73,22 @@ export default function EditProfile({navigation}) {
               description.length > 0 && description.length < 150
                 ? constants.text1
                 : 'red',
+            fontSize: 12,
+            margin: 5,
           }}>
           [ {description.length} / 150 ]
         </Text>
       </View>
       <TouchableOpacity
         style={{
+          justifyContent: 'center',
+          alignItems: 'center',
+          alignSelf: 'center',
           marginTop: 25,
-          marginLeft: constants.width * 0.1,
+          borderRadius: 10,
+          height: 50,
+          width: constants.width * 0.8,
+          backgroundColor: constants.primary,
         }}
         onPress={
           description.length > 0 && description.length < 150
@@ -94,11 +97,8 @@ export default function EditProfile({navigation}) {
         }>
         <Text
           style={{
-            color:
-              description.length > 0 && description.length < 150
-                ? 'dodgerblue'
-                : 'grey',
-            fontSize: 25,
+            color: constants.text2,
+            fontSize: 15,
             fontFamily: 'Helvetica',
             fontWeight: '700',
           }}>
