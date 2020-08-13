@@ -10,7 +10,6 @@ import {
   Keyboard,
 } from 'react-native';
 import {Appbar} from 'react-native-paper';
-import {PickImage} from '../../../shared/PickImage';
 import Feather from 'react-native-vector-icons/Feather';
 
 import randomID from '../../../backend/database/randomID';
@@ -28,11 +27,6 @@ export default function CreateRoom({navigation}) {
     id: '',
   });
 
-  const pickImage = () => {
-    const uri = PickImage();
-    setRoom({...room, profilePhoto: uri});
-  };
-
   const handleCreateRoom = () => {
     const id = randomID();
     setRoom({...room, id: id});
@@ -41,6 +35,29 @@ export default function CreateRoom({navigation}) {
         setCreateRoom(!_createRoom);
       } else {
         alert('An Error Occured !');
+      }
+    });
+  };
+
+  const pickImage = () => {
+    const options = {
+      title: 'Select Image',
+      allowsEditing: true,
+      storageOptions: {
+        skipBackup: true,
+        path: 'images',
+      },
+    };
+
+    ImagePicker.showImagePicker(options, (response) => {
+      if (response.didCancel) {
+        // console.log('User cancelled image picker');
+      } else if (response.error) {
+        // console.log('ImagePicker Error: ', response.error);
+      } else {
+        setRoom({...room, profilePhoto: uri});
+        // You can also display the image using data:
+        // const source = { uri: 'data:image/jpeg;base64,' + response.data };
       }
     });
   };

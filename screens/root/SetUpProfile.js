@@ -14,7 +14,7 @@ import Feather from 'react-native-vector-icons/Feather';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-import {UserDetailsContext} from '../../shared/Context';
+import {UserDetailsContext, IsSignedInContext} from '../../shared/Context';
 import constants from '../../shared/constants';
 import globalStyles from '../../shared/GlobalStyles';
 import {
@@ -25,8 +25,8 @@ import CustomToast from '../../shared/CustomToast';
 
 export default function SetUpProfile({route}) {
   const {user, setUser} = useContext(UserDetailsContext);
-  // const {id} = route.params;
-  const id = 'ksnfdkaf';
+  const {id} = route.params;
+  const {setIsSignedIn} = useContext(IsSignedInContext);
   const [username, setUsername] = useState('');
   const [description, setDescription] = useState('');
   const [profilePhoto, setProfilePhoto] = useState(null);
@@ -66,30 +66,44 @@ export default function SetUpProfile({route}) {
         description: description,
       }).then((responseText) => {
         if (responseText === 'success') {
+          setIsSignedIn(true);
           setUser({
             ...user,
             id: id,
             username: username,
             description: description,
           });
+          is;
+        } else {
+          CustomToast('An Error Occured');
         }
       });
     }
   };
 
-  // Picking image from image picker
-  const pickImage = async () => {
-    // let result = await ImagePicker.launchImageLibraryAsync({
-    //   mediaTypes: ImagePicker.MediaTypeOptions.Images,
-    //   allowsEditing: true,
-    //   aspect: [4, 3],
-    //   quality: 1,
-    // });
-    // if (!result.cancelled) {
-    //   updateProfilePhoto(id, result.uri).then(() => {
-    //     setProfilePhoto(result.uri);
-    //   });
-    // }
+  const pickImage = () => {
+    const options = {
+      title: 'Select Image',
+      allowsEditing: true,
+      storageOptions: {
+        skipBackup: true,
+        path: 'images',
+      },
+    };
+
+    ImagePicker.showImagePicker(options, (response) => {
+      if (response.didCancel) {
+        // console.log('User cancelled image picker');
+      } else if (response.error) {
+        // console.log('ImagePicker Error: ', response.error);
+      } else {
+        updateProfilePhoto(id, result.uri).then(() => {
+          setProfilePhoto(result.uri);
+        });
+        // You can also display the image using data:
+        // const source = { uri: 'data:image/jpeg;base64,' + response.data };
+      }
+    });
   };
 
   return (
@@ -100,7 +114,7 @@ export default function SetUpProfile({route}) {
       <SafeAreaView
         style={{
           flex: 1,
-          backgroundColor: 'transparent',
+          backgroundColor: 'white',
         }}>
         <Animated.View
           style={{
@@ -156,6 +170,7 @@ export default function SetUpProfile({route}) {
               placeholderTextColor="grey"
               value={username}
               onChangeText={(text) => setUsername(text)}
+              autoCapitalize="none"
             />
           </Animated.View>
           {isUsernameValid(username) ? (

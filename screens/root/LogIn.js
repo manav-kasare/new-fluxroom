@@ -55,56 +55,44 @@ export default function LogIn({navigation}) {
     }).start();
   }, []);
 
-  // const handleLogIn = () => {
-  //   setIsLoading(true);
-
-  //   if (isEmail(usernameOrEmail)) {
-  //     loginUserWithEmail({
-  //       email: usernameOrEmail,
-  //       password: formPassword,
-  //     }).then((data) => {
-  //       setIsLoading(false);
-  //       if (data !== 'error') {
-  //         if (Boolean(data.confirmed)) {
-  //           setUser(data);
-  //           setIsSignedIn(true);
-  //         } else {
-  //           CustomToast('Please Verify your Email');
-  //         }
-  //       } else {
-  //         CustomToast('Email or Password is incorrect');
-  //       }
-  //     });
-  //   } else {
-  //     loginUserWithUsername({
-  //       username: usernameOrEmail,
-  //       password: formPassword,
-  //     }).then((data) => {
-  //       setIsLoading(false);
-  //       if (data !== 'error') {
-  //         if (Boolean(data.confirmed)) {
-  //           setUser(data);
-  //           setIsSignedIn(true);
-  //         } else {
-  //           CustomToast('Please verify your Email');
-  //         }
-  //       } else {
-  //         CustomToast('Username or Password is incorrect');
-  //       }
-  //     });
-  //   }
-  // };
-
   const handleLogIn = () => {
-    setUser({
-      id: 'asdfdfsfa',
-      username: 'sdfafasdf',
-      description: 'sdfsafdsafs',
-      email: 'asdkfndasldfnasf',
-      profilePhoto:
-        'https://images.unsplash.com/photo-1597156287025-aa801be7d41c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
-    });
-    setIsSignedIn(true);
+    setIsLoading(true);
+
+    if (isEmail(usernameOrEmail)) {
+      loginUserWithEmail({
+        email: usernameOrEmail,
+        password: formPassword,
+      }).then((data) => {
+        setIsLoading(false);
+        if (data !== 'error') {
+          if (Boolean(data.confirmed)) {
+            setUser(data);
+            setIsSignedIn(true);
+          } else {
+            CustomToast('Please Verify your Email');
+          }
+        } else {
+          CustomToast('Email or Password is incorrect');
+        }
+      });
+    } else {
+      loginUserWithUsername({
+        username: usernameOrEmail,
+        password: formPassword,
+      }).then((data) => {
+        setIsLoading(false);
+        if (data !== 'error') {
+          if (Boolean(data.confirmed)) {
+            setUser(data);
+            setIsSignedIn(true);
+          } else {
+            CustomToast('Please verify your Email');
+          }
+        } else {
+          CustomToast('Username or Password is incorrect');
+        }
+      });
+    }
   };
 
   return (

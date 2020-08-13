@@ -56,7 +56,7 @@ export default function EmailVerification({route, navigation}) {
           transform: [{translateX: position}],
           alignSelf: 'center',
           marginTop: 100,
-          paddingHorizontal: 10,
+          paddingHorizontal: 20,
           borderColor: 'grey',
           borderWidth: 0.3,
         }}>
@@ -67,7 +67,7 @@ export default function EmailVerification({route, navigation}) {
               fontSize: 17,
               letterSpacing: 0,
               fontFamily: 'Helvetica Neue',
-              fontWeight: '500',
+              fontWeight: '400',
             }}>
             We have sent you an email at {email}
           </Text>

@@ -60,7 +60,6 @@ export default function SignUp({navigation}) {
 
   const handleRegister = (formEmail, formPassword) => {
     setIsLoading(true);
-    console.log(formPassword, formEmail);
     checkIfEmailIsRegistered(formEmail).then((responseText) => {
       Keyboard.dismiss();
       if (responseText == 'exists') {
@@ -73,7 +72,6 @@ export default function SignUp({navigation}) {
           email: formEmail,
           password: formPassword,
         }).then((_responseText) => {
-          console.log(_responseText);
           setIsLoading(false);
           if (_responseText === 'success') {
             navigation.navigate('EmailVerification', {
@@ -143,7 +141,6 @@ export default function SignUp({navigation}) {
                     password: '',
                   }}
                   onSubmit={(values, actions) => {
-                    actions.resetForm();
                     handleRegister(values.email, values.password);
                   }}
                   validationSchema={validationSchema}>

@@ -26,7 +26,7 @@ export default function DrawerContent(props) {
           <DrawerItemList
             inactiveTintColor="grey"
             activeBackgroundColor={constants.primary}
-            activeTintColor={constants.text2}
+            activeTintColor="white"
             {...props}
           />
         </DrawerContentScrollView>
@@ -34,9 +34,7 @@ export default function DrawerContent(props) {
 
       <View style={styles.bottomDrawerSection}>
         <DrawerItem
-          icon={() => (
-            <Icon name="exit-to-app" color={constants.text2} size={24} />
-          )}
+          icon={() => <Icon name="exit-to-app" color="white" size={24} />}
           style={{
             height: 50,
             backgroundColor: constants.primary,
@@ -44,7 +42,7 @@ export default function DrawerContent(props) {
           }}
           onPress={() => setIsSignedIn(false)}
           label="Sign Out"
-          labelStyle={{color: 'grey', fontSize: 14, color: constants.text2}}
+          labelStyle={{color: 'grey', fontSize: 14, color: 'white'}}
         />
       </View>
     </View>

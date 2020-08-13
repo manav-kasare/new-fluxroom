@@ -17,16 +17,27 @@ export default function RoomFullPhoto({navigation, route}) {
   const {constants} = React.useContext(ThemeContext);
   const [isHost, setIsHost] = useState(true);
 
-  const pickImage = async () => {
-    // let result = await ImagePicker.launchImageLibraryAsync({
-    //   mediaTypes: ImagePicker.MediaTypeOptions.All,
-    //   allowsEditing: true,
-    //   aspect: [4, 3],
-    //   quality: 1,
-    // });
-    // if (!result.cancelled) {
-    //   setImage(result.uri);
-    // }
+  const pickImage = () => {
+    const options = {
+      title: 'Select Image',
+      allowsEditing: true,
+      storageOptions: {
+        skipBackup: true,
+        path: 'images',
+      },
+    };
+
+    ImagePicker.showImagePicker(options, (response) => {
+      if (response.didCancel) {
+        // console.log('User cancelled image picker');
+      } else if (response.error) {
+        // console.log('ImagePicker Error: ', response.error);
+      } else {
+        setImage(response.uri);
+        // You can also display the image using data:
+        // const source = { uri: 'data:image/jpeg;base64,' + response.data };
+      }
+    });
   };
 
   const editButton = () => {

@@ -1,27 +1,48 @@
 import React, {useContext, useState, useEffect} from 'react';
 import {TouchableOpacity, View, Image} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
+import ImagePicker from 'react-native-image-picker';
 
 import {UserDetailsContext, ThemeContext} from '../../../shared/Context';
-import {PickImage} from '../../../shared/PickImage';
+
 // import CachedImage from '../../../shared/CachedImage';
 import {updateProfilePhoto} from '../../../backend/database/apiCalls';
 
 export default function UserPhoto() {
   const {user} = useContext(UserDetailsContext);
   const {constants} = React.useContext(ThemeContext);
-  const [profilePhoto, setProfilePhoto] = useState('undefined');
+  const [profilePhoto, setProfilePhoto] = useState(null);
 
   useEffect(() => {
     setTimeout(() => {}, 100);
+    console.log(user.profilePhoto);
     setProfilePhoto(user.profilePhoto);
-  }, []);
+  }, [setProfilePhoto]);
 
-  const pickImage = async () => {
-    const uri = PickImage();
-    updateProfilePhoto(user.id, uri).then((responseText) => {
-      if (responseText !== 'succes') {
-        setProfilePhoto(uri);
+  const pickImage = () => {
+    const options = {
+      title: 'Select Image',
+      allowsEditing: true,
+      storageOptions: {
+        skipBackup: true,
+        path: 'images',
+      },
+    };
+
+    ImagePicker.showImagePicker(options, (response) => {
+      if (response.didCancel) {
+        // console.log('User cancelled image picker');
+      } else if (response.error) {
+        // console.log('ImagePicker Error: ', response.error);
+      } else {
+        updateProfilePhoto(user.id, response.uri).then((responseText) => {
+          console.log(responseText);
+          if (responseText === 'success') {
+            setProfilePhoto(response.uri);
+          }
+        });
+        // You can also display the image using data:
+        // const source = { uri: 'data:image/jpeg;base64,' + response.data };
       }
     });
   };
@@ -48,7 +69,7 @@ export default function UserPhoto() {
             alignItems: 'center',
             justifyContent: 'center',
           }}>
-          <Feather name="camera" size={20} color="white" />
+          <Feather name="camera" size={20} color={constants.text1} />
         </View>
       ) : (
         <Image

@@ -11,8 +11,8 @@ const app = express();
 app.use(cors());
 
 // const IP = "192.168.43.89";
-const IP = '192.168.1.23';
-// const IP = '172.20.10.14';
+// const IP = '192.168.1.23';
+const IP = '172.20.10.14';
 const PORT = 8000;
 
 app.listen(PORT, () => console.log(`Server Running on ${PORT}`));
@@ -32,7 +32,7 @@ let transporter = nodemailer.createTransport({
 
 const connection = mysql.createConnection({
   host: 'localhost',
-  username: 'root',
+  user: 'root',
   password: 'xMySql@2020',
   database: 'fluxroom',
   multipleStatements: true,
@@ -259,7 +259,7 @@ app.get('/user/updateProfilePhoto', (req, res) => {
     `UPDATE fluxroom.users SET profilePhoto='${profilePhoto}' WHERE id='${id}'`,
     (err, results) => {
       if (err) res.send(err);
-      else 'Updated Data Successfully !';
+      else res.send('success');
     },
   );
 });
