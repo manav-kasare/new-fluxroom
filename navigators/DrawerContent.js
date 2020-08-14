@@ -8,10 +8,10 @@ import {
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AsyncStorage from '@react-native-community/async-storage';
 
-import {IsSignedInContext, ThemeContext} from '../shared/Context';
+import {UserDetailsContext, ThemeContext} from '../shared/Context';
 
 export default function DrawerContent(props) {
-  const {setIsSignedIn} = useContext(IsSignedInContext);
+  const {setUser} = React.useContext(UserDetailsContext);
   const {constants, darkTheme} = React.useContext(ThemeContext);
 
   return (
@@ -42,7 +42,7 @@ export default function DrawerContent(props) {
           }}
           onPress={() => {
             AsyncStorage.clear().then(() => {
-              setIsSignedIn(false);
+              setUser(null);
             });
           }}
           label="Sign Out"

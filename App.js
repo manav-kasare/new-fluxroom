@@ -1,22 +1,22 @@
 import React from 'react';
 import {Provider as PaperProvider} from 'react-native-paper';
 import RootNavigator from './navigators/RootNavigator';
-import {IsSignedInContext, ThemeProvider} from './shared/Context';
+import {UserDetailsContext, ThemeProvider} from './shared/Context';
 
 function App() {
-  const [isSignedIn, setIsSignedIn] = React.useState(false);
-  const isSignedInValue = React.useMemo(() => ({isSignedIn, setIsSignedIn}), [
-    isSignedIn,
-    setIsSignedIn,
+  const [user, setUser] = React.useState(null);
+  const userDetailsValue = React.useMemo(() => ({user, setUser}), [
+    user,
+    setUser,
   ]);
 
   return (
     <ThemeProvider>
-      <IsSignedInContext.Provider value={isSignedInValue}>
+      <UserDetailsContext.Provider value={userDetailsValue}>
         <PaperProvider>
           <RootNavigator />
         </PaperProvider>
-      </IsSignedInContext.Provider>
+      </UserDetailsContext.Provider>
     </ThemeProvider>
   );
 }

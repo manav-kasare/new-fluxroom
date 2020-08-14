@@ -19,7 +19,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Entypo from 'react-native-vector-icons/Entypo';
 import AsyncStorage from '@react-native-community/async-storage';
 
-import {IsSignedInContext, UserDetailsContext} from '../../shared/Context';
+import {UserDetailsContext} from '../../shared/Context';
 import constants from '../../shared/constants';
 import CustomToast from '../../shared/CustomToast';
 import globalStyles from '../../shared/GlobalStyles';
@@ -35,7 +35,6 @@ const isEmail = (val) => {
 };
 
 export default function LogIn({navigation}) {
-  const {setIsSignedIn} = useContext(IsSignedInContext);
   const {setUser} = useContext(UserDetailsContext);
   const [usernameOrEmail, setUsernameOrEmail] = useState('');
   const [formPassword, setFormPassword] = useState('');
@@ -79,7 +78,6 @@ export default function LogIn({navigation}) {
             storeData(data).then(() => {
               setIsLoading(false);
               setUser(data);
-              setIsSignedIn(true);
             });
           } else {
             setIsLoading(false);
@@ -101,7 +99,6 @@ export default function LogIn({navigation}) {
             storeData(data).then(() => {
               setIsLoading(false);
               setUser(data);
-              setIsSignedIn(true);
             });
           } else {
             CustomToast('Please verify your Email');

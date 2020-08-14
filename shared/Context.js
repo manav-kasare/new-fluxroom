@@ -1,18 +1,7 @@
 import React from 'react';
 import {light, dark} from '../shared/constants';
-import {constant} from 'lodash';
 
-export const IsSignedInContext = React.createContext(false);
-
-export const UserDetailsContext = React.createContext({
-  id: null,
-  username: null,
-  description: null,
-  profilePhoto: null,
-  email: null,
-  friends: null,
-  requests: null,
-});
+export const UserDetailsContext = React.createContext(null);
 
 export const ThemeContext = React.createContext('light');
 

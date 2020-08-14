@@ -1,9 +1,9 @@
-import React, {useState, useEffect, useMemo} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import AsyncStorage from '@react-native-community/async-storage';
 
-import {UserDetailsContext, IsSignedInContext} from '../shared/Context';
+import {UserDetailsContext} from '../shared/Context';
 import LogIn from '../screens/root/LogIn';
 import SignUp from '../screens/root/SignUp';
 import Onboard from '../screens/root/Onboard';
@@ -17,10 +17,7 @@ const Stack = createStackNavigator();
 
 export default function RootNavigator() {
   const [splashScreen, setSplashScreen] = useState(true);
-  const {isSignedIn, setIsSignedIn} = React.useContext(IsSignedInContext);
-  const [user, setUser] = useState(null);
-
-  const userDetailsValue = useMemo(() => ({user, setUser}), [user, setUser]);
+  const {user, setUser} = useContext(UserDetailsContext);
 
   const deepLinking = {
     prefixes: ['fluxroom://'],
@@ -31,17 +28,6 @@ export default function RootNavigator() {
     },
   };
 
-  const getData = async () => {
-    try {
-      const jsonValue = await AsyncStorage.getItem('user');
-      console.log('Async Storage', jsonValue);
-      if (jsonValue !== null) {
-        setUser(JSON.parse(jsonValue));
-        setIsSignedIn(true);
-      }
-    } catch (err) {}
-  };
-
   useEffect(() => {
     setTimeout(() => {
       setSplashScreen(false);
@@ -49,26 +35,34 @@ export default function RootNavigator() {
     getData();
   }, []);
 
+  const getData = async () => {
+    try {
+      const jsonValue = await AsyncStorage.getItem('user');
+      console.log('Async Storage', jsonValue);
+      if (jsonValue !== null) {
+        setUser(JSON.parse(jsonValue));
+      }
+    } catch (err) {}
+  };
+
   if (splashScreen) {
     return <SplashScreen />;
   }
 
   return (
-    <UserDetailsContext.Provider value={userDetailsValue}>
-      <NavigationContainer linking={deepLinking}>
-        {!isSignedIn ? (
-          <AuthStackNavigator />
-        ) : (
-          <Stack.Navigator>
-            <Stack.Screen
-              name="DrawerNavigator"
-              component={DrawerNavigator}
-              options={{headerShown: false}}
-            />
-          </Stack.Navigator>
-        )}
-      </NavigationContainer>
-    </UserDetailsContext.Provider>
+    <NavigationContainer linking={deepLinking}>
+      {user === null ? (
+        <AuthStackNavigator />
+      ) : (
+        <Stack.Navigator>
+          <Stack.Screen
+            name="DrawerNavigator"
+            component={DrawerNavigator}
+            options={{headerShown: false}}
+          />
+        </Stack.Navigator>
+      )}
+    </NavigationContainer>
   );
 }
 

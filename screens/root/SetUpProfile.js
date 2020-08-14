@@ -13,8 +13,9 @@ import {
 import Feather from 'react-native-vector-icons/Feather';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import AsyncStorage from '@react-native-community/async-storage';
 
-import {UserDetailsContext, IsSignedInContext} from '../../shared/Context';
+import {UserDetailsContext} from '../../shared/Context';
 import constants from '../../shared/constants';
 import globalStyles from '../../shared/GlobalStyles';
 import {
@@ -26,7 +27,6 @@ import CustomToast from '../../shared/CustomToast';
 export default function SetUpProfile({route}) {
   const {user, setUser} = useContext(UserDetailsContext);
   const {id} = route.params;
-  const {setIsSignedIn} = useContext(IsSignedInContext);
   const [username, setUsername] = useState('');
   const [description, setDescription] = useState('');
   const [profilePhoto, setProfilePhoto] = useState(null);
@@ -40,6 +40,15 @@ export default function SetUpProfile({route}) {
       useNativeDriver: true,
     }).start();
   }, []);
+
+  const storeData = async (value) => {
+    try {
+      const jsonValue = JSON.stringify(value);
+      await AsyncStorage.setItem('user', jsonValue);
+    } catch (e) {
+      // saving error
+    }
+  };
 
   const ifUsernameExists = (q) => {
     checkIfUsernameIsRegistered(q).then((responseText) => {
@@ -66,14 +75,14 @@ export default function SetUpProfile({route}) {
         description: description,
       }).then((responseText) => {
         if (responseText === 'success') {
-          setIsSignedIn(true);
-          setUser({
+          const value = {
             ...user,
             id: id,
             username: username,
             description: description,
-          });
-          is;
+          };
+          setUser(value);
+          storeData(value);
         } else {
           CustomToast('An Error Occured');
         }
