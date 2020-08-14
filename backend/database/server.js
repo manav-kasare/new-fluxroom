@@ -11,8 +11,8 @@ const app = express();
 app.use(cors());
 
 // const IP = "192.168.43.89";
-// const IP = '192.168.1.23';
-const IP = '172.20.10.14';
+const IP = '192.168.1.23';
+// const IP = '172.20.10.14';
 const PORT = 8000;
 
 app.listen(PORT, () => console.log(`Server Running on ${PORT}`));
@@ -377,7 +377,7 @@ app.get('/chatroom/create', (req, res) => {
   const {roomID, name, description, profilePhoto, userID} = req.query;
   // Adding to chatrooms table and then adding to users table
   connection.query(
-    `INSERT INTO fluxroom.chatrooms(id, name, description, profilePhoto, members) VALUES('${roomID}', '${name}', '${description}', '${profilePhoto}',JSON_OBJECT('host', '${userID}', 'members', JSON_ARRAY('${userID}'))); UPDATE fluxroom.users SET chatrooms=JSON_OBJECT('host', JSON_ARRAY('${roomID}'), 'chatrooms', JSON_ARRAY('${roomID}')) WHERE id='${userID}';`,
+    `INSERT INTO fluxroom.chatrooms(id, name, description, profilePhoto, members) VALUES('${roomID}', '${name}', '${description}', '${profilePhoto}',JSON_OBJECT('host', '${userID}', 'members', JSON_ARRAY('${userID}'))); UPDATE fluxroom.users SET chatrooms=JSON_OBJECT(chatrooms', JSON_ARRAY('${roomID}')), host='${roomID}' WHERE id='${userID}';`,
     (err, results) => {
       if (err) res.send(err);
       else res.send('success');

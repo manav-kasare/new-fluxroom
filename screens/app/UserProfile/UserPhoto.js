@@ -14,8 +14,6 @@ export default function UserPhoto() {
   const [profilePhoto, setProfilePhoto] = useState(null);
 
   useEffect(() => {
-    setTimeout(() => {}, 100);
-    console.log(user.profilePhoto);
     setProfilePhoto(user.profilePhoto);
   }, [setProfilePhoto]);
 
@@ -36,7 +34,6 @@ export default function UserPhoto() {
         // console.log('ImagePicker Error: ', response.error);
       } else {
         updateProfilePhoto(user.id, response.uri).then((responseText) => {
-          console.log(responseText);
           if (responseText === 'success') {
             setProfilePhoto(response.uri);
           }

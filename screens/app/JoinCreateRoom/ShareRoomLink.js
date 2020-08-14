@@ -17,12 +17,7 @@ export default function ShareRoomLink({route, navigation}) {
   const [url, setUrl] = React.useState(null);
 
   React.useEffect(() => {
-    const makeUrl = Linking.makeUrl(
-      `exp://${constants.localIP}:19002/joinRoom/${roomName}`,
-      {roomID: roomID},
-    );
-    const parsedUrl = Linking.parse(makeUrl);
-    setUrl(parsedUrl.path);
+    const url = `fluxroom://joinRoom/${roomID}`;
   }, []);
 
   const shareLink = () => {

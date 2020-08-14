@@ -17,6 +17,7 @@ import {
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import {IsSignedInContext, UserDetailsContext} from '../../shared/Context';
 import constants from '../../shared/constants';
@@ -55,6 +56,16 @@ export default function LogIn({navigation}) {
     }).start();
   }, []);
 
+  const storeData = async (value) => {
+    try {
+      const jsonValue = JSON.stringify(value);
+      await AsyncStorage.setItem('user', jsonValue);
+      console.log('JSON value', jsonValue);
+    } catch (e) {
+      // saving error
+    }
+  };
+
   const handleLogIn = () => {
     setIsLoading(true);
 
@@ -63,15 +74,19 @@ export default function LogIn({navigation}) {
         email: usernameOrEmail,
         password: formPassword,
       }).then((data) => {
-        setIsLoading(false);
         if (data !== 'error') {
           if (Boolean(data.confirmed)) {
-            setUser(data);
-            setIsSignedIn(true);
+            storeData(data).then(() => {
+              setIsLoading(false);
+              setUser(data);
+              setIsSignedIn(true);
+            });
           } else {
+            setIsLoading(false);
             CustomToast('Please Verify your Email');
           }
         } else {
+          setIsLoading(false);
           CustomToast('Email or Password is incorrect');
         }
       });
@@ -83,8 +98,11 @@ export default function LogIn({navigation}) {
         setIsLoading(false);
         if (data !== 'error') {
           if (Boolean(data.confirmed)) {
-            setUser(data);
-            setIsSignedIn(true);
+            storeData(data).then(() => {
+              setIsLoading(false);
+              setUser(data);
+              setIsSignedIn(true);
+            });
           } else {
             CustomToast('Please verify your Email');
           }

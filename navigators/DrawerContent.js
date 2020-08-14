@@ -5,9 +5,9 @@ import {
   DrawerContentScrollView,
   DrawerItemList,
 } from '@react-navigation/drawer';
-
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import Feather from 'react-native-vector-icons/Feather';
+import AsyncStorage from '@react-native-community/async-storage';
+
 import {IsSignedInContext, ThemeContext} from '../shared/Context';
 
 export default function DrawerContent(props) {
@@ -40,7 +40,11 @@ export default function DrawerContent(props) {
             backgroundColor: constants.primary,
             justifyContent: 'center',
           }}
-          onPress={() => setIsSignedIn(false)}
+          onPress={() => {
+            AsyncStorage.clear().then(() => {
+              setIsSignedIn(false);
+            });
+          }}
           label="Sign Out"
           labelStyle={{color: 'grey', fontSize: 14, color: 'white'}}
         />

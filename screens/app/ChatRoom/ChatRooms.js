@@ -47,10 +47,13 @@ export default function ChatRooms({navigation}) {
   };
 
   useEffect(() => {
-    handleOnFocusRefresh();
     getUserChatRooms(user.id).then((roomList) => {
       setChatRoomList(roomList);
     });
+  }, []);
+
+  useEffect(() => {
+    handleOnFocusRefresh();
   }, [refreshing]);
 
   return (

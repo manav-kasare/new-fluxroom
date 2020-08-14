@@ -5,6 +5,7 @@ Todos:
     DONE 4.  Toggle Dark Theme
     5. Audio Chat
     6. Deep Linking
+    7. Async Storage
 
 Bugs: 
     FIXED (refresh control) 1. Can't re render ChatRooms with navigation.goBack().(possible with navigation.navigate())

@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useMemo} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import {UserDetailsContext, IsSignedInContext} from '../shared/Context';
 import LogIn from '../screens/root/LogIn';
@@ -16,7 +17,7 @@ const Stack = createStackNavigator();
 
 export default function RootNavigator() {
   const [splashScreen, setSplashScreen] = useState(true);
-  const {isSignedIn} = React.useContext(IsSignedInContext);
+  const {isSignedIn, setIsSignedIn} = React.useContext(IsSignedInContext);
   const [user, setUser] = useState(null);
 
   const userDetailsValue = useMemo(() => ({user, setUser}), [user, setUser]);
@@ -24,20 +25,28 @@ export default function RootNavigator() {
   const deepLinking = {
     prefixes: ['fluxroom://'],
     config: {
-      Home: 'ChatRooms',
-      Room: {
-        path: 'Room/:roomID',
-        params: {
-          roomID: 'whsdjfhaf',
-        },
+      screens: {
+        Home: '',
       },
     },
+  };
+
+  const getData = async () => {
+    try {
+      const jsonValue = await AsyncStorage.getItem('user');
+      console.log('Async Storage', jsonValue);
+      if (jsonValue !== null) {
+        setUser(JSON.parse(jsonValue));
+        setIsSignedIn(true);
+      }
+    } catch (err) {}
   };
 
   useEffect(() => {
     setTimeout(() => {
       setSplashScreen(false);
-    }, 1000);
+    }, 500);
+    getData();
   }, []);
 
   if (splashScreen) {
