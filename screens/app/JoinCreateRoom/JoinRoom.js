@@ -60,14 +60,14 @@ export default function JoinRoom({navigation}) {
               style={{
                 width: constants.width * 0.75,
                 height: 45,
-                backgroundColor: darkTheme ? 'white' : '#4640C1',
+                backgroundColor: constants.primary,
                 justifyContent: 'center',
                 alignItems: 'center',
                 borderRadius: 8,
                 marginTop: 10,
               }}
               onPress={handleJoin}>
-              <Text style={{color: constants.text2}}>Join</Text>
+              <Text style={{color: 'white'}}>Join</Text>
             </TouchableOpacity>
           </View>
         </View>

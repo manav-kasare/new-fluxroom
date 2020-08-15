@@ -97,7 +97,7 @@ export default function EditProfile({navigation}) {
         }>
         <Text
           style={{
-            color: constants.text2,
+            color: 'white',
             fontSize: 15,
             fontFamily: 'Helvetica',
             fontWeight: '700',

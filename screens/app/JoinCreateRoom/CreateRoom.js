@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import {Appbar} from 'react-native-paper';
 import Feather from 'react-native-vector-icons/Feather';
+import ImagePicker from 'react-native-image-picker';
 
 import randomID from '../../../backend/database/randomID';
 import {createRoom} from '../../../backend/database/apiCalls';
@@ -30,7 +31,7 @@ export default function CreateRoom({navigation}) {
   const handleCreateRoom = () => {
     const id = randomID();
     setRoom({...room, id: id});
-    createRoom(user.id).then((responseText) => {
+    createRoom(user.id, room).then((responseText) => {
       if (responseText === 'success') {
         setCreateRoom(!_createRoom);
       } else {
@@ -55,7 +56,7 @@ export default function CreateRoom({navigation}) {
       } else if (response.error) {
         // console.log('ImagePicker Error: ', response.error);
       } else {
-        setRoom({...room, profilePhoto: uri});
+        setRoom({...room, profilePhoto: response.uri});
         // You can also display the image using data:
         // const source = { uri: 'data:image/jpeg;base64,' + response.data };
       }
@@ -162,7 +163,7 @@ export default function CreateRoom({navigation}) {
               <Text
                 style={{
                   fontFamily: 'Helvetica',
-                  color: constants.text2,
+                  color: 'white',
                 }}>
                 Create Room
               </Text>

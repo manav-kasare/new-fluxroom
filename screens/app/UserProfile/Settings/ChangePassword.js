@@ -95,15 +95,13 @@ export default function ChangePassword({navigation}) {
           style={{
             width: constants.width * 0.75,
             height: 45,
-            backgroundColor: constants.background2,
+            backgroundColor: constants.primary,
             justifyContent: 'center',
             alignItems: 'center',
             borderRadius: 8,
             marginTop: 10,
           }}>
-          <Text style={{color: constants.text2, marginLeft: 10, fontSize: 20}}>
-            Submit
-          </Text>
+          <Text style={{color: 'white', marginLeft: 10}}>Submit</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

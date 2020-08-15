@@ -11,8 +11,8 @@ const app = express();
 app.use(cors());
 
 // const IP = "192.168.43.89";
-// const IP = '192.168.1.23';
-const IP = '172.20.10.14';
+const IP = '192.168.1.23';
+// const IP = '172.20.10.14';
 const PORT = 8000;
 
 app.listen(PORT, () => console.log(`Server Running on ${PORT}`));

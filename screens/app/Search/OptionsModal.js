@@ -13,7 +13,7 @@ import CustomToast from '../../../shared/CustomToast';
 import {sendFriendRequest} from '../../../backend/database/apiCalls';
 import {UserDetailsContext, ThemeContext} from '../../../shared/Context';
 
-const OptionsModal = React.memo(({isModalVisible, setIsModalVisible, id}) => {
+const OptionsModal = ({isModalVisible, setIsModalVisible, id}) => {
   const {constants} = React.useContext(ThemeContext);
   const {user} = useContext(UserDetailsContext);
 
@@ -39,11 +39,11 @@ const OptionsModal = React.memo(({isModalVisible, setIsModalVisible, id}) => {
       <SafeAreaView
         style={{
           flex: 1,
-          backgroundColor: constants.background3,
+          backgroundColor: constants.primary,
           alignItems: 'center',
           height: constants.height * 0.25,
-          borderTopRightRadius: 50,
-          borderTopLeftRadius: 50,
+          borderTopRightRadius: 20,
+          borderTopLeftRadius: 20,
         }}>
         <View
           style={{
@@ -68,7 +68,7 @@ const OptionsModal = React.memo(({isModalVisible, setIsModalVisible, id}) => {
             <Text
               style={{
                 marginLeft: 25,
-                color: constants.text1,
+                color: 'white',
                 fontFamily: 'Helvetica',
                 fontSize: 20,
               }}>
@@ -79,6 +79,6 @@ const OptionsModal = React.memo(({isModalVisible, setIsModalVisible, id}) => {
       </SafeAreaView>
     </Modal>
   );
-});
+};
 
 export default OptionsModal;

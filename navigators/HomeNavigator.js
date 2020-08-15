@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import {ActivityIndicator, View} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Feather from 'react-native-vector-icons/Feather';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import Entypo from 'react-native-vector-icons/Entypo';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 import ChatRoomNavigator from './ChatRoomNavigator';
 import Search from '../screens/app/Search/Search';
@@ -59,7 +59,7 @@ export default function HomeNavigator() {
         component={ChatRoomNavigator}
         options={{
           tabBarIcon: ({color}) => (
-            <Feather name="mic" size={24} color={color} />
+            <Entypo name="mic" size={24} color={color} />
           ),
         }}
       />
@@ -77,7 +77,7 @@ export default function HomeNavigator() {
         component={ProfileNavigator}
         options={{
           tabBarIcon: ({color}) => (
-            <MaterialIcons name="person-outline" size={24} color={color} />
+            <FontAwesome5 name="user-alt" size={20} color={color} />
           ),
         }}
       />
