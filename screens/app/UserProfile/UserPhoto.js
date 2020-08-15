@@ -2,10 +2,10 @@ import React, {useContext, useState, useEffect} from 'react';
 import {TouchableOpacity, View, Image} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import ImagePicker from 'react-native-image-picker';
+import base64 from 'react-native-base64';
 
 import {UserDetailsContext, ThemeContext} from '../../../shared/Context';
-
-// import CachedImage from '../../../shared/CachedImage';
+import CachedImage from '../../../shared/CachedImage';
 import {updateProfilePhoto} from '../../../backend/database/apiCalls';
 
 export default function UserPhoto() {
@@ -14,7 +14,7 @@ export default function UserPhoto() {
   const [profilePhoto, setProfilePhoto] = useState(null);
 
   useEffect(() => {
-    setProfilePhoto(user.profilePhoto);
+    setProfilePhoto(base64.decode(user.profilePhoto));
   }, [setProfilePhoto]);
 
   const pickImage = () => {
@@ -69,15 +69,24 @@ export default function UserPhoto() {
           <Feather name="camera" size={20} color={constants.text1} />
         </View>
       ) : (
-        <Image
+        <CachedImage
           style={{
             width: 75,
             height: 75,
             borderRadius: 75 / 2,
           }}
-          source={{uri: profilePhoto}}
-          // uri={profilePhoto}
+          uri={profilePhoto}
+          itemName="profilePhoto"
         />
+        // <Image
+        //   style={{
+        //     width: 75,
+        //     height: 75,
+        //     borderRadius: 75 / 2,
+        //   }}
+        //   source={{uri: profilePhoto}}
+        //   // uri={profilePhoto}
+        // />
       )}
     </TouchableOpacity>
   );

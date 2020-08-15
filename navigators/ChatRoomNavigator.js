@@ -14,11 +14,12 @@ import RoomSettings from '../screens/app/ChatRoom/RoomSettings';
 import ChangeRoomSettings from '../screens/app/ChatRoom/ChangeRoomSettings';
 import {UserDetailsContext, ThemeContext} from '../shared/Context';
 import RequestIcon from '../screens/app/ChatRoom/RequestIcon';
+import {getUserInfo} from '../backend/database/apiCalls';
 
 const ChatRoomStack = createStackNavigator();
 
 export default function ChatRoomNavigator({route, navigation}) {
-  const {user} = React.useContext(UserDetailsContext);
+  const {user, setUser} = React.useContext(UserDetailsContext);
   const {constants} = React.useContext(ThemeContext);
 
   if (route.state && route.state.index > 0) {
@@ -26,6 +27,11 @@ export default function ChatRoomNavigator({route, navigation}) {
   } else {
     navigation.setOptions({tabBarVisible: true});
   }
+  React.useEffect(() => {
+    getUserInfo(user.id).then((data) => {
+      setUser(data);
+    });
+  }, []);
 
   return (
     <ChatRoomStack.Navigator initialRouteName="ChatRooms">

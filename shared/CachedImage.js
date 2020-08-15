@@ -1,26 +1,26 @@
-// import React, {useEffect, useState} from 'react';
-// import {Image} from 'react-native';
-// import shorthash from 'shorthash';
-// import * as FileSystem from 'expo-file-system';
+import React, {useEffect} from 'react';
+import {Image} from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
+import {useFocusEffect} from '@react-navigation/native';
 
-// export default function CachedImage({uri, style}) {
-//   const [source, setSource] = useState({uri: null});
+export default function CachedImage({uri, style, itemName}) {
+  const [soure, setSource] = React.useState(null);
 
-//   useEffect(() => {
-//     const name = shorthash.unique(uri);
-//     const caching = async () => {
-//       const path = `${FileSystem.cacheDirectory}${name}`;
-//       const image = await FileSystem.getInfoAsync(path);
-//       if (image.exists) {
-//         setSource({uri: image.uri});
-//         return;
-//       }
+  useFocusEffect(() => {
+    handleStorage();
+  }, []);
 
-//       const newImage = await FileSystem.downloadAsync(uri, path);
-//       setSource({uri: newImage.uri});
-//     };
-//     caching();
-//   }, []);
+  const handleStorage = async () => {
+    AsyncStorage.getItem(itemName).then((result) => {
+      if (result === null || result !== uri) {
+        AsyncStorage.setItem(itemName, uri).then(() => {
+          setSource(uri);
+        });
+      } else {
+        setSource(result);
+      }
+    });
+  };
 
-//   return <Image style={style} source={source} />;
-// }
+  return <Image source={{uri: soure}} style={style} />;
+}

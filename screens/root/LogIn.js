@@ -59,7 +59,6 @@ export default function LogIn({navigation}) {
     try {
       const jsonValue = JSON.stringify(value);
       await AsyncStorage.setItem('user', jsonValue);
-      console.log('JSON value', jsonValue);
     } catch (e) {
       // saving error
     }

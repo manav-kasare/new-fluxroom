@@ -1,4 +1,5 @@
 import constants from '../../shared/constants';
+import base64 from 'react-native-base64';
 
 export const loginUserWithUsername = ({username, password}) => {
   return fetch(
@@ -137,8 +138,10 @@ export const updateDescription = (id, description) => {
 };
 
 export const updateProfilePhoto = (id, uri) => {
+  const encodedUri = base64.encode(uri);
+
   return fetch(
-    `http://${constants.localIP}:8000/user/updateProfilePhoto?id=${id}&profilePhoto=${uri}`,
+    `http://${constants.localIP}:8000/user/updateProfilePhoto?id=${id}&profilePhoto=${encodedUri}`,
   )
     .then((response) => response.text())
     .then((responseText) => {

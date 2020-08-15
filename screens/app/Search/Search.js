@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {
   TouchableOpacity,
   SafeAreaView,
@@ -14,7 +14,7 @@ import _ from 'lodash';
 import UserTile from './UserTile';
 import OptionsModal from './OptionsModal';
 import {getUsers} from '../../../backend/database/apiCalls';
-import {ThemeContext} from '../../../shared/Context';
+import {ThemeContext, UserDetailsContext} from '../../../shared/Context';
 
 const wait = (timeout) => {
   return new Promise((resolve) => {
@@ -23,6 +23,7 @@ const wait = (timeout) => {
 };
 
 export default function Search() {
+  const {user} = useContext(UserDetailsContext);
   const [users, setUsers] = useState(null);
   const [filteredUsers, setFilteredUsers] = useState(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -51,7 +52,11 @@ export default function Search() {
   }, [refreshing]);
 
   const handleSearch = _.debounce((q) => {
-    setFilteredUsers(_.filter(users, (user) => user.username.includes(q)));
+    setFilteredUsers(
+      _.filter(users, (_user) =>
+        user.id !== _user.id ? _user.username.includes(q) : null,
+      ),
+    );
   }, 250);
 
   return (
@@ -118,9 +123,9 @@ export default function Search() {
                   width: constants.width,
                   height: constants.height * 0.09,
                   backgroundColor: constants.background1,
+                  paddingLeft: 25,
                 }}
                 onPress={() => {
-                  console.log('pressed');
                   setIsModalVisible(!isModalVisible);
                 }}>
                 <UserTile

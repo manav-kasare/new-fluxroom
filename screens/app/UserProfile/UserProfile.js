@@ -7,7 +7,7 @@ import UserPhoto from './UserPhoto';
 import HostedRooms from './HostedRooms';
 
 export default function UserProfile({navigation}) {
-  const {user} = useContext(UserDetailsContext);
+  const {user, setUser} = useContext(UserDetailsContext);
   const {constants} = React.useContext(ThemeContext);
 
   return (

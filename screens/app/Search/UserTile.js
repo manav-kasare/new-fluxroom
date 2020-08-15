@@ -10,9 +10,7 @@ const UserTile = React.memo(
     return (
       <View
         style={{
-          width: constants.width,
-          height: constants.height * 0.09,
-          marginLeft: 25,
+          flex: 1,
           backgroundColor: constants.background1,
           alignItems: 'center',
           flexDirection: 'row',
