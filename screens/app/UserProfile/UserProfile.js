@@ -3,7 +3,7 @@ import React, {useContext} from 'react';
 import {SafeAreaView, View, Text, TouchableOpacity} from 'react-native';
 
 import {UserDetailsContext, ThemeContext} from '../../../shared/Context';
-import UserPhoto from './UserPhoto';
+import UserProfilePhoto from './UserProfilePhoto';
 import HostedRooms from './HostedRooms';
 
 export default function UserProfile({navigation}) {
@@ -32,7 +32,7 @@ export default function UserProfile({navigation}) {
             flexDirection: 'row',
             alignItems: 'center',
           }}>
-          <UserPhoto />
+          <UserProfilePhoto />
           <View
             style={{
               height: 40,
@@ -64,8 +64,7 @@ export default function UserProfile({navigation}) {
             justifyContent: 'center',
             width: 100,
             height: 30,
-            borderColor: constants.lineColor,
-            borderWidth: 0.5,
+            backgroundColor: constants.primary,
             borderRadius: 5,
           }}
           onPress={() => navigation.navigate('EditProfile')}>

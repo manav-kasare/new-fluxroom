@@ -1,10 +1,10 @@
 import React from 'react';
-import {View, Image} from 'react-native';
-import {CachedImage} from '../../../shared/CachedImage';
+import {View} from 'react-native';
+import CachedImage from '../../../shared/CachedImage';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import {ThemeContext} from '../../../shared/Context';
 
-export default function RoomPhotoTile({profilePhoto}) {
+export default function TileAvatar({profilePhoto}) {
   const {constants} = React.useContext(ThemeContext);
   return (
     <View
@@ -17,21 +17,15 @@ export default function RoomPhotoTile({profilePhoto}) {
         alignItems: 'center',
         justifyContent: 'center',
       }}>
-      {profilePhoto === 'undefined' || profilePhoto === '' ? (
+      {profilePhoto === undefined ? (
         <EvilIcons name="user" size={50} color={constants.background2} />
       ) : (
-        <Image
+        <CachedImage
           style={{width: 50, height: 50, borderRadius: 50 / 2}}
-          source={{uri: profilePhoto}}
+          uri={profilePhoto}
+          itemName="tileAvatar"
         />
       )}
     </View>
   );
-}
-
-{
-  /* <CachedImage
-  style={{ width: 50, height: 50, borderRadius: 50 / 2 }}
-  uri={profilePhoto}
-/>; */
 }

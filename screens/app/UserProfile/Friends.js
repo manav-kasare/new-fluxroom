@@ -10,9 +10,9 @@ import {
 import {Appbar} from 'react-native-paper';
 
 import CustomToast from '../../../shared/CustomToast';
-import UserTile from '../Search/UserTile';
 import {getUserInfo, removeFriend} from '../../../backend/database/apiCalls';
 import {UserDetailsContext, ThemeContext} from '../../../shared/Context';
+import Tile from '../../../shared/Tile';
 
 const wait = (timeout) => {
   return new Promise((resolve) => {
@@ -112,10 +112,11 @@ function FriendsList({id}) {
 
   return (
     <View style={{paddingVertical: 10}}>
-      <UserTile
-        username={details.username}
-        description={details.description}
-        profilePhoto={details.profilePhoto}
+      <Tile
+        uri={details.profilePhoto}
+        itemName="avatar"
+        heading={details.username}
+        subHeading={details.description}
       />
     </View>
   );

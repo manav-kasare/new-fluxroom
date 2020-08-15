@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 
 import CustomToast from '../../../shared/CustomToast';
-import UserTile from '../Search/UserTile';
+import Tile from '../../../shared/Tile';
 import {
   getUserInfo,
   acceptFriendRequest,
@@ -122,10 +122,11 @@ export default function Requests() {
 function RequestUserTile({user}) {
   return (
     <View style={{paddingVertical: 10}}>
-      <UserTile
-        username={user.username}
-        description={user.description}
-        profilePhoto={user.profilePhoto}
+      <Tile
+        uri={details.profilePhoto}
+        itemName="avatar"
+        heading={details.username}
+        subHeading={details.description}
       />
     </View>
   );

@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useContext} from 'react';
 import {View, TouchableOpacity, Text} from 'react-native';
 
-import RoomUserPhoto from './RoomUserPhoto';
+import PhotoAvatar from './PhotoAvatar';
 import {getUserInfo, getChatroomInfo} from '../../../backend/database/apiCalls';
 import {ThemeContext} from '../../../shared/Context';
 
@@ -41,7 +41,7 @@ const Host = React.memo(({roomID}) => {
           borderBottomWidth: 0.2,
         }}>
         <TouchableOpacity>
-          <RoomUserPhoto profilePhoto={host.profilePhoto} />
+          <PhotoAvatar profilePhoto={host.profilePhoto} />
         </TouchableOpacity>
         <View
           style={{

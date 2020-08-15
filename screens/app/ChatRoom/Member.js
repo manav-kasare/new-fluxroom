@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {View, TouchableOpacity, Text} from 'react-native';
 
-import RoomUserPhoto from './RoomUserPhoto';
+import PhotoAvatar from './PhotoAvatar';
 import {getUserInfo} from '../../../backend/database/apiCalls';
 import {ThemeContext} from '../../../shared/Context';
 
@@ -36,7 +36,7 @@ export default function Member({id}) {
           flexDirection: 'row',
         }}>
         <TouchableOpacity>
-          <RoomUserPhoto profilePhoto={memberInfo.profilePhoto} />
+          <PhotoAvatar profilePhoto={memberInfo.profilePhoto} />
         </TouchableOpacity>
         <View>
           <Text

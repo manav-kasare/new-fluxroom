@@ -1,9 +1,9 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Image} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import {useFocusEffect} from '@react-navigation/native';
 
-export default function CachedImage({uri, style, itemName}) {
+const CachedImage = React.memo(({uri, style, itemName}) => {
   const [soure, setSource] = React.useState(null);
 
   useFocusEffect(() => {
@@ -23,4 +23,6 @@ export default function CachedImage({uri, style, itemName}) {
   };
 
   return <Image source={{uri: soure}} style={style} />;
-}
+});
+
+export default CachedImage;

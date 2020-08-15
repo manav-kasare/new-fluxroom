@@ -118,8 +118,10 @@ export const removeFriend = (userID, friendID) => {
 };
 
 export const createRoom = (userID, room) => {
+  const encodedUri = base64.encode(room.profilePhoto);
+
   return fetch(
-    `http://${constants.localIP}:8000/chatroom/create?userID=${userID}&roomID=${room.id}&name=${room.name}&profilePhoto=${room.profilePhoto}&description=${room.description}`,
+    `http://${constants.localIP}:8000/chatroom/create?userID=${userID}&roomID=${room.id}&name=${room.name}&profilePhoto=${encodedUri}&description=${room.description}`,
   )
     .then((response) => response.text())
     .then((responseText) => {

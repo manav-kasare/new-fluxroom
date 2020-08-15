@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useContext} from 'react';
 import {View, TouchableOpacity, Text} from 'react-native';
 
-import RoomUserPhoto from './RoomUserPhoto';
+import PhotoAvatar from './PhotoAvatar';
 import {UserDetailsContext, ThemeContext} from '../../../shared/Context';
 
 const MemberYou = React.memo(() => {
@@ -22,7 +22,7 @@ const MemberYou = React.memo(() => {
           opacity: 1,
         }}>
         <TouchableOpacity>
-          <RoomUserPhoto profilePhoto={user.profilePhoto} />
+          <PhotoAvatar profilePhoto={user.profilePhoto} />
         </TouchableOpacity>
         <View
           style={{

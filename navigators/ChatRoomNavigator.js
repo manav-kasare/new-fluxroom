@@ -3,7 +3,7 @@ import {TouchableOpacity} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import Feather from 'react-native-vector-icons/Feather';
 
-import RoomFullPhoto from '../screens/app/ChatRoom/RoomFullPhoto';
+import FullPhoto from '../screens/app/ChatRoom/FullPhoto';
 import ChatRooms from '../screens/app/ChatRoom/ChatRooms';
 import Room from '../screens/app/ChatRoom/Room';
 import PersonalChat from '../screens/app/ChatRoom/PersonalChat';
@@ -58,9 +58,7 @@ export default function ChatRoomNavigator({route, navigation}) {
           headerRight: () => (
             <TouchableOpacity
               style={{
-                marginRight: 15,
-                width: 40,
-                height: 40,
+                marginRight: 25,
               }}
               onPress={() =>
                 navigation.navigate('RoomSettings', {
@@ -73,10 +71,13 @@ export default function ChatRoomNavigator({route, navigation}) {
         })}
       />
       <ChatRoomStack.Screen
-        name="RoomFullPhoto"
-        component={RoomFullPhoto}
+        name="FullPhoto"
+        component={FullPhoto}
         options={{
-          headerShown: false,
+          title: null,
+          headerStyle: constants.headerStyle,
+          headerTitleStyle: constants.headerText,
+          headerBackTitle: 'Rooms',
         }}
       />
       <ChatRoomStack.Screen
@@ -127,7 +128,6 @@ export default function ChatRoomNavigator({route, navigation}) {
           headerStyle: constants.headerStyle,
           headerTitleStyle: constants.headerText,
           headerBackTitleVisible: false,
-          headerTintColor: constants.background2,
         }}
       />
     </ChatRoomStack.Navigator>

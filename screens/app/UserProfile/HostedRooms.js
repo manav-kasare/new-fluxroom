@@ -1,17 +1,9 @@
-import React, {useState, useContext, useEffect, useReducer} from 'react';
-import {
-  View,
-  FlatList,
-  TouchableWithoutFeedback,
-  Text,
-  TouchableOpacity,
-  TouchableWithoutFeedbackBase,
-  Image,
-} from 'react-native';
+import React, {useContext, useEffect, useReducer} from 'react';
+import {View, FlatList, Text} from 'react-native';
 
-import CachedImage from '../../../shared/CachedImage';
 import {getUserInfo, getChatroomInfo} from '../../../backend/database/apiCalls';
 import {UserDetailsContext, ThemeContext} from '../../../shared/Context';
+import CircleAvatar from '../../../shared/CircleAvatar';
 
 function reducer(state, action) {
   switch (action.type) {
@@ -74,45 +66,28 @@ export default function HostedRooms({navigation}) {
         data={hostedRooms}
         horizontal={true}
         renderItem={({item}) => (
-          <TouchableWithoutFeedback>
-            <View
+          <View style={{alignItems: 'center'}}>
+            <CircleAvatar
+              uri={item.profilePhoto}
+              itemName="hostedRooms"
+              onPress={() =>
+                navigation.navigate('ChatRoomNavigator', {
+                  screen: 'Room',
+                  params: {
+                    roomID: item.id,
+                  },
+                })
+              }
+            />
+            <Text
               style={{
-                marginHorizontal: 10,
-                marginTop: 10,
-                alignItems: 'center',
+                color: constants.text1,
+                marginTop: 5,
+                fontWeight: '300',
               }}>
-              <TouchableOpacity
-                style={{
-                  width: 77,
-                  height: 77,
-                  borderRadius: 77 / 2,
-                  borderColor: 'grey',
-                  borderWidth: 1,
-                }}
-                onPress={() =>
-                  navigation.navigate('ChatRoomNavigator', {
-                    screen: 'Room',
-                    params: {
-                      roomID: item.id,
-                    },
-                  })
-                }>
-                <Image
-                  style={{width: 75, height: 75, borderRadius: 75 / 2}}
-                  source={{uri: item.profilePhoto}}
-                  // uri={item.profilePhoto}
-                />
-              </TouchableOpacity>
-              <Text
-                style={{
-                  color: constants.text1,
-                  marginTop: 5,
-                  fontWeight: '300',
-                }}>
-                {item.name}
-              </Text>
-            </View>
-          </TouchableWithoutFeedback>
+              {item.name}
+            </Text>
+          </View>
         )}
       />
     </View>

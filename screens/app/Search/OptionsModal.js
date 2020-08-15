@@ -2,7 +2,7 @@ import React, {useEffect, useContext} from 'react';
 import {
   SafeAreaView,
   Modal,
-  View,
+  Platform,
   Text,
   TouchableOpacity,
   TouchableWithoutFeedback,
@@ -12,6 +12,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import CustomToast from '../../../shared/CustomToast';
 import {sendFriendRequest} from '../../../backend/database/apiCalls';
 import {UserDetailsContext, ThemeContext} from '../../../shared/Context';
+import {constant} from 'lodash';
 
 const OptionsModal = ({isModalVisible, setIsModalVisible, id}) => {
   const {constants} = React.useContext(ThemeContext);
@@ -27,47 +28,28 @@ const OptionsModal = ({isModalVisible, setIsModalVisible, id}) => {
   };
 
   return (
-    <Modal animationType="slide" transparent={true} visible={isModalVisible}>
+    <Modal animationType="fade" transparent={true} visible={isModalVisible}>
       <TouchableWithoutFeedback onPress={() => setIsModalVisible(false)}>
         <SafeAreaView
           style={{
-            width: constants.width,
-            height: constants.height * 0.75,
-          }}
-        />
-      </TouchableWithoutFeedback>
-      <SafeAreaView
-        style={{
-          flex: 1,
-          backgroundColor: constants.primary,
-          alignItems: 'center',
-          height: constants.height * 0.25,
-          borderTopRightRadius: 20,
-          borderTopLeftRadius: 20,
-        }}>
-        <View
-          style={{
-            width: constants.width * 0.9,
-            height: constants.height * 0.05,
-            flexDirection: 'row',
-            alignItems: 'center',
-            marginVertical: 25,
-            borderBottomColor: constants.background4,
-            borderBottomWidth: 0.5,
+            flex: 1,
+            backgroundColor: 'rgba(0,0,0,0.2)',
           }}>
           <TouchableOpacity
             style={{
               width: constants.width * 0.9,
-              height: constants.height * 0.05,
-              flexDirection: 'row',
+              height: constants.height * 0.075,
+              justifyContent: 'center',
               alignItems: 'center',
-              marginBottom: 10,
+              backgroundColor: constants.primary,
+              borderRadius: 10,
+              position: 'absolute',
+              bottom: Platform.OS === 'ios' ? 25 : 15,
+              alignSelf: 'center',
             }}
             onPress={handleRequest}>
-            <Ionicons name="ios-call" size={24} color="white" />
             <Text
               style={{
-                marginLeft: 25,
                 color: 'white',
                 fontFamily: 'Helvetica',
                 fontSize: 20,
@@ -75,8 +57,8 @@ const OptionsModal = ({isModalVisible, setIsModalVisible, id}) => {
               Connect
             </Text>
           </TouchableOpacity>
-        </View>
-      </SafeAreaView>
+        </SafeAreaView>
+      </TouchableWithoutFeedback>
     </Modal>
   );
 };

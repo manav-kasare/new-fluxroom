@@ -1,14 +1,14 @@
 import React, {useEffect, useContext, useReducer} from 'react';
 import {SafeAreaView, FlatList} from 'react-native';
 
-import RoomPhotoTile from './RoomPhotoTile';
+import TileAvatar from './TileAvatar';
 import Host from './Host';
 import MemberYou from './MemberYou';
 import Member from './Member';
 
 import {getUserInfo, getChatroomInfo} from '../../../backend/database/apiCalls';
 import {UserDetailsContext, ThemeContext} from '../../../shared/Context';
-import RoomUserPhoto from './RoomUserPhoto';
+import PhotoAvatar from './PhotoAvatar';
 
 // Reducer function
 function reducer(state, action) {
@@ -74,14 +74,14 @@ export default function Room({route, navigation}) {
         keyExtractor={(item, index) => index.toString()}
         renderItem={({item, index}) => {
           // if (index === 0) {
-          //   return <RoomUserPhoto profilePhoto={item.profilePhoto} />;
+          //   return <PhotoAvatar profilePhoto={item.profilePhoto} />;
           // } else if (item.id === user.id && item.id !== hostID) {
           //   return <MemberYou />;
           // } else if (item.id !== user.id && item.id !== hostID) {
           //   return <Member id={item.id} />;
           // }
           return (
-            <RoomUserPhoto
+            <PhotoAvatar
               borderColor="red"
               profilePhoto="https://images.unsplash.com/photo-1596461097642-b697ec879ced?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
             />

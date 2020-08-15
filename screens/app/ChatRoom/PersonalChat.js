@@ -2,7 +2,7 @@ import React from 'react';
 import {SafeAreaView, View, Text, TouchableOpacity} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import RoomPhotoTile from '../ChatRoom/RoomPhotoTile';
+import TileAvatar from '../ChatRoom/TileAvatar';
 import {ThemeContext} from '../../../shared/Context';
 
 export default function PersonalChat({navigation, route}) {
@@ -47,8 +47,8 @@ export default function PersonalChat({navigation, route}) {
               justifyContent: 'center',
               borderWidth: 1,
             }}
-            onPress={() => navigation.navigate('RoomFullPhoto')}>
-            <RoomPhotoTile profilePhoto={profilePhoto} />
+            onPress={() => navigation.navigate('FullPhoto')}>
+            <TileAvatar profilePhoto={profilePhoto} />
           </TouchableOpacity>
 
           <Text

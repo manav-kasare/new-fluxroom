@@ -5,16 +5,18 @@ import ImagePicker from 'react-native-image-picker';
 import base64 from 'react-native-base64';
 
 import {UserDetailsContext, ThemeContext} from '../../../shared/Context';
-import CachedImage from '../../../shared/CachedImage';
+import CircleAvatar from '../../../shared/CircleAvatar';
 import {updateProfilePhoto} from '../../../backend/database/apiCalls';
 
-export default function UserPhoto() {
+export default function UserProfilePhoto() {
   const {user} = useContext(UserDetailsContext);
   const {constants} = React.useContext(ThemeContext);
   const [profilePhoto, setProfilePhoto] = useState(null);
 
   useEffect(() => {
-    setProfilePhoto(base64.decode(user.profilePhoto));
+    setProfilePhoto(
+      user.profilePhoto !== null ? base64.decode(user.profilePhoto) : undefined,
+    );
   }, [setProfilePhoto]);
 
   const pickImage = () => {
@@ -55,39 +57,7 @@ export default function UserPhoto() {
         justifyContent: 'center',
       }}
       onPress={pickImage}>
-      {profilePhoto === 'undefined' || profilePhoto === '' ? (
-        <View
-          style={{
-            width: 85,
-            height: 85,
-            borderRadius: 85 / 2,
-            borderColor: 'grey',
-            borderWidth: 0.2,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <Feather name="camera" size={20} color={constants.text1} />
-        </View>
-      ) : (
-        <CachedImage
-          style={{
-            width: 75,
-            height: 75,
-            borderRadius: 75 / 2,
-          }}
-          uri={profilePhoto}
-          itemName="profilePhoto"
-        />
-        // <Image
-        //   style={{
-        //     width: 75,
-        //     height: 75,
-        //     borderRadius: 75 / 2,
-        //   }}
-        //   source={{uri: profilePhoto}}
-        //   // uri={profilePhoto}
-        // />
-      )}
+      <CircleAvatar size={80} uri={profilePhoto} itemName="profilePhoto" />
     </TouchableOpacity>
   );
 }

@@ -1,9 +1,9 @@
-import React from "react";
-import { createStackNavigator } from "@react-navigation/stack";
+import React from 'react';
+import {createStackNavigator} from '@react-navigation/stack';
 
-import RoomFullPhoto from "../screens/app/ChatRoom/RoomFullPhoto";
-import HomeNavigator from "./HomeNavigator";
-import Search from "../screens/app/Search/Search";
+import FullPhoto from '../screens/app/ChatRoom/FullPhoto';
+import HomeNavigator from './HomeNavigator';
+import Search from '../screens/app/Search/Search';
 
 const SearchStack = createStackNavigator();
 
@@ -13,7 +13,7 @@ export default function SearchNavigator() {
       <SearchStack.Screen
         name="HomeNavigator"
         component={HomeNavigator}
-        options={{ headerShown: false }}
+        options={{headerShown: false}}
       />
       <SearchStack.Screen
         name="Search"
@@ -23,8 +23,8 @@ export default function SearchNavigator() {
         }}
       />
       <SearchStack.Screen
-        name="RoomFullPhoto"
-        component={RoomFullPhoto}
+        name="FullPhoto"
+        component={FullPhoto}
         options={{
           headerShown: false,
         }}

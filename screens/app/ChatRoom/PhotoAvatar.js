@@ -4,7 +4,7 @@ import {View, Image, ImagePropTypes} from 'react-native';
 import CachedImage from '../../../shared/CachedImage';
 import {ThemeContext} from '../../../shared/Context';
 
-export default function RoomUserPhoto({profilePhoto, borderColor}) {
+export default function PhotoAvatar({profilePhoto, borderColor}) {
   const {constants} = React.useContext(ThemeContext);
   const outerRadius = constants.width * 0.35;
   const innerRadius = constants.width * 0.33;

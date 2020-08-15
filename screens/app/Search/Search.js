@@ -1,6 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react';
 import {
-  TouchableOpacity,
   SafeAreaView,
   FlatList,
   View,
@@ -10,11 +9,12 @@ import {
 import {Searchbar} from 'react-native-paper';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import _ from 'lodash';
+import base64 from 'react-native-base64';
 
-import UserTile from './UserTile';
 import OptionsModal from './OptionsModal';
 import {getUsers} from '../../../backend/database/apiCalls';
 import {ThemeContext, UserDetailsContext} from '../../../shared/Context';
+import Tile from '../../../shared/Tile';
 
 const wait = (timeout) => {
   return new Promise((resolve) => {
@@ -118,7 +118,15 @@ export default function Search() {
                 setIsModalVisible={setIsModalVisible}
                 id={item.id}
               />
-              <TouchableOpacity
+              <RenderTile
+                username={item.username}
+                description={item.description}
+                profilePhoto={item.profilePhoto}
+                onPressTile={() => {
+                  setIsModalVisible(!isModalVisible);
+                }}
+              />
+              {/* <TouchableOpacity
                 style={{
                   width: constants.width,
                   height: constants.height * 0.09,
@@ -133,7 +141,7 @@ export default function Search() {
                   description={item.description}
                   profilePhoto={item.profilePhoto}
                 />
-              </TouchableOpacity>
+              </TouchableOpacity> */}
             </>
           )}
           refreshControl={
@@ -149,3 +157,23 @@ export default function Search() {
     </SafeAreaView>
   );
 }
+
+const RenderTile = ({username, description, profilePhoto, onPressTile}) => {
+  const [_profilePhoto, setProfilePhoto] = useState(undefined);
+
+  useEffect(() => {
+    setProfilePhoto(
+      profilePhoto !== null ? base64.decode(profilePhoto) : undefined,
+    );
+  }, []);
+  return (
+    <Tile
+      uri={_profilePhoto}
+      heading={username}
+      subHeading={description}
+      onPressTile={onPressTile}
+      itemName="tileAvatar"
+      onPressTile={onPressTile}
+    />
+  );
+};
