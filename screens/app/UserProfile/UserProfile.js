@@ -68,7 +68,7 @@ export default function UserProfile({navigation}) {
             borderRadius: 5,
           }}
           onPress={() => navigation.navigate('EditProfile')}>
-          <Text style={{color: constants.text1}}>Edit</Text>
+          <Text style={{color: 'white'}}>Edit</Text>
         </TouchableOpacity>
       </View>
       <View

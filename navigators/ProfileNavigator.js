@@ -49,7 +49,8 @@ export default function ProfileNavigator({route, navigation}) {
           title: 'Edit Profile',
           headerStyle: constants.headerStyle,
           headerTitleStyle: constants.headerText,
-          headerBackTitle: 'Profile',
+          headerBackTitleVisible: false,
+          headerTintColor: constants.background2,
         }}
       />
     </ProfileStack.Navigator>

@@ -13,7 +13,7 @@ export default function Settings({navigation}) {
   const styles = {
     view: {
       width: constants.width,
-      height: constants.height * 0.075,
+      height: 50,
       marginVertical: 10,
       backgroundColor: constants.background3,
       paddingHorizontal: 25,
@@ -53,7 +53,7 @@ export default function Settings({navigation}) {
               <Text style={styles.view_text}>Change Password</Text>
             </View>
             <Ionicons
-              name="ios-arrow-forward"
+              name="chevron-forward"
               size={20}
               color={constants.background2}
             />

@@ -6,14 +6,14 @@ import {ThemeContext} from '../../../shared/Context';
 
 export default function PhotoAvatar({profilePhoto, borderColor}) {
   const {constants} = React.useContext(ThemeContext);
-  const outerRadius = constants.width * 0.35;
-  const innerRadius = constants.width * 0.33;
+  const outerRadius = constants.width * 0.25;
+  const innerRadius = constants.width * 0.23;
   return (
     <View
       style={{
         width: outerRadius,
         height: outerRadius,
-        borderRadius: outerRadius / 2,
+        borderRadius: 50,
         borderColor: borderColor,
         alignItems: 'center',
         justifyContent: 'center',
@@ -24,7 +24,7 @@ export default function PhotoAvatar({profilePhoto, borderColor}) {
           style={{
             width: innerRadius,
             height: innerRadius,
-            borderRadius: innerRadius / 2,
+            borderRadius: 50,
             backgroundColor: constants.background1,
           }}
         />
@@ -33,7 +33,7 @@ export default function PhotoAvatar({profilePhoto, borderColor}) {
           style={{
             width: innerRadius,
             height: innerRadius,
-            borderRadius: innerRadius / 2,
+            borderRadius: 50,
           }}
           source={{uri: profilePhoto}}
           // uri={profilePhoto}

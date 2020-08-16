@@ -50,25 +50,7 @@ export default function ChatRoomNavigator({route, navigation}) {
       <ChatRoomStack.Screen
         name="Room"
         component={Room}
-        options={({route, navigation}) => ({
-          title: route.params.room.name,
-          headerStyle: constants.headerStyle,
-          headerTitleStyle: constants.headerText,
-          headerBackTitle: 'Rooms',
-          headerRight: () => (
-            <TouchableOpacity
-              style={{
-                marginRight: 25,
-              }}
-              onPress={() =>
-                navigation.navigate('RoomSettings', {
-                  room: route.params.room,
-                })
-              }>
-              <Feather name="menu" size={25} color={constants.background2} />
-            </TouchableOpacity>
-          ),
-        })}
+        options={{headerShown: false}}
       />
       <ChatRoomStack.Screen
         name="FullPhoto"
@@ -77,7 +59,8 @@ export default function ChatRoomNavigator({route, navigation}) {
           title: null,
           headerStyle: constants.headerStyle,
           headerTitleStyle: constants.headerText,
-          headerBackTitle: 'Rooms',
+          headerBackTitleVisible: false,
+          headerTintColor: constants.background2,
         }}
       />
       <ChatRoomStack.Screen
@@ -87,7 +70,8 @@ export default function ChatRoomNavigator({route, navigation}) {
           title: 'Settings',
           headerStyle: constants.headerStyle,
           headerTitleStyle: constants.headerText,
-          headerBackTitle: route.params.room.name,
+          headerBackTitleVisible: false,
+          headerTintColor: constants.background2,
         })}
       />
       <ChatRoomStack.Screen
@@ -97,7 +81,8 @@ export default function ChatRoomNavigator({route, navigation}) {
           title: 'Edit Settings',
           headerStyle: constants.headerStyle,
           headerTitleStyle: constants.headerText,
-          headerBackTitle: 'Settings',
+          headerBackTitleVisible: false,
+          headerTintColor: constants.background2,
         }}
       />
       <ChatRoomStack.Screen
@@ -128,6 +113,7 @@ export default function ChatRoomNavigator({route, navigation}) {
           headerStyle: constants.headerStyle,
           headerTitleStyle: constants.headerText,
           headerBackTitleVisible: false,
+          headerTintColor: constants.background2,
         }}
       />
     </ChatRoomStack.Navigator>

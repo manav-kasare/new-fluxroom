@@ -18,4 +18,9 @@ GET http://localhost:8000/forgotPassword?toEmail=kendallxbowlin@gmail.com
 ###
 GET http://localhost:8000/chatroom/join?userID=-kpbvm6ba5-ri87gixhg&roomID=-wv5f7uj0m-7nhw7o694"
 
-# ZmlsZTovLy9Vc2Vycy9tYW5hdi9MaWJyYXJ5L0RldmVsb3Blci9Db3JlU2ltdWxhdG9yL0RldmljZXMvQUVEQUVFMjgtNTIwQS00NEZGLThDODQtRjNCM0QwRjdCRjhGL2RhdGEvQ29udGFpbmVycy9EYXRhL0FwcGxpY2F0aW9uLzU4NTc2RjYwLTRBQTQtNDhGMC05NTVBLTdEQ0I1NTQ4M0RBRC9Eb2N1bWVudHMvaW1hZ2VzLzEzMDVGNkZDLTkxRTMtNDgyMy05MkEzLTJDMzdDNEI5MjRCNi5qcGc=
+###
+GET fluxroom-backend-beta.herokuapp.com/user/5f386554eed5170017ecb3ff
+
+###
+GET fluxroom-backend-beta.herokuapp.com/users
+ 

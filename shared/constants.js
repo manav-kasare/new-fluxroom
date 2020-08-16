@@ -11,6 +11,7 @@ export default {
   width: WIDTH,
   height: HEIGHT,
   localIP: IP,
+  url: 'fluxroom-backend-beta.herokuapp.com',
 };
 
 export const light = {
@@ -25,6 +26,7 @@ export const light = {
   width: WIDTH,
   height: HEIGHT,
   localIP: IP,
+  url: 'fluxroom-backend-beta.herokuapp.com',
   headerText: {
     color: 'black',
     fontSize: 18,
@@ -73,6 +75,7 @@ export const dark = {
   width: WIDTH,
   height: HEIGHT,
   localIP: IP,
+  url: 'fluxroom-backend-beta.herokuapp.com',
   headerText: {
     color: 'white',
     fontSize: 18,

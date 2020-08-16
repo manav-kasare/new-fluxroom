@@ -17,7 +17,7 @@ export default function RoomSettings({route, navigation}) {
       width: constants.width,
       height: constants.height * 0.075,
       marginBottom: 25,
-      backgroundColor: constants.background4,
+      backgroundColor: constants.background3,
       borderBottomWidth: 0.2,
       borderTopWidth: 0.2,
       borderColor: constants.lineColor,

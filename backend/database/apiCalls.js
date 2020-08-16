@@ -22,18 +22,34 @@ export const loginUserWithEmail = ({email, password}) => {
 };
 
 export const registerUser = ({id, email, password}) => {
-  return fetch(
-    `http://${constants.localIP}:8000/user/add?email=${email}&password=${password}&id=${id}`,
-  )
-    .then((response) => response.text())
-    .then(async (responseText) => {
-      const emailResponse = await emailConfirmation(id, email);
-      if (emailResponse === 'success') {
-        return responseText;
-      } else {
-        return 'error';
-      }
+  const requestOptions = {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({_id: id, email: email, password: password}),
+  };
+
+  return fetch(`${constants.url}/user/create`, requestOptions)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log('API CALL DATA', data);
+      return data;
     });
+
+  // return fetch(
+  //   `http://${constants.localIP}:8000/user/add?email=${email}&password=${password}&id=${id}`,
+  // )
+  //   .then((response) => response.text())
+  //   .then(async (responseText) => {
+  //     const emailResponse = await emailConfirmation(id, email);
+  //     if (emailResponse === 'success') {
+  //       return responseText;
+  //     } else {
+  //       return 'error';
+  //     }
+  //   });
 };
 
 export const getUsers = () => {

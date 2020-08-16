@@ -71,16 +71,17 @@ export default function SignUp({navigation}) {
           id: id,
           email: formEmail,
           password: formPassword,
-        }).then((_responseText) => {
+        }).then(({data}) => {
+          console.log('DATA', data);
           setIsLoading(false);
-          if (_responseText === 'success') {
+          if (data.error) {
+            CustomToast('An Error Occured');
+          } else {
             navigation.navigate('EmailVerification', {
               email: formEmail,
               id: id,
             });
             CustomToast('Registered Successfully !');
-          } else {
-            CustomToast('An Error Occured');
           }
         });
       }

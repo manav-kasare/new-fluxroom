@@ -84,9 +84,9 @@ export default function ChangeRoomSettings({route, navigation}) {
         <View
           style={{
             width: constants.width,
-            height: constants.height * 0.075,
+            height: 50,
             marginTop: 30,
-            backgroundColor: constants.background4,
+            backgroundColor: constants.background3,
             paddingHorizontal: 20,
             alignItems: 'center',
             flexDirection: 'row',
@@ -101,7 +101,6 @@ export default function ChangeRoomSettings({route, navigation}) {
             style={{
               width: constants.width * 0.7,
               height: 40,
-
               color: constants.text1,
             }}
             value={roomDetails.description}
