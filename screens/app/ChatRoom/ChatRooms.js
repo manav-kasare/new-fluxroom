@@ -66,7 +66,10 @@ export default function ChatRooms({navigation}) {
         alignItems: 'center',
         justifyContent: 'flex-start',
       }}>
-      <StatusBar barStyle={darkTheme ? 'light-content' : 'dark-content'} />
+      <StatusBar
+        barStyle={darkTheme ? 'light-content' : 'dark-content'}
+        backgroundColor={constants.background1}
+      />
       {onFocusRefresh ? (
         <View
           style={{

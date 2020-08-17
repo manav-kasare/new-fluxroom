@@ -10,6 +10,7 @@ import {
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Feather from 'react-native-vector-icons/Feather';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import TileAvatar from './TileAvatar';
 import Host from './Host';
@@ -43,7 +44,7 @@ function reducer(state, action) {
 
 var test = [];
 for (var i = 0; i < 15; i++) {
-  test.push(i);
+  test.push({key: i, name: `user ${i}`});
 }
 
 export default function Room({route, navigation}) {
@@ -54,6 +55,7 @@ export default function Room({route, navigation}) {
     membersInfo: [],
   });
   const [isSpeaking, setIsSpeaking] = React.useState(false);
+  const [someoneRaisingHand, setSomeoneRaisingHand] = React.useState(false);
 
   // get members info
   useEffect(() => {
@@ -153,11 +155,23 @@ export default function Room({route, navigation}) {
         renderItem={({item, index}) => {
           if (index === 0) {
             return (
-              <RoomAvatar
-                uri="https://images.unsplash.com/photo-1596461097642-b697ec879ced?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
-                size={100}
-                isHost={true}
-              />
+              <View style={{flexDirection: 'column'}}>
+                <RoomAvatar
+                  uri="https://images.unsplash.com/photo-1596461097642-b697ec879ced?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
+                  size={100}
+                  isHost={true}
+                />
+                <Text
+                  style={{
+                    color: constants.text1,
+                    fontSize: 16,
+                    fontWeight: '500',
+                    fontFamily: 'Helvetica',
+                    alignSelf: 'center',
+                  }}>
+                  {item.name}
+                </Text>
+              </View>
             );
           }
           // else if (item.id === user.id && item.id !== hostID) {
@@ -166,13 +180,44 @@ export default function Room({route, navigation}) {
           //   return <Member id={item.id} />;
           // }
           return (
-            <RoomAvatar
-              uri="https://images.unsplash.com/photo-1596461097642-b697ec879ced?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
-              size={100}
-            />
+            <View style={{flexDirection: 'column'}}>
+              <RoomAvatar
+                uri="https://images.unsplash.com/photo-1596461097642-b697ec879ced?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
+                size={100}
+              />
+              <Text
+                style={{
+                  color: constants.text1,
+                  fontSize: 16,
+                  fontWeight: '500',
+                  fontFamily: 'Helvetica',
+                  alignSelf: 'center',
+                }}>
+                {item.name}
+              </Text>
+            </View>
           );
         }}
       />
+      {someoneRaisingHand ? (
+        <TouchableOpacity
+          style={{
+            width: 25,
+            height: 25,
+            borderRadius: 25 / 2,
+            backgroundColor: constants.primary,
+            alignItems: 'center',
+            justifyContent: 'center',
+            alignSelf: 'flex-end',
+            position: 'relative',
+            bottom: 20,
+            right: 20,
+          }}>
+          <AntDesign name="caretdown" size={15} color="white" />
+        </TouchableOpacity>
+      ) : (
+        <></>
+      )}
       <View
         style={{
           width: constants.width,
@@ -180,35 +225,51 @@ export default function Room({route, navigation}) {
           alignItems: 'center',
           flexDirection: 'row',
           paddingTop: 10,
+          justifyContent: 'space-between',
         }}>
+        <View style={{flexDirection: 'row'}}>
+          <TouchableOpacity
+            style={{
+              width: 40,
+              height: 40,
+              borderRadius: 20,
+              backgroundColor: constants.primary,
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginHorizontal: 10,
+            }}
+            onPress={() => setIsSpeaking(!isSpeaking)}>
+            {isSpeaking ? (
+              <Ionicons size={24} color="white" name="ios-mic-outline" />
+            ) : (
+              <Ionicons size={24} color="white" name="ios-mic-off-outline" />
+            )}
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={{
+              width: 40,
+              height: 40,
+              borderRadius: 20,
+              backgroundColor: constants.primary,
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginHorizontal: 10,
+            }}
+            onPress={() => setSomeoneRaisingHand(!someoneRaisingHand)}>
+            <MaterialCommunityIcons size={30} color="white" name="hand" />
+          </TouchableOpacity>
+        </View>
         <TouchableOpacity
           style={{
-            width: 40,
-            height: 40,
+            paddingVertical: 10,
+            paddingHorizontal: 20,
+            marginRight: 25,
             borderRadius: 20,
             backgroundColor: constants.primary,
             alignItems: 'center',
             justifyContent: 'center',
-            marginHorizontal: 5,
-          }}
-          onPress={() => setIsSpeaking(!isSpeaking)}>
-          {isSpeaking ? (
-            <Ionicons size={24} color="white" name="ios-mic-outline" />
-          ) : (
-            <Ionicons size={24} color="white" name="ios-mic-off-outline" />
-          )}
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={{
-            width: 40,
-            height: 40,
-            borderRadius: 20,
-            backgroundColor: constants.primary,
-            alignItems: 'center',
-            justifyContent: 'center',
-            marginHorizontal: 5,
           }}>
-          <MaterialCommunityIcons size={30} color="white" name="hand" />
+          <Text style={{color: 'white'}}>Leave Room</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -237,7 +298,7 @@ const RoomAvatar = ({size, uri, isHost}) => {
   }
 
   return (
-    <View>
+    <View style={{height: 100, marginVertical: 20}}>
       <CachedImage
         style={{
           width: size,

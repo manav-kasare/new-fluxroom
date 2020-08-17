@@ -52,8 +52,6 @@ export default function EditProfile({navigation}) {
           marginTop: 20,
           alignSelf: 'center',
           height: 50,
-          borderBottomColor: 'grey',
-          borderBottomWidth: 0.2,
         }}>
         <TextInput
           autoFocus={true}

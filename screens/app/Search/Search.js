@@ -15,6 +15,7 @@ import OptionsModal from './OptionsModal';
 import {getUsers} from '../../../backend/database/apiCalls';
 import {ThemeContext, UserDetailsContext} from '../../../shared/Context';
 import Tile from '../../../shared/Tile';
+import RecentSearch from './RecentSearch';
 
 const wait = (timeout) => {
   return new Promise((resolve) => {
@@ -25,7 +26,7 @@ const wait = (timeout) => {
 export default function Search() {
   const {user} = useContext(UserDetailsContext);
   const [users, setUsers] = useState(null);
-  const [filteredUsers, setFilteredUsers] = useState(null);
+  const [filteredUsers, setFilteredUsers] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [query, setQuery] = useState(null);
   const {constants} = React.useContext(ThemeContext);
@@ -126,24 +127,9 @@ export default function Search() {
                   setIsModalVisible(!isModalVisible);
                 }}
               />
-              {/* <TouchableOpacity
-                style={{
-                  width: constants.width,
-                  height: constants.height * 0.09,
-                  backgroundColor: constants.background1,
-                  paddingLeft: 25,
-                }}
-                onPress={() => {
-                  setIsModalVisible(!isModalVisible);
-                }}>
-                <UserTile
-                  username={item.username}
-                  description={item.description}
-                  profilePhoto={item.profilePhoto}
-                />
-              </TouchableOpacity> */}
             </>
           )}
+          ListEmptyComponent={() => <RecentSearch />}
           refreshControl={
             <RefreshControl
               refreshing={refreshing}

@@ -35,9 +35,9 @@ export default function RequestIcon({navigation, id}) {
       </TouchableOpacity>
       <View
         style={{
-          width: 10,
-          height: 10,
-          borderRadius: 10 / 2,
+          width: 15,
+          height: 15,
+          borderRadius: 15 / 2,
           alignItems: 'center',
           justifyContent: 'center',
           backgroundColor: 'crimson',
@@ -46,7 +46,7 @@ export default function RequestIcon({navigation, id}) {
         }}>
         <Text
           style={{
-            fontSize: 10,
+            fontSize: 12,
             color: 'white',
             fontFamily: 'Helvetica',
           }}>

@@ -18,6 +18,7 @@ import {
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import AsyncStorage from '@react-native-community/async-storage';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scrollview';
 
 import {UserDetailsContext} from '../../shared/Context';
 import constants from '../../shared/constants';
@@ -115,9 +116,10 @@ export default function LogIn({navigation}) {
         setOnFocus({usernameOrEmail: false, password: false});
         Keyboard.dismiss();
       }}>
-      <KeyboardAvoidingView
+      <KeyboardAwareScrollView
         style={{flex: 1, backgroundColor: 'transparent'}}
-        behavior={Platform.OS == 'ios' ? 'padding' : 'height'}>
+        // behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
+      >
         <SafeAreaView
           style={{
             flex: 1,
@@ -192,11 +194,6 @@ export default function LogIn({navigation}) {
                       }
                       secureTextEntry={revealPassword ? false : true}
                       style={globalStyles.textInput}
-                      keyboardType={
-                        Platform.OS === 'ios'
-                          ? 'ascii-capable'
-                          : 'visible-password'
-                      }
                       placeholder="Password"
                       onChangeText={(text) => setFormPassword(text)}
                       value={formPassword}
@@ -256,7 +253,7 @@ export default function LogIn({navigation}) {
             </TouchableOpacity>
           </Animated.View>
         </SafeAreaView>
-      </KeyboardAvoidingView>
+      </KeyboardAwareScrollView>
     </TouchableWithoutFeedback>
   );
 }

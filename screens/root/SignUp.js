@@ -15,6 +15,7 @@ import {
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scrollview';
 
 import {Formik} from 'formik';
 import * as yup from 'yup';
@@ -94,9 +95,8 @@ export default function SignUp({navigation}) {
         setOnFocus({email: false, password: false});
         Keyboard.dismiss();
       }}>
-      <KeyboardAvoidingView
-        style={{flex: 1, backgroundColor: 'transparent'}}
-        behavior={Platform.OS == 'ios' ? 'padding' : 'height'}>
+      <KeyboardAwareScrollView
+        style={{flex: 1, backgroundColor: 'transparent'}}>
         <SafeAreaView
           style={{
             flex: 1,
@@ -190,11 +190,6 @@ export default function SignUp({navigation}) {
                           }
                           secureTextEntry={revealPassword ? false : true}
                           style={globalStyles.textInput}
-                          keyboardType={
-                            Platform.OS === 'ios'
-                              ? 'ascii-capable'
-                              : 'visible-password'
-                          }
                           placeholder="Password"
                           onChangeText={formikProps.handleChange('password')}
                           onBlur={formikProps.handleBlur('password')}
@@ -266,7 +261,7 @@ export default function SignUp({navigation}) {
             </Animated.View>
           </Animated.View>
         </SafeAreaView>
-      </KeyboardAvoidingView>
+      </KeyboardAwareScrollView>
     </TouchableWithoutFeedback>
   );
 }

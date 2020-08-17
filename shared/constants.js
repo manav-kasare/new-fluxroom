@@ -50,7 +50,7 @@ export const light = {
   input: {
     fontFamily: 'Helvetica',
     marginVertical: 10,
-    width: WIDTH * 0.75,
+    width: WIDTH * 0.8,
     height: 45,
     paddingHorizontal: 15,
     color: 'black',
@@ -99,7 +99,7 @@ export const dark = {
   input: {
     fontFamily: 'Helvetica',
     marginVertical: 10,
-    width: WIDTH * 0.75,
+    width: WIDTH * 0.8,
     height: 45,
     paddingHorizontal: 15,
     color: 'white',
