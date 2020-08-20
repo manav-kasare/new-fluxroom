@@ -5,7 +5,7 @@ import EvilIcons from 'react-native-vector-icons/EvilIcons';
 
 import CachedImage from './CachedImage';
 
-export default function CircleAvatar({size, uri, itemName}) {
+export default function CircleAvatar({size, uri, itemName, key}) {
   const {constants} = React.useContext(ThemeContext);
 
   if (uri === undefined) {
@@ -32,6 +32,7 @@ export default function CircleAvatar({size, uri, itemName}) {
         borderRadius: size / 2,
       }}
       uri={uri}
+      key={key}
       itemName={itemName}
     />
   );

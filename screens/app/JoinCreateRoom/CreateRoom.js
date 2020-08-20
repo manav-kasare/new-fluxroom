@@ -151,13 +151,13 @@ export default function CreateRoom({navigation}) {
             />
             <TouchableOpacity
               style={{
-                width: constants.width * 0.75,
+                width: constants.width * 0.8,
                 height: 45,
                 backgroundColor: constants.primary,
                 justifyContent: 'center',
                 alignItems: 'center',
                 borderRadius: 8,
-                marginTop: 5,
+                marginTop: 15,
               }}
               onPress={room.name.length > 3 ? handleCreateRoom : () => {}}>
               <Text

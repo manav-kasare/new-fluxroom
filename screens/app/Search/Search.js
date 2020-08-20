@@ -5,11 +5,13 @@ import {
   View,
   ActivityIndicator,
   RefreshControl,
+  Platform,
 } from 'react-native';
 import {Searchbar} from 'react-native-paper';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import _ from 'lodash';
 import base64 from 'react-native-base64';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import OptionsModal from './OptionsModal';
 import {getUsers} from '../../../backend/database/apiCalls';
@@ -78,6 +80,9 @@ export default function Search() {
           borderRadius: 10,
           elevation: 0,
         }}
+        clearIcon={() => (
+          <MaterialIcons name="cancel" size={16} color="black" />
+        )}
         placeholder="Search Username"
         placeholderTextColor="grey"
         value={query}
@@ -114,11 +119,6 @@ export default function Search() {
           data={filteredUsers}
           renderItem={({item}) => (
             <>
-              <OptionsModal
-                isModalVisible={isModalVisible}
-                setIsModalVisible={setIsModalVisible}
-                id={item.id}
-              />
               <RenderTile
                 username={item.username}
                 description={item.description}
@@ -126,6 +126,11 @@ export default function Search() {
                 onPressTile={() => {
                   setIsModalVisible(!isModalVisible);
                 }}
+              />
+              <OptionsModal
+                isModalVisible={isModalVisible}
+                setIsModalVisible={setIsModalVisible}
+                id={item.id}
               />
             </>
           )}

@@ -6,6 +6,7 @@ import {
   View,
   Animated,
   Image,
+  StatusBar,
 } from 'react-native';
 
 import constants from '../../shared/constants';
@@ -33,6 +34,7 @@ export default function Onboard({navigation}) {
         flexDirection: 'column',
         backgroundColor: 'white',
       }}>
+      <StatusBar backgroundColor="white" barStyle="dark-content" />
       <Animated.View
         style={{
           transform: [{translateX: position}],
@@ -49,7 +51,7 @@ export default function Onboard({navigation}) {
               marginTop: 30,
               color: '#4640C1',
               fontWeight: '800',
-              fontSize: 40,
+              fontSize: 30,
               letterSpacing: 2,
               fontFamily: 'Helvetica Neue',
               alignSelf: 'center',

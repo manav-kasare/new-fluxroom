@@ -1,7 +1,6 @@
 import React from 'react';
-import {TouchableOpacity} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
-import Feather from 'react-native-vector-icons/Feather';
+import {useFocusEffect} from '@react-navigation/native';
 
 import FullPhoto from '../screens/app/ChatRoom/FullPhoto';
 import ChatRooms from '../screens/app/ChatRoom/ChatRooms';
@@ -27,6 +26,7 @@ export default function ChatRoomNavigator({route, navigation}) {
   } else {
     navigation.setOptions({tabBarVisible: true});
   }
+
   React.useEffect(() => {
     getUserInfo(user.id).then((data) => {
       setUser(data);
@@ -34,7 +34,7 @@ export default function ChatRoomNavigator({route, navigation}) {
   }, []);
 
   return (
-    <ChatRoomStack.Navigator initialRouteName="ChatRooms">
+    <ChatRoomStack.Navigator initialRouteName="ChatRooms" mode="card">
       <ChatRoomStack.Screen
         name="ChatRooms"
         component={ChatRooms}
@@ -88,9 +88,13 @@ export default function ChatRoomNavigator({route, navigation}) {
       <ChatRoomStack.Screen
         name="JoinRoomWithLink"
         component={JoinRoomWithLink}
-        options={{
-          headerShown: false,
-        }}
+        options={({navigation}) => ({
+          title: 'Join Room',
+          headerStyle: constants.headerStyle,
+          headerTitleStyle: constants.headerText,
+          headerBackTitleVisible: false,
+          headerTintColor: constants.background2,
+        })}
       />
       <ChatRoomStack.Screen
         name="ShareRoomLink"

@@ -1,35 +1,26 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  View,
-  Text,
-  TouchableOpacity,
-  TextInput,
-  Linking,
-} from 'react-native';
-import {Appbar} from 'react-native-paper';
+import {SafeAreaView, View, Text, TouchableOpacity} from 'react-native';
 
 import {getChatroomInfo} from '../../../backend/database/apiCalls';
 import {ThemeContext} from '../../../shared/Context';
 
-export default function JoinRoomWithLink({navigation}) {
+export default function JoinRoomWithLink({route, navigation}) {
   const {constants} = React.useContext(ThemeContext);
+  const {id} = route.params;
   const [room, setRoom] = React.useState({
-    id: '',
-    name: '',
-    membersLength: null,
+    id: id,
+    name: 'Test Room',
+    membersLength: 10,
   });
 
   React.useEffect(() => {
-    const {queryParams} = Linking.parseInitialURLAsync();
-    setRoom({...room, id: queryParams.roomID});
-    getChatroomInfo(room.id, 'room').then((data) => {
-      setRoom({
-        ...room,
-        name: data.name,
-        membersLength: JSON.parse(data.members).members.length,
-      });
-    });
+    // getChatroomInfo(room.id, 'room').then((data) => {
+    //   setRoom({
+    //     ...room,
+    //     name: data.name,
+    //     membersLength: JSON.parse(data.members).members.length,
+    //   });
+    // });
   }, []);
 
   const handleJoinRoom = () => {
@@ -41,12 +32,6 @@ export default function JoinRoomWithLink({navigation}) {
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: constants.background1}}>
-      <Appbar.Header style={constants.header}>
-        <Appbar.BackAction
-          onPress={() => navigation.replace('ChatRoomNavigator')}
-        />
-        <Appbar.Content title="Join Room" titleStyle={constants.headerText} />
-      </Appbar.Header>
       <View
         style={{
           flex: 1,
@@ -69,7 +54,7 @@ export default function JoinRoomWithLink({navigation}) {
             fontWeight: '300',
             marginBottom: 10,
           }}>
-          {room.membersLength} members
+          {room.membersLength} speakers
         </Text>
         <TouchableOpacity
           style={{
@@ -81,16 +66,38 @@ export default function JoinRoomWithLink({navigation}) {
             justifyContent: 'center',
             borderRadius: 8,
             marginHorizontal: 10,
-            backgroundColor: constants.background2,
+            backgroundColor: constants.primary,
           }}
           onPress={handleJoinRoom}>
           <Text
             style={{
               fontFamily: 'Helvetica',
-              color: constants.text2,
+              color: 'white',
               fontSize: 15,
             }}>
             Join Room
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={{
+            width: constants.width * 0.65,
+            height: 40,
+            flexDirection: 'row',
+            marginTop: 25,
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderRadius: 8,
+            marginHorizontal: 10,
+            backgroundColor: constants.primary,
+          }}
+          onPress={() => navigation.replace('DrawerNavigator')}>
+          <Text
+            style={{
+              fontFamily: 'Helvetica',
+              color: 'white',
+              fontSize: 15,
+            }}>
+            Close
           </Text>
         </TouchableOpacity>
       </View>

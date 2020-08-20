@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import {ActivityIndicator, View} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -13,29 +12,7 @@ import {ThemeContext} from '../shared/Context';
 const BottomTabs = createBottomTabNavigator();
 
 export default function HomeNavigator() {
-  const [isLoading, setIsLoading] = useState(true);
   const {constants} = React.useContext(ThemeContext);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 1000);
-  }, []);
-
-  if (isLoading) {
-    return (
-      <ActivityIndicator
-        size="small"
-        color="white"
-        style={{
-          flex: 1,
-          backgroundColor: constants.background1,
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      />
-    );
-  }
 
   return (
     <BottomTabs.Navigator
@@ -59,7 +36,7 @@ export default function HomeNavigator() {
         component={ChatRoomNavigator}
         options={{
           tabBarIcon: ({color}) => (
-            <Entypo name="mic" size={24} color={color} />
+            <Entypo name="mic" size={20} color={color} />
           ),
         }}
       />
@@ -68,7 +45,7 @@ export default function HomeNavigator() {
         component={Search}
         options={{
           tabBarIcon: ({color}) => (
-            <AntDesign name="search1" size={24} color={color} />
+            <AntDesign name="search1" size={20} color={color} />
           ),
         }}
       />
@@ -77,7 +54,7 @@ export default function HomeNavigator() {
         component={ProfileNavigator}
         options={{
           tabBarIcon: ({color}) => (
-            <FontAwesome5 name="user-alt" size={20} color={color} />
+            <FontAwesome5 name="user-alt" size={18} color={color} />
           ),
         }}
       />

@@ -42,9 +42,7 @@ export default function EditProfile({navigation}) {
     navigation.goBack();
   };
 
-  return isLoading ? (
-    <Loading />
-  ) : (
+  return (
     <SafeAreaView style={{flex: 1, backgroundColor: constants.background1}}>
       <View
         style={{
@@ -67,10 +65,7 @@ export default function EditProfile({navigation}) {
       <View style={{marginTop: 5, marginLeft: constants.width * 0.1}}>
         <Text
           style={{
-            color:
-              description.length > 0 && description.length < 150
-                ? constants.text1
-                : 'red',
+            color: description.length < 150 ? constants.text1 : 'red',
             fontSize: 12,
             margin: 5,
           }}>
@@ -88,11 +83,7 @@ export default function EditProfile({navigation}) {
           width: constants.width * 0.8,
           backgroundColor: constants.primary,
         }}
-        onPress={
-          description.length > 0 && description.length < 150
-            ? handleSubmit
-            : () => {}
-        }>
+        onPress={description.length < 150 ? handleSubmit : () => {}}>
         <Text
           style={{
             color: 'white',

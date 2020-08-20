@@ -24,7 +24,25 @@ export default function RootNavigator() {
     prefixes: ['fluxroom://'],
     config: {
       screens: {
-        Home: '',
+        DrawerNavigator: {
+          path: 'app',
+          initialRouteName: 'DrawerNavigator',
+          screens: {
+            Home: {
+              path: 'home',
+              screens: {
+                ChatRoomNavigator: {
+                  path: 'rooms',
+                  initialRouteName: 'ChatRoomNavigator',
+                  screens: {
+                    JoinRoomWithLink: 'join/:id',
+                  },
+                },
+              },
+            },
+            Settings: 'settings',
+          },
+        },
       },
     },
   };
@@ -113,8 +131,8 @@ const AuthStackNavigator = () => {
           title: 'Log In',
           headerStyle: {
             backgroundColor: 'white',
-            borderWidth: 0,
-            borderColor: 'transparent',
+            borderBottomWidth: 0,
+            borderBottomColor: 'transparent',
             elevation: 0,
             shadowOpacity: 0,
           },

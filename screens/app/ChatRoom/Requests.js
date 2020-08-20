@@ -23,7 +23,7 @@ const wait = (timeout) => {
   });
 };
 
-export default function Requests() {
+const Requests = () => {
   const {constants} = React.useContext(ThemeContext);
   const {user} = useContext(UserDetailsContext);
   const [idList, setIdList] = useState([]);
@@ -37,10 +37,10 @@ export default function Requests() {
   }, []);
 
   useEffect(() => {
-    getUserInfo(user.id).then((data) => {
-      const list = JSON.parse(data.requests).requests;
-      setIdList(list);
-    });
+    // getUserInfo(user.id).then((data) => {
+    //   const list = JSON.parse(data.requests).requests;
+    //   setIdList(list);
+    // });
   }, [onpress, refreshing]);
 
   const handleAccept = (ID) => {
@@ -117,7 +117,7 @@ export default function Requests() {
       />
     </SafeAreaView>
   );
-}
+};
 
 function RequestUserTile({user}) {
   return (
@@ -131,3 +131,5 @@ function RequestUserTile({user}) {
     </View>
   );
 }
+
+export default React.memo(Requests);

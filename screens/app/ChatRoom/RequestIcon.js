@@ -9,11 +9,11 @@ export default function RequestIcon({navigation, id}) {
   const {constants} = React.useContext(ThemeContext);
   const [requests, setRequests] = useState(0);
 
-  useEffect(() => {
-    getUserInfo(id).then((data) => {
-      setRequests(JSON.parse(data.requests).requests.length);
-    });
-  }, []);
+  // useEffect(() => {
+  //   getUserInfo(id).then((data) => {
+  //     setRequests(JSON.parse(data.requests).requests.length);
+  //   });
+  // }, []);
 
   return (
     <View

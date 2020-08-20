@@ -15,10 +15,6 @@ import {
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scrollview';
-
-import {Formik} from 'formik';
-import * as yup from 'yup';
 
 import constants from '../../shared/constants';
 import CustomToast from '../../shared/CustomToast';
@@ -29,27 +25,13 @@ import {
   checkIfEmailIsRegistered,
 } from '../../backend/database/apiCalls';
 
-const validationSchema = yup.object({
-  email: yup
-    .string()
-    .required()
-    .test(
-      'not valid ',
-      'Please enter a valid email address.',
-      // Instagram validation schema using RegEx
-      (val) =>
-        /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-          val,
-        ),
-    ),
-  password: yup.string().min(6).required(),
-});
-
 export default function SignUp({navigation}) {
   const [isLoading, setIsLoading] = useState(false);
-  const [onFocus, setOnFocus] = useState({email: false, password: false});
   const [revealPassword, setRevealPassword] = useState(false);
   const position = useState(new Animated.Value(constants.width))[0];
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
+  const [onFocusPassword, setOnFocusPassword] = useState(false);
 
   useEffect(() => {
     Animated.spring(position, {
@@ -59,9 +41,23 @@ export default function SignUp({navigation}) {
     }).start();
   }, []);
 
-  const handleRegister = (formEmail, formPassword) => {
+  const isEmailValid = (q) => {
+    return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+      q,
+    );
+  };
+
+  const isPasswordValid = (q) => {
+    return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&'])[^ ]{8,}$/.test(q);
+  };
+
+  const areCredentialsValid = () => {
+    return isEmailValid(email) && isPasswordValid(password);
+  };
+
+  const handleRegister = (email, password) => {
     setIsLoading(true);
-    checkIfEmailIsRegistered(formEmail).then((responseText) => {
+    checkIfEmailIsRegistered(email).then((responseText) => {
       Keyboard.dismiss();
       if (responseText == 'exists') {
         setIsLoading(false);
@@ -70,8 +66,8 @@ export default function SignUp({navigation}) {
         const id = randomID();
         registerUser({
           id: id,
-          email: formEmail,
-          password: formPassword,
+          email: email,
+          password: password,
         }).then(({data}) => {
           console.log('DATA', data);
           setIsLoading(false);
@@ -79,7 +75,7 @@ export default function SignUp({navigation}) {
             CustomToast('An Error Occured');
           } else {
             navigation.navigate('EmailVerification', {
-              email: formEmail,
+              email: email,
               id: id,
             });
             CustomToast('Registered Successfully !');
@@ -90,13 +86,13 @@ export default function SignUp({navigation}) {
   };
 
   return (
-    <TouchableWithoutFeedback
-      onPress={() => {
-        setOnFocus({email: false, password: false});
-        Keyboard.dismiss();
-      }}>
-      <KeyboardAwareScrollView
-        style={{flex: 1, backgroundColor: 'transparent'}}>
+    <KeyboardAvoidingView
+      style={{flex: 1, backgroundColor: 'white'}}
+      behavior={Platform.OS == 'ios' ? 'padding' : 'height'}>
+      <TouchableWithoutFeedback
+        onPress={() => {
+          Keyboard.dismiss();
+        }}>
         <SafeAreaView
           style={{
             flex: 1,
@@ -107,7 +103,7 @@ export default function SignUp({navigation}) {
           <ImageBackground
             style={{
               width: constants.width,
-              marginTop: 50,
+              marginTop: 25,
               height: constants.height * 0.2,
             }}
             resizeMode="contain"
@@ -136,132 +132,90 @@ export default function SignUp({navigation}) {
                   marginTop: 20,
                   transform: [{translateX: position}],
                 }}>
-                <Formik
-                  initialValues={{
-                    email: '',
-                    password: '',
-                  }}
-                  onSubmit={(values, actions) => {
-                    handleRegister(values.email, values.password);
-                  }}
-                  validationSchema={validationSchema}>
-                  {(formikProps) => (
-                    <Animated.View>
-                      <Animated.View style={globalStyles.input}>
-                        <MaterialCommunityIcons
-                          name="email"
-                          size={24}
-                          color={
-                            onFocus.email
-                              ? formikProps.errors.email === undefined
-                                ? 'dodgerblue'
-                                : 'crimson'
-                              : constants.primary
-                          }
-                        />
-                        <TextInput
-                          keyboardType="email-address"
-                          textContentType="emailAddress"
-                          onFocus={() =>
-                            setOnFocus({email: true, password: false})
-                          }
-                          style={globalStyles.textInput}
-                          placeholder="Email Address"
-                          onChangeText={formikProps.handleChange('email')}
-                          value={formikProps.values.email}
-                        />
-                      </Animated.View>
-                      <Animated.View style={globalStyles.input}>
-                        <Entypo
-                          name="key"
-                          size={22}
-                          color={
-                            onFocus.password
-                              ? formikProps.errors.password === undefined
-                                ? 'dodgerblue'
-                                : 'crimson'
-                              : constants.primary
-                          }
-                        />
-                        <TextInput
-                          textContentType="password"
-                          onFocus={() =>
-                            setOnFocus({email: false, password: true})
-                          }
-                          secureTextEntry={revealPassword ? false : true}
-                          style={globalStyles.textInput}
-                          placeholder="Password"
-                          onChangeText={formikProps.handleChange('password')}
-                          onBlur={formikProps.handleBlur('password')}
-                          value={formikProps.values.password}
-                        />
-                        <Animated.View
-                          style={{
-                            marginRight: 10,
-                            transform: [{translateX: position}],
-                          }}>
-                          {onFocus.password ? (
-                            revealPassword ? (
-                              <TouchableOpacity
-                                onPress={() =>
-                                  setRevealPassword(!revealPassword)
-                                }>
-                                <Entypo
-                                  name="eye"
-                                  size={18}
-                                  color={constants.primary}
-                                />
-                              </TouchableOpacity>
-                            ) : (
-                              <TouchableOpacity
-                                onPress={() =>
-                                  setRevealPassword(!revealPassword)
-                                }>
-                                <Entypo
-                                  name="eye-with-line"
-                                  size={18}
-                                  color={constants.primary}
-                                />
-                              </TouchableOpacity>
-                            )
-                          ) : (
-                            <></>
-                          )}
-                        </Animated.View>
-                      </Animated.View>
-                      <Text style={globalStyles.error}>
-                        {formikProps.errors.password}
-                      </Text>
-
-                      {isLoading ? (
-                        <View
-                          style={{
-                            height: 50,
-                            width: constants.width * 0.8,
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            marginBottom: 25,
-                          }}>
-                          <ActivityIndicator
-                            color={constants.primary}
-                            size="small"
+                <Animated.View>
+                  <Animated.View style={globalStyles.input}>
+                    <MaterialCommunityIcons
+                      name="email"
+                      size={24}
+                      color={isEmailValid(email) ? '#0d0c0a' : 'crimson'}
+                    />
+                    <TextInput
+                      autoCapitalize="none"
+                      keyboardType="email-address"
+                      textContentType="emailAddress"
+                      style={globalStyles.textInput}
+                      placeholder="Email Address"
+                      onChangeText={(text) => setEmail(text)}
+                      value={email}
+                      clearButtonMode="while-editing"
+                    />
+                  </Animated.View>
+                  <Animated.View style={globalStyles.input}>
+                    <Entypo
+                      name="key"
+                      size={22}
+                      color={isPasswordValid(password) ? '#0d0c0a' : 'crimson'}
+                    />
+                    <TextInput
+                      autoCapitalize="none"
+                      textContentType="password"
+                      secureTextEntry={revealPassword ? false : true}
+                      style={globalStyles.textInput}
+                      placeholder="Password"
+                      onChangeText={(text) => setPassword(text)}
+                      value={password}
+                      onFocus={() => setOnFocusPassword(true)}
+                      onBlur={() => setOnFocusPassword(false)}
+                      clearButtonMode="while-editing"
+                    />
+                    <TouchableOpacity
+                      style={{
+                        width: 25,
+                        height: 25,
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}
+                      onPress={() => setRevealPassword(!revealPassword)}>
+                      {onFocusPassword ? (
+                        revealPassword ? (
+                          <Entypo name="eye" size={18} color="#0d0c0a" />
+                        ) : (
+                          <Entypo
+                            name="eye-with-line"
+                            size={18}
+                            color="#0d0c0a"
                           />
-                        </View>
+                        )
                       ) : (
-                        <TouchableOpacity
-                          style={globalStyles.button}
-                          onPress={formikProps.handleSubmit}>
-                          <Text style={globalStyles.buttonText}>Sign Up</Text>
-                        </TouchableOpacity>
+                        <></>
                       )}
-                    </Animated.View>
+                    </TouchableOpacity>
+                  </Animated.View>
+
+                  {isLoading ? (
+                    <View
+                      style={{
+                        height: 50,
+                        width: constants.width * 0.8,
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        marginBottom: 25,
+                      }}>
+                      <ActivityIndicator color="#0d0c0a" size="small" />
+                    </View>
+                  ) : (
+                    <TouchableOpacity
+                      style={globalStyles.button}
+                      onPress={areCredentialsValid ? handleRegister : () => {}}>
+                      <Text style={globalStyles.buttonText}>Sign Up</Text>
+                    </TouchableOpacity>
                   )}
-                </Formik>
+                </Animated.View>
               </Animated.View>
             </Animated.View>
           </Animated.View>
         </SafeAreaView>
-      </KeyboardAwareScrollView>
-    </TouchableWithoutFeedback>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 }

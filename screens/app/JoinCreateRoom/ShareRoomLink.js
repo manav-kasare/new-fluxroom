@@ -17,7 +17,7 @@ export default function ShareRoomLink({route, navigation}) {
   const [url, setUrl] = React.useState(null);
 
   React.useEffect(() => {
-    const url = `fluxroom://joinRoom/${roomID}`;
+    setUrl(`fluxroom://app/home/rooms/join/${roomID}`);
   }, []);
 
   const shareLink = () => {
@@ -52,7 +52,7 @@ export default function ShareRoomLink({route, navigation}) {
   const handleContinue = () => {
     navigation.replace('ChatRoomNavigator', {
       screen: 'Room',
-      params: {roomID: roomID, isNew: true},
+      params: {roomID: roomID},
     });
   };
 

@@ -1,28 +1,17 @@
 import React from 'react';
-import {Image} from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage';
-import {useFocusEffect} from '@react-navigation/native';
+import FastImage from 'react-native-fast-image';
 
-const CachedImage = React.memo(({uri, style, itemName}) => {
-  const [soure, setSource] = React.useState(null);
-
-  useFocusEffect(() => {
-    handleStorage();
-  }, []);
-
-  const handleStorage = async () => {
-    AsyncStorage.getItem(itemName).then((result) => {
-      if (result === null || result !== uri) {
-        AsyncStorage.setItem(itemName, uri).then(() => {
-          setSource(uri);
-        });
-      } else {
-        setSource(result);
-      }
-    });
-  };
-
-  return <Image source={{uri: soure}} style={style} />;
+const CachedImage = React.memo(({uri, style, key}) => {
+  return (
+    <FastImage
+      source={{
+        uri: uri,
+        headers: {Authorization: key},
+        priority: FastImage.priority.normal,
+      }}
+      style={style}
+    />
+  );
 });
 
 export default CachedImage;

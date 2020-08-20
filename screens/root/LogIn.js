@@ -13,6 +13,7 @@ import {
   KeyboardAvoidingView,
   Animated,
   Platform,
+  TouchableHighlight,
   ImageBackground,
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -111,15 +112,14 @@ export default function LogIn({navigation}) {
   };
 
   return (
-    <TouchableWithoutFeedback
-      onPress={() => {
-        setOnFocus({usernameOrEmail: false, password: false});
-        Keyboard.dismiss();
-      }}>
-      <KeyboardAwareScrollView
-        style={{flex: 1, backgroundColor: 'transparent'}}
-        // behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
-      >
+    <KeyboardAvoidingView
+      style={{flex: 1, backgroundColor: 'white'}}
+      behavior={Platform.OS == 'ios' ? 'padding' : 'height'}>
+      <TouchableWithoutFeedback
+        onPress={() => {
+          setOnFocus({usernameOrEmail: false, password: false});
+          Keyboard.dismiss();
+        }}>
         <SafeAreaView
           style={{
             flex: 1,
@@ -131,12 +131,11 @@ export default function LogIn({navigation}) {
             style={{
               width: constants.width,
               height: constants.height * 0.2,
-              marginTop: 50,
+              marginTop: 25,
             }}
             resizeMode="contain"
-            source={require('/Users/manav/projects/fluxroom/assets/receipt.png')}>
-            <></>
-          </ImageBackground>
+            source={require('/Users/manav/projects/fluxroom/assets/receipt.png')}
+          />
           <Animated.View>
             <Animated.View
               style={{
@@ -177,6 +176,7 @@ export default function LogIn({navigation}) {
                       onChangeText={(text) => setUsernameOrEmail(text)}
                       value={usernameOrEmail}
                       onSubmitEditing={handleLogIn}
+                      clearButtonMode="while-editing"
                     />
                   </Animated.View>
                   <Animated.View style={globalStyles.input}>
@@ -198,28 +198,30 @@ export default function LogIn({navigation}) {
                       onChangeText={(text) => setFormPassword(text)}
                       value={formPassword}
                       onSubmitEditing={handleLogIn}
+                      clearButtonMode="while-editing"
                     />
-                    <View style={{marginRight: 10}}>
+                    <TouchableOpacity
+                      style={{
+                        width: 25,
+                        height: 25,
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}
+                      onPress={() => setRevealPassword(!revealPassword)}>
                       {onFocus.password ? (
                         revealPassword ? (
-                          <TouchableOpacity
-                            onPress={() => setRevealPassword(!revealPassword)}>
-                            <Entypo name="eye" size={20} color="black" />
-                          </TouchableOpacity>
+                          <Entypo name="eye" size={20} color="black" />
                         ) : (
-                          <TouchableOpacity
-                            onPress={() => setRevealPassword(!revealPassword)}>
-                            <Entypo
-                              name="eye-with-line"
-                              size={20}
-                              color="black"
-                            />
-                          </TouchableOpacity>
+                          <Entypo
+                            name="eye-with-line"
+                            size={20}
+                            color="black"
+                          />
                         )
                       ) : (
                         <></>
                       )}
-                    </View>
+                    </TouchableOpacity>
                   </Animated.View>
                   {isLoading ? (
                     <View style={{height: 50, marginVertical: 10}}>
@@ -245,7 +247,6 @@ export default function LogIn({navigation}) {
                 alignItems: 'center',
                 justifyContent: 'center',
                 borderRadius: 10,
-                marginBottom: 25,
                 marginVertical: 20,
               }}
               onPress={() => navigation.navigate('ForgotPassword')}>
@@ -253,7 +254,7 @@ export default function LogIn({navigation}) {
             </TouchableOpacity>
           </Animated.View>
         </SafeAreaView>
-      </KeyboardAwareScrollView>
-    </TouchableWithoutFeedback>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 }

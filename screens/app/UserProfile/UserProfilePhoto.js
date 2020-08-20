@@ -1,6 +1,5 @@
 import React, {useContext, useState, useEffect} from 'react';
 import {TouchableOpacity, View, Image} from 'react-native';
-import Feather from 'react-native-vector-icons/Feather';
 import ImagePicker from 'react-native-image-picker';
 import base64 from 'react-native-base64';
 
@@ -57,7 +56,12 @@ export default function UserProfilePhoto() {
         justifyContent: 'center',
       }}
       onPress={pickImage}>
-      <CircleAvatar size={80} uri={profilePhoto} itemName="profilePhoto" />
+      <CircleAvatar
+        size={80}
+        uri={profilePhoto}
+        itemName="profilePhoto"
+        key={user.id}
+      />
     </TouchableOpacity>
   );
 }

@@ -10,6 +10,7 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
+import {useFocusEffect} from '@react-navigation/native';
 
 import globalStyles from '../../../shared/GlobalStyles';
 import {
@@ -52,10 +53,47 @@ export default function ChatRooms({navigation}) {
 
   useEffect(() => {
     handleOnFocusRefresh();
-    getUserChatRooms(user.id).then((roomList) => {
-      setChatRoomList(roomList);
-    });
+    // getUserChatRooms(user.id).then((roomList) => {
+    //   setChatRoomList(roomList);
+    // });
   }, [refreshing]);
+
+  const _renderItem = ({item}) => (
+    <RenderTile id={item} navigation={navigation} />
+  );
+
+  const _emptyItem = () => (
+    <View
+      style={{
+        alignItems: 'center',
+        marginTop: 100,
+        flex: 1,
+        height: constants.height,
+      }}>
+      <View style={{marginVertical: 50, alignItems: 'center'}}>
+        <Image
+          style={{
+            width: constants.width,
+            height: constants.height * 0.2,
+            marginVertical: 25,
+          }}
+          resizeMode="contain"
+          source={require('/Users/manav/projects/fluxroom/assets/tree_swing.png')}
+        />
+        <Text
+          style={{
+            color: darkTheme ? 'white' : 'grey',
+            fontSize: 20,
+            fontWeight: '300',
+          }}>
+          No Rooms :(
+        </Text>
+      </View>
+      <TouchableOpacity style={globalStyles.button}>
+        <Text style={globalStyles.buttonText}>Find a Room</Text>
+      </TouchableOpacity>
+    </View>
+  );
 
   return (
     <SafeAreaView
@@ -85,41 +123,8 @@ export default function ChatRooms({navigation}) {
           style={{width: constants.width}}
           data={list}
           keyExtractor={(item, index) => index.toString()}
-          ListEmptyComponent={() => (
-            <View
-              style={{
-                alignItems: 'center',
-                marginTop: 100,
-                flex: 1,
-                height: constants.height,
-              }}>
-              <View style={{marginVertical: 50, alignItems: 'center'}}>
-                <Image
-                  style={{
-                    width: constants.width,
-                    height: constants.height * 0.2,
-                    marginVertical: 25,
-                  }}
-                  resizeMode="contain"
-                  source={require('/Users/manav/projects/fluxroom/assets/tree_swing.png')}
-                />
-                <Text
-                  style={{
-                    color: darkTheme ? 'white' : 'grey',
-                    fontSize: 20,
-                    fontWeight: '300',
-                  }}>
-                  No Rooms :(
-                </Text>
-              </View>
-              <TouchableOpacity style={globalStyles.button}>
-                <Text style={globalStyles.buttonText}>Find a Room</Text>
-              </TouchableOpacity>
-            </View>
-          )}
-          renderItem={({item}) => (
-            <RenderTile id={item} navigation={navigation} />
-          )}
+          ListEmptyComponent={_emptyItem}
+          renderItem={_renderItem}
           refreshControl={
             <RefreshControl
               refreshing={refreshing}
@@ -162,23 +167,22 @@ const RenderTile = ({id, navigation}) => {
   //   });
   // }, []);
 
+  const handleOnPressTile = () => {
+    navigation.navigate('Room', {room: room});
+  };
+  const handleOnPressAvatar = () => {
+    navigation.navigate('FullPhoto', {uri: room.profilePhoto});
+  };
+
   return (
     <Tile
       uri={room.profilePhoto}
       heading={room.name}
       subHeading={room.description}
-      onPressTile={() =>
-        navigation.navigate('ChatRoomNavigator', {
-          screen: 'Room',
-          params: {
-            room: room,
-          },
-        })
-      }
-      onPressAvatar={() =>
-        navigation.navigate('FullPhoto', {uri: room.profilePhoto})
-      }
+      onPressTile={handleOnPressTile}
+      onPressAvatar={handleOnPressAvatar}
       itemName="tileAvatar"
+      onlineSpeakers="5"
     />
   );
 };

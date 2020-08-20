@@ -34,7 +34,7 @@ export default function DrawerNavigator() {
         }}
       />
       <Drawer.Screen
-        name="SettingsNavigator"
+        name="Settings"
         component={SettingsNavigator}
         options={{
           drawerLabel: 'Settings',

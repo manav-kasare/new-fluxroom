@@ -6426,6 +6426,16 @@ react-is@^16.12.0, react-is@^16.13.0, react-is@^16.7.0, react-is@^16.8.1, react-
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
+react-native-base64@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-base64/-/react-native-base64-0.1.0.tgz#8e0c9df9d7d455e32921279c4378fc90557ed13b"
+  integrity sha512-in7EtB6eWn0KO5n4qknyqtbLHiiFGSQ7X7m3bYnoHafhARTaomxq+Rpuyhv3xj6WEP18Z7gW0EaujiSyMzQQOA==
+
+react-native-fast-image@^8.3.2:
+  version "8.3.2"
+  resolved "https://registry.yarnpkg.com/react-native-fast-image/-/react-native-fast-image-8.3.2.tgz#e9db271b70b9634b7be054760914d80954f9898c"
+  integrity sha512-AJ0b4BEswRwa0bh4SibYUtXszEiaO88Lf4CZ1ib+t5ZfkAgsMk9Liv3L0LYnDblMJmSeGTr1+2ViIM8F2vamjg==
+
 react-native-gesture-handler@~1.6.0:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.6.1.tgz#678e2dce250ed66e93af409759be22cd6375dd17"
@@ -6453,6 +6463,11 @@ react-native-keyboard-aware-scroll-view@^0.9.1:
   dependencies:
     prop-types "^15.6.2"
     react-native-iphone-x-helper "^1.0.3"
+
+react-native-keyboard-aware-scrollview@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-keyboard-aware-scrollview/-/react-native-keyboard-aware-scrollview-2.1.0.tgz#418a6b868f4cf2f9d28e77914f11ecbf8ae8e556"
+  integrity sha512-XfWozWFPhdecfxN+wuqERX3mCGDrAim5siC6TWg3Qw7wK/zlwIwe1UIsHDNOQCzf9oIh0SkZXvoOFsMrnyIVmQ==
 
 react-native-paper@^3.10.1:
   version "3.11.0"

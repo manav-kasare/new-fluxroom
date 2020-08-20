@@ -10,16 +10,14 @@ import {
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Feather from 'react-native-vector-icons/Feather';
-import AntDesign from 'react-native-vector-icons/AntDesign';
+import {useFocusEffect} from '@react-navigation/native';
 
-import TileAvatar from './TileAvatar';
 import Host from './Host';
 import MemberYou from './MemberYou';
 import Member from './Member';
 
 import {getUserInfo, getChatroomInfo} from '../../../backend/database/apiCalls';
 import {UserDetailsContext, ThemeContext} from '../../../shared/Context';
-import PhotoAvatar from './PhotoAvatar';
 import CircleAvatar from '../../../shared/CircleAvatar';
 import CachedImage from '../../../shared/CachedImage';
 
@@ -47,7 +45,7 @@ for (var i = 0; i < 15; i++) {
   test.push({key: i, name: `user ${i}`});
 }
 
-export default function Room({route, navigation}) {
+const Room = ({route, navigation}) => {
   const {room} = route.params;
   const {constants} = React.useContext(ThemeContext);
   const {user} = useContext(UserDetailsContext);
@@ -58,27 +56,25 @@ export default function Room({route, navigation}) {
   const [someoneRaisingHand, setSomeoneRaisingHand] = React.useState(false);
 
   // get members info
-  useEffect(() => {
-    handleFetch(room.host);
-    room.members.map((member) => handleFetch(member));
-  }, []);
-
-  const handleFetch = (id) => {
-    getUserInfo(id).then((data) => {
-      dispatch({
-        type: 'append',
-        id: data.id,
-        username: data.username,
-        profilePhoto: data.profilePhoto,
-      });
-    });
-  };
+  // useEffect(() => {
+  //   handleFetch(room.host);
+  //   room.members.map((member) => handleFetch(member));
+  // }, []);
+  // const handleFetch = (id) => {
+  //   getUserInfo(id).then((data) => {
+  //     dispatch({
+  //       type: 'append',
+  //       id: data.id,
+  //       username: data.username,
+  //       profilePhoto: data.profilePhoto,
+  //     });
+  //   });
+  // };
 
   return (
     <SafeAreaView
       style={{
-        height: constants.height,
-        width: constants.width,
+        flex: 1,
         backgroundColor: constants.background1,
       }}>
       <View
@@ -149,7 +145,6 @@ export default function Room({route, navigation}) {
           justifyContent: 'space-evenly',
           width: constants.width,
         }}
-        style={{flex: 1, paddingTop: 10}}
         numColumns={3}
         keyExtractor={(item, index) => index.toString()}
         renderItem={({item, index}) => {
@@ -199,33 +194,13 @@ export default function Room({route, navigation}) {
           );
         }}
       />
-      {someoneRaisingHand ? (
-        <TouchableOpacity
-          style={{
-            width: 25,
-            height: 25,
-            borderRadius: 25 / 2,
-            backgroundColor: constants.primary,
-            alignItems: 'center',
-            justifyContent: 'center',
-            alignSelf: 'flex-end',
-            position: 'relative',
-            bottom: 20,
-            right: 20,
-          }}>
-          <AntDesign name="caretdown" size={15} color="white" />
-        </TouchableOpacity>
-      ) : (
-        <></>
-      )}
       <View
         style={{
           width: constants.width,
-          height: 50,
           alignItems: 'center',
           flexDirection: 'row',
-          paddingTop: 10,
           justifyContent: 'space-between',
+          paddingVertical: 10,
         }}>
         <View style={{flexDirection: 'row'}}>
           <TouchableOpacity
@@ -268,13 +243,14 @@ export default function Room({route, navigation}) {
             backgroundColor: constants.primary,
             alignItems: 'center',
             justifyContent: 'center',
-          }}>
+          }}
+          onPress={() => {}}>
           <Text style={{color: 'white'}}>Leave Room</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
-}
+};
 
 const RoomAvatar = ({size, uri, isHost}) => {
   const {constants} = React.useContext(ThemeContext);
@@ -351,3 +327,5 @@ const RoomAvatar = ({size, uri, isHost}) => {
     </View>
   );
 };
+
+export default React.memo(Room);

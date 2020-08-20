@@ -5,14 +5,22 @@ import CircleAvatar from './CircleAvatar';
 import {ThemeContext} from './Context';
 
 const Tile = React.memo(
-  ({uri, onPressAvatar, onPressTile, itemName, heading, subHeading}) => {
+  ({
+    uri,
+    onPressAvatar,
+    onPressTile,
+    itemName,
+    heading,
+    subHeading,
+    onlineSpeakers,
+  }) => {
     const {constants} = React.useContext(ThemeContext);
 
     return (
       <TouchableOpacity onPress={onPressTile}>
         <View
           style={{
-            width: constants.width,
+            flex: 1,
             height: constants.height * 0.1,
             marginLeft: 25,
             alignItems: 'center',
@@ -43,6 +51,30 @@ const Tile = React.memo(
               {subHeading}
             </Text>
           </View>
+          {onlineSpeakers ? (
+            <View
+              style={{
+                position: 'absolute',
+                right: 25,
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}>
+              <View
+                style={{
+                  width: 5,
+                  height: 5,
+                  borderRadius: 2.5,
+                  backgroundColor: 'green',
+                  marginHorizontal: 5,
+                }}
+              />
+              <Text style={{color: 'green', fontSize: 12}}>
+                {onlineSpeakers} Speakers Online
+              </Text>
+            </View>
+          ) : (
+            <></>
+          )}
         </View>
       </TouchableOpacity>
     );
