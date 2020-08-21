@@ -97,14 +97,6 @@ export default function ChatRoomNavigator({route, navigation}) {
         })}
       />
       <ChatRoomStack.Screen
-        name="ShareRoomLink"
-        component={ShareRoomLink}
-        options={{
-          headerShown: false,
-        }}
-      />
-
-      <ChatRoomStack.Screen
         name="PersonalChat"
         component={PersonalChat}
         options={{headerShown: false}}

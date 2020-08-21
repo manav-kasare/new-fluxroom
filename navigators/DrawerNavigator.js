@@ -10,6 +10,7 @@ import JoinRoom from '../screens/app/JoinCreateRoom/JoinRoom';
 import CreateRoom from '../screens/app/JoinCreateRoom/CreateRoom';
 import SettingsNavigator from './SettingsNavigator';
 import HomeNavigator from './HomeNavigator';
+import CreateRoomNavigator from './CreateRoomNavigator';
 import {ThemeContext} from '../shared/Context';
 
 const Drawer = createDrawerNavigator();
@@ -64,8 +65,8 @@ export default function DrawerNavigator() {
         }}
       />
       <Drawer.Screen
-        name="CreateRoom"
-        component={CreateRoom}
+        name="CreateRoomNavigator"
+        component={CreateRoomNavigator}
         options={{
           drawerLabel: 'Create Room',
           drawerIcon: ({color, size}) => (

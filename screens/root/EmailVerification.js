@@ -1,11 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {
-  SafeAreaView,
-  View,
-  TouchableOpacity,
-  Text,
-  Animated,
-} from 'react-native';
+import {SafeAreaView, View, TouchableOpacity, Text} from 'react-native';
 
 import CustomToast from '../../shared/CustomToast';
 import {getUserInfo, emailConfirmation} from '../../backend/database/apiCalls';
@@ -15,15 +9,6 @@ export default function EmailVerification({route, navigation}) {
   const {email, id} = route.params;
   const {constants} = React.useContext(ThemeContext);
   const [isVerified, setIsVerified] = useState(false);
-  const position = useState(new Animated.Value(constants.width))[0];
-
-  useEffect(() => {
-    Animated.spring(position, {
-      bounciness: 5,
-      toValue: 0,
-      useNativeDriver: true,
-    }).start();
-  }, []);
 
   const handleCheck = () => {
     getUserInfo(id).then((data) => {
@@ -47,13 +32,12 @@ export default function EmailVerification({route, navigation}) {
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
-      <Animated.View
+      <View
         style={{
           width: constants.width * 0.9,
           backgroundColor: 'white',
           borderRadius: 10,
           paddingVertical: 50,
-          transform: [{translateX: position}],
           alignSelf: 'center',
           marginTop: 100,
           paddingHorizontal: 20,
@@ -142,7 +126,7 @@ export default function EmailVerification({route, navigation}) {
             </Text>
           </TouchableOpacity>
         </View>
-      </Animated.View>
+      </View>
     </SafeAreaView>
   );
 }

@@ -3,7 +3,7 @@ import {Dimensions} from 'react-native';
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
 const IP = '172.20.10.14';
-// const IP = '192.168.1.23';
+//const IP = '192.168.1.23';
 // const IP = "192.168.43.89";
 
 export default {

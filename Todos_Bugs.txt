@@ -7,7 +7,7 @@ Todos:
     DONE 7. Async Storage(Login, Dark Theme)
     8. Push Notifications
     9. Recent Searches
-    10. Google, Phone Auth
+    10. Google, Facebook, Phone Auth
 
 Bugs: 
     FIXED (refresh control) 1. Can't re render ChatRooms with navigation.goBack().(possible with navigation.navigate())
@@ -17,3 +17,4 @@ Bugs:
     5. FIXED. Modal in Search pops up too slow.
     6. FIXED. Cant't hide tab bar in ChatRoomNavigator after changing the navigation flow.
     7. FIXED. Error on Search query.
+    8. Can't send id in room object from Create Room to Share Room link

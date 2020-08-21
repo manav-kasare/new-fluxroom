@@ -4,7 +4,6 @@ import {
   SafeAreaView,
   TouchableOpacity,
   View,
-  Animated,
   Image,
   StatusBar,
 } from 'react-native';
@@ -17,16 +16,6 @@ import Facebook from './Facebook';
 import Phone from './Phone';
 
 export default function Onboard({navigation}) {
-  const position = useState(new Animated.Value(constants.width))[0];
-
-  useEffect(() => {
-    Animated.spring(position, {
-      bounciness: 5,
-      toValue: 0,
-      useNativeDriver: true,
-    }).start();
-  }, []);
-
   return (
     <SafeAreaView
       style={{
@@ -35,9 +24,8 @@ export default function Onboard({navigation}) {
         backgroundColor: 'white',
       }}>
       <StatusBar backgroundColor="white" barStyle="dark-content" />
-      <Animated.View
+      <View
         style={{
-          transform: [{translateX: position}],
           marginTop: 50,
         }}>
         <View style={{flexDirection: 'column', alignSelf: 'center'}}>
@@ -46,7 +34,7 @@ export default function Onboard({navigation}) {
             resizeMode="cover"
             source={require('/Users/manav/projects/fluxroom/assets/logo.png')}
           />
-          <Animated.Text
+          <Text
             style={{
               marginTop: 30,
               color: '#4640C1',
@@ -55,36 +43,33 @@ export default function Onboard({navigation}) {
               letterSpacing: 2,
               fontFamily: 'Helvetica Neue',
               alignSelf: 'center',
-              transform: [{translateX: position}],
             }}>
             FLUXROOM
-          </Animated.Text>
+          </Text>
         </View>
-      </Animated.View>
+      </View>
       <View style={{position: 'absolute', bottom: 10, alignSelf: 'center'}}>
-        <Animated.View
+        <View
           style={{
             alignSelf: 'center',
-            transform: [{translateX: position}],
           }}>
-          <Animated.View style={{transform: [{translateX: position}]}}>
+          <View>
             <TouchableOpacity
               style={globalStyles.screenButton}
               onPress={() => navigation.navigate('SignUp')}>
               <Text style={globalStyles.buttonText}>Register With Email</Text>
             </TouchableOpacity>
-          </Animated.View>
-          <Animated.View style={{transform: [{translateX: position}]}}>
+          </View>
+          <View>
             <TouchableOpacity
               style={globalStyles.screenButton}
               onPress={() => navigation.navigate('LogIn')}>
               <Text style={globalStyles.buttonText}>Log In</Text>
             </TouchableOpacity>
-          </Animated.View>
-        </Animated.View>
-        <Animated.View
+          </View>
+        </View>
+        <View
           style={{
-            transform: [{translateX: position}],
             width: constants.width * 0.9,
             justifyContent: 'space-evenly',
             shadowColor: 'grey',
@@ -98,7 +83,7 @@ export default function Onboard({navigation}) {
           <Google />
           <Facebook />
           <Phone />
-        </Animated.View>
+        </View>
       </View>
     </SafeAreaView>
   );

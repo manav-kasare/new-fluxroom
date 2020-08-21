@@ -32,27 +32,27 @@ export default function HostedRooms({navigation}) {
   const {constants} = React.useContext(ThemeContext);
   const [{hostedRooms}, dispatch] = useReducer(reducer, {hostedRooms: []});
 
-  useEffect(() => {
-    getUserInfo(user.id).then((data) => {
-      const hostArray = JSON.parse(data.chatrooms).host;
-      hostArray.map((id) => {
-        handleChatroomInfo(id);
-      });
-    });
+  // useEffect(() => {
+  //   getUserInfo(user.id).then((data) => {
+  //     const hostArray = JSON.parse(data.chatrooms).host;
+  //     hostArray.map((id) => {
+  //       handleChatroomInfo(id);
+  //     });
+  //   });
 
-    return () => dispatch({type: 'clear'});
-  }, []);
+  //   return () => dispatch({type: 'clear'});
+  // }, []);
 
-  const handleChatroomInfo = (id) => {
-    getChatroomInfo(id, 'room').then((data) => {
-      dispatch({
-        type: 'append',
-        id: data.id,
-        name: data.name,
-        profilePhoto: data.profilePhoto,
-      });
-    });
-  };
+  // const handleChatroomInfo = (id) => {
+  //   getChatroomInfo(id, 'room').then((data) => {
+  //     dispatch({
+  //       type: 'append',
+  //       id: data.id,
+  //       name: data.name,
+  //       profilePhoto: data.profilePhoto,
+  //     });
+  //   });
+  // };
 
   return (
     <View

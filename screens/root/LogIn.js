@@ -11,7 +11,6 @@ import {
   Vibration,
   ActivityIndicator,
   KeyboardAvoidingView,
-  Animated,
   Platform,
   TouchableHighlight,
   ImageBackground,
@@ -46,16 +45,6 @@ export default function LogIn({navigation}) {
   });
   const [revealPassword, setRevealPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-
-  const position = useState(new Animated.Value(constants.width))[0];
-
-  useEffect(() => {
-    Animated.spring(position, {
-      bounciness: 5,
-      toValue: 0,
-      useNativeDriver: true,
-    }).start();
-  }, []);
 
   const storeData = async (value) => {
     try {
@@ -136,25 +125,23 @@ export default function LogIn({navigation}) {
             resizeMode="contain"
             source={require('/Users/manav/projects/fluxroom/assets/receipt.png')}
           />
-          <Animated.View>
-            <Animated.View
+          <View>
+            <View
               style={{
                 width: constants.width * 0.9,
                 backgroundColor: 'white',
                 borderRadius: 10,
-                transform: [{translateX: position}],
                 alignItems: 'center',
                 borderColor: 'grey',
                 borderWidth: 0.3,
                 paddingVertical: 25,
               }}>
-              <Animated.View
+              <View
                 style={{
                   marginTop: 20,
-                  transform: [{translateX: position}],
                 }}>
                 <View>
-                  <Animated.View style={globalStyles.input}>
+                  <View style={globalStyles.input}>
                     <MaterialCommunityIcons
                       name="account-edit"
                       size={24}
@@ -178,8 +165,8 @@ export default function LogIn({navigation}) {
                       onSubmitEditing={handleLogIn}
                       clearButtonMode="while-editing"
                     />
-                  </Animated.View>
-                  <Animated.View style={globalStyles.input}>
+                  </View>
+                  <View style={globalStyles.input}>
                     <Entypo
                       name="key"
                       size={22}
@@ -222,7 +209,7 @@ export default function LogIn({navigation}) {
                         <></>
                       )}
                     </TouchableOpacity>
-                  </Animated.View>
+                  </View>
                   {isLoading ? (
                     <View style={{height: 50, marginVertical: 10}}>
                       <ActivityIndicator color="black" size="small" />
@@ -237,8 +224,8 @@ export default function LogIn({navigation}) {
                     </TouchableOpacity>
                   )}
                 </View>
-              </Animated.View>
-            </Animated.View>
+              </View>
+            </View>
             <TouchableOpacity
               style={{
                 width: constants.width * 0.9,
@@ -252,7 +239,7 @@ export default function LogIn({navigation}) {
               onPress={() => navigation.navigate('ForgotPassword')}>
               <Text style={globalStyles.buttonText}>Forgot Password ?</Text>
             </TouchableOpacity>
-          </Animated.View>
+          </View>
         </SafeAreaView>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>

@@ -1,7 +1,6 @@
 import React, {useEffect, useState, useContext} from 'react';
 import {
   SafeAreaView,
-  Animated,
   View,
   TextInput,
   Text,
@@ -28,18 +27,9 @@ import {
 export default function SignUp({navigation}) {
   const [isLoading, setIsLoading] = useState(false);
   const [revealPassword, setRevealPassword] = useState(false);
-  const position = useState(new Animated.Value(constants.width))[0];
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [onFocusPassword, setOnFocusPassword] = useState(false);
-
-  useEffect(() => {
-    Animated.spring(position, {
-      bounciness: 5,
-      toValue: 0,
-      useNativeDriver: true,
-    }).start();
-  }, []);
 
   const isEmailValid = (q) => {
     return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
@@ -110,30 +100,27 @@ export default function SignUp({navigation}) {
             source={require('/Users/manav/projects/fluxroom/assets/contract.png')}>
             <></>
           </ImageBackground>
-          <Animated.View
+          <View
             style={{
               alignItems: 'center',
-              transform: [{translateX: position}],
             }}>
-            <Animated.View
+            <View
               style={{
                 width: constants.width * 0.9,
                 backgroundColor: 'white',
                 borderRadius: 10,
                 paddingVertical: 25,
                 marginBottom: 50,
-                transform: [{translateX: position}],
                 borderColor: '#777777',
                 borderWidth: 0.3,
               }}>
-              <Animated.View
+              <View
                 style={{
                   marginHorizontal: 20,
                   marginTop: 20,
-                  transform: [{translateX: position}],
                 }}>
-                <Animated.View>
-                  <Animated.View style={globalStyles.input}>
+                <View>
+                  <View style={globalStyles.input}>
                     <MaterialCommunityIcons
                       name="email"
                       size={24}
@@ -149,8 +136,8 @@ export default function SignUp({navigation}) {
                       value={email}
                       clearButtonMode="while-editing"
                     />
-                  </Animated.View>
-                  <Animated.View style={globalStyles.input}>
+                  </View>
+                  <View style={globalStyles.input}>
                     <Entypo
                       name="key"
                       size={22}
@@ -190,7 +177,7 @@ export default function SignUp({navigation}) {
                         <></>
                       )}
                     </TouchableOpacity>
-                  </Animated.View>
+                  </View>
 
                   {isLoading ? (
                     <View
@@ -210,10 +197,10 @@ export default function SignUp({navigation}) {
                       <Text style={globalStyles.buttonText}>Sign Up</Text>
                     </TouchableOpacity>
                   )}
-                </Animated.View>
-              </Animated.View>
-            </Animated.View>
-          </Animated.View>
+                </View>
+              </View>
+            </View>
+          </View>
         </SafeAreaView>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>

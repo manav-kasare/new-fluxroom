@@ -8,16 +8,16 @@ import {
   Share,
   Linking,
 } from 'react-native';
-import {Appbar} from 'react-native-paper';
 import {ThemeContext} from '../../../shared/Context';
 
 export default function ShareRoomLink({route, navigation}) {
   const {constants} = React.useContext(ThemeContext);
-  const {roomName, roomID} = route.params;
+  const {room, id} = route.params;
   const [url, setUrl] = React.useState(null);
 
   React.useEffect(() => {
-    setUrl(`fluxroom://app/home/rooms/join/${roomID}`);
+    console.log(room);
+    setUrl(`fluxroom://app/home/rooms/join/${room.id}`);
   }, []);
 
   const shareLink = () => {
@@ -50,21 +50,18 @@ export default function ShareRoomLink({route, navigation}) {
   };
 
   const handleContinue = () => {
-    navigation.replace('ChatRoomNavigator', {
+    navigation.navigate('ChatRoomNavigator', {
       screen: 'Room',
-      params: {roomID: roomID},
+      params: {room: room},
     });
   };
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: constants.background1}}>
-      <Appbar.Header style={constants.header}>
-        <Appbar.Content title="Join Room" titleStyle={constants.headerText} />
-      </Appbar.Header>
       <View
         style={{
           flex: 1,
-          paddingVertical: 25,
+          marginTop: 50,
           alignItems: 'center',
         }}>
         <Text
@@ -75,15 +72,15 @@ export default function ShareRoomLink({route, navigation}) {
             marginBottom: 10,
             fontFamily: 'Helvetica',
           }}>
-          {roomName}
+          {room.name}
         </Text>
         <TextInput
           value={url}
           editable={false}
           style={{
             color: constants.text1,
-            width: constants.width * 0.65,
-            height: 40,
+            width: constants.width * 0.8,
+            height: 50,
             fontSize: 12,
             borderRadius: 8,
             marginHorizontal: 10,
@@ -94,15 +91,15 @@ export default function ShareRoomLink({route, navigation}) {
         />
         <TouchableOpacity
           style={{
-            width: constants.width * 0.65,
-            height: 40,
+            width: constants.width * 0.8,
+            height: 50,
             flexDirection: 'row',
             marginTop: 15,
             alignItems: 'center',
             justifyContent: 'center',
             borderRadius: 8,
             marginHorizontal: 10,
-            backgroundColor: constants.background2,
+            backgroundColor: constants.primary,
           }}
           onPress={shareLink}>
           <Text
@@ -116,15 +113,15 @@ export default function ShareRoomLink({route, navigation}) {
         </TouchableOpacity>
         <TouchableOpacity
           style={{
-            width: constants.width * 0.65,
-            height: 40,
+            width: constants.width * 0.8,
+            height: 50,
             flexDirection: 'row',
             marginTop: 15,
             alignItems: 'center',
             justifyContent: 'center',
             borderRadius: 8,
             marginHorizontal: 10,
-            backgroundColor: constants.background2,
+            backgroundColor: constants.primary,
           }}
           onPress={handleContinue}>
           <Text
@@ -133,7 +130,7 @@ export default function ShareRoomLink({route, navigation}) {
               color: constants.text2,
               fontSize: 15,
             }}>
-            Continue to {roomName}
+            Continue to {room.name}
           </Text>
         </TouchableOpacity>
       </View>

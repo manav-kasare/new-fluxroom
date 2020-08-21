@@ -69,7 +69,7 @@ const Tile = React.memo(
                 }}
               />
               <Text style={{color: 'green', fontSize: 12}}>
-                {onlineSpeakers} Speakers Online
+                {onlineSpeakers} Online
               </Text>
             </View>
           ) : (

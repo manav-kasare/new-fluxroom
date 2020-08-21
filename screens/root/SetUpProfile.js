@@ -8,7 +8,6 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
   Keyboard,
-  Animated,
 } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -30,16 +29,7 @@ export default function SetUpProfile({route}) {
   const [username, setUsername] = useState('');
   const [description, setDescription] = useState('');
   const [profilePhoto, setProfilePhoto] = useState(null);
-  const position = useState(new Animated.Value(constants.width))[0];
   const [isUsernameRegistered, setIsUsernameRegistered] = useState(false);
-
-  useEffect(() => {
-    Animated.spring(position, {
-      bounciness: 5,
-      toValue: 0,
-      useNativeDriver: true,
-    }).start();
-  }, []);
 
   const storeData = async (value) => {
     try {
@@ -125,7 +115,7 @@ export default function SetUpProfile({route}) {
           flex: 1,
           backgroundColor: 'white',
         }}>
-        <Animated.View
+        <View
           style={{
             alignSelf: 'center',
             marginTop: 50,
@@ -136,11 +126,6 @@ export default function SetUpProfile({route}) {
             borderColor: 'grey',
             borderWidth: 0.3,
             paddingHorizontal: 25,
-            transform: [
-              {
-                translateX: position,
-              },
-            ],
             alignItems: 'center',
           }}>
           {profilePhoto === null ? (
@@ -170,7 +155,7 @@ export default function SetUpProfile({route}) {
               }}
             />
           )}
-          <Animated.View style={globalStyles.input}>
+          <View style={globalStyles.input}>
             <AntDesign name="user" size={20} color={constants.primary} />
             <TextInput
               autoFocus={true}
@@ -181,13 +166,13 @@ export default function SetUpProfile({route}) {
               onChangeText={(text) => setUsername(text)}
               autoCapitalize="none"
             />
-          </Animated.View>
+          </View>
           {isUsernameValid(username) ? (
             <></>
           ) : (
             <Text style={globalStyles.error}>Invaliid Username</Text>
           )}
-          <Animated.View style={globalStyles.input}>
+          <View style={globalStyles.input}>
             <MaterialIcons
               name="description"
               size={20}
@@ -208,14 +193,14 @@ export default function SetUpProfile({route}) {
               }}>
               [ {description.length} / 150 ]
             </Text>
-          </Animated.View>
+          </View>
 
           <TouchableOpacity
             style={globalStyles.button}
             onPress={isUsernameValid(username) ? handleSubmit : () => {}}>
             <Text style={globalStyles.buttonText}>Submit</Text>
           </TouchableOpacity>
-        </Animated.View>
+        </View>
       </SafeAreaView>
     </TouchableWithoutFeedback>
   );
