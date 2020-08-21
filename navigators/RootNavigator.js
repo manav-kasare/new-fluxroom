@@ -130,19 +130,19 @@ const AuthStackNavigator = () => {
         options={{
           title: 'Log In',
           headerStyle: {
-            backgroundColor: 'white',
+            backgroundColor: '#4640C1',
             borderBottomWidth: 0,
             borderBottomColor: 'transparent',
             elevation: 0,
             shadowOpacity: 0,
           },
           headerTitleStyle: {
-            color: 'black',
+            color: 'white',
             fontSize: 20,
             fontWeight: '300',
             fontFamily: 'Helvetica',
           },
-          headerTintColor: 'black',
+          headerTintColor: 'white',
           headerBackTitleVisible: false,
         }}
       />
@@ -152,19 +152,19 @@ const AuthStackNavigator = () => {
         options={{
           title: 'Register to FluxRoom',
           headerStyle: {
-            backgroundColor: 'white',
+            backgroundColor: '#4640C1',
             borderWidth: 0,
             borderColor: 'transparent',
             elevation: 0,
             shadowOpacity: 0,
           },
           headerTitleStyle: {
-            color: 'black',
+            color: 'white',
             fontSize: 20,
             fontWeight: '300',
             fontFamily: 'Helvetica',
           },
-          headerTintColor: 'black',
+          headerTintColor: 'white',
           headerBackTitleVisible: false,
         }}
       />

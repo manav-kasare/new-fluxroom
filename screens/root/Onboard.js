@@ -4,7 +4,6 @@ import {
   SafeAreaView,
   TouchableOpacity,
   View,
-  Image,
   StatusBar,
 } from 'react-native';
 
@@ -21,34 +20,40 @@ export default function Onboard({navigation}) {
       style={{
         flex: 1,
         flexDirection: 'column',
-        backgroundColor: 'white',
+        backgroundColor: '#4640C1',
       }}>
-      <StatusBar backgroundColor="white" barStyle="dark-content" />
+      <StatusBar backgroundColor="white" barStyle="light-content" />
       <View
         style={{
           marginTop: 50,
         }}>
-        <View style={{flexDirection: 'column', alignSelf: 'center'}}>
-          <Image
-            style={{width: 200, height: 200}}
-            resizeMode="cover"
-            source={require('/Users/manav/projects/fluxroom/assets/logo.png')}
-          />
-          <Text
-            style={{
-              marginTop: 30,
-              color: '#4640C1',
-              fontWeight: '800',
-              fontSize: 30,
-              letterSpacing: 2,
-              fontFamily: 'Helvetica Neue',
-              alignSelf: 'center',
-            }}>
-            FLUXROOM
-          </Text>
-        </View>
+        <Text
+          style={{
+            marginTop: 30,
+            color: 'white',
+            fontWeight: '800',
+            fontSize: 30,
+            letterSpacing: 2,
+            fontFamily: 'Helvetica Neue',
+            alignSelf: 'center',
+          }}>
+          FLUXROOM
+        </Text>
       </View>
-      <View style={{position: 'absolute', bottom: 10, alignSelf: 'center'}}>
+      <View
+        style={{
+          paddingVertical: 30,
+          position: 'absolute',
+          bottom: 0,
+          width: constants.width,
+          alignItems: 'center',
+          justifyContent: 'flex-start',
+          paddingTop: 50,
+          backgroundColor: 'white',
+          borderTopRightRadius: 15,
+          borderTopLeftRadius: 15,
+          borderWidth: 1,
+        }}>
         <View
           style={{
             alignSelf: 'center',
