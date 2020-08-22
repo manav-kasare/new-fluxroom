@@ -1,0 +1,22 @@
+{
+    "native": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-fluxroom-native-162013-authRole",
+            "UnauthRoleArn": "arn:aws:iam::197662556599:role/amplify-fluxroom-native-162013-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::197662556599:role/amplify-fluxroom-native-162013-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "amplify-fluxroom-native-162013-deployment",
+            "UnauthRoleName": "amplify-fluxroom-native-162013-unauthRole",
+            "StackName": "amplify-fluxroom-native-162013",
+            "StackId": "arn:aws:cloudformation:us-east-1:197662556599:stack/amplify-fluxroom-native-162013/44d71e80-e465-11ea-b70a-0e22fadd816f",
+            "AmplifyAppId": "d12dpsi0xzrkp7"
+        },
+        "categories": {
+            "auth": {
+                "fluxroom0bec553e": {
+                    "hostedUIProviderCreds": "[]"
+                }
+            }
+        }
+    }
+}

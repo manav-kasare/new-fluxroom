@@ -77,7 +77,7 @@ export default function RootNavigator() {
 
   return (
     <NavigationContainer linking={deepLinking}>
-      {user === null ? (
+      {user === null || user === undefined ? (
         <AuthStackNavigator />
       ) : (
         <Stack.Navigator>
@@ -150,7 +150,7 @@ const AuthStackNavigator = () => {
         name="SignUp"
         component={SignUp}
         options={{
-          title: 'Register to FluxRoom',
+          title: 'Join Fluxroom',
           headerStyle: {
             backgroundColor: '#4640C1',
             borderWidth: 0,
