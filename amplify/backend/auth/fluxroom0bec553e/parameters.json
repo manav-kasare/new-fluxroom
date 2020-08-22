@@ -50,10 +50,10 @@
     "usernameAttributes": [
         "email"
     ],
-    "hostedUIDomainName": "fluxroom0bec553e-0bec553e",
+    "userPoolGroupList": [],
+    "dependsOn": [],
+    "hostedUIDomainName": "fluxroom8e517260-8e517260",
     "authProvidersUserPool": [],
     "hostedUIProviderMeta": "[]",
-    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://www.example.com/\"],\"LogoutURLs\":[\"https://www.example.com/\"]}",
-    "userPoolGroupList": [],
-    "dependsOn": []
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"fluxroom://\"],\"LogoutURLs\":[\"fluxroom://\"]}"
 }
