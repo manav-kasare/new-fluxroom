@@ -94,7 +94,7 @@ export default function RootNavigator() {
 
 const AuthStackNavigator = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator mode="modal">
       <Stack.Screen
         name="Onboard"
         component={Onboard}
@@ -107,19 +107,19 @@ const AuthStackNavigator = () => {
         options={{
           title: 'Forgot Password',
           headerStyle: {
-            backgroundColor: 'white',
+            backgroundColor: '#4640C1',
             borderWidth: 0,
             borderColor: 'transparent',
             elevation: 0,
             shadowOpacity: 0,
           },
           headerTitleStyle: {
-            color: 'black',
+            color: 'white',
             fontSize: 20,
             fontWeight: '300',
             fontFamily: 'Helvetica',
           },
-          headerTintColor: 'black',
+          headerTintColor: 'white',
           headerBackTitleVisible: false,
         }}
       />
@@ -174,19 +174,19 @@ const AuthStackNavigator = () => {
         options={{
           title: 'Verify your Email',
           headerStyle: {
-            backgroundColor: 'white',
+            backgroundColor: '#4640C1',
             borderWidth: 0,
             borderColor: 'transparent',
             elevation: 0,
             shadowOpacity: 0,
           },
           headerTitleStyle: {
-            color: 'black',
+            color: 'white',
             fontSize: 20,
             fontWeight: '300',
             fontFamily: 'Helvetica',
           },
-          headerTintColor: 'black',
+          headerTintColor: 'white',
           headerBackTitleVisible: false,
         }}
       />

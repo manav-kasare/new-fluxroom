@@ -6,6 +6,7 @@ import {
   Text,
   TextInput,
   Keyboard,
+  Image,
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -48,69 +49,88 @@ export default function ForgotPassword({navigation}) {
   };
 
   return (
-    <SafeAreaView
+    <View
       style={{
-        flex: 1,
+        width: constants.width,
+        height: constants.height,
         backgroundColor: 'white',
-        alignItems: 'center',
       }}>
-      <View
+      <SafeAreaView
         style={{
-          backgroundColor: 'white',
-          borderRadius: 10,
-          padding: 25,
-          marginTop: 50,
-          borderColor: 'grey',
-          borderWidth: 0.3,
+          flex: 1,
+          backgroundColor: '#4640C1',
+          alignItems: 'center',
         }}>
+        <Image
+          style={{
+            width: constants.width,
+            height: constants.height * 0.2,
+            marginVertical: 50,
+          }}
+          resizeMode="contain"
+          source={require('/Users/manav/projects/fluxroom/assets/forgot_password.png')}
+        />
         <View
           style={{
-            width: constants.width * 0.75,
-            marginBottom: 10,
+            flex: 1,
+            width: constants.width,
+            alignItems: 'center',
+            justifyContent: 'flex-start',
+            paddingTop: 50,
+            backgroundColor: 'white',
+            borderTopRightRadius: 15,
+            borderTopLeftRadius: 15,
+            borderWidth: 1,
           }}>
-          <Text
+          <View
             style={{
-              color: constants.text2,
-              fontSize: 18,
-              fontFamily: 'Helvetica',
-              fontWeight: '200',
+              width: constants.width * 0.75,
+              marginBottom: 10,
             }}>
-            Enter your registered Email Address
-          </Text>
-        </View>
-        <View>
-          <View style={globalStyles.input}>
-            <MaterialCommunityIcons
-              name="email"
-              size={20}
-              color={constants.primary}
-            />
-            <TextInput
-              onFocus={() => setIsFocuesd(true)}
-              autoFocus={true}
-              style={globalStyles.textInput}
-              textContentType="emailAddress"
-              keyboardType="email-address"
-              placeholder="Email Address"
-              placeholderTextColor="grey"
-              value={email}
-              onChangeText={(text) => setEmail(text)}
-            />
-          </View>
-          <TouchableOpacity
-            onPress={isEmailValid(email) ? handleSubmit : () => {}}
-            style={globalStyles.button}>
             <Text
               style={{
-                color: 'white',
-                fontSize: 16,
-                letterSpacing: 1,
+                color: constants.text2,
+                fontSize: 18,
+                fontFamily: 'Helvetica',
+                fontWeight: '200',
               }}>
-              Submit
+              Enter your registered Email Address
             </Text>
-          </TouchableOpacity>
+          </View>
+          <View>
+            <View style={globalStyles.input}>
+              <MaterialCommunityIcons
+                name="email"
+                size={20}
+                color={constants.primary}
+              />
+              <TextInput
+                onFocus={() => setIsFocuesd(true)}
+                autoFocus={true}
+                style={globalStyles.textInput}
+                textContentType="emailAddress"
+                keyboardType="email-address"
+                placeholder="Email Address"
+                placeholderTextColor="grey"
+                value={email}
+                onChangeText={(text) => setEmail(text)}
+              />
+            </View>
+            <TouchableOpacity
+              onPress={isEmailValid(email) ? handleSubmit : () => {}}
+              style={globalStyles.button}>
+              <Text
+                style={{
+                  color: 'white',
+                  fontSize: 16,
+                  letterSpacing: 1,
+                }}>
+                Submit
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
-    </SafeAreaView>
+      </SafeAreaView>
+    </View>
   );
 }

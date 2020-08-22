@@ -38,32 +38,32 @@ const Google = () => {
 
   const handleCognitoHostedUI = () => {
     getUser().then((userData) => {
-      console.log(userData);
-      // const identities = JSON.parse(userData.identities)[0];
-      // const attributes = userData.attributes;
-      // getUserInfo(identities.userId).then((responseData) => {
-      //   if (responseData.id) {
-      //     setUser(responseData);
-      //   } else {
-      //     createUser({
-      //       id: identities.userId,
-      //       email: attributes.email,
-      //     }).then(({data}) => {
-      //       if (data.error) {
-      //         CustomToast('An Error Occured');
-      //       } else {
-      //         navigation.navigate('SetUpProfile', {
-      //           id: identities.userId,
-      //         });
-      //       }
-      //     });
-      //   }
-      // });
+      const identities = JSON.parse(userData.identities)[0];
+      const attributes = userData.attributes;
+      getUserInfo(identities.userId).then((responseData) => {
+        if (responseData.id) {
+          setUser(responseData);
+        } else {
+          createUser({
+            id: identities.userId,
+            email: attributes.email,
+          }).then(({data}) => {
+            if (data.error) {
+              CustomToast('An Error Occured');
+            } else {
+              navigation.navigate('SetUpProfile', {
+                id: identities.userId,
+              });
+            }
+          });
+        }
+      });
     });
   };
 
   React.useEffect(() => {
     Hub.listen('auth', ({payload: {event, data}}) => {
+      console.log(data);
       switch (event) {
         case 'signIn':
         case 'cognitoHostedUI':
