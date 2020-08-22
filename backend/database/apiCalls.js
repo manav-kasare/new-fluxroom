@@ -21,7 +21,7 @@ export const loginUserWithEmail = ({email, password}) => {
     });
 };
 
-export const registerUser = ({id, email, password}) => {
+export const createUser = ({id, email, password}) => {
   const requestOptions = {
     method: 'POST',
     headers: {
@@ -60,11 +60,19 @@ export const getUsers = () => {
     });
 };
 
+// export const getUserInfo = (id) => {
+//   return fetch(`http://${constants.localIP}:8000/user/info?id=${id}`)
+//     .then((response) => response.json())
+//     .then(({data}) => {
+//       return data[0];
+//     });
+// };
+
 export const getUserInfo = (id) => {
-  return fetch(`http://${constants.localIP}:8000/user/info?id=${id}`)
+  return fetch(`http://${constants.url}/user/${id}`)
     .then((response) => response.json())
-    .then(({data}) => {
-      return data[0];
+    .then((data) => {
+      return data;
     });
 };
 

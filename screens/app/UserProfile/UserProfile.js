@@ -32,7 +32,7 @@ export default function UserProfile({navigation}) {
             flexDirection: 'row',
             alignItems: 'center',
           }}>
-          <UserProfilePhoto />
+          <UserPrPPofilePhoto />
           <View
             style={{
               height: 40,

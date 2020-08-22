@@ -9,6 +9,8 @@ import InAppBrowser from 'react-native-inappbrowser-reborn';
 import Amplify from 'aws-amplify';
 import awsconfig from '../../aws-exports';
 
+import {getUserInfo, createUser} from '../../backend/database/apiCalls';
+
 async function urlOpener(url, redirectUrl) {
   await InAppBrowser.isAvailable();
   const {type, url: newUrl} = await InAppBrowser.openAuth(url, redirectUrl, {
@@ -31,24 +33,40 @@ Amplify.configure({
   },
 });
 
-const Facebook = () => {
+const Facebook = ({navigation}) => {
   const {setUser} = React.useContext(UserDetailsContext);
+
+  const handleCognitoHostedUI = () => {
+    getUser().then((userData) => {
+      const identities = JSON.parse(userData.identities)[0];
+      const attributes = userData.attributes;
+      getUserInfo(identities.userId).then((responseData) => {
+        if (responseData.id) {
+          setUser(responseData);
+        } else {
+          createUser({
+            id: identities.userId,
+            email: attributes.email,
+          }).then(({data}) => {
+            if (data.error) {
+              CustomToast('An Error Occured');
+            } else {
+              navigation.navigate('SetUpProfile', {
+                id: identities.userId,
+              });
+            }
+          });
+        }
+      });
+    });
+  };
 
   React.useEffect(() => {
     Hub.listen('auth', ({payload: {event, data}}) => {
       switch (event) {
         case 'signIn':
         case 'cognitoHostedUI':
-          getUser().then((userData) => {
-            // console.log(userData);
-            // _user = {
-            //   email: userData.attributes.email,
-
-            // }
-            setUser({
-              email: userData.attributes.email,
-            });
-          });
+          handleCognitoHostedUI();
           break;
         case 'signOut':
           setUser(null);
@@ -61,10 +79,7 @@ const Facebook = () => {
       }
     });
 
-    getUser().then((userData) => {
-      console.log(userData);
-      // setUser(userData);
-    });
+    handleCognitoHostedUI();
   }, []);
 
   const getUser = () => {

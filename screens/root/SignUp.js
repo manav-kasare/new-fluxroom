@@ -21,7 +21,7 @@ import CustomToast from '../../shared/CustomToast';
 import globalStyles from '../../shared/GlobalStyles';
 import randomID from '../../backend/database/randomID';
 import {
-  registerUser,
+  createUser,
   checkIfEmailIsRegistered,
 } from '../../backend/database/apiCalls';
 
@@ -55,7 +55,7 @@ export default function SignUp({navigation}) {
         CustomToast('Email Already in use');
       } else {
         const id = randomID();
-        registerUser({
+        createUser({
           id: id,
           email: email,
           password: password,
@@ -69,7 +69,6 @@ export default function SignUp({navigation}) {
               email: email,
               id: id,
             });
-            CustomToast('Registered Successfully !');
           }
         });
       }
