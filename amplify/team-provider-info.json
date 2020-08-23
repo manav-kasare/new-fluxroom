@@ -1,20 +1,22 @@
 {
-    "native": {
+    "dev": {
         "awscloudformation": {
-            "AuthRoleName": "amplify-fluxroom-native-162013-authRole",
-            "UnauthRoleArn": "arn:aws:iam::197662556599:role/amplify-fluxroom-native-162013-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::197662556599:role/amplify-fluxroom-native-162013-authRole",
+            "AuthRoleName": "amplify-fluxroom-dev-234806-authRole",
+            "UnauthRoleArn": "arn:aws:iam::197662556599:role/amplify-fluxroom-dev-234806-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::197662556599:role/amplify-fluxroom-dev-234806-authRole",
             "Region": "us-east-1",
-            "DeploymentBucketName": "amplify-fluxroom-native-162013-deployment",
-            "UnauthRoleName": "amplify-fluxroom-native-162013-unauthRole",
-            "StackName": "amplify-fluxroom-native-162013",
-            "StackId": "arn:aws:cloudformation:us-east-1:197662556599:stack/amplify-fluxroom-native-162013/44d71e80-e465-11ea-b70a-0e22fadd816f",
-            "AmplifyAppId": "d12dpsi0xzrkp7"
+            "DeploymentBucketName": "amplify-fluxroom-dev-234806-deployment",
+            "UnauthRoleName": "amplify-fluxroom-dev-234806-unauthRole",
+            "StackName": "amplify-fluxroom-dev-234806",
+            "StackId": "arn:aws:cloudformation:us-east-1:197662556599:stack/amplify-fluxroom-dev-234806/0150a600-e56d-11ea-a0d9-12cf4a8c2bc2",
+            "AmplifyAppId": "d3ar2728v094si"
         },
         "categories": {
             "auth": {
-                "fluxroom0bec553e": {
-                    "hostedUIProviderCreds": "[]"
+                "fluxroomae939832ae939832": {
+                    "facebookAppId": "600068240688985",
+                    "googleClientId": "1068097527318-qmacvq5cicqs1v83m2stik1n2jamtj8e.apps.googleusercontent.com",
+                    "hostedUIProviderCreds": "[{\"ProviderName\":\"Facebook\",\"client_id\":\"600068240688985\",\"client_secret\":\"a2b0984062228feebe3084f6cbe2b7e5\"},{\"ProviderName\":\"Google\",\"client_id\":\"1068097527318-qmacvq5cicqs1v83m2stik1n2jamtj8e.apps.googleusercontent.com\",\"client_secret\":\"CpFRhQrBMQgvi4SYWtryG-ik\"}]"
                 }
             }
         }

@@ -8,13 +8,12 @@ import {
   Keyboard,
   TouchableWithoutFeedback,
   ActivityIndicator,
-  Platform,
-  ImageBackground,
-  KeyboardAvoidingView,
   Image,
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import {Auth} from 'aws-amplify';
 
 import constants from '../../shared/constants';
 import CustomToast from '../../shared/CustomToast';
@@ -31,6 +30,23 @@ export default function SignUp({navigation}) {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [onFocusPassword, setOnFocusPassword] = useState(false);
+  const [username, setUsername] = useState(null);
+
+  const signUp = async () => {
+    try {
+      const {user} = await Auth.signUp({
+        username,
+        password,
+        attributes: {
+          email, // optional
+          // other custom attributes
+        },
+      });
+      console.log(user);
+    } catch (error) {
+      console.log('error signing up:', error);
+    }
+  };
 
   const isEmailValid = (q) => {
     return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
@@ -114,6 +130,22 @@ export default function SignUp({navigation}) {
               borderWidth: 1,
             }}>
             <View style={globalStyles.input}>
+              <FontAwesome5
+                name="user-alt"
+                size={18}
+                color={constants.primary}
+              />
+              <TextInput
+                autoFocus={true}
+                style={globalStyles.textInput}
+                placeholder="Username"
+                placeholderTextColor="grey"
+                value={username}
+                onChangeText={(text) => setUsername(text)}
+                autoCapitalize="none"
+              />
+            </View>
+            <View style={globalStyles.input}>
               <MaterialCommunityIcons
                 name="email"
                 size={24}
@@ -182,7 +214,8 @@ export default function SignUp({navigation}) {
             ) : (
               <TouchableOpacity
                 style={globalStyles.button}
-                onPress={areCredentialsValid ? handleRegister : () => {}}>
+                // onPress={areCredentialsValid ? handleRegister : () => {}}
+                onPress={() => navigation.navigate('OtpVerification')}>
                 <Text style={globalStyles.buttonText}>Sign Up</Text>
               </TouchableOpacity>
             )}

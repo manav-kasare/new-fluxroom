@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {
   Text,
   SafeAreaView,
@@ -62,7 +62,7 @@ export default function Onboard({navigation}) {
             <TouchableOpacity
               style={globalStyles.screenButton}
               onPress={() => navigation.navigate('SignUp')}>
-              <Text style={globalStyles.buttonText}>Register With Email</Text>
+              <Text style={globalStyles.buttonText}>Sign Up With Email</Text>
             </TouchableOpacity>
           </View>
           <View>

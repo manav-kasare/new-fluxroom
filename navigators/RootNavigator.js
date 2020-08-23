@@ -12,6 +12,8 @@ import EmailVerification from '../screens/root/EmailVerification';
 import ForgotPassword from '../screens/root/ForgotPassword';
 import SplashScreen from '../screens/root/SplashScreen';
 import DrawerNavigator from './DrawerNavigator';
+import PhoneLoginScreen from '../screens/root/PhoneLoginScreen';
+import OtpVerification from '../screens/root/OtpVerification';
 
 const Stack = createStackNavigator();
 
@@ -151,6 +153,28 @@ const AuthStackNavigator = () => {
         component={SignUp}
         options={{
           title: 'Join Fluxroom',
+          headerStyle: {
+            backgroundColor: '#4640C1',
+            borderWidth: 0,
+            borderColor: 'transparent',
+            elevation: 0,
+            shadowOpacity: 0,
+          },
+          headerTitleStyle: {
+            color: 'white',
+            fontSize: 20,
+            fontWeight: '300',
+            fontFamily: 'Helvetica',
+          },
+          headerTintColor: 'white',
+          headerBackTitleVisible: false,
+        }}
+      />
+      <Stack.Screen
+        name="OtpVerification"
+        component={OtpVerification}
+        options={{
+          title: 'Verify',
           headerStyle: {
             backgroundColor: '#4640C1',
             borderWidth: 0,

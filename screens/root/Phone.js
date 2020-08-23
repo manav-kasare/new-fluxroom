@@ -12,7 +12,8 @@ export default function Phone() {
         backgroundColor: '#4640C1',
         alignItems: 'center',
         justifyContent: 'center',
-      }}>
+      }}
+      onPress={() => {}}>
       <Entypo name="phone" size={25} color="white" />
     </TouchableOpacity>
   );

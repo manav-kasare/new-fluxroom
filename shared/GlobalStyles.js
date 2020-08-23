@@ -6,7 +6,7 @@ export default {
     flexDirection: 'row',
     width: constants.width * 0.8,
     height: 50,
-    borderRadius: 10,
+    borderRadius: 8,
     paddingHorizontal: 10,
     backgroundColor: 'white',
     marginVertical: 10,
@@ -33,7 +33,7 @@ export default {
     backgroundColor: '#4640C1',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 10,
+    borderRadius: 8,
     marginVertical: 10,
   },
   screenButton: {
@@ -42,7 +42,7 @@ export default {
     backgroundColor: '#4640C1',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 10,
+    borderRadius: 8,
     marginVertical: 10,
   },
   buttonText: {
