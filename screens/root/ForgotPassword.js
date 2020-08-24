@@ -90,7 +90,7 @@ export default function ForgotPassword({navigation}) {
                 <Text
                   style={{
                     color: 'white',
-                    fontSize: 16,
+                    fontSize: 15,
                     letterSpacing: 1,
                   }}>
                   Submit
