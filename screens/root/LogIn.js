@@ -13,6 +13,7 @@ import {
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import AsyncStorage from '@react-native-community/async-storage';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 import {UserDetailsContext} from '../../shared/Context';
 import constants from '../../shared/constants';
@@ -93,121 +94,124 @@ export default function LogIn({navigation}) {
   };
 
   return (
-    <TouchableWithoutFeedback
-      onPress={() => {
-        Keyboard.dismiss();
-      }}>
-      <View
-        style={{
-          width: constants.width,
-          height: constants.height,
-          backgroundColor: 'white',
+    <KeyboardAwareScrollView
+      style={{width: constants.width, height: constants.height}}
+      keyboardShouldPersistTaps="handled">
+      <TouchableWithoutFeedback
+        onPress={() => {
+          Keyboard.dismiss();
         }}>
-        <SafeAreaView
+        <View
           style={{
-            flex: 1,
-            backgroundColor: '#4640C1',
-            alignItems: 'center',
+            width: constants.width,
+            height: constants.height,
+            backgroundColor: 'white',
           }}>
-          <Image
+          <SafeAreaView
             style={{
-              width: constants.width,
-              height: constants.height * 0.2,
-              marginVertical: 30,
-            }}
-            resizeMode="contain"
-            source={require('/Users/manav/projects/fluxroom/assets/receipt.png')}
-          />
-          <View
-            style={{
+              flex: 1,
               backgroundColor: '#4640C1',
-              borderTopRightRadius: 10,
-              borderTopLeftRadius: 10,
               alignItems: 'center',
             }}>
+            <Image
+              style={{
+                width: constants.width,
+                height: constants.height * 0.2,
+                marginVertical: 30,
+              }}
+              resizeMode="contain"
+              source={require('/Users/manav/projects/fluxroom/assets/receipt.png')}
+            />
             <View
               style={{
-                flex: 1,
-                width: constants.width,
+                backgroundColor: '#4640C1',
+                borderTopRightRadius: 10,
+                borderTopLeftRadius: 10,
                 alignItems: 'center',
-                justifyContent: 'flex-start',
-                paddingTop: 50,
-                backgroundColor: 'white',
-                borderTopRightRadius: 15,
-                borderTopLeftRadius: 15,
-                borderWidth: 1,
               }}>
-              <View style={globalStyles.input}>
-                <MaterialCommunityIcons
-                  name="account-edit"
-                  size={24}
-                  color={constants.primary}
-                />
-                <TextInput
-                  autoCapitalize="none"
-                  textContentType="emailAddress"
-                  keyboardType="email-address"
-                  style={globalStyles.textInput}
-                  placeholder="Username or Email Address"
-                  onChangeText={(text) => setUsernameOrEmail(text)}
-                  value={usernameOrEmail}
-                  onSubmitEditing={handleLogIn}
-                  clearButtonMode="while-editing"
-                />
-              </View>
-              <View style={globalStyles.input}>
-                <Entypo name="key" size={22} color={constants.primary} />
-                <TextInput
-                  secureTextEntry={revealPassword ? false : true}
-                  style={globalStyles.textInput}
-                  placeholder="Password"
-                  onFocus={() => setOnFocusPassword(true)}
-                  onChangeText={(text) => setFormPassword(text)}
-                  value={formPassword}
-                  onSubmitEditing={handleLogIn}
-                  clearButtonMode="while-editing"
-                />
-                <TouchableOpacity
-                  style={{
-                    width: 25,
-                    height: 25,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                  onPress={() => setRevealPassword(!revealPassword)}>
-                  {onFocusPassword ? (
-                    revealPassword ? (
-                      <Entypo name="eye" size={20} color="black" />
-                    ) : (
-                      <Entypo name="eye-with-line" size={20} color="black" />
-                    )
-                  ) : (
-                    <></>
-                  )}
-                </TouchableOpacity>
-              </View>
-              {isLoading ? (
-                <View style={{height: 50, marginVertical: 10}}>
-                  <ActivityIndicator color="black" size="small" />
+              <View
+                style={{
+                  flex: 1,
+                  width: constants.width,
+                  alignItems: 'center',
+                  justifyContent: 'flex-start',
+                  paddingTop: 50,
+                  backgroundColor: 'white',
+                  borderTopRightRadius: 15,
+                  borderTopLeftRadius: 15,
+                }}>
+                <View style={globalStyles.input}>
+                  <MaterialCommunityIcons
+                    name="account-edit"
+                    size={24}
+                    color={constants.primary}
+                  />
+                  <TextInput
+                    autoCapitalize="none"
+                    textContentType="emailAddress"
+                    keyboardType="email-address"
+                    style={globalStyles.textInput}
+                    placeholder="Username or Email Address"
+                    onChangeText={(text) => setUsernameOrEmail(text)}
+                    value={usernameOrEmail}
+                    onSubmitEditing={handleLogIn}
+                    clearButtonMode="while-editing"
+                  />
                 </View>
-              ) : (
+                <View style={globalStyles.input}>
+                  <Entypo name="key" size={22} color={constants.primary} />
+                  <TextInput
+                    secureTextEntry={revealPassword ? false : true}
+                    style={globalStyles.textInput}
+                    placeholder="Password"
+                    onFocus={() => setOnFocusPassword(true)}
+                    onChangeText={(text) => setFormPassword(text)}
+                    value={formPassword}
+                    onSubmitEditing={handleLogIn}
+                    clearButtonMode="while-editing"
+                  />
+                  <TouchableOpacity
+                    style={{
+                      width: 25,
+                      height: 25,
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}
+                    onPress={() => setRevealPassword(!revealPassword)}>
+                    {onFocusPassword ? (
+                      revealPassword ? (
+                        <Entypo name="eye" size={20} color="black" />
+                      ) : (
+                        <Entypo name="eye-with-line" size={20} color="black" />
+                      )
+                    ) : (
+                      <></>
+                    )}
+                  </TouchableOpacity>
+                </View>
+                {isLoading ? (
+                  <View style={{height: 50, marginVertical: 10}}>
+                    <ActivityIndicator color="black" size="small" />
+                  </View>
+                ) : (
+                  <TouchableOpacity
+                    style={globalStyles.button}
+                    onPress={handleLogIn}>
+                    <Text style={globalStyles.buttonText}>
+                      Log In to FluxRoom
+                    </Text>
+                  </TouchableOpacity>
+                )}
                 <TouchableOpacity
                   style={globalStyles.button}
-                  onPress={handleLogIn}>
-                  <Text style={globalStyles.buttonText}>
-                    Log In to FluxRoom
-                  </Text>
+                  onPress={() => navigation.navigate('ForgotPassword')}>
+                  <Text style={globalStyles.buttonText}>Forgot Password ?</Text>
                 </TouchableOpacity>
-              )}
-              <TouchableOpacity
-                style={globalStyles.button}
-                onPress={() => navigation.navigate('ForgotPassword')}>
-                <Text style={globalStyles.buttonText}>Forgot Password ?</Text>
-              </TouchableOpacity>
+              </View>
             </View>
-          </View>
-        </SafeAreaView>
-      </View>
-    </TouchableWithoutFeedback>
+          </SafeAreaView>
+        </View>
+      </TouchableWithoutFeedback>
+    </KeyboardAwareScrollView>
   );
 }

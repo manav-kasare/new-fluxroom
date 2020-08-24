@@ -14,6 +14,7 @@ import SplashScreen from '../screens/root/SplashScreen';
 import DrawerNavigator from './DrawerNavigator';
 import PhoneLoginScreen from '../screens/root/PhoneLoginScreen';
 import OtpVerification from '../screens/root/OtpVerification';
+import ForgotPasswordConfirmation from '../screens/root/ForgotPasswordConfirmation';
 
 const Stack = createStackNavigator();
 
@@ -108,6 +109,28 @@ const AuthStackNavigator = () => {
         component={ForgotPassword}
         options={{
           title: 'Forgot Password',
+          headerStyle: {
+            backgroundColor: '#4640C1',
+            borderWidth: 0,
+            borderColor: 'transparent',
+            elevation: 0,
+            shadowOpacity: 0,
+          },
+          headerTitleStyle: {
+            color: 'white',
+            fontSize: 20,
+            fontWeight: '300',
+            fontFamily: 'Helvetica',
+          },
+          headerTintColor: 'white',
+          headerBackTitleVisible: false,
+        }}
+      />
+      <Stack.Screen
+        name="ForgotPasswordConfirmation"
+        component={ForgotPasswordConfirmation}
+        options={{
+          title: 'Change Password',
           headerStyle: {
             backgroundColor: '#4640C1',
             borderWidth: 0,
