@@ -2,6 +2,7 @@ import React, {useState, useEffect, useContext} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import AsyncStorage from '@react-native-community/async-storage';
+import {Auth} from 'aws-amplify';
 
 import {UserDetailsContext, ThemeContext} from '../shared/Context';
 import LogIn from '../screens/root/LogIn';
@@ -51,12 +52,19 @@ export default function RootNavigator() {
   };
 
   useEffect(() => {
+    getAuthenticatedUser();
     setTimeout(() => {
       setSplashScreen(false);
     }, 500);
-    getUserData();
+    // getUserData();
     getThemeData();
   }, []);
+
+  const getAuthenticatedUser = () => {
+    Auth.currentAuthenticatedUser()
+      .then((userData) => setUser(userData))
+      .catch(() => console.log('Not signed in'));
+  };
 
   const getThemeData = async () => {
     try {

@@ -26,8 +26,8 @@ import CustomToast from '../../shared/CustomToast';
 export default function SetUpProfile({route}) {
   const {user, setUser} = useContext(UserDetailsContext);
   const {id} = route.params;
-  const [username, setUsername] = useState('');
-  const [description, setDescription] = useState('');
+  const [username, setUsername] = useState(null);
+  const [description, setDescription] = useState(null);
   const [profilePhoto, setProfilePhoto] = useState(null);
   const [isUsernameRegistered, setIsUsernameRegistered] = useState(false);
 

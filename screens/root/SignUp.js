@@ -12,8 +12,7 @@ import {
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import PhoneInput from 'react-native-phone-input';
+import PhoneInput from 'react-native-phone-number-input';
 import {Auth} from 'aws-amplify';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
@@ -33,36 +32,46 @@ export default function SignUp({navigation}) {
   const [revealPassword, setRevealPassword] = useState(false);
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
-  const [onFocusPassword, setOnFocusPassword] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState(null);
   const [phoneLogin, setPhoneLogin] = useState(false);
-  const phone = React.useRef(null);
+  const [formattedPhoneNumber, setFormattedPhoneNumber] = useState(null);
+  const phoneInput = React.useRef(null);
 
   const signUp = async () => {
+    console.log(formattedPhoneNumber);
     try {
       if (phoneLogin) {
+        console.log('PHONE LOGIN');
         const {user} = await Auth.signUp({
-          username: phoneNumber,
+          username: formattedPhoneNumber,
           password: password,
         });
-        console.log(user);
+        const identities = JSON.parse(user.attributes.identities)[0];
+        const id = identities.userId;
+        navigation.navigate('OtpVerification', {
+          username: formattedPhoneNumber,
+          id: id,
+        });
       } else {
         const {user} = await Auth.signUp({
           username: email,
           password: password,
         });
-        console.log(user);
+        const identities = JSON.parse(user.attributes.identities)[0];
+        const id = identities.userId;
+        navigation.navigate('OtpVerification', {
+          username: email,
+          id: id,
+        });
       }
-
-      navigation.navigate('OtpVerification', {
-        username: phoneLogin ? phoneNumber : email,
-      });
     } catch (error) {
       console.log('error signing up:', error);
       if (error.code === 'InvalidPasswordException') {
         CustomToast('Password too weak');
       } else if (error.code === 'UsernameExistsException') {
         CustomToast(error.message);
+      } else if (error.code === 'InvalidParameterException') {
+        CustomToast('Password too weak');
       } else {
         CustomToast('An Error Occured');
       }
@@ -83,7 +92,6 @@ export default function SignUp({navigation}) {
           email: email,
           password: password,
         }).then(({data}) => {
-          console.log('DATA', data);
           setIsLoading(false);
           if (data.error) {
             CustomToast('An Error Occured');
@@ -140,15 +148,29 @@ export default function SignUp({navigation}) {
                 borderTopLeftRadius: 15,
               }}>
               {phoneLogin ? (
-                <View style={globalStyles.input}>
-                  <PhoneInput
-                    value={phoneNumber}
-                    onChangePhoneNumber={(text) => setPhoneNumber(text)}
-                    ref={phone}
-                    flagStyle={{width: 25}}
-                    onSelectCountry={(code) => console.log(code)}
-                  />
-                </View>
+                <PhoneInput
+                  ref={phoneInput}
+                  defaultValue={phoneNumber}
+                  defaultCode="US"
+                  onChangeText={(text) => {
+                    setPhoneNumber(text);
+                  }}
+                  onChangeFormattedText={(text) => {
+                    setFormattedPhoneNumber(text);
+                  }}
+                  containerStyle={{
+                    marginVertical: 10,
+                    borderRadius: 8,
+                    borderColor: 'grey',
+                    borderWidth: 0.3,
+                    width: constants.width * 0.8,
+                    paddingRight: 5,
+                    borderRadius: 8,
+                    padding: 2,
+                    backgroundColor: '#F6F8FA',
+                  }}
+                  flagButtonStyle={{backgroundColor: 'white'}}
+                />
               ) : (
                 <View style={globalStyles.input}>
                   <MaterialCommunityIcons
@@ -179,8 +201,6 @@ export default function SignUp({navigation}) {
                   placeholder="Password"
                   onChangeText={(text) => setPassword(text)}
                   value={password}
-                  onFocus={() => setOnFocusPassword(true)}
-                  onBlur={() => setOnFocusPassword(false)}
                   clearButtonMode="while-editing"
                 />
                 <TouchableOpacity

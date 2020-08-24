@@ -1,5 +1,5 @@
 import React from 'react';
-import {TouchableOpacity, Linking} from 'react-native';
+import {TouchableOpacity, Linking, YellowBox} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {Auth, Hub} from 'aws-amplify';
 import {withOAuth} from 'aws-amplify-react-native';
@@ -10,6 +10,8 @@ import Amplify from 'aws-amplify';
 import awsconfig from '../../aws-exports';
 
 import {getUserInfo, createUser} from '../../backend/database/apiCalls';
+
+YellowBox.ignoreWarnings = true;
 
 async function urlOpener(url, redirectUrl) {
   await InAppBrowser.isAvailable();
@@ -38,32 +40,32 @@ const Google = () => {
 
   const handleCognitoHostedUI = () => {
     getUser().then((userData) => {
-      const identities = JSON.parse(userData.identities)[0];
+      setUser(userData);
+      const identities = JSON.parse(userData.attributes.identities)[0];
       const attributes = userData.attributes;
-      getUserInfo(identities.userId).then((responseData) => {
-        if (responseData.id) {
-          setUser(responseData);
-        } else {
-          createUser({
-            id: identities.userId,
-            email: attributes.email,
-          }).then(({data}) => {
-            if (data.error) {
-              CustomToast('An Error Occured');
-            } else {
-              navigation.navigate('SetUpProfile', {
-                id: identities.userId,
-              });
-            }
-          });
-        }
-      });
+      // getUserInfo(identities.userId).then((responseData) => {
+      //   if (responseData.id) {
+      //     setUser(responseData);
+      //   } else {
+      //     createUser({
+      //       id: identities.userId,
+      //       email: attributes.email,
+      //     }).then(({data}) => {
+      //       if (data.error) {
+      //         CustomToast('An Error Occured');
+      //       } else {
+      //         navigation.navigate('SetUpProfile', {
+      //           id: identities.userId,
+      //         });
+      //       }
+      //     });
+      //   }
+      // });
     });
   };
 
   React.useEffect(() => {
     Hub.listen('auth', ({payload: {event, data}}) => {
-      console.log(data);
       switch (event) {
         case 'signIn':
         case 'cognitoHostedUI':
@@ -79,8 +81,6 @@ const Google = () => {
           break;
       }
     });
-
-    handleCognitoHostedUI();
   }, []);
 
   const getUser = () => {

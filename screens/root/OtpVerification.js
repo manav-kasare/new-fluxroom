@@ -15,15 +15,14 @@ import globalStyles from '../../shared/GlobalStyles';
 import CustomToast from '../../shared/CustomToast';
 
 export default function OtpVerification({route, navigation}) {
-  const {username} = route.params;
+  const {username, id} = route.params;
   const [code, setCode] = React.useState(null);
 
   const confirmSignUp = async () => {
-    console.log(username);
     try {
       await Auth.confirmSignUp(username, code).then((response) => {
         if (response === 'SUCCESS') {
-          navigation.navigate('SetupProfile');
+          navigation.navigate('SetupProfile', {id: id});
         }
       });
     } catch (error) {

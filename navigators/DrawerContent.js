@@ -7,12 +7,23 @@ import {
 } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AsyncStorage from '@react-native-community/async-storage';
+import {Auth} from 'aws-amplify';
 
 import {UserDetailsContext, ThemeContext} from '../shared/Context';
 
 export default function DrawerContent(props) {
   const {setUser} = React.useContext(UserDetailsContext);
   const {constants, darkTheme} = React.useContext(ThemeContext);
+
+  const signOut = () => {
+    try {
+      Auth.signOut({global: true}).then(() => {
+        setUser(null);
+      });
+    } catch (error) {
+      console.log('error signing out: ', error);
+    }
+  };
 
   return (
     <View
@@ -40,11 +51,7 @@ export default function DrawerContent(props) {
             backgroundColor: constants.primary,
             justifyContent: 'center',
           }}
-          onPress={() => {
-            AsyncStorage.clear().then(() => {
-              setUser(null);
-            });
-          }}
+          onPress={signOut}
           label="Sign Out"
           labelStyle={{color: 'grey', fontSize: 14, color: 'white'}}
         />

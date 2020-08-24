@@ -34,7 +34,6 @@ export const createUser = ({id, email, password}) => {
   return fetch(`${constants.url}/user/create`, requestOptions)
     .then((response) => response.json())
     .then((data) => {
-      console.log('API CALL DATA', data);
       return data;
     });
 
@@ -53,7 +52,7 @@ export const createUser = ({id, email, password}) => {
 };
 
 export const getUsers = () => {
-  return fetch(`http://${constants.localIP}:8000/users`)
+  return fetch(`https://${constants.url}/users`)
     .then((response) => response.json())
     .then(({data}) => {
       return data;
