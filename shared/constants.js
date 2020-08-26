@@ -35,7 +35,7 @@ export const light = {
   header: {
     width: WIDTH,
     height: 50,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#4640C1',
     borderColor: 'transparent',
     elevation: 0,
   },

@@ -25,8 +25,6 @@ import {
   createUser,
   checkIfEmailIsRegistered,
 } from '../../backend/database/apiCalls';
-import Google from './Google';
-import Facebook from './Facebook';
 
 export default function SignUp({navigation}) {
   const [isLoading, setIsLoading] = useState(false);
@@ -211,33 +209,17 @@ export default function SignUp({navigation}) {
                   <Text style={globalStyles.buttonText}>Sign Up</Text>
                 </TouchableOpacity>
               )}
-              <View
-                style={{
-                  width: constants.width * 0.9,
-                  justifyContent: 'space-evenly',
-                  shadowColor: 'grey',
-                  shadowOpacity: 0.2,
-                  elevation: 1,
-                  alignItems: 'center',
-                  flexDirection: 'row',
-                  marginVertical: 20,
-                  alignSelf: 'center',
-                }}>
-                <Google />
-                <Facebook />
-                <TouchableOpacity
-                  style={{
-                    width: 50,
-                    height: 50,
-                    borderRadius: 50 / 2,
-                    backgroundColor: '#4640C1',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                  onPress={() => setPhoneLogin(!phoneLogin)}>
-                  <Entypo name="phone" size={25} color="white" />
-                </TouchableOpacity>
-              </View>
+              <TouchableOpacity
+                style={globalStyles.button}
+                onPress={() => setPhoneLogin(!phoneLogin)}>
+                {phoneLogin ? (
+                  <Text style={globalStyles.buttonText}>Use Email</Text>
+                ) : (
+                  <Text style={globalStyles.buttonText}>
+                    Use Phone Number Instead
+                  </Text>
+                )}
+              </TouchableOpacity>
             </View>
           </SafeAreaView>
         </View>

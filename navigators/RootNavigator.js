@@ -106,7 +106,7 @@ export default function RootNavigator() {
 
 const AuthStackNavigator = () => {
   return (
-    <Stack.Navigator mode="modal">
+    <Stack.Navigator>
       <Stack.Screen
         name="Onboard"
         component={Onboard}

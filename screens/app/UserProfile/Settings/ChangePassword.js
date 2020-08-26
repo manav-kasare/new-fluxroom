@@ -49,21 +49,7 @@ export default function ChangePassword({navigation}) {
         backgroundColor: constants.background1,
         alignItems: 'center',
       }}>
-      <Appbar.Header style={constants.header}>
-        <Appbar.BackAction onPress={() => navigation.goBack('Settings')} />
-        <Appbar.Content
-          title="Change Password"
-          titleStyle={constants.headerText}
-        />
-      </Appbar.Header>
-      <View
-        style={{
-          padding: 25,
-          flex: 1,
-          width: constants.width,
-          alignItems: 'center',
-          backgroundColor: constants.background1,
-        }}>
+      <View style={{flex: 1, marginTop: 50}}>
         <TextInput
           autoFocus={true}
           autoCompleteType="off"

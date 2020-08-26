@@ -26,11 +26,7 @@ export default function CreateRoomNavigator() {
             <TouchableOpacity
               onPress={() => navigation.openDrawer()}
               style={{marginRight: 15}}>
-              <Ionicons
-                name="md-menu"
-                size={25}
-                color={constants.background2}
-              />
+              <Ionicons name="md-menu" size={25} color="white" />
             </TouchableOpacity>
           ),
         })}

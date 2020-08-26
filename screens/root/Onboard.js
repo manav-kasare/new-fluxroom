@@ -12,7 +12,6 @@ import globalStyles from '../../shared/GlobalStyles';
 
 import Google from './Google';
 import Facebook from './Facebook';
-import Phone from './Phone';
 
 export default function Onboard({navigation}) {
   return (
@@ -71,6 +70,21 @@ export default function Onboard({navigation}) {
               onPress={() => navigation.navigate('LogIn')}>
               <Text style={globalStyles.buttonText}>Log In</Text>
             </TouchableOpacity>
+          </View>
+          <View
+            style={{
+              width: constants.width * 0.9,
+              justifyContent: 'space-evenly',
+              shadowColor: 'grey',
+              shadowOpacity: 0.2,
+              elevation: 1,
+              alignItems: 'center',
+              flexDirection: 'row',
+              marginVertical: 20,
+              alignSelf: 'center',
+            }}>
+            <Google />
+            <Facebook />
           </View>
         </View>
       </View>

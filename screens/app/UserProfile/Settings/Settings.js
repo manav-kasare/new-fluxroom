@@ -1,7 +1,6 @@
 import React from 'react';
 import {SafeAreaView, View, TouchableOpacity, Text} from 'react-native';
 import {Switch} from 'react-native-paper';
-import {Appbar} from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
 
@@ -13,11 +12,9 @@ export default function Settings({navigation}) {
   const styles = {
     view: {
       width: constants.width,
-      height: 50,
-      marginVertical: 10,
+      height: 60,
       backgroundColor: constants.background3,
       paddingHorizontal: 25,
-      borderRadius: 5,
       justifyContent: 'center',
     },
     view_text: {color: constants.text1, marginLeft: 10, fontSize: 14},
@@ -35,14 +32,6 @@ export default function Settings({navigation}) {
         flex: 1,
         backgroundColor: constants.background1,
       }}>
-      <Appbar.Header style={constants.header}>
-        <Appbar.Content title="Settings" titleStyle={constants.headerText} />
-        <Appbar.Action
-          icon="menu"
-          color={constants.background2}
-          onPress={() => navigation.openDrawer()}
-        />
-      </Appbar.Header>
       <View style={{flex: 1, backgroundColor: constants.background1}}>
         <View style={styles.view}>
           <TouchableOpacity

@@ -84,7 +84,7 @@ export default function CreateRoom({navigation}) {
               borderColor: 'grey',
               borderWidth: 0.2,
               alignContent: 'center',
-              backgroundColor: constants.background4,
+              backgroundColor: constants.primary,
             }}
             onPress={pickImage}>
             {room.profilePhoto === undefined ? (
