@@ -10,13 +10,13 @@ import {updateProfilePhoto} from '../../../backend/database/apiCalls';
 export default function UserProfilePhoto() {
   const {user} = useContext(UserDetailsContext);
   const {constants} = React.useContext(ThemeContext);
-  const [profilePhoto, setProfilePhoto] = useState(null);
+  const [profilePhoto, setProfilePhoto] = useState(
+    'https://images.unsplash.com/photo-1598368006967-b76b790494c9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
+  );
 
-  useEffect(() => {
-    setProfilePhoto(
-      user.profilePhoto !== null ? base64.decode(user.profilePhoto) : undefined,
-    );
-  }, [setProfilePhoto]);
+  // useEffect(() => {
+  //   setProfilePhoto(profilePhoto);
+  // }, [setProfilePhoto]);
 
   const pickImage = () => {
     const options = {
@@ -48,16 +48,16 @@ export default function UserProfilePhoto() {
   return (
     <TouchableOpacity
       style={{
-        width: 80,
-        height: 80,
-        borderRadius: 80 / 2,
+        width: 125,
+        height: 125,
+        borderRadius: 125 / 2,
         backgroundColor: constants.background4,
         alignItems: 'center',
         justifyContent: 'center',
       }}
       onPress={pickImage}>
       <CircleAvatar
-        size={80}
+        size={125}
         uri={profilePhoto}
         itemName="profilePhoto"
         key={user.id}

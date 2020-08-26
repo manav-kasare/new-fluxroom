@@ -9,7 +9,6 @@ export default function FullPhoto({navigation, route}) {
   const {uri} = route.params;
   const [_uri, setUri] = useState(uri);
   const {constants} = React.useContext(ThemeContext);
-  const [isHost, setIsHost] = useState(true);
 
   useEffect(() => {
     navigation.setOptions({

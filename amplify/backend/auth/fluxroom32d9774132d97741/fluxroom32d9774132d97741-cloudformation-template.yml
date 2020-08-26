@@ -148,7 +148,7 @@ Resources:
   # Created to allow the UserPool SMS Config to publish via the Simple Notification Service during MFA Process
     Type: AWS::IAM::Role
     Properties:
-      RoleName: !If [ShouldNotCreateEnvResources, 'fluxroae939832_sns-role', !Join ['',[ 'sns', 'undefined', !Select [3, !Split ['-', !Ref 'AWS::StackName']], '-', !Ref env]]]
+      RoleName: !If [ShouldNotCreateEnvResources, 'fluxro32d97741_sns-role', !Join ['',[ 'sns', 'undefined', !Select [3, !Split ['-', !Ref 'AWS::StackName']], '-', !Ref env]]]
       AssumeRolePolicyDocument: 
         Version: "2012-10-17"
         Statement: 
@@ -160,10 +160,10 @@ Resources:
               - "sts:AssumeRole"
             Condition: 
               StringEquals:
-                sts:ExternalId: fluxroae939832_role_external_id
+                sts:ExternalId: fluxro32d97741_role_external_id
       Policies: 
         - 
-          PolicyName: fluxroae939832-sns-policy
+          PolicyName: fluxro32d97741-sns-policy
           PolicyDocument: 
             Version: "2012-10-17"
             Statement: 
@@ -180,14 +180,6 @@ Resources:
     UpdateReplacePolicy: Retain
     Properties:
       UserPoolName: !If [ShouldNotCreateEnvResources, !Ref userPoolName, !Join ['',[!Ref userPoolName, '-', !Ref env]]]
-      
-      Schema: 
-        
-        -
-          Name: email
-          Required: true
-          Mutable: true
-        
       
       
       
@@ -211,7 +203,7 @@ Resources:
       SmsVerificationMessage: !Ref smsVerificationMessage
       SmsConfiguration: 
         SnsCallerArn: !GetAtt SNSRole.Arn
-        ExternalId: fluxroae939832_role_external_id
+        ExternalId: fluxro32d97741_role_external_id
           
     DependsOn: SNSRole
     
@@ -233,7 +225,7 @@ Resources:
   # Depends on UserPool for ID reference
     Type: "AWS::Cognito::UserPoolClient"
     Properties:
-      ClientName: fluxroae939832_app_clientWeb
+      ClientName: fluxro32d97741_app_clientWeb
       
       RefreshTokenValidity: !Ref userpoolClientRefreshTokenValidity
       UserPoolId: !Ref UserPool
@@ -243,7 +235,7 @@ Resources:
   # Depends on UserPool for ID reference
     Type: "AWS::Cognito::UserPoolClient"
     Properties:
-      ClientName: fluxroae939832_app_client
+      ClientName: fluxro32d97741_app_client
       
       GenerateSecret: !Ref userpoolClientGenerateSecret
       RefreshTokenValidity: !Ref userpoolClientRefreshTokenValidity
@@ -308,7 +300,7 @@ Resources:
   # Marked as depending on UserPoolClientRole for easier to understand CFN sequencing
     Type: 'AWS::IAM::Policy'
     Properties:
-      PolicyName: fluxroae939832_userpoolclient_lambda_iam_policy
+      PolicyName: fluxro32d97741_userpoolclient_lambda_iam_policy
       Roles: 
         - !Ref UserPoolClientRole
       PolicyDocument:
@@ -325,7 +317,7 @@ Resources:
   # Marked as depending on UserPoolClientLambdaPolicy for easier to understand CFN sequencing
     Type: 'AWS::IAM::Policy'
     Properties:
-      PolicyName: fluxroae939832_userpoolclient_lambda_log_policy
+      PolicyName: fluxro32d97741_userpoolclient_lambda_log_policy
       Roles: 
         - !Ref UserPoolClientRole
       PolicyDocument:
@@ -709,7 +701,7 @@ Resources:
   # Created to execute Lambda which sets MFA config values
     Type: 'AWS::IAM::Role'
     Properties:
-      RoleName: !If [ShouldNotCreateEnvResources, 'fluxroae939832_totp_lambda_role', !Join ['',['fluxroae939832_totp_lambda_role', '-', !Ref env]]]
+      RoleName: !If [ShouldNotCreateEnvResources, 'fluxro32d97741_totp_lambda_role', !Join ['',['fluxro32d97741_totp_lambda_role', '-', !Ref env]]]
       AssumeRolePolicyDocument:
         Version: '2012-10-17'
         Statement:
@@ -720,14 +712,14 @@ Resources:
             Action:
               - 'sts:AssumeRole'
       Policies:
-      - PolicyName: fluxroae939832_totp_pass_role_policy
+      - PolicyName: fluxro32d97741_totp_pass_role_policy
         PolicyDocument:
           Version: 2012-10-17
           Statement:
             - Effect: Allow
               Action:
                 - 'iam:PassRole'
-              Resource: !If [ShouldNotCreateEnvResources, 'arn:aws:iam:::role/fluxroae939832_totp_lambda_role', !Join ['',['arn:aws:iam:::role/fluxroae939832_totp_lambda_role', '-', !Ref env]]]
+              Resource: !If [ShouldNotCreateEnvResources, 'arn:aws:iam:::role/fluxro32d97741_totp_lambda_role', !Join ['',['arn:aws:iam:::role/fluxro32d97741_totp_lambda_role', '-', !Ref env]]]
   MFALambda:
   # Lambda which sets MFA config values
   # Depends on MFALambdaRole for role ARN
@@ -783,9 +775,9 @@ Resources:
   # Marked as depending on MFALambda for easier to understand CFN sequencing
     Type: 'AWS::IAM::Policy'
     Properties:
-      PolicyName: fluxroae939832_totp_lambda_iam_policy
+      PolicyName: fluxro32d97741_totp_lambda_iam_policy
       Roles: 
-        - !If [ShouldNotCreateEnvResources, 'fluxroae939832_totp_lambda_role', !Join ['',['fluxroae939832_totp_lambda_role', '-', !Ref env]]]
+        - !If [ShouldNotCreateEnvResources, 'fluxro32d97741_totp_lambda_role', !Join ['',['fluxro32d97741_totp_lambda_role', '-', !Ref env]]]
       PolicyDocument:
         Version: '2012-10-17'
         Statement:
@@ -799,9 +791,9 @@ Resources:
   # Marked as depending on MFALambdaPolicy for easier to understand CFN sequencing
     Type: 'AWS::IAM::Policy'
     Properties:
-      PolicyName: fluxroae939832_totp_lambda_log_policy
+      PolicyName: fluxro32d97741_totp_lambda_log_policy
       Roles: 
-        - !If [ShouldNotCreateEnvResources, 'fluxroae939832_totp_lambda_role', !Join ['',['fluxroae939832_totp_lambda_role', '-', !Ref env]]]
+        - !If [ShouldNotCreateEnvResources, 'fluxro32d97741_totp_lambda_role', !Join ['',['fluxro32d97741_totp_lambda_role', '-', !Ref env]]]
       PolicyDocument:
         Version: 2012-10-17
         Statement:
@@ -827,7 +819,7 @@ Resources:
       totpEnabled: true
       smsConfigCaller: !GetAtt SNSRole.Arn
       smsAuthenticationMessage: !Ref smsAuthenticationMessage
-      smsConfigExternalId: fluxroae939832_role_external_id
+      smsConfigExternalId: fluxro32d97741_role_external_id
     DependsOn: MFALogPolicy
   
     
@@ -838,7 +830,7 @@ Resources:
   # Always created
     Type: AWS::Cognito::IdentityPool
     Properties: 
-      IdentityPoolName: !If [ShouldNotCreateEnvResources, 'fluxroomae939832_identitypool_ae939832', !Join ['',['fluxroomae939832_identitypool_ae939832', '__', !Ref env]]]
+      IdentityPoolName: !If [ShouldNotCreateEnvResources, 'fluxroom32d97741_identitypool_32d97741', !Join ['',['fluxroom32d97741_identitypool_32d97741', '__', !Ref env]]]
       
       CognitoIdentityProviders:
         - ClientId:  !Ref UserPoolClient

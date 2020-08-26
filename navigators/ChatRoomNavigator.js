@@ -1,6 +1,6 @@
 import React from 'react';
+import {Text} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
-import {useFocusEffect} from '@react-navigation/native';
 
 import FullPhoto from '../screens/app/ChatRoom/FullPhoto';
 import ChatRooms from '../screens/app/ChatRoom/ChatRooms';
@@ -8,18 +8,20 @@ import Room from '../screens/app/ChatRoom/Room';
 import PersonalChat from '../screens/app/ChatRoom/PersonalChat';
 import Requests from '../screens/app/ChatRoom/Requests';
 import JoinRoomWithLink from '../screens/app/JoinCreateRoom/JoinRoomWithLink';
-import ShareRoomLink from '../screens/app/JoinCreateRoom/ShareRoomLink';
 import RoomSettings from '../screens/app/ChatRoom/RoomSettings';
 import ChangeRoomSettings from '../screens/app/ChatRoom/ChangeRoomSettings';
 import {UserDetailsContext, ThemeContext} from '../shared/Context';
 import RequestIcon from '../screens/app/ChatRoom/RequestIcon';
 import {getUserInfo} from '../backend/database/apiCalls';
+import HomeNavigator from './HomeNavigator';
+
+console.disableYellowBox = true;
 
 const ChatRoomStack = createStackNavigator();
 
 export default function ChatRoomNavigator({route, navigation}) {
   const {user, setUser} = React.useContext(UserDetailsContext);
-  const {constants} = React.useContext(ThemeContext);
+  const {constants, darkTheme} = React.useContext(ThemeContext);
 
   if (route.state && route.state.index > 0) {
     navigation.setOptions({tabBarVisible: false});
@@ -34,14 +36,27 @@ export default function ChatRoomNavigator({route, navigation}) {
   }, []);
 
   return (
-    <ChatRoomStack.Navigator initialRouteName="ChatRooms" mode="card">
+    <ChatRoomStack.Navigator initialRouteName="ChatRoom">
       <ChatRoomStack.Screen
         name="ChatRooms"
         component={ChatRooms}
         options={({navigation}) => ({
-          title: 'Rooms',
-          headerStyle: constants.headerStyle,
-          headerTitleStyle: constants.headerText,
+          title: 'Fluxroom',
+          headerTitleAlign: 'left',
+          headerStyle: {
+            backgroundColor: darkTheme ? constants.background1 : '#4640C1',
+            borderWidth: 0,
+            borderColor: 'transparent',
+            elevation: 0,
+            shadowOpacity: 0,
+            height: 125,
+          },
+          headerTitleStyle: {
+            fontSize: 25,
+            fontWeight: '700',
+            fontFamily: 'Helvetica',
+            color: 'white',
+          },
           headerRight: () => (
             <RequestIcon id={user.id} navigation={navigation} />
           ),
@@ -60,7 +75,7 @@ export default function ChatRoomNavigator({route, navigation}) {
           headerStyle: constants.headerStyle,
           headerTitleStyle: constants.headerText,
           headerBackTitleVisible: false,
-          headerTintColor: constants.background2,
+          headerTintColor: 'white',
         }}
       />
       <ChatRoomStack.Screen
@@ -71,7 +86,7 @@ export default function ChatRoomNavigator({route, navigation}) {
           headerStyle: constants.headerStyle,
           headerTitleStyle: constants.headerText,
           headerBackTitleVisible: false,
-          headerTintColor: constants.background2,
+          headerTintColor: 'white',
         })}
       />
       <ChatRoomStack.Screen
@@ -82,7 +97,7 @@ export default function ChatRoomNavigator({route, navigation}) {
           headerStyle: constants.headerStyle,
           headerTitleStyle: constants.headerText,
           headerBackTitleVisible: false,
-          headerTintColor: constants.background2,
+          headerTintColor: 'white',
         }}
       />
       <ChatRoomStack.Screen
@@ -93,7 +108,7 @@ export default function ChatRoomNavigator({route, navigation}) {
           headerStyle: constants.headerStyle,
           headerTitleStyle: constants.headerText,
           headerBackTitleVisible: false,
-          headerTintColor: constants.background2,
+          headerTintColor: 'white',
         })}
       />
       <ChatRoomStack.Screen
@@ -109,7 +124,7 @@ export default function ChatRoomNavigator({route, navigation}) {
           headerStyle: constants.headerStyle,
           headerTitleStyle: constants.headerText,
           headerBackTitleVisible: false,
-          headerTintColor: constants.background2,
+          headerTintColor: 'white',
         }}
       />
     </ChatRoomStack.Navigator>

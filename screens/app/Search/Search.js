@@ -72,17 +72,13 @@ export default function Search() {
         autoCapitalize="none"
         inputStyle={{color: constants.text1, fontSize: 15}}
         style={{
-          height: 40,
+          height: 50,
           backgroundColor: 'transparent',
-          borderWidth: 2,
-          borderColor: constants.lineColor,
-          margin: 25,
-          borderRadius: 10,
+          borderBottomWidth: 2,
+          borderBottomColor: constants.lineColor,
           elevation: 0,
+          shadowOpacity: 0,
         }}
-        clearIcon={() => (
-          <MaterialIcons name="cancel" size={16} color="black" />
-        )}
         placeholder="Search Username"
         placeholderTextColor="grey"
         value={query}

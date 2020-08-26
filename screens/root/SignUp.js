@@ -15,6 +15,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import PhoneInput from 'react-native-phone-number-input';
 import {Auth} from 'aws-amplify';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import ReactNativeHaptic from 'react-native-haptic';
 
 import constants from '../../shared/constants';
 import CustomToast from '../../shared/CustomToast';
@@ -38,72 +39,45 @@ export default function SignUp({navigation}) {
   const phoneInput = React.useRef(null);
 
   const signUp = async () => {
-    console.log(formattedPhoneNumber);
+    setIsLoading(true);
     try {
       if (phoneLogin) {
-        console.log('PHONE LOGIN');
         const {user} = await Auth.signUp({
           username: formattedPhoneNumber,
           password: password,
         });
-        const identities = JSON.parse(user.attributes.identities)[0];
-        const id = identities.userId;
+        setIsLoading(false);
+        ReactNativeHaptic.generate('notificationSuccess');
         navigation.navigate('OtpVerification', {
           username: formattedPhoneNumber,
-          id: id,
+          type: 'phoneNumber',
         });
       } else {
         const {user} = await Auth.signUp({
           username: email,
           password: password,
         });
-        const identities = JSON.parse(user.attributes.identities)[0];
-        const id = identities.userId;
+        setIsLoading(false);
+        ReactNativeHaptic.generate('notificationSuccess');
         navigation.navigate('OtpVerification', {
           username: email,
-          id: id,
+          type: 'email',
         });
       }
     } catch (error) {
       console.log('error signing up:', error);
+      setIsLoading(false);
+      ReactNativeHaptic.generate('notificationError');
       if (error.code === 'InvalidPasswordException') {
         CustomToast('Password too weak');
       } else if (error.code === 'UsernameExistsException') {
         CustomToast(error.message);
       } else if (error.code === 'InvalidParameterException') {
-        CustomToast('Password too weak');
+        CustomToast('Invalid Credentials');
       } else {
         CustomToast('An Error Occured');
       }
     }
-  };
-
-  const handleRegister = (email, password) => {
-    setIsLoading(true);
-    checkIfEmailIsRegistered(email).then((responseText) => {
-      Keyboard.dismiss();
-      if (responseText == 'exists') {
-        setIsLoading(false);
-        CustomToast('Email Already in use');
-      } else {
-        const id = randomID();
-        createUser({
-          id: id,
-          email: email,
-          password: password,
-        }).then(({data}) => {
-          setIsLoading(false);
-          if (data.error) {
-            CustomToast('An Error Occured');
-          } else {
-            navigation.navigate('EmailVerification', {
-              email: email,
-              id: id,
-            });
-          }
-        });
-      }
-    });
   };
 
   return (
@@ -125,6 +99,7 @@ export default function SignUp({navigation}) {
               flex: 1,
               backgroundColor: '#4640C1',
               alignItems: 'center',
+              marginBottom: 50,
             }}>
             <Image
               style={{

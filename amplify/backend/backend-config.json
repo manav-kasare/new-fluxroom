@@ -1,6 +1,6 @@
 {
 	"auth": {
-		"fluxroomae939832ae939832": {
+		"fluxroom32d9774132d97741": {
 			"service": "Cognito",
 			"providerPlugin": "awscloudformation",
 			"dependsOn": []

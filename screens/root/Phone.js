@@ -3,6 +3,7 @@ import {TouchableOpacity} from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 
 export default function Phone() {
+  const anon = () => {};
   return (
     <TouchableOpacity
       style={{
@@ -13,7 +14,7 @@ export default function Phone() {
         alignItems: 'center',
         justifyContent: 'center',
       }}
-      onPress={() => {}}>
+      onPress={anon}>
       <Entypo name="phone" size={25} color="white" />
     </TouchableOpacity>
   );

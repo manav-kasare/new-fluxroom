@@ -1,13 +1,13 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import Entypo from 'react-native-vector-icons/Entypo';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import ChatRoomNavigator from './ChatRoomNavigator';
 import Search from '../screens/app/Search/Search';
 import ProfileNavigator from './ProfileNavigator';
 import {ThemeContext} from '../shared/Context';
+import {size} from 'lodash';
+import SearchNavigator from './SearchNavigator';
 
 const BottomTabs = createBottomTabNavigator();
 
@@ -35,17 +35,21 @@ export default function HomeNavigator() {
         name="ChatRoomNavigator"
         component={ChatRoomNavigator}
         options={{
-          tabBarIcon: ({color}) => (
-            <Entypo name="mic" size={20} color={color} />
-          ),
+          tabBarIcon: ({color, focused}) =>
+            // <Entypo name="mic" size={20} color={color} />
+            focused ? (
+              <MaterialIcons name="mic" size={25} color={color} />
+            ) : (
+              <MaterialIcons name="mic-none" size={25} color={color} />
+            ),
         }}
       />
       <BottomTabs.Screen
         name="Search"
-        component={Search}
+        component={SearchNavigator}
         options={{
           tabBarIcon: ({color}) => (
-            <AntDesign name="search1" size={20} color={color} />
+            <MaterialIcons name="search" size={25} color={color} />
           ),
         }}
       />
@@ -53,9 +57,12 @@ export default function HomeNavigator() {
         name="UserProfile"
         component={ProfileNavigator}
         options={{
-          tabBarIcon: ({color}) => (
-            <FontAwesome5 name="user-alt" size={18} color={color} />
-          ),
+          tabBarIcon: ({color, focused}) =>
+            focused ? (
+              <MaterialIcons name="person-outline" size={25} color={color} />
+            ) : (
+              <MaterialIcons name="person" size={25} color={color} />
+            ),
         }}
       />
     </BottomTabs.Navigator>

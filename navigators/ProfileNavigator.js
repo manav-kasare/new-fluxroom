@@ -10,7 +10,7 @@ import {ThemeContext} from '../shared/Context';
 const ProfileStack = createStackNavigator();
 
 export default function ProfileNavigator({route, navigation}) {
-  const {constants} = React.useContext(ThemeContext);
+  const {constants, darkTheme} = React.useContext(ThemeContext);
 
   if (route.state && route.state.index > 0) {
     navigation.setOptions({tabBarVisible: false});
@@ -25,8 +25,21 @@ export default function ProfileNavigator({route, navigation}) {
         component={UserProfile}
         options={({navigation}) => ({
           title: 'Profile',
-          headerStyle: constants.headerStyle,
-          headerTitleStyle: constants.headerText,
+          headerTitleAlign: 'left',
+          headerStyle: {
+            backgroundColor: darkTheme ? constants.background1 : '#4640C1',
+            borderWidth: 0,
+            borderColor: 'transparent',
+            elevation: 0,
+            shadowOpacity: 0,
+            height: 125,
+          },
+          headerTitleStyle: {
+            fontSize: 25,
+            fontWeight: '700',
+            fontFamily: 'Helvetica',
+            color: 'white',
+          },
           headerRight: () => (
             <TouchableOpacity
               style={{
@@ -37,7 +50,7 @@ export default function ProfileNavigator({route, navigation}) {
                 justifyContent: 'center',
               }}
               onPress={() => navigation.openDrawer()}>
-              <Feather name="menu" size={20} color={constants.background2} />
+              <Feather name="menu" size={20} color="white" />
             </TouchableOpacity>
           ),
         })}

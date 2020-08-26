@@ -28,10 +28,9 @@ export const light = {
   localIP: IP,
   url: 'fluxroom-backend-beta.herokuapp.com',
   headerText: {
-    color: 'black',
-    fontSize: 18,
-    fontWeight: '400',
+    fontWeight: '700',
     fontFamily: 'Helvetica',
+    color: 'white',
   },
   header: {
     width: WIDTH,
@@ -41,11 +40,12 @@ export const light = {
     elevation: 0,
   },
   headerStyle: {
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#4640C1',
     borderWidth: 0,
     borderColor: 'transparent',
     elevation: 0,
     shadowOpacity: 0,
+    height: 100,
   },
   input: {
     fontFamily: 'Helvetica',

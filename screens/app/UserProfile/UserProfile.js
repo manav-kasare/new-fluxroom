@@ -8,7 +8,7 @@ import HostedRooms from './HostedRooms';
 
 export default function UserProfile({navigation}) {
   const {user, setUser} = useContext(UserDetailsContext);
-  const {constants} = React.useContext(ThemeContext);
+  const {constants, darkTheme} = React.useContext(ThemeContext);
 
   return (
     <SafeAreaView
@@ -20,64 +20,46 @@ export default function UserProfile({navigation}) {
       }}>
       <View
         style={{
-          flexDirection: 'row',
           alignItems: 'center',
           width: constants.width,
-          marginTop: 25,
-          justifyContent: 'space-between',
           paddingHorizontal: 10,
+          paddingBottom: 25,
+          borderBottomLeftRadius: 10,
+          borderBottomRightRadius: 10,
+          backgroundColor: darkTheme ? constants.background1 : '#4640C1',
         }}>
         <View
           style={{
-            flexDirection: 'row',
             alignItems: 'center',
+            width: constants.width,
           }}>
           <UserProfilePhoto />
-          <View
+          <Text
             style={{
-              height: 40,
-              marginLeft: 20,
+              color: 'white',
+              fontWeight: '700',
+              fontFamily: 'Helvetica Neue',
+              fontSize: 25,
+              marginVertical: 10,
+              marginTop: 20,
             }}>
-            <Text
-              style={{
-                color: constants.text1,
-                fontWeight: '400',
-                fontFamily: 'Helvetica',
-                fontSize: 25,
-              }}>
-              {user.username}
-            </Text>
-            <Text
-              style={{
-                color: 'grey',
-                fontFamily: 'Helvetica',
-                fontWeight: '300',
-                fontSize: 15,
-              }}>
-              {user.description}
-            </Text>
-          </View>
+            Manav Kasare
+          </Text>
+          <TouchableOpacity
+            style={{
+              marginVertical: 10,
+              backgroundColor: 'white',
+              width: 50,
+              height: 25,
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderRadius: 5,
+            }}
+            onPress={() => navigation.navigate('EditProfile')}>
+            <Text style={{color: 'black'}}>Edit</Text>
+          </TouchableOpacity>
         </View>
-        <TouchableOpacity
-          style={{
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: 100,
-            height: 30,
-            backgroundColor: constants.primary,
-            borderRadius: 5,
-          }}
-          onPress={() => navigation.navigate('EditProfile')}>
-          <Text style={{color: 'white'}}>Edit</Text>
-        </TouchableOpacity>
       </View>
-      <View
-        style={{
-          width: constants.width,
-          height: constants.height * 0.2,
-          backgroundColor: constants.background1,
-        }}
-      />
       <View>
         <Text
           style={{

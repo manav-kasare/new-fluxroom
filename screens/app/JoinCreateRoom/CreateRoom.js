@@ -64,6 +64,8 @@ export default function CreateRoom({navigation}) {
     });
   };
 
+  const anon = () => {};
+
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <SafeAreaView
@@ -141,7 +143,7 @@ export default function CreateRoom({navigation}) {
               borderRadius: 8,
               marginTop: 15,
             }}
-            onPress={room.name.length > 3 ? handleCreateRoom : () => {}}>
+            onPress={room.name.length > 3 ? handleCreateRoom : anon}>
             <Text
               style={{
                 fontFamily: 'Helvetica',

@@ -6,8 +6,10 @@ import {
   Text,
   TouchableOpacity,
   Image,
+  ActivityIndicator,
 } from 'react-native';
 import {Auth} from 'aws-amplify';
+import ReactNativeHaptic from 'react-native-haptic';
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import constants from '../../shared/constants';
@@ -15,26 +17,41 @@ import globalStyles from '../../shared/GlobalStyles';
 import CustomToast from '../../shared/CustomToast';
 
 export default function OtpVerification({route, navigation}) {
-  const {username, id} = route.params;
+  const {username, type} = route.params;
   const [code, setCode] = React.useState(null);
+  const [isLoadingCode, setIsLoadingCode] = React.useState(false);
+  const [isLoadingResendCode, setIsLoadingResendCode] = React.useState(false);
 
   const confirmSignUp = async () => {
+    setIsLoadingCode(true);
     try {
       await Auth.confirmSignUp(username, code).then((response) => {
+        setIsLoadingCode(false);
         if (response === 'SUCCESS') {
-          navigation.navigate('SetupProfile', {id: id});
+          ReactNativeHaptic.generate('notificationSuccess');
+          navigation.navigate('SetUpProfile', {
+            credentials: username,
+            type: type,
+          });
         }
       });
     } catch (error) {
-      CustomToast('Invalid code');
+      setIsLoadingCode(false);
+      ReactNativeHaptic.generate('notificationError');
+      console.log('ERROR: ', error);
     }
   };
 
   const resendConfirmationCode = async () => {
+    setIsLoadingResendCode(true);
     try {
       await Auth.resendSignUp(username);
+      ReactNativeHaptic.generate('notificationSuccess');
+      setIsLoadingResendCode(false);
       CustomToast('Code resent');
     } catch (err) {
+      setIsLoadingResendCode(false);
+      ReactNativeHaptic.generate('notificationError');
       CustomToast('Error resending code');
     }
   };
@@ -72,6 +89,14 @@ export default function OtpVerification({route, navigation}) {
             borderTopRightRadius: 15,
             borderTopLeftRadius: 15,
           }}>
+          <Text
+            style={{
+              color: 'black',
+              fontFamily: 'Helvetica',
+              fontWeight: '500',
+            }}>
+            We have sent your code at {username}
+          </Text>
           <View style={globalStyles.input}>
             <MaterialCommunityIcons
               name="barcode"
@@ -89,14 +114,42 @@ export default function OtpVerification({route, navigation}) {
               autoCapitalize="none"
             />
           </View>
-          <TouchableOpacity style={globalStyles.button} onPress={confirmSignUp}>
-            <Text style={globalStyles.buttonText}>Verify Code</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={globalStyles.button}
-            onPress={resendConfirmationCode}>
-            <Text style={globalStyles.buttonText}>Resend Code</Text>
-          </TouchableOpacity>
+          {isLoadingCode ? (
+            <View
+              style={{
+                height: 50,
+                width: constants.width * 0.8,
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: 25,
+              }}>
+              <ActivityIndicator color="#0d0c0a" size="small" />
+            </View>
+          ) : (
+            <TouchableOpacity
+              style={globalStyles.button}
+              onPress={confirmSignUp}>
+              <Text style={globalStyles.buttonText}>Verify Code</Text>
+            </TouchableOpacity>
+          )}
+          {isLoadingResendCode ? (
+            <View
+              style={{
+                height: 50,
+                width: constants.width * 0.8,
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: 25,
+              }}>
+              <ActivityIndicator color="#0d0c0a" size="small" />
+            </View>
+          ) : (
+            <TouchableOpacity
+              style={globalStyles.button}
+              onPress={resendConfirmationCode}>
+              <Text style={globalStyles.buttonText}>Resend Code</Text>
+            </TouchableOpacity>
+          )}
         </View>
       </SafeAreaView>
     </View>

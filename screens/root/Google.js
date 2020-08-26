@@ -1,5 +1,5 @@
 import React from 'react';
-import {TouchableOpacity, Linking, YellowBox} from 'react-native';
+import {TouchableOpacity, Linking, ActivityIndicator} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {Auth, Hub} from 'aws-amplify';
 import {withOAuth} from 'aws-amplify-react-native';
@@ -10,8 +10,6 @@ import Amplify from 'aws-amplify';
 import awsconfig from '../../aws-exports';
 
 import {getUserInfo, createUser} from '../../backend/database/apiCalls';
-
-YellowBox.ignoreWarnings = true;
 
 async function urlOpener(url, redirectUrl) {
   await InAppBrowser.isAvailable();
@@ -37,10 +35,12 @@ Amplify.configure({
 
 const Google = () => {
   const {setUser} = React.useContext(UserDetailsContext);
+  const [loading, setLoading] = React.useState(false);
 
   const handleCognitoHostedUI = () => {
     getUser().then((userData) => {
       setUser(userData);
+      setLoading(false);
       const identities = JSON.parse(userData.attributes.identities)[0];
       const attributes = userData.attributes;
       // getUserInfo(identities.userId).then((responseData) => {
@@ -89,7 +89,14 @@ const Google = () => {
       .catch(() => console.log('Not signed in'));
   };
 
-  return (
+  const federatedSignIn = () => {
+    setLoading(true);
+    Auth.federatedSignIn({provider: 'Google'});
+  };
+
+  return loading ? (
+    <ActivityIndicator color="black" size="small" />
+  ) : (
     <TouchableOpacity
       style={{
         width: 50,
@@ -99,7 +106,7 @@ const Google = () => {
         alignItems: 'center',
         justifyContent: 'center',
       }}
-      onPress={() => Auth.federatedSignIn({provider: 'Google'})}>
+      onPress={federatedSignIn}>
       <AntDesign name="google" size={25} color="white" />
     </TouchableOpacity>
   );

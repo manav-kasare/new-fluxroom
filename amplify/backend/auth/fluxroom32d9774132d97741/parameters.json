@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "fluxroomae939832_identitypool_ae939832",
+    "identityPoolName": "fluxroom32d97741_identitypool_32d97741",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "fluxroae939832",
-    "userPoolName": "fluxroomae939832_userpool_ae939832",
+    "resourceNameTruncated": "fluxro32d97741",
+    "userPoolName": "fluxroom32d97741_userpool_32d97741",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -23,9 +23,7 @@
         "Requires Numbers",
         "Requires Symbols"
     ],
-    "requiredAttributes": [
-        "email"
-    ],
+    "requiredAttributes": [],
     "userpoolClientGenerateSecret": true,
     "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [
@@ -34,11 +32,11 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "fluxroae939832_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "fluxro32d97741_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
     "useDefault": "manual",
     "authSelections": "identityPoolAndUserPool",
-    "resourceName": "fluxroomae939832ae939832",
+    "resourceName": "fluxroom32d9774132d97741",
     "thirdPartyAuth": true,
     "authProviders": [
         "graph.facebook.com",
@@ -51,12 +49,12 @@
     "adminQueries": false,
     "triggers": "{}",
     "hostedUI": true,
-    "hostedUIDomainName": "fluxroomae939832-ae939832",
+    "hostedUIDomainName": "fluxroom32d97741-32d97741",
     "authProvidersUserPool": [
         "Facebook",
         "Google"
     ],
-    "hostedUIProviderMeta": "[{\"ProviderName\":\"Facebook\",\"authorize_scopes\":\"email,public_profile\",\"AttributeMapping\":{\"email\":\"email\",\"username\":\"id\"}},{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid email profile\",\"AttributeMapping\":{\"email\":\"email\",\"username\":\"sub\"}}]",
+    "hostedUIProviderMeta": "[{\"ProviderName\":\"Facebook\",\"authorize_scopes\":\"public_profile\",\"AttributeMapping\":{\"username\":\"id\"}},{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid profile\",\"AttributeMapping\":{\"username\":\"sub\"}}]",
     "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"implicit\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"fluxroom://\"],\"LogoutURLs\":[\"fluxroom://\"]}",
     "userPoolGroupList": [],
     "authRoleArn": {

@@ -13,15 +13,15 @@ export default function JoinRoomWithLink({route, navigation}) {
     membersLength: 10,
   });
 
-  React.useEffect(() => {
-    // getChatroomInfo(room.id, 'room').then((data) => {
-    //   setRoom({
-    //     ...room,
-    //     name: data.name,
-    //     membersLength: JSON.parse(data.members).members.length,
-    //   });
-    // });
-  }, []);
+  // React.useEffect(() => {
+  // getChatroomInfo(room.id, 'room').then((data) => {
+  //   setRoom({
+  //     ...room,
+  //     name: data.name,
+  //     membersLength: JSON.parse(data.members).members.length,
+  //   });
+  // });
+  // }, []);
 
   const handleJoinRoom = () => {
     navigation.replace('ChatRoomNavigator', {

@@ -42,6 +42,8 @@ export default function EditProfile({navigation}) {
     navigation.goBack();
   };
 
+  const anon = () => {};
+
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: constants.background1}}>
       <View
@@ -83,7 +85,7 @@ export default function EditProfile({navigation}) {
           width: constants.width * 0.8,
           backgroundColor: constants.primary,
         }}
-        onPress={description.length < 150 ? handleSubmit : () => {}}>
+        onPress={description.length < 150 ? handleSubmit : anon}>
         <Text
           style={{
             color: 'white',

@@ -8,9 +8,8 @@ import {ThemeContext} from '../../../shared/Context';
 export default function RoomSettings({route, navigation}) {
   const {room} = route.params;
   const {constants} = React.useContext(ThemeContext);
-  const link = useState(
-    'asjdf;asfnksnfsdlfknafdlsajflsadfkaskfjaslkfakfjkashsafnasfnas;fdsajdfhwenfasdhfksnfa;fashjf',
-  )[0];
+  const link =
+    'asjdf;asfnksnfsdlfknafdlsajflsadfkaskfjaslkfakfjkashsafnasfnas;fdsajdfhwenfasdhfksnfa;fashjf';
 
   const styles = {
     container: {

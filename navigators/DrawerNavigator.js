@@ -3,11 +3,9 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Feather from 'react-native-vector-icons/Feather';
 
-import EditProfile from '../screens/app/UserProfile/EditProfile';
 import DrawerContent from './DrawerContent';
 import Friends from '../screens/app/UserProfile/Friends';
 import JoinRoom from '../screens/app/JoinCreateRoom/JoinRoom';
-import CreateRoom from '../screens/app/JoinCreateRoom/CreateRoom';
 import SettingsNavigator from './SettingsNavigator';
 import HomeNavigator from './HomeNavigator';
 import CreateRoomNavigator from './CreateRoomNavigator';

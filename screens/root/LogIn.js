@@ -14,6 +14,8 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Entypo from 'react-native-vector-icons/Entypo';
 import AsyncStorage from '@react-native-community/async-storage';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import {Auth} from 'aws-amplify';
+import ReactNativeHaptic from 'react-native-haptic';
 
 import {UserDetailsContext} from '../../shared/Context';
 import constants from '../../shared/constants';
@@ -45,6 +47,19 @@ export default function LogIn({navigation}) {
       await AsyncStorage.setItem('user', jsonValue);
     } catch (e) {
       // saving error
+    }
+  };
+
+  const signIn = async () => {
+    setIsLoading(true);
+    try {
+      const user = await Auth.signIn(username, password);
+      ReactNativeHaptic.generate('notificationSuccess');
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+      ReactNativeHaptic.generate('notificationError');
+      console.log('error signing in', error);
     }
   };
 
@@ -112,6 +127,7 @@ export default function LogIn({navigation}) {
               flex: 1,
               backgroundColor: '#4640C1',
               alignItems: 'center',
+              marginBottom: 50,
             }}>
             <Image
               style={{
@@ -154,7 +170,6 @@ export default function LogIn({navigation}) {
                     placeholder="Username or Email Address"
                     onChangeText={(text) => setUsernameOrEmail(text)}
                     value={usernameOrEmail}
-                    onSubmitEditing={handleLogIn}
                     clearButtonMode="while-editing"
                   />
                 </View>
@@ -167,7 +182,6 @@ export default function LogIn({navigation}) {
                     onFocus={() => setOnFocusPassword(true)}
                     onChangeText={(text) => setFormPassword(text)}
                     value={formPassword}
-                    onSubmitEditing={handleLogIn}
                     clearButtonMode="while-editing"
                   />
                   <TouchableOpacity
@@ -196,7 +210,7 @@ export default function LogIn({navigation}) {
                 ) : (
                   <TouchableOpacity
                     style={globalStyles.button}
-                    onPress={handleLogIn}>
+                    onPress={signIn}>
                     <Text style={globalStyles.buttonText}>
                       Log In to FluxRoom
                     </Text>

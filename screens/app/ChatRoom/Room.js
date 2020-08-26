@@ -6,6 +6,7 @@ import {
   Platform,
   Text,
   TouchableOpacity,
+  StatusBar,
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -15,11 +16,13 @@ import {useFocusEffect} from '@react-navigation/native';
 import Host from './Host';
 import MemberYou from './MemberYou';
 import Member from './Member';
+import RaisingHand from './RaisingHand';
+import ToggleMic from './ToggleMic';
 
 import {getUserInfo, getChatroomInfo} from '../../../backend/database/apiCalls';
 import {UserDetailsContext, ThemeContext} from '../../../shared/Context';
 import CircleAvatar from '../../../shared/CircleAvatar';
-import CachedImage from '../../../shared/CachedImage';
+import RoomAvatar from './RoomAvatar';
 
 // Reducer function
 function reducer(state, action) {
@@ -47,7 +50,7 @@ for (var i = 0; i < 15; i++) {
 
 const Room = ({route, navigation}) => {
   const {room} = route.params;
-  const {constants} = React.useContext(ThemeContext);
+  const {constants, darkTheme} = React.useContext(ThemeContext);
   const {user} = useContext(UserDetailsContext);
   const [{membersInfo}, dispatch] = useReducer(reducer, {
     membersInfo: [],
@@ -71,260 +74,183 @@ const Room = ({route, navigation}) => {
   //   });
   // };
 
+  const anon = () => {};
+
   return (
-    <SafeAreaView
-      style={{
-        flex: 1,
-        backgroundColor: constants.background1,
-      }}>
-      <View
+    <>
+      <SafeAreaView
         style={{
-          width: constants.width,
-          height: constants.height * 0.1,
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          paddingHorizontal: 25,
+          flex: 1,
+          backgroundColor: darkTheme
+            ? constants.background1
+            : constants.primary,
         }}>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <TouchableOpacity onPress={() => navigation.goBack()}>
-            {Platform.OS === 'ios' ? (
-              <Ionicons
-                name="chevron-back"
-                size={25}
-                color={constants.background2}
-              />
-            ) : (
-              <Ionicons
-                name="arrow-back"
-                size={25}
-                color={constants.background2}
-              />
-            )}
-          </TouchableOpacity>
-          <View style={{marginHorizontal: 20}}>
-            <CircleAvatar
-              uri="https://images.unsplash.com/photo-1596461097642-b697ec879ced?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
-              size={50}
-              itemName="roomProfilePhoto"
-            />
-          </View>
-          <View>
-            <Text
-              style={{
-                color: constants.text1,
-                fontSize: 18,
-                fontWeight: '600',
-                fontFamily: 'Helvetica',
-              }}>
-              {room.name}
-            </Text>
-            <Text
-              style={{
-                color: 'grey',
-                fontSize: 15,
-                fontWeight: '400',
-                fontFamily: 'Helvetica',
-              }}>
-              {room.description}
-            </Text>
-          </View>
-        </View>
-        <TouchableOpacity
-          onPress={() =>
-            navigation.navigate('RoomSettings', {
-              room: room,
-            })
-          }>
-          <Feather name="menu" size={25} color={constants.background2} />
-        </TouchableOpacity>
-      </View>
-      <FlatList
-        data={test}
-        columnWrapperStyle={{
-          justifyContent: 'space-evenly',
-          width: constants.width,
-        }}
-        numColumns={3}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={({item, index}) => {
-          if (index === 0) {
-            return (
-              <View style={{flexDirection: 'column'}}>
-                <RoomAvatar
-                  uri="https://images.unsplash.com/photo-1596461097642-b697ec879ced?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
-                  size={100}
-                  isHost={true}
-                />
-                <Text
-                  style={{
-                    color: constants.text1,
-                    fontSize: 16,
-                    fontWeight: '500',
-                    fontFamily: 'Helvetica',
-                    alignSelf: 'center',
-                  }}>
-                  {item.name}
-                </Text>
-              </View>
-            );
+        <StatusBar
+          backgroundColor={
+            darkTheme ? constants.background1 : constants.primary
           }
-          // else if (item.id === user.id && item.id !== hostID) {
-          //   return <MemberYou />;
-          // } else if (item.id !== user.id && item.id !== hostID) {
-          //   return <Member id={item.id} />;
-          // }
-          return (
-            <View style={{flexDirection: 'column'}}>
-              <RoomAvatar
-                uri="https://images.unsplash.com/photo-1596461097642-b697ec879ced?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
-                size={100}
-              />
-              <Text
-                style={{
-                  color: constants.text1,
-                  fontSize: 16,
-                  fontWeight: '500',
-                  fontFamily: 'Helvetica',
-                  alignSelf: 'center',
-                }}>
-                {item.name}
-              </Text>
-            </View>
-          );
-        }}
-      />
-      <View
-        style={{
-          width: constants.width,
-          alignItems: 'center',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          paddingVertical: 10,
-        }}>
-        <View style={{flexDirection: 'row'}}>
-          <TouchableOpacity
-            style={{
-              width: 40,
-              height: 40,
-              borderRadius: 20,
-              backgroundColor: constants.primary,
-              alignItems: 'center',
-              justifyContent: 'center',
-              marginHorizontal: 10,
-            }}
-            onPress={() => setIsSpeaking(!isSpeaking)}>
-            {isSpeaking ? (
-              <Ionicons size={24} color="white" name="ios-mic-outline" />
-            ) : (
-              <Ionicons size={24} color="white" name="ios-mic-off-outline" />
-            )}
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={{
-              width: 40,
-              height: 40,
-              borderRadius: 20,
-              backgroundColor: constants.primary,
-              alignItems: 'center',
-              justifyContent: 'center',
-              marginHorizontal: 10,
-            }}
-            onPress={() => setSomeoneRaisingHand(!someoneRaisingHand)}>
-            <MaterialCommunityIcons size={30} color="white" name="hand" />
-          </TouchableOpacity>
-        </View>
-        <TouchableOpacity
-          style={{
-            paddingVertical: 10,
-            paddingHorizontal: 20,
-            marginRight: 25,
-            borderRadius: 20,
-            backgroundColor: constants.primary,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-          onPress={() => {}}>
-          <Text style={{color: 'white'}}>Leave Room</Text>
-        </TouchableOpacity>
-      </View>
-    </SafeAreaView>
-  );
-};
-
-const RoomAvatar = ({size, uri, isHost}) => {
-  const {constants} = React.useContext(ThemeContext);
-  const [isSpeaking, setIsSpeaking] = React.useState(false);
-  const [handRaised, setHandRaised] = React.useState(true);
-
-  if (uri === undefined) {
-    return (
-      <View
-        style={{
-          width: size,
-          height: size,
-          borderRadius: 40,
-          justifyContent: 'center',
-          alignItems: 'center',
-          backgroundColor: constants.background3,
-        }}>
-        <EvilIcons name="user" size={50} color={constants.background2} />
-      </View>
-    );
-  }
-
-  return (
-    <View style={{height: 100, marginVertical: 20}}>
-      <CachedImage
-        style={{
-          width: size,
-          height: size,
-          borderRadius: 40,
-          borderWidth: isHost ? 5 : 0,
-          borderColor: isHost ? 'yellow' : 'transparent',
-        }}
-        uri={uri}
-        itemName="roomPhoto"
-      />
-      <View style={{flexDirection: 'row'}}>
-        <View
-          style={{
-            width: 40,
-            height: 40,
-            borderRadius: 20,
-            backgroundColor: constants.primary,
-            alignItems: 'center',
-            justifyContent: 'center',
-            position: 'relative',
-            bottom: 25,
-          }}>
-          {isSpeaking ? (
-            <Ionicons size={24} color="white" name="ios-mic-outline" />
-          ) : (
-            <Ionicons size={24} color="white" name="ios-mic-off-outline" />
-          )}
-        </View>
-
-        {handRaised ? (
+        />
+        <View style={{backgroundColor: constants.background1, flex: 1}}>
           <View
             style={{
-              width: 40,
-              height: 40,
-              borderRadius: 20,
-              backgroundColor: constants.primary,
+              width: constants.width,
+              height: constants.height * 0.1,
+              flexDirection: 'row',
               alignItems: 'center',
-              justifyContent: 'center',
-              position: 'relative',
-              bottom: 25,
-              left: 25,
+              justifyContent: 'space-between',
+              paddingHorizontal: 25,
+              backgroundColor: darkTheme
+                ? constants.background1
+                : constants.primary,
             }}>
-            <MaterialCommunityIcons size={30} color="white" name="hand" />
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              <TouchableOpacity onPress={() => navigation.goBack()}>
+                {Platform.OS === 'ios' ? (
+                  <Ionicons name="chevron-back" size={25} color="white" />
+                ) : (
+                  <Ionicons name="arrow-back" size={25} color="white" />
+                )}
+              </TouchableOpacity>
+              <View style={{marginHorizontal: 20}}>
+                <CircleAvatar
+                  uri="https://images.unsplash.com/photo-1596461097642-b697ec879ced?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
+                  size={50}
+                  itemName="roomProfilePhoto"
+                />
+              </View>
+              <View>
+                <Text
+                  style={{
+                    color: 'white',
+                    fontSize: 18,
+                    fontWeight: '600',
+                    fontFamily: 'Helvetica',
+                  }}>
+                  {room.name}
+                </Text>
+                <Text
+                  style={{
+                    color: 'white',
+                    fontSize: 14,
+                    fontWeight: '200',
+                    fontFamily: 'Helvetica',
+                  }}>
+                  {room.description}
+                </Text>
+              </View>
+            </View>
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate('RoomSettings', {
+                  room: room,
+                })
+              }>
+              <Feather name="menu" size={25} color="white" />
+            </TouchableOpacity>
           </View>
-        ) : (
-          <></>
-        )}
-      </View>
-    </View>
+          <FlatList
+            data={test}
+            style={{backgroundColor: constants.background1}}
+            columnWrapperStyle={{
+              justifyContent: 'space-evenly',
+              width: constants.width,
+            }}
+            numColumns={3}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={({item, index}) => {
+              if (index === 0) {
+                return (
+                  <View style={{flexDirection: 'column'}}>
+                    <RoomAvatar
+                      uri="https://images.unsplash.com/photo-1596461097642-b697ec879ced?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
+                      size={100}
+                      isHost={true}
+                    />
+                    <Text
+                      style={{
+                        color: constants.text1,
+                        fontSize: 16,
+                        fontWeight: '500',
+                        fontFamily: 'Helvetica',
+                        alignSelf: 'center',
+                      }}>
+                      {item.name}
+                    </Text>
+                  </View>
+                );
+              }
+              // else if (item.id === user.id && item.id !== hostID) {
+              //   return <MemberYou />;
+              // } else if (item.id !== user.id && item.id !== hostID) {
+              //   return <Member id={item.id} />;
+              // }
+              return (
+                <View style={{flexDirection: 'column'}}>
+                  <RoomAvatar
+                    uri="https://images.unsplash.com/photo-1596461097642-b697ec879ced?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
+                    size={100}
+                  />
+                  <Text
+                    style={{
+                      color: constants.text1,
+                      fontSize: 16,
+                      fontWeight: '500',
+                      fontFamily: 'Helvetica',
+                      alignSelf: 'center',
+                    }}>
+                    {item.name}
+                  </Text>
+                </View>
+              );
+            }}
+          />
+          <View
+            style={{
+              width: constants.width,
+              alignItems: 'center',
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              paddingVertical: 10,
+              backgroundColor: constants.background1,
+            }}>
+            <View style={{flexDirection: 'row'}}>
+              <ToggleMic
+                isSpeaking={isSpeaking}
+                setIsSpeaking={setIsSpeaking}
+              />
+              <RaisingHand
+                someoneRaisingHand={someoneRaisingHand}
+                setSomeoneRaisingHand={setSomeoneRaisingHand}
+              />
+            </View>
+            <TouchableOpacity
+              style={{
+                paddingVertical: 10,
+                paddingHorizontal: 20,
+                marginRight: 25,
+                borderRadius: 20,
+                backgroundColor: constants.primary,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+              onPress={anon}>
+              <Text style={{color: 'white'}}>Leave Room</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </SafeAreaView>
+      {Platform.OS === 'ios' ? (
+        <View
+          style={{
+            width: constants.width,
+            height: 40,
+            backgroundColor: constants.background1,
+          }}
+        />
+      ) : (
+        <></>
+      )}
+    </>
   );
 };
 

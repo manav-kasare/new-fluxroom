@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useEffect, useContext} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -13,14 +13,13 @@ import EmailVerification from '../screens/root/EmailVerification';
 import ForgotPassword from '../screens/root/ForgotPassword';
 import SplashScreen from '../screens/root/SplashScreen';
 import DrawerNavigator from './DrawerNavigator';
-import PhoneLoginScreen from '../screens/root/PhoneLoginScreen';
 import OtpVerification from '../screens/root/OtpVerification';
 import ForgotPasswordConfirmation from '../screens/root/ForgotPasswordConfirmation';
 
 const Stack = createStackNavigator();
 
 export default function RootNavigator() {
-  const [splashScreen, setSplashScreen] = useState(true);
+  // const [splashScreen, setSplashScreen] = useState(true);
   const {user, setUser} = useContext(UserDetailsContext);
   const {getData} = useContext(ThemeContext);
 
@@ -53,9 +52,9 @@ export default function RootNavigator() {
 
   useEffect(() => {
     getAuthenticatedUser();
-    setTimeout(() => {
-      setSplashScreen(false);
-    }, 500);
+    // setTimeout(() => {
+    //   setSplashScreen(false);
+    // }, 500);
     // getUserData();
     getThemeData();
   }, []);
@@ -82,12 +81,14 @@ export default function RootNavigator() {
     } catch (err) {}
   };
 
-  if (splashScreen) {
-    return <SplashScreen />;
-  }
+  // if (splashScreen) {
+  //   return <SplashScreen />;
+  // }
 
   return (
-    <NavigationContainer linking={deepLinking}>
+    <NavigationContainer
+      linking={deepLinking}
+      fallback={() => <SplashScreen />}>
       {user === null || user === undefined ? (
         <AuthStackNavigator />
       ) : (
@@ -111,7 +112,50 @@ const AuthStackNavigator = () => {
         component={Onboard}
         options={{headerShown: false}}
       />
-
+      <Stack.Screen
+        name="LogIn"
+        component={LogIn}
+        options={{
+          title: 'Log In',
+          headerStyle: {
+            backgroundColor: '#4640C1',
+            borderBottomWidth: 0,
+            borderBottomColor: 'transparent',
+            elevation: 0,
+            shadowOpacity: 0,
+          },
+          headerTitleStyle: {
+            color: 'white',
+            fontSize: 20,
+            fontWeight: '300',
+            fontFamily: 'Helvetica',
+          },
+          headerTintColor: 'white',
+          headerBackTitleVisible: false,
+        }}
+      />
+      <Stack.Screen
+        name="SignUp"
+        component={SignUp}
+        options={{
+          title: 'Join Fluxroom',
+          headerStyle: {
+            backgroundColor: '#4640C1',
+            borderWidth: 0,
+            borderColor: 'transparent',
+            elevation: 0,
+            shadowOpacity: 0,
+          },
+          headerTitleStyle: {
+            color: 'white',
+            fontSize: 20,
+            fontWeight: '300',
+            fontFamily: 'Helvetica',
+          },
+          headerTintColor: 'white',
+          headerBackTitleVisible: false,
+        }}
+      />
       <Stack.Screen
         name="ForgotPassword"
         component={ForgotPassword}
@@ -157,50 +201,6 @@ const AuthStackNavigator = () => {
         }}
       />
 
-      <Stack.Screen
-        name="LogIn"
-        component={LogIn}
-        options={{
-          title: 'Log In',
-          headerStyle: {
-            backgroundColor: '#4640C1',
-            borderBottomWidth: 0,
-            borderBottomColor: 'transparent',
-            elevation: 0,
-            shadowOpacity: 0,
-          },
-          headerTitleStyle: {
-            color: 'white',
-            fontSize: 20,
-            fontWeight: '300',
-            fontFamily: 'Helvetica',
-          },
-          headerTintColor: 'white',
-          headerBackTitleVisible: false,
-        }}
-      />
-      <Stack.Screen
-        name="SignUp"
-        component={SignUp}
-        options={{
-          title: 'Join Fluxroom',
-          headerStyle: {
-            backgroundColor: '#4640C1',
-            borderWidth: 0,
-            borderColor: 'transparent',
-            elevation: 0,
-            shadowOpacity: 0,
-          },
-          headerTitleStyle: {
-            color: 'white',
-            fontSize: 20,
-            fontWeight: '300',
-            fontFamily: 'Helvetica',
-          },
-          headerTintColor: 'white',
-          headerBackTitleVisible: false,
-        }}
-      />
       <Stack.Screen
         name="OtpVerification"
         component={OtpVerification}
@@ -251,19 +251,19 @@ const AuthStackNavigator = () => {
         options={{
           title: 'Set Up your Profile',
           headerStyle: {
-            backgroundColor: 'white',
+            backgroundColor: '#4640C1',
             borderWidth: 0,
             borderColor: 'transparent',
             elevation: 0,
             shadowOpacity: 0,
           },
           headerTitleStyle: {
-            color: 'black',
+            color: 'white',
             fontSize: 20,
             fontWeight: '300',
             fontFamily: 'Helvetica',
           },
-          headerTintColor: 'black',
+          headerTintColor: 'white',
           headerBackTitleVisible: false,
         }}
       />

@@ -6,6 +6,8 @@ export default function RecentSearch() {
   const {constants} = React.useContext(ThemeContext);
   const [recentSearchList, setRecentSearchList] = React.useState([]);
 
+  const anon = () => {};
+
   return (
     <FlatList
       data={recentSearchList}
@@ -17,6 +19,7 @@ export default function RecentSearch() {
               fontSize: 20,
               fontWeight: '500',
               marginLeft: 25,
+              marginTop: 25,
             }}>
             Recent Searches
           </Text>
@@ -36,7 +39,7 @@ export default function RecentSearch() {
             style={{color: constants.text1, fontSize: 15, fontWeight: '400'}}>
             {item}
           </Text>
-          <TouchableOpacity onPress={() => {}}></TouchableOpacity>
+          <TouchableOpacity onPress={anon}></TouchableOpacity>
         </View>
       )}
     />

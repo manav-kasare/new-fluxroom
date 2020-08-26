@@ -35,12 +35,14 @@ Amplify.configure({
 
 const Facebook = ({navigation}) => {
   const {setUser} = React.useContext(UserDetailsContext);
+  const [loading, setLoading] = React.useState(false);
 
   const handleCognitoHostedUI = () => {
     getUser().then((userData) => {
       const identities = JSON.parse(userData.identities)[0];
       const attributes = userData.attributes;
       getUserInfo(identities.userId).then((responseData) => {
+        setLoading(false);
         if (responseData.id) {
           setUser(responseData);
         } else {
@@ -88,7 +90,14 @@ const Facebook = ({navigation}) => {
       .catch(() => console.log('Not signed in'));
   };
 
-  return (
+  const federatedSignIn = () => {
+    setLoading(true);
+    Auth.federatedSignIn({provider: 'Facebook'});
+  };
+
+  return loading ? (
+    <ActivityIndicator color="black" size="small" />
+  ) : (
     <TouchableOpacity
       style={{
         width: 50,
@@ -98,7 +107,7 @@ const Facebook = ({navigation}) => {
         alignItems: 'center',
         justifyContent: 'center',
       }}
-      onPress={() => Auth.federatedSignIn({provider: 'Facebook'})}>
+      onPress={federatedSignIn}>
       <FontAwesome5 name="facebook-f" size={25} color="white" />
     </TouchableOpacity>
   );

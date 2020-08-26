@@ -27,11 +27,7 @@ export default function RequestIcon({navigation, id}) {
         flexDirection: 'row',
       }}>
       <TouchableOpacity onPress={() => navigation.navigate('Requests')}>
-        <Ionicons
-          name="ios-notifications-outline"
-          size={25}
-          color={constants.background2}
-        />
+        <Ionicons name="ios-notifications-outline" size={25} color="white" />
       </TouchableOpacity>
       <View
         style={{

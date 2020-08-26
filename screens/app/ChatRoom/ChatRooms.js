@@ -31,7 +31,7 @@ for (var i = 0; i < 10; i++) {
   list.push(`${i}`);
 }
 
-export default function ChatRooms({navigation}) {
+const ChatRooms = ({navigation}) => {
   const {user} = useContext(UserDetailsContext);
   const {constants, darkTheme} = useContext(ThemeContext);
   const [chatRoomList, setChatRoomList] = useState([]);
@@ -41,7 +41,6 @@ export default function ChatRooms({navigation}) {
 
   const onRefresh = useCallback(() => {
     setRefreshing(true);
-
     wait(2000).then(() => setRefreshing(false));
   }, []);
 
@@ -105,7 +104,7 @@ export default function ChatRooms({navigation}) {
         justifyContent: 'flex-start',
       }}>
       <StatusBar
-        barStyle={darkTheme ? 'light-content' : 'dark-content'}
+        barStyle="light-content"
         backgroundColor={constants.background1}
       />
       {onFocusRefresh ? (
@@ -136,9 +135,9 @@ export default function ChatRooms({navigation}) {
       )}
     </SafeAreaView>
   );
-}
+};
 
-const RenderTile = ({id, navigation}) => {
+const RenderTile = React.memo(({id, navigation}) => {
   // const [room, setRoom] = useState({
   //   name: null,
   //   description: null,
@@ -185,4 +184,6 @@ const RenderTile = ({id, navigation}) => {
       onlineSpeakers="5"
     />
   );
-};
+});
+
+export default React.memo(ChatRooms);
