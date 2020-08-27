@@ -3,10 +3,8 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import ChatRoomNavigator from './ChatRoomNavigator';
-import Search from '../screens/app/Search/Search';
 import ProfileNavigator from './ProfileNavigator';
 import {ThemeContext} from '../shared/Context';
-import {size} from 'lodash';
 import SearchNavigator from './SearchNavigator';
 
 const BottomTabs = createBottomTabNavigator();

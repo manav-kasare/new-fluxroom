@@ -1,12 +1,11 @@
 import React, {useContext} from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, ActivityIndicator} from 'react-native';
 import {
   DrawerItem,
   DrawerContentScrollView,
   DrawerItemList,
 } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import AsyncStorage from '@react-native-community/async-storage';
 import {Auth} from 'aws-amplify';
 
 import {UserDetailsContext, ThemeContext} from '../shared/Context';
@@ -14,13 +13,17 @@ import {UserDetailsContext, ThemeContext} from '../shared/Context';
 export default function DrawerContent(props) {
   const {setUser} = React.useContext(UserDetailsContext);
   const {constants, darkTheme} = React.useContext(ThemeContext);
+  const [loading, setLoading] = React.useState(false);
 
   const signOut = () => {
+    setLoading(true);
     try {
       Auth.signOut({global: true}).then(() => {
+        setLoading(false);
         setUser(null);
       });
     } catch (error) {
+      setLoading(false);
       console.log('error signing out: ', error);
     }
   };
@@ -44,17 +47,21 @@ export default function DrawerContent(props) {
       </View>
 
       <View style={styles.bottomDrawerSection}>
-        <DrawerItem
-          icon={() => <Icon name="exit-to-app" color="white" size={24} />}
-          style={{
-            height: 50,
-            backgroundColor: constants.primary,
-            justifyContent: 'center',
-          }}
-          onPress={signOut}
-          label="Sign Out"
-          labelStyle={{color: 'grey', fontSize: 14, color: 'white'}}
-        />
+        {loading ? (
+          <ActivityIndicator color={constants.backroung2} size="small" />
+        ) : (
+          <DrawerItem
+            icon={() => <Icon name="exit-to-app" color="white" size={24} />}
+            style={{
+              height: 50,
+              backgroundColor: constants.primary,
+              justifyContent: 'center',
+            }}
+            onPress={signOut}
+            label="Sign Out"
+            labelStyle={{color: 'grey', fontSize: 14, color: 'white'}}
+          />
+        )}
       </View>
     </View>
   );

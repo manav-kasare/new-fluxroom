@@ -16,7 +16,7 @@ export default function FullPhoto({navigation, route}) {
         <TouchableOpacity onPress={pickImage} style={{marginRight: 25}}>
           <Text
             style={{
-              color: constants.text1,
+              color: 'white',
               fontSize: 20,
             }}>
             Edit

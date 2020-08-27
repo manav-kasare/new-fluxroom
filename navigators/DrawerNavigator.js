@@ -15,6 +15,7 @@ const Drawer = createDrawerNavigator();
 
 export default function DrawerNavigator() {
   const {constants} = React.useContext(ThemeContext);
+
   return (
     <Drawer.Navigator
       edgeWidth={constants.width}

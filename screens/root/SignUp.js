@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useContext} from 'react';
+import React, {useState} from 'react';
 import {
   SafeAreaView,
   View,
@@ -25,6 +25,20 @@ import {
   createUser,
   checkIfEmailIsRegistered,
 } from '../../backend/database/apiCalls';
+import Animated, {
+  interpolate,
+  useCode,
+  cond,
+  set,
+  eq,
+  Easing,
+  SpringUtils,
+} from 'react-native-reanimated';
+import {
+  useValue,
+  withTimingTransition,
+  withSpringTransition,
+} from 'react-native-redash';
 
 export default function SignUp({navigation}) {
   const [isLoading, setIsLoading] = useState(false);
@@ -35,6 +49,22 @@ export default function SignUp({navigation}) {
   const [phoneLogin, setPhoneLogin] = useState(false);
   const [formattedPhoneNumber, setFormattedPhoneNumber] = useState(null);
   const phoneInput = React.useRef(null);
+
+  const positionX = useValue(constants.width * 2);
+  useCode(() => cond(eq(positionX, constants.width * 2), set(positionX, 0)));
+  const slideAnimationX = withSpringTransition(positionX, {
+    ...SpringUtils.makeDefaultConfig(),
+    overshootClamping: true,
+    damping: new Animated.Value(20),
+  });
+
+  const positionY = useValue(constants.height);
+  useCode(() => cond(eq(positionY, constants.height), set(positionY, 0)));
+  const slideAnimationY = withSpringTransition(positionY, {
+    ...SpringUtils.makeDefaultConfig(),
+    overshootClamping: true,
+    damping: new Animated.Value(20),
+  });
 
   const signUp = async () => {
     setIsLoading(true);
@@ -99,17 +129,19 @@ export default function SignUp({navigation}) {
               alignItems: 'center',
               marginBottom: 50,
             }}>
-            <Image
-              style={{
-                width: constants.width,
-                marginVertical: 30,
-                height: constants.height * 0.2,
-              }}
-              resizeMode="contain"
-              source={require('/Users/manav/projects/fluxroom/assets/contract.png')}
-            />
+            <Animated.View style={{transform: [{translateX: slideAnimationX}]}}>
+              <Image
+                style={{
+                  width: constants.width,
+                  marginVertical: 30,
+                  height: constants.height * 0.2,
+                }}
+                resizeMode="contain"
+                source={require('/Users/manav/projects/fluxroom/assets/contract.png')}
+              />
+            </Animated.View>
 
-            <View
+            <Animated.View
               style={{
                 flex: 1,
                 width: constants.width,
@@ -119,6 +151,7 @@ export default function SignUp({navigation}) {
                 backgroundColor: 'white',
                 borderTopRightRadius: 15,
                 borderTopLeftRadius: 15,
+                transform: [{translateY: slideAnimationY}],
               }}>
               {phoneLogin ? (
                 <PhoneInput
@@ -220,7 +253,7 @@ export default function SignUp({navigation}) {
                   </Text>
                 )}
               </TouchableOpacity>
-            </View>
+            </Animated.View>
           </SafeAreaView>
         </View>
       </TouchableWithoutFeedback>

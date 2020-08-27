@@ -11,6 +11,14 @@ import {
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {Auth} from 'aws-amplify';
+import Animated, {
+  SpringUtils,
+  useCode,
+  cond,
+  set,
+  eq,
+} from 'react-native-reanimated';
+import {useValue, withSpringTransition} from 'react-native-redash';
 
 import constants from '../../shared/constants';
 import globalStyles from '../../shared/GlobalStyles';
@@ -22,6 +30,22 @@ import CustomToast from '../../shared/CustomToast';
 
 export default function ForgotPassword({navigation}) {
   const [username, setUsername] = useState(null);
+
+  const positionX = useValue(constants.width * 2);
+  useCode(() => cond(eq(positionX, constants.width * 2), set(positionX, 0)));
+  const slideAnimationX = withSpringTransition(positionX, {
+    ...SpringUtils.makeDefaultConfig(),
+    overshootClamping: true,
+    damping: new Animated.Value(20),
+  });
+
+  const positionY = useValue(constants.height);
+  useCode(() => cond(eq(positionY, constants.height), set(positionY, 0)));
+  const slideAnimationY = withSpringTransition(positionY, {
+    ...SpringUtils.makeDefaultConfig(),
+    overshootClamping: true,
+    damping: new Animated.Value(20),
+  });
 
   const forgotPassword = () => {
     navigation.navigate('ForgotPasswordConfirmation', {username: username});
@@ -46,16 +70,18 @@ export default function ForgotPassword({navigation}) {
             backgroundColor: '#4640C1',
             alignItems: 'center',
           }}>
-          <Image
-            style={{
-              width: constants.width,
-              height: constants.height * 0.2,
-              marginVertical: 50,
-            }}
-            resizeMode="contain"
-            source={require('/Users/manav/projects/fluxroom/assets/forgot_password.png')}
-          />
-          <View
+          <Animated.View style={{transform: [{translateX: slideAnimationX}]}}>
+            <Image
+              style={{
+                width: constants.width,
+                height: constants.height * 0.2,
+                marginVertical: 50,
+              }}
+              resizeMode="contain"
+              source={require('/Users/manav/projects/fluxroom/assets/forgot_password.png')}
+            />
+          </Animated.View>
+          <Animated.View
             style={{
               flex: 1,
               width: constants.width,
@@ -65,6 +91,7 @@ export default function ForgotPassword({navigation}) {
               backgroundColor: 'white',
               borderTopRightRadius: 15,
               borderTopLeftRadius: 15,
+              transform: [{translateY: slideAnimationY}],
             }}>
             <View>
               <View style={globalStyles.input}>
@@ -74,7 +101,6 @@ export default function ForgotPassword({navigation}) {
                   color={constants.primary}
                 />
                 <TextInput
-                  autoFocus={true}
                   style={globalStyles.textInput}
                   textContentType="emailAddress"
                   keyboardType="email-address"
@@ -97,7 +123,7 @@ export default function ForgotPassword({navigation}) {
                 </Text>
               </TouchableOpacity>
             </View>
-          </View>
+          </Animated.View>
         </SafeAreaView>
       </View>
     </KeyboardAwareScrollView>
