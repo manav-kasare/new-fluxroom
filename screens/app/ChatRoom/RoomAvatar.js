@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, Text} from 'react-native';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -7,7 +7,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import CachedImage from '../../../shared/CachedImage';
 import {ThemeContext} from '../../../shared/Context';
 
-export default function RoomAvatar({size, uri, isHost}) {
+export default function RoomAvatar({size, uri, isHost, name}) {
   const {constants} = React.useContext(ThemeContext);
   const [isSpeaking, setIsSpeaking] = React.useState(false);
   const [handRaised, setHandRaised] = React.useState(true);
@@ -29,19 +29,19 @@ export default function RoomAvatar({size, uri, isHost}) {
   }
 
   return (
-    <View style={{height: 100, marginVertical: 20}}>
+    <View style={{marginVertical: 10}}>
       <CachedImage
         style={{
           width: size,
           height: size,
           borderRadius: 40,
-          borderWidth: isHost ? 5 : 0,
-          borderColor: isHost ? 'yellow' : 'transparent',
+          borderWidth: isHost ? 5 : 1,
+          borderColor: isHost ? '#fcdf05' : 'grey',
         }}
         uri={uri}
         itemName="roomPhoto"
       />
-      <View style={{flexDirection: 'row'}}>
+      <View style={{flexDirection: 'row', height: 20}}>
         <View
           style={{
             width: 40,
@@ -79,6 +79,16 @@ export default function RoomAvatar({size, uri, isHost}) {
           <></>
         )}
       </View>
+      <Text
+        style={{
+          color: constants.text1,
+          fontSize: 16,
+          fontWeight: '500',
+          fontFamily: 'Helvetica Neue',
+          alignSelf: 'center',
+        }}>
+        {name}
+      </Text>
     </View>
   );
 }

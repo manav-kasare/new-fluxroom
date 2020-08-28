@@ -40,7 +40,7 @@ const Google = () => {
   const handleCognitoHostedUI = () => {
     getUser().then((userData) => {
       setUser(userData);
-      setLoading(false);
+
       const identities = JSON.parse(userData.attributes.identities)[0];
       const attributes = userData.attributes;
       // getUserInfo(identities.userId).then((responseData) => {
@@ -66,13 +66,11 @@ const Google = () => {
 
   React.useEffect(() => {
     Hub.listen('auth', ({payload: {event, data}}) => {
+      setLoading(false);
       switch (event) {
         case 'signIn':
         case 'cognitoHostedUI':
           handleCognitoHostedUI();
-          break;
-        case 'signOut':
-          setUser(null);
           break;
         case 'signIn_failure':
           CustomToast('An Error Occured');
@@ -91,12 +89,12 @@ const Google = () => {
 
   const federatedSignIn = () => {
     setLoading(true);
-    Auth.federatedSignIn({provider: 'Google'});
+    Auth.federatedSignIn({provider: 'Google'}).then((response) =>
+      console.log(response),
+    );
   };
 
-  return loading ? (
-    <ActivityIndicator color="black" size="small" />
-  ) : (
+  return (
     <TouchableOpacity
       style={{
         width: 50,
@@ -107,7 +105,11 @@ const Google = () => {
         justifyContent: 'center',
       }}
       onPress={federatedSignIn}>
-      <AntDesign name="google" size={25} color="white" />
+      {loading ? (
+        <ActivityIndicator color="white" size="small" />
+      ) : (
+        <AntDesign name="google" size={25} color="white" />
+      )}
     </TouchableOpacity>
   );
 };

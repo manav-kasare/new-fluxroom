@@ -1,4 +1,4 @@
-import React, {useEffect, useContext, useReducer} from 'react';
+import React, {useContext, useReducer} from 'react';
 import {
   SafeAreaView,
   FlatList,
@@ -8,10 +8,6 @@ import {
   TouchableOpacity,
   StatusBar,
 } from 'react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import Feather from 'react-native-vector-icons/Feather';
-import {useFocusEffect} from '@react-navigation/native';
 
 import Host from './Host';
 import MemberYou from './MemberYou';
@@ -21,8 +17,9 @@ import ToggleMic from './ToggleMic';
 
 import {getUserInfo, getChatroomInfo} from '../../../backend/database/apiCalls';
 import {UserDetailsContext, ThemeContext} from '../../../shared/Context';
-import CircleAvatar from '../../../shared/CircleAvatar';
 import RoomAvatar from './RoomAvatar';
+import RoomHeader from './RoomHeader';
+import RoomUserProfile from './RoomUserProfile';
 
 // Reducer function
 function reducer(state, action) {
@@ -57,6 +54,7 @@ const Room = ({route, navigation}) => {
   });
   const [isSpeaking, setIsSpeaking] = React.useState(false);
   const [someoneRaisingHand, setSomeoneRaisingHand] = React.useState(false);
+  const [isVisible, setIsVisible] = React.useState(false);
 
   // get members info
   // useEffect(() => {
@@ -91,63 +89,7 @@ const Room = ({route, navigation}) => {
           }
         />
         <View style={{backgroundColor: constants.background1, flex: 1}}>
-          <View
-            style={{
-              width: constants.width,
-              height: constants.height * 0.1,
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              paddingHorizontal: 25,
-              backgroundColor: darkTheme
-                ? constants.background1
-                : constants.primary,
-            }}>
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
-              <TouchableOpacity onPress={() => navigation.goBack()}>
-                {Platform.OS === 'ios' ? (
-                  <Ionicons name="chevron-back" size={25} color="white" />
-                ) : (
-                  <Ionicons name="arrow-back" size={25} color="white" />
-                )}
-              </TouchableOpacity>
-              <View style={{marginHorizontal: 20}}>
-                <CircleAvatar
-                  uri="https://images.unsplash.com/photo-1596461097642-b697ec879ced?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
-                  size={50}
-                  itemName="roomProfilePhoto"
-                />
-              </View>
-              <View>
-                <Text
-                  style={{
-                    color: 'white',
-                    fontSize: 18,
-                    fontWeight: '600',
-                    fontFamily: 'Helvetica',
-                  }}>
-                  {room.name}
-                </Text>
-                <Text
-                  style={{
-                    color: 'white',
-                    fontSize: 14,
-                    fontWeight: '200',
-                    fontFamily: 'Helvetica',
-                  }}>
-                  {room.description}
-                </Text>
-              </View>
-            </View>
-            <TouchableOpacity
-              onPress={() =>
-                navigation.navigate('RoomSettings', {
-                  room: room,
-                })
-              }>
-              <Feather name="menu" size={25} color="white" />
-            </TouchableOpacity>
-          </View>
+          <RoomHeader room={room} navigation={navigation} />
           <FlatList
             data={test}
             style={{backgroundColor: constants.background1}}
@@ -160,23 +102,18 @@ const Room = ({route, navigation}) => {
             renderItem={({item, index}) => {
               if (index === 0) {
                 return (
-                  <View style={{flexDirection: 'column'}}>
+                  <TouchableOpacity onPress={() => setIsVisible(!isVisible)}>
+                    <RoomUserProfile
+                      isVisible={isVisible}
+                      setIsVisible={setIsVisible}
+                    />
                     <RoomAvatar
                       uri="https://images.unsplash.com/photo-1596461097642-b697ec879ced?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
                       size={100}
                       isHost={true}
+                      name={item.name}
                     />
-                    <Text
-                      style={{
-                        color: constants.text1,
-                        fontSize: 16,
-                        fontWeight: '500',
-                        fontFamily: 'Helvetica',
-                        alignSelf: 'center',
-                      }}>
-                      {item.name}
-                    </Text>
-                  </View>
+                  </TouchableOpacity>
                 );
               }
               // else if (item.id === user.id && item.id !== hostID) {
@@ -185,22 +122,18 @@ const Room = ({route, navigation}) => {
               //   return <Member id={item.id} />;
               // }
               return (
-                <View style={{flexDirection: 'column'}}>
+                <TouchableOpacity onPress={() => setIsVisible(!isVisible)}>
+                  <RoomUserProfile
+                    isVisible={isVisible}
+                    setIsVisible={setIsVisible}
+                  />
                   <RoomAvatar
                     uri="https://images.unsplash.com/photo-1596461097642-b697ec879ced?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
                     size={100}
+                    isHost={false}
+                    name={item.name}
                   />
-                  <Text
-                    style={{
-                      color: constants.text1,
-                      fontSize: 16,
-                      fontWeight: '500',
-                      fontFamily: 'Helvetica',
-                      alignSelf: 'center',
-                    }}>
-                    {item.name}
-                  </Text>
-                </View>
+                </TouchableOpacity>
               );
             }}
           />

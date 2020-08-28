@@ -8,10 +8,9 @@ import {
   Platform,
 } from 'react-native';
 import {Searchbar} from 'react-native-paper';
-import EvilIcons from 'react-native-vector-icons/EvilIcons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import _ from 'lodash';
 import base64 from 'react-native-base64';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import OptionsModal from './OptionsModal';
 import {getUsers} from '../../../backend/database/apiCalls';
@@ -72,7 +71,7 @@ export default function Search() {
         autoCapitalize="none"
         inputStyle={{color: constants.text1, fontSize: 15}}
         style={{
-          height: 50,
+          height: 60,
           backgroundColor: 'transparent',
           borderBottomWidth: 2,
           borderBottomColor: constants.lineColor,
@@ -89,7 +88,7 @@ export default function Search() {
         autoFocus={true}
         iconColor="grey"
         icon={() => (
-          <EvilIcons name="search" size={24} color={constants.background2} />
+          <Ionicons name="search" size={25} color={constants.background2} />
         )}
         refreshControl={
           <RefreshControl

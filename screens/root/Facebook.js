@@ -95,9 +95,7 @@ const Facebook = ({navigation}) => {
     Auth.federatedSignIn({provider: 'Facebook'});
   };
 
-  return loading ? (
-    <ActivityIndicator color="black" size="small" />
-  ) : (
+  return (
     <TouchableOpacity
       style={{
         width: 50,
@@ -108,7 +106,11 @@ const Facebook = ({navigation}) => {
         justifyContent: 'center',
       }}
       onPress={federatedSignIn}>
-      <FontAwesome5 name="facebook-f" size={25} color="white" />
+      {loading ? (
+        <ActivityIndicator color="white" size="small" />
+      ) : (
+        <FontAwesome5 name="facebook-f" size={25} color="white" />
+      )}
     </TouchableOpacity>
   );
 };
