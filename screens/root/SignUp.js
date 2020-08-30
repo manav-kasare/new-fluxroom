@@ -85,6 +85,7 @@ export default function SignUp({navigation}) {
           username: email,
           password: password,
         });
+        console.log(user);
         setIsLoading(false);
         ReactNativeHaptic.generate('notificationSuccess');
         navigation.navigate('OtpVerification', {

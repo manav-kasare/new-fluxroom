@@ -3,6 +3,7 @@ import {SafeAreaView, View, TouchableOpacity, Text} from 'react-native';
 import {Switch} from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 import {ThemeContext} from '../../../../shared/Context';
 
@@ -17,7 +18,12 @@ export default function Settings({navigation}) {
       paddingHorizontal: 25,
       justifyContent: 'center',
     },
-    view_text: {color: constants.text1, marginLeft: 10, fontSize: 14},
+    view_text: {
+      color: constants.text1,
+      marginLeft: 25,
+      fontSize: 14,
+      fontWeight: '300',
+    },
     view_touchable: {
       flex: 1,
       flexDirection: 'row',
@@ -37,8 +43,8 @@ export default function Settings({navigation}) {
           <TouchableOpacity
             onPress={() => navigation.navigate('ChangePassword')}
             style={styles.view_touchable}>
-            <View style={{flexDirection: 'row'}}>
-              <Entypo name="key" size={18} color={constants.background2} />
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              <Entypo name="key" size={20} color={constants.background2} />
               <Text style={styles.view_text}>Change Password</Text>
             </View>
             <Ionicons
@@ -46,6 +52,23 @@ export default function Settings({navigation}) {
               size={20}
               color={constants.background2}
             />
+          </TouchableOpacity>
+        </View>
+        <View style={styles.view}>
+          <TouchableOpacity onPress={() => {}} style={styles.view_touchable}>
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              <FontAwesome5 name="user-alt-slash" size={18} color="crimson" />
+              <Text
+                style={{
+                  color: 'crimson',
+                  marginLeft: 25,
+                  fontSize: 14,
+                  fontWeight: '300',
+                }}>
+                Delete Account
+              </Text>
+            </View>
+            <Ionicons name="chevron-forward" size={20} color="crimson" />
           </TouchableOpacity>
         </View>
       </View>

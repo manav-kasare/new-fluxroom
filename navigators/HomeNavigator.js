@@ -1,6 +1,7 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import ChatRoomNavigator from './ChatRoomNavigator';
 import ProfileNavigator from './ProfileNavigator';
@@ -14,32 +15,28 @@ export default function HomeNavigator() {
 
   return (
     <BottomTabs.Navigator
+      lazy={true}
       tabBarOptions={{
         activeTintColor: '#4640C1',
-        inactiveTintColor: constants.background2,
+        inactiveTintColor: 'grey',
         showLabel: false,
         style: {
           backgroundColor: constants.background3,
-          borderTopWidth: 0.2,
+          borderTopWidth: 0.5,
           elevation: 0,
           shadowOpacity: 0,
           borderTopColor: constants.lineColor,
         },
       }}
-      sceneAnimationEnabled={true}
-      shifting={true}
-      initialRouteName="ChatRoomNavigator">
+      initialRouteName="Rooms">
       <BottomTabs.Screen
-        name="ChatRoomNavigator"
+        name="Rooms"
         component={ChatRoomNavigator}
         options={{
-          tabBarIcon: ({color, focused}) =>
-            // <Entypo name="mic" size={20} color={color} />
-            focused ? (
-              <MaterialIcons name="mic" size={25} color={color} />
-            ) : (
-              <MaterialIcons name="mic-none" size={25} color={color} />
-            ),
+          tabBarIcon: ({color}) => (
+            // <MaterialIcons name="mic" size={25} color={color} />
+            <Ionicons name="home" size={25} color={color} />
+          ),
         }}
       />
       <BottomTabs.Screen
@@ -47,7 +44,7 @@ export default function HomeNavigator() {
         component={SearchNavigator}
         options={{
           tabBarIcon: ({color}) => (
-            <MaterialIcons name="search" size={25} color={color} />
+            <MaterialIcons name="search" size={30} color={color} />
           ),
         }}
       />
@@ -55,12 +52,9 @@ export default function HomeNavigator() {
         name="UserProfile"
         component={ProfileNavigator}
         options={{
-          tabBarIcon: ({color, focused}) =>
-            focused ? (
-              <MaterialIcons name="person-outline" size={25} color={color} />
-            ) : (
-              <MaterialIcons name="person" size={25} color={color} />
-            ),
+          tabBarIcon: ({color}) => (
+            <MaterialIcons name="person" size={30} color={color} />
+          ),
         }}
       />
     </BottomTabs.Navigator>

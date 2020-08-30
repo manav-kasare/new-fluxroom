@@ -5,6 +5,7 @@ import Feather from 'react-native-vector-icons/Feather';
 
 import EditProfile from '../screens/app/UserProfile/EditProfile';
 import UserProfile from '../screens/app/UserProfile/UserProfile';
+import Issues from '../screens/app/UserProfile/Extras/Issues';
 import {ThemeContext} from '../shared/Context';
 
 const ProfileStack = createStackNavigator();
@@ -63,7 +64,18 @@ export default function ProfileNavigator({route, navigation}) {
           headerStyle: constants.headerStyle,
           headerTitleStyle: constants.headerText,
           headerBackTitleVisible: false,
-          headerTintColor: constants.background2,
+          headerTintColor: 'white',
+        }}
+      />
+      <ProfileStack.Screen
+        name="Issues"
+        component={Issues}
+        options={{
+          title: 'Send us Feedback',
+          headerStyle: constants.headerStyle,
+          headerTitleStyle: constants.headerText,
+          headerBackTitleVisible: false,
+          headerTintColor: 'white',
         }}
       />
     </ProfileStack.Navigator>

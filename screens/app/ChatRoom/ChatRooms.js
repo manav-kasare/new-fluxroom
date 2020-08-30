@@ -146,8 +146,8 @@ const RenderTile = React.memo(({id, navigation}) => {
   //   host: null,
   // });
   const [room, setRoom] = useState({
-    name: `room ${id}`,
-    description: `description ${id}`,
+    name: `Room ${id}`,
+    description: `Description ${id}`,
     profilePhoto:
       'https://images.unsplash.com/photo-1597075349517-0deb1e127c37?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80',
     members: [],

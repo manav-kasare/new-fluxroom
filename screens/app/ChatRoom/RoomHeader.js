@@ -47,9 +47,9 @@ export default function RoomHeader({navigation, room}) {
           </Text>
           <Text
             style={{
-              color: 'white',
+              color: 'rgba(255,255,255,0.5)',
               fontSize: 14,
-              fontWeight: '200',
+              fontWeight: '400',
               fontFamily: 'Helvetica',
             }}>
             {room.description}

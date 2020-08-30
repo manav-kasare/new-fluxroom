@@ -5,7 +5,6 @@ import {
   View,
   ActivityIndicator,
   RefreshControl,
-  Platform,
 } from 'react-native';
 import {Searchbar} from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -72,8 +71,8 @@ export default function Search() {
         inputStyle={{color: constants.text1, fontSize: 15}}
         style={{
           height: 60,
-          backgroundColor: 'transparent',
-          borderBottomWidth: 2,
+          backgroundColor: 'rgba(255,255,255,0.05)',
+          borderBottomWidth: 1,
           borderBottomColor: constants.lineColor,
           elevation: 0,
           shadowOpacity: 0,

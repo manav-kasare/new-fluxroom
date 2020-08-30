@@ -35,18 +35,20 @@ const Tile = React.memo(
             <Text
               style={{
                 color: constants.text1,
-                marginLeft: 10,
+                marginLeft: 15,
                 fontSize: 20,
-                fontWeight: '600',
+                fontWeight: '700',
+                fontFamily: 'Helvetica Neue',
               }}>
               {heading}
             </Text>
             <Text
               style={{
                 color: 'grey',
-                marginLeft: 10,
+                marginLeft: 15,
                 fontSize: 14,
                 fontWeight: '400',
+                fontFamily: 'Helvetica Neue',
               }}>
               {subHeading}
             </Text>

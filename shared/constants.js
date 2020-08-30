@@ -16,12 +16,12 @@ export default {
 
 export const light = {
   primary: '#4640C1',
-  background1: '#f5f5f5',
+  background1: 'white',
   background2: 'black',
   background3: 'white',
   background4: 'rgba(130,130,130, 0.1)',
   lineColor: 'rgb(220,220,220)',
-  text1: 'black',
+  text1: 'rgb(16,12,8)',
   text2: 'white',
   width: WIDTH,
   height: HEIGHT,

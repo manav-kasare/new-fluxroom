@@ -30,6 +30,8 @@ export default function CircleAvatar({size, uri, itemName, key}) {
         width: size,
         height: size,
         borderRadius: size / 2,
+        borderColor: 'grey',
+        borderWidth: 1,
       }}
       uri={uri}
       key={key}
