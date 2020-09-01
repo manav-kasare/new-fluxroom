@@ -18,7 +18,7 @@ export default function RequestIcon({navigation, id}) {
   return (
     <View
       style={{
-        marginRight: 15,
+        marginRight: 10,
         width: 40,
         height: 40,
         borderRadius: 8,

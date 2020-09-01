@@ -1,101 +1,74 @@
 import React from 'react';
-import {TouchableOpacity, Linking, ActivityIndicator} from 'react-native';
+import {TouchableOpacity, ActivityIndicator} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import {Auth, Hub} from 'aws-amplify';
-import {withOAuth} from 'aws-amplify-react-native';
+import {GoogleSignin, statusCodes} from '@react-native-community/google-signin';
 import {UserDetailsContext} from '../../shared/Context';
-import CustomToast from '../../shared/CustomToast';
-import InAppBrowser from 'react-native-inappbrowser-reborn';
-import Amplify from 'aws-amplify';
-import awsconfig from '../../aws-exports';
+import AsyncStorage from '@react-native-community/async-storage';
+import auth from '@react-native-firebase/auth';
 
-import {getUserInfo, createUser} from '../../backend/database/apiCalls';
-
-async function urlOpener(url, redirectUrl) {
-  await InAppBrowser.isAvailable();
-  const {type, url: newUrl} = await InAppBrowser.openAuth(url, redirectUrl, {
-    showTitle: false,
-    enableUrlBarHiding: true,
-    enableDefaultShare: false,
-    ephemeralWebSession: false,
-  });
-
-  if (type === 'success') {
-    Linking.openURL(newUrl);
-  }
-}
-
-Amplify.configure({
-  ...awsconfig,
-  oauth: {
-    ...awsconfig.oauth,
-    urlOpener,
-  },
+GoogleSignin.configure({
+  scopes: [
+    'https://www.googleapis.com/auth/userinfo.profile',
+    'https://www.googleapis.com/auth/userinfo.email',
+  ], // what API you want to access on behalf of the user, default is email and profile
+  webClientId:
+    '319098514342-ec5ut0da1vommbf6509siiaj8k2piuoi.apps.googleusercontent.com', // client ID of type WEB for your server (needed to verify user ID and offline access)
+  offlineAccess: true, // if you want to access Google API on behalf of the user FROM YOUR SERVER
+  // hostedDomain: '', // specifies a hosted domain restriction
+  // loginHint: '', // [iOS] The user's ID, or email address, to be prefilled in the authentication UI if possible. [See docs here](https://developers.google.com/identity/sign-in/ios/api/interface_g_i_d_sign_in.html#a0a68c7504c31ab0b728432565f6e33fd)
+  forceCodeForRefreshToken: true, // [Android] related to `serverAuthCode`, read the docs link below *.
+  // accountName: '', // [Android] specifies an account name on the device that should be used
+  // iosClientId: '<FROM DEVELOPER CONSOLE>', // [iOS] optional, if you want to specify the client ID of type iOS (otherwise, it is taken from GoogleService-Info.plist)
 });
 
-const Google = () => {
+export default function Google() {
   const {setUser} = React.useContext(UserDetailsContext);
   const [loading, setLoading] = React.useState(false);
 
-  const handleCognitoHostedUI = () => {
-    getUser().then((userData) => {
-      setUser(userData);
-
-      const identities = JSON.parse(userData.attributes.identities)[0];
-      const attributes = userData.attributes;
-      // getUserInfo(identities.userId).then((responseData) => {
-      //   if (responseData.id) {
-      //     setUser(responseData);
-      //   } else {
-      //     createUser({
-      //       id: identities.userId,
-      //       email: attributes.email,
-      //     }).then(({data}) => {
-      //       if (data.error) {
-      //         CustomToast('An Error Occured');
-      //       } else {
-      //         navigation.navigate('SetUpProfile', {
-      //           id: identities.userId,
-      //         });
-      //       }
-      //     });
-      //   }
-      // });
-    });
+  const storeData = async (_userInfo) => {
+    try {
+      const jsonValue = JSON.stringify(_userInfo);
+      AsyncStorage.setItem('user', jsonValue).then(() => {
+        setUser(_userInfo);
+      });
+    } catch (e) {
+      console.error(e);
+    }
   };
 
-  React.useEffect(() => {
-    Hub.listen('auth', ({payload: {event, data}}) => {
-      setLoading(false);
-      switch (event) {
-        case 'signIn':
-        case 'cognitoHostedUI':
-          handleCognitoHostedUI();
-          break;
-        case 'signIn_failure':
-          CustomToast('An Error Occured');
-        case 'cognitoHostedUI_failure':
-          CustomToast('Sign in failure', data);
-          break;
-      }
-    });
-  }, []);
-
-  const getUser = () => {
-    return Auth.currentAuthenticatedUser()
-      .then((userData) => userData)
-      .catch(() => console.log('Not signed in'));
-  };
-
-  const federatedSignIn = () => {
+  const signIn = async () => {
     setLoading(true);
-    Auth.federatedSignIn({provider: 'Google'}).then((response) =>
-      console.log(response),
-    );
+    try {
+      await GoogleSignin.hasPlayServices();
+      await GoogleSignin.signIn().then((userInfo) => {
+        const googleCredential = auth.GoogleAuthProvider.credential(
+          userInfo.idToken,
+        );
+        auth()
+          .signInWithCredential(googleCredential)
+          .then(() => {
+            setLoading(false);
+            storeData(userInfo);
+            setUser(userInfo);
+          });
+      });
+    } catch (error) {
+      setLoading(false);
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+        // user cancelled the login flow
+      } else if (error.code === statusCodes.IN_PROGRESS) {
+        // operation (e.g. sign in) is in progress already
+      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        // play services not available or outdated
+      } else {
+        // some other error happened
+      }
+    }
   };
 
   return (
     <TouchableOpacity
+      onPress={signIn}
       style={{
         width: 50,
         height: 50,
@@ -103,15 +76,12 @@ const Google = () => {
         backgroundColor: '#4640C1',
         alignItems: 'center',
         justifyContent: 'center',
-      }}
-      onPress={federatedSignIn}>
+      }}>
       {loading ? (
-        <ActivityIndicator color="white" size="small" />
+        <ActivityIndicator size="small" color="white" />
       ) : (
         <AntDesign name="google" size={25} color="white" />
       )}
     </TouchableOpacity>
   );
-};
-
-export default withOAuth(Google);
+}

@@ -6,7 +6,8 @@ import {
   DrawerItemList,
 } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {Auth} from 'aws-amplify';
+import auth from '@react-native-firebase/auth';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import {UserDetailsContext, ThemeContext} from '../shared/Context';
 
@@ -17,15 +18,14 @@ export default function DrawerContent(props) {
 
   const signOut = () => {
     setLoading(true);
-    try {
-      Auth.signOut({global: true}).then(() => {
-        setLoading(false);
-        setUser(null);
+    auth()
+      .signOut()
+      .then(() => {
+        AsyncStorage.clear().then(() => {
+          setLoading(false);
+          setUser(null);
+        });
       });
-    } catch (error) {
-      setLoading(false);
-      console.log('error signing out: ', error);
-    }
   };
 
   return (

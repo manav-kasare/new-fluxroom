@@ -10,7 +10,6 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
-import {useFocusEffect} from '@react-navigation/native';
 
 import globalStyles from '../../../shared/GlobalStyles';
 import {
@@ -19,6 +18,7 @@ import {
 } from '../../../backend/database/apiCalls';
 import {UserDetailsContext, ThemeContext} from '../../../shared/Context';
 import Tile from '../../../shared/Tile';
+import RequestIcon from './RequestIcon';
 
 const wait = (timeout) => {
   return new Promise((resolve) => {
@@ -30,6 +30,7 @@ var list = [];
 for (var i = 0; i < 10; i++) {
   list.push(`${i}`);
 }
+const headerHeight = 100;
 
 const ChatRooms = ({navigation}) => {
   const {user} = useContext(UserDetailsContext);
@@ -57,11 +58,56 @@ const ChatRooms = ({navigation}) => {
     // });
   }, [refreshing]);
 
-  const _renderItem = ({item}) => (
-    <RenderTile id={item} navigation={navigation} />
+  return (
+    <SafeAreaView
+      style={{
+        flex: 1,
+      }}>
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor={constants.background1}
+      />
+      {onFocusRefresh ? (
+        <View
+          style={{
+            flex: 1,
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: constants.background1,
+          }}>
+          <ActivityIndicator size="small" color={constants.background2} />
+        </View>
+      ) : (
+        <FlatList
+          style={{
+            width: constants.width,
+            flex: 1,
+            backgroundColor: constants.background1,
+          }}
+          data={list}
+          keyExtractor={(item, index) => index.toString()}
+          ListEmptyComponent={() => <EmptyItem />}
+          renderItem={({item}) => (
+            <RenderTile id={item} navigation={navigation} />
+          )}
+          refreshControl={
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={onRefresh}
+              tintColor={constants.background2}
+            />
+          }
+        />
+      )}
+    </SafeAreaView>
   );
+};
 
-  const _emptyItem = () => (
+export default React.memo(ChatRooms);
+
+const EmptyItem = () => {
+  const {constants, darkTheme} = useContext(ThemeContext);
+  return (
     <View
       style={{
         alignItems: 'center',
@@ -92,48 +138,6 @@ const ChatRooms = ({navigation}) => {
         <Text style={globalStyles.buttonText}>Find a Room</Text>
       </TouchableOpacity>
     </View>
-  );
-
-  return (
-    <SafeAreaView
-      style={{
-        flex: 1,
-        width: constants.width,
-        backgroundColor: constants.background1,
-        alignItems: 'center',
-        justifyContent: 'flex-start',
-      }}>
-      <StatusBar
-        barStyle="light-content"
-        backgroundColor={constants.background1}
-      />
-      {onFocusRefresh ? (
-        <View
-          style={{
-            flex: 1,
-            backgroundColor: constants.background1,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <ActivityIndicator size="small" color={constants.background2} />
-        </View>
-      ) : (
-        <FlatList
-          style={{width: constants.width}}
-          data={list}
-          keyExtractor={(item, index) => index.toString()}
-          ListEmptyComponent={_emptyItem}
-          renderItem={_renderItem}
-          refreshControl={
-            <RefreshControl
-              refreshing={refreshing}
-              onRefresh={onRefresh}
-              tintColor={constants.background2}
-            />
-          }
-        />
-      )}
-    </SafeAreaView>
   );
 };
 
@@ -185,5 +189,3 @@ const RenderTile = React.memo(({id, navigation}) => {
     />
   );
 });
-
-export default React.memo(ChatRooms);

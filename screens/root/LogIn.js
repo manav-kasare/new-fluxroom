@@ -14,10 +14,8 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Entypo from 'react-native-vector-icons/Entypo';
 import AsyncStorage from '@react-native-community/async-storage';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-import {Auth} from 'aws-amplify';
 import ReactNativeHaptic from 'react-native-haptic';
 import Animated, {
-  interpolate,
   useCode,
   cond,
   set,
@@ -80,18 +78,7 @@ export default function LogIn({navigation}) {
     }
   };
 
-  const signIn = async () => {
-    setIsLoading(true);
-    try {
-      const user = await Auth.signIn(username, password);
-      ReactNativeHaptic.generate('notificationSuccess');
-      setIsLoading(false);
-    } catch (error) {
-      setIsLoading(false);
-      ReactNativeHaptic.generate('notificationError');
-      console.log('error signing in', error);
-    }
-  };
+  const signIn = async () => {};
 
   const handleLogIn = () => {
     setIsLoading(true);

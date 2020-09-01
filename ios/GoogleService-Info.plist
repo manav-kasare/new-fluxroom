@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>319098514342-ot5sj1hepg3l5fee2gjkcgf5o1kd3hij.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.319098514342-ot5sj1hepg3l5fee2gjkcgf5o1kd3hij</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>319098514342-kll9rirboir6jp091cd47o884k1sbo9a.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCUULUPyD7grykC3rqN7UAwOH6qy9AGsck</string>
+	<key>GCM_SENDER_ID</key>
+	<string>319098514342</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.fluxroom</string>
+	<key>PROJECT_ID</key>
+	<string>fluxroom-582e9</string>
+	<key>STORAGE_BUCKET</key>
+	<string>fluxroom-582e9.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:319098514342:ios:98a9c051b2888b87dd7d67</string>
+	<key>DATABASE_URL</key>
+	<string>https://fluxroom-582e9.firebaseio.com</string>
+</dict>
+</plist>

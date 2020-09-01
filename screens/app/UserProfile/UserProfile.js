@@ -6,6 +6,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import {UserDetailsContext, ThemeContext} from '../../../shared/Context';
 import UserProfilePhoto from './UserProfilePhoto';
+import {ScrollView} from 'react-native-gesture-handler';
 
 export default function UserProfile({navigation}) {
   const {user, setUser} = useContext(UserDetailsContext);
@@ -38,7 +39,6 @@ export default function UserProfile({navigation}) {
         flex: 1,
         backgroundColor: constants.background1,
         alignItems: 'center',
-        justifyContent: 'space-between',
       }}>
       <View
         style={{
@@ -47,47 +47,52 @@ export default function UserProfile({navigation}) {
           borderBottomLeftRadius: 10,
           borderBottomRightRadius: 10,
           backgroundColor: darkTheme ? constants.background1 : '#4640C1',
-        }}>
+        }}
+      />
+      <ScrollView style={{top: 0, position: 'absolute'}}>
         <UserProfileComponent navigation={navigation} />
-      </View>
-      <View
-        style={{
-          width: constants.width,
-          height: constants.height * 0.3,
-        }}>
-        <View style={styles.view}>
-          <TouchableOpacity onPress={() => {}} style={styles.view_touchable}>
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
-              <AntDesign name="star" size={20} color={constants.background2} />
-              <Text style={styles.view_text}>Rate Us</Text>
-            </View>
-            <Ionicons
-              name="chevron-forward"
-              size={20}
-              color={constants.background2}
-            />
-          </TouchableOpacity>
-        </View>
-        <View style={styles.view}>
-          <TouchableOpacity
-            onPress={() => navigation.navigate('Issues')}
-            style={styles.view_touchable}>
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
-              <MaterialCommunityIcons
-                name="emoticon-frown"
+        <View
+          style={{
+            width: constants.width,
+          }}>
+          <View style={styles.view}>
+            <TouchableOpacity onPress={() => {}} style={styles.view_touchable}>
+              <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                <AntDesign
+                  name="star"
+                  size={20}
+                  color={constants.background2}
+                />
+                <Text style={styles.view_text}>Rate Us</Text>
+              </View>
+              <Ionicons
+                name="chevron-forward"
                 size={20}
                 color={constants.background2}
               />
-              <Text style={styles.view_text}>Did you face any issues ?</Text>
-            </View>
-            <Ionicons
-              name="chevron-forward"
-              size={20}
-              color={constants.background2}
-            />
-          </TouchableOpacity>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.view}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Issues')}
+              style={styles.view_touchable}>
+              <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                <MaterialCommunityIcons
+                  name="emoticon-frown"
+                  size={20}
+                  color={constants.background2}
+                />
+                <Text style={styles.view_text}>Did you face any issues ?</Text>
+              </View>
+              <Ionicons
+                name="chevron-forward"
+                size={20}
+                color={constants.background2}
+              />
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -99,7 +104,7 @@ const UserProfileComponent = ({navigation}) => {
       style={{
         alignItems: 'center',
         width: constants.width,
-        height: constants.height,
+        height: constants.height * 0.5,
       }}>
       <UserProfilePhoto />
       <Text

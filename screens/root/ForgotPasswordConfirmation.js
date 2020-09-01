@@ -45,12 +45,6 @@ export default function ForgotPasswordConfirmation({route}) {
     damping: new Animated.Value(20),
   });
 
-  const forgotPasswordConfirmation = () => {
-    Auth.forgotPasswordSubmit(username, code, newPassword)
-      .then((data) => console.log(data))
-      .catch((err) => console.log(err));
-  };
-
   return (
     <KeyboardAwareScrollView
       style={{width: constants.width, height: constants.height}}
@@ -138,9 +132,7 @@ export default function ForgotPasswordConfirmation({route}) {
                 )}
               </TouchableOpacity>
             </View>
-            <TouchableOpacity
-              onPress={forgotPasswordConfirmation}
-              style={globalStyles.button}>
+            <TouchableOpacity onPress={() => {}} style={globalStyles.button}>
               <Text
                 style={{
                   color: 'white',

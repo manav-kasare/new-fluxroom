@@ -10,7 +10,6 @@ import {
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-import {Auth} from 'aws-amplify';
 import Animated, {
   SpringUtils,
   useCode,
@@ -49,9 +48,6 @@ export default function ForgotPassword({navigation}) {
 
   const forgotPassword = () => {
     navigation.navigate('ForgotPasswordConfirmation', {username: username});
-    // Auth.forgotPassword(username)
-    //   .then((data) => console.log(data))
-    //   .catch((err) => console.log(err));
   };
 
   return (

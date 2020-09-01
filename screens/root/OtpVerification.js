@@ -8,7 +8,6 @@ import {
   Image,
   ActivityIndicator,
 } from 'react-native';
-import {Auth} from 'aws-amplify';
 import ReactNativeHaptic from 'react-native-haptic';
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -22,39 +21,9 @@ export default function OtpVerification({route, navigation}) {
   const [isLoadingCode, setIsLoadingCode] = React.useState(false);
   const [isLoadingResendCode, setIsLoadingResendCode] = React.useState(false);
 
-  const confirmSignUp = async () => {
-    setIsLoadingCode(true);
-    try {
-      await Auth.confirmSignUp(username, code).then((response) => {
-        setIsLoadingCode(false);
-        if (response === 'SUCCESS') {
-          ReactNativeHaptic.generate('notificationSuccess');
-          navigation.navigate('SetUpProfile', {
-            credentials: username,
-            type: type,
-          });
-        }
-      });
-    } catch (error) {
-      setIsLoadingCode(false);
-      ReactNativeHaptic.generate('notificationError');
-      console.log('ERROR: ', error);
-    }
-  };
+  const confirmSignUp = async () => {};
 
-  const resendConfirmationCode = async () => {
-    setIsLoadingResendCode(true);
-    try {
-      await Auth.resendSignUp(username);
-      ReactNativeHaptic.generate('notificationSuccess');
-      setIsLoadingResendCode(false);
-      CustomToast('Code resent');
-    } catch (err) {
-      setIsLoadingResendCode(false);
-      ReactNativeHaptic.generate('notificationError');
-      CustomToast('Error resending code');
-    }
-  };
+  const resendConfirmationCode = async () => {};
 
   return (
     <View
