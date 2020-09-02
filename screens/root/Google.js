@@ -48,8 +48,9 @@ export default function Google() {
           .signInWithCredential(googleCredential)
           .then(() => {
             setLoading(false);
-            storeData(userInfo);
-            setUser(userInfo);
+            console.log(userInfo);
+            // storeData(userInfo);
+            // setUser(userInfo);
           });
       });
     } catch (error) {

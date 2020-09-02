@@ -8,17 +8,16 @@ import LogIn from '../screens/root/LogIn';
 import SignUp from '../screens/root/SignUp';
 import Onboard from '../screens/root/Onboard';
 import SetUpProfile from '../screens/root/SetUpProfile';
-import EmailVerification from '../screens/root/EmailVerification';
 import ForgotPassword from '../screens/root/ForgotPassword';
 import SplashScreen from '../screens/root/SplashScreen';
 import DrawerNavigator from './DrawerNavigator';
-import OtpVerification from '../screens/root/OtpVerification';
 import ForgotPasswordConfirmation from '../screens/root/ForgotPasswordConfirmation';
+import Phone from '../screens/root/Phone';
 
 const Stack = createStackNavigator();
 
 export default function RootNavigator() {
-  // const [splashScreen, setSplashScreen] = useState(true);
+  const [splashScreen, setSplashScreen] = React.useState(true);
   const {user, setUser} = useContext(UserDetailsContext);
   const {getData} = useContext(ThemeContext);
 
@@ -50,10 +49,10 @@ export default function RootNavigator() {
   };
 
   useEffect(() => {
-    // setTimeout(() => {
-    //   setSplashScreen(false);
-    // }, 500);
-    // getUserData();
+    setTimeout(() => {
+      setSplashScreen(false);
+    }, 500);
+    getUserData();
     getThemeData();
   }, []);
 
@@ -73,14 +72,12 @@ export default function RootNavigator() {
     } catch (err) {}
   };
 
-  // if (splashScreen) {
-  //   return <SplashScreen />;
-  // }
+  if (splashScreen) {
+    return <SplashScreen />;
+  }
 
   return (
-    <NavigationContainer
-      linking={deepLinking}
-      fallback={() => <SplashScreen />}>
+    <NavigationContainer linking={deepLinking}>
       {user === null || user === undefined ? (
         <AuthStackNavigator />
       ) : (
@@ -109,6 +106,28 @@ const AuthStackNavigator = () => {
         component={LogIn}
         options={{
           title: 'Log In',
+          headerStyle: {
+            backgroundColor: '#4640C1',
+            borderBottomWidth: 0,
+            borderBottomColor: 'transparent',
+            elevation: 0,
+            shadowOpacity: 0,
+          },
+          headerTitleStyle: {
+            color: 'white',
+            fontSize: 20,
+            fontWeight: '300',
+            fontFamily: 'Helvetica',
+          },
+          headerTintColor: 'white',
+          headerBackTitleVisible: false,
+        }}
+      />
+      <Stack.Screen
+        name="Phone"
+        component={Phone}
+        options={{
+          title: 'LogIn with Phone Number',
           headerStyle: {
             backgroundColor: '#4640C1',
             borderBottomWidth: 0,
@@ -175,51 +194,6 @@ const AuthStackNavigator = () => {
         component={ForgotPasswordConfirmation}
         options={{
           title: 'Change Password',
-          headerStyle: {
-            backgroundColor: '#4640C1',
-            borderWidth: 0,
-            borderColor: 'transparent',
-            elevation: 0,
-            shadowOpacity: 0,
-          },
-          headerTitleStyle: {
-            color: 'white',
-            fontSize: 20,
-            fontWeight: '300',
-            fontFamily: 'Helvetica',
-          },
-          headerTintColor: 'white',
-          headerBackTitleVisible: false,
-        }}
-      />
-
-      <Stack.Screen
-        name="OtpVerification"
-        component={OtpVerification}
-        options={{
-          title: 'Verify',
-          headerStyle: {
-            backgroundColor: '#4640C1',
-            borderWidth: 0,
-            borderColor: 'transparent',
-            elevation: 0,
-            shadowOpacity: 0,
-          },
-          headerTitleStyle: {
-            color: 'white',
-            fontSize: 20,
-            fontWeight: '300',
-            fontFamily: 'Helvetica',
-          },
-          headerTintColor: 'white',
-          headerBackTitleVisible: false,
-        }}
-      />
-      <Stack.Screen
-        name="EmailVerification"
-        component={EmailVerification}
-        options={{
-          title: 'Verify your Email',
           headerStyle: {
             backgroundColor: '#4640C1',
             borderWidth: 0,

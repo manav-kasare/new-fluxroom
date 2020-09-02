@@ -1,0 +1,67 @@
+{
+    "_auth": {
+        "_app": {
+            "_automaticDataCollectionEnabled": true,
+            "_deleted": false,
+            "_initialized": true,
+            "_name": "[DEFAULT]",
+            "_nativeInitialized": true,
+            "_options": [Object
+            ]
+        },
+        "_authResult": true,
+        "_config": {
+            "hasCustomUrlOrRegionSupport": false,
+            "hasMultiAppSupport": true,
+            "namespace": "auth",
+            "nativeEvents": [Array
+            ],
+            "nativeModuleName": "RNFBAuthModule",
+            "statics": [Object
+            ],
+            "version": "9.1.2"
+        },
+        "_nativeModule": {
+            "APP_LANGUAGE": [Object
+            ],
+            "APP_USER": [Object
+            ]
+        },
+        "_settings": null,
+        "_user": {
+            "displayName": "test1",
+            "email": "arl73439@eoopy.com",
+            "emailVerified": false,
+            "isAnonymous": false,
+            "metadata": [Object
+            ],
+            "phoneNumber": null,
+            "photoURL": "file:///Users/manav/Library/Developer/CoreSimulator/Devices/AEDAEE28-520A-44FF-8C84-F3B3D0F7BF8F/data/Containers/Data/Application/96AE4FAC-2171-44B2-A77B-5A8A6EA9F06E/Documents/images/0520BA11-200D-444B-9DA8-61C009223C5F.jpg",
+            "providerData": [Array
+            ],
+            "providerId": "firebase",
+            "refreshToken": "AE0u-NfBpB0s1k159gbff2tEWO3OhR_qdgeOYxmuHeIAM4GH5PBBN9VTGRrD7tlvV_ARGWbCY5sdwDxxLFft2CjcgL3yuTTcU4yDIcxqykvN18b91i9dVeoqaOLliMVkq7xQX1OJjpZ0exSkgg5HPwhPmbGmPKJYlZdzGizIVYiF_B1yCOPGAisvmCOx2RyWsgxvQYE15Ycp_ZkZWunkBruKMtGPE-Yvrg",
+            "uid": "wNg2dAQixjQ4C6fJVMnNP1J5Nr02"
+        }
+    },
+    "_user": {
+        "displayName": "test1",
+        "email": "arl73439@eoopy.com",
+        "emailVerified": false,
+        "isAnonymous": false,
+        "metadata": {
+            "creationTime": 1599000712911,
+            "lastSignInTime": 1599000712911
+        },
+        "phoneNumber": null,
+        "photoURL": "file:///Users/manav/Library/Developer/CoreSimulator/Devices/AEDAEE28-520A-44FF-8C84-F3B3D0F7BF8F/data/Containers/Data/Application/96AE4FAC-2171-44B2-A77B-5A8A6EA9F06E/Documents/images/0520BA11-200D-444B-9DA8-61C009223C5F.jpg",
+        "providerData": [
+            [Object
+            ]
+        ],
+        "providerId": "firebase",
+        "refreshToken": "AE0u-NfBpB0s1k159gbff2tEWO3OhR_qdgeOYxmuHeIAM4GH5PBBN9VTGRrD7tlvV_ARGWbCY5sdwDxxLFft2CjcgL3yuTTcU4yDIcxqykvN18b91i9dVeoqaOLliMVkq7xQX1OJjpZ0exSkgg5HPwhPmbGmPKJYlZdzGizIVYiF_B1yCOPGAisvmCOx2RyWsgxvQYE15Ycp_ZkZWunkBruKMtGPE-Yvrg",
+        "uid": "wNg2dAQixjQ4C6fJVMnNP1J5Nr02"
+    },
+    "description": "Testing"
+}

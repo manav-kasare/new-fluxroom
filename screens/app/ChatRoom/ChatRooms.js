@@ -18,7 +18,6 @@ import {
 } from '../../../backend/database/apiCalls';
 import {UserDetailsContext, ThemeContext} from '../../../shared/Context';
 import Tile from '../../../shared/Tile';
-import RequestIcon from './RequestIcon';
 
 const wait = (timeout) => {
   return new Promise((resolve) => {
@@ -30,7 +29,6 @@ var list = [];
 for (var i = 0; i < 10; i++) {
   list.push(`${i}`);
 }
-const headerHeight = 100;
 
 const ChatRooms = ({navigation}) => {
   const {user} = useContext(UserDetailsContext);

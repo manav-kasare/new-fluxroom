@@ -9,7 +9,6 @@ import UserProfilePhoto from './UserProfilePhoto';
 import {ScrollView} from 'react-native-gesture-handler';
 
 export default function UserProfile({navigation}) {
-  const {user, setUser} = useContext(UserDetailsContext);
   const {constants, darkTheme} = React.useContext(ThemeContext);
 
   const styles = {
@@ -50,7 +49,7 @@ export default function UserProfile({navigation}) {
         }}
       />
       <ScrollView style={{top: 0, position: 'absolute'}}>
-        <UserProfileComponent navigation={navigation} />
+        <ProfileComponent navigation={navigation} />
         <View
           style={{
             width: constants.width,
@@ -97,7 +96,8 @@ export default function UserProfile({navigation}) {
   );
 }
 
-const UserProfileComponent = ({navigation}) => {
+const ProfileComponent = ({navigation}) => {
+  const {user} = React.useContext(UserDetailsContext);
   const {constants} = React.useContext(ThemeContext);
   return (
     <View
@@ -113,23 +113,32 @@ const UserProfileComponent = ({navigation}) => {
           fontWeight: '700',
           fontFamily: 'Helvetica Neue',
           fontSize: 25,
-          marginVertical: 10,
           marginTop: 20,
         }}>
-        Manav Kasare
+        {user._user.displayName}
+      </Text>
+      <Text
+        style={{
+          color: 'rgba(255,255,255,0.5)',
+          fontWeight: '500',
+          fontFamily: 'Helvetica Neue',
+          fontSize: 14,
+          marginVertical: 5,
+        }}>
+        {user.description}
       </Text>
       <TouchableOpacity
         style={{
           marginVertical: 10,
           backgroundColor: 'white',
-          width: 50,
-          height: 25,
           alignItems: 'center',
           justifyContent: 'center',
           borderRadius: 5,
+          paddingHorizontal: 10,
+          paddingVertical: 5,
         }}
         onPress={() => navigation.navigate('EditProfile')}>
-        <Text style={{color: 'black'}}>Edit</Text>
+        <Text style={{color: 'black'}}>Edit Profile</Text>
       </TouchableOpacity>
     </View>
   );

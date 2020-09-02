@@ -14,20 +14,16 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Entypo from 'react-native-vector-icons/Entypo';
 import AsyncStorage from '@react-native-community/async-storage';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import auth from '@react-native-firebase/auth';
 import ReactNativeHaptic from 'react-native-haptic';
 import Animated, {
   useCode,
   cond,
   set,
   eq,
-  Easing,
   SpringUtils,
 } from 'react-native-reanimated';
-import {
-  useValue,
-  withTimingTransition,
-  withSpringTransition,
-} from 'react-native-redash';
+import {useValue, withSpringTransition} from 'react-native-redash';
 
 import {UserDetailsContext} from '../../shared/Context';
 import constants from '../../shared/constants';
@@ -38,16 +34,10 @@ import {
   loginUserWithEmail,
 } from '../../backend/database/apiCalls';
 
-const isEmail = (val) => {
-  return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-    val,
-  );
-};
-
 export default function LogIn({navigation}) {
   const {setUser} = useContext(UserDetailsContext);
-  const [usernameOrEmail, setUsernameOrEmail] = useState('');
-  const [formPassword, setFormPassword] = useState('');
+  const [email, setemail] = useState('');
+  const [password, setpassword] = useState('');
   const [revealPassword, setRevealPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [onFocusPassword, setOnFocusPassword] = useState(false);
@@ -71,57 +61,25 @@ export default function LogIn({navigation}) {
   const storeData = async (value) => {
     try {
       const jsonValue = JSON.stringify(value);
-      console.log('VALUE', jsonValue);
       await AsyncStorage.setItem('user', jsonValue);
     } catch (e) {
       // saving error
     }
   };
 
-  const signIn = async () => {};
-
-  const handleLogIn = () => {
+  const signIn = async () => {
     setIsLoading(true);
-
-    if (isEmail(usernameOrEmail)) {
-      loginUserWithEmail({
-        email: usernameOrEmail,
-        password: formPassword,
-      }).then((data) => {
-        if (data !== 'error') {
-          if (Boolean(data.confirmed)) {
-            storeData(data).then(() => {
-              setIsLoading(false);
-              setUser(data);
-            });
-          } else {
-            setIsLoading(false);
-            CustomToast('Please Verify your Email');
-          }
-        } else {
+    try {
+      await auth()
+        .signInWithEmailAndPassword(email, password)
+        .then((userInfo) => {
           setIsLoading(false);
-          CustomToast('Email or Password is incorrect');
-        }
-      });
-    } else {
-      loginUserWithUsername({
-        username: usernameOrEmail,
-        password: formPassword,
-      }).then((data) => {
-        setIsLoading(false);
-        if (data !== 'error') {
-          if (Boolean(data.confirmed)) {
-            storeData(data).then(() => {
-              setIsLoading(false);
-              setUser(data);
-            });
-          } else {
-            CustomToast('Please verify your Email');
-          }
-        } else {
-          CustomToast('Username or Password is incorrect');
-        }
-      });
+          storeData(userInfo);
+          setUser(userInfo);
+        });
+    } catch (err) {
+      setIsLoading(false);
+      console.log(err);
     }
   };
 
@@ -188,8 +146,8 @@ export default function LogIn({navigation}) {
                     keyboardType="email-address"
                     style={globalStyles.textInput}
                     placeholder="Username or Email Address"
-                    onChangeText={(text) => setUsernameOrEmail(text)}
-                    value={usernameOrEmail}
+                    onChangeText={(text) => setemail(text)}
+                    value={email}
                     clearButtonMode="while-editing"
                   />
                 </View>
@@ -200,8 +158,8 @@ export default function LogIn({navigation}) {
                     style={globalStyles.textInput}
                     placeholder="Password"
                     onFocus={() => setOnFocusPassword(true)}
-                    onChangeText={(text) => setFormPassword(text)}
-                    value={formPassword}
+                    onChangeText={(text) => setpassword(text)}
+                    value={password}
                     clearButtonMode="while-editing"
                   />
                   <TouchableOpacity

@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
   Keyboard,
+  ActivityIndicator,
 } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
@@ -15,6 +16,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AsyncStorage from '@react-native-community/async-storage';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import ImagePicker from 'react-native-image-picker';
+import auth from '@react-native-firebase/auth';
 
 import {UserDetailsContext} from '../../shared/Context';
 import constants from '../../shared/constants';
@@ -47,53 +49,73 @@ export default function SetUpProfile({route}) {
     return /^[a-z0-9_-]{3,15}$/.test(q);
   };
 
-  const handleSubmit = () => {
-    checkIfUsernameIsRegistered(q).then((responseText) => {
-      if (responseText === 'exists') {
-        CustomToast('Username already in use');
-      } else {
-        if (type === 'email') {
-          createUser({
-            email: credentials,
-            username: username,
-            description: description,
-          }).then((response) => {
-            if (!response.error) {
-              const value = {
-                ...user,
-                id: id,
-                username: username,
-                description: description,
-              };
-              setUser(value);
-              storeData(value);
-            } else {
-              CustomToast('An Error Occured');
-            }
-          });
-        } else if (type === 'phoneNumber') {
-          createUser({
-            phoneNumber: credentials,
-            username: username,
-            description: description,
-          }).then((response) => {
-            if (!response.error) {
-              const value = {
-                ...user,
-                id: id,
-                username: username,
-                description: description,
-              };
-              setUser(value);
-              storeData(value);
-            } else {
-              CustomToast('An Error Occured');
-            }
-          });
-        }
-      }
-    });
+  const handleSubmit = async () => {
+    setLoading(true);
+    try {
+      await auth()
+        .currentUser.updateProfile({
+          displayName: username,
+          photoURL: profilePhoto,
+        })
+        .then(() => {
+          setLoading(false);
+          const _user = auth().currentUser;
+          storeData({..._user, description: description});
+          setUser({..._user, description: description});
+        });
+    } catch (e) {
+      setLoading(false);
+      console.log(e);
+    }
   };
+
+  // const handleSubmit = () => {
+  //   checkIfUsernameIsRegistered(q).then((responseText) => {
+  //     if (responseText === 'exists') {
+  //       CustomToast('Username already in use');
+  //     } else {
+  //       if (type === 'email') {
+  //         createUser({
+  //           email: credentials,
+  //           username: username,
+  //           description: description,
+  //         }).then((response) => {
+  //           if (!response.error) {
+  //             const value = {
+  //               ...user,
+  //               id: id,
+  //               username: username,
+  //               description: description,
+  //             };
+  //             setUser(value);
+  //             storeData(value);
+  //           } else {
+  //             CustomToast('An Error Occured');
+  //           }
+  //         });
+  //       } else if (type === 'phoneNumber') {
+  //         createUser({
+  //           phoneNumber: credentials,
+  //           username: username,
+  //           description: description,
+  //         }).then((response) => {
+  //           if (!response.error) {
+  //             const value = {
+  //               ...user,
+  //               id: id,
+  //               username: username,
+  //               description: description,
+  //             };
+  //             setUser(value);
+  //             storeData(value);
+  //           } else {
+  //             CustomToast('An Error Occured');
+  //           }
+  //         });
+  //       }
+  //     }
+  //   });
+  // };
 
   const pickImage = () => {
     const options = {
@@ -233,11 +255,24 @@ export default function SetUpProfile({route}) {
                   [ {description.length} / 150 ]
                 </Text>
               </View>
-              <TouchableOpacity
-                style={globalStyles.button}
-                onPress={isUsernameValid(username) ? handleSubmit : anon}>
-                <Text style={globalStyles.buttonText}>Submit</Text>
-              </TouchableOpacity>
+              {loading ? (
+                <View
+                  style={{
+                    height: 50,
+                    width: constants.width * 0.8,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginBottom: 25,
+                  }}>
+                  <ActivityIndicator color="#0d0c0a" size="small" />
+                </View>
+              ) : (
+                <TouchableOpacity
+                  style={globalStyles.button}
+                  onPress={isUsernameValid(username) ? handleSubmit : anon}>
+                  <Text style={globalStyles.buttonText}>Submit</Text>
+                </TouchableOpacity>
+              )}
             </View>
           </SafeAreaView>
         </View>

@@ -10,13 +10,7 @@ import {updateProfilePhoto} from '../../../backend/database/apiCalls';
 export default function UserProfilePhoto() {
   const {user} = useContext(UserDetailsContext);
   const {constants} = React.useContext(ThemeContext);
-  const [profilePhoto, setProfilePhoto] = useState(
-    'https://images.unsplash.com/photo-1598368006967-b76b790494c9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
-  );
-
-  // useEffect(() => {
-  //   setProfilePhoto(profilePhoto);
-  // }, [setProfilePhoto]);
+  const [profilePhoto, setProfilePhoto] = useState(user._user.photoURL);
 
   const pickImage = () => {
     const options = {
@@ -30,9 +24,9 @@ export default function UserProfilePhoto() {
 
     ImagePicker.showImagePicker(options, (response) => {
       if (response.didCancel) {
-        // console.log('User cancelled image picker');
+        console.log('User cancelled image picker');
       } else if (response.error) {
-        // console.log('ImagePicker Error: ', response.error);
+        console.log('ImagePicker Error: ', response.error);
       } else {
         updateProfilePhoto(user.id, response.uri).then((responseText) => {
           if (responseText === 'success') {

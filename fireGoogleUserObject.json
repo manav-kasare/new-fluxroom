@@ -1,0 +1,17 @@
+{
+    "idToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImJjNDk1MzBlMWZmOTA4M2RkNWVlYWEwNmJlMmNlNDM3ZjQ5YzkwNWUiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhenAiOiIzMTkwOTg1MTQzNDItb3Q1c2oxaGVwZzNsNWZlZTJnamtjZ2Y1bzFrZDNoaWouYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJhdWQiOiIzMTkwOTg1MTQzNDItZWM1dXQwZGExdm9tbWJmNjUwOXNpaWFqOGsycGl1b2kuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJzdWIiOiIxMDY0OTQyNzY0NTc5NTA1NzA3NDciLCJlbWFpbCI6ImZsdXhyb29tc0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiYXRfaGFzaCI6ImxKVjI3N283WmktckpNZXczTjVWbXciLCJub25jZSI6ImlxMzlyaDFScWVZMUROQmMxakg1YUh5Tnc0ai1CblB5NE1zNzlKcEZSZU0iLCJuYW1lIjoiZmx1eCBmbHV4IiwicGljdHVyZSI6Imh0dHBzOi8vbGg1Lmdvb2dsZXVzZXJjb250ZW50LmNvbS8tMEZuSGZsTDFSdFUvQUFBQUFBQUFBQUkvQUFBQUFBQUFBQUEvQU1adXVjbWZaaWg0YjZ2SndSclZCR294MjI2c2VqUlBnZy9zOTYtYy9waG90by5qcGciLCJnaXZlbl9uYW1lIjoiZmx1eCIsImZhbWlseV9uYW1lIjoiZmx1eCIsImxvY2FsZSI6ImVuIiwiaWF0IjoxNTk4OTk3NjYzLCJleHAiOjE1OTkwMDEyNjN9.OIaa_M2n4wzUJ1VF4mGvFDn7CdfMrNoVt49_0Im19GkOqNv8iReZiGxUxOMOfwEhvCRQ9i5eZ_jbotufrVHliuiAg6g4kGorG8iF1sBhb8YGz7P9E04iFsfXKnbQRz0Kqhw_BMibInPasaCd4PTGA5ncM18tgC0RxO5K0d9m4gEhJerN1Jnr8vnsmooqodmI74EsdMITp_EDkbYck7UlYPpgfRE3wy1eAXFrM_DNZtneDqVCwwwkdWAxaQ46qkUANhD2nFVrCi3niOyKTAeeoSc1YRymI67d8K5CifBo9wiLib6yuJt_8M8h-eG0dAR52bXQBuOOjToNmbcW0jWMbg",
+    "scopes": [
+        "https://www.googleapis.com/auth/userinfo.email",
+        "https://www.googleapis.com/auth/userinfo.profile",
+        "openid"
+    ],
+    "serverAuthCode": "4/3gHrH6Hy0qWtJ0S-fi15u0UWF-sDksDUEIkSqFBpHtpbf0sFVLR2xIrYFcL1BAXftdQ_L0KKZ1CNIPobpKGmXbQ",
+    "user": {
+        "email": "fluxrooms@gmail.com",
+        "familyName": "flux",
+        "givenName": "flux",
+        "id": "106494276457950570747",
+        "name": "flux flux",
+        "photo": "https://lh5.googleusercontent.com/-0FnHflL1RtU/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucmfZih4b6vJwRrVBGox226sejRPgg/s120/photo.jpg"
+    }
+}

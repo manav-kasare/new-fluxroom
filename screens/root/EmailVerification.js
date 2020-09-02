@@ -1,132 +1,155 @@
-import React, {useState, useEffect} from 'react';
-import {SafeAreaView, View, TouchableOpacity, Text} from 'react-native';
+import React from 'react';
+import {View, Text, TouchableOpacity, ActivityIndicator} from 'react-native';
+import Modal from 'react-native-modal';
+import auth from '@react-native-firebase/auth';
 
-import CustomToast from '../../shared/CustomToast';
-import {getUserInfo, emailConfirmation} from '../../backend/database/apiCalls';
 import {ThemeContext} from '../../shared/Context';
+import CustomToast from '../../shared/CustomToast';
 
-export default function EmailVerification({route, navigation}) {
-  const {email, id} = route.params;
+export default function EmailVerification({
+  isVisible,
+  setIsVisible,
+  navigation,
+  email,
+  userInfo,
+}) {
   const {constants} = React.useContext(ThemeContext);
-  const [isVerified, setIsVerified] = useState(false);
+  const [loading, setLoading] = React.useState(false);
+  const [resendLoading, setResendLoading] = React.useState(false);
 
-  const handleCheck = () => {
-    getUserInfo(id).then((data) => {
-      if (Boolean(data.confirmed)) {
-        navigation.push('SetUpProfile', {id: id});
-        setIsVerified(true);
-      } else {
-        setIsVerified(false);
-      }
-    });
+  const checkVerification = async () => {
+    setLoading(true);
+    const emailVerified = await auth().currentUser.emailVerified;
+    // if (emailVerified) {
+    //   setLoading(false);
+    setIsVisible(false);
+    navigation.navigate('SetUpProfile', {credentials: email, type: 'email'});
+    // } else {
+    //   setLoading(false);
+    //   CustomToast('Email not verified');
+    // }
   };
 
-  // Resending Email for Confirmation
-  const handleEmailConfirmation = () => {
-    emailConfirmation(id, email).then((responseText) => {
-      if (responseText !== 'success') {
-        CustomToast('An Error Occured');
-      }
-    });
+  const resendEmail = async () => {
+    setResendLoading(true);
+    try {
+      await userInfo.user.sendEmailVerification.then(() => {
+        setLoading(false);
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
+    <Modal
+      isVisible={isVisible}
+      useNativeDriver={true}
+      hideModalContentWhileAnimating={true}
+      deviceWidth={constants.width}
+      deviceHeight={constants.height}
+      style={{
+        width: constants.width * 0.9,
+        borderRadius: 10,
+        position: 'absolute',
+        bottom: 0,
+        height: constants.height * 0.25,
+        backgroundColor: constants.background1,
+        alignItems: 'center',
+        justifyContent: 'space-around',
+        paddingTop: 25,
+      }}
+      animationIn="slideInUp"
+      animationInTiming={500}
+      animationOut="slideOutDown">
       <View
         style={{
-          width: constants.width * 0.9,
-          backgroundColor: 'white',
-          borderRadius: 10,
-          paddingVertical: 50,
+          backgroundColor: 'grey',
+          height: 5,
+          width: 50,
           alignSelf: 'center',
-          marginTop: 100,
-          paddingHorizontal: 20,
-          borderColor: 'grey',
-          borderWidth: 0.3,
+          borderRadius: 10,
+          position: 'absolute',
+          top: 10,
+        }}
+      />
+      <Text
+        style={{
+          fontSize: 20,
+          color: 'black',
+          fontWeight: '400',
+          fontFamily: 'Helvetica Neue',
         }}>
-        <View>
-          <Text
-            style={{
-              color: 'black',
-              fontSize: 17,
-              letterSpacing: 0,
-              fontFamily: 'Helvetica Neue',
-              fontWeight: '400',
-            }}>
-            We have sent you an email at {email}
-          </Text>
-          <Text
-            style={{
-              marginTop: 5,
-              color: 'grey',
-              fontSize: 15,
-              letterSpacing: 0,
-              fontFamily: 'Helvetica Neue',
-              fontWeight: '300',
-            }}>
-            The link expires in 24 hours
-          </Text>
-          {isVerified ? (
-            <Text
-              style={{
-                marginTop: 25,
-                color: 'dodgerblue',
-                fontSize: 20,
-                fontFamily: 'Helvetica',
-                fontWeight: '500',
-              }}>
-              Verified
-            </Text>
-          ) : (
-            <Text
-              style={{
-                marginTop: 25,
-                color: 'crimson',
-                fontSize: 20,
-                fontFamily: 'Helvetica',
-                fontWeight: '300',
-              }}>
-              Not Verified
-            </Text>
-          )}
-        </View>
-        <TouchableOpacity
-          onPress={handleCheck}
+        Please verify your email address
+      </Text>
+      {loading ? (
+        <View
           style={{
-            width: 75,
-            marginVertical: 10,
-            height: 30,
+            height: 50,
+            width: constants.width * 0.8,
             alignItems: 'center',
             justifyContent: 'center',
-            backgroundColor: '#4640C1',
-            borderRadius: 10,
+            marginBottom: 25,
           }}>
-          <Text style={{color: 'white'}}>Check</Text>
-        </TouchableOpacity>
-        <View style={{marginTop: 25}}>
+          <ActivityIndicator color="#0d0c0a" size="small" />
+        </View>
+      ) : (
+        <TouchableOpacity
+          style={{
+            width: constants.width * 0.7,
+            height: 50,
+            backgroundColor: '#4640C1',
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderRadius: 8,
+            marginVertical: 10,
+          }}
+          onPress={checkVerification}>
           <Text
             style={{
-              color: constants.text2,
-              fontSize: 17,
-              letterSpacing: 0,
-              fontFamily: 'Helvetica Neue',
-              fontWeight: '500',
+              color: 'white',
+              fontSize: 15,
+              letterSpacing: 1,
+              fontFamily: 'Helvetica',
             }}>
-            Didn't receive an email ?
+            Check
           </Text>
-          <TouchableOpacity onPress={handleEmailConfirmation}>
-            <Text
-              style={{
-                color: 'dodgerblue',
-                fontSize: 16,
-                fontWeight: '500',
-                marginTop: 10,
-              }}>
-              Resend Email
-            </Text>
-          </TouchableOpacity>
+        </TouchableOpacity>
+      )}
+      {resendLoading ? (
+        <View
+          style={{
+            height: 50,
+            width: constants.width * 0.8,
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginBottom: 25,
+          }}>
+          <ActivityIndicator color="#0d0c0a" size="small" />
         </View>
-      </View>
-    </SafeAreaView>
+      ) : (
+        <TouchableOpacity
+          style={{
+            width: constants.width * 0.7,
+            height: 50,
+            backgroundColor: '#4640C1',
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderRadius: 8,
+            marginVertical: 10,
+          }}
+          onPress={resendEmail}>
+          <Text
+            style={{
+              color: 'white',
+              fontSize: 15,
+              letterSpacing: 1,
+              fontFamily: 'Helvetica',
+            }}>
+            Resend Email
+          </Text>
+        </TouchableOpacity>
+      )}
+    </Modal>
   );
 }

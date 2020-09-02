@@ -392,8 +392,6 @@ PODS:
   - RNGoogleSignin (4.0.3):
     - GoogleSignIn (~> 5.0.0)
     - React
-  - RNKeychain (6.1.1):
-    - React
   - RNReanimated (1.7.1):
     - React
   - RNScreens (2.2.0):
@@ -646,7 +644,6 @@ SPEC CHECKSUMS:
   RNFBAuth: e0b72882353a6280f0885ca8011804cef3c33cc8
   RNGestureHandler: 8f09cd560f8d533eb36da5a6c5a843af9f056b38
   RNGoogleSignin: ccf71ee4b6cfd324fd788a41e457e2043838c0d9
-  RNKeychain: db956c02a018f7dd3a0ea8a6cf3087bc1894bf2b
   RNReanimated: 4e102df74a9674fa943e05f97f3362b6e44d0b48
   RNScreens: 812b79d384e2bea7eebc4ec981469160d4948fd5
   RNVectorIcons: da6fe858f5a65d7bbc3379540a889b0b12aa5976

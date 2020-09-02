@@ -1,24 +1,8 @@
 import React from 'react';
-import {
-  Text,
-  SafeAreaView,
-  TouchableOpacity,
-  View,
-  StatusBar,
-} from 'react-native';
-import Animated, {
-  interpolate,
-  useCode,
-  cond,
-  set,
-  eq,
-  SpringUtils,
-} from 'react-native-reanimated';
-import {
-  useValue,
-  withTimingTransition,
-  withSpringTransition,
-} from 'react-native-redash';
+import {Text, TouchableOpacity, View, StatusBar} from 'react-native';
+import Animated, {useCode, cond, set, eq} from 'react-native-reanimated';
+import {useValue, withTimingTransition} from 'react-native-redash';
+import Entypo from 'react-native-vector-icons/Entypo';
 
 import constants from '../../shared/constants';
 import globalStyles from '../../shared/GlobalStyles';
@@ -28,7 +12,7 @@ import Facebook from './Facebook';
 
 export default function Onboard({navigation}) {
   const time = useValue(0);
-  const timeAnimation = withTimingTransition(time, {duration: 500});
+  const timeAnimation = withTimingTransition(time, {duration: 600});
   useCode(() => cond(eq(time, 0), set(time, 1)), []);
 
   return (
@@ -99,6 +83,18 @@ export default function Onboard({navigation}) {
           }}>
           <Google />
           <Facebook />
+          <TouchableOpacity
+            style={{
+              width: 50,
+              height: 50,
+              borderRadius: 50 / 2,
+              backgroundColor: '#4640C1',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+            onPress={() => navigation.navigate('Phone')}>
+            <Entypo size={25} name="phone" color="white" />
+          </TouchableOpacity>
         </View>
       </Animated.View>
     </View>
