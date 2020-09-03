@@ -55,6 +55,21 @@ export default function Settings({navigation}) {
           </TouchableOpacity>
         </View>
         <View style={styles.view}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('AboutUsNavigator')}
+            style={styles.view_touchable}>
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              <Entypo name="key" size={20} color={constants.background2} />
+              <Text style={styles.view_text}>About Us</Text>
+            </View>
+            <Ionicons
+              name="chevron-forward"
+              size={20}
+              color={constants.background2}
+            />
+          </TouchableOpacity>
+        </View>
+        <View style={styles.view}>
           <TouchableOpacity onPress={() => {}} style={styles.view_touchable}>
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
               <FontAwesome5 name="user-alt-slash" size={18} color="crimson" />

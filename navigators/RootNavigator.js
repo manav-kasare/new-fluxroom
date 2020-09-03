@@ -66,6 +66,7 @@ export default function RootNavigator() {
   const getUserData = async () => {
     try {
       const jsonValue = await AsyncStorage.getItem('user');
+      console.log(jsonValue);
       if (jsonValue !== null) {
         setUser(JSON.parse(jsonValue));
       }

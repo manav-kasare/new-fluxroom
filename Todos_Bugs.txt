@@ -18,3 +18,12 @@ Bugs:
     6. FIXED. Cant't hide tab bar in ChatRoomNavigator after changing the navigation flow.
     7. FIXED. Error on Search query.
     8. Can't send id in room object from Create Room to Share Room link
+
+    
+Extras:
+    1. Rating App.
+    2. Emailing Feedback and issues.
+    3. Blocking Users.
+    4. Deactivating account.
+    6. Terms of service.
+    7. Data Policy.
