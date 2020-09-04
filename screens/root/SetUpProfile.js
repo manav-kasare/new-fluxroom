@@ -21,16 +21,11 @@ import auth from '@react-native-firebase/auth';
 import {UserDetailsContext} from '../../shared/Context';
 import constants from '../../shared/constants';
 import globalStyles from '../../shared/GlobalStyles';
-import {
-  updateUsernameDescription,
-  checkIfUsernameIsRegistered,
-  createUser,
-} from '../../backend/database/apiCalls';
+import {createUser, getUserMe} from '../../backend/database/apiCalls';
 import CustomToast from '../../shared/CustomToast';
 
 export default function SetUpProfile({route}) {
-  const {user, setUser} = useContext(UserDetailsContext);
-  const {credentials, type} = route.params;
+  const {setUser} = useContext(UserDetailsContext);
   const [username, setUsername] = useState('');
   const [description, setDescription] = useState('');
   const [profilePhoto, setProfilePhoto] = useState(null);
@@ -58,64 +53,27 @@ export default function SetUpProfile({route}) {
           photoURL: profilePhoto,
         })
         .then(() => {
-          setLoading(false);
-          const _user = auth().currentUser;
-          storeData({..._user, description: description});
-          setUser({..._user, description: description});
+          createUser({
+            username: username,
+            description: description,
+          }).then((response) => {
+            if (response.error) {
+              setLoading(false);
+              console.log(response.error);
+            } else {
+              getUserMe(response.token[0].token).then((data) => {
+                storeData({...data, token: response.token[0].token});
+                setUser({...data, token: response.token[0].token});
+                setLoading(false);
+              });
+            }
+          });
         });
     } catch (e) {
       setLoading(false);
       console.log(e);
     }
   };
-
-  // const handleSubmit = () => {
-  //   checkIfUsernameIsRegistered(q).then((responseText) => {
-  //     if (responseText === 'exists') {
-  //       CustomToast('Username already in use');
-  //     } else {
-  //       if (type === 'email') {
-  //         createUser({
-  //           email: credentials,
-  //           username: username,
-  //           description: description,
-  //         }).then((response) => {
-  //           if (!response.error) {
-  //             const value = {
-  //               ...user,
-  //               id: id,
-  //               username: username,
-  //               description: description,
-  //             };
-  //             setUser(value);
-  //             storeData(value);
-  //           } else {
-  //             CustomToast('An Error Occured');
-  //           }
-  //         });
-  //       } else if (type === 'phoneNumber') {
-  //         createUser({
-  //           phoneNumber: credentials,
-  //           username: username,
-  //           description: description,
-  //         }).then((response) => {
-  //           if (!response.error) {
-  //             const value = {
-  //               ...user,
-  //               id: id,
-  //               username: username,
-  //               description: description,
-  //             };
-  //             setUser(value);
-  //             storeData(value);
-  //           } else {
-  //             CustomToast('An Error Occured');
-  //           }
-  //         });
-  //       }
-  //     }
-  //   });
-  // };
 
   const pickImage = () => {
     const options = {

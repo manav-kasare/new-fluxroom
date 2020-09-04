@@ -14,7 +14,7 @@ const Tile = React.memo(
     subHeading,
     onlineSpeakers,
   }) => {
-    const {constants} = React.useContext(ThemeContext);
+    const {darkTheme, constants} = React.useContext(ThemeContext);
 
     return (
       <TouchableOpacity onPress={onPressTile}>
@@ -22,11 +22,14 @@ const Tile = React.memo(
           style={{
             flex: 1,
             height: constants.height * 0.1,
-            marginLeft: 25,
+            paddingLeft: 25,
             alignItems: 'center',
             flexDirection: 'row',
-            borderBottomColor: constants.lineColor,
-            borderBottomWidth: 0.5,
+            backgroundColor: constants.background3,
+            borderBottomColor: darkTheme
+              ? constants.background1
+              : constants.lineColor,
+            borderBottomWidth: 1,
           }}>
           <TouchableOpacity onPress={onPressAvatar}>
             <CircleAvatar uri={uri} itemName={itemName} size={50} />

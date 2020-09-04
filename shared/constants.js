@@ -11,7 +11,7 @@ export default {
   width: WIDTH,
   height: HEIGHT,
   localIP: IP,
-  url: 'fluxroom-backend-beta.herokuapp.com',
+  url: 'https://fluxroom-backend-beta.herokuapp.com',
 };
 
 export const light = {

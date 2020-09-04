@@ -31,8 +31,9 @@ export default function TermsOfService() {
       fontFamily: 'Helvetica Neue',
       fontWeight: '700',
       color: constants.text1,
-      fontSize: 15,
-      marginVertical: 5,
+      fontSize: 14,
+      marginTop: 10,
+      marginBottom: 5,
       letterSpacing: 1,
     },
     body: {
@@ -147,6 +148,47 @@ export default function TermsOfService() {
               You give us permission to show your email address or phone number,
               username, profile picture, and information that you provided while
               sigining us for our services.
+            </Text>
+          </View>
+          <View style={styles.body}>
+            <Text style={styles.subHeadingText}>
+              - We do not claim ownership of your content, but you grant us a
+              license to use it.
+            </Text>
+            <Text style={styles.subHeadingText}>
+              - You agree that we can download and install updates to our
+              service on your device.
+            </Text>
+          </View>
+        </View>
+        <View style={styles.view}>
+          <Text style={styles.headerText}>~ Terminating your account.</Text>
+          <View style={styles.body}>
+            <Text style={styles.bodyText}>
+              We will disable your account if we believe that you didn't abide
+              by terms of use, or if we are permitted or required to do it by
+              law. We would cutt off all services to our account to maintain the
+              efficacy of user experience
+            </Text>
+          </View>
+        </View>
+        <View style={styles.view}>
+          <Text style={styles.headerText}>
+            ~ Who Is Responsible if Something Happens ?
+          </Text>
+          <View style={styles.body}>
+            <Text style={styles.bodyText}>
+              We also don’t control what people and others do or say, and we
+              aren’t responsible for their (or your) actions or conduct (whether
+              online or offline) or content (including unlawful or objectionable
+              content). We can't guarantee that our service will be safe and
+              secure or will work perfectly all the time. If there is an issue
+              with our Service, we can't know what all the possible impacts
+              might be. You agree that we won't be responsible ("liable") for
+              any information, or data, or consequential, special, indirect,
+              exemplary, punitive, or incidental damages arising out of or
+              related to these Terms, even if we know they are possible. This
+              includes when we delete your content, information, or account.
             </Text>
           </View>
         </View>

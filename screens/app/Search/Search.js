@@ -33,6 +33,16 @@ export default function Search() {
   const [refreshing, setRefreshing] = useState(false);
   const [onFocusRefresh, setOnFocusRefresh] = useState(true);
 
+  useEffect(() => {
+    getUsers().then((data) => {
+      setUsers(data);
+    });
+  }, []);
+
+  useEffect(() => {
+    handleOnFocusRefresh();
+  }, [refreshing]);
+
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
 
@@ -45,17 +55,10 @@ export default function Search() {
     }, 500);
   };
 
-  useEffect(() => {
-    handleOnFocusRefresh();
-    getUsers().then((data) => {
-      setUsers(data);
-    });
-  }, [refreshing]);
-
   const handleSearch = _.debounce((q) => {
     setFilteredUsers(
       _.filter(users, (_user) =>
-        user.id !== _user.id ? _user.username.includes(q) : null,
+        user._id !== _user._id ? _user.username.includes(q) : null,
       ),
     );
   }, 250);

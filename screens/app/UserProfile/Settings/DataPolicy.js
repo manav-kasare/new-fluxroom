@@ -37,8 +37,9 @@ export default function DataPolicy() {
       fontFamily: 'Helvetica Neue',
       fontWeight: '700',
       color: constants.text1,
-      fontSize: 15,
-      marginVertical: 5,
+      fontSize: 14,
+      marginTop: 10,
+      marginBottom: 5,
       letterSpacing: 1,
     },
     body: {

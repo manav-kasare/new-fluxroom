@@ -10,6 +10,7 @@ import auth from '@react-native-firebase/auth';
 import AsyncStorage from '@react-native-community/async-storage';
 
 import {UserDetailsContext, ThemeContext} from '../shared/Context';
+import {deleteToken} from '../shared/SecureStore';
 
 export default function DrawerContent(props) {
   const {setUser} = React.useContext(UserDetailsContext);
@@ -21,10 +22,12 @@ export default function DrawerContent(props) {
     auth()
       .signOut()
       .then(() => {
+        // deleteToken().then(() => {
         AsyncStorage.clear().then(() => {
           setLoading(false);
           setUser(null);
         });
+        // });
       });
   };
 

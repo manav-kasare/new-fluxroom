@@ -99,6 +99,7 @@ export default function UserProfile({navigation}) {
 const ProfileComponent = ({navigation}) => {
   const {user} = React.useContext(UserDetailsContext);
   const {constants} = React.useContext(ThemeContext);
+
   return (
     <View
       style={{

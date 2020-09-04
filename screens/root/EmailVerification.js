@@ -10,7 +10,6 @@ export default function EmailVerification({
   isVisible,
   setIsVisible,
   navigation,
-  email,
   userInfo,
 }) {
   const {constants} = React.useContext(ThemeContext);
@@ -23,7 +22,7 @@ export default function EmailVerification({
     // if (emailVerified) {
     //   setLoading(false);
     setIsVisible(false);
-    navigation.navigate('SetUpProfile', {credentials: email, type: 'email'});
+    navigation.navigate('SetUpProfile');
     // } else {
     //   setLoading(false);
     //   CustomToast('Email not verified');
@@ -54,7 +53,7 @@ export default function EmailVerification({
         position: 'absolute',
         bottom: 0,
         height: constants.height * 0.25,
-        backgroundColor: constants.background1,
+        backgroundColor: 'white',
         alignItems: 'center',
         justifyContent: 'space-around',
         paddingTop: 25,

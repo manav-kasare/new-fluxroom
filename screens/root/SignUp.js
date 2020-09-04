@@ -70,7 +70,6 @@ export default function SignUp({navigation}) {
           ReactNativeHaptic.generate('notificationSuccess');
           setIsVisible(true);
         });
-        console.log('User account created & signed in!');
       })
       .catch((error) => {
         setIsLoading(false);

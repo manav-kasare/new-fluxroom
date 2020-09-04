@@ -22,5 +22,5 @@ GET http://localhost:8000/chatroom/join?userID=-kpbvm6ba5-ri87gixhg&roomID=-wv5f
 GET fluxroom-backend-beta.herokuapp.com/user/5f386554eed5170017ecb3ff
 
 ###
-GET https://fluxroom-backend-beta.herokuapp.com/users
+GET https://fluxroom-backend-beta.herokuapp.com/allusers
  

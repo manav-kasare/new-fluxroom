@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {SafeAreaView, View, Image, Text, TouchableOpacity} from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Clipboard from '@react-native-community/clipboard';
 
 import {getChatroomInfo} from '../../../backend/database/apiCalls';
 import {ThemeContext} from '../../../shared/Context';
@@ -8,8 +9,8 @@ import {ThemeContext} from '../../../shared/Context';
 export default function RoomSettings({route, navigation}) {
   const {room} = route.params;
   const {constants} = React.useContext(ThemeContext);
-  const link =
-    'asjdf;asfnksnfsdlfknafdlsajflsadfkaskfjaslkfakfjkashsafnasfnas;fdsajdfhwenfasdhfksnfa;fashjf';
+  const [copiedText, setCopiedText] = useState('');
+  const link = `fluxroom://app/home/rooms/join/${room.id}`;
 
   const styles = {
     container: {
@@ -25,6 +26,16 @@ export default function RoomSettings({route, navigation}) {
       flexDirection: 'row',
       justifyContent: 'space-between',
     },
+  };
+
+  const copyText = () => {
+    Clipboard.setString(`fluxroom://app/home/rooms/join/${room.id}`);
+    fetchCopiedText();
+  };
+
+  const fetchCopiedText = async () => {
+    const text = await Clipboard.getString();
+    setCopiedText(text);
   };
 
   return (
@@ -94,7 +105,7 @@ export default function RoomSettings({route, navigation}) {
           }}>
           Copy Link
         </Text>
-        <TouchableOpacity style={styles.container}>
+        <TouchableOpacity style={styles.container} onPress={copyText}>
           <Text style={{color: 'grey'}}>{link}</Text>
         </TouchableOpacity>
       </View>

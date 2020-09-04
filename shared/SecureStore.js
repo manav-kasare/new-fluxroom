@@ -1,9 +1,18 @@
 import * as SecureStore from 'expo-secure-store';
 
-export const storeTokensLocally = (token) => {
-  SecureStore.setItemAsync('accessToken', token);
+export const storeToken = (token) => {
+  return SecureStore.setItemAsync('accessToken', token).then((reponse) => {
+    return response;
+  });
 };
 
-export const getTokensLocally = () => {
-  return SecureStore.getItemAsync('accessToken');
+export const getToken = () => {
+  return SecureStore.getItemAsync('accessToken').then((token) => {
+    console.log('TOKEN', token);
+    return token;
+  });
+};
+
+export const deleteToken = () => {
+  return SecureStore.deleteItemAsync('accessToken');
 };
