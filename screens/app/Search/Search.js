@@ -45,7 +45,6 @@ export default function Search() {
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
-
     wait(2000).then(() => setRefreshing(false));
   }, []);
 

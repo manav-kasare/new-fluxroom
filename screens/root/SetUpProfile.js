@@ -16,20 +16,27 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AsyncStorage from '@react-native-community/async-storage';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import ImagePicker from 'react-native-image-picker';
-import auth from '@react-native-firebase/auth';
 
 import {UserDetailsContext} from '../../shared/Context';
 import constants from '../../shared/constants';
 import globalStyles from '../../shared/GlobalStyles';
-import {createUser, getUserMe} from '../../backend/database/apiCalls';
+import {createUser} from '../../backend/database/apiCalls';
 import CustomToast from '../../shared/CustomToast';
+import {storeToken} from '../../shared/KeyChain';
 
 export default function SetUpProfile({route}) {
   const {setUser} = useContext(UserDetailsContext);
+  const {email, phoneNumber, googleData, phoneData} = route.params;
   const [username, setUsername] = useState('');
   const [description, setDescription] = useState('');
   const [profilePhoto, setProfilePhoto] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  React.useEffect(() => {
+    if (googleData) {
+      setProfilePhoto(googleData.user.photoURL);
+    }
+  });
 
   const storeData = async (value) => {
     try {
@@ -44,34 +51,112 @@ export default function SetUpProfile({route}) {
     return /^[a-z0-9_-]{3,15}$/.test(q);
   };
 
-  const handleSubmit = async () => {
-    setLoading(true);
+  const googleSignUp = () => {
     try {
-      await auth()
-        .currentUser.updateProfile({
-          displayName: username,
-          photoURL: profilePhoto,
-        })
-        .then(() => {
-          createUser({
-            username: username,
-            description: description,
-          }).then((response) => {
-            if (response.error) {
+      createUser({
+        username: username,
+        email: email,
+        googleData: googleData,
+        description: description,
+        profilePic: profilePhoto,
+      }).then((response) => {
+        if (response.error) {
+          setLoading(false);
+          if (response.error.code === 11000) {
+            CustomToast('Username Already taken');
+          } else {
+            CustomToast('An unexpected error occured');
+          }
+        } else {
+          storeToken(response.token[0]._id, response.token[0].token).then(
+            () => {
+              storeData(response.user);
+              setUser(response.user);
               setLoading(false);
-              console.log(response.error);
-            } else {
-              getUserMe(response.token[0].token).then((data) => {
-                storeData({...data, token: response.token[0].token});
-                setUser({...data, token: response.token[0].token});
-                setLoading(false);
-              });
-            }
-          });
-        });
+            },
+          );
+        }
+      });
     } catch (e) {
       setLoading(false);
       console.log(e);
+    }
+  };
+
+  const phoneSignUp = () => {
+    setLoading(true);
+    try {
+      createUser({
+        username: username,
+        phoneNumber: phoneNumber,
+        phoneData: phoneData,
+        description: description,
+        profilePic: profilePhoto,
+      }).then((response) => {
+        if (response.error) {
+          setLoading(false);
+          if (response.error.code === 11000) {
+            CustomToast('Username Already taken');
+          } else {
+            CustomToast('An unexpected error occured');
+          }
+        } else {
+          storeToken(response.token[0]._id, response.token[0].token).then(
+            () => {
+              storeData(response.user);
+              setUser(response.user);
+              setLoading(false);
+            },
+          );
+        }
+      });
+    } catch (e) {
+      setLoading(false);
+      console.log(e);
+    }
+  };
+
+  const emailSignUp = () => {
+    setLoading(true);
+    if (googleData) {
+      googleSignUp();
+    } else {
+      try {
+        createUser({
+          username: username,
+          email: email,
+          description: description,
+          profilePic: profilePhoto,
+        }).then((response) => {
+          if (response.error) {
+            setLoading(false);
+            if (response.error.code === 11000) {
+              CustomToast('Username Already taken');
+            } else {
+              CustomToast('An unexpected error occured');
+            }
+          } else {
+            storeToken(response.token[0]._id, response.token[0].token).then(
+              () => {
+                setLoading(false);
+                storeData(response.user);
+                setUser(response.user);
+              },
+            );
+          }
+        });
+      } catch (e) {
+        setLoading(false);
+        console.log(e);
+      }
+    }
+  };
+
+  const handleSubmit = () => {
+    if (email) {
+      emailSignUp();
+    } else if (phoneNumber) {
+      phoneSignUp();
     }
   };
 

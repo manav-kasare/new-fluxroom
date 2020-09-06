@@ -11,6 +11,7 @@ export default function EmailVerification({
   setIsVisible,
   navigation,
   userInfo,
+  email,
 }) {
   const {constants} = React.useContext(ThemeContext);
   const [loading, setLoading] = React.useState(false);
@@ -21,8 +22,9 @@ export default function EmailVerification({
     const emailVerified = await auth().currentUser.emailVerified;
     // if (emailVerified) {
     //   setLoading(false);
+    setLoading(false);
+    navigation.navigate('SetUpProfile', {email: email});
     setIsVisible(false);
-    navigation.navigate('SetUpProfile');
     // } else {
     //   setLoading(false);
     //   CustomToast('Email not verified');
@@ -55,7 +57,6 @@ export default function EmailVerification({
         height: constants.height * 0.25,
         backgroundColor: 'white',
         alignItems: 'center',
-        justifyContent: 'space-around',
         paddingTop: 25,
       }}
       animationIn="slideInUp"
@@ -78,6 +79,7 @@ export default function EmailVerification({
           color: 'black',
           fontWeight: '400',
           fontFamily: 'Helvetica Neue',
+          marginBottom: 15,
         }}>
         Please verify your email address
       </Text>

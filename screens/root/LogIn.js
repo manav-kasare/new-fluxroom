@@ -29,10 +29,8 @@ import {UserDetailsContext} from '../../shared/Context';
 import constants from '../../shared/constants';
 import CustomToast from '../../shared/CustomToast';
 import globalStyles from '../../shared/GlobalStyles';
-import {
-  loginUserWithUsername,
-  loginUserWithEmail,
-} from '../../backend/database/apiCalls';
+import {loginUser, getUserByEmail} from '../../backend/database/apiCalls';
+import {storeToken} from '../../shared/KeyChain';
 
 export default function LogIn({navigation}) {
   const {setUser} = useContext(UserDetailsContext);
@@ -72,13 +70,30 @@ export default function LogIn({navigation}) {
     try {
       await auth()
         .signInWithEmailAndPassword(email, password)
-        .then((userInfo) => {
-          setIsLoading(false);
-          storeData(userInfo);
-          setUser(userInfo);
+        .then(() => {
+          getUserByEmail(email).then((user) => {
+            loginUser({
+              username: user.username,
+              password: '89337133-17c9-42e3-9fef-78416a25651a',
+            }).then((response) => {
+              console.log(response);
+              if (response.err) {
+                setIsLoading(false);
+                ReactNativeHaptic.generate('notificationError');
+                CustomToast('An Error Occured');
+              } else {
+                setIsLoading(false);
+                ReactNativeHaptic.generate('notificationSuccess');
+                storeToken(response.user._id, response.token);
+                storeData(response.user);
+                setUser(response.user);
+              }
+            });
+          });
         });
     } catch (err) {
       setIsLoading(false);
+      ReactNativeHaptic.generate('notificationError');
       console.log(err);
     }
   };
@@ -136,7 +151,7 @@ export default function LogIn({navigation}) {
                 }}>
                 <View style={globalStyles.input}>
                   <MaterialCommunityIcons
-                    name="account-edit"
+                    name="account"
                     size={24}
                     color={constants.primary}
                   />
@@ -145,7 +160,7 @@ export default function LogIn({navigation}) {
                     textContentType="emailAddress"
                     keyboardType="email-address"
                     style={globalStyles.textInput}
-                    placeholder="Username or Email Address"
+                    placeholder="Email Address"
                     onChangeText={(text) => setemail(text)}
                     value={email}
                     clearButtonMode="while-editing"

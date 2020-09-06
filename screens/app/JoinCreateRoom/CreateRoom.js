@@ -15,30 +15,21 @@ import ImagePicker from 'react-native-image-picker';
 import randomID from '../../../backend/database/randomID';
 import {createRoom} from '../../../backend/database/apiCalls';
 import {UserDetailsContext, ThemeContext} from '../../../shared/Context';
+import {getToken} from '../../../shared/KeyChain';
 
 export default function CreateRoom({navigation}) {
   const {constants} = React.useContext(ThemeContext);
-  const {user} = useContext(UserDetailsContext);
   const [room, setRoom] = useState({
     name: '',
     description: '',
     profilePhoto: undefined,
-    id: '',
   });
 
   const handleCreateRoom = () => {
-    const _randomID = randomID();
-    setRoom({...room, id: _randomID});
-
-    navigation.navigate('ShareRoomLink', {room: room});
-
-    // createRoom(user.id, room).then((responseText) => {
-    //   if (responseText === 'success') {
-
-    //   } else {
-    //     alert('An Error Occured !');
-    //   }
-    // });
+    const token = getToken();
+    createRoom(token, room).then((response) => {
+      navigation.navigate('ShareRoomLink', {room: response});
+    });
   };
 
   const pickImage = () => {

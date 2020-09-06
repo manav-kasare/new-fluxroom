@@ -3,6 +3,8 @@ import {SafeAreaView, View, Text, TouchableOpacity} from 'react-native';
 
 import {getChatroomInfo} from '../../../backend/database/apiCalls';
 import {ThemeContext} from '../../../shared/Context';
+import {joinRoom} from '../../../backend/database/apiCalls';
+import {getToken} from '../../../shared/KeyChain';
 
 export default function JoinRoomWithLink({route, navigation}) {
   const {constants} = React.useContext(ThemeContext);
@@ -13,20 +15,14 @@ export default function JoinRoomWithLink({route, navigation}) {
     membersLength: 10,
   });
 
-  // React.useEffect(() => {
-  // getChatroomInfo(room.id, 'room').then((data) => {
-  //   setRoom({
-  //     ...room,
-  //     name: data.name,
-  //     membersLength: JSON.parse(data.members).members.length,
-  //   });
-  // });
-  // }, []);
-
   const handleJoinRoom = () => {
-    navigation.replace('ChatRoomNavigator', {
-      screen: 'Room',
-      params: {roomID: room.id},
+    const token = getToken();
+
+    joinRoom({id: id, token: token}).then((response) => {
+      navigation.replace('ChatRoomNavigator', {
+        screen: 'Room',
+        params: {roomID: room.id},
+      });
     });
   };
 

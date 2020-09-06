@@ -81,8 +81,8 @@ export default function Onboard({navigation}) {
             marginVertical: 20,
             alignSelf: 'center',
           }}>
-          <Google />
-          <Facebook />
+          <Google navigation={navigation} />
+          <Facebook navigation={navigation} />
           <TouchableOpacity
             style={{
               width: 50,

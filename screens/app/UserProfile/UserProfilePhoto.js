@@ -10,7 +10,7 @@ import {updateProfilePhoto} from '../../../backend/database/apiCalls';
 export default function UserProfilePhoto() {
   const {user} = useContext(UserDetailsContext);
   const {constants} = React.useContext(ThemeContext);
-  const [profilePhoto, setProfilePhoto] = useState(user._user.photoURL);
+  const [profilePhoto, setProfilePhoto] = useState(user.profilePic);
 
   const pickImage = () => {
     const options = {

@@ -14,8 +14,6 @@ import RequestIcon from '../screens/app/ChatRoom/RequestIcon';
 import {getUserInfo} from '../backend/database/apiCalls';
 import HomeNavigator from './HomeNavigator';
 
-console.disableYellowBox = true;
-
 const ChatRoomStack = createStackNavigator();
 
 export default function ChatRoomNavigator({route, navigation}) {

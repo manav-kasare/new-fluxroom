@@ -17,6 +17,38 @@ export const createUser = (user) => {
     });
 };
 
+export const loginUser = (user) => {
+  const requestOptions = {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(user),
+  };
+
+  return fetch(`${url}/login`, requestOptions)
+    .then((response) => response.json())
+    .then((data) => {
+      return data;
+    });
+};
+
+export const logOutUser = (token) => {
+  const requestOptions = {
+    method: 'POST',
+    header: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  return fetch(`${url}/user/logout`, requestOptions)
+    .then((response) => response.json())
+    .then((data) => {
+      return data;
+    });
+};
+
 export const getUsers = () => {
   return fetch(`${url}/allUsers`)
     .then((response) => response.json())
@@ -43,7 +75,6 @@ export const getUserInfo = (id) => {
   return fetch(`${url}/user/${id}`)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       return data;
     });
 };
@@ -51,6 +82,20 @@ export const getUserInfo = (id) => {
 export const getUserChatRooms = (id) => {
   return getUserInfo(id).then((response) => {
     return response.joinedRooms;
+  });
+};
+
+export const getUserByEmail = (email) => {
+  return fetch(`${url}/getbyemail?email=${email}`)
+    .then((response) => response.json())
+    .then((responseJSON) => {
+      return responseJSON;
+    });
+};
+
+export const getUserByPhone = (phoneNumber) => {
+  return fetch(`${url}/getbyphone?phone=${phoneNumber}`).then((response) => {
+    return response;
   });
 };
 
@@ -98,7 +143,7 @@ export const createRoom = (token, room) => {
   });
 };
 
-export const joinRoom = (id, token) => {
+export const joinRoom = ({id, token}) => {
   const requestOptions = {
     method: 'POST',
     headers: {

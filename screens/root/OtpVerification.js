@@ -9,34 +9,75 @@ import {
 import ReactNativeHaptic from 'react-native-haptic';
 import auth from '@react-native-firebase/auth';
 import Modal from 'react-native-modal';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import globalStyles from '../../shared/GlobalStyles';
 import CustomToast from '../../shared/CustomToast';
-import {ThemeContext} from '../../shared/Context';
+import {ThemeContext, UserDetailsContext} from '../../shared/Context';
+import {getUserByPhone, loginUser} from '../../backend/database/apiCalls';
+import {storeToken} from '../../shared/KeyChain';
 
 export default OtpVerification = ({
   isVisible,
   confirmation,
   setIsVisible,
+  setConfirmation,
   phoneNumber,
+  navigation,
 }) => {
+  const {setUser} = React.useContext(UserDetailsContext);
   const {constants} = React.useContext(ThemeContext);
-  const [confirm, setConfirm] = React.useState(confirmation);
   const [code, setCode] = React.useState(null);
   const [isLoadingCode, setIsLoadingCode] = React.useState(false);
   const [isLoadingResendCode, setIsLoadingResendCode] = React.useState(false);
 
+  const storeData = async (value) => {
+    try {
+      const jsonValue = JSON.stringify(value);
+      AsyncStorage.setItem('user', jsonValue).then(() => {
+        setUser(value);
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   const confirmSignUp = async () => {
     setIsLoadingCode(true);
     try {
-      await confirm.confirm(code).then(() => {
-        ReactNativeHaptic.generate('notificationSuccess');
+      await confirmation.confirm(code).then((userInfo) => {
         setIsLoadingCode(false);
+        ReactNativeHaptic.generate('notificationSuccess');
         setIsVisible(false);
-        navigation.navigate('SetUpProfile');
+        if (userInfo.additionalUserInfo.isNewUser) {
+          navigation.navigate('SetUpProfile', {
+            phoneNumber: phoneNumber,
+            phoneData: userInfo,
+          });
+        } else {
+          getUserByPhone(phoneNumber).then((response) => {
+            loginUser({
+              username: response.username,
+              password: '89337133-17c9-42e3-9fef-78416a25651a',
+            }).then((_response) => {
+              if (_response.err) {
+                setLoading(false);
+                ReactNativeHaptic.generate('notificationError');
+                CustomToast('An Error Occured');
+              } else {
+                ReactNativeHaptic.generate('notificationSuccess');
+                setLoading(false);
+                storeToken(_response.user._id, _response.token);
+                storeData(_response.user);
+                setUser(_response.user);
+              }
+            });
+          });
+        }
       });
     } catch (error) {
+      ReactNativeHaptic.generate('notificationError');
       setIsLoadingCode(false);
       CustomToast('Invalid code.');
     }
@@ -47,7 +88,7 @@ export default OtpVerification = ({
     await auth()
       .signInWithPhoneNumber(phoneNumber)
       .then((_confirmation) => {
-        setConfirm(_confirmation._user);
+        setConfirmation(_confirmation);
         setIsLoadingResendCode(false);
       });
   };

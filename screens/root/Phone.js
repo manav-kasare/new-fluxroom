@@ -54,7 +54,6 @@ export default function Phone({navigation}) {
       await auth()
         .signInWithPhoneNumber(formattedPhoneNumber)
         .then((_confirmation) => {
-          console.log(_confirmation);
           setConfirmation(_confirmation);
           setIsLoading(false);
           setIsVisible(true);
@@ -81,10 +80,12 @@ export default function Phone({navigation}) {
           marginBottom: 50,
         }}>
         <OtpVerifiaction
+          navigation={navigation}
           isVisible={isVisible}
           setIsVisible={setIsVisible}
           phoneNumber={formattedPhoneNumber}
           confirmation={confirmation}
+          setConfirmation={setConfirmation}
         />
         <Animated.View style={{transform: [{translateX: slideAnimationX}]}}>
           <Image

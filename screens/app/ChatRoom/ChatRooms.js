@@ -12,12 +12,13 @@ import {
 } from 'react-native';
 
 import globalStyles from '../../../shared/GlobalStyles';
+import {UserDetailsContext, ThemeContext} from '../../../shared/Context';
+import Tile from '../../../shared/Tile';
 import {
   getUserChatRooms,
   getChatroomInfo,
 } from '../../../backend/database/apiCalls';
-import {UserDetailsContext, ThemeContext} from '../../../shared/Context';
-import Tile from '../../../shared/Tile';
+import {getToken} from '../../../shared/KeyChain';
 
 const wait = (timeout) => {
   return new Promise((resolve) => {
@@ -25,18 +26,12 @@ const wait = (timeout) => {
   });
 };
 
-var list = [];
-for (var i = 0; i < 10; i++) {
-  list.push(`${i}`);
-}
-
 const ChatRooms = ({navigation}) => {
   const {user} = useContext(UserDetailsContext);
-  const {constants, darkTheme} = useContext(ThemeContext);
+  const {constants} = useContext(ThemeContext);
   const [chatRoomList, setChatRoomList] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
   const [onFocusRefresh, setOnFocusRefresh] = useState(true);
-  const [room, setRoom] = useState(null);
 
   const onRefresh = useCallback(() => {
     setRefreshing(true);
@@ -50,10 +45,14 @@ const ChatRooms = ({navigation}) => {
   };
 
   useEffect(() => {
+    getUserChatRooms(user._id).then((response) => {
+      setChatRoomList(response);
+    });
+  }, []);
+
+  useEffect(() => {
+    getToken().then((token) => console.log(token));
     handleOnFocusRefresh();
-    // getUserChatRooms(user.id).then((roomList) => {
-    //   setChatRoomList(roomList);
-    // });
   }, [refreshing]);
 
   return (
@@ -82,11 +81,11 @@ const ChatRooms = ({navigation}) => {
             flex: 1,
             backgroundColor: constants.background1,
           }}
-          data={list}
+          data={chatRoomList}
           keyExtractor={(item, index) => index.toString()}
           ListEmptyComponent={() => <EmptyItem />}
           renderItem={({item}) => (
-            <RenderTile id={item} navigation={navigation} />
+            <RenderTile id={item._id} navigation={navigation} />
           )}
           refreshControl={
             <RefreshControl
@@ -103,7 +102,7 @@ const ChatRooms = ({navigation}) => {
 
 export default React.memo(ChatRooms);
 
-const EmptyItem = () => {
+const EmptyItem = React.memo(() => {
   const {constants, darkTheme} = useContext(ThemeContext);
   return (
     <View
@@ -137,36 +136,16 @@ const EmptyItem = () => {
       </TouchableOpacity>
     </View>
   );
-};
+});
 
 const RenderTile = React.memo(({id, navigation}) => {
-  // const [room, setRoom] = useState({
-  //   name: null,
-  //   description: null,
-  //   profilePhoto: '',
-  //   members: [],
-  //   host: null,
-  // });
-  const [room, setRoom] = useState({
-    name: `Room ${id}`,
-    description: `Description ${id}`,
-    profilePhoto:
-      'https://images.unsplash.com/photo-1597075349517-0deb1e127c37?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80',
-    members: [],
-    host: null,
-  });
+  const [room, setRoom] = React.useState(null);
 
-  // useEffect(() => {
-  //   getChatroomInfo(id, 'room').then((data) => {
-  //     setRoom({
-  //       name: data.name,
-  //       description: data.description,
-  //       profilePhoto: data.profile !== null ? base64.decode(data.profilePhoto) : undefined,
-  //       host: JSON.parse(data.members).host,
-  //       members: JSON.parse(data.members).members,
-  //     });
-  //   });
-  // }, []);
+  useEffect(() => {
+    getChatroomInfo(id).then((response) => {
+      setRoom(response);
+    });
+  }, []);
 
   const handleOnPressTile = () => {
     navigation.navigate('Room', {room: room});

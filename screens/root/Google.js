@@ -5,6 +5,10 @@ import {GoogleSignin, statusCodes} from '@react-native-community/google-signin';
 import {UserDetailsContext} from '../../shared/Context';
 import AsyncStorage from '@react-native-community/async-storage';
 import auth from '@react-native-firebase/auth';
+import ReactNativeHaptic from 'react-native-haptic';
+
+import {getUserByEmail, loginUser} from '../../backend/database/apiCalls';
+import {storeToken} from '../../shared/KeyChain';
 
 GoogleSignin.configure({
   scopes: [
@@ -21,15 +25,15 @@ GoogleSignin.configure({
   // iosClientId: '<FROM DEVELOPER CONSOLE>', // [iOS] optional, if you want to specify the client ID of type iOS (otherwise, it is taken from GoogleService-Info.plist)
 });
 
-export default function Google() {
+export default function Google({navigation}) {
   const {setUser} = React.useContext(UserDetailsContext);
   const [loading, setLoading] = React.useState(false);
 
-  const storeData = async (_userInfo) => {
+  const storeData = async (value) => {
     try {
-      const jsonValue = JSON.stringify(_userInfo);
+      const jsonValue = JSON.stringify(value);
       AsyncStorage.setItem('user', jsonValue).then(() => {
-        setUser(_userInfo);
+        setUser(value);
       });
     } catch (e) {
       console.error(e);
@@ -46,11 +50,33 @@ export default function Google() {
         );
         auth()
           .signInWithCredential(googleCredential)
-          .then(() => {
+          .then((_userInfo) => {
             setLoading(false);
-            console.log(userInfo);
-            // storeData(userInfo);
-            // setUser(userInfo);
+            if (_userInfo.additionalUserInfo.isNewUser) {
+              navigation.navigate('SetUpProfile', {
+                email: _userInfo.user.email,
+                googleData: _userInfo,
+              });
+            } else {
+              getUserByEmail(_userInfo.user.email).then((response) => {
+                loginUser({
+                  username: response.username,
+                  password: '89337133-17c9-42e3-9fef-78416a25651a',
+                }).then((_response) => {
+                  if (_response.err) {
+                    setLoading(false);
+                    ReactNativeHaptic.generate('notificationError');
+                    CustomToast('An Error Occured');
+                  } else {
+                    setLoading(false);
+                    ReactNativeHaptic.generate('notificationSuccess');
+                    storeToken(_response.user._id, _response.token);
+                    storeData(_response.user);
+                    setUser(_response.user);
+                  }
+                });
+              });
+            }
           });
       });
     } catch (error) {

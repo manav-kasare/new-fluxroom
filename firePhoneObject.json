@@ -1,119 +1,23 @@
 {
-    "_auth": {
-        "_app": {
-            "_automaticDataCollectionEnabled": true,
-            "_deleteApp": [Function bound deleteApp
-            ],
-            "_deleted": false,
-            "_initialized": true,
-            "_name": "[DEFAULT]",
-            "_nativeInitialized": true,
-            "_options": [Object
-            ]
-        },
-        "_authResult": true,
-        "_config": {
-            "ModuleClass": [Function FirebaseAuthModule
-            ],
-            "hasCustomUrlOrRegionSupport": false,
-            "hasMultiAppSupport": true,
-            "namespace": "auth",
-            "nativeEvents": [Array
-            ],
-            "nativeModuleName": "RNFBAuthModule",
-            "statics": [Object
-            ],
-            "version": "9.1.2"
-        },
-        "_customUrlOrRegion": undefined,
-        "_languageCode": undefined,
-        "_nativeModule": {
-            "APP_LANGUAGE": [Object
-            ],
-            "APP_USER": [Object
-            ],
-            "addAuthStateListener": [Function anonymous
-            ],
-            "addIdTokenListener": [Function anonymous
-            ],
-            "applyActionCode": [Function anonymous
-            ],
-            "checkActionCode": [Function anonymous
-            ],
-            "confirmPasswordReset": [Function anonymous
-            ],
-            "confirmationResultConfirm": [Function anonymous
-            ],
-            "createUserWithEmailAndPassword": [Function anonymous
-            ],
-            "delete": [Function anonymous
-            ],
-            "fetchSignInMethodsForEmail": [Function anonymous
-            ],
-            "getConstants": [Function anonymous
-            ],
-            "getIdToken": [Function anonymous
-            ],
-            "getIdTokenResult": [Function anonymous
-            ],
-            "linkWithCredential": [Function anonymous
-            ],
-            "reauthenticateWithCredential": [Function anonymous
-            ],
-            "reload": [Function anonymous
-            ],
-            "removeAuthStateListener": [Function anonymous
-            ],
-            "removeIdTokenListener": [Function anonymous
-            ],
-            "sendEmailVerification": [Function anonymous
-            ],
-            "sendPasswordResetEmail": [Function anonymous
-            ],
-            "sendSignInLinkToEmail": [Function anonymous
-            ],
-            "setAppVerificationDisabledForTesting": [Function anonymous
-            ],
-            "setLanguageCode": [Function anonymous
-            ],
-            "signInAnonymously": [Function anonymous
-            ],
-            "signInWithCredential": [Function anonymous
-            ],
-            "signInWithCustomToken": [Function anonymous
-            ],
-            "signInWithEmailAndPassword": [Function anonymous
-            ],
-            "signInWithEmailLink": [Function anonymous
-            ],
-            "signInWithPhoneNumber": [Function anonymous
-            ],
-            "signOut": [Function anonymous
-            ],
-            "unlink": [Function anonymous
-            ],
-            "updateEmail": [Function anonymous
-            ],
-            "updatePassword": [Function anonymous
-            ],
-            "updatePhoneNumber": [Function anonymous
-            ],
-            "updateProfile": [Function anonymous
-            ],
-            "useDeviceLanguage": [Function anonymous
-            ],
-            "useUserAccessGroup": [Function anonymous
-            ],
-            "verifyBeforeUpdateEmail": [Function anonymous
-            ],
-            "verifyPasswordResetCode": [Function anonymous
-            ],
-            "verifyPhoneNumber": [Function anonymous
-            ]
-        },
-        "_settings": null,
-        "_user": [Object
-        ]
+    "additionalUserInfo": {
+        "isNewUser": true,
+        "profile": null,
+        "providerId": "phone",
+        "username": null
     },
-    "_verificationId": "AM5PThCMcOtnCeAfyfStw8K2kgcxNP_hjkoKKtI78HPoEw4oTKzSoTaTP32K1lRtpH4-1fjAMo-D5aBwNMrc22p5kzMOonaU5huCQk_0zLmb1F0xztgcfhwYFWbcns2eu_DdtFKPvz-euBILguF2RsmOrbK1B09IeWH4x0MA8hQKIrdSQxs3LetJZqtiK9AfFc0-l3zD5eONhLX9iD6vge7JSDebwggSyw"
+    "user": {
+        "displayName": null,
+        "email": null,
+        "emailVerified": false,
+        "isAnonymous": false,
+        "metadata": [Object
+        ],
+        "phoneNumber": "+918433802669",
+        "photoURL": null,
+        "providerData": [Array
+        ],
+        "providerId": "firebase",
+        "refreshToken": "AE0u-NedIJzd7OrEM_nPhPRUxl8lvkGYZYlqKm5h5GsCQiamxSnkeF5YLIA58GntVPw3Ix67BA9vjJdJLp92QO0uqR_cMQnB9fr2fd6JDZ1_OuS_Zh1weUQzwAtfDQM8KQ4TH7LdkcnIeQ0UyTVGXnPPUwZZ5hvF_rpGYGyxcsBXiiP4RgeNbFUfXPFIinzqnJtruWRe5E9B",
+        "uid": "MBdQ5PBJNAb2wrU7Cvoq7XvhuIK2"
+    }
 }

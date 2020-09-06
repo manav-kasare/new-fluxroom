@@ -116,7 +116,7 @@ const ProfileComponent = ({navigation}) => {
           fontSize: 25,
           marginTop: 20,
         }}>
-        {user._user.displayName}
+        {user.username}
       </Text>
       <Text
         style={{
