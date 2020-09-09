@@ -37,7 +37,7 @@ export const loginUser = (user) => {
 export const logOutUser = (token) => {
   const requestOptions = {
     method: 'POST',
-    header: {
+    headers: {
       Authorization: `Bearer ${token}`,
     },
   };
@@ -60,15 +60,16 @@ export const getUsers = () => {
 export const getUserMe = (token) => {
   const requestOptions = {
     method: 'GET',
-    header: {
+    headers: {
       Authorization: `Bearer ${token}`,
     },
   };
 
-  return fetch(`${url}/me`, requestOptions).then((data) => {
-    console.log('ME', data);
-    return data;
-  });
+  return fetch(`${url}/me`, requestOptions)
+    .then((response) => response.json())
+    .then((data) => {
+      return data;
+    });
 };
 
 export const getUserInfo = (id) => {
@@ -94,9 +95,11 @@ export const getUserByEmail = (email) => {
 };
 
 export const getUserByPhone = (phoneNumber) => {
-  return fetch(`${url}/getbyphone?phone=${phoneNumber}`).then((response) => {
-    return response;
-  });
+  return fetch(`${url}/getbyphone?phone=${phoneNumber}`)
+    .then((response) => response.json())
+    .then((data) => {
+      return data;
+    });
 };
 
 export const follow = (username, token) => {
@@ -127,6 +130,20 @@ export const unfollow = (username, token) => {
   );
 };
 
+export const updateProfilePhoto = (token) => {
+  const requestOptions = {
+    method: 'GET',
+    header: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  return fetch(`${url}/uploadimage`, requestOptions)
+    .then((response) => response.text())
+    .then((data) => {
+      return data;
+    });
+};
+
 export const createRoom = (token, room) => {
   const requestOptions = {
     method: 'POST',
@@ -138,12 +155,14 @@ export const createRoom = (token, room) => {
     body: JSON.stringify(room),
   };
 
-  return fetch(`${url}/room/create`, requestOptions).then((response) => {
-    return response;
-  });
+  return fetch(`${url}/room/create`, requestOptions)
+    .then((response) => response.json())
+    .then((data) => {
+      return data;
+    });
 };
 
-export const joinRoom = ({id, token}) => {
+export const joinRoom = (id, token) => {
   const requestOptions = {
     method: 'POST',
     headers: {
@@ -159,7 +178,9 @@ export const joinRoom = ({id, token}) => {
 };
 
 export const getChatroomInfo = (id) => {
-  return fetch(`${url}/room/${id}`).then((response) => {
-    return response;
-  });
+  return fetch(`${url}/room/${id}`)
+    .then((response) => response.json())
+    .then((data) => {
+      return data;
+    });
 };

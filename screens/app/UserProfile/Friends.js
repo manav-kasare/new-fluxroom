@@ -104,11 +104,7 @@ export default function Friends({navigation}) {
           />
         </View>
       </SafeAreaView>
-      {Platform.OS === 'ios' ? (
-        <View style={{height: 50, backgroundColor: constants.background1}} />
-      ) : (
-        <></>
-      )}
+      <View style={{height: 50, backgroundColor: constants.background1}} />
     </View>
   );
 }
@@ -134,7 +130,6 @@ function FriendsList({id}) {
     <View style={{paddingVertical: 10}}>
       <Tile
         uri={details.profilePhoto}
-        itemName="avatar"
         heading={details.username}
         subHeading={details.description}
       />

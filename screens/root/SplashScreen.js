@@ -6,7 +6,7 @@ export default function SplashScreen() {
     <SafeAreaView
       style={{
         flex: 1,
-        backgroundColor: 'white',
+        backgroundColor: 'black',
         alignItems: 'center',
         justifyContent: 'center',
       }}>

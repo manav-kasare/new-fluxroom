@@ -1,18 +1,10 @@
 import React, {useContext} from 'react';
-import {
-  SafeAreaView,
-  Modal,
-  Platform,
-  Text,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-} from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import {Text, TouchableOpacity} from 'react-native';
+import Modal from 'react-native-modal';
 
 import CustomToast from '../../../shared/CustomToast';
 import {sendFriendRequest} from '../../../backend/database/apiCalls';
 import {UserDetailsContext, ThemeContext} from '../../../shared/Context';
-import {constant} from 'lodash';
 
 const OptionsModal = ({isModalVisible, setIsModalVisible, id}) => {
   const {constants} = React.useContext(ThemeContext);
@@ -28,37 +20,42 @@ const OptionsModal = ({isModalVisible, setIsModalVisible, id}) => {
   };
 
   return (
-    <Modal animationType="fade" transparent={true} visible={isModalVisible}>
-      <TouchableWithoutFeedback onPress={() => setIsModalVisible(false)}>
-        <SafeAreaView
+    <Modal
+      isVisible={isModalVisible}
+      useNativeDriver={true}
+      hideModalContentWhileAnimating={true}
+      deviceWidth={constants.width}
+      deviceHeight={constants.height}
+      style={{
+        height: 70,
+        width: constants.width * 0.9,
+        borderRadius: 10,
+        position: 'absolute',
+        bottom: 25,
+        backgroundColor: constants.background3,
+        alignItems: 'center',
+      }}
+      onBackButtonPress={() => setIsModalVisible(false)}
+      animationIn="fadeIn"
+      animationInTiming={500}
+      animationOut="fadeOut">
+      <TouchableOpacity
+        style={{
+          height: 70,
+          width: constants.width * 0.9,
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+        onPress={handleRequest}>
+        <Text
           style={{
-            flex: 1,
-            backgroundColor: 'rgba(0,0,0,0.2)',
+            color: 'white',
+            fontFamily: 'Helvetica Neue',
+            fontSize: 18,
           }}>
-          <TouchableOpacity
-            style={{
-              width: constants.width * 0.9,
-              height: constants.height * 0.075,
-              justifyContent: 'center',
-              alignItems: 'center',
-              backgroundColor: constants.primary,
-              borderRadius: 10,
-              position: 'absolute',
-              bottom: Platform.OS === 'ios' ? 25 : 15,
-              alignSelf: 'center',
-            }}
-            onPress={handleRequest}>
-            <Text
-              style={{
-                color: 'white',
-                fontFamily: 'Helvetica',
-                fontSize: 20,
-              }}>
-              Connect
-            </Text>
-          </TouchableOpacity>
-        </SafeAreaView>
-      </TouchableWithoutFeedback>
+          Connect
+        </Text>
+      </TouchableOpacity>
     </Modal>
   );
 };

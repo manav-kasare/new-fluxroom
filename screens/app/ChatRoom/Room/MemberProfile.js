@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {SafeAreaView, View, Modal, Text, TouchableOpacity} from 'react-native';
-import {ThemeContext} from '../../../shared/Context';
+import {ThemeContext} from '../../../../shared/Context';
 
 export default function MemberProfile({visible}) {
   const {constants} = React.useContext(ThemeContext);

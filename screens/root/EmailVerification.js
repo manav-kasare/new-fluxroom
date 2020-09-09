@@ -4,7 +4,7 @@ import Modal from 'react-native-modal';
 import auth from '@react-native-firebase/auth';
 
 import {ThemeContext} from '../../shared/Context';
-import CustomToast from '../../shared/CustomToast';
+import CustomToast, {CustomErrorTost} from '../../shared/CustomToast';
 
 export default function EmailVerification({
   isVisible,
@@ -38,7 +38,7 @@ export default function EmailVerification({
         setLoading(false);
       });
     } catch (err) {
-      console.log(err);
+      CustomErrorTost('An Error Occured !');
     }
   };
 

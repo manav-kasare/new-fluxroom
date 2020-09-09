@@ -2,8 +2,8 @@ import React from 'react';
 import {SafeAreaView, View, Text, TouchableOpacity} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import TileAvatar from '../ChatRoom/TileAvatar';
-import {ThemeContext} from '../../../shared/Context';
+import TileAvatar from '../TileAvatar';
+import {ThemeContext} from '../../../../shared/Context';
 
 export default function PersonalChat({navigation, route}) {
   const {constants} = React.useContext(ThemeContext);

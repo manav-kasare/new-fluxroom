@@ -21,8 +21,10 @@ import {UserDetailsContext} from '../../shared/Context';
 import constants from '../../shared/constants';
 import globalStyles from '../../shared/GlobalStyles';
 import {createUser} from '../../backend/database/apiCalls';
-import CustomToast from '../../shared/CustomToast';
+import CustomToast, {CustomErrorTost} from '../../shared/CustomToast';
 import {storeToken} from '../../shared/KeyChain';
+import {storeUserData, storeTheme} from '../../shared/AsyncStore';
+import CachedImage from '../../shared/CachedImage';
 
 export default function SetUpProfile({route}) {
   const {setUser} = useContext(UserDetailsContext);
@@ -37,15 +39,6 @@ export default function SetUpProfile({route}) {
       setProfilePhoto(googleData.user.photoURL);
     }
   });
-
-  const storeData = async (value) => {
-    try {
-      const jsonValue = JSON.stringify(value);
-      await AsyncStorage.setItem('user', jsonValue);
-    } catch (e) {
-      // saving error
-    }
-  };
 
   const isUsernameValid = (q) => {
     return /^[a-z0-9_-]{3,15}$/.test(q);
@@ -70,7 +63,8 @@ export default function SetUpProfile({route}) {
         } else {
           storeToken(response.token[0]._id, response.token[0].token).then(
             () => {
-              storeData(response.user);
+              storeUserData(response.user);
+              storeTheme('light');
               setUser(response.user);
               setLoading(false);
             },
@@ -79,7 +73,7 @@ export default function SetUpProfile({route}) {
       });
     } catch (e) {
       setLoading(false);
-      console.log(e);
+      CustomErrorTost('An Error Occured !');
     }
   };
 
@@ -103,7 +97,8 @@ export default function SetUpProfile({route}) {
         } else {
           storeToken(response.token[0]._id, response.token[0].token).then(
             () => {
-              storeData(response.user);
+              storeUserData(response.user);
+              storeTheme('light');
               setUser(response.user);
               setLoading(false);
             },
@@ -112,7 +107,7 @@ export default function SetUpProfile({route}) {
       });
     } catch (e) {
       setLoading(false);
-      console.log(e);
+      CustomErrorTost('An Error Occured !');
     }
   };
 
@@ -139,7 +134,8 @@ export default function SetUpProfile({route}) {
             storeToken(response.token[0]._id, response.token[0].token).then(
               () => {
                 setLoading(false);
-                storeData(response.user);
+                storeUserData(response.user);
+                storeTheme('light');
                 setUser(response.user);
               },
             );
@@ -147,7 +143,7 @@ export default function SetUpProfile({route}) {
         });
       } catch (e) {
         setLoading(false);
-        console.log(e);
+        CustomErrorTost('An Error Occured !');
       }
     }
   };
@@ -207,14 +203,14 @@ export default function SetUpProfile({route}) {
               marginBottom: 50,
               backgroundColor: '#4640C1',
             }}>
-            <Image
+            <CachedImage
               style={{
                 width: constants.width,
                 marginVertical: 30,
                 height: constants.height * 0.2,
               }}
               resizeMode="contain"
-              source={require('/Users/manav/projects/fluxroom/assets/setup_profile.png')}
+              uri="/Users/manav/projects/fluxroom/assets/setup_profile.png"
             />
 
             <View
@@ -244,15 +240,13 @@ export default function SetUpProfile({route}) {
                 {profilePhoto === null ? (
                   <Feather name="camera" size={20} color="white" />
                 ) : (
-                  <Image
+                  <CachedImage
                     style={{
                       width: 97,
                       height: 97,
                       borderRadius: 97 / 2,
                     }}
-                    source={{
-                      uri: profilePhoto,
-                    }}
+                    uri={profilePhoto}
                   />
                 )}
               </TouchableOpacity>

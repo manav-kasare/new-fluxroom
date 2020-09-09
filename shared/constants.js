@@ -85,12 +85,12 @@ export const dark = {
   header: {
     width: WIDTH,
     height: 50,
-    backgroundColor: '#0d0c0a',
+    backgroundColor: '#0f0f0f',
     borderColor: 'transparent',
     elevation: 0,
   },
   headerStyle: {
-    backgroundColor: '#0d0c0a',
+    backgroundColor: '#0f0f0f',
     borderWidth: 0,
     borderColor: 'transparent',
     elevation: 0,

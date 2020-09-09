@@ -2,30 +2,11 @@ import React, {useState, useEffect, useContext} from 'react';
 import {View, TouchableOpacity, Text} from 'react-native';
 
 import PhotoAvatar from './PhotoAvatar';
-import {getUserInfo, getChatroomInfo} from '../../../backend/database/apiCalls';
-import {ThemeContext} from '../../../shared/Context';
+import {ThemeContext, UserDetailsContext} from '../../../../shared/Context';
 
-const Host = React.memo(({roomID}) => {
+const MemberYou = React.memo(() => {
+  const {user} = useContext(UserDetailsContext);
   const {constants} = React.useContext(ThemeContext);
-  const [host, setHost] = useState({
-    id: null,
-    username: null,
-    description: null,
-    profilePhoto: undefined,
-  });
-
-  useEffect(() => {
-    getChatroomInfo(roomID, 'host').then((hostID) => {
-      getUserInfo(hostID).then((data) => {
-        setHost({
-          username: data.username,
-          description: data.description,
-          profilePhoto: data.profilePhoto,
-        });
-      });
-    });
-  }, []);
-
   return (
     <TouchableOpacity>
       <View
@@ -33,15 +14,15 @@ const Host = React.memo(({roomID}) => {
           width: constants.width,
           height: constants.height * 0.1,
           alignItems: 'center',
-          backgroundColor: constants.background1,
-          opacity: 1,
           paddingHorizontal: 10,
           flexDirection: 'row',
           borderBottomColor: constants.lineColor,
           borderBottomWidth: 0.2,
+          backgroundColor: constants.background1,
+          opacity: 1,
         }}>
         <TouchableOpacity>
-          <PhotoAvatar profilePhoto={host.profilePhoto} />
+          <PhotoAvatar profilePhoto={user.profilePhoto} />
         </TouchableOpacity>
         <View
           style={{
@@ -59,7 +40,7 @@ const Host = React.memo(({roomID}) => {
                 fontSize: 20,
                 fontWeight: '300',
               }}>
-              {host.username}
+              {user.username}
             </Text>
             <Text
               style={{
@@ -68,11 +49,11 @@ const Host = React.memo(({roomID}) => {
                 fontSize: 15,
                 fontWeight: '300',
               }}>
-              {host.description}
+              {user.description}
             </Text>
           </View>
           <Text style={{fontSize: 20, color: 'grey', fontWeight: '300'}}>
-            Host
+            You
           </Text>
         </View>
       </View>
@@ -80,4 +61,4 @@ const Host = React.memo(({roomID}) => {
   );
 });
 
-export default Host;
+export default MemberYou;

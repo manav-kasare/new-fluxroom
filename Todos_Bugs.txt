@@ -9,6 +9,19 @@ Todos:
     9. Recent Searches
     10. Google, Facebook, Phone Auth
 
+Sign up
+Log in 
+Google
+Phone 
+Apple
+Forgot Password
+Sign Out
+Update Profile
+Create Room
+Join Room
+Search
+
+
 Bugs: 
     FIXED (refresh control) 1. Can't re render ChatRooms with navigation.goBack().(possible with navigation.navigate())
     2. FIXED . Friends screen won't go to modal state, sometimes even fucks up the UserProfile navigation.

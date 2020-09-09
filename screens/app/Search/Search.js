@@ -9,13 +9,13 @@ import {
 import {Searchbar} from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import _ from 'lodash';
-import base64 from 'react-native-base64';
 
 import OptionsModal from './OptionsModal';
 import {getUsers} from '../../../backend/database/apiCalls';
 import {ThemeContext, UserDetailsContext} from '../../../shared/Context';
 import Tile from '../../../shared/Tile';
 import RecentSearch from './RecentSearch';
+import TilesLoading from '../ChatRoom/TilesLoading';
 
 const wait = (timeout) => {
   return new Promise((resolve) => {
@@ -26,38 +26,30 @@ const wait = (timeout) => {
 export default function Search() {
   const {user} = useContext(UserDetailsContext);
   const [users, setUsers] = useState(null);
-  const [filteredUsers, setFilteredUsers] = useState([]);
+  const [filteredUsers, setFilteredUsers] = useState(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [query, setQuery] = useState(null);
   const {constants} = React.useContext(ThemeContext);
   const [refreshing, setRefreshing] = useState(false);
-  const [onFocusRefresh, setOnFocusRefresh] = useState(true);
+  const [loading, setloading] = useState(true);
+  const [modalItem, setModalItem] = useState({id: ''});
 
   useEffect(() => {
     getUsers().then((data) => {
       setUsers(data);
+      setloading(false);
     });
   }, []);
-
-  useEffect(() => {
-    handleOnFocusRefresh();
-  }, [refreshing]);
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
     wait(2000).then(() => setRefreshing(false));
   }, []);
 
-  const handleOnFocusRefresh = () => {
-    setTimeout(() => {
-      setOnFocusRefresh(false);
-    }, 500);
-  };
-
   const handleSearch = _.debounce((q) => {
     setFilteredUsers(
       _.filter(users, (_user) =>
-        user._id !== _user._id ? _user.username.includes(q) : null,
+        user._id !== _user._id ? _.includes(_user.username, q) : null,
       ),
     );
   }, 250);
@@ -68,12 +60,17 @@ export default function Search() {
         flex: 1,
         backgroundColor: constants.background1,
       }}>
+      <OptionsModal
+        isModalVisible={isModalVisible}
+        setIsModalVisible={setIsModalVisible}
+        id={modalItem._id}
+      />
       <Searchbar
         autoCapitalize="none"
         inputStyle={{color: constants.text1, fontSize: 15}}
         style={{
           height: 60,
-          backgroundColor: 'rgba(255,255,255,0.05)',
+          backgroundColor: constants.background3,
           borderBottomWidth: 1,
           borderBottomColor: constants.lineColor,
           elevation: 0,
@@ -99,37 +96,27 @@ export default function Search() {
           />
         }
       />
-      {onFocusRefresh ? (
-        <View
-          style={{
-            flex: 1,
-            backgroundColor: constants.background1,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <ActivityIndicator size="small" color={constants.background2} />
-        </View>
+      {loading ? (
+        <TilesLoading />
       ) : (
         <FlatList
           style={{flex: 1}}
           data={filteredUsers}
-          renderItem={({item}) => (
-            <>
-              <RenderTile
-                username={item.username}
-                description={item.description}
-                profilePhoto={item.profilePhoto}
-                onPressTile={() => {
-                  setIsModalVisible(!isModalVisible);
-                }}
-              />
-              <OptionsModal
-                isModalVisible={isModalVisible}
-                setIsModalVisible={setIsModalVisible}
-                id={item.id}
-              />
-            </>
-          )}
+          renderItem={({item}) => {
+            setModalItem(item);
+            return (
+              <>
+                <RenderTile
+                  username={item.username}
+                  description={item.description}
+                  profilePic={item.profilePic}
+                  onPressTile={() => {
+                    setIsModalVisible(!isModalVisible);
+                  }}
+                />
+              </>
+            );
+          }}
           ListEmptyComponent={() => <RecentSearch />}
           refreshControl={
             <RefreshControl
@@ -145,21 +132,13 @@ export default function Search() {
   );
 }
 
-const RenderTile = ({username, description, profilePhoto, onPressTile}) => {
-  const [_profilePhoto, setProfilePhoto] = useState(undefined);
-
-  useEffect(() => {
-    setProfilePhoto(
-      profilePhoto !== null ? base64.decode(profilePhoto) : undefined,
-    );
-  }, []);
+const RenderTile = ({username, description, profilePic, onPressTile}) => {
   return (
     <Tile
-      uri={_profilePhoto}
+      uri={profilePic}
       heading={username}
       subHeading={description}
       onPressTile={onPressTile}
-      itemName="tileAvatar"
       onPressTile={onPressTile}
     />
   );

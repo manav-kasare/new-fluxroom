@@ -4,25 +4,29 @@ import {SafeAreaView, View, Text, TouchableOpacity} from 'react-native';
 import {getChatroomInfo} from '../../../backend/database/apiCalls';
 import {ThemeContext} from '../../../shared/Context';
 import {joinRoom} from '../../../backend/database/apiCalls';
-import {getToken} from '../../../shared/KeyChain';
 
 export default function JoinRoomWithLink({route, navigation}) {
   const {constants} = React.useContext(ThemeContext);
-  const {id} = route.params;
-  const [room, setRoom] = React.useState({
-    id: id,
-    name: 'Test Room',
-    membersLength: 10,
-  });
+  const {token} = React.useContext(TokenContext);
+  // const {id} = route.params;
+  const [room, setRoom] = React.useState(null);
+
+  const getRoomInfo = () => {
+    getChatroomInfo(id).then((response) => {
+      setRoom(response);
+    });
+  };
+
+  React.useEffect(() => {
+    getRoomInfo();
+  }, []);
 
   const handleJoinRoom = () => {
-    const token = getToken();
-
-    joinRoom({id: id, token: token}).then((response) => {
-      navigation.replace('ChatRoomNavigator', {
-        screen: 'Room',
-        params: {roomID: room.id},
-      });
+    joinRoom(id, token).then((response) => {
+      // navigation.replace('ChatRoomNavigator', {
+      //   screen: 'Room',
+      //   params: {roomID: room._id},
+      // });
     });
   };
 
@@ -50,7 +54,7 @@ export default function JoinRoomWithLink({route, navigation}) {
             fontWeight: '300',
             marginBottom: 10,
           }}>
-          {room.membersLength} speakers
+          {room.listOfUsers} speakers
         </Text>
         <TouchableOpacity
           style={{

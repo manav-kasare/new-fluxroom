@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {View, StyleSheet, ActivityIndicator} from 'react-native';
 import {
   DrawerItem,
@@ -9,12 +9,17 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import auth from '@react-native-firebase/auth';
 import AsyncStorage from '@react-native-community/async-storage';
 
-import {UserDetailsContext, ThemeContext} from '../shared/Context';
-import {deleteToken, getToken} from '../shared/KeyChain';
+import {
+  UserDetailsContext,
+  ThemeContext,
+  TokenContext,
+} from '../shared/Context';
+import {deleteToken} from '../shared/KeyChain';
 import {logOutUser} from '../backend/database/apiCalls';
 
 export default function DrawerContent(props) {
   const {setUser} = React.useContext(UserDetailsContext);
+  const {token} = React.useContext(TokenContext);
   const {constants, darkTheme} = React.useContext(ThemeContext);
   const [loading, setLoading] = React.useState(false);
 
@@ -23,13 +28,11 @@ export default function DrawerContent(props) {
     auth()
       .signOut()
       .then(() => {
-        getToken().then((token) => {
-          logOutUser(token);
-          deleteToken();
-          AsyncStorage.clear();
-          setLoading(false);
-          setUser(null);
-        });
+        logOutUser(token);
+        deleteToken();
+        AsyncStorage.clear();
+        setLoading(false);
+        setUser(null);
       });
   };
 

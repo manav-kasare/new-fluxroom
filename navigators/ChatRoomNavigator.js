@@ -3,20 +3,23 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 import FullPhoto from '../screens/app/ChatRoom/FullPhoto';
 import ChatRooms from '../screens/app/ChatRoom/ChatRooms';
-import Room from '../screens/app/ChatRoom/Room';
-import PersonalChat from '../screens/app/ChatRoom/PersonalChat';
+import Room from '../screens/app/ChatRoom/Room/Room';
+import PersonalChat from '../screens/app/ChatRoom/Room/PersonalChat';
 import Requests from '../screens/app/ChatRoom/Requests';
 import JoinRoomWithLink from '../screens/app/JoinCreateRoom/JoinRoomWithLink';
-import RoomSettings from '../screens/app/ChatRoom/RoomSettings';
-import ChangeRoomSettings from '../screens/app/ChatRoom/ChangeRoomSettings';
-import {UserDetailsContext, ThemeContext} from '../shared/Context';
+import RoomSettings from '../screens/app/ChatRoom/Room/RoomSettings';
+import ChangeRoomSettings from '../screens/app/ChatRoom/Room/ChangeRoomSettings';
+import {
+  UserDetailsContext,
+  ThemeContext,
+  TokenContext,
+} from '../shared/Context';
 import RequestIcon from '../screens/app/ChatRoom/RequestIcon';
-import {getUserInfo} from '../backend/database/apiCalls';
-import HomeNavigator from './HomeNavigator';
 
 const ChatRoomStack = createStackNavigator();
 
 export default function ChatRoomNavigator({route, navigation}) {
+  const {setToken} = React.useContext(TokenContext);
   const {user, setUser} = React.useContext(UserDetailsContext);
   const {constants, darkTheme} = React.useContext(ThemeContext);
 
@@ -25,12 +28,6 @@ export default function ChatRoomNavigator({route, navigation}) {
   } else {
     navigation.setOptions({tabBarVisible: true});
   }
-
-  React.useEffect(() => {
-    getUserInfo(user.id).then((data) => {
-      setUser(data);
-    });
-  }, []);
 
   return (
     <ChatRoomStack.Navigator initialRouteName="ChatRoom">
@@ -41,7 +38,7 @@ export default function ChatRoomNavigator({route, navigation}) {
           title: 'Fluxroom',
           headerTitleAlign: 'left',
           headerStyle: {
-            backgroundColor: darkTheme ? constants.background1 : '#4640C1',
+            backgroundColor: darkTheme ? constants.background3 : '#4640C1',
             borderWidth: 0,
             borderColor: 'transparent',
             elevation: 0,

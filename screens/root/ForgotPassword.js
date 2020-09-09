@@ -21,7 +21,6 @@ import {useValue, withSpringTransition} from 'react-native-redash';
 
 import constants from '../../shared/constants';
 import globalStyles from '../../shared/GlobalStyles';
-import CustomToast from '../../shared/CustomToast';
 // import {
 //   checkIfEmailIsRegistered,
 //   forgotPassword,

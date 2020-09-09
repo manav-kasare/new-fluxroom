@@ -12,7 +12,6 @@ import {
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
-import AsyncStorage from '@react-native-community/async-storage';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import auth from '@react-native-firebase/auth';
 import ReactNativeHaptic from 'react-native-haptic';
@@ -27,10 +26,11 @@ import {useValue, withSpringTransition} from 'react-native-redash';
 
 import {UserDetailsContext} from '../../shared/Context';
 import constants from '../../shared/constants';
-import CustomToast from '../../shared/CustomToast';
+import CustomToast, {CustomErrorTost} from '../../shared/CustomToast';
 import globalStyles from '../../shared/GlobalStyles';
 import {loginUser, getUserByEmail} from '../../backend/database/apiCalls';
 import {storeToken} from '../../shared/KeyChain';
+import {storeUserData, storeTheme} from '../../shared/AsyncStore';
 
 export default function LogIn({navigation}) {
   const {setUser} = useContext(UserDetailsContext);
@@ -56,15 +56,6 @@ export default function LogIn({navigation}) {
     damping: new Animated.Value(20),
   });
 
-  const storeData = async (value) => {
-    try {
-      const jsonValue = JSON.stringify(value);
-      await AsyncStorage.setItem('user', jsonValue);
-    } catch (e) {
-      // saving error
-    }
-  };
-
   const signIn = async () => {
     setIsLoading(true);
     try {
@@ -76,16 +67,16 @@ export default function LogIn({navigation}) {
               username: user.username,
               password: '89337133-17c9-42e3-9fef-78416a25651a',
             }).then((response) => {
-              console.log(response);
               if (response.err) {
                 setIsLoading(false);
                 ReactNativeHaptic.generate('notificationError');
-                CustomToast('An Error Occured');
+                CustomErrorTost('An Error Occured !');
               } else {
                 setIsLoading(false);
                 ReactNativeHaptic.generate('notificationSuccess');
                 storeToken(response.user._id, response.token);
-                storeData(response.user);
+                storeUserData(response.user);
+                storeTheme('light');
                 setUser(response.user);
               }
             });
@@ -94,7 +85,7 @@ export default function LogIn({navigation}) {
     } catch (err) {
       setIsLoading(false);
       ReactNativeHaptic.generate('notificationError');
-      console.log(err);
+      CustomErrorTost('An Error Occured !');
     }
   };
 

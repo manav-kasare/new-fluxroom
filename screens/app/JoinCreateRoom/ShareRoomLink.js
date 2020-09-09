@@ -6,18 +6,23 @@ import {
   TouchableOpacity,
   TextInput,
   Share,
-  Linking,
 } from 'react-native';
-import {ThemeContext} from '../../../shared/Context';
+import Modal from 'react-native-modal';
 
-export default function ShareRoomLink({route, navigation}) {
+import {ThemeContext} from '../../../shared/Context';
+import globalStyles from '../../../shared/GlobalStyles';
+
+export default function ShareRoomLink({
+  navigation,
+  isVisible,
+  room,
+  setIsVisible,
+}) {
   const {constants} = React.useContext(ThemeContext);
-  const {room, id} = route.params;
   const [url, setUrl] = React.useState(null);
 
   React.useEffect(() => {
-    console.log(room);
-    setUrl(`fluxroom://app/home/rooms/join/${room.id}`);
+    setUrl(`fluxroom://app/home/rooms/join/`);
   }, []);
 
   const shareLink = () => {
@@ -57,23 +62,41 @@ export default function ShareRoomLink({route, navigation}) {
   };
 
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: constants.background1}}>
+    <Modal
+      isVisible={isVisible}
+      useNativeDriver={true}
+      hideModalContentWhileAnimating={true}
+      deviceWidth={constants.width}
+      deviceHeight={constants.height}
+      style={{
+        width: constants.width * 0.9,
+        borderRadius: 10,
+        position: 'absolute',
+        bottom: 0,
+        backgroundColor: constants.background3,
+        alignItems: 'center',
+        paddingVertical: 25,
+      }}
+      onBackdropPress={() => setIsVisible(false)}
+      animationIn="slideInUp"
+      animationInTiming={500}
+      animationOut="slideOutDown">
+      <View
+        style={{
+          backgroundColor: 'grey',
+          height: 5,
+          width: 50,
+          alignSelf: 'center',
+          borderRadius: 10,
+          position: 'absolute',
+          top: 10,
+        }}
+      />
       <View
         style={{
           flex: 1,
-          marginTop: 50,
           alignItems: 'center',
         }}>
-        <Text
-          style={{
-            fontSize: 25,
-            color: constants.text1,
-            fontWeight: '700',
-            marginBottom: 10,
-            fontFamily: 'Helvetica',
-          }}>
-          {room.name}
-        </Text>
         <TextInput
           value={url}
           editable={false}
@@ -86,54 +109,17 @@ export default function ShareRoomLink({route, navigation}) {
             marginHorizontal: 10,
             paddingHorizontal: 10,
             marginTop: 15,
+            marginBottom: 10,
             backgroundColor: constants.background4,
           }}
         />
-        <TouchableOpacity
-          style={{
-            width: constants.width * 0.8,
-            height: 50,
-            flexDirection: 'row',
-            marginTop: 15,
-            alignItems: 'center',
-            justifyContent: 'center',
-            borderRadius: 8,
-            marginHorizontal: 10,
-            backgroundColor: constants.primary,
-          }}
-          onPress={shareLink}>
-          <Text
-            style={{
-              fontFamily: 'Helvetica',
-              color: constants.text2,
-              fontSize: 15,
-            }}>
-            Share Link
-          </Text>
+        <TouchableOpacity style={globalStyles.button} onPress={shareLink}>
+          <Text style={globalStyles.buttonText}>Share Link</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          style={{
-            width: constants.width * 0.8,
-            height: 50,
-            flexDirection: 'row',
-            marginTop: 15,
-            alignItems: 'center',
-            justifyContent: 'center',
-            borderRadius: 8,
-            marginHorizontal: 10,
-            backgroundColor: constants.primary,
-          }}
-          onPress={handleContinue}>
-          <Text
-            style={{
-              fontFamily: 'Helvetica',
-              color: constants.text2,
-              fontSize: 15,
-            }}>
-            Continue to {room.name}
-          </Text>
+        <TouchableOpacity style={globalStyles.button} onPress={handleContinue}>
+          <Text style={globalStyles.buttonText}>Continue to room.name</Text>
         </TouchableOpacity>
       </View>
-    </SafeAreaView>
+    </Modal>
   );
 }

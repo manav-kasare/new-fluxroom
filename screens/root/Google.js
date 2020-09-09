@@ -3,12 +3,13 @@ import {TouchableOpacity, ActivityIndicator} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {GoogleSignin, statusCodes} from '@react-native-community/google-signin';
 import {UserDetailsContext} from '../../shared/Context';
-import AsyncStorage from '@react-native-community/async-storage';
 import auth from '@react-native-firebase/auth';
 import ReactNativeHaptic from 'react-native-haptic';
 
 import {getUserByEmail, loginUser} from '../../backend/database/apiCalls';
 import {storeToken} from '../../shared/KeyChain';
+import {storeUserData, storeTheme} from '../../shared/AsyncStore';
+import {CustomErrorTost} from '../../shared/CustomToast';
 
 GoogleSignin.configure({
   scopes: [
@@ -28,17 +29,6 @@ GoogleSignin.configure({
 export default function Google({navigation}) {
   const {setUser} = React.useContext(UserDetailsContext);
   const [loading, setLoading] = React.useState(false);
-
-  const storeData = async (value) => {
-    try {
-      const jsonValue = JSON.stringify(value);
-      AsyncStorage.setItem('user', jsonValue).then(() => {
-        setUser(value);
-      });
-    } catch (e) {
-      console.error(e);
-    }
-  };
 
   const signIn = async () => {
     setLoading(true);
@@ -68,10 +58,11 @@ export default function Google({navigation}) {
                     ReactNativeHaptic.generate('notificationError');
                     CustomToast('An Error Occured');
                   } else {
-                    setLoading(false);
                     ReactNativeHaptic.generate('notificationSuccess');
                     storeToken(_response.user._id, _response.token);
-                    storeData(_response.user);
+                    storeUserData(_response.user);
+                    storeTheme('light');
+                    setLoading(false);
                     setUser(_response.user);
                   }
                 });
@@ -86,6 +77,7 @@ export default function Google({navigation}) {
       } else if (error.code === statusCodes.IN_PROGRESS) {
         // operation (e.g. sign in) is in progress already
       } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        CustomErrorTost('Play services not available');
         // play services not available or outdated
       } else {
         // some other error happened

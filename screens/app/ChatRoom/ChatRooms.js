@@ -6,19 +6,20 @@ import {
   FlatList,
   RefreshControl,
   StatusBar,
-  ActivityIndicator,
-  Image,
   TouchableOpacity,
 } from 'react-native';
 
 import globalStyles from '../../../shared/GlobalStyles';
-import {UserDetailsContext, ThemeContext} from '../../../shared/Context';
-import Tile from '../../../shared/Tile';
 import {
-  getUserChatRooms,
-  getChatroomInfo,
-} from '../../../backend/database/apiCalls';
-import {getToken} from '../../../shared/KeyChain';
+  UserDetailsContext,
+  ThemeContext,
+  TokenContext,
+} from '../../../shared/Context';
+import Tile from '../../../shared/Tile';
+import {getUserMe} from '../../../backend/database/apiCalls';
+import CachedImage from '../../../shared/CachedImage';
+import TilesLoading from './TilesLoading';
+import {CustomErrorTost} from '../../../shared/CustomToast';
 
 const wait = (timeout) => {
   return new Promise((resolve) => {
@@ -27,32 +28,24 @@ const wait = (timeout) => {
 };
 
 const ChatRooms = ({navigation}) => {
-  const {user} = useContext(UserDetailsContext);
+  const {setUser} = useContext(UserDetailsContext);
   const {constants} = useContext(ThemeContext);
+  const {token} = useContext(TokenContext);
   const [chatRoomList, setChatRoomList] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
-  const [onFocusRefresh, setOnFocusRefresh] = useState(true);
+  const [loading, setloading] = useState(true);
 
   const onRefresh = useCallback(() => {
     setRefreshing(true);
     wait(2000).then(() => setRefreshing(false));
   }, []);
 
-  const handleOnFocusRefresh = () => {
-    setTimeout(() => {
-      setOnFocusRefresh(false);
-    }, 500);
-  };
-
   useEffect(() => {
-    getUserChatRooms(user._id).then((response) => {
-      setChatRoomList(response);
+    getUserMe(token).then((response) => {
+      setUser(response.user);
+      setChatRoomList(response.user.joinedRooms);
+      setloading(false);
     });
-  }, []);
-
-  useEffect(() => {
-    getToken().then((token) => console.log(token));
-    handleOnFocusRefresh();
   }, [refreshing]);
 
   return (
@@ -64,16 +57,8 @@ const ChatRooms = ({navigation}) => {
         barStyle="light-content"
         backgroundColor={constants.background1}
       />
-      {onFocusRefresh ? (
-        <View
-          style={{
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: constants.background1,
-          }}>
-          <ActivityIndicator size="small" color={constants.background2} />
-        </View>
+      {loading ? (
+        <TilesLoading />
       ) : (
         <FlatList
           style={{
@@ -82,10 +67,10 @@ const ChatRooms = ({navigation}) => {
             backgroundColor: constants.background1,
           }}
           data={chatRoomList}
-          keyExtractor={(item, index) => index.toString()}
+          keyExtractor={(index) => index.toString()}
           ListEmptyComponent={() => <EmptyItem />}
           renderItem={({item}) => (
-            <RenderTile id={item._id} navigation={navigation} />
+            <RenderTile room={item.room} navigation={navigation} />
           )}
           refreshControl={
             <RefreshControl
@@ -113,14 +98,14 @@ const EmptyItem = React.memo(() => {
         height: constants.height,
       }}>
       <View style={{marginVertical: 50, alignItems: 'center'}}>
-        <Image
+        <CachedImage
           style={{
             width: constants.width,
             height: constants.height * 0.2,
             marginVertical: 25,
           }}
-          resizeMode="contain"
-          source={require('/Users/manav/projects/fluxroom/assets/tree_swing.png')}
+          _resizeMode="contain"
+          uri="/Users/manav/projects/fluxroom/assets/tree_swing.png"
         />
         <Text
           style={{
@@ -138,30 +123,17 @@ const EmptyItem = React.memo(() => {
   );
 });
 
-const RenderTile = React.memo(({id, navigation}) => {
-  const [room, setRoom] = React.useState(null);
-
-  useEffect(() => {
-    getChatroomInfo(id).then((response) => {
-      setRoom(response);
-    });
-  }, []);
-
+const RenderTile = React.memo(({room, navigation}) => {
   const handleOnPressTile = () => {
     navigation.navigate('Room', {room: room});
-  };
-  const handleOnPressAvatar = () => {
-    navigation.navigate('FullPhoto', {uri: room.profilePhoto});
   };
 
   return (
     <Tile
-      uri={room.profilePhoto}
+      uri={room.profilePic}
       heading={room.name}
       subHeading={room.description}
       onPressTile={handleOnPressTile}
-      onPressAvatar={handleOnPressAvatar}
-      itemName="tileAvatar"
       onlineSpeakers="5"
     />
   );

@@ -2,7 +2,8 @@ import React from 'react';
 import {SafeAreaView, View, TouchableOpacity, Text} from 'react-native';
 import {Switch} from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import Entypo from 'react-native-vector-icons/Entypo';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 import {ThemeContext} from '../../../../shared/Context';
@@ -41,21 +42,6 @@ export default function Settings({navigation}) {
       <View style={{flex: 1, backgroundColor: constants.background1}}>
         <View style={styles.view}>
           <TouchableOpacity
-            onPress={() => navigation.navigate('ChangePassword')}
-            style={styles.view_touchable}>
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
-              <Entypo name="key" size={20} color={constants.background2} />
-              <Text style={styles.view_text}>Change Password</Text>
-            </View>
-            <Ionicons
-              name="chevron-forward"
-              size={20}
-              color={constants.background2}
-            />
-          </TouchableOpacity>
-        </View>
-        <View style={styles.view}>
-          <TouchableOpacity
             onPress={() => navigation.navigate('AboutUsNavigator')}
             style={styles.view_touchable}>
             <View
@@ -70,6 +56,48 @@ export default function Settings({navigation}) {
                 color={constants.background2}
               />
               <Text style={styles.view_text}>About Us</Text>
+            </View>
+            <Ionicons
+              name="chevron-forward"
+              size={20}
+              color={constants.background2}
+            />
+          </TouchableOpacity>
+        </View>
+        <View style={styles.view}>
+          <TouchableOpacity onPress={() => {}} style={styles.view_touchable}>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                paddingLeft: 5,
+              }}>
+              <AntDesign name="star" size={20} color={constants.background2} />
+              <Text style={styles.view_text}>Rate Us</Text>
+            </View>
+            <Ionicons
+              name="chevron-forward"
+              size={20}
+              color={constants.background2}
+            />
+          </TouchableOpacity>
+        </View>
+        <View style={styles.view}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('Issues')}
+            style={styles.view_touchable}>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                paddingLeft: 5,
+              }}>
+              <MaterialCommunityIcons
+                name="emoticon-frown"
+                size={20}
+                color={constants.background2}
+              />
+              <Text style={styles.view_text}>Did you face any issues ?</Text>
             </View>
             <Ionicons
               name="chevron-forward"

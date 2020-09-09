@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState} from 'react';
 import {
   SafeAreaView,
   View,
@@ -6,29 +6,52 @@ import {
   Image,
   TextInput,
   Text,
+  ActivityIndicator,
   TouchableWithoutFeedback,
   Keyboard,
 } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import ImagePicker from 'react-native-image-picker';
+import {Appbar} from 'react-native-paper';
 
-import randomID from '../../../backend/database/randomID';
-import {createRoom} from '../../../backend/database/apiCalls';
-import {UserDetailsContext, ThemeContext} from '../../../shared/Context';
-import {getToken} from '../../../shared/KeyChain';
+import {createRoom, getUserMe} from '../../../backend/database/apiCalls';
+import {
+  ThemeContext,
+  UserDetailsContext,
+  TokenContext,
+} from '../../../shared/Context';
+import CustomToast from '../../../shared/CustomToast';
+import ShareRoomLink from './ShareRoomLink';
+import CachedImage from '../../../shared/CachedImage';
 
 export default function CreateRoom({navigation}) {
-  const {constants} = React.useContext(ThemeContext);
+  const {token} = React.useContext(TokenContext);
+  const {setUser} = React.useContext(UserDetailsContext);
+  const {constants, darkTheme} = React.useContext(ThemeContext);
   const [room, setRoom] = useState({
     name: '',
     description: '',
-    profilePhoto: undefined,
+    profilePic: undefined,
   });
+  const [loading, setLoading] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [resRoom, setResRoom] = useState(null);
 
   const handleCreateRoom = () => {
-    const token = getToken();
+    setLoading(true);
     createRoom(token, room).then((response) => {
-      navigation.navigate('ShareRoomLink', {room: response});
+      console.log(response);
+      if (response.err) {
+        CustomToast('An Error Occured');
+        setLoading(false);
+      } else {
+        setResRoom(response);
+        setLoading(false);
+        setIsVisible(true);
+      }
+      getUserMe(token).then((response) => {
+        setUser(response.user);
+      });
     });
   };
 
@@ -48,7 +71,7 @@ export default function CreateRoom({navigation}) {
       } else if (response.error) {
         // console.log('ImagePicker Error: ', response.error);
       } else {
-        setRoom({...room, profilePhoto: response.uri});
+        setRoom({...room, profilePic: response.uri});
         // You can also display the image using data:
         // const source = { uri: 'data:image/jpeg;base64,' + response.data };
       }
@@ -58,93 +81,134 @@ export default function CreateRoom({navigation}) {
   const anon = () => {};
 
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <SafeAreaView
-        style={{
-          flex: 1,
-          backgroundColor: constants.background1,
-          paddingVertical: 25,
-          alignItems: 'center',
-        }}>
-        <View style={{marginTop: 50}}>
-          <TouchableOpacity
+    <View
+      style={{
+        width: constants.width,
+        height: constants.height,
+        backgroundColor: constants.background1,
+      }}>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <SafeAreaView
+          SafeAreaView
+          style={{
+            flex: 1,
+            backgroundColor: darkTheme
+              ? constants.background1
+              : constants.primary,
+          }}>
+          <Appbar.Header style={constants.header}>
+            <Appbar.Content
+              title="Create Room"
+              titleStyle={constants.headerText}
+            />
+            <Appbar.Action
+              icon="menu"
+              color="white"
+              onPress={() => navigation.openDrawer()}
+            />
+          </Appbar.Header>
+          <ShareRoomLink
+            isVisible={isVisible}
+            setIsVisible={setIsVisible}
+            navigation={navigation}
+            room={resRoom}
+          />
+          <View
             style={{
-              width: 100,
-              height: 100,
-              borderRadius: 100 / 2,
-              borderColor: 'grey',
-              borderWidth: 0.2,
-              alignContent: 'center',
-              backgroundColor: constants.primary,
-            }}
-            onPress={pickImage}>
-            {room.profilePhoto === undefined ? (
-              <View
+              flex: 1,
+              width: constants.width,
+              alignItems: 'center',
+              backgroundColor: constants.background1,
+            }}>
+            <View style={{marginTop: 50}}>
+              <TouchableOpacity
                 style={{
-                  flex: 1,
+                  width: 100,
+                  height: 100,
+                  borderRadius: 100 / 2,
+                  borderColor: 'grey',
+                  borderWidth: 1,
                   alignItems: 'center',
                   justifyContent: 'center',
-                }}>
-                <Feather name="camera" size={25} color="white" />
-              </View>
-            ) : (
-              <Image
-                style={{
-                  width: 98,
-                  height: 98,
-                  borderRadius: 98 / 2,
                 }}
-                source={{
-                  uri: room.profilePhoto,
-                }}
-              />
-            )}
-          </TouchableOpacity>
-        </View>
+                onPress={pickImage}>
+                {room.profilePic === undefined ? (
+                  <View
+                    style={{
+                      flex: 1,
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}>
+                    <Feather name="camera" size={25} color="white" />
+                  </View>
+                ) : (
+                  <CachedImage
+                    style={{
+                      width: 100,
+                      height: 100,
+                      borderRadius: 100 / 2,
+                    }}
+                    uri={room.profilePic}
+                  />
+                )}
+              </TouchableOpacity>
+            </View>
 
-        <View style={{marginTop: 25}}>
-          <TextInput
-            style={constants.input}
-            placeholder="Name"
-            placeholderTextColor="grey"
-            value={room.name}
-            onChangeText={(text) => setRoom({...room, name: text})}
-          />
-          {room.name.length < 4 ? (
-            <Text style={{fontFamily: 'Helvetica', color: 'crimson'}}>
-              Name must be at least 4 characters
-            </Text>
-          ) : (
-            <></>
-          )}
-          <TextInput
-            style={constants.input}
-            placeholder="Description"
-            placeholderTextColor="grey"
-            value={room.description}
-            onChangeText={(text) => setRoom({...room, description: text})}
-          />
-          <TouchableOpacity
-            style={{
-              width: constants.width * 0.8,
-              height: 45,
-              backgroundColor: constants.primary,
-              justifyContent: 'center',
-              alignItems: 'center',
-              borderRadius: 8,
-              marginTop: 15,
-            }}
-            onPress={room.name.length > 3 ? handleCreateRoom : anon}>
-            <Text
-              style={{
-                fontFamily: 'Helvetica',
-                color: 'white',
-              }}>
-              Create Room
-            </Text>
-          </TouchableOpacity>
-        </View>
-      </SafeAreaView>
-    </TouchableWithoutFeedback>
+            <View style={{marginTop: 25}}>
+              <TextInput
+                style={constants.input}
+                placeholder="Name"
+                placeholderTextColor="grey"
+                value={room.name}
+                onChangeText={(text) => setRoom({...room, name: text})}
+              />
+              {room.name.length < 4 ? (
+                <Text style={{fontFamily: 'Helvetica', color: 'crimson'}}>
+                  Name must be at least 4 characters
+                </Text>
+              ) : (
+                <></>
+              )}
+              <TextInput
+                style={constants.input}
+                placeholder="Description"
+                placeholderTextColor="grey"
+                value={room.description}
+                onChangeText={(text) => setRoom({...room, description: text})}
+              />
+              {loading ? (
+                <View style={{height: 50, marginVertical: 10, marginTop: 15}}>
+                  <ActivityIndicator
+                    color={constants.background2}
+                    size="small"
+                  />
+                </View>
+              ) : (
+                <TouchableOpacity
+                  style={{
+                    width: constants.width * 0.8,
+                    height: 45,
+                    backgroundColor: constants.primary,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    borderRadius: 8,
+                    marginTop: 15,
+                  }}
+                  onPress={room.name.length > 3 ? handleCreateRoom : anon}>
+                  <Text
+                    style={{
+                      fontFamily: 'Helvetica',
+                      color: 'white',
+                    }}>
+                    Create Room
+                  </Text>
+                </TouchableOpacity>
+              )}
+            </View>
+          </View>
+        </SafeAreaView>
+      </TouchableWithoutFeedback>
+      <View style={{height: 50, backgroundColor: constants.background1}} />
+    </View>
   );
 }

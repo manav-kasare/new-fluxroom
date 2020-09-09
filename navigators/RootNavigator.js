@@ -1,9 +1,12 @@
 import React, {useEffect, useContext} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import AsyncStorage from '@react-native-community/async-storage';
 
-import {UserDetailsContext, ThemeContext} from '../shared/Context';
+import {
+  UserDetailsContext,
+  ThemeContext,
+  TokenContext,
+} from '../shared/Context';
 import LogIn from '../screens/root/LogIn';
 import SignUp from '../screens/root/SignUp';
 import Onboard from '../screens/root/Onboard';
@@ -13,13 +16,17 @@ import SplashScreen from '../screens/root/SplashScreen';
 import DrawerNavigator from './DrawerNavigator';
 import ForgotPasswordConfirmation from '../screens/root/ForgotPasswordConfirmation';
 import Phone from '../screens/root/Phone';
+import {getUserMe} from '../backend/database/apiCalls';
+import {getToken} from '../shared/KeyChain';
+import {storeUserData, getTheme} from '../shared/AsyncStore';
 
 const Stack = createStackNavigator();
 
 export default function RootNavigator() {
   const [splashScreen, setSplashScreen] = React.useState(true);
   const {user, setUser} = useContext(UserDetailsContext);
-  const {getData} = useContext(ThemeContext);
+  const {setData} = useContext(ThemeContext);
+  const {setToken} = React.useContext(TokenContext);
 
   const deepLinking = {
     prefixes: ['fluxroom://'],
@@ -49,28 +56,19 @@ export default function RootNavigator() {
   };
 
   useEffect(() => {
-    setTimeout(() => {
-      setSplashScreen(false);
-    }, 500);
-    getUserData();
-    getThemeData();
+    getToken().then((token) => {
+      setToken(token);
+      getUserMe(token).then((response) => {
+        setUser(response.user);
+        storeUserData(response.user).then(() => {
+          getTheme().then((theme) => {
+            setData(theme);
+            setSplashScreen(false);
+          });
+        });
+      });
+    });
   }, []);
-
-  const getThemeData = async () => {
-    try {
-      const theme = await AsyncStorage.getItem('theme');
-      getData(theme);
-    } catch (err) {}
-  };
-
-  const getUserData = async () => {
-    try {
-      const jsonValue = await AsyncStorage.getItem('user');
-      if (jsonValue !== null) {
-        setUser(JSON.parse(jsonValue));
-      }
-    } catch (err) {}
-  };
 
   if (splashScreen) {
     return <SplashScreen />;

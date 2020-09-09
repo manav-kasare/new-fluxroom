@@ -3,7 +3,7 @@ import {
   SafeAreaView,
   TouchableOpacity,
   TouchableWithoutFeedback,
-  Image,
+  Text,
   View,
   TextInput,
   Keyboard,
@@ -11,10 +11,11 @@ import {
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import ImagePicker from 'react-native-image-picker';
 
-import {ThemeContext} from '../../../shared/Context';
+import {ThemeContext} from '../../../../shared/Context';
+import CircleAvatar from '../../../../shared/CircleAvatar';
 
 export default function ChangeRoomSettings({route, navigation}) {
-  const {constants} = React.useContext(ThemeContext);
+  const {constants, darkTheme} = React.useContext(ThemeContext);
   const {room} = route.params;
   const [roomDetails, setRoomDetails] = React.useState(room);
   const [editingDescription, setEditingDescription] = React.useState(false);
@@ -56,15 +57,9 @@ export default function ChangeRoomSettings({route, navigation}) {
               justifyContent: 'center',
             }}
             onPress={pickImage}>
-            <Image
-              style={{
-                width: constants.height * 0.145,
-                height: constants.height * 0.145,
-                borderRadius: (constants.height * 0.145) / 2,
-              }}
-              source={{
-                uri: `https://images.unsplash.com/photo-1596461097642-b697ec879ced?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80`,
-              }}
+            <CircleAvatar
+              size={constants.height * 0.145}
+              uri={room.profilePic}
             />
           </TouchableOpacity>
           <View
@@ -72,7 +67,9 @@ export default function ChangeRoomSettings({route, navigation}) {
               width: 40,
               height: 40,
               borderRadius: 20,
-              backgroundColor: constants.primary,
+              backgroundColor: darkTheme
+                ? constants.background3
+                : constants.primary,
               alignItems: 'center',
               justifyContent: 'center',
               position: 'relative',
@@ -90,16 +87,13 @@ export default function ChangeRoomSettings({route, navigation}) {
               paddingHorizontal: 20,
               alignItems: 'center',
               flexDirection: 'row',
-              justifyContent: 'space-between',
               borderColor: constants.lineColor,
               borderBottomWidth: 0.2,
               borderTopWidth: 0.2,
             }}>
+            <Text style={{color: 'grey', marginRight: 25}}>Description</Text>
             <TextInput
-              placeholder="Description"
-              placeholderTextColor={constants.text1}
               style={{
-                width: constants.width * 0.7,
                 height: 40,
                 color: constants.text1,
               }}

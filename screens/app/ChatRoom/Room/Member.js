@@ -2,8 +2,8 @@ import React, {useState, useEffect} from 'react';
 import {View, TouchableOpacity, Text} from 'react-native';
 
 import PhotoAvatar from './PhotoAvatar';
-import {getUserInfo} from '../../../backend/database/apiCalls';
-import {ThemeContext} from '../../../shared/Context';
+import {getUserInfo} from '../../../../backend/database/apiCalls';
+import {ThemeContext} from '../../../../shared/Context';
 
 export default function Member({id}) {
   const {constants} = React.useContext(ThemeContext);

@@ -9,14 +9,14 @@ import {
 import ReactNativeHaptic from 'react-native-haptic';
 import auth from '@react-native-firebase/auth';
 import Modal from 'react-native-modal';
-import AsyncStorage from '@react-native-community/async-storage';
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import globalStyles from '../../shared/GlobalStyles';
-import CustomToast from '../../shared/CustomToast';
+import CustomToast, {CustomErrorTost} from '../../shared/CustomToast';
 import {ThemeContext, UserDetailsContext} from '../../shared/Context';
 import {getUserByPhone, loginUser} from '../../backend/database/apiCalls';
 import {storeToken} from '../../shared/KeyChain';
+import {storeUserData} from '../../shared/AsyncStore';
 
 export default OtpVerification = ({
   isVisible,
@@ -25,23 +25,13 @@ export default OtpVerification = ({
   setConfirmation,
   phoneNumber,
   navigation,
+  setIsLoading,
 }) => {
   const {setUser} = React.useContext(UserDetailsContext);
   const {constants} = React.useContext(ThemeContext);
   const [code, setCode] = React.useState(null);
   const [isLoadingCode, setIsLoadingCode] = React.useState(false);
   const [isLoadingResendCode, setIsLoadingResendCode] = React.useState(false);
-
-  const storeData = async (value) => {
-    try {
-      const jsonValue = JSON.stringify(value);
-      AsyncStorage.setItem('user', jsonValue).then(() => {
-        setUser(value);
-      });
-    } catch (e) {
-      console.error(e);
-    }
-  };
 
   const confirmSignUp = async () => {
     setIsLoadingCode(true);
@@ -57,29 +47,33 @@ export default OtpVerification = ({
           });
         } else {
           getUserByPhone(phoneNumber).then((response) => {
-            loginUser({
-              username: response.username,
-              password: '89337133-17c9-42e3-9fef-78416a25651a',
-            }).then((_response) => {
-              if (_response.err) {
-                setLoading(false);
-                ReactNativeHaptic.generate('notificationError');
-                CustomToast('An Error Occured');
-              } else {
-                ReactNativeHaptic.generate('notificationSuccess');
-                setLoading(false);
-                storeToken(_response.user._id, _response.token);
-                storeData(_response.user);
-                setUser(_response.user);
-              }
-            });
+            console.log(response);
+            //   loginUser({
+            //     username: response.username,
+            //     password: '89337133-17c9-42e3-9fef-78416a25651a',
+            //   }).then((_response) => {
+            //     if (_response.err) {
+            //       ReactNativeHaptic.generate('notificationError');
+            //       setIsLoadingCode(false);
+            //       setIsLoading(false);
+            //       CustomToast('An Error Occured');
+            //     } else {
+            //       ReactNativeHaptic.generate('notificationSuccess');
+            //       storeToken(_response.user._id, _response.token);
+            //       setIsLoadingCode(false);
+            //       setIsLoading(false);
+            //       storeUserData(_response.user);
+            //       storeTheme('light');
+            //       setUser(_response.user);
+            //     }
+            //   });
           });
         }
       });
     } catch (error) {
       ReactNativeHaptic.generate('notificationError');
       setIsLoadingCode(false);
-      CustomToast('Invalid code.');
+      CustomErrorTost('Invalid Code !');
     }
   };
 
@@ -105,7 +99,7 @@ export default OtpVerification = ({
         borderRadius: 10,
         position: 'absolute',
         bottom: constants.height / 3,
-        backgroundColor: constants.background1,
+        backgroundColor: 'white',
         alignItems: 'center',
         justifyContent: 'space-around',
         paddingVertical: 25,
@@ -113,6 +107,17 @@ export default OtpVerification = ({
       animationIn="fadeIn"
       animationInTiming={500}
       animationOut="fadeOut">
+      <View
+        style={{
+          backgroundColor: 'grey',
+          height: 5,
+          width: 50,
+          alignSelf: 'center',
+          borderRadius: 10,
+          position: 'absolute',
+          top: 10,
+        }}
+      />
       <Text
         style={{
           color: 'black',

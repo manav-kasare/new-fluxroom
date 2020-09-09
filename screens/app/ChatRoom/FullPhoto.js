@@ -64,7 +64,6 @@ export default function FullPhoto({navigation, route}) {
           height: constants.height * 0.4,
           marginTop: constants.height * 0.2,
         }}
-        itemName="tileAvatar"
       />
     </SafeAreaView>
   );

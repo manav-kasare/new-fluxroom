@@ -3,8 +3,8 @@ import {View, Platform, Text, TouchableOpacity} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Feather from 'react-native-vector-icons/Feather';
 
-import CircleAvatar from '../../../shared/CircleAvatar';
-import {ThemeContext} from '../../../shared/Context';
+import CircleAvatar from '../../../../shared/CircleAvatar';
+import {ThemeContext} from '../../../../shared/Context';
 
 export default function RoomHeader({navigation, room}) {
   const {constants, darkTheme} = React.useContext(ThemeContext);
@@ -29,11 +29,7 @@ export default function RoomHeader({navigation, room}) {
           )}
         </TouchableOpacity>
         <View style={{marginHorizontal: 20}}>
-          <CircleAvatar
-            uri="https://images.unsplash.com/photo-1596461097642-b697ec879ced?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
-            size={50}
-            itemName="roomProfilePhoto"
-          />
+          <CircleAvatar uri={room.profilePic} size={50} />
         </View>
         <View>
           <Text

@@ -3,7 +3,6 @@ import {TouchableOpacity} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import Feather from 'react-native-vector-icons/Feather';
 
-import EditProfile from '../screens/app/UserProfile/EditProfile';
 import UserProfile from '../screens/app/UserProfile/UserProfile';
 import Issues from '../screens/app/UserProfile/Extras/Issues';
 import {ThemeContext} from '../shared/Context';
@@ -28,7 +27,7 @@ export default function ProfileNavigator({route, navigation}) {
           title: 'Profile',
           headerTitleAlign: 'left',
           headerStyle: {
-            backgroundColor: darkTheme ? constants.background1 : '#4640C1',
+            backgroundColor: darkTheme ? constants.background3 : '#4640C1',
             borderWidth: 0,
             borderColor: 'transparent',
             elevation: 0,
@@ -55,17 +54,6 @@ export default function ProfileNavigator({route, navigation}) {
             </TouchableOpacity>
           ),
         })}
-      />
-      <ProfileStack.Screen
-        name="EditProfile"
-        component={EditProfile}
-        options={{
-          title: 'Edit Profile',
-          headerStyle: constants.headerStyle,
-          headerTitleStyle: constants.headerText,
-          headerBackTitleVisible: false,
-          headerTintColor: 'white',
-        }}
       />
       <ProfileStack.Screen
         name="Issues"

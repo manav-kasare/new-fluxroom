@@ -34,7 +34,7 @@ export default {
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 8,
-    marginVertical: 10,
+    marginVertical: 5,
   },
   screenButton: {
     width: constants.width * 0.9,

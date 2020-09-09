@@ -1,8 +1,8 @@
 import React from 'react';
 import {View, Image, ImagePropTypes} from 'react-native';
 
-import CachedImage from '../../../shared/CachedImage';
-import {ThemeContext} from '../../../shared/Context';
+import CachedImage from '../../../../shared/CachedImage';
+import {ThemeContext} from '../../../../shared/Context';
 
 export default function PhotoAvatar({profilePhoto, borderColor}) {
   const {constants} = React.useContext(ThemeContext);
@@ -29,14 +29,13 @@ export default function PhotoAvatar({profilePhoto, borderColor}) {
           }}
         />
       ) : (
-        <Image
+        <CachedImage
           style={{
             width: innerRadius,
             height: innerRadius,
             borderRadius: 50,
           }}
-          source={{uri: profilePhoto}}
-          // uri={profilePhoto}
+          uri={profilePhoto}
         />
       )}
     </View>

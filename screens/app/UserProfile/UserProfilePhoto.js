@@ -1,7 +1,7 @@
 import React, {useContext, useState, useEffect} from 'react';
 import {TouchableOpacity, View, Image} from 'react-native';
 import ImagePicker from 'react-native-image-picker';
-import base64 from 'react-native-base64';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import {UserDetailsContext, ThemeContext} from '../../../shared/Context';
 import CircleAvatar from '../../../shared/CircleAvatar';
@@ -9,7 +9,7 @@ import {updateProfilePhoto} from '../../../backend/database/apiCalls';
 
 export default function UserProfilePhoto() {
   const {user} = useContext(UserDetailsContext);
-  const {constants} = React.useContext(ThemeContext);
+  const {constants, darkTheme} = React.useContext(ThemeContext);
   const [profilePhoto, setProfilePhoto] = useState(user.profilePic);
 
   const pickImage = () => {
@@ -33,8 +33,6 @@ export default function UserProfilePhoto() {
             setProfilePhoto(response.uri);
           }
         });
-        // You can also display the image using data:
-        // const source = { uri: 'data:image/jpeg;base64,' + response.data };
       }
     });
   };
@@ -42,20 +40,41 @@ export default function UserProfilePhoto() {
   return (
     <TouchableOpacity
       style={{
-        width: 125,
-        height: 125,
-        borderRadius: 125 / 2,
+        width: 130,
+        height: 130,
+        borderRadius: 130 / 2,
+        borderWidth: 1,
+        borderColor: constants.lineColor,
         backgroundColor: constants.background4,
         alignItems: 'center',
         justifyContent: 'center',
       }}
       onPress={pickImage}>
-      <CircleAvatar
-        size={125}
-        uri={profilePhoto}
-        itemName="profilePhoto"
-        key={user.id}
-      />
+      <CircleAvatar size={125} uri={profilePhoto} key={user._id} />
+      <View
+        style={{
+          width: 30,
+          height: 30,
+          borderRadius: 10,
+          backgroundColor: darkTheme
+            ? constants.primary
+            : constants.background3,
+          position: 'absolute',
+          right: 10,
+          alignItems: 'center',
+          justifyContent: 'center',
+          bottom: 0,
+        }}>
+        <MaterialIcons
+          size={20}
+          color={constants.background2}
+          name="edit"
+          style={{
+            marginTop: 2,
+            marginLeft: 2,
+          }}
+        />
+      </View>
     </TouchableOpacity>
   );
 }

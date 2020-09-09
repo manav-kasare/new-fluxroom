@@ -6,7 +6,7 @@ import CustomToast from '../../shared/CustomToast';
 
 import {getUserInfo, createUser} from '../../backend/database/apiCalls';
 
-export default function Facebook({navigation}) {
+export default function Apple({navigation}) {
   const {setUser} = React.useContext(UserDetailsContext);
   const [loading, setLoading] = React.useState(false);
 

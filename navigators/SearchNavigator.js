@@ -3,7 +3,6 @@ import {Text} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import FullPhoto from '../screens/app/ChatRoom/FullPhoto';
-import HomeNavigator from './HomeNavigator';
 import Search from '../screens/app/Search/Search';
 import {ThemeContext} from '../shared/Context';
 const SearchStack = createStackNavigator();
@@ -19,7 +18,7 @@ export default function SearchNavigator() {
           title: 'Search',
           headerTitleAlign: 'left',
           headerStyle: {
-            backgroundColor: darkTheme ? constants.background1 : '#4640C1',
+            backgroundColor: darkTheme ? constants.background3 : '#4640C1',
             borderWidth: 0,
             borderColor: 'transparent',
             elevation: 0,

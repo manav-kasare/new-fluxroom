@@ -124,7 +124,6 @@ function RequestUserTile({user}) {
     <View style={{paddingVertical: 10}}>
       <Tile
         uri={details.profilePhoto}
-        itemName="avatar"
         heading={details.username}
         subHeading={details.description}
       />

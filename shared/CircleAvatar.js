@@ -1,11 +1,11 @@
 import React from 'react';
 import {View} from 'react-native';
 import {ThemeContext} from './Context';
-import EvilIcons from 'react-native-vector-icons/EvilIcons';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 import CachedImage from './CachedImage';
 
-export default function CircleAvatar({size, uri, itemName, key}) {
+export default function CircleAvatar({size, uri}) {
   const {constants} = React.useContext(ThemeContext);
 
   if (uri === undefined) {
@@ -17,23 +17,21 @@ export default function CircleAvatar({size, uri, itemName, key}) {
           borderRadius: size / 2,
           justifyContent: 'center',
           alignItems: 'center',
-          backgroudColor: constants.background3,
+          backgroundColor: constants.primary,
         }}>
-        <EvilIcons name="user" size={50} color={constants.background2} />
+        <FontAwesome5 name="user-alt" color="white" size={20} />
       </View>
     );
+  } else {
+    return (
+      <CachedImage
+        style={{
+          width: size,
+          height: size,
+          borderRadius: size / 2,
+        }}
+        uri={uri}
+      />
+    );
   }
-
-  return (
-    <CachedImage
-      style={{
-        width: size,
-        height: size,
-        borderRadius: size / 2,
-      }}
-      uri={uri}
-      key={key}
-      itemName={itemName}
-    />
-  );
 }

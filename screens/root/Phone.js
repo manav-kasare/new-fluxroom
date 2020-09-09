@@ -17,10 +17,11 @@ import Animated, {
   SpringUtils,
 } from 'react-native-reanimated';
 import {useValue, withSpringTransition} from 'react-native-redash';
+import * as RNLocalize from 'react-native-localize';
 
 import {ThemeContext} from '../../shared/Context';
 import globalStyles from '../../shared/GlobalStyles';
-import CustomToast from '../../shared/CustomToast';
+import CustomToast, {CustomErrorTost} from '../../shared/CustomToast';
 import OtpVerifiaction from './OtpVerification';
 
 export default function Phone({navigation}) {
@@ -55,13 +56,11 @@ export default function Phone({navigation}) {
         .signInWithPhoneNumber(formattedPhoneNumber)
         .then((_confirmation) => {
           setConfirmation(_confirmation);
-          setIsLoading(false);
           setIsVisible(true);
         });
     } catch (err) {
-      console.log(err);
       setIsLoading(false);
-      CustomToast('Invalid Phone number');
+      CustomErrorTost('An Error Occured !');
     }
   };
 
@@ -86,6 +85,7 @@ export default function Phone({navigation}) {
           phoneNumber={formattedPhoneNumber}
           confirmation={confirmation}
           setConfirmation={setConfirmation}
+          setIsLoading={setIsLoading}
         />
         <Animated.View style={{transform: [{translateX: slideAnimationX}]}}>
           <Image
@@ -113,7 +113,7 @@ export default function Phone({navigation}) {
           <PhoneInput
             ref={phoneInput}
             defaultValue={phoneNumber}
-            defaultCode="US"
+            defaultCode={RNLocalize.getCountry()}
             onChangeText={(text) => {
               setPhoneNumber(text);
             }}
@@ -145,7 +145,7 @@ export default function Phone({navigation}) {
             </View>
           ) : (
             <TouchableOpacity style={globalStyles.button} onPress={signIn}>
-              <Text style={globalStyles.buttonText}>Sign Up</Text>
+              <Text style={globalStyles.buttonText}>Get OTP</Text>
             </TouchableOpacity>
           )}
         </Animated.View>

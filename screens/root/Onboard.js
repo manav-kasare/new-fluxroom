@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, TouchableOpacity, View, StatusBar} from 'react-native';
+import {Text, TouchableOpacity, View, StatusBar, Platform} from 'react-native';
 import Animated, {useCode, cond, set, eq} from 'react-native-reanimated';
 import {useValue, withTimingTransition} from 'react-native-redash';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -8,7 +8,7 @@ import constants from '../../shared/constants';
 import globalStyles from '../../shared/GlobalStyles';
 
 import Google from './Google';
-import Facebook from './Facebook';
+import Apple from './Apple';
 
 export default function Onboard({navigation}) {
   const time = useValue(0);
@@ -82,7 +82,8 @@ export default function Onboard({navigation}) {
             alignSelf: 'center',
           }}>
           <Google navigation={navigation} />
-          <Facebook navigation={navigation} />
+          {Platform.OS === 'ios' ? <Apple navigation={navigation} /> : <></>}
+
           <TouchableOpacity
             style={{
               width: 50,

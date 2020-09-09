@@ -2,7 +2,7 @@ import React from 'react';
 import {TouchableOpacity} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import {ThemeContext} from '../../../shared/Context';
+import {ThemeContext} from '../../../../shared/Context';
 
 export default function ToggleMic({isSpeaking, setIsSpeaking}) {
   const {constants} = React.useContext(ThemeContext);
@@ -12,7 +12,7 @@ export default function ToggleMic({isSpeaking, setIsSpeaking}) {
       style={{
         width: 40,
         height: 40,
-        borderRadius: 20,
+        borderRadius: 10,
         backgroundColor: constants.primary,
         alignItems: 'center',
         justifyContent: 'center',

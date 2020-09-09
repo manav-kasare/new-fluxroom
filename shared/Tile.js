@@ -5,15 +5,7 @@ import CircleAvatar from './CircleAvatar';
 import {ThemeContext} from './Context';
 
 const Tile = React.memo(
-  ({
-    uri,
-    onPressAvatar,
-    onPressTile,
-    itemName,
-    heading,
-    subHeading,
-    onlineSpeakers,
-  }) => {
+  ({uri, onPressTile, heading, subHeading, onlineSpeakers}) => {
     const {darkTheme, constants} = React.useContext(ThemeContext);
 
     return (
@@ -26,21 +18,17 @@ const Tile = React.memo(
             alignItems: 'center',
             flexDirection: 'row',
             backgroundColor: constants.background3,
-            borderBottomColor: darkTheme
-              ? constants.background1
-              : constants.lineColor,
-            borderBottomWidth: 1,
+            borderBottomColor: darkTheme ? 'transparent' : constants.lineColor,
+            borderBottomWidth: 0.5,
           }}>
-          <TouchableOpacity onPress={onPressAvatar}>
-            <CircleAvatar uri={uri} itemName={itemName} size={50} />
-          </TouchableOpacity>
+          <CircleAvatar uri={uri} size={50} />
           <View style={{flexDirection: 'column'}}>
             <Text
               style={{
                 color: constants.text1,
                 marginLeft: 15,
-                fontSize: 20,
-                fontWeight: '700',
+                fontSize: 16,
+                fontWeight: '500',
                 fontFamily: 'Helvetica Neue',
               }}>
               {heading}

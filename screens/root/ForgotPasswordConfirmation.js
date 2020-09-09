@@ -5,8 +5,6 @@ import {
   TouchableOpacity,
   Text,
   TextInput,
-  Keyboard,
-  Image,
 } from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -22,6 +20,7 @@ import {useValue, withSpringTransition} from 'react-native-redash';
 
 import constants from '../../shared/constants';
 import globalStyles from '../../shared/GlobalStyles';
+import CachedImage from '../../shared/CachedImage';
 
 export default function ForgotPasswordConfirmation({route}) {
   const {username} = route.params;
@@ -62,14 +61,14 @@ export default function ForgotPasswordConfirmation({route}) {
             alignItems: 'center',
           }}>
           <Animated.View style={{transform: [{translateX: slideAnimationX}]}}>
-            <Image
+            <CachedImage
               style={{
                 width: constants.width,
                 height: constants.height * 0.2,
                 marginVertical: 50,
               }}
               resizeMode="contain"
-              source={require('/Users/manav/projects/fluxroom/assets/change_password.png')}
+              uri="/Users/manav/projects/fluxroom/assets/change_password.png"
             />
           </Animated.View>
           <Animated.View

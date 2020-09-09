@@ -10,14 +10,17 @@ import {
   Linking,
 } from 'react-native';
 import {Appbar} from 'react-native-paper';
-import {ThemeContext} from '../../../shared/Context';
+import {ThemeContext, TokenContext} from '../../../shared/Context';
+import {joinRoom} from '../../../backend/database/apiCalls';
 
 export default function JoinRoom({navigation}) {
   const {constants, darkTheme} = React.useContext(ThemeContext);
+  const {token} = React.useContext(TokenContext);
   const [link, setLink] = React.useState(null);
+  const id = '5f566358472e6000177f70b6';
 
   const handleJoin = () => {
-    Linking.openURL(link);
+    joinRoom(id, token);
   };
 
   return (
@@ -88,11 +91,7 @@ export default function JoinRoom({navigation}) {
           </View>
         </SafeAreaView>
       </TouchableWithoutFeedback>
-      {Platform.OS === 'ios' ? (
-        <View style={{height: 50, backgroundColor: constants.background1}} />
-      ) : (
-        <></>
-      )}
+      <View style={{height: 50, backgroundColor: constants.background1}} />
     </View>
   );
 }

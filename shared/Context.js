@@ -1,9 +1,21 @@
 import React, {useEffect} from 'react';
-import AsyncStorage from '@react-native-community/async-storage';
 
 import {light, dark} from '../shared/constants';
+import {storeTheme} from './AsyncStore';
 
 export const UserDetailsContext = React.createContext(null);
+
+export const TokenContext = React.createContext(null);
+
+export const TokenContextProvider = React.memo(({children}) => {
+  const [token, setToken] = React.useState(null);
+
+  return (
+    <TokenContext.Provider value={{token, setToken}}>
+      {children}
+    </TokenContext.Provider>
+  );
+});
 
 export const ThemeContext = React.createContext('light');
 
@@ -11,7 +23,7 @@ export const ThemeProvider = React.memo(({children}) => {
   const [darkTheme, setDarkTheme] = React.useState(false);
   const [constants, setContants] = React.useState(darkTheme ? dark : light);
 
-  const getData = (value) => {
+  const setData = (value) => {
     if (value === 'dark') {
       setDarkTheme(true);
       setContants(dark);
@@ -21,26 +33,20 @@ export const ThemeProvider = React.memo(({children}) => {
     }
   };
 
-  const setData = async (value) => {
-    try {
-      await AsyncStorage.setItem('theme', value);
-    } catch (err) {}
-  };
-
   const toggleTheme = () => {
     if (darkTheme === false) {
-      setData('dark').then(() => {
-        getData('dark');
+      storeTheme('dark').then(() => {
+        setData('dark');
       });
     } else {
-      setData('light').then(() => {
-        getData('light');
+      storeTheme('light').then(() => {
+        setData('light');
       });
     }
   };
 
   return (
-    <ThemeContext.Provider value={{constants, darkTheme, toggleTheme, getData}}>
+    <ThemeContext.Provider value={{constants, darkTheme, toggleTheme, setData}}>
       {children}
     </ThemeContext.Provider>
   );

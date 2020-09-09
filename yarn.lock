@@ -6630,6 +6630,11 @@ react-native-fast-image@^8.3.2:
   resolved "https://registry.yarnpkg.com/react-native-fast-image/-/react-native-fast-image-8.3.2.tgz#e9db271b70b9634b7be054760914d80954f9898c"
   integrity sha512-AJ0b4BEswRwa0bh4SibYUtXszEiaO88Lf4CZ1ib+t5ZfkAgsMk9Liv3L0LYnDblMJmSeGTr1+2ViIM8F2vamjg==
 
+react-native-fast-toast@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/react-native-fast-toast/-/react-native-fast-toast-1.0.4.tgz#29364beb4e80650f10d84ee223c923773bede24f"
+  integrity sha512-NAcC6zVJtX6t1v51G8vpG9brpGjjCHYjXav74/J55eMZ55FQfoPPH87rOkE+ANooMT9B2Ay1bb/cDNqVb4i/yg==
+
 react-native-gesture-handler@~1.6.0:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.6.1.tgz#678e2dce250ed66e93af409759be22cd6375dd17"
@@ -6672,6 +6677,11 @@ react-native-keychain@^6.1.1:
   version "6.1.1"
   resolved "https://registry.yarnpkg.com/react-native-keychain/-/react-native-keychain-6.1.1.tgz#3c14e4df9e5599f8d5a708da75d27f9d2424d7c1"
   integrity sha512-WYvAg7FbYPyX8jJ1rY/IQGS+6zK5LtNMRa3E8x1n0M5Lmsm/9CHtakzbmqT+rLvFE7DpPBg7qFawMuUoDjjtYA==
+
+react-native-localize@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/react-native-localize/-/react-native-localize-1.4.1.tgz#031bd2089f09cc16ee7daee03019684dda60c275"
+  integrity sha512-g1L1au6GtCd0Ci6lQ8JVPYgl7uvEtKY2jeVghJcV6qQEN9+qACyqjOIR8pskUyI+qcSj1z4/nZh3IFxDVu1drw==
 
 react-native-modal@^11.5.6:
   version "11.5.6"

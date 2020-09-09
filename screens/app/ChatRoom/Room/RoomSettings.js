@@ -3,8 +3,8 @@ import {SafeAreaView, View, Image, Text, TouchableOpacity} from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Clipboard from '@react-native-community/clipboard';
 
-import {getChatroomInfo} from '../../../backend/database/apiCalls';
-import {ThemeContext} from '../../../shared/Context';
+import {ThemeContext} from '../../../../shared/Context';
+import CircleAvatar from '../../../../shared/CircleAvatar';
 
 export default function RoomSettings({route, navigation}) {
   const {room} = route.params;
@@ -59,17 +59,7 @@ export default function RoomSettings({route, navigation}) {
                 alignItems: 'center',
                 justifyContent: 'center',
               }}>
-              <Image
-                source={{
-                  uri: `https://images.unsplash.com/photo-1596461097642-b697ec879ced?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80`,
-                  // uri: roomDetails.profilePhoto,
-                }}
-                style={{
-                  width: 40,
-                  height: 40,
-                  borderRadius: 40 / 2,
-                }}
-              />
+              <CircleAvatar uri={room.profilePic} size={40} />
             </View>
             <View>
               <Text
