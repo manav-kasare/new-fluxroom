@@ -21,7 +21,7 @@ import * as RNLocalize from 'react-native-localize';
 
 import {ThemeContext} from '../../shared/Context';
 import globalStyles from '../../shared/GlobalStyles';
-import CustomToast, {CustomErrorTost} from '../../shared/CustomToast';
+import CustomToast, {CustomErrorToast} from '../../shared/CustomToast';
 import OtpVerifiaction from './OtpVerification';
 
 export default function Phone({navigation}) {
@@ -60,7 +60,7 @@ export default function Phone({navigation}) {
         });
     } catch (err) {
       setIsLoading(false);
-      CustomErrorTost('An Error Occured !');
+      CustomErrorToast('An Error Occured !');
     }
   };
 

@@ -21,7 +21,7 @@ import {UserDetailsContext} from '../../shared/Context';
 import constants from '../../shared/constants';
 import globalStyles from '../../shared/GlobalStyles';
 import {createUser} from '../../backend/database/apiCalls';
-import CustomToast, {CustomErrorTost} from '../../shared/CustomToast';
+import CustomToast, {CustomErrorToast} from '../../shared/CustomToast';
 import {storeToken} from '../../shared/KeyChain';
 import {storeUserData, storeTheme} from '../../shared/AsyncStore';
 import CachedImage from '../../shared/CachedImage';
@@ -53,6 +53,7 @@ export default function SetUpProfile({route}) {
         description: description,
         profilePic: profilePhoto,
       }).then((response) => {
+        console.log(response);
         if (response.error) {
           setLoading(false);
           if (response.error.code === 11000) {
@@ -73,7 +74,7 @@ export default function SetUpProfile({route}) {
       });
     } catch (e) {
       setLoading(false);
-      CustomErrorTost('An Error Occured !');
+      CustomErrorToast('An Error Occured !');
     }
   };
 
@@ -107,7 +108,7 @@ export default function SetUpProfile({route}) {
       });
     } catch (e) {
       setLoading(false);
-      CustomErrorTost('An Error Occured !');
+      CustomErrorToast('An Error Occured !');
     }
   };
 
@@ -143,7 +144,7 @@ export default function SetUpProfile({route}) {
         });
       } catch (e) {
         setLoading(false);
-        CustomErrorTost('An Error Occured !');
+        CustomErrorToast('An Error Occured !');
       }
     }
   };
@@ -203,14 +204,16 @@ export default function SetUpProfile({route}) {
               marginBottom: 50,
               backgroundColor: '#4640C1',
             }}>
-            <CachedImage
+            <Image
               style={{
                 width: constants.width,
                 marginVertical: 30,
                 height: constants.height * 0.2,
               }}
               resizeMode="contain"
-              uri="/Users/manav/projects/fluxroom/assets/setup_profile.png"
+              source={{
+                uri: '/Users/manav/projects/fluxroom/assets/setup_profile.png',
+              }}
             />
 
             <View

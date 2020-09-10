@@ -1,25 +1,4 @@
-
-GET http://localhost:8000/users
-
-###
-GET http://localhost:8000/user/info?id=-34ebtntfq-pli18wnd2
-
-###
-
-GET http://localhost:8000/chatroom/getInfo?roomID=-wv5f7uj0m-7nhw7o694
-
-###
-
-GET http://localhost:8000/emailConfirmation?toEmail=kmanav0705@gmail.com&userID=-g5efz6jrz-p74djtryw
-
-###
-GET http://localhost:8000/forgotPassword?toEmail=kendallxbowlin@gmail.com
-
-###
-GET http://localhost:8000/chatroom/join?userID=-kpbvm6ba5-ri87gixhg&roomID=-wv5f7uj0m-7nhw7o694"
-
-###
-GET fluxroom-backend-beta.herokuapp.com/user/5f386554eed5170017ecb3ff
+GET https://fluxroom-backend-beta.herokuapp.com/user/5f386554eed5170017ecb3ff
 
 ###
 GET https://fluxroom-backend-beta.herokuapp.com/allusers

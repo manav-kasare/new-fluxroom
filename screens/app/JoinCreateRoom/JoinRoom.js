@@ -7,20 +7,50 @@ import {
   TextInput,
   Keyboard,
   TouchableWithoutFeedback,
-  Linking,
 } from 'react-native';
 import {Appbar} from 'react-native-paper';
-import {ThemeContext, TokenContext} from '../../../shared/Context';
-import {joinRoom} from '../../../backend/database/apiCalls';
+import {
+  ThemeContext,
+  TokenContext,
+  UserDetailsContext,
+} from '../../../shared/Context';
+import {joinRoom, getUserMe} from '../../../backend/database/apiCalls';
+import {CustomErrorToast} from '../../../shared/CustomToast';
+import {storeUserData} from '../../../shared/AsyncStore';
 
-export default function JoinRoom({navigation}) {
+export default function JoinRoom({route, navigation}) {
   const {constants, darkTheme} = React.useContext(ThemeContext);
+  const {setUser} = React.useContext(UserDetailsContext);
   const {token} = React.useContext(TokenContext);
   const [link, setLink] = React.useState(null);
-  const id = '5f566358472e6000177f70b6';
+  const {id} = route.params;
 
   const handleJoin = () => {
-    joinRoom(id, token);
+    new Promise((resolve, reject) => {
+      const rooms = user.joinedRooms;
+      let alreadyJoined = false;
+      rooms.map((room) => {
+        if (room._id === id) {
+          alreadyJoined = true;
+        }
+      });
+      if (alreadyJoined) {
+        resolve(true);
+      } else {
+        reject(false);
+      }
+    })
+      .then(() => {
+        joinRoom(id, token).then((response) => {
+          getUserMe(token).then((responseUser) => {
+            setUser(responseUser);
+            storeUserData(responseUser);
+          });
+        });
+      })
+      .catch(() => {
+        CustomErrorToast('Room already joined !');
+      });
   };
 
   return (

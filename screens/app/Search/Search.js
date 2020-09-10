@@ -1,18 +1,12 @@
 import React, {useState, useEffect, useContext} from 'react';
-import {
-  SafeAreaView,
-  FlatList,
-  View,
-  ActivityIndicator,
-  RefreshControl,
-} from 'react-native';
+import {SafeAreaView, FlatList, RefreshControl} from 'react-native';
 import {Searchbar} from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import _ from 'lodash';
 
 import OptionsModal from './OptionsModal';
-import {getUsers} from '../../../backend/database/apiCalls';
-import {ThemeContext, UserDetailsContext} from '../../../shared/Context';
+import {getAllRooms} from '../../../backend/database/apiCalls';
+import {ThemeContext} from '../../../shared/Context';
 import Tile from '../../../shared/Tile';
 import RecentSearch from './RecentSearch';
 import TilesLoading from '../ChatRoom/TilesLoading';
@@ -24,9 +18,8 @@ const wait = (timeout) => {
 };
 
 export default function Search() {
-  const {user} = useContext(UserDetailsContext);
-  const [users, setUsers] = useState(null);
-  const [filteredUsers, setFilteredUsers] = useState(null);
+  const [rooms, setRooms] = useState(null);
+  const [filteredRooms, setFilteredRooms] = useState(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [query, setQuery] = useState(null);
   const {constants} = React.useContext(ThemeContext);
@@ -35,8 +28,8 @@ export default function Search() {
   const [modalItem, setModalItem] = useState({id: ''});
 
   useEffect(() => {
-    getUsers().then((data) => {
-      setUsers(data);
+    getAllRooms().then((data) => {
+      setRooms(data);
       setloading(false);
     });
   }, []);
@@ -47,11 +40,7 @@ export default function Search() {
   }, []);
 
   const handleSearch = _.debounce((q) => {
-    setFilteredUsers(
-      _.filter(users, (_user) =>
-        user._id !== _user._id ? _.includes(_user.username, q) : null,
-      ),
-    );
+    setFilteredRooms(_.filter(rooms, (_room) => _.includes(_room.name, q)));
   }, 250);
 
   return (
@@ -101,13 +90,13 @@ export default function Search() {
       ) : (
         <FlatList
           style={{flex: 1}}
-          data={filteredUsers}
+          data={filteredRooms}
           renderItem={({item}) => {
             setModalItem(item);
             return (
               <>
                 <RenderTile
-                  username={item.username}
+                  name={item.name}
                   description={item.description}
                   profilePic={item.profilePic}
                   onPressTile={() => {
@@ -132,11 +121,11 @@ export default function Search() {
   );
 }
 
-const RenderTile = ({username, description, profilePic, onPressTile}) => {
+const RenderTile = ({name, description, profilePic, onPressTile}) => {
   return (
     <Tile
       uri={profilePic}
-      heading={username}
+      heading={name}
       subHeading={description}
       onPressTile={onPressTile}
       onPressTile={onPressTile}

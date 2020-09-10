@@ -37,13 +37,13 @@ export default function RoomAvatarLoading() {
       borderRadius: 40,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: darkTheme ? '#383838' : '#dddddd',
+      backgroundColor: darkTheme ? '#1e1e1e' : '#dddddd',
       marginBottom: 10,
     },
     name: {
       height: 10,
       width: 50,
-      backgroundColor: darkTheme ? '#383838' : '#dddddd',
+      backgroundColor: darkTheme ? '#1e1e1e' : '#dddddd',
       alignSelf: 'center',
     },
   });

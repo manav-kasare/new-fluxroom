@@ -8,14 +8,14 @@ import {
   RefreshControl,
 } from 'react-native';
 
-import CustomToast from '../../../shared/CustomToast';
+import CustomToast, {CustomErrorToast} from '../../../shared/CustomToast';
 import Tile from '../../../shared/Tile';
+import {joinRoom, acceptInvitation} from '../../../backend/database/apiCalls';
 import {
-  getUserInfo,
-  acceptFriendRequest,
-  declineFriendRequest,
-} from '../../../backend/database/apiCalls';
-import {UserDetailsContext, ThemeContext} from '../../../shared/Context';
+  UserDetailsContext,
+  ThemeContext,
+  TokenContext,
+} from '../../../shared/Context';
 
 const wait = (timeout) => {
   return new Promise((resolve) => {
@@ -23,49 +23,39 @@ const wait = (timeout) => {
   });
 };
 
-const Requests = () => {
+const Invitations = () => {
   const {constants} = React.useContext(ThemeContext);
   const {user} = useContext(UserDetailsContext);
-  const [idList, setIdList] = useState([]);
-  const [onpress, setOnPress] = useState(false);
+  const {token} = useContext(TokenContext);
+  const [invitations, setInvitations] = useState(null);
   const [refreshing, setRefreshing] = useState(false);
 
   const onRefresh = useCallback(() => {
     setRefreshing(true);
-
     wait(2000).then(() => setRefreshing(false));
   }, []);
 
   useEffect(() => {
-    // getUserInfo(user.id).then((data) => {
-    //   const list = JSON.parse(data.requests).requests;
-    //   setIdList(list);
-    // });
-  }, [onpress, refreshing]);
+    setInvitations(user.invitedToRooms);
+  }, [refreshing]);
 
-  const handleAccept = (ID) => {
-    setOnPress(!onpress);
-    acceptFriendRequest(user.id, ID).then((responseText) => {
-      if (responseText !== 'success') {
-        CustomToast('An Error Occured');
+  const handleAccept = (_id) => {
+    joinRoom(_id, token).then((response) => {
+      if (response.error) {
+        CustomErrorToast('An Error Occured');
+      } else {
+        acceptInvitation();
       }
     });
   };
 
-  const handleDecline = (ID) => {
-    setOnPress(!onpress);
-    declineFriendRequest(user.id, ID).then((responseText) => {
-      if (responseText !== 'success') {
-        CustomToast('An Error Occured');
-      }
-    });
-  };
+  const handleDecline = (_id) => {};
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: constants.background1}}>
       <FlatList
-        data={idList}
-        keyExtractor={(item, index) => index.toString()}
+        data={invitations}
+        keyExtractor={(index) => index.toString()}
         renderItem={({item}) => (
           <View>
             <View
@@ -74,7 +64,7 @@ const Requests = () => {
                 marginLeft: 10,
                 marginBottom: 5,
               }}>
-              <TouchableOpacity onPress={() => handleAccept(item)}>
+              <TouchableOpacity onPress={() => handleAccept(item._id)}>
                 <Text
                   style={{
                     fontSize: 18,
@@ -93,7 +83,7 @@ const Requests = () => {
                 }}>
                 |
               </Text>
-              <TouchableOpacity onPress={() => handleDecline(item)}>
+              <TouchableOpacity onPress={() => handleDecline(item._id)}>
                 <Text
                   style={{
                     fontSize: 18,
@@ -131,4 +121,4 @@ function RequestUserTile({user}) {
   );
 }
 
-export default React.memo(Requests);
+export default React.memo(Invitations);

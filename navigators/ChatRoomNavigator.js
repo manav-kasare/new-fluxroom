@@ -5,7 +5,7 @@ import FullPhoto from '../screens/app/ChatRoom/FullPhoto';
 import ChatRooms from '../screens/app/ChatRoom/ChatRooms';
 import Room from '../screens/app/ChatRoom/Room/Room';
 import PersonalChat from '../screens/app/ChatRoom/Room/PersonalChat';
-import Requests from '../screens/app/ChatRoom/Requests';
+import Invitations from '../screens/app/ChatRoom/Invitations';
 import JoinRoomWithLink from '../screens/app/JoinCreateRoom/JoinRoomWithLink';
 import RoomSettings from '../screens/app/ChatRoom/Room/RoomSettings';
 import ChangeRoomSettings from '../screens/app/ChatRoom/Room/ChangeRoomSettings';
@@ -14,7 +14,7 @@ import {
   ThemeContext,
   TokenContext,
 } from '../shared/Context';
-import RequestIcon from '../screens/app/ChatRoom/RequestIcon';
+import InvitationsIcon from '../screens/app/ChatRoom/InvitationsIcon';
 
 const ChatRoomStack = createStackNavigator();
 
@@ -52,7 +52,7 @@ export default function ChatRoomNavigator({route, navigation}) {
             color: 'white',
           },
           headerRight: () => (
-            <RequestIcon id={user.id} navigation={navigation} />
+            <InvitationsIcon id={user.id} navigation={navigation} />
           ),
         })}
       />
@@ -111,10 +111,10 @@ export default function ChatRoomNavigator({route, navigation}) {
         options={{headerShown: false}}
       />
       <ChatRoomStack.Screen
-        name="Requests"
-        component={Requests}
+        name="Invitations"
+        component={Invitations}
         options={{
-          title: 'Requests',
+          title: 'Invitations',
           headerStyle: constants.headerStyle,
           headerTitleStyle: constants.headerText,
           headerBackTitleVisible: false,

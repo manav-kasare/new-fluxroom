@@ -25,7 +25,7 @@ import Animated, {
 import {useValue, withSpringTransition} from 'react-native-redash';
 
 import constants from '../../shared/constants';
-import CustomToast, {CustomErrorTost} from '../../shared/CustomToast';
+import CustomToast, {CustomErrorToast} from '../../shared/CustomToast';
 import globalStyles from '../../shared/GlobalStyles';
 import EmailVerification from './EmailVerification';
 
@@ -74,11 +74,11 @@ export default function SignUp({navigation}) {
       .catch((error) => {
         setIsLoading(false);
         if (error.code === 'auth/email-already-in-use') {
-          CustomErrorTost('That email address is already in use!');
+          CustomErrorToast('That email address is already in use!');
         }
 
         if (error.code === 'auth/invalid-email') {
-          CustomErrorTost('That email address is invalid!');
+          CustomErrorToast('That email address is invalid!');
         }
 
         console.error(error);

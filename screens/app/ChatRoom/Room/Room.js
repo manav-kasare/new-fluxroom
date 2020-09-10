@@ -3,11 +3,9 @@ import {
   SafeAreaView,
   FlatList,
   View,
-  Platform,
-  Text,
   TouchableOpacity,
   StatusBar,
-  ActivityIndicator,
+  RefreshControl,
 } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
@@ -27,6 +25,12 @@ import RoomHeader from './RoomHeader';
 import RoomUserOptions from './RoomUserOptions';
 import RoomAvatarLoading from './RoomAvatarLoading';
 
+const wait = (timeout) => {
+  return new Promise((resolve) => {
+    setTimeout(resolve, timeout);
+  });
+};
+
 const Room = ({route, navigation}) => {
   const {room} = route.params;
   const {constants, darkTheme} = React.useContext(ThemeContext);
@@ -35,14 +39,25 @@ const Room = ({route, navigation}) => {
   const [isSpeaking, setIsSpeaking] = React.useState(false);
   const [someoneRaisingHand, setSomeoneRaisingHand] = React.useState(false);
   const [isVisible, setIsVisible] = React.useState(false);
+  const [refreshing, setRefreshing] = React.useState(false);
   const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
+    setData();
+  }, []);
+
+  const setData = () => {
     getChatroomInfo(room._id).then((response) => {
       setMembers(response.listOfUsers);
       setLoading(false);
+      setRefreshing(false);
     });
-  }, []);
+  };
+
+  const onRefresh = () => {
+    setRefreshing(true);
+    setData();
+  };
 
   const anon = () => {};
 
@@ -94,6 +109,13 @@ const Room = ({route, navigation}) => {
                 // } else if (item.id !== user.id && item.id !== hostID) {
                 //   return <Member id={item.id} />;
                 // }
+              }
+              refreshControl={
+                <RefreshControl
+                  refreshing={refreshing}
+                  onRefresh={onRefresh}
+                  tintColor={constants.background2}
+                />
               }
             />
           )}

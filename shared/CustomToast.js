@@ -2,6 +2,6 @@ export const CustomToast = (message) => {
   toast.show(message, {type: 'success'});
 };
 
-export const CustomErrorTost = (message) => {
+export const CustomErrorToast = (message) => {
   toast.show(message, {type: 'danger'});
 };

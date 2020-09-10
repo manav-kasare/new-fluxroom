@@ -12,7 +12,7 @@ import Modal from 'react-native-modal';
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import globalStyles from '../../shared/GlobalStyles';
-import CustomToast, {CustomErrorTost} from '../../shared/CustomToast';
+import CustomToast, {CustomErrorToast} from '../../shared/CustomToast';
 import {ThemeContext, UserDetailsContext} from '../../shared/Context';
 import {getUserByPhone, loginUser} from '../../backend/database/apiCalls';
 import {storeToken} from '../../shared/KeyChain';
@@ -73,7 +73,7 @@ export default OtpVerification = ({
     } catch (error) {
       ReactNativeHaptic.generate('notificationError');
       setIsLoadingCode(false);
-      CustomErrorTost('Invalid Code !');
+      CustomErrorToast('Invalid Code !');
     }
   };
 

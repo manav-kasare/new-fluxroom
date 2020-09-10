@@ -2,18 +2,18 @@ import React, {useState, useEffect} from 'react';
 import {TouchableOpacity, View, Text} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import {getUserInfo} from '../../../backend/database/apiCalls';
-import {ThemeContext} from '../../../shared/Context';
+import {getUserMe} from '../../../backend/database/apiCalls';
+import {ThemeContext, TokenContext} from '../../../shared/Context';
 
-export default function RequestIcon({navigation, id}) {
-  const {constants} = React.useContext(ThemeContext);
-  const [requests, setRequests] = useState(0);
+export default function InvitationsIcon({navigation, id}) {
+  const {token} = React.useContext(TokenContext);
+  const [invitations, setInvitations] = useState(0);
 
-  // useEffect(() => {
-  //   getUserInfo(id).then((data) => {
-  //     setRequests(JSON.parse(data.requests).requests.length);
-  //   });
-  // }, []);
+  useEffect(() => {
+    getUserMe(token).then((response) => {
+      setInvitations(response.invitedToRooms.length());
+    });
+  }, []);
 
   return (
     <View
@@ -26,7 +26,7 @@ export default function RequestIcon({navigation, id}) {
         justifyContent: 'center',
         flexDirection: 'row',
       }}>
-      <TouchableOpacity onPress={() => navigation.navigate('Requests')}>
+      <TouchableOpacity onPress={() => navigation.navigate('Invitations')}>
         <Ionicons name="ios-notifications-outline" size={25} color="white" />
       </TouchableOpacity>
       <View
@@ -46,7 +46,7 @@ export default function RequestIcon({navigation, id}) {
             color: 'white',
             fontFamily: 'Helvetica',
           }}>
-          {requests}
+          {invitations}
         </Text>
       </View>
     </View>

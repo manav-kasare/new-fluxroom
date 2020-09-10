@@ -1,6 +1,7 @@
 import React from 'react';
 import {Provider as PaperProvider} from 'react-native-paper';
 import Toast from 'react-native-fast-toast';
+import Entypo from 'react-native-vector-icons/Entypo';
 
 import RootNavigator from './navigators/RootNavigator';
 import {
@@ -34,7 +35,11 @@ function App() {
           </UserDetailsContext.Provider>
         </ThemeProvider>
       </TokenContextProvider>
-      <Toast ref={toast} />
+      <Toast
+        ref={toast}
+        successIcon={<Entypo name="check" color="white" size={20} />}
+        dangerIcon={<Entypo name="cross" color="white" size={20} />}
+      />
     </>
   );
 }

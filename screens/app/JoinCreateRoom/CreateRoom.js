@@ -3,7 +3,6 @@ import {
   SafeAreaView,
   View,
   TouchableOpacity,
-  Image,
   TextInput,
   Text,
   ActivityIndicator,
@@ -20,9 +19,10 @@ import {
   UserDetailsContext,
   TokenContext,
 } from '../../../shared/Context';
-import CustomToast from '../../../shared/CustomToast';
+import {CustomErrorToast} from '../../../shared/CustomToast';
 import ShareRoomLink from './ShareRoomLink';
 import CachedImage from '../../../shared/CachedImage';
+import {storeUserData} from '../../../shared/AsyncStore';
 
 export default function CreateRoom({navigation}) {
   const {token} = React.useContext(TokenContext);
@@ -40,9 +40,8 @@ export default function CreateRoom({navigation}) {
   const handleCreateRoom = () => {
     setLoading(true);
     createRoom(token, room).then((response) => {
-      console.log(response);
       if (response.err) {
-        CustomToast('An Error Occured');
+        CustomErrorToast('An Error Occured');
         setLoading(false);
       } else {
         setResRoom(response);
@@ -51,6 +50,7 @@ export default function CreateRoom({navigation}) {
       }
       getUserMe(token).then((response) => {
         setUser(response.user);
+        storeUserData(response.user);
       });
     });
   };

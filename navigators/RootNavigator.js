@@ -19,6 +19,7 @@ import Phone from '../screens/root/Phone';
 import {getUserMe} from '../backend/database/apiCalls';
 import {getToken} from '../shared/KeyChain';
 import {storeUserData, getTheme} from '../shared/AsyncStore';
+import {CustomErrorToast} from '../shared/CustomToast';
 
 const Stack = createStackNavigator();
 
@@ -60,11 +61,10 @@ export default function RootNavigator() {
       setToken(token);
       getUserMe(token).then((response) => {
         setUser(response.user);
-        storeUserData(response.user).then(() => {
-          getTheme().then((theme) => {
-            setData(theme);
-            setSplashScreen(false);
-          });
+        getTheme().then((theme) => {
+          setData(theme);
+          setSplashScreen(false);
+          storeUserData(response.user);
         });
       });
     });

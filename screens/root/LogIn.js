@@ -26,7 +26,7 @@ import {useValue, withSpringTransition} from 'react-native-redash';
 
 import {UserDetailsContext} from '../../shared/Context';
 import constants from '../../shared/constants';
-import CustomToast, {CustomErrorTost} from '../../shared/CustomToast';
+import CustomToast, {CustomErrorToast} from '../../shared/CustomToast';
 import globalStyles from '../../shared/GlobalStyles';
 import {loginUser, getUserByEmail} from '../../backend/database/apiCalls';
 import {storeToken} from '../../shared/KeyChain';
@@ -70,7 +70,7 @@ export default function LogIn({navigation}) {
               if (response.err) {
                 setIsLoading(false);
                 ReactNativeHaptic.generate('notificationError');
-                CustomErrorTost('An Error Occured !');
+                CustomErrorToast('An Error Occured !');
               } else {
                 setIsLoading(false);
                 ReactNativeHaptic.generate('notificationSuccess');
@@ -85,7 +85,7 @@ export default function LogIn({navigation}) {
     } catch (err) {
       setIsLoading(false);
       ReactNativeHaptic.generate('notificationError');
-      CustomErrorTost('An Error Occured !');
+      CustomErrorToast('An Error Occured !');
     }
   };
 

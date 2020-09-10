@@ -11,7 +11,10 @@ export const createUser = (user) => {
   };
 
   return fetch(`${url}/user/create`, requestOptions)
-    .then((response) => response.json())
+    .then((response) => {
+      console.log(response);
+      return response.json();
+    })
     .then((data) => {
       return data;
     });
@@ -102,34 +105,6 @@ export const getUserByPhone = (phoneNumber) => {
     });
 };
 
-export const follow = (username, token) => {
-  const requestOptions = {
-    method: 'POST',
-    header: {
-      Authorization: `Bearer ${token}`,
-    },
-  };
-  return fetch(`${url}/follow?username=${username}`, requestOptions).then(
-    (response) => {
-      return response;
-    },
-  );
-};
-
-export const unfollow = (username, token) => {
-  const requestOptions = {
-    method: 'POST',
-    header: {
-      Authorization: `Bearer ${token}`,
-    },
-  };
-  return fetch(`${url}/unfollow?username=${username}`, requestOptions).then(
-    (response) => {
-      return response;
-    },
-  );
-};
-
 export const updateProfilePhoto = (token) => {
   const requestOptions = {
     method: 'GET',
@@ -139,6 +114,14 @@ export const updateProfilePhoto = (token) => {
   };
   return fetch(`${url}/uploadimage`, requestOptions)
     .then((response) => response.text())
+    .then((data) => {
+      return data;
+    });
+};
+
+export const getAllRooms = () => {
+  return fetch(`${url}/rooms`)
+    .then((response) => response.json())
     .then((data) => {
       return data;
     });
@@ -155,7 +138,7 @@ export const createRoom = (token, room) => {
     body: JSON.stringify(room),
   };
 
-  return fetch(`${url}/room/create`, requestOptions)
+  return fetch(`${url}/createroom`, requestOptions)
     .then((response) => response.json())
     .then((data) => {
       return data;
@@ -176,6 +159,8 @@ export const joinRoom = (id, token) => {
     return response;
   });
 };
+
+export const acceptInvitation = () => {};
 
 export const getChatroomInfo = (id) => {
   return fetch(`${url}/room/${id}`)

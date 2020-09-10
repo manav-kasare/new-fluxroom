@@ -36,7 +36,7 @@
     "react-native": "0.63.2",
     "react-native-base64": "^0.1.0",
     "react-native-fast-image": "^8.3.2",
-    "react-native-fast-toast": "^1.0.4",
+    "react-native-fast-toast": "^1.0.5",
     "react-native-gesture-handler": "~1.6.0",
     "react-native-haptic": "^1.0.1",
     "react-native-image-picker": "^2.3.3",

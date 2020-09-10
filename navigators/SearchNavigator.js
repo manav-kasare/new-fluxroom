@@ -1,5 +1,4 @@
 import React from 'react';
-import {Text} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import FullPhoto from '../screens/app/ChatRoom/FullPhoto';
@@ -15,7 +14,7 @@ export default function SearchNavigator() {
         name="Search"
         component={Search}
         options={{
-          title: 'Search',
+          title: 'Search Rooms',
           headerTitleAlign: 'left',
           headerStyle: {
             backgroundColor: darkTheme ? constants.background3 : '#4640C1',

@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-community/async-storage';
 import {Constants} from 'react-native-unimodules';
-import {CustomErrorTost} from './CustomToast';
+import {CustomErrorToast} from './CustomToast';
 
 export const storeUserData = async (value) => {
   try {
@@ -9,7 +9,7 @@ export const storeUserData = async (value) => {
       return;
     });
   } catch (e) {
-    CustomErrorTost('An Error Occured !');
+    CustomErrorToast('An Error Occured !');
   }
 };
 
@@ -19,7 +19,7 @@ export const getUserData = async () => {
       return user;
     });
   } catch (e) {
-    CustomErrorTost('An Error Occured !');
+    CustomErrorToast('An Error Occured !');
   }
 };
 
@@ -29,7 +29,7 @@ export const storeTheme = async (value) => {
       return;
     });
   } catch (e) {
-    CustomErrorTost('An Error Occured !');
+    CustomErrorToast('An Error Occured !');
   }
 };
 
@@ -38,6 +38,6 @@ export const getTheme = async () => {
     const theme = await AsyncStorage.getItem('theme');
     return theme;
   } catch (e) {
-    CustomErrorTost('An Error Occured !');
+    CustomErrorToast('An Error Occured !');
   }
 };

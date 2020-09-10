@@ -9,7 +9,7 @@ import ReactNativeHaptic from 'react-native-haptic';
 import {getUserByEmail, loginUser} from '../../backend/database/apiCalls';
 import {storeToken} from '../../shared/KeyChain';
 import {storeUserData, storeTheme} from '../../shared/AsyncStore';
-import {CustomErrorTost} from '../../shared/CustomToast';
+import {CustomErrorToast} from '../../shared/CustomToast';
 
 GoogleSignin.configure({
   scopes: [
@@ -77,7 +77,7 @@ export default function Google({navigation}) {
       } else if (error.code === statusCodes.IN_PROGRESS) {
         // operation (e.g. sign in) is in progress already
       } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-        CustomErrorTost('Play services not available');
+        CustomErrorToast('Play services not available');
         // play services not available or outdated
       } else {
         // some other error happened

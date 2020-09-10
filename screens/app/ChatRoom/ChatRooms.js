@@ -19,13 +19,6 @@ import Tile from '../../../shared/Tile';
 import {getUserMe} from '../../../backend/database/apiCalls';
 import CachedImage from '../../../shared/CachedImage';
 import TilesLoading from './TilesLoading';
-import {CustomErrorTost} from '../../../shared/CustomToast';
-
-const wait = (timeout) => {
-  return new Promise((resolve) => {
-    setTimeout(resolve, timeout);
-  });
-};
 
 const ChatRooms = ({navigation}) => {
   const {setUser} = useContext(UserDetailsContext);
@@ -35,18 +28,23 @@ const ChatRooms = ({navigation}) => {
   const [refreshing, setRefreshing] = useState(false);
   const [loading, setloading] = useState(true);
 
-  const onRefresh = useCallback(() => {
-    setRefreshing(true);
-    wait(2000).then(() => setRefreshing(false));
+  useEffect(() => {
+    setData();
   }, []);
 
-  useEffect(() => {
+  const onRefresh = () => {
+    setRefreshing(true);
+    setData();
+  };
+
+  const setData = () => {
     getUserMe(token).then((response) => {
-      setUser(response.user);
       setChatRoomList(response.user.joinedRooms);
       setloading(false);
+      setUser(response.user);
+      setRefreshing(false);
     });
-  }, [refreshing]);
+  };
 
   return (
     <SafeAreaView

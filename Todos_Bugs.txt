@@ -21,7 +21,6 @@ Create Room
 Join Room
 Search
 
-
 Bugs: 
     FIXED (refresh control) 1. Can't re render ChatRooms with navigation.goBack().(possible with navigation.navigate())
     2. FIXED . Friends screen won't go to modal state, sometimes even fucks up the UserProfile navigation.
