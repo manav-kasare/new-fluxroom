@@ -141,7 +141,7 @@ export const getAllRooms = () => {
     });
 };
 
-export const createRoom = (token, room) => {
+export const createRoom = (room) => {
   const requestOptions = {
     method: 'POST',
     headers: {
@@ -154,11 +154,7 @@ export const createRoom = (token, room) => {
   return fetch(`${url}/createroom`, requestOptions)
     .then((response) => response.json())
     .then((_room) => {
-      addUserToRoom(token, _room.room._id).then((resRoom) => {
-        addRoomToUser(token, _room.room._id).then((user) => {
-          return {reponse: resRoom, user: user};
-        });
-      });
+      return _room;
     });
 };
 

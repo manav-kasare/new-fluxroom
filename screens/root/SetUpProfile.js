@@ -21,23 +21,27 @@ import {UserDetailsContext} from '../../shared/Context';
 import constants from '../../shared/constants';
 import globalStyles from '../../shared/GlobalStyles';
 import {createUser} from '../../backend/database/apiCalls';
-import {CustomErrorToast, CustomToast} from '../../shared/CustomToast';
+import {CustomErrorToast} from '../../shared/CustomToast';
 import {storeToken} from '../../shared/KeyChain';
-import {storeUserData, storeTheme} from '../../shared/AsyncStore';
+import {storeUserData, storeTheme, getFCMToken} from '../../shared/AsyncStore';
 import CachedImage from '../../shared/CachedImage';
 
 export default function SetUpProfile({route}) {
   const {setUser} = useContext(UserDetailsContext);
-  const {email, phoneNumber, googleData, phoneData} = route.params;
+  const {email, phoneNumber, googleData, phoneData, appleData} = route.params;
   const [username, setUsername] = useState('');
   const [description, setDescription] = useState('');
   const [profilePhoto, setProfilePhoto] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [fcmToken, setFcmToken] = useState(null);
 
   React.useEffect(() => {
     if (googleData) {
       setProfilePhoto(googleData.user.photoURL);
     }
+    getFCMToken((token) => {
+      setFcmToken(token);
+    });
   });
 
   const isUsernameValid = (q) => {
@@ -49,8 +53,42 @@ export default function SetUpProfile({route}) {
       createUser({
         username: username,
         email: email,
-        phone: '0',
+        phone: email,
+        notificationID: fcmToken,
         googleData: googleData,
+        description: description,
+        profilePic: profilePhoto,
+      }).then((response) => {
+        if (response.error) {
+          setLoading(false);
+          if (response.error.code === 11000) {
+            CustomErrorToast('Username Already taken');
+          } else {
+            CustomErrorToast('An unexpected error occured');
+          }
+        } else {
+          storeToken(response.user._id, response.token[0].token).then(() => {
+            storeUserData(response.user);
+            storeTheme('light');
+            setUser(response.user);
+            setLoading(false);
+          });
+        }
+      });
+    } catch (e) {
+      setLoading(false);
+      CustomErrorToast('An Error Occured !');
+    }
+  };
+
+  const appleSignUp = () => {
+    try {
+      createUser({
+        username: username,
+        email: email,
+        phone: email,
+        notificationID: fcmToken,
+        appleData: appleData,
         description: description,
         profilePic: profilePhoto,
       }).then((response) => {
@@ -81,8 +119,9 @@ export default function SetUpProfile({route}) {
     try {
       createUser({
         username: username,
-        email: '0',
+        email: phoneNumber,
         phone: phoneNumber,
+        notificationID: fcmToken,
         phoneData: phoneData,
         description: description,
         profilePic: profilePhoto,
@@ -90,19 +129,17 @@ export default function SetUpProfile({route}) {
         if (response.error) {
           setLoading(false);
           if (response.error.code === 11000) {
-            CustomToast('Username Already taken');
+            CustomErrorToast('Username Already taken');
           } else {
-            CustomToast('An unexpected error occured');
+            CustomErrorToast('An unexpected error occured');
           }
         } else {
-          storeToken(response.token[0]._id, response.token[0].token).then(
-            () => {
-              storeUserData(response.user);
-              storeTheme('light');
-              setUser(response.user);
-              setLoading(false);
-            },
-          );
+          storeToken(response.user._id, response.token[0].token).then(() => {
+            storeUserData(response.user);
+            storeTheme('light');
+            setUser(response.user);
+            setLoading(false);
+          });
         }
       });
     } catch (e) {
@@ -115,31 +152,32 @@ export default function SetUpProfile({route}) {
     setLoading(true);
     if (googleData) {
       googleSignUp();
+    } else if (appleData) {
+      appleSignUp();
     } else {
       try {
         createUser({
           username: username,
           email: email,
-          phone: '0',
+          phone: email,
+          notificationID: fcmToken,
           description: description,
           profilePic: profilePhoto,
         }).then((response) => {
           if (response.error) {
             setLoading(false);
             if (response.error.code === 11000) {
-              CustomToast('Username Already taken');
+              CustomErrorToast('Username Already taken');
             } else {
-              CustomToast('An unexpected error occured');
+              CustomErrorToast('An unexpected error occured');
             }
           } else {
-            storeToken(response.token[0]._id, response.token[0].token).then(
-              () => {
-                setLoading(false);
-                storeUserData(response.user);
-                storeTheme('light');
-                setUser(response.user);
-              },
-            );
+            storeToken(response.user._id, response.token[0].token).then(() => {
+              setLoading(false);
+              storeUserData(response.user);
+              storeTheme('light');
+              setUser(response.user);
+            });
           }
         });
       } catch (e) {

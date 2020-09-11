@@ -1,11 +1,72 @@
 import React from 'react';
-import {TouchableOpacity, Linking} from 'react-native';
+import {TouchableOpacity} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {UserDetailsContext} from '../../shared/Context';
+import auth from '@react-native-firebase/auth';
+import appleAuth, {
+  AppleAuthRequestScope,
+  AppleAuthRequestOperation,
+} from '@invertase/react-native-apple-authentication';
 
 export default function Apple({navigation}) {
   const {setUser} = React.useContext(UserDetailsContext);
   const [loading, setLoading] = React.useState(false);
+
+  const signIn = async () => {
+    // Start the sign-in request
+    const appleAuthRequestResponse = await appleAuth.performRequest({
+      requestedOperation: AppleAuthRequestOperation.LOGIN,
+      requestedScopes: [
+        AppleAuthRequestScope.EMAIL,
+        AppleAuthRequestScope.FULL_NAME,
+      ],
+    });
+
+    // Ensure Apple returned a user identityToken
+    if (!appleAuthRequestResponse.identityToken) {
+      throw 'Apple Sign-In failed - no identify token returned';
+    }
+
+    // Create a Firebase credential from the response
+    const {identityToken, nonce} = appleAuthRequestResponse;
+    const appleCredential = auth.AppleAuthProvider.credential(
+      identityToken,
+      nonce,
+    );
+
+    // Sign the user in with the credential
+    auth()
+      .signInWithCredential(appleCredential)
+      .then((userInfo) => {
+        setLoading(false);
+        if (_userInfo.additionalUserInfo.isNewUser) {
+          navigation.navigate('SetUpProfile', {
+            email: _userInfo.user.email,
+            appleData: _userInfo,
+          });
+        } else {
+          getUserByEmail(_userInfo.user.email).then((response) => {
+            loginUser({
+              username: response.username,
+              password: '89337133-17c9-42e3-9fef-78416a25651a',
+            }).then((_response) => {
+              if (_response.err) {
+                setLoading(false);
+                ReactNativeHaptic.generate('notificationError');
+                CustomToast('An Error Occured');
+              } else {
+                ReactNativeHaptic.generate('notificationSuccess');
+                storeToken(_response.user._id, _response.token);
+                storeUserData(_response.user);
+                storeTheme('light');
+                setLoading(false);
+                setUser(_response.user);
+              }
+            });
+          });
+        }
+      });
+  };
 
   return (
     <TouchableOpacity
@@ -17,7 +78,7 @@ export default function Apple({navigation}) {
         alignItems: 'center',
         justifyContent: 'center',
       }}
-      onPress={() => {}}>
+      onPress={signIn}>
       {loading ? (
         <ActivityIndicator color="white" size="small" />
       ) : (

@@ -24,12 +24,6 @@ import TilesLoading from '../ChatRoom/TilesLoading';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {storeUserData} from '../../../shared/AsyncStore';
 
-const wait = (timeout) => {
-  return new Promise((resolve) => {
-    setTimeout(resolve, timeout);
-  });
-};
-
 export default function Search({navigation}) {
   const [rooms, setRooms] = useState(null);
   const [filteredRooms, setFilteredRooms] = useState(null);
@@ -41,16 +35,21 @@ export default function Search({navigation}) {
   const [modalItem, setModalItem] = useState({id: ''});
 
   useEffect(() => {
+    getRooms();
+  }, []);
+
+  const getRooms = () => {
     getAllRooms().then((data) => {
       setRooms(data);
       setloading(false);
+      setRefreshing(false);
     });
-  }, [setRefreshing]);
+  };
 
-  const onRefresh = React.useCallback(() => {
+  const onRefresh = () => {
     setRefreshing(true);
-    wait(2000).then(() => setRefreshing(false));
-  }, []);
+    getRooms();
+  };
 
   const handleSearch = _.debounce((q) => {
     setFilteredRooms(_.filter(rooms, (_room) => _.includes(_room.name, q)));

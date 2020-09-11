@@ -9,27 +9,31 @@ Todos:
     9. Recent Searches
     10. Google, Facebook, Phone Auth
 
-Sign up
-Log in 
-Google
-Phone 
+done Sign up
+done Log in 
+done Google
+done Phone 
 Apple
-Forgot Password
-Sign Out
+done Forgot Password
+done Sign Out
 Update Profile
 Create Room
 Join Room
-Search
+Testing Join Room Deep Links
+done Search
+Testing Push Notifications
+
 
 Bugs: 
-    FIXED (refresh control) 1. Can't re render ChatRooms with navigation.goBack().(possible with navigation.navigate())
-    2. FIXED . Friends screen won't go to modal state, sometimes even fucks up the UserProfile navigation.
+    1. FIXED. Can't re render ChatRooms with navigation.goBack().(possible with navigation.navigate())
+    2. FIXED. Friends screen won't go to modal state, sometimes even fucks up the UserProfile navigation.
     3. Re rendering very slow.
     4. Can't load images from database, they aren't uploaded in http but in file format.
     5. FIXED. Modal in Search pops up too slow.
     6. FIXED. Cant't hide tab bar in ChatRoomNavigator after changing the navigation flow.
     7. FIXED. Error on Search query.
-    8. Can't send id in room object from Create Room to Share Room link
+    8. Can't send id in room object from Create Room to Share Room link.
+    9. Can't check if email is verified.
 
     
 Extras:
@@ -37,5 +41,5 @@ Extras:
     2. Emailing Feedback and issues.
     3. Blocking Users.
     4. Deactivating account.
-    6. Terms of service.
-    7. Data Policy.
+    6. Done. Terms of service.
+    7. Done. Data Policy.

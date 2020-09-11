@@ -11,7 +11,10 @@ export default function JoinRoomWithLink({route, navigation}) {
   const {token} = React.useContext(TokenContext);
   const {setUser} = React.useContext(UserDetailsContext);
   const {id} = route.params;
-  const [room, setRoom] = React.useState(null);
+  const [room, setRoom] = React.useState({
+    name: '',
+    listOfUsers: '',
+  });
 
   React.useEffect(() => {
     getChatroomInfo(id).then((response) => {
@@ -25,7 +28,7 @@ export default function JoinRoomWithLink({route, navigation}) {
       setLoading(false);
       navigation.replace('ChatRoomNavigator', {
         screen: 'Room',
-        params: {roomID: room._id},
+        params: {room: room},
       });
       storeUserData(response);
     });

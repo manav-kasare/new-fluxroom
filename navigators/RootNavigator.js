@@ -29,6 +29,21 @@ export default function RootNavigator() {
   const {setData} = useContext(ThemeContext);
   const {setToken} = React.useContext(TokenContext);
 
+  React.useEffect(() => {
+    getToken().then((token) => {
+      getUserMe(token).then((response) => {
+        console.log('[User me]', response);
+        setUser(response.user);
+        getTheme().then((theme) => {
+          setData(theme);
+          setSplashScreen(false);
+          setToken(token);
+          storeUserData(response.user);
+        });
+      });
+    });
+  }, []);
+
   const deepLinking = {
     prefixes: ['fluxroom://'],
     config: {
@@ -55,20 +70,6 @@ export default function RootNavigator() {
       },
     },
   };
-
-  useEffect(() => {
-    getToken().then((token) => {
-      setToken(token);
-      getUserMe(token).then((response) => {
-        setUser(response.user);
-        getTheme().then((theme) => {
-          setData(theme);
-          setSplashScreen(false);
-          storeUserData(response.user);
-        });
-      });
-    });
-  }, []);
 
   if (splashScreen) {
     return <SplashScreen />;

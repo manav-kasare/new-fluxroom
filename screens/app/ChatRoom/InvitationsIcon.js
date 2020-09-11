@@ -3,15 +3,16 @@ import {TouchableOpacity, View, Text} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import {getUserMe} from '../../../backend/database/apiCalls';
-import {ThemeContext, TokenContext} from '../../../shared/Context';
+import {TokenContext, UserDetailsContext} from '../../../shared/Context';
 
 export default function InvitationsIcon({navigation, id}) {
   const {token} = React.useContext(TokenContext);
-  const [invitations, setInvitations] = useState(0);
+  const {user} = React.useContext(UserDetailsContext);
+  const [invitations, setInvitations] = useState(user.invitedToRooms.length);
 
   useEffect(() => {
     getUserMe(token).then((response) => {
-      setInvitations(response.invitedToRooms.length());
+      setInvitations(response.user.invitedToRooms.length);
     });
   }, []);
 

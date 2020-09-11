@@ -13,7 +13,7 @@ import Feather from 'react-native-vector-icons/Feather';
 import ImagePicker from 'react-native-image-picker';
 import {Appbar} from 'react-native-paper';
 
-import {createRoom} from '../../../backend/database/apiCalls';
+import {createRoom, joinRoom} from '../../../backend/database/apiCalls';
 import {
   ThemeContext,
   UserDetailsContext,
@@ -39,17 +39,15 @@ export default function CreateRoom({navigation}) {
 
   const handleCreateRoom = () => {
     setLoading(true);
-    createRoom(token, room)
-      .then()
-      .then()
-      .then((response) => {
-        console.log('[Create Room FE]', response);
-        setResRoom(response.room);
+    createRoom(room).then((response) => {
+      setResRoom(response.room);
+      joinRoom(response._id, token).then((response) => {
         setLoading(false);
         setIsVisible(true);
-        setUser(response.user);
-        storeUserData(response.user);
+        setUser(response);
+        storeUserData(response);
       });
+    });
   };
 
   const pickImage = () => {
@@ -78,19 +76,14 @@ export default function CreateRoom({navigation}) {
   const anon = () => {};
 
   return (
-    <View
-      style={{
-        width: constants.width,
-        height: constants.height,
-        backgroundColor: constants.background1,
-      }}>
+    <>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <SafeAreaView
           SafeAreaView
           style={{
             flex: 1,
             backgroundColor: darkTheme
-              ? constants.background1
+              ? constants.background3
               : constants.primary,
           }}>
           <Appbar.Header style={constants.header}>
@@ -206,6 +199,6 @@ export default function CreateRoom({navigation}) {
         </SafeAreaView>
       </TouchableWithoutFeedback>
       <View style={{height: 50, backgroundColor: constants.background1}} />
-    </View>
+    </>
   );
 }
