@@ -14,7 +14,7 @@ export default function SearchNavigator() {
         name="Search"
         component={Search}
         options={{
-          title: 'Search Rooms',
+          title: 'Find Rooms',
           headerTitleAlign: 'left',
           headerStyle: {
             backgroundColor: darkTheme ? constants.background3 : '#4640C1',

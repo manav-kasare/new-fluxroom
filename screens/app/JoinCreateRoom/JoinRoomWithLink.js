@@ -2,31 +2,32 @@ import React from 'react';
 import {SafeAreaView, View, Text, TouchableOpacity} from 'react-native';
 
 import {getChatroomInfo} from '../../../backend/database/apiCalls';
-import {ThemeContext} from '../../../shared/Context';
+import {ThemeContext, UserDetailsContext} from '../../../shared/Context';
 import {joinRoom} from '../../../backend/database/apiCalls';
+import {storeUserData} from '../../../shared/AsyncStore';
 
 export default function JoinRoomWithLink({route, navigation}) {
   const {constants} = React.useContext(ThemeContext);
   const {token} = React.useContext(TokenContext);
-  // const {id} = route.params;
+  const {setUser} = React.useContext(UserDetailsContext);
+  const {id} = route.params;
   const [room, setRoom] = React.useState(null);
 
-  const getRoomInfo = () => {
+  React.useEffect(() => {
     getChatroomInfo(id).then((response) => {
       setRoom(response);
     });
-  };
-
-  React.useEffect(() => {
-    getRoomInfo();
   }, []);
 
   const handleJoinRoom = () => {
-    joinRoom(id, token).then((response) => {
-      // navigation.replace('ChatRoomNavigator', {
-      //   screen: 'Room',
-      //   params: {roomID: room._id},
-      // });
+    joinRoom(room._id, token).then((response) => {
+      setUser(response);
+      setLoading(false);
+      navigation.replace('ChatRoomNavigator', {
+        screen: 'Room',
+        params: {roomID: room._id},
+      });
+      storeUserData(response);
     });
   };
 

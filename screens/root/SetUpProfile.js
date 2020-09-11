@@ -21,7 +21,7 @@ import {UserDetailsContext} from '../../shared/Context';
 import constants from '../../shared/constants';
 import globalStyles from '../../shared/GlobalStyles';
 import {createUser} from '../../backend/database/apiCalls';
-import CustomToast, {CustomErrorToast} from '../../shared/CustomToast';
+import {CustomErrorToast, CustomToast} from '../../shared/CustomToast';
 import {storeToken} from '../../shared/KeyChain';
 import {storeUserData, storeTheme} from '../../shared/AsyncStore';
 import CachedImage from '../../shared/CachedImage';
@@ -49,27 +49,25 @@ export default function SetUpProfile({route}) {
       createUser({
         username: username,
         email: email,
+        phone: '0',
         googleData: googleData,
         description: description,
         profilePic: profilePhoto,
       }).then((response) => {
-        console.log(response);
         if (response.error) {
           setLoading(false);
           if (response.error.code === 11000) {
-            CustomToast('Username Already taken');
+            CustomErrorToast('Username Already taken');
           } else {
-            CustomToast('An unexpected error occured');
+            CustomErrorToast('An unexpected error occured');
           }
         } else {
-          storeToken(response.token[0]._id, response.token[0].token).then(
-            () => {
-              storeUserData(response.user);
-              storeTheme('light');
-              setUser(response.user);
-              setLoading(false);
-            },
-          );
+          storeToken(response.user._id, response.token[0].token).then(() => {
+            storeUserData(response.user);
+            storeTheme('light');
+            setUser(response.user);
+            setLoading(false);
+          });
         }
       });
     } catch (e) {
@@ -83,7 +81,8 @@ export default function SetUpProfile({route}) {
     try {
       createUser({
         username: username,
-        phoneNumber: phoneNumber,
+        email: '0',
+        phone: phoneNumber,
         phoneData: phoneData,
         description: description,
         profilePic: profilePhoto,
@@ -121,6 +120,7 @@ export default function SetUpProfile({route}) {
         createUser({
           username: username,
           email: email,
+          phone: '0',
           description: description,
           profilePic: profilePhoto,
         }).then((response) => {

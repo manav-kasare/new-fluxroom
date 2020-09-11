@@ -1,15 +1,28 @@
 import React, {useState, useEffect, useContext} from 'react';
-import {SafeAreaView, FlatList, RefreshControl} from 'react-native';
+import {
+  SafeAreaView,
+  FlatList,
+  RefreshControl,
+  Text,
+  View,
+  ActivityIndicator,
+} from 'react-native';
 import {Searchbar} from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import _ from 'lodash';
 
 import OptionsModal from './OptionsModal';
-import {getAllRooms} from '../../../backend/database/apiCalls';
-import {ThemeContext} from '../../../shared/Context';
+import {getAllRooms, joinRoom} from '../../../backend/database/apiCalls';
+import {
+  ThemeContext,
+  UserDetailsContext,
+  TokenContext,
+} from '../../../shared/Context';
 import Tile from '../../../shared/Tile';
 import RecentSearch from './RecentSearch';
 import TilesLoading from '../ChatRoom/TilesLoading';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+import {storeUserData} from '../../../shared/AsyncStore';
 
 const wait = (timeout) => {
   return new Promise((resolve) => {
@@ -17,7 +30,7 @@ const wait = (timeout) => {
   });
 };
 
-export default function Search() {
+export default function Search({navigation}) {
   const [rooms, setRooms] = useState(null);
   const [filteredRooms, setFilteredRooms] = useState(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -32,7 +45,7 @@ export default function Search() {
       setRooms(data);
       setloading(false);
     });
-  }, []);
+  }, [setRefreshing]);
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
@@ -96,9 +109,8 @@ export default function Search() {
             return (
               <>
                 <RenderTile
-                  name={item.name}
-                  description={item.description}
-                  profilePic={item.profilePic}
+                  room={item}
+                  navigation={navigation}
                   onPressTile={() => {
                     setIsModalVisible(!isModalVisible);
                   }}
@@ -121,14 +133,93 @@ export default function Search() {
   );
 }
 
-const RenderTile = ({name, description, profilePic, onPressTile}) => {
+const RenderTile = ({room, onPressTile, navigation}) => {
+  const {constants, darkTheme} = useContext(ThemeContext);
+  const {token} = useContext(TokenContext);
+  const {user, setUser} = useContext(UserDetailsContext);
+  const [loading, setLoading] = useState(false);
+  const [alreadyJoined, setAlreadyJoined] = useState(false);
+
+  React.useEffect(() => {
+    const rooms = user.joinedRooms;
+    rooms.map((_room) => {
+      if (_room._id === room._id) {
+        setAlreadyJoined(true);
+      }
+    });
+  });
+
+  const handleJoin = () => {
+    setLoading(true);
+    joinRoom(room._id, token).then((response) => {
+      setUser(response);
+      setAlreadyJoined(true);
+      setLoading(false);
+      navigation.navigate('Room', {room: room});
+      storeUserData(response);
+    });
+  };
+
   return (
-    <Tile
-      uri={profilePic}
-      heading={name}
-      subHeading={description}
-      onPressTile={onPressTile}
-      onPressTile={onPressTile}
-    />
+    <View
+      style={{
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        paddingRight: 30,
+        backgroundColor: constants.background3,
+        borderBottomColor: darkTheme ? 'transparent' : constants.lineColor,
+        borderBottomWidth: 0.5,
+      }}>
+      <Tile
+        uri={room.profilePic}
+        heading={room.name}
+        subHeading={room.description}
+        onPressTile={onPressTile}
+      />
+      {loading ? (
+        <View
+          style={{
+            borderColor: 'grey',
+            borderWidth: 1,
+            width: 100,
+            height: 30,
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderRadius: 5,
+          }}>
+          <ActivityIndicator size="small" color={constants.background2} />
+        </View>
+      ) : alreadyJoined ? (
+        <View
+          style={{
+            borderColor: 'grey',
+            borderWidth: 1,
+            width: 100,
+            height: 30,
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderRadius: 5,
+          }}>
+          <Text style={{color: constants.text1, fontSize: 10}}>
+            Already Joined
+          </Text>
+        </View>
+      ) : (
+        <TouchableOpacity
+          onPress={handleJoin}
+          style={{
+            borderColor: 'grey',
+            borderWidth: 1,
+            width: 100,
+            height: 30,
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderRadius: 5,
+          }}>
+          <Text style={{color: constants.text1, fontSize: 12}}>Join</Text>
+        </TouchableOpacity>
+      )}
+    </View>
   );
 };

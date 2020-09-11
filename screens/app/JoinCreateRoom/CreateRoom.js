@@ -13,7 +13,7 @@ import Feather from 'react-native-vector-icons/Feather';
 import ImagePicker from 'react-native-image-picker';
 import {Appbar} from 'react-native-paper';
 
-import {createRoom, getUserMe} from '../../../backend/database/apiCalls';
+import {createRoom} from '../../../backend/database/apiCalls';
 import {
   ThemeContext,
   UserDetailsContext,
@@ -39,20 +39,17 @@ export default function CreateRoom({navigation}) {
 
   const handleCreateRoom = () => {
     setLoading(true);
-    createRoom(token, room).then((response) => {
-      if (response.err) {
-        CustomErrorToast('An Error Occured');
-        setLoading(false);
-      } else {
-        setResRoom(response);
+    createRoom(token, room)
+      .then()
+      .then()
+      .then((response) => {
+        console.log('[Create Room FE]', response);
+        setResRoom(response.room);
         setLoading(false);
         setIsVisible(true);
-      }
-      getUserMe(token).then((response) => {
         setUser(response.user);
         storeUserData(response.user);
       });
-    });
   };
 
   const pickImage = () => {

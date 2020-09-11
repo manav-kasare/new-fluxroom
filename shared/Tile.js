@@ -21,13 +21,13 @@ const Tile = React.memo(
             borderBottomColor: darkTheme ? 'transparent' : constants.lineColor,
             borderBottomWidth: 0.5,
           }}>
-          <CircleAvatar uri={uri} size={50} />
+          <CircleAvatar uri={uri} size={60} />
           <View style={{flexDirection: 'column'}}>
             <Text
               style={{
                 color: constants.text1,
                 marginLeft: 15,
-                fontSize: 16,
+                fontSize: 18,
                 fontWeight: '500',
                 fontFamily: 'Helvetica Neue',
               }}>

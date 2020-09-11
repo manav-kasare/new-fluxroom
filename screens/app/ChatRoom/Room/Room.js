@@ -9,27 +9,15 @@ import {
 } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
-import Host from './Host';
-import MemberYou from './MemberYou';
-import Member from './Member';
 import RaisingHand from './RaisingHand';
 import ToggleMic from './ToggleMic';
 
-import {
-  getUserInfo,
-  getChatroomInfo,
-} from '../../../../backend/database/apiCalls';
+import {getChatroomInfo} from '../../../../backend/database/apiCalls';
 import {UserDetailsContext, ThemeContext} from '../../../../shared/Context';
 import RoomAvatar from './RoomAvatar';
 import RoomHeader from './RoomHeader';
 import RoomUserOptions from './RoomUserOptions';
 import RoomAvatarLoading from './RoomAvatarLoading';
-
-const wait = (timeout) => {
-  return new Promise((resolve) => {
-    setTimeout(resolve, timeout);
-  });
-};
 
 const Room = ({route, navigation}) => {
   const {room} = route.params;
@@ -97,10 +85,10 @@ const Room = ({route, navigation}) => {
                       setIsVisible={setIsVisible}
                     />
                     <RoomAvatar
-                      uri={item.user.profilePic}
+                      uri={item.profilePic}
                       size={100}
                       isHost={true}
-                      name={item.user.username}
+                      name={item.username}
                     />
                   </TouchableOpacity>
                 )

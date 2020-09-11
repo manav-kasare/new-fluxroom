@@ -2,9 +2,6 @@ import React from 'react';
 import {TouchableOpacity, Linking} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {UserDetailsContext} from '../../shared/Context';
-import CustomToast from '../../shared/CustomToast';
-
-import {getUserInfo, createUser} from '../../backend/database/apiCalls';
 
 export default function Apple({navigation}) {
   const {setUser} = React.useContext(UserDetailsContext);

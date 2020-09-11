@@ -68,7 +68,7 @@ const ChatRooms = ({navigation}) => {
           keyExtractor={(index) => index.toString()}
           ListEmptyComponent={() => <EmptyItem />}
           renderItem={({item}) => (
-            <RenderTile room={item.room} navigation={navigation} />
+            <RenderTile room={item} navigation={navigation} />
           )}
           refreshControl={
             <RefreshControl
@@ -128,7 +128,7 @@ const RenderTile = React.memo(({room, navigation}) => {
 
   return (
     <Tile
-      uri={room.profilePic}
+      uri={room.profilePic === undefined ? undefined : room.profilePic}
       heading={room.name}
       subHeading={room.description}
       onPressTile={handleOnPressTile}

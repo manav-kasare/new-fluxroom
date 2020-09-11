@@ -11,10 +11,7 @@ export const createUser = (user) => {
   };
 
   return fetch(`${url}/user/create`, requestOptions)
-    .then((response) => {
-      console.log(response);
-      return response.json();
-    })
+    .then((response) => response.json())
     .then((data) => {
       return data;
     });
@@ -105,6 +102,23 @@ export const getUserByPhone = (phoneNumber) => {
     });
 };
 
+export const addRoomToUser = (token, roomId) => {
+  const requestOptions = {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  return fetch(`${url}/addroomtouser?roomid=${roomId}`, requestOptions)
+    .then((response) => response.json())
+    .then((data) => {
+      return data;
+    });
+};
+
 export const updateProfilePhoto = (token) => {
   const requestOptions = {
     method: 'GET',
@@ -133,19 +147,32 @@ export const createRoom = (token, room) => {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(room),
   };
 
   return fetch(`${url}/createroom`, requestOptions)
     .then((response) => response.json())
-    .then((data) => {
-      return data;
+    .then((_room) => {
+      addUserToRoom(token, _room.room._id).then((resRoom) => {
+        addRoomToUser(token, _room.room._id).then((user) => {
+          return {reponse: resRoom, user: user};
+        });
+      });
     });
 };
 
-export const joinRoom = (id, token) => {
+export const joinRoom = (roomId, token) => {
+  return new Promise((resolve, reject) => {
+    addUserToRoom(token, roomId).then(() => {
+      addRoomToUser(token, roomId).then((user) => {
+        resolve(user);
+      });
+    });
+  });
+};
+
+export const addUserToRoom = (token, roomId) => {
   const requestOptions = {
     method: 'POST',
     headers: {
@@ -155,15 +182,34 @@ export const joinRoom = (id, token) => {
     },
   };
 
-  return fetch(`${url}/room/join/${id}`, requestOptions).then((response) => {
-    return response;
-  });
+  return fetch(`${url}/addusertoroom?roomid=${roomId}`, requestOptions)
+    .then((response) => response.json())
+    .then((data) => {
+      return data;
+    });
 };
 
 export const acceptInvitation = () => {};
 
 export const getChatroomInfo = (id) => {
   return fetch(`${url}/room/${id}`)
+    .then((response) => response.json())
+    .then((data) => {
+      return data;
+    });
+};
+
+export const sendNotifactionFirebaseApi = (message, apiKey) => {
+  const requestOptions = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: 'key=' + apiKey,
+    },
+    body: JSON.stringify(message),
+  };
+
+  return fetch('https://fcm.googleapis.com/fcm/send', requestOptions)
     .then((response) => response.json())
     .then((data) => {
       return data;

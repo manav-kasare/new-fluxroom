@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-community/async-storage';
-import {Constants} from 'react-native-unimodules';
 import {CustomErrorToast} from './CustomToast';
+import {firebase} from '@react-native-firebase/messaging';
 
 export const storeUserData = async (value) => {
   try {
@@ -40,4 +40,15 @@ export const getTheme = async () => {
   } catch (e) {
     CustomErrorToast('An Error Occured !');
   }
+};
+
+export const getFCMToken = async () => {
+  let fcmToken = await AsyncStorage.getItem('fcmToken');
+  if (!fcmToken) {
+    fcmToken = await firebase.messaging().getToken();
+    if (fcmToken) {
+      await AsyncStorage.setItem('fcmToken', fcmToken);
+    }
+  }
+  return fcmToken;
 };

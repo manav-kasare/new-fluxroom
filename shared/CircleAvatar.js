@@ -19,7 +19,7 @@ export default function CircleAvatar({size, uri}) {
           alignItems: 'center',
           backgroundColor: constants.primary,
         }}>
-        <FontAwesome5 name="user-alt" color="white" size={20} />
+        <FontAwesome5 name="user-alt" color="white" size={size / 2} />
       </View>
     );
   } else {

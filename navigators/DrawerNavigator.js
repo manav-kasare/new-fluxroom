@@ -4,7 +4,6 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Feather from 'react-native-vector-icons/Feather';
 
 import DrawerContent from './DrawerContent';
-import JoinRoom from '../screens/app/JoinCreateRoom/JoinRoom';
 import SettingsNavigator from './SettingsNavigator';
 import HomeNavigator from './HomeNavigator';
 import CreateRoom from '../screens/app/JoinCreateRoom/CreateRoom';
@@ -39,16 +38,6 @@ export default function DrawerNavigator() {
           drawerLabel: 'Settings',
           drawerIcon: ({color, size}) => (
             <Feather name="settings" size={size} color={color} />
-          ),
-        }}
-      />
-      <Drawer.Screen
-        name="JoinRoom"
-        component={JoinRoom}
-        options={{
-          drawerLabel: 'Join Room',
-          drawerIcon: ({color, size}) => (
-            <Icon name="plus" size={size} color={color} />
           ),
         }}
       />

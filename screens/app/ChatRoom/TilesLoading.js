@@ -15,8 +15,6 @@ export default function TilesLoading() {
       alignItems: 'center',
       flexDirection: 'row',
       backgroundColor: constants.background3,
-      borderBottomColor: darkTheme ? 'transparent' : constants.lineColor,
-      borderBottomWidth: 0.5,
     },
     avatar: {
       width: 50,
