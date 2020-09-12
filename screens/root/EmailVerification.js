@@ -4,7 +4,7 @@ import Modal from 'react-native-modal';
 import auth from '@react-native-firebase/auth';
 
 import {ThemeContext} from '../../shared/Context';
-import CustomToast, {CustomErrorToast} from '../../shared/CustomToast';
+import {CustomErrorToast} from '../../shared/CustomToast';
 
 export default function EmailVerification({
   isVisible,
@@ -20,15 +20,15 @@ export default function EmailVerification({
   const checkVerification = async () => {
     setLoading(true);
     const emailVerified = await auth().currentUser.emailVerified;
-    // if (emailVerified) {
-    //   setLoading(false);
-    setLoading(false);
-    navigation.navigate('SetUpProfile', {email: email});
-    setIsVisible(false);
-    // } else {
-    //   setLoading(false);
-    //   CustomToast('Email not verified');
-    // }
+    console.log('[Email Verified]', emailVerified);
+    if (emailVerified) {
+      setLoading(false);
+      setIsVisible(false);
+      navigation.navigate('SetUpProfile', {email: email});
+    } else {
+      setLoading(false);
+      CustomErrorToast('Email not verified');
+    }
   };
 
   const resendEmail = async () => {
@@ -53,7 +53,7 @@ export default function EmailVerification({
         width: constants.width * 0.9,
         borderRadius: 10,
         position: 'absolute',
-        bottom: 0,
+        bottom: 10,
         height: constants.height * 0.25,
         backgroundColor: 'white',
         alignItems: 'center',
@@ -103,7 +103,7 @@ export default function EmailVerification({
             alignItems: 'center',
             justifyContent: 'center',
             borderRadius: 8,
-            marginVertical: 10,
+            marginVertical: 5,
           }}
           onPress={checkVerification}>
           <Text
@@ -137,7 +137,7 @@ export default function EmailVerification({
             alignItems: 'center',
             justifyContent: 'center',
             borderRadius: 8,
-            marginVertical: 10,
+            marginVertical: 5,
           }}
           onPress={resendEmail}>
           <Text

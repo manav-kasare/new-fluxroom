@@ -48,6 +48,7 @@ export default function SetUpProfile({route}) {
       .messaging()
       .getToken()
       .then((token) => {
+        console.log('[SetUp Profile FCM Token]', token);
         setFcmToken(token);
       });
   };

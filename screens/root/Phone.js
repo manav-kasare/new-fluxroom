@@ -9,14 +9,6 @@ import {
 } from 'react-native';
 import PhoneInput from 'react-native-phone-number-input';
 import auth from '@react-native-firebase/auth';
-import Animated, {
-  useCode,
-  cond,
-  set,
-  eq,
-  SpringUtils,
-} from 'react-native-reanimated';
-import {useValue, withSpringTransition} from 'react-native-redash';
 import * as RNLocalize from 'react-native-localize';
 
 import {ThemeContext} from '../../shared/Context';
@@ -32,22 +24,6 @@ export default function Phone({navigation}) {
   const {constants} = React.useContext(ThemeContext);
   const [isVisible, setIsVisible] = React.useState(false);
   const [confirmation, setConfirmation] = React.useState();
-
-  const positionX = useValue(constants.width);
-  useCode(() => cond(eq(positionX, constants.width), set(positionX, 0)));
-  const slideAnimationX = withSpringTransition(positionX, {
-    ...SpringUtils.makeDefaultConfig(),
-    overshootClamping: true,
-    damping: new Animated.Value(20),
-  });
-
-  const positionY = useValue(constants.height);
-  useCode(() => cond(eq(positionY, constants.height), set(positionY, 0)));
-  const slideAnimationY = withSpringTransition(positionY, {
-    ...SpringUtils.makeDefaultConfig(),
-    overshootClamping: true,
-    damping: new Animated.Value(20),
-  });
 
   const signIn = async () => {
     setIsLoading(true);
@@ -87,7 +63,7 @@ export default function Phone({navigation}) {
           setConfirmation={setConfirmation}
           setIsLoading={setIsLoading}
         />
-        <Animated.View style={{transform: [{translateX: slideAnimationX}]}}>
+        <View>
           <Image
             style={{
               width: constants.width,
@@ -97,8 +73,8 @@ export default function Phone({navigation}) {
             resizeMode="contain"
             source={require('/Users/manav/projects/fluxroom/assets/phone.png')}
           />
-        </Animated.View>
-        <Animated.View
+        </View>
+        <View
           style={{
             flex: 1,
             width: constants.width,
@@ -108,7 +84,6 @@ export default function Phone({navigation}) {
             backgroundColor: 'white',
             borderTopRightRadius: 15,
             borderTopLeftRadius: 15,
-            transform: [{translateY: slideAnimationY}],
           }}>
           <PhoneInput
             ref={phoneInput}
@@ -148,7 +123,7 @@ export default function Phone({navigation}) {
               <Text style={globalStyles.buttonText}>Get OTP</Text>
             </TouchableOpacity>
           )}
-        </Animated.View>
+        </View>
       </SafeAreaView>
     </View>
   );

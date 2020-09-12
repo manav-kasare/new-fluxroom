@@ -15,14 +15,6 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import auth from '@react-native-firebase/auth';
 import ReactNativeHaptic from 'react-native-haptic';
-import Animated, {
-  useCode,
-  cond,
-  set,
-  eq,
-  SpringUtils,
-} from 'react-native-reanimated';
-import {useValue, withSpringTransition} from 'react-native-redash';
 
 import {UserDetailsContext} from '../../shared/Context';
 import constants from '../../shared/constants';
@@ -39,22 +31,6 @@ export default function LogIn({navigation}) {
   const [revealPassword, setRevealPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [onFocusPassword, setOnFocusPassword] = useState(false);
-
-  const positionX = useValue(constants.width * 2);
-  useCode(() => cond(eq(positionX, constants.width * 2), set(positionX, 0)));
-  const slideAnimationX = withSpringTransition(positionX, {
-    ...SpringUtils.makeDefaultConfig(),
-    overshootClamping: true,
-    damping: new Animated.Value(20),
-  });
-
-  const positionY = useValue(constants.height);
-  useCode(() => cond(eq(positionY, constants.height), set(positionY, 0)));
-  const slideAnimationY = withSpringTransition(positionY, {
-    ...SpringUtils.makeDefaultConfig(),
-    overshootClamping: true,
-    damping: new Animated.Value(20),
-  });
 
   const signIn = async () => {
     setIsLoading(true);
@@ -115,7 +91,7 @@ export default function LogIn({navigation}) {
               alignItems: 'center',
               marginBottom: 50,
             }}>
-            <Animated.View style={{transform: [{translateX: slideAnimationX}]}}>
+            <View>
               <Image
                 style={{
                   width: constants.width,
@@ -125,14 +101,13 @@ export default function LogIn({navigation}) {
                 resizeMode="contain"
                 source={require('/Users/manav/projects/fluxroom/assets/receipt.png')}
               />
-            </Animated.View>
-            <Animated.View
+            </View>
+            <View
               style={{
                 backgroundColor: '#4640C1',
                 borderTopRightRadius: 10,
                 borderTopLeftRadius: 10,
                 alignItems: 'center',
-                transform: [{translateY: slideAnimationY}],
               }}>
               <View
                 style={{
@@ -213,7 +188,7 @@ export default function LogIn({navigation}) {
                   <Text style={globalStyles.buttonText}>Forgot Password ?</Text>
                 </TouchableOpacity>
               </View>
-            </Animated.View>
+            </View>
           </SafeAreaView>
         </View>
       </TouchableWithoutFeedback>

@@ -10,15 +10,6 @@ import {
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-import Animated, {
-  SpringUtils,
-  useCode,
-  cond,
-  set,
-  eq,
-} from 'react-native-reanimated';
-import {useValue, withSpringTransition} from 'react-native-redash';
-
 import constants from '../../shared/constants';
 import globalStyles from '../../shared/GlobalStyles';
 // import {
@@ -28,22 +19,6 @@ import globalStyles from '../../shared/GlobalStyles';
 
 export default function ForgotPassword({navigation}) {
   const [username, setUsername] = useState(null);
-
-  const positionX = useValue(constants.width * 2);
-  useCode(() => cond(eq(positionX, constants.width * 2), set(positionX, 0)));
-  const slideAnimationX = withSpringTransition(positionX, {
-    ...SpringUtils.makeDefaultConfig(),
-    overshootClamping: true,
-    damping: new Animated.Value(20),
-  });
-
-  const positionY = useValue(constants.height);
-  useCode(() => cond(eq(positionY, constants.height), set(positionY, 0)));
-  const slideAnimationY = withSpringTransition(positionY, {
-    ...SpringUtils.makeDefaultConfig(),
-    overshootClamping: true,
-    damping: new Animated.Value(20),
-  });
 
   const forgotPassword = () => {
     navigation.navigate('ForgotPasswordConfirmation', {username: username});
@@ -65,7 +40,7 @@ export default function ForgotPassword({navigation}) {
             backgroundColor: '#4640C1',
             alignItems: 'center',
           }}>
-          <Animated.View style={{transform: [{translateX: slideAnimationX}]}}>
+          <View>
             <Image
               style={{
                 width: constants.width,
@@ -75,8 +50,8 @@ export default function ForgotPassword({navigation}) {
               resizeMode="contain"
               source={require('/Users/manav/projects/fluxroom/assets/forgot_password.png')}
             />
-          </Animated.View>
-          <Animated.View
+          </View>
+          <View
             style={{
               flex: 1,
               width: constants.width,
@@ -86,7 +61,6 @@ export default function ForgotPassword({navigation}) {
               backgroundColor: 'white',
               borderTopRightRadius: 15,
               borderTopLeftRadius: 15,
-              transform: [{translateY: slideAnimationY}],
             }}>
             <View>
               <View style={globalStyles.input}>
@@ -118,7 +92,7 @@ export default function ForgotPassword({navigation}) {
                 </Text>
               </TouchableOpacity>
             </View>
-          </Animated.View>
+          </View>
         </SafeAreaView>
       </View>
     </KeyboardAwareScrollView>

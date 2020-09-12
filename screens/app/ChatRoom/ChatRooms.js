@@ -30,7 +30,6 @@ const ChatRooms = ({navigation}) => {
   const [loading, setloading] = useState(true);
 
   useEffect(() => {
-    console.log('[Chatrooms]');
     setData();
   }, []);
 

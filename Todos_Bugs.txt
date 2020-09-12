@@ -32,8 +32,11 @@ Bugs:
     5. FIXED. Modal in Search pops up too slow.
     6. FIXED. Cant't hide tab bar in ChatRoomNavigator after changing the navigation flow.
     7. FIXED. Error on Search query.
-    8. Can't send id in room object from Create Room to Share Room link.
+    8. FIXED. Can't send id in room object from Create Room to Share Room link.
     9. Can't check if email is verified.
+    10. FCM Token while setting up profile.
+    11. Can't get FCM Token on a real device.
+    12. Cant't fetch room by id while deep linking.
 
     
 Extras:

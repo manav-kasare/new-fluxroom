@@ -6,9 +6,20 @@ import {
   StatusBar,
   Platform,
   SafeAreaView,
+  StyleSheet,
 } from 'react-native';
-import Animated, {useCode, cond, set, eq} from 'react-native-reanimated';
-import {useValue, withTimingTransition} from 'react-native-redash';
+import Animated, {
+  useCode,
+  cond,
+  set,
+  eq,
+  SpringUtils,
+} from 'react-native-reanimated';
+import {
+  useValue,
+  withTimingTransition,
+  withSpringTransition,
+} from 'react-native-redash';
 import Entypo from 'react-native-vector-icons/Entypo';
 
 import constants from '../../shared/constants';
@@ -21,6 +32,14 @@ export default function Onboard({navigation}) {
   const time = useValue(0);
   const timeAnimation = withTimingTransition(time, {duration: 1000});
   useCode(() => cond(eq(time, 0), set(time, 1)), []);
+
+  const positionY = useValue(-constants.height);
+  useCode(() => cond(eq(positionY, -constants.height), set(positionY, 0)));
+  const slideAnimationY = withSpringTransition(positionY, {
+    ...SpringUtils.makeDefaultConfig(),
+    overshootClamping: true,
+    damping: new Animated.Value(20),
+  });
 
   const navigatePhone = () => {
     navigation.navigate('Phone');
@@ -43,7 +62,7 @@ export default function Onboard({navigation}) {
         style={{
           flex: 1,
           backgroundColor: '#4640C1',
-          // justifyContent: 'space-between',
+          justifyContent: 'flex-end',
         }}>
         <StatusBar barStyle="light-content" />
         <Animated.View
@@ -66,60 +85,68 @@ export default function Onboard({navigation}) {
         </Animated.View>
         <Animated.View
           style={{
-            position: 'absolute',
-            bottom: 0,
-            paddingBottom: 25,
-            paddingTop: 25,
-            width: constants.width,
+            backgroundColor: '#4640C1',
+            borderTopRightRadius: 10,
+            borderTopLeftRadius: 10,
             alignItems: 'center',
-            justifyContent: 'flex-start',
-            backgroundColor: 'white',
-            borderTopRightRadius: 15,
-            borderTopLeftRadius: 15,
-            borderWidth: 1,
-            opacity: timeAnimation,
+            transform: [{translateY: slideAnimationY}],
           }}>
-          <View>
-            <TouchableOpacity
-              style={globalStyles.screenButton}
-              onPress={navigateSignUp}>
-              <Text style={globalStyles.buttonText}>Sign Up</Text>
-            </TouchableOpacity>
-          </View>
-          <View>
-            <TouchableOpacity
-              style={globalStyles.screenButton}
-              onPress={navigateLogin}>
-              <Text style={globalStyles.buttonText}>Log In</Text>
-            </TouchableOpacity>
-          </View>
           <View
             style={{
-              width: constants.width * 0.9,
-              justifyContent: 'space-evenly',
-              shadowColor: 'grey',
-              shadowOpacity: 0.2,
-              elevation: 1,
+              width: constants.width,
               alignItems: 'center',
-              flexDirection: 'row',
-              marginVertical: 20,
-              alignSelf: 'center',
+              justifyContent: 'flex-start',
+              paddingTop: 50,
+              backgroundColor: 'white',
+              borderTopRightRadius: 15,
+              borderTopLeftRadius: 15,
             }}>
-            <Google navigation={navigation} />
-            {Platform.OS === 'ios' ? <Apple navigation={navigation} /> : <></>}
-
-            <TouchableOpacity
+            <View>
+              <TouchableOpacity
+                style={globalStyles.screenButton}
+                onPress={navigateSignUp}>
+                <Text style={globalStyles.buttonText}>Sign Up</Text>
+              </TouchableOpacity>
+            </View>
+            <View>
+              <TouchableOpacity
+                style={globalStyles.screenButton}
+                onPress={navigateLogin}>
+                <Text style={globalStyles.buttonText}>Log In</Text>
+              </TouchableOpacity>
+            </View>
+            <View
               style={{
-                width: 50,
-                height: 50,
-                borderRadius: 50 / 2,
-                backgroundColor: '#4640C1',
+                width: constants.width * 0.9,
+                justifyContent: 'space-evenly',
+                shadowColor: 'grey',
+                shadowOpacity: 0.2,
+                elevation: 1,
                 alignItems: 'center',
-                justifyContent: 'center',
-              }}
-              onPress={navigatePhone}>
-              <Entypo size={25} name="phone" color="white" />
-            </TouchableOpacity>
+                flexDirection: 'row',
+                marginVertical: 20,
+                alignSelf: 'center',
+              }}>
+              <Google navigation={navigation} />
+              {Platform.OS === 'ios' ? (
+                <Apple navigation={navigation} />
+              ) : (
+                <></>
+              )}
+
+              <TouchableOpacity
+                style={{
+                  width: 50,
+                  height: 50,
+                  borderRadius: 50 / 2,
+                  backgroundColor: '#4640C1',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+                onPress={navigatePhone}>
+                <Entypo size={25} name="phone" color="white" />
+              </TouchableOpacity>
+            </View>
           </View>
         </Animated.View>
       </SafeAreaView>

@@ -15,14 +15,6 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import ReactNativeHaptic from 'react-native-haptic';
 import auth from '@react-native-firebase/auth';
-import Animated, {
-  useCode,
-  cond,
-  set,
-  eq,
-  SpringUtils,
-} from 'react-native-reanimated';
-import {useValue, withSpringTransition} from 'react-native-redash';
 
 import constants from '../../shared/constants';
 import CustomToast, {CustomErrorToast} from '../../shared/CustomToast';
@@ -36,22 +28,6 @@ export default function SignUp({navigation}) {
   const [password, setPassword] = useState(null);
   const [isVisible, setIsVisible] = useState(false);
   const [userInfo, setUserInfo] = useState();
-
-  const positionX = useValue(constants.width * 2);
-  useCode(() => cond(eq(positionX, constants.width * 2), set(positionX, 0)));
-  const slideAnimationX = withSpringTransition(positionX, {
-    ...SpringUtils.makeDefaultConfig(),
-    overshootClamping: true,
-    damping: new Animated.Value(20),
-  });
-
-  const positionY = useValue(constants.height);
-  useCode(() => cond(eq(positionY, constants.height), set(positionY, 0)));
-  const slideAnimationY = withSpringTransition(positionY, {
-    ...SpringUtils.makeDefaultConfig(),
-    overshootClamping: true,
-    damping: new Animated.Value(20),
-  });
 
   const isPasswordValid = (q) => {
     return /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/.test(
@@ -114,7 +90,7 @@ export default function SignUp({navigation}) {
               setIsVisible={setIsVisible}
               userInfo={userInfo}
             />
-            <Animated.View style={{transform: [{translateX: slideAnimationX}]}}>
+            <View>
               <Image
                 style={{
                   width: constants.width,
@@ -124,8 +100,8 @@ export default function SignUp({navigation}) {
                 resizeMode="contain"
                 source={require('/Users/manav/projects/fluxroom/assets/contract.png')}
               />
-            </Animated.View>
-            <Animated.View
+            </View>
+            <View
               style={{
                 flex: 1,
                 width: constants.width,
@@ -135,7 +111,6 @@ export default function SignUp({navigation}) {
                 backgroundColor: 'white',
                 borderTopRightRadius: 15,
                 borderTopLeftRadius: 15,
-                transform: [{translateY: slideAnimationY}],
               }}>
               <View style={globalStyles.input}>
                 <MaterialCommunityIcons
@@ -213,7 +188,7 @@ export default function SignUp({navigation}) {
                   <Text style={globalStyles.buttonText}>Sign Up</Text>
                 </TouchableOpacity>
               )}
-            </Animated.View>
+            </View>
           </SafeAreaView>
         </View>
       </TouchableWithoutFeedback>

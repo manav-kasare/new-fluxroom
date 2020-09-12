@@ -22,22 +22,25 @@ export default function JoinRoomWithLink({route, navigation}) {
 
   React.useEffect(() => {
     checkIfAlreadyJoined();
-    getChatroomInfo(id).then((response) => {
-      console.log('[Chat Room Info]', response);
-      console.log(response.text());
-      setRoom(response);
-    });
+    getData();
   }, []);
+
+  const getData = () => {
+    const url = 'https://fluxroom-backend-beta.herokuapp.com';
+    fetch(`${url}/room/${id}`)
+      .then((response) => response.text())
+      .then((responseData) => {
+        alert(responseData);
+        console.log('[Chat Room Info]', responseData);
+        setRoom(responseData);
+      });
+  };
 
   const checkIfAlreadyJoined = () => {
     const rooms = user.joinedRooms;
     rooms.map((_room) => {
-      if (_room._id === room._id) {
-        console.log('[Found ID]', id);
-        navigation.replace('ChatRoomNavigator', {
-          screen: 'Room',
-          params: {room: room},
-        });
+      if (_room._id === id) {
+        navigation.replace('Room', {room: room});
       }
     });
   };

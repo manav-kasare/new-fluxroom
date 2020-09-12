@@ -19,7 +19,6 @@ import Phone from '../screens/root/Phone';
 import {getUserMe} from '../backend/database/apiCalls';
 import {getToken} from '../shared/KeyChain';
 import {storeUserData, getTheme} from '../shared/AsyncStore';
-import {CustomErrorToast} from '../shared/CustomToast';
 
 const Stack = createStackNavigator();
 
@@ -30,7 +29,6 @@ export default function RootNavigator() {
   const {setToken} = React.useContext(TokenContext);
 
   React.useEffect(() => {
-    console.log('[Setting Data Root Navigator]');
     getToken().then((token) => {
       getUserMe(token).then((response) => {
         setUser(response.user);
