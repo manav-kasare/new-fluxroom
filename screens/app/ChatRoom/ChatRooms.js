@@ -50,7 +50,7 @@ const ChatRooms = ({navigation}) => {
         });
       });
     } else {
-      getUserMe(_token).then((response) => {
+      getUserMe(token).then((response) => {
         setChatRoomList(response.user.joinedRooms);
         setloading(false);
         setUser(response.user);
