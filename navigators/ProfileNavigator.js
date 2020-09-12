@@ -18,6 +18,10 @@ export default function ProfileNavigator({route, navigation}) {
     navigation.setOptions({tabBarVisible: true});
   }
 
+  const openDrawer = () => {
+    navigation.openDrawer();
+  };
+
   return (
     <ProfileStack.Navigator>
       <ProfileStack.Screen
@@ -49,7 +53,7 @@ export default function ProfileNavigator({route, navigation}) {
                 alignItems: 'center',
                 justifyContent: 'center',
               }}
-              onPress={() => navigation.openDrawer()}>
+              onPress={openDrawer}>
               <Feather name="menu" size={20} color="white" />
             </TouchableOpacity>
           ),

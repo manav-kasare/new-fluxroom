@@ -38,16 +38,18 @@ export default function RoomSettings({route, navigation}) {
     setCopiedText(text);
   };
 
+  const navigateToRoom = () => {
+    navigation.navigate('ChangeRoomSettings', {
+      room: room,
+    })
+  }
+
   return (
     <SafeAreaView style={constants.screen}>
       <View style={{flex: 1}}>
         <TouchableOpacity
           style={styles.container}
-          onPress={() =>
-            navigation.navigate('ChangeRoomSettings', {
-              room: room,
-            })
-          }>
+          onPress={navigateToRoom>
           <View style={{alignItems: 'center', flexDirection: 'row'}}>
             <View
               style={{

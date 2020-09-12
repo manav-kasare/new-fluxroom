@@ -34,6 +34,10 @@ export default function JoinRoomWithLink({route, navigation}) {
     });
   };
 
+  const navigate = () => {
+    navigation.replace('DrawerNavigator');
+  };
+
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: constants.background1}}>
       <View
@@ -94,7 +98,7 @@ export default function JoinRoomWithLink({route, navigation}) {
             marginHorizontal: 10,
             backgroundColor: constants.primary,
           }}
-          onPress={() => navigation.replace('DrawerNavigator')}>
+          onPress={navigate}>
           <Text
             style={{
               fontFamily: 'Helvetica',

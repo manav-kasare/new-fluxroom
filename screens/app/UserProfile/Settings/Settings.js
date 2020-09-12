@@ -33,6 +33,14 @@ export default function Settings({navigation}) {
     },
   };
 
+  const navigateAboutUsNavigator = () => {
+    navigation.navigate('AboutUsNavigator');
+  };
+
+  const navigateIssues = () => {
+    navigation.navigate('Issues');
+  };
+
   return (
     <SafeAreaView
       style={{
@@ -42,7 +50,7 @@ export default function Settings({navigation}) {
       <View style={{flex: 1, backgroundColor: constants.background1}}>
         <View style={styles.view}>
           <TouchableOpacity
-            onPress={() => navigation.navigate('AboutUsNavigator')}
+            onPress={navigateAboutUsNavigator}
             style={styles.view_touchable}>
             <View
               style={{
@@ -65,7 +73,7 @@ export default function Settings({navigation}) {
           </TouchableOpacity>
         </View>
         <View style={styles.view}>
-          <TouchableOpacity onPress={() => {}} style={styles.view_touchable}>
+          <TouchableOpacity style={styles.view_touchable}>
             <View
               style={{
                 flexDirection: 'row',
@@ -84,7 +92,7 @@ export default function Settings({navigation}) {
         </View>
         <View style={styles.view}>
           <TouchableOpacity
-            onPress={() => navigation.navigate('Issues')}
+            onPress={navigateIssues}
             style={styles.view_touchable}>
             <View
               style={{
@@ -107,7 +115,7 @@ export default function Settings({navigation}) {
           </TouchableOpacity>
         </View>
         <View style={styles.view}>
-          <TouchableOpacity onPress={() => {}} style={styles.view_touchable}>
+          <TouchableOpacity style={styles.view_touchable}>
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
               <FontAwesome5 name="user-alt-slash" size={18} color="crimson" />
               <Text

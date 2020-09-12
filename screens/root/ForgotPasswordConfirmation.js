@@ -44,6 +44,10 @@ export default function ForgotPasswordConfirmation({route}) {
     damping: new Animated.Value(20),
   });
 
+  const toggleRevealPassword = () => {
+    setRevealPassword(!revealPassword);
+  };
+
   return (
     <KeyboardAwareScrollView
       style={{width: constants.width, height: constants.height}}
@@ -123,7 +127,7 @@ export default function ForgotPasswordConfirmation({route}) {
                   justifyContent: 'center',
                   // backgroundColor: 'red',
                 }}
-                onPress={() => setRevealPassword(!revealPassword)}>
+                onPress={toggleRevealPassword}>
                 {revealPassword ? (
                   <Entypo name="eye" size={18} color="#0d0c0a" />
                 ) : (
@@ -131,7 +135,7 @@ export default function ForgotPasswordConfirmation({route}) {
                 )}
               </TouchableOpacity>
             </View>
-            <TouchableOpacity onPress={() => {}} style={globalStyles.button}>
+            <TouchableOpacity style={globalStyles.button}>
               <Text
                 style={{
                   color: 'white',

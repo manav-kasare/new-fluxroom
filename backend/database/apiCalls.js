@@ -1,4 +1,5 @@
 const url = 'https://fluxroom-backend-beta.herokuapp.com';
+// const url = 'http://localhost:3000';
 
 export const createUser = (user) => {
   const requestOptions = {
@@ -134,9 +135,11 @@ export const updateProfilePhoto = (token) => {
 };
 
 export const getAllRooms = () => {
+  console.log('[Fetching all rooms]');
   return fetch(`${url}/rooms`)
     .then((response) => response.json())
     .then((data) => {
+      console.log('[Got data]');
       return data;
     });
 };
@@ -154,18 +157,36 @@ export const createRoom = (room) => {
   return fetch(`${url}/createroom`, requestOptions)
     .then((response) => response.json())
     .then((_room) => {
+      console.log('[Create Room]', _room);
       return _room;
     });
 };
 
-export const joinRoom = (roomId, token) => {
-  return new Promise((resolve, reject) => {
-    addUserToRoom(token, roomId).then(() => {
-      addRoomToUser(token, roomId).then((user) => {
-        resolve(user);
-      });
-    });
-  });
+export const joinRoom = async (roomId, token) => {
+  console.log('[Join room api call]');
+  try {
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    return fetch(`${url}/addusertoroom?roomid=${roomId}`, requestOptions).then(
+      () => {
+        console.log('[Add user to room]');
+        return fetch(`${url}/addroomtouser?roomid=${roomId}`, requestOptions)
+          .then((response) => response.json())
+          .then((data) => {
+            console.log('[Add room to user]', data);
+            return data;
+          });
+      },
+    );
+  } catch (err) {
+    console.log('[Join Room Error]', err);
+  }
 };
 
 export const addUserToRoom = (token, roomId) => {
@@ -181,6 +202,7 @@ export const addUserToRoom = (token, roomId) => {
   return fetch(`${url}/addusertoroom?roomid=${roomId}`, requestOptions)
     .then((response) => response.json())
     .then((data) => {
+      console.log('[Add room to user]', data);
       return data;
     });
 };

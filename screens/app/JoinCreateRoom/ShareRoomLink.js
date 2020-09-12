@@ -22,7 +22,7 @@ export default function ShareRoomLink({
   const [url, setUrl] = React.useState(null);
 
   React.useEffect(() => {
-    setUrl(`fluxroom://app/home/rooms/join/`);
+    setUrl(`fluxroom://app/home/rooms/join/${room._id}`);
   }, []);
 
   const shareLink = () => {

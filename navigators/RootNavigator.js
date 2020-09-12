@@ -32,7 +32,6 @@ export default function RootNavigator() {
   React.useEffect(() => {
     getToken().then((token) => {
       getUserMe(token).then((response) => {
-        console.log('[User me]', response);
         setUser(response.user);
         getTheme().then((theme) => {
           setData(theme);

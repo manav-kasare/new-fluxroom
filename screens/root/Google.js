@@ -59,11 +59,12 @@ export default function Google({navigation}) {
                     CustomToast('An Error Occured');
                   } else {
                     ReactNativeHaptic.generate('notificationSuccess');
-                    storeToken(_response.user._id, _response.token);
-                    storeUserData(_response.user);
-                    storeTheme('light');
-                    setLoading(false);
-                    setUser(_response.user);
+                    storeToken(_response.user._id, _response.token).then(() => {
+                      storeTheme('light');
+                      storeUserData(_response.user);
+                      setUser(_response.user);
+                      setLoading(false);
+                    });
                   }
                 });
               });

@@ -8,6 +8,11 @@ export default function RaisingHand({
   setSomeoneRaisingHand,
 }) {
   const {constants} = React.useContext(ThemeContext);
+
+  const toggleRaiseHand = () => {
+    setSomeoneRaisingHand(!someoneRaisingHand);
+  };
+
   return (
     <TouchableOpacity
       style={{
@@ -19,7 +24,7 @@ export default function RaisingHand({
         justifyContent: 'center',
         marginHorizontal: 20,
       }}
-      onPress={() => setSomeoneRaisingHand(!someoneRaisingHand)}>
+      onPress={toggleRaiseHand}>
       <MaterialCommunityIcons size={30} color="white" name="hand" />
     </TouchableOpacity>
   );

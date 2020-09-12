@@ -13,14 +13,14 @@ done Sign up
 done Log in 
 done Google
 done Phone 
-Apple
+done (not tested) Apple
 done Forgot Password
 done Sign Out
 Update Profile
+done Search
 Create Room
 Join Room
 Testing Join Room Deep Links
-done Search
 Testing Push Notifications
 
 

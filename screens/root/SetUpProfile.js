@@ -13,7 +13,6 @@ import {
 import Feather from 'react-native-vector-icons/Feather';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import AsyncStorage from '@react-native-community/async-storage';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import ImagePicker from 'react-native-image-picker';
 
@@ -226,10 +225,7 @@ export default function SetUpProfile({route}) {
     <KeyboardAwareScrollView
       style={{width: constants.width, height: constants.height}}
       keyboardShouldPersistTaps="handled">
-      <TouchableWithoutFeedback
-        onPress={() => {
-          Keyboard.dismiss();
-        }}>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View
           style={{
             width: constants.width,

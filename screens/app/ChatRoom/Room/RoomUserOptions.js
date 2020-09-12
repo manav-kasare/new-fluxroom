@@ -9,6 +9,10 @@ import {ThemeContext} from '../../../../shared/Context';
 export default function RoomUserOptions({isVisible, setIsVisible}) {
   const {constants} = React.useContext(ThemeContext);
 
+  const toggleVisible = () => {
+    setIsVisible(false);
+  };
+
   return (
     <Modal
       isVisible={isVisible}
@@ -44,7 +48,6 @@ export default function RoomUserOptions({isVisible, setIsVisible}) {
         }}
       />
       <TouchableOpacity
-        onPress={() => {}}
         style={{
           height: 50,
           width: constants.width * 0.9,
@@ -75,7 +78,6 @@ export default function RoomUserOptions({isVisible, setIsVisible}) {
         />
       </TouchableOpacity>
       <TouchableOpacity
-        onPress={() => {}}
         style={{
           height: 30,
           width: constants.width * 0.9,
@@ -105,7 +107,7 @@ export default function RoomUserOptions({isVisible, setIsVisible}) {
           style={{position: 'absolute', right: 20}}
         />
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => setIsVisible(false)}>
+      <TouchableOpacity onPress={toggleVisible}>
         <Text
           style={{
             color: 'dodgerblue',

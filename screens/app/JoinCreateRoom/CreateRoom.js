@@ -40,13 +40,24 @@ export default function CreateRoom({navigation}) {
   const handleCreateRoom = () => {
     setLoading(true);
     createRoom(room).then((response) => {
-      setResRoom(response.room);
-      joinRoom(response._id, token).then((response) => {
+      console.log('[Create Room]', response);
+      if (response.err) {
         setLoading(false);
-        setIsVisible(true);
-        setUser(response);
-        storeUserData(response);
-      });
+        if (response.err.code === 11000) {
+          CustomErrorToast('Room name Already Taken !');
+        } else {
+          CustomErrorToast('An Error Occured !');
+        }
+      } else {
+        setResRoom(response.room);
+        joinRoom(response.room._id, token).then((_response) => {
+          console.log('[Create and Join Room Response]', _response);
+          setLoading(false);
+          setIsVisible(true);
+          setUser(_response);
+          storeUserData(_response);
+        });
+      }
     });
   };
 

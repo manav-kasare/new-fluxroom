@@ -1,6 +1,6 @@
 import React from 'react';
 import {TouchableOpacity} from 'react-native';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import {UserDetailsContext} from '../../shared/Context';
 import auth from '@react-native-firebase/auth';
 import appleAuth, {
@@ -39,13 +39,13 @@ export default function Apple({navigation}) {
       .signInWithCredential(appleCredential)
       .then((userInfo) => {
         setLoading(false);
-        if (_userInfo.additionalUserInfo.isNewUser) {
+        if (userInfo.additionalUserInfo.isNewUser) {
           navigation.navigate('SetUpProfile', {
-            email: _userInfo.user.email,
-            appleData: _userInfo,
+            email: userInfo.user.email,
+            appleData: userInfo,
           });
         } else {
-          getUserByEmail(_userInfo.user.email).then((response) => {
+          getUserByEmail(userInfo.user.email).then((response) => {
             loginUser({
               username: response.username,
               password: '89337133-17c9-42e3-9fef-78416a25651a',
@@ -82,7 +82,7 @@ export default function Apple({navigation}) {
       {loading ? (
         <ActivityIndicator color="white" size="small" />
       ) : (
-        <FontAwesome5 name="facebook-f" size={25} color="white" />
+        <AntDesign name="apple1" size={25} color="white" />
       )}
     </TouchableOpacity>
   );

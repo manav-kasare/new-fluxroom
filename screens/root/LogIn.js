@@ -89,14 +89,19 @@ export default function LogIn({navigation}) {
     }
   };
 
+  const toggleRevealPassword = () => {
+    setRevealPassword(!revealPassword);
+  };
+
+  const navigateForgotPassword = () => {
+    navigation.navigate('ForgotPassword');
+  };
+
   return (
     <KeyboardAwareScrollView
       style={{width: constants.width, height: constants.height}}
       keyboardShouldPersistTaps="handled">
-      <TouchableWithoutFeedback
-        onPress={() => {
-          Keyboard.dismiss();
-        }}>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View
           style={{
             width: constants.width,
@@ -175,7 +180,7 @@ export default function LogIn({navigation}) {
                       alignItems: 'center',
                       justifyContent: 'center',
                     }}
-                    onPress={() => setRevealPassword(!revealPassword)}>
+                    onPress={toggleRevealPassword}>
                     {onFocusPassword ? (
                       revealPassword ? (
                         <Entypo name="eye" size={20} color="black" />
@@ -202,7 +207,7 @@ export default function LogIn({navigation}) {
                 )}
                 <TouchableOpacity
                   style={globalStyles.button}
-                  onPress={() => navigation.navigate('ForgotPassword')}>
+                  onPress={navigateForgotPassword}>
                   <Text style={globalStyles.buttonText}>Forgot Password ?</Text>
                 </TouchableOpacity>
               </View>

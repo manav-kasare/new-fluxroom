@@ -65,7 +65,6 @@ const ProfileComponent = ({navigation}) => {
         </Text>
       </View>
       <TouchableOpacity
-        onPress={() => {}}
         style={{
           width: constants.width,
           height: 75,

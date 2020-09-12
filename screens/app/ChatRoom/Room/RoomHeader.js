@@ -9,6 +9,10 @@ import {ThemeContext} from '../../../../shared/Context';
 export default function RoomHeader({navigation, room}) {
   const {constants, darkTheme} = React.useContext(ThemeContext);
 
+  const goBack = () => {
+    navigation.goBack();
+  };
+
   return (
     <View
       style={{
@@ -21,7 +25,7 @@ export default function RoomHeader({navigation, room}) {
         backgroundColor: darkTheme ? constants.background1 : constants.primary,
       }}>
       <View style={{flexDirection: 'row', alignItems: 'center'}}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
+        <TouchableOpacity onPress={goBack}>
           {Platform.OS === 'ios' ? (
             <Ionicons name="chevron-back" size={25} color="white" />
           ) : (

@@ -4,7 +4,6 @@ import {createStackNavigator} from '@react-navigation/stack';
 import FullPhoto from '../screens/app/ChatRoom/FullPhoto';
 import ChatRooms from '../screens/app/ChatRoom/ChatRooms';
 import Room from '../screens/app/ChatRoom/Room/Room';
-import PersonalChat from '../screens/app/ChatRoom/Room/PersonalChat';
 import Invitations from '../screens/app/ChatRoom/Invitations';
 import JoinRoomWithLink from '../screens/app/JoinCreateRoom/JoinRoomWithLink';
 import RoomSettings from '../screens/app/ChatRoom/Room/RoomSettings';
@@ -104,11 +103,6 @@ export default function ChatRoomNavigator({route, navigation}) {
           headerBackTitleVisible: false,
           headerTintColor: 'white',
         })}
-      />
-      <ChatRoomStack.Screen
-        name="PersonalChat"
-        component={PersonalChat}
-        options={{headerShown: false}}
       />
       <ChatRoomStack.Screen
         name="Invitations"

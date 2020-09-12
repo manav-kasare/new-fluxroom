@@ -16,6 +16,10 @@ export default function InvitationsIcon({navigation, id}) {
     });
   }, []);
 
+  const navigateInvitations = () => {
+    navigation.navigate('Invitations');
+  };
+
   return (
     <View
       style={{
@@ -27,7 +31,7 @@ export default function InvitationsIcon({navigation, id}) {
         justifyContent: 'center',
         flexDirection: 'row',
       }}>
-      <TouchableOpacity onPress={() => navigation.navigate('Invitations')}>
+      <TouchableOpacity onPress={navigateInvitations}>
         <Ionicons name="ios-notifications-outline" size={25} color="white" />
       </TouchableOpacity>
       <View

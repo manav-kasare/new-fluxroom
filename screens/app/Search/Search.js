@@ -24,7 +24,7 @@ import TilesLoading from '../ChatRoom/TilesLoading';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {storeUserData} from '../../../shared/AsyncStore';
 
-export default function Search({navigation}) {
+const Search = React.memo(({navigation}) => {
   const [rooms, setRooms] = useState(null);
   const [filteredRooms, setFilteredRooms] = useState(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -39,7 +39,9 @@ export default function Search({navigation}) {
   }, []);
 
   const getRooms = () => {
+    console.log('[Staring get all rooms api call]');
     getAllRooms().then((data) => {
+      console.log('[Get all rooms]', data);
       setRooms(data);
       setloading(false);
       setRefreshing(false);
@@ -106,15 +108,13 @@ export default function Search({navigation}) {
           renderItem={({item}) => {
             setModalItem(item);
             return (
-              <>
-                <RenderTile
-                  room={item}
-                  navigation={navigation}
-                  onPressTile={() => {
-                    setIsModalVisible(!isModalVisible);
-                  }}
-                />
-              </>
+              <RenderTile
+                room={item}
+                navigation={navigation}
+                onPressTile={() => {
+                  setIsModalVisible(!isModalVisible);
+                }}
+              />
             );
           }}
           ListEmptyComponent={() => <RecentSearch />}
@@ -130,9 +130,11 @@ export default function Search({navigation}) {
       )}
     </SafeAreaView>
   );
-}
+});
 
-const RenderTile = ({room, onPressTile, navigation}) => {
+export default Search;
+
+const RenderTile = React.memo(({room, onPressTile, navigation}) => {
   const {constants, darkTheme} = useContext(ThemeContext);
   const {token} = useContext(TokenContext);
   const {user, setUser} = useContext(UserDetailsContext);
@@ -142,20 +144,22 @@ const RenderTile = ({room, onPressTile, navigation}) => {
   React.useEffect(() => {
     const rooms = user.joinedRooms;
     rooms.map((_room) => {
+      console.log('[Checking Room id]');
       if (_room._id === room._id) {
         setAlreadyJoined(true);
       }
     });
-  });
+  }, []);
 
   const handleJoin = () => {
     setLoading(true);
     joinRoom(room._id, token).then((response) => {
-      setUser(response);
-      setAlreadyJoined(true);
-      setLoading(false);
-      navigation.navigate('Room', {room: room});
-      storeUserData(response);
+      console.log('[Join Room Response]', response);
+      // setUser(response);
+      // setAlreadyJoined(true);
+      // setLoading(false);
+      // navigation.navigate('Room', {room: room});
+      // storeUserData(response);
     });
   };
 
@@ -221,4 +225,4 @@ const RenderTile = ({room, onPressTile, navigation}) => {
       )}
     </View>
   );
-};
+});

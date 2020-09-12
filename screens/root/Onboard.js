@@ -5,7 +5,6 @@ import {useValue, withTimingTransition} from 'react-native-redash';
 import Entypo from 'react-native-vector-icons/Entypo';
 
 import constants from '../../shared/constants';
-import {CustomErrorToast, CustomToast} from '../../shared/CustomToast';
 import globalStyles from '../../shared/GlobalStyles';
 
 import Google from './Google';
@@ -13,8 +12,18 @@ import Apple from './Apple';
 
 export default function Onboard({navigation}) {
   const time = useValue(0);
-  const timeAnimation = withTimingTransition(time, {duration: 600});
+  const timeAnimation = withTimingTransition(time, {duration: 1000});
   useCode(() => cond(eq(time, 0), set(time, 1)), []);
+
+  const navigatePhone = () => {
+    navigation.navigate('Phone');
+  };
+  const navigateSignUp = () => {
+    navigation.navigate('SignUp');
+  };
+  const navigateLogin = () => {
+    navigation.navigate('LogIn');
+  };
 
   return (
     <View
@@ -59,14 +68,14 @@ export default function Onboard({navigation}) {
         <View>
           <TouchableOpacity
             style={globalStyles.screenButton}
-            onPress={() => navigation.navigate('SignUp')}>
+            onPress={navigateSignUp}>
             <Text style={globalStyles.buttonText}>Sign Up</Text>
           </TouchableOpacity>
         </View>
         <View>
           <TouchableOpacity
             style={globalStyles.screenButton}
-            onPress={() => navigation.navigate('LogIn')}>
+            onPress={navigateLogin}>
             <Text style={globalStyles.buttonText}>Log In</Text>
           </TouchableOpacity>
         </View>
@@ -94,7 +103,7 @@ export default function Onboard({navigation}) {
               alignItems: 'center',
               justifyContent: 'center',
             }}
-            onPress={() => navigation.navigate('Phone')}>
+            onPress={navigatePhone}>
             <Entypo size={25} name="phone" color="white" />
           </TouchableOpacity>
         </View>

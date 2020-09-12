@@ -85,14 +85,15 @@ export default function SignUp({navigation}) {
       });
   };
 
+  const toggleRevealPassword = () => {
+    setRevealPassword(!revealPassword);
+  };
+
   return (
     <KeyboardAwareScrollView
       style={{width: constants.width, height: constants.height}}
       keyboardShouldPersistTaps="handled">
-      <TouchableWithoutFeedback
-        onPress={() => {
-          Keyboard.dismiss();
-        }}>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View
           style={{
             width: constants.width,
@@ -177,7 +178,7 @@ export default function SignUp({navigation}) {
                     alignItems: 'center',
                     justifyContent: 'center',
                   }}
-                  onPress={() => setRevealPassword(!revealPassword)}>
+                  onPress={toggleRevealPassword}>
                   {revealPassword ? (
                     <Entypo name="eye" size={18} color="#0d0c0a" />
                   ) : (

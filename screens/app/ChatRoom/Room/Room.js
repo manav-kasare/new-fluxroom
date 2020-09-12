@@ -49,6 +49,10 @@ const Room = ({route, navigation}) => {
 
   const anon = () => {};
 
+  const toggleVisible = () => {
+    setIsVisible(!isVisible);
+  };
+
   return (
     <>
       <SafeAreaView
@@ -77,27 +81,20 @@ const Room = ({route, navigation}) => {
               }}
               numColumns={3}
               keyExtractor={(item, index) => index.toString()}
-              renderItem={
-                ({item}) => (
-                  <TouchableOpacity onPress={() => setIsVisible(!isVisible)}>
-                    <RoomUserOptions
-                      isVisible={isVisible}
-                      setIsVisible={setIsVisible}
-                    />
-                    <RoomAvatar
-                      uri={item.profilePic}
-                      size={100}
-                      isHost={true}
-                      name={item.username}
-                    />
-                  </TouchableOpacity>
-                )
-                // else if (item.id === user.id && item.id !== hostID) {
-                //   return <MemberYou />;
-                // } else if (item.id !== user.id && item.id !== hostID) {
-                //   return <Member id={item.id} />;
-                // }
-              }
+              renderItem={({item}) => (
+                <TouchableOpacity onPress={toggleVisible}>
+                  <RoomUserOptions
+                    isVisible={isVisible}
+                    setIsVisible={setIsVisible}
+                  />
+                  <RoomAvatar
+                    uri={item.profilePic}
+                    size={100}
+                    isHost={true}
+                    name={item.username}
+                  />
+                </TouchableOpacity>
+              )}
               refreshControl={
                 <RefreshControl
                   refreshing={refreshing}

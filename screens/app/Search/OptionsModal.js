@@ -53,7 +53,6 @@ const OptionsModal = ({isModalVisible, setIsModalVisible, id}) => {
         }}
       />
       <TouchableOpacity
-        onPress={() => {}}
         style={{
           height: 50,
           width: constants.width * 0.9,

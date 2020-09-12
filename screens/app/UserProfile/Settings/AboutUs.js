@@ -30,6 +30,13 @@ export default function AboutUs({navigation}) {
     },
   };
 
+  const navigateDataPolicy = () => {
+    navigation.navigate('DataPolicy');
+  };
+  const navigateTermsOfService = () => {
+    navigation.navigate('TermsOfService');
+  };
+
   return (
     <SafeAreaView
       style={{
@@ -39,7 +46,7 @@ export default function AboutUs({navigation}) {
       <View style={{flex: 1, backgroundColor: constants.background1}}>
         <View style={styles.view}>
           <TouchableOpacity
-            onPress={() => navigation.navigate('DataPolicy')}
+            onPress={navigateDataPolicy}
             style={styles.view_touchable}>
             <Text style={styles.view_text}>Data Policy</Text>
             <Ionicons
@@ -51,7 +58,7 @@ export default function AboutUs({navigation}) {
         </View>
         <View style={styles.view}>
           <TouchableOpacity
-            onPress={() => navigation.navigate('TermsOfService')}
+            onPress={navigateTermsOfService}
             style={styles.view_touchable}>
             <Text style={styles.view_text}>Terms Of Service</Text>
             <Ionicons
