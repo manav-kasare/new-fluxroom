@@ -15,14 +15,14 @@ import globalStyles from '../../../shared/GlobalStyles';
 export default function ShareRoomLink({
   navigation,
   isVisible,
-  room,
+  roomId,
   setIsVisible,
 }) {
   const {constants} = React.useContext(ThemeContext);
   const [url, setUrl] = React.useState(null);
 
   React.useEffect(() => {
-    setUrl(`fluxroom://app/home/rooms/join/${room._id}`);
+    setUrl(`fluxroom://app/home/rooms/join/${roomId}`);
   }, []);
 
   const shareLink = () => {

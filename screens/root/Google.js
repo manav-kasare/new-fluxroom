@@ -41,6 +41,7 @@ export default function Google({navigation}) {
         auth()
           .signInWithCredential(googleCredential)
           .then((_userInfo) => {
+            console.log('[Google Sign in]', _userInfo);
             setLoading(false);
             if (_userInfo.additionalUserInfo.isNewUser) {
               navigation.navigate('SetUpProfile', {

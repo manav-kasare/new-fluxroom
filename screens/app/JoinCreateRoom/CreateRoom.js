@@ -27,6 +27,7 @@ import {storeUserData} from '../../../shared/AsyncStore';
 export default function CreateRoom({navigation}) {
   const {token} = React.useContext(TokenContext);
   const {setUser} = React.useContext(UserDetailsContext);
+  const [roomId, setRoomId] = React.useState(null);
   const {constants, darkTheme} = React.useContext(ThemeContext);
   const [room, setRoom] = useState({
     name: '',
@@ -35,10 +36,10 @@ export default function CreateRoom({navigation}) {
   });
   const [loading, setLoading] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  const [resRoom, setResRoom] = useState(null);
 
   const handleCreateRoom = () => {
     setLoading(true);
+    console.log('[Room]', room);
     createRoom(room).then((response) => {
       console.log('[Create Room]', response);
       if (response.err) {
@@ -49,7 +50,7 @@ export default function CreateRoom({navigation}) {
           CustomErrorToast('An Error Occured !');
         }
       } else {
-        setResRoom(response.room);
+        setRoomId(response.room._id);
         joinRoom(response.room._id, token).then((_response) => {
           console.log('[Create and Join Room Response]', _response);
           setLoading(false);
@@ -112,7 +113,7 @@ export default function CreateRoom({navigation}) {
             isVisible={isVisible}
             setIsVisible={setIsVisible}
             navigation={navigation}
-            room={resRoom}
+            roomId={roomId}
           />
           <View
             style={{

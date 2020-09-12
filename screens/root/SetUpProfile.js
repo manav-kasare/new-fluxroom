@@ -39,6 +39,7 @@ export default function SetUpProfile({route}) {
       setProfilePhoto(googleData.user.photoURL);
     }
     getFCMToken((token) => {
+      console.log('[FCM token]', token);
       setFcmToken(token);
     });
   });
@@ -163,6 +164,7 @@ export default function SetUpProfile({route}) {
           description: description,
           profilePic: profilePhoto,
         }).then((response) => {
+          console.log('[Create user]', response);
           if (response.error) {
             setLoading(false);
             if (response.error.code === 11000) {

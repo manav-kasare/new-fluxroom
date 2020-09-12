@@ -41,15 +41,13 @@ export default function RoomSettings({route, navigation}) {
   const navigateToRoom = () => {
     navigation.navigate('ChangeRoomSettings', {
       room: room,
-    })
-  }
+    });
+  };
 
   return (
     <SafeAreaView style={constants.screen}>
       <View style={{flex: 1}}>
-        <TouchableOpacity
-          style={styles.container}
-          onPress={navigateToRoom>
+        <TouchableOpacity style={styles.container} onPress={navigateToRoom}>
           <View style={{alignItems: 'center', flexDirection: 'row'}}>
             <View
               style={{

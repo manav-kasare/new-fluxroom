@@ -155,11 +155,11 @@ const RenderTile = React.memo(({room, onPressTile, navigation}) => {
     setLoading(true);
     joinRoom(room._id, token).then((response) => {
       console.log('[Join Room Response]', response);
-      // setUser(response);
-      // setAlreadyJoined(true);
-      // setLoading(false);
-      // navigation.navigate('Room', {room: room});
-      // storeUserData(response);
+      setUser(response);
+      setAlreadyJoined(true);
+      setLoading(false);
+      navigation.navigate('Room', {room: room});
+      storeUserData(response);
     });
   };
 

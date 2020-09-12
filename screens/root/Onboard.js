@@ -33,7 +33,7 @@ export default function Onboard({navigation}) {
         justifyContent: 'space-between',
         paddingTop: 100,
       }}>
-      <StatusBar backgroundColor="white" barStyle="light-content" />
+      <StatusBar barStyle="light-content" />
       <Animated.View
         style={{
           marginTop: 50,
