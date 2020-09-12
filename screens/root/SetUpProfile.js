@@ -127,6 +127,7 @@ export default function SetUpProfile({route}) {
 
   const phoneSignUp = () => {
     setLoading(true);
+    console.log(fcmToken);
     try {
       createUser({
         username: username,
@@ -172,7 +173,7 @@ export default function SetUpProfile({route}) {
           username: username,
           email: email,
           phone: email,
-          // notificationID: fcmToken,
+          notificationID: fcmToken,
           description: description,
           profilePic: profilePhoto,
         }).then((response) => {
@@ -260,9 +261,7 @@ export default function SetUpProfile({route}) {
                 height: constants.height * 0.2,
               }}
               resizeMode="contain"
-              source={{
-                uri: '/Users/manav/projects/fluxroom/assets/setup_profile.png',
-              }}
+              source={require('/Users/manav/projects/fluxroom/assets/setup_profile.png')}
             />
 
             <View

@@ -18,7 +18,6 @@ import InvitationsIcon from '../screens/app/ChatRoom/InvitationsIcon';
 const ChatRoomStack = createStackNavigator();
 
 export default function ChatRoomNavigator({route, navigation}) {
-  const {setToken} = React.useContext(TokenContext);
   const {user, setUser} = React.useContext(UserDetailsContext);
   const {constants, darkTheme} = React.useContext(ThemeContext);
 
@@ -74,13 +73,13 @@ export default function ChatRoomNavigator({route, navigation}) {
       <ChatRoomStack.Screen
         name="RoomSettings"
         component={RoomSettings}
-        options={({route}) => ({
+        options={{
           title: 'Settings',
           headerStyle: constants.headerStyle,
           headerTitleStyle: constants.headerText,
           headerBackTitleVisible: false,
           headerTintColor: 'white',
-        })}
+        }}
       />
       <ChatRoomStack.Screen
         name="ChangeRoomSettings"

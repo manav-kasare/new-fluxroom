@@ -2,14 +2,18 @@ import React from 'react';
 import {SafeAreaView, View, Text, TouchableOpacity} from 'react-native';
 
 import {getChatroomInfo} from '../../../backend/database/apiCalls';
-import {ThemeContext, UserDetailsContext} from '../../../shared/Context';
+import {
+  ThemeContext,
+  UserDetailsContext,
+  TokenContext,
+} from '../../../shared/Context';
 import {joinRoom} from '../../../backend/database/apiCalls';
 import {storeUserData} from '../../../shared/AsyncStore';
 
 export default function JoinRoomWithLink({route, navigation}) {
   const {constants} = React.useContext(ThemeContext);
   const {token} = React.useContext(TokenContext);
-  const {setUser} = React.useContext(UserDetailsContext);
+  const {user, setUser} = React.useContext(UserDetailsContext);
   const {id} = route.params;
   const [room, setRoom] = React.useState({
     name: '',
@@ -17,25 +21,37 @@ export default function JoinRoomWithLink({route, navigation}) {
   });
 
   React.useEffect(() => {
+    checkIfAlreadyJoined();
     getChatroomInfo(id).then((response) => {
+      console.log('[Chat Room Info]', response);
+      console.log(response.text());
       setRoom(response);
     });
   }, []);
+
+  const checkIfAlreadyJoined = () => {
+    const rooms = user.joinedRooms;
+    rooms.map((_room) => {
+      if (_room._id === room._id) {
+        console.log('[Found ID]', id);
+        navigation.replace('ChatRoomNavigator', {
+          screen: 'Room',
+          params: {room: room},
+        });
+      }
+    });
+  };
 
   const handleJoinRoom = () => {
     joinRoom(room._id, token).then((response) => {
       setUser(response);
       setLoading(false);
+      storeUserData(response);
       navigation.replace('ChatRoomNavigator', {
         screen: 'Room',
         params: {room: room},
       });
-      storeUserData(response);
     });
-  };
-
-  const navigate = () => {
-    navigation.replace('DrawerNavigator');
   };
 
   return (
@@ -84,28 +100,6 @@ export default function JoinRoomWithLink({route, navigation}) {
               fontSize: 15,
             }}>
             Join Room
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={{
-            width: constants.width * 0.65,
-            height: 40,
-            flexDirection: 'row',
-            marginTop: 25,
-            alignItems: 'center',
-            justifyContent: 'center',
-            borderRadius: 8,
-            marginHorizontal: 10,
-            backgroundColor: constants.primary,
-          }}
-          onPress={navigate}>
-          <Text
-            style={{
-              fontFamily: 'Helvetica',
-              color: 'white',
-              fontSize: 15,
-            }}>
-            Close
           </Text>
         </TouchableOpacity>
       </View>

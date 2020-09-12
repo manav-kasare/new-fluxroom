@@ -59,7 +59,7 @@ const Room = ({route, navigation}) => {
         style={{
           flex: 1,
           backgroundColor: darkTheme
-            ? constants.background1
+            ? constants.background3
             : constants.primary,
         }}>
         <StatusBar

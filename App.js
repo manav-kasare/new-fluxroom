@@ -26,6 +26,7 @@ function App() {
     global['toast'] = toast.current;
   }, []);
 
+  // Notifications
   React.useEffect(() => {
     fcmService.registerAppWithFCM();
     fcmService.register(onRegister, onNotification, onOpenNotification);

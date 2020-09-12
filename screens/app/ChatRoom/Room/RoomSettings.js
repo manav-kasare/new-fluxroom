@@ -10,7 +10,7 @@ export default function RoomSettings({route, navigation}) {
   const {room} = route.params;
   const {constants} = React.useContext(ThemeContext);
   const [copiedText, setCopiedText] = useState('');
-  const link = `fluxroom://app/home/rooms/join/${room.id}`;
+  const link = `fluxroom://app/home/rooms/join/${room._id}`;
 
   const styles = {
     container: {

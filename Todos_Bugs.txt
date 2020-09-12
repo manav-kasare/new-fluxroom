@@ -18,8 +18,8 @@ done Forgot Password
 done Sign Out
 Update Profile
 done Search
-Create Room
-Join Room
+done (error) Create Room
+done Join Room
 Testing Join Room Deep Links
 Testing Push Notifications
 

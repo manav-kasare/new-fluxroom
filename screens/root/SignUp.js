@@ -149,6 +149,7 @@ export default function SignUp({navigation}) {
                   textContentType="emailAddress"
                   style={globalStyles.textInput}
                   placeholder="Email Address"
+                  placeholderTextColor="grey"
                   onChangeText={(text) => setEmail(text)}
                   value={email}
                   clearButtonMode="while-editing"
@@ -167,6 +168,7 @@ export default function SignUp({navigation}) {
                   secureTextEntry={revealPassword ? false : true}
                   style={globalStyles.textInput}
                   placeholder="Password"
+                  placeholderTextColor="grey"
                   onChangeText={(text) => setPassword(text)}
                   value={password}
                   clearButtonMode="while-editing"

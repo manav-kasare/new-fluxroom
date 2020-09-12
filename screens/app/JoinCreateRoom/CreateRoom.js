@@ -110,12 +110,16 @@ export default function CreateRoom({navigation}) {
               onPress={() => navigation.openDrawer()}
             />
           </Appbar.Header>
-          <ShareRoomLink
-            isVisible={isVisible}
-            setIsVisible={setIsVisible}
-            navigation={navigation}
-            room={shareRoom}
-          />
+          {isVisible ? (
+            <ShareRoomLink
+              isVisible={isVisible}
+              setIsVisible={setIsVisible}
+              navigation={navigation}
+              room={shareRoom}
+            />
+          ) : (
+            <></>
+          )}
           <View
             style={{
               flex: 1,

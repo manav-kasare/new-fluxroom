@@ -1,5 +1,4 @@
 const url = 'https://fluxroom-backend-beta.herokuapp.com';
-// const url = 'http://localhost:3000';
 
 export const createUser = (user) => {
   const requestOptions = {
@@ -210,10 +209,13 @@ export const addUserToRoom = (token, roomId) => {
 export const acceptInvitation = () => {};
 
 export const getChatroomInfo = (id) => {
+  console.log('[ID]', id);
   return fetch(`${url}/room/${id}`)
-    .then((response) => response.json())
+    .then((response) => response.text())
     .then((data) => {
-      return data;
+      const responseJson = JSON.parse(data);
+      console.log('[Chatroom info data]', responseJson);
+      return responseJSON;
     });
 };
 

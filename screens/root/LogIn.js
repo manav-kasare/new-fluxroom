@@ -159,6 +159,7 @@ export default function LogIn({navigation}) {
                     placeholder="Email Address"
                     onChangeText={(text) => setemail(text)}
                     value={email}
+                    placeholderTextColor="grey"
                     clearButtonMode="while-editing"
                   />
                 </View>
@@ -171,6 +172,7 @@ export default function LogIn({navigation}) {
                     onFocus={() => setOnFocusPassword(true)}
                     onChangeText={(text) => setpassword(text)}
                     value={password}
+                    placeholderTextColor="grey"
                     clearButtonMode="while-editing"
                   />
                   <TouchableOpacity

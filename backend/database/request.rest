@@ -1,7 +1,10 @@
 GET https://fluxroom-backend-beta.herokuapp.com/user/5f386554eed5170017ecb3ff
 
 ###
-GET http://localhost:3000/rooms
+GET http://localhost:3000/user/5f386554eed5170017ecb3ff
+
+###
+GET http://fluxroom-backend-beta.herokuapp.com/room/5f59e9460bfdd1cd48bed3c9
 
 ###
 GET https://fluxroom-backend-beta.herokuapp.com/getbyphone?phone=+918433802669

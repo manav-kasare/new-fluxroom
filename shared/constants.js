@@ -2,15 +2,11 @@ import {Dimensions} from 'react-native';
 
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
-const IP = '172.20.10.14';
-//const IP = '192.168.1.23';
-// const IP = "192.168.43.89";
 
 export default {
   primary: '#342D2D',
   width: WIDTH,
   height: HEIGHT,
-  localIP: IP,
   url: 'https://fluxroom-backend-beta.herokuapp.com',
 };
 
@@ -25,7 +21,6 @@ export const light = {
   text2: '#f5f5f5',
   width: WIDTH,
   height: HEIGHT,
-  localIP: IP,
   url: 'fluxroom-backend-beta.herokuapp.com',
   headerText: {
     fontWeight: '700',
@@ -74,7 +69,6 @@ export const dark = {
   text2: '#0d0c0a',
   width: WIDTH,
   height: HEIGHT,
-  localIP: IP,
   url: 'fluxroom-backend-beta.herokuapp.com',
   headerText: {
     color: 'white',

@@ -1,5 +1,12 @@
 import React from 'react';
-import {Text, TouchableOpacity, View, StatusBar, Platform} from 'react-native';
+import {
+  Text,
+  TouchableOpacity,
+  View,
+  StatusBar,
+  Platform,
+  SafeAreaView,
+} from 'react-native';
 import Animated, {useCode, cond, set, eq} from 'react-native-reanimated';
 import {useValue, withTimingTransition} from 'react-native-redash';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -28,86 +35,94 @@ export default function Onboard({navigation}) {
   return (
     <View
       style={{
-        flex: 1,
-        backgroundColor: '#4640C1',
-        justifyContent: 'space-between',
-        paddingTop: 100,
+        width: constants.width,
+        height: constants.height,
+        backgroundColor: 'white',
       }}>
-      <StatusBar barStyle="light-content" />
-      <Animated.View
+      <SafeAreaView
         style={{
-          marginTop: 50,
-          opacity: timeAnimation,
+          flex: 1,
+          backgroundColor: '#4640C1',
+          // justifyContent: 'space-between',
         }}>
-        <Text
+        <StatusBar barStyle="light-content" />
+        <Animated.View
           style={{
-            marginTop: 30,
-            color: 'white',
-            fontWeight: '800',
-            fontSize: 30,
-            letterSpacing: 2,
-            fontFamily: 'Helvetica Neue',
-            alignSelf: 'center',
+            marginTop: 50,
+            opacity: timeAnimation,
           }}>
-          FLUXROOM
-        </Text>
-      </Animated.View>
-      <Animated.View
-        style={{
-          height: constants.height * 0.3,
-          paddingTop: 25,
-          width: constants.width,
-          alignItems: 'center',
-          justifyContent: 'flex-start',
-          backgroundColor: 'white',
-          borderTopRightRadius: 15,
-          borderTopLeftRadius: 15,
-          borderWidth: 1,
-          opacity: timeAnimation,
-        }}>
-        <View>
-          <TouchableOpacity
-            style={globalStyles.screenButton}
-            onPress={navigateSignUp}>
-            <Text style={globalStyles.buttonText}>Sign Up</Text>
-          </TouchableOpacity>
-        </View>
-        <View>
-          <TouchableOpacity
-            style={globalStyles.screenButton}
-            onPress={navigateLogin}>
-            <Text style={globalStyles.buttonText}>Log In</Text>
-          </TouchableOpacity>
-        </View>
-        <View
-          style={{
-            width: constants.width * 0.9,
-            justifyContent: 'space-evenly',
-            shadowColor: 'grey',
-            shadowOpacity: 0.2,
-            elevation: 1,
-            alignItems: 'center',
-            flexDirection: 'row',
-            marginVertical: 20,
-            alignSelf: 'center',
-          }}>
-          <Google navigation={navigation} />
-          {Platform.OS === 'ios' ? <Apple navigation={navigation} /> : <></>}
-
-          <TouchableOpacity
+          <Text
             style={{
-              width: 50,
-              height: 50,
-              borderRadius: 50 / 2,
-              backgroundColor: '#4640C1',
+              marginTop: 30,
+              color: 'white',
+              fontWeight: '800',
+              fontSize: 30,
+              letterSpacing: 2,
+              fontFamily: 'Helvetica Neue',
+              alignSelf: 'center',
+            }}>
+            FLUXROOM
+          </Text>
+        </Animated.View>
+        <Animated.View
+          style={{
+            position: 'absolute',
+            bottom: 0,
+            paddingBottom: 25,
+            paddingTop: 25,
+            width: constants.width,
+            alignItems: 'center',
+            justifyContent: 'flex-start',
+            backgroundColor: 'white',
+            borderTopRightRadius: 15,
+            borderTopLeftRadius: 15,
+            borderWidth: 1,
+            opacity: timeAnimation,
+          }}>
+          <View>
+            <TouchableOpacity
+              style={globalStyles.screenButton}
+              onPress={navigateSignUp}>
+              <Text style={globalStyles.buttonText}>Sign Up</Text>
+            </TouchableOpacity>
+          </View>
+          <View>
+            <TouchableOpacity
+              style={globalStyles.screenButton}
+              onPress={navigateLogin}>
+              <Text style={globalStyles.buttonText}>Log In</Text>
+            </TouchableOpacity>
+          </View>
+          <View
+            style={{
+              width: constants.width * 0.9,
+              justifyContent: 'space-evenly',
+              shadowColor: 'grey',
+              shadowOpacity: 0.2,
+              elevation: 1,
               alignItems: 'center',
-              justifyContent: 'center',
-            }}
-            onPress={navigatePhone}>
-            <Entypo size={25} name="phone" color="white" />
-          </TouchableOpacity>
-        </View>
-      </Animated.View>
+              flexDirection: 'row',
+              marginVertical: 20,
+              alignSelf: 'center',
+            }}>
+            <Google navigation={navigation} />
+            {Platform.OS === 'ios' ? <Apple navigation={navigation} /> : <></>}
+
+            <TouchableOpacity
+              style={{
+                width: 50,
+                height: 50,
+                borderRadius: 50 / 2,
+                backgroundColor: '#4640C1',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+              onPress={navigatePhone}>
+              <Entypo size={25} name="phone" color="white" />
+            </TouchableOpacity>
+          </View>
+        </Animated.View>
+      </SafeAreaView>
     </View>
   );
 }

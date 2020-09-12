@@ -22,7 +22,7 @@ export default function RoomHeader({navigation, room}) {
         alignItems: 'center',
         justifyContent: 'space-between',
         paddingHorizontal: 25,
-        backgroundColor: darkTheme ? constants.background1 : constants.primary,
+        backgroundColor: darkTheme ? constants.background3 : constants.primary,
       }}>
       <View style={{flexDirection: 'row', alignItems: 'center'}}>
         <TouchableOpacity onPress={goBack}>

@@ -1,7 +1,8 @@
-import React, {useEffect, useContext, useState, useCallback} from 'react';
+import React, {useEffect, useContext, useState} from 'react';
 import {
   Text,
   SafeAreaView,
+  Image,
   View,
   FlatList,
   RefreshControl,
@@ -96,14 +97,14 @@ const EmptyItem = React.memo(() => {
         height: constants.height,
       }}>
       <View style={{marginVertical: 50, alignItems: 'center'}}>
-        <CachedImage
+        <Image
+          source={require('/Users/manav/projects/fluxroom/assets/tree_swing.png')}
           style={{
             width: constants.width,
             height: constants.height * 0.2,
             marginVertical: 25,
           }}
-          _resizeMode="contain"
-          uri="/Users/manav/projects/fluxroom/assets/tree_swing.png"
+          resizeMode="contain"
         />
         <Text
           style={{

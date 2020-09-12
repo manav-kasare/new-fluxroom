@@ -34,7 +34,6 @@ export default function HomeNavigator() {
         component={ChatRoomNavigator}
         options={{
           tabBarIcon: ({color}) => (
-            // <MaterialIcons name="mic" size={25} color={color} />
             <Ionicons name="home" size={25} color={color} />
           ),
         }}

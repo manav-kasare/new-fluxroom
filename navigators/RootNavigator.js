@@ -44,31 +44,40 @@ export default function RootNavigator() {
   }, []);
 
   const deepLinking = {
-    prefixes: ['fluxroom://'],
+    prefixes: ['fluxroom://', 'https://fluxroom.com'],
     config: {
       screens: {
-        DrawerNavigator: {
-          path: 'app',
-          initialRouteName: 'DrawerNavigator',
-          screens: {
-            Home: {
-              path: 'home',
-              screens: {
-                ChatRoomNavigator: {
-                  path: 'rooms',
-                  initialRouteName: 'ChatRoomNavigator',
-                  screens: {
-                    JoinRoomWithLink: 'join/:id',
-                  },
-                },
-              },
-            },
-            Settings: 'settings',
-          },
+        JoinRoomWithLink: {
+          path: 'room/join/:id',
+          initialRouteName: 'JoinRoomWithLink',
         },
       },
     },
   };
+
+  // DrawerNavigator: {
+  //   path: 'app',
+  //   initialRouteName: 'DrawerNavigator',
+  //   screens: {
+  //     HomeNavigator: {
+  //       path: 'home',
+  //       initialRouteName: 'HomeNavigator',
+  //       screens: {
+  //         ChatRoomNavigator: {
+  //           path: 'rooms',
+  //           initialRouteName: 'ChatRoomNavigator',
+  //           screens: {
+  //             JoinRoomWithLink: {
+  //               path: 'join/:id',
+  //               initialRouteName: 'JoinRoomWithLink',
+  //             },
+  //           },
+  //         },
+  //       },
+  //     },
+  //     Settings: 'settings',
+  //   },
+  // },
 
   if (splashScreen) {
     return <SplashScreen />;
