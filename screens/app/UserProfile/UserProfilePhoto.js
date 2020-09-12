@@ -28,7 +28,7 @@ export default function UserProfilePhoto() {
       } else if (response.error) {
         console.log('ImagePicker Error: ', response.error);
       } else {
-        updateProfilePhoto(user.id, response.uri).then((responseText) => {
+        updateProfilePhoto(user._id, response.uri).then((responseText) => {
           if (responseText === 'success') {
             setProfilePhoto(response.uri);
           }

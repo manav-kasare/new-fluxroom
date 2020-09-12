@@ -14,7 +14,7 @@ const OptionsModal = ({isModalVisible, setIsModalVisible, id}) => {
 
   const handleRequest = () => {
     setIsModalVisible(false);
-    sendFriendRequest(user.id, id).then((responseText) => {
+    sendFriendRequest(user._id, id).then((responseText) => {
       if (responseText !== 'success') {
         CustomToast('An Error Occured');
       }

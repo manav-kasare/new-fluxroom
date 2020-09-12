@@ -50,7 +50,7 @@ export default function ChatRoomNavigator({route, navigation}) {
             color: 'white',
           },
           headerRight: () => (
-            <InvitationsIcon id={user.id} navigation={navigation} />
+            <InvitationsIcon id={user._id} navigation={navigation} />
           ),
         })}
       />

@@ -18,8 +18,8 @@ import {
 } from '../../../shared/Context';
 import Tile from '../../../shared/Tile';
 import {getUserMe} from '../../../backend/database/apiCalls';
-import CachedImage from '../../../shared/CachedImage';
 import TilesLoading from './TilesLoading';
+import {getToken} from '../../../shared/KeyChain';
 
 const ChatRooms = ({navigation}) => {
   const {setUser} = useContext(UserDetailsContext);
@@ -30,6 +30,7 @@ const ChatRooms = ({navigation}) => {
   const [loading, setloading] = useState(true);
 
   useEffect(() => {
+    console.log('[Chatrooms]');
     setData();
   }, []);
 
@@ -39,12 +40,23 @@ const ChatRooms = ({navigation}) => {
   };
 
   const setData = () => {
-    getUserMe(token).then((response) => {
-      setChatRoomList(response.user.joinedRooms);
-      setloading(false);
-      setUser(response.user);
-      setRefreshing(false);
-    });
+    if (!token) {
+      getToken().then((_token) => {
+        getUserMe(_token).then((response) => {
+          setChatRoomList(response.user.joinedRooms);
+          setloading(false);
+          setUser(response.user);
+          setRefreshing(false);
+        });
+      });
+    } else {
+      getUserMe(_token).then((response) => {
+        setChatRoomList(response.user.joinedRooms);
+        setloading(false);
+        setUser(response.user);
+        setRefreshing(false);
+      });
+    }
   };
 
   return (

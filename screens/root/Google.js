@@ -54,6 +54,7 @@ export default function Google({navigation}) {
                   username: response.username,
                   password: '89337133-17c9-42e3-9fef-78416a25651a',
                 }).then((_response) => {
+                  console.log('[_response]', _response);
                   if (_response.err) {
                     setLoading(false);
                     ReactNativeHaptic.generate('notificationError');
@@ -61,10 +62,11 @@ export default function Google({navigation}) {
                   } else {
                     ReactNativeHaptic.generate('notificationSuccess');
                     storeToken(_response.user._id, _response.token).then(() => {
-                      storeTheme('light');
-                      storeUserData(_response.user);
-                      setUser(_response.user);
-                      setLoading(false);
+                      storeUserData(_response.user).then(() => {
+                        storeTheme('light');
+                        setUser(_response.user);
+                        setLoading(false);
+                      });
                     });
                   }
                 });

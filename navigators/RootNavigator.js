@@ -30,6 +30,7 @@ export default function RootNavigator() {
   const {setToken} = React.useContext(TokenContext);
 
   React.useEffect(() => {
+    console.log('[Setting Data Root Navigator]');
     getToken().then((token) => {
       getUserMe(token).then((response) => {
         setUser(response.user);
@@ -54,30 +55,6 @@ export default function RootNavigator() {
       },
     },
   };
-
-  // DrawerNavigator: {
-  //   path: 'app',
-  //   initialRouteName: 'DrawerNavigator',
-  //   screens: {
-  //     HomeNavigator: {
-  //       path: 'home',
-  //       initialRouteName: 'HomeNavigator',
-  //       screens: {
-  //         ChatRoomNavigator: {
-  //           path: 'rooms',
-  //           initialRouteName: 'ChatRoomNavigator',
-  //           screens: {
-  //             JoinRoomWithLink: {
-  //               path: 'join/:id',
-  //               initialRouteName: 'JoinRoomWithLink',
-  //             },
-  //           },
-  //         },
-  //       },
-  //     },
-  //     Settings: 'settings',
-  //   },
-  // },
 
   if (splashScreen) {
     return <SplashScreen />;
