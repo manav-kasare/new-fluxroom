@@ -36,6 +36,7 @@ export default function CreateRoom({navigation}) {
   });
   const [loading, setLoading] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [shareRoom, setShareRoom] = useState({name: '', _id: ''});
 
   const handleCreateRoom = () => {
     setLoading(true);
@@ -50,7 +51,7 @@ export default function CreateRoom({navigation}) {
           CustomErrorToast('An Error Occured !');
         }
       } else {
-        setRoomId(response.room._id);
+        setShareRoom(response.room);
         joinRoom(response.room._id, token).then((_response) => {
           console.log('[Create and Join Room Response]', _response);
           setLoading(false);
@@ -113,7 +114,7 @@ export default function CreateRoom({navigation}) {
             isVisible={isVisible}
             setIsVisible={setIsVisible}
             navigation={navigation}
-            roomId={roomId}
+            room={shareRoom}
           />
           <View
             style={{
@@ -131,6 +132,7 @@ export default function CreateRoom({navigation}) {
                   borderColor: 'grey',
                   borderWidth: 1,
                   alignItems: 'center',
+                  backgroundColor: constants.primary,
                   justifyContent: 'center',
                 }}
                 onPress={pickImage}>

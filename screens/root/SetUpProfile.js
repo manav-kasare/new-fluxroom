@@ -16,17 +16,19 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import ImagePicker from 'react-native-image-picker';
 
-import {UserDetailsContext} from '../../shared/Context';
+import {UserDetailsContext, TokenContext} from '../../shared/Context';
 import constants from '../../shared/constants';
 import globalStyles from '../../shared/GlobalStyles';
 import {createUser} from '../../backend/database/apiCalls';
 import {CustomErrorToast} from '../../shared/CustomToast';
 import {storeToken} from '../../shared/KeyChain';
-import {storeUserData, storeTheme, getFCMToken} from '../../shared/AsyncStore';
+import {storeUserData, storeTheme} from '../../shared/AsyncStore';
 import CachedImage from '../../shared/CachedImage';
+import {firebase} from '@react-native-firebase/messaging';
 
 export default function SetUpProfile({route}) {
   const {setUser} = useContext(UserDetailsContext);
+  const {setToken} = useContext(TokenContext);
   const {email, phoneNumber, googleData, phoneData, appleData} = route.params;
   const [username, setUsername] = useState('');
   const [description, setDescription] = useState('');
@@ -38,11 +40,17 @@ export default function SetUpProfile({route}) {
     if (googleData) {
       setProfilePhoto(googleData.user.photoURL);
     }
-    getFCMToken((token) => {
-      console.log('[FCM token]', token);
-      setFcmToken(token);
-    });
-  });
+    getFCMToken();
+  }, []);
+
+  const getFCMToken = () => {
+    firebase
+      .messaging()
+      .getToken()
+      .then((token) => {
+        setFcmToken(token);
+      });
+  };
 
   const isUsernameValid = (q) => {
     return /^[a-z0-9_-]{3,15}$/.test(q);
@@ -59,6 +67,7 @@ export default function SetUpProfile({route}) {
         description: description,
         profilePic: profilePhoto,
       }).then((response) => {
+        console.log('[Google Create user]', response);
         if (response.error) {
           setLoading(false);
           if (response.error.code === 11000) {
@@ -68,8 +77,9 @@ export default function SetUpProfile({route}) {
           }
         } else {
           storeToken(response.user._id, response.token[0].token).then(() => {
-            storeUserData(response.user);
+            setToken(response.token[0].token);
             storeTheme('light');
+            storeUserData(response.user);
             setUser(response.user);
             setLoading(false);
           });
@@ -101,6 +111,7 @@ export default function SetUpProfile({route}) {
           }
         } else {
           storeToken(response.user._id, response.token[0].token).then(() => {
+            setToken(response.token[0].token);
             storeUserData(response.user);
             storeTheme('light');
             setUser(response.user);
@@ -135,6 +146,7 @@ export default function SetUpProfile({route}) {
           }
         } else {
           storeToken(response.user._id, response.token[0].token).then(() => {
+            setToken(response.token[0].token);
             storeUserData(response.user);
             storeTheme('light');
             setUser(response.user);
@@ -160,7 +172,7 @@ export default function SetUpProfile({route}) {
           username: username,
           email: email,
           phone: email,
-          notificationID: fcmToken,
+          // notificationID: fcmToken,
           description: description,
           profilePic: profilePhoto,
         }).then((response) => {
@@ -174,6 +186,7 @@ export default function SetUpProfile({route}) {
             }
           } else {
             storeToken(response.user._id, response.token[0].token).then(() => {
+              setToken(response.token[0].token);
               setLoading(false);
               storeUserData(response.user);
               storeTheme('light');

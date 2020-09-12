@@ -45,7 +45,7 @@ export const getTheme = async () => {
 export const getFCMToken = async () => {
   let fcmToken = await AsyncStorage.getItem('fcmToken');
   if (!fcmToken) {
-    fcmToken = await firebase.messaging().getToken();
+    const fcmToken = await firebase.messaging().getToken();
     if (fcmToken) {
       await AsyncStorage.setItem('fcmToken', fcmToken);
     }

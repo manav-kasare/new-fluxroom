@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  View,
-  Text,
-  TouchableOpacity,
-  TextInput,
-  Share,
-} from 'react-native';
+import {View, Text, TouchableOpacity, TextInput, Share} from 'react-native';
 import Modal from 'react-native-modal';
 
 import {ThemeContext} from '../../../shared/Context';
@@ -15,14 +8,15 @@ import globalStyles from '../../../shared/GlobalStyles';
 export default function ShareRoomLink({
   navigation,
   isVisible,
-  roomId,
+  room,
   setIsVisible,
 }) {
   const {constants} = React.useContext(ThemeContext);
   const [url, setUrl] = React.useState(null);
 
   React.useEffect(() => {
-    setUrl(`fluxroom://app/home/rooms/join/${roomId}`);
+    console.log('[Shared Room Link]', room._id);
+    setUrl(`fluxroom://app/home/rooms/join/${room._id}`);
   }, []);
 
   const shareLink = () => {
@@ -55,10 +49,8 @@ export default function ShareRoomLink({
   };
 
   const handleContinue = () => {
-    navigation.navigate('ChatRoomNavigator', {
-      screen: 'Room',
-      params: {room: room},
-    });
+    setIsVisible(false);
+    navigation.navigate('Room', {room: room});
   };
 
   return (
@@ -117,7 +109,7 @@ export default function ShareRoomLink({
           <Text style={globalStyles.buttonText}>Share Link</Text>
         </TouchableOpacity>
         <TouchableOpacity style={globalStyles.button} onPress={handleContinue}>
-          <Text style={globalStyles.buttonText}>Continue to room.name</Text>
+          <Text style={globalStyles.buttonText}>Continue to {room.name}</Text>
         </TouchableOpacity>
       </View>
     </Modal>

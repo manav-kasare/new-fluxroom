@@ -22,10 +22,10 @@ export default function HomeNavigator() {
         showLabel: false,
         style: {
           backgroundColor: constants.background3,
-          borderTopWidth: 0.5,
+          borderTopWidth: 0,
           elevation: 0,
           shadowOpacity: 0,
-          borderTopColor: constants.lineColor,
+          borderTopColor: 'transparent',
         },
       }}
       initialRouteName="Rooms">

@@ -6,7 +6,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import CachedImage from './CachedImage';
 
 export default function CircleAvatar({size, uri}) {
-  const {constants} = React.useContext(ThemeContext);
+  const {darkTheme} = React.useContext(ThemeContext);
 
   if (uri === undefined) {
     return (
@@ -17,7 +17,7 @@ export default function CircleAvatar({size, uri}) {
           borderRadius: size / 2,
           justifyContent: 'center',
           alignItems: 'center',
-          backgroundColor: constants.primary,
+          backgroundColor: darkTheme ? '#212121' : '#868489',
         }}>
         <FontAwesome5 name="user-alt" color="white" size={size / 2} />
       </View>

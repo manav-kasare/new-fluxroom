@@ -204,9 +204,7 @@ const RenderTile = React.memo(({room, onPressTile, navigation}) => {
             justifyContent: 'center',
             borderRadius: 5,
           }}>
-          <Text style={{color: constants.text1, fontSize: 10}}>
-            Already Joined
-          </Text>
+          <Text style={{color: constants.text1, fontSize: 10}}>Joined</Text>
         </View>
       ) : (
         <TouchableOpacity

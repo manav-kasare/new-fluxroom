@@ -90,7 +90,6 @@ const Room = ({route, navigation}) => {
                   <RoomAvatar
                     uri={item.profilePic}
                     size={100}
-                    isHost={true}
                     name={item.username}
                   />
                 </TouchableOpacity>
