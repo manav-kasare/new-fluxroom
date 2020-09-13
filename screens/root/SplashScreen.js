@@ -1,12 +1,15 @@
 import React from 'react';
 import {SafeAreaView, Text} from 'react-native';
+import {ThemeContext} from '../../shared/Context';
 
 export default function SplashScreen() {
+  const {constants} = React.useContext(ThemeContext);
+
   return (
     <SafeAreaView
       style={{
         flex: 1,
-        backgroundColor: 'black',
+        backgroundColor: constants.background1,
         alignItems: 'center',
         justifyContent: 'center',
       }}>

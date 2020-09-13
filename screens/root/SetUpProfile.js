@@ -71,6 +71,7 @@ export default function SetUpProfile({route}) {
         console.log('[Google Create user]', response);
         if (response.error) {
           setLoading(false);
+          ReactNativeHaptic.generate('notificationError');
           if (response.error.code === 11000) {
             CustomErrorToast('Username Already taken');
           } else {
@@ -82,12 +83,14 @@ export default function SetUpProfile({route}) {
             storeTheme('light');
             storeUserData(response.user);
             setUser(response.user);
+            ReactNativeHaptic.generate('notificationSuccess');
             setLoading(false);
           });
         }
       });
     } catch (e) {
       setLoading(false);
+      ReactNativeHaptic.generate('notificationError');
       CustomErrorToast('An Error Occured !');
     }
   };
@@ -104,6 +107,7 @@ export default function SetUpProfile({route}) {
         profilePic: profilePhoto,
       }).then((response) => {
         if (response.error) {
+          ReactNativeHaptic.generate('notificationError');
           setLoading(false);
           if (response.error.code === 11000) {
             CustomErrorToast('Username Already taken');
@@ -116,12 +120,14 @@ export default function SetUpProfile({route}) {
             storeUserData(response.user);
             storeTheme('light');
             setUser(response.user);
+            ReactNativeHaptic.generate('notificationSuccess');
             setLoading(false);
           });
         }
       });
     } catch (e) {
       setLoading(false);
+      ReactNativeHaptic.generate('notificationError');
       CustomErrorToast('An Error Occured !');
     }
   };
@@ -140,6 +146,7 @@ export default function SetUpProfile({route}) {
         profilePic: profilePhoto,
       }).then((response) => {
         if (response.error) {
+          ReactNativeHaptic.generate('notificationError');
           setLoading(false);
           if (response.error.code === 11000) {
             CustomErrorToast('Username Already taken');
@@ -152,12 +159,14 @@ export default function SetUpProfile({route}) {
             storeUserData(response.user);
             storeTheme('light');
             setUser(response.user);
+            ReactNativeHaptic.generate('notificationSuccess');
             setLoading(false);
           });
         }
       });
     } catch (e) {
       setLoading(false);
+      ReactNativeHaptic.generate('notificationError');
       CustomErrorToast('An Error Occured !');
     }
   };
@@ -174,12 +183,13 @@ export default function SetUpProfile({route}) {
           username: username,
           email: email,
           phone: email,
-          notificationID: fcmToken,
+          notificationID: 'sdjflksjfsjfjfklsjfb',
           description: description,
           profilePic: profilePhoto,
         }).then((response) => {
           console.log('[Create user]', response);
           if (response.error) {
+            ReactNativeHaptic.generate('notificationError');
             setLoading(false);
             if (response.error.code === 11000) {
               CustomErrorToast('Username Already taken');
@@ -192,12 +202,14 @@ export default function SetUpProfile({route}) {
               setLoading(false);
               storeUserData(response.user);
               storeTheme('light');
+              ReactNativeHaptic.generate('notificationSuccess');
               setUser(response.user);
             });
           }
         });
       } catch (e) {
         setLoading(false);
+        ReactNativeHaptic.generate('notificationError');
         CustomErrorToast('An Error Occured !');
       }
     }
@@ -311,7 +323,6 @@ export default function SetUpProfile({route}) {
                   }
                 />
                 <TextInput
-                  autoFocus={true}
                   style={globalStyles.textInput}
                   placeholder="Username"
                   placeholderTextColor="grey"

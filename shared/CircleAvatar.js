@@ -8,7 +8,7 @@ import CachedImage from './CachedImage';
 export default function CircleAvatar({size, uri}) {
   const {darkTheme} = React.useContext(ThemeContext);
 
-  if (uri === undefined) {
+  if (uri === undefined || uri === null) {
     return (
       <View
         style={{

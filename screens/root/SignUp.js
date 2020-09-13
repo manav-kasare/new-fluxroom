@@ -19,15 +19,12 @@ import auth from '@react-native-firebase/auth';
 import constants from '../../shared/constants';
 import CustomToast, {CustomErrorToast} from '../../shared/CustomToast';
 import globalStyles from '../../shared/GlobalStyles';
-import EmailVerification from './EmailVerification';
 
 export default function SignUp({navigation}) {
   const [isLoading, setIsLoading] = useState(false);
   const [revealPassword, setRevealPassword] = useState(false);
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
-  const [isVisible, setIsVisible] = useState(false);
-  const [userInfo, setUserInfo] = useState();
 
   const isPasswordValid = (q) => {
     return /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/.test(
@@ -37,18 +34,19 @@ export default function SignUp({navigation}) {
 
   const signUp = () => {
     setIsLoading(true);
+    Keyboard.dismiss();
     auth()
       .createUserWithEmailAndPassword(email, password)
       .then((userInfo) => {
         userInfo.user.sendEmailVerification().then(() => {
           setIsLoading(false);
-          setUserInfo(userInfo);
           ReactNativeHaptic.generate('notificationSuccess');
-          setIsVisible(true);
+          navigation.navigate('SetUpProfile', {email: email});
         });
       })
       .catch((error) => {
         setIsLoading(false);
+        ReactNativeHaptic.generate('notificationError');
         if (error.code === 'auth/email-already-in-use') {
           CustomErrorToast('That email address is already in use!');
         }
@@ -83,13 +81,6 @@ export default function SignUp({navigation}) {
               alignItems: 'center',
               marginBottom: 50,
             }}>
-            <EmailVerification
-              isVisible={isVisible}
-              email={email}
-              navigation={navigation}
-              setIsVisible={setIsVisible}
-              userInfo={userInfo}
-            />
             <View>
               <Image
                 style={{

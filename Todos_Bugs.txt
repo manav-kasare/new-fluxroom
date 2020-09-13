@@ -18,7 +18,7 @@ done Forgot Password
 done Sign Out
 Update Profile
 done Search
-done (error) Create Room
+done Create Room
 done Join Room
 Testing Join Room Deep Links
 Testing Push Notifications

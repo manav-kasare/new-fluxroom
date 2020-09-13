@@ -78,7 +78,7 @@ const ChatRooms = ({navigation}) => {
           }}
           data={chatRoomList}
           keyExtractor={(index) => index.toString()}
-          ListEmptyComponent={() => <EmptyItem />}
+          ListEmptyComponent={() => <EmptyItem navigation={navigation} />}
           renderItem={({item}) => (
             <RenderTile room={item} navigation={navigation} />
           )}
@@ -97,8 +97,13 @@ const ChatRooms = ({navigation}) => {
 
 export default React.memo(ChatRooms);
 
-const EmptyItem = React.memo(() => {
+const EmptyItem = React.memo(({navigation}) => {
   const {constants, darkTheme} = useContext(ThemeContext);
+
+  const navigate = () => {
+    navigation.navigate('Search');
+  };
+
   return (
     <View
       style={{
@@ -126,7 +131,7 @@ const EmptyItem = React.memo(() => {
           No Rooms :(
         </Text>
       </View>
-      <TouchableOpacity style={globalStyles.button}>
+      <TouchableOpacity style={globalStyles.button} onPress={navigate}>
         <Text style={globalStyles.buttonText}>Find a Room</Text>
       </TouchableOpacity>
     </View>

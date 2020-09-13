@@ -1,5 +1,11 @@
 import React from 'react';
-import {SafeAreaView, View, Text, TouchableOpacity} from 'react-native';
+import {
+  SafeAreaView,
+  View,
+  Text,
+  TouchableOpacity,
+  ActivityIndicator,
+} from 'react-native';
 
 import {getChatroomInfo} from '../../../backend/database/apiCalls';
 import {
@@ -13,11 +19,12 @@ import {storeUserData} from '../../../shared/AsyncStore';
 export default function JoinRoomWithLink({route, navigation}) {
   const {constants} = React.useContext(ThemeContext);
   const {token} = React.useContext(TokenContext);
+  const [loading, setLoading] = React.useState(false);
   const {user, setUser} = React.useContext(UserDetailsContext);
   const {id} = route.params;
+  const [noRoomExists, setNoRoomExists] = React.useState(false);
   const [room, setRoom] = React.useState({
     name: '',
-    listOfUsers: '',
   });
 
   React.useEffect(() => {
@@ -26,13 +33,24 @@ export default function JoinRoomWithLink({route, navigation}) {
   }, []);
 
   const getData = () => {
-    const url = 'https://fluxroom-backend-beta.herokuapp.com';
-    fetch(`${url}/room/${id}`)
-      .then((response) => response.text())
-      .then((responseData) => {
-        alert(responseData);
-        console.log('[Chat Room Info]', responseData);
-        setRoom(responseData);
+    const requestOptions = {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    };
+    return fetch(
+      `https://fluxroom-backend-beta.herokuapp.com/room/${id}`,
+      requestOptions,
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.message === 'No room with this ID exists') {
+          setNoRoomExists(true);
+        } else {
+          setRoom(data);
+        }
       });
   };
 
@@ -40,72 +58,88 @@ export default function JoinRoomWithLink({route, navigation}) {
     const rooms = user.joinedRooms;
     rooms.map((_room) => {
       if (_room._id === id) {
-        navigation.replace('Room', {room: room});
+        navigation.replace('Room', {room: _room});
       }
     });
   };
 
   const handleJoinRoom = () => {
+    setLoading(true);
     joinRoom(room._id, token).then((response) => {
       setUser(response);
       setLoading(false);
       storeUserData(response);
-      navigation.replace('ChatRoomNavigator', {
-        screen: 'Room',
-        params: {room: room},
-      });
+      navigation.replace('Room', {room: room});
     });
   };
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: constants.background1}}>
-      <View
-        style={{
-          flex: 1,
-          paddingVertical: 25,
-          alignItems: 'center',
-        }}>
+      {noRoomExists ? (
         <Text
           style={{
-            fontSize: 30,
-            color: constants.text1,
+            color: 'crimson',
+            fontSize: 20,
             fontWeight: '700',
-            marginBottom: 10,
-          }}>
-          {room.name}
-        </Text>
-        <Text
-          style={{
-            fontSize: 15,
-            color: constants.text1,
-            fontWeight: '300',
-            marginBottom: 10,
-          }}>
-          {room.listOfUsers} speakers
-        </Text>
-        <TouchableOpacity
-          style={{
-            width: constants.width * 0.65,
-            height: 40,
-            flexDirection: 'row',
+            alignSelf: 'center',
             marginTop: 25,
+          }}>
+          No Room such exists !
+        </Text>
+      ) : (
+        <View
+          style={{
+            flex: 1,
+            paddingVertical: 25,
             alignItems: 'center',
-            justifyContent: 'center',
-            borderRadius: 8,
-            marginHorizontal: 10,
-            backgroundColor: constants.primary,
-          }}
-          onPress={handleJoinRoom}>
+          }}>
           <Text
             style={{
-              fontFamily: 'Helvetica',
-              color: 'white',
-              fontSize: 15,
+              fontSize: 30,
+              color: constants.text1,
+              fontWeight: '700',
+              marginBottom: 10,
             }}>
-            Join Room
+            {room.name}
           </Text>
-        </TouchableOpacity>
-      </View>
+          {loading ? (
+            <View
+              style={{
+                width: constants.width * 0.65,
+                height: 40,
+                flexDirection: 'row',
+                marginTop: 25,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              <ActivityIndicator color={constants.background2} size="small" />
+            </View>
+          ) : (
+            <TouchableOpacity
+              style={{
+                width: constants.width * 0.65,
+                height: 40,
+                flexDirection: 'row',
+                marginTop: 25,
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderRadius: 8,
+                marginHorizontal: 10,
+                backgroundColor: constants.primary,
+              }}
+              onPress={handleJoinRoom}>
+              <Text
+                style={{
+                  fontFamily: 'Helvetica',
+                  color: 'white',
+                  fontSize: 15,
+                }}>
+                Join Room
+              </Text>
+            </TouchableOpacity>
+          )}
+        </View>
+      )}
     </SafeAreaView>
   );
 }

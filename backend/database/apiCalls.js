@@ -209,7 +209,14 @@ export const addUserToRoom = (token, roomId) => {
 export const acceptInvitation = () => {};
 
 export const getChatroomInfo = (id) => {
-  return fetch(`${url}/room/${id}`)
+  const requestOptions = {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+  };
+  return fetch(`${url}/room/${id}`, requestOptions)
     .then((response) => response.json())
     .then((data) => {
       return data;

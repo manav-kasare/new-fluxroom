@@ -14,6 +14,7 @@ import Animated, {
   set,
   eq,
   SpringUtils,
+  interpolate,
 } from 'react-native-reanimated';
 import {
   useValue,
@@ -33,12 +34,12 @@ export default function Onboard({navigation}) {
   const timeAnimation = withTimingTransition(time, {duration: 1000});
   useCode(() => cond(eq(time, 0), set(time, 1)), []);
 
-  const positionY = useValue(-constants.height);
-  useCode(() => cond(eq(positionY, -constants.height), set(positionY, 0)));
-  const slideAnimationY = withSpringTransition(positionY, {
-    ...SpringUtils.makeDefaultConfig(),
-    overshootClamping: true,
-    damping: new Animated.Value(20),
+  const isOpen = useValue(0);
+  const isOpenAnimation = withSpringTransition(isOpen);
+
+  const outerLoginY = interpolate(isOpenAnimation, {
+    inputRange: [0, 1],
+    outputRange: [constants.height * 0.5, 0],
   });
 
   const navigatePhone = () => {
@@ -56,100 +57,78 @@ export default function Onboard({navigation}) {
       style={{
         width: constants.width,
         height: constants.height,
-        backgroundColor: 'white',
+        backgroundColor: '#4640C1',
+        alignItems: 'center',
+        paddingTop: 50,
       }}>
-      <SafeAreaView
+      <StatusBar barStyle="light-content" backgroundColor="#4640C1" />
+      <Animated.View
         style={{
-          flex: 1,
-          backgroundColor: '#4640C1',
-          justifyContent: 'flex-end',
+          opacity: timeAnimation,
         }}>
-        <StatusBar barStyle="light-content" />
-        <Animated.View
+        <Text
           style={{
-            marginTop: 50,
-            opacity: timeAnimation,
+            marginTop: 30,
+            color: 'white',
+            fontWeight: '800',
+            fontSize: 30,
+            letterSpacing: 2,
+            fontFamily: 'Helvetica Neue',
+            alignSelf: 'center',
           }}>
-          <Text
-            style={{
-              marginTop: 30,
-              color: 'white',
-              fontWeight: '800',
-              fontSize: 30,
-              letterSpacing: 2,
-              fontFamily: 'Helvetica Neue',
-              alignSelf: 'center',
-            }}>
-            FLUXROOM
-          </Text>
-        </Animated.View>
-        <Animated.View
+          FLUXROOM
+        </Text>
+      </Animated.View>
+      <Animated.View
+        style={{
+          backgroundColor: 'white',
+          height: constants.height * 0.5,
+          width: constants.width,
+          transform: [{translateY: outerLoginY}],
+          alignItems: 'center',
+          paddingTop: 50,
+          borderTopLeftRadius: 15,
+          borderTopRightRadius: 15,
+        }}>
+        <TouchableOpacity
+          style={globalStyles.screenButton}
+          onPress={navigateSignUp}>
+          <Text style={globalStyles.buttonText}>Sign Up</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={globalStyles.screenButton}
+          onPress={navigateLogin}>
+          <Text style={globalStyles.buttonText}>Log In</Text>
+        </TouchableOpacity>
+        <View
           style={{
-            backgroundColor: '#4640C1',
-            borderTopRightRadius: 10,
-            borderTopLeftRadius: 10,
+            width: constants.width * 0.9,
+            justifyContent: 'space-evenly',
+            shadowColor: 'grey',
+            shadowOpacity: 0.2,
+            elevation: 1,
             alignItems: 'center',
-            transform: [{translateY: slideAnimationY}],
+            flexDirection: 'row',
+            marginVertical: 20,
+            alignSelf: 'center',
           }}>
-          <View
-            style={{
-              width: constants.width,
-              alignItems: 'center',
-              justifyContent: 'flex-start',
-              paddingTop: 50,
-              backgroundColor: 'white',
-              borderTopRightRadius: 15,
-              borderTopLeftRadius: 15,
-            }}>
-            <View>
-              <TouchableOpacity
-                style={globalStyles.screenButton}
-                onPress={navigateSignUp}>
-                <Text style={globalStyles.buttonText}>Sign Up</Text>
-              </TouchableOpacity>
-            </View>
-            <View>
-              <TouchableOpacity
-                style={globalStyles.screenButton}
-                onPress={navigateLogin}>
-                <Text style={globalStyles.buttonText}>Log In</Text>
-              </TouchableOpacity>
-            </View>
-            <View
-              style={{
-                width: constants.width * 0.9,
-                justifyContent: 'space-evenly',
-                shadowColor: 'grey',
-                shadowOpacity: 0.2,
-                elevation: 1,
-                alignItems: 'center',
-                flexDirection: 'row',
-                marginVertical: 20,
-                alignSelf: 'center',
-              }}>
-              <Google navigation={navigation} />
-              {Platform.OS === 'ios' ? (
-                <Apple navigation={navigation} />
-              ) : (
-                <></>
-              )}
+          <Google navigation={navigation} />
+          {Platform.OS === 'ios' ? <Apple navigation={navigation} /> : <></>}
 
-              <TouchableOpacity
-                style={{
-                  width: 50,
-                  height: 50,
-                  borderRadius: 50 / 2,
-                  backgroundColor: '#4640C1',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-                onPress={navigatePhone}>
-                <Entypo size={25} name="phone" color="white" />
-              </TouchableOpacity>
-            </View>
-          </View>
-        </Animated.View>
-      </SafeAreaView>
+          <TouchableOpacity
+            style={{
+              width: 50,
+              height: 50,
+              borderRadius: 50 / 2,
+              backgroundColor: '#4640C1',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+            onPress={navigatePhone}>
+            <Entypo size={25} name="phone" color="white" />
+          </TouchableOpacity>
+        </View>
+      </Animated.View>
     </View>
   );
 }
