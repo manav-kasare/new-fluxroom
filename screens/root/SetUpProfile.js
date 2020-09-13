@@ -49,7 +49,6 @@ export default function SetUpProfile({route}) {
       .messaging()
       .getToken()
       .then((token) => {
-        console.log('[SetUp Profile FCM Token]', token);
         setFcmToken(token);
       });
   };
@@ -69,7 +68,6 @@ export default function SetUpProfile({route}) {
         description: description,
         profilePic: profilePhoto,
       }).then((response) => {
-        console.log('[Google Create user]', response);
         if (response.error) {
           setLoading(false);
           ReactNativeHaptic.generate('notificationError');
@@ -135,7 +133,6 @@ export default function SetUpProfile({route}) {
 
   const phoneSignUp = () => {
     setLoading(true);
-    console.log(fcmToken);
     try {
       createUser({
         username: username,
@@ -188,7 +185,6 @@ export default function SetUpProfile({route}) {
           description: description,
           profilePic: profilePhoto,
         }).then((response) => {
-          console.log('[Create user]', response);
           if (response.error) {
             ReactNativeHaptic.generate('notificationError');
             setLoading(false);

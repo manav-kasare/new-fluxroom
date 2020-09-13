@@ -68,7 +68,7 @@ export default function RoomUserOptions({isVisible, setIsVisible}) {
             marginLeft: 25,
             fontSize: 16,
           }}>
-          Send friend request
+          Report User
         </Text>
         <Ionicons
           name="chevron-forward"

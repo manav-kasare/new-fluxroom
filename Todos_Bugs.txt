@@ -20,7 +20,7 @@ Update Profile
 done Search
 done Create Room
 done Join Room
-Testing Join Room Deep Links
+done Testing Join Room Deep Links
 Testing Push Notifications
 
 
@@ -33,10 +33,10 @@ Bugs:
     6. FIXED. Cant't hide tab bar in ChatRoomNavigator after changing the navigation flow.
     7. FIXED. Error on Search query.
     8. FIXED. Can't send id in room object from Create Room to Share Room link.
-    9. Can't check if email is verified.
+    9. FIXED. Can't check if email is verified.
     10. FCM Token while setting up profile.
     11. Can't get FCM Token on a real device.
-    12. Cant't fetch room by id while deep linking.
+    12. FIXED. Cant't fetch room by id while deep linking.
 
     
 Extras:

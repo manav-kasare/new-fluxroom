@@ -40,9 +40,7 @@ export default function CreateRoom({navigation}) {
 
   const handleCreateRoom = () => {
     setLoading(true);
-    console.log('[Room]', room);
     createRoom(room).then((response) => {
-      console.log('[Create Room]', response);
       if (response.err) {
         setLoading(false);
         if (response.err.code === 11000) {
@@ -53,7 +51,6 @@ export default function CreateRoom({navigation}) {
       } else {
         setShareRoom(response.room);
         joinRoom(response.room._id, token).then((_response) => {
-          console.log('[Create and Join Room Response]', _response);
           setLoading(false);
           setIsVisible(true);
           setUser(_response);
@@ -133,8 +130,8 @@ export default function CreateRoom({navigation}) {
                   width: 100,
                   height: 100,
                   borderRadius: 100 / 2,
-                  borderColor: 'grey',
-                  borderWidth: 1,
+                  borderColor: constants.lineColor,
+                  borderWidth: 0.5,
                   alignItems: 'center',
                   backgroundColor: constants.primary,
                   justifyContent: 'center',

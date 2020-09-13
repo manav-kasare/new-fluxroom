@@ -6,9 +6,10 @@ import {
   Image,
   SafeAreaView,
   ActivityIndicator,
+  Keyboard,
 } from 'react-native';
 import PhoneInput from 'react-native-phone-number-input';
-import auth from '@react-native-firebase/auth';
+import auth, {firebase} from '@react-native-firebase/auth';
 import * as RNLocalize from 'react-native-localize';
 
 import {ThemeContext} from '../../shared/Context';
@@ -27,15 +28,27 @@ export default function Phone({navigation}) {
 
   const signIn = async () => {
     setIsLoading(true);
+    Keyboard.dismiss();
+
     try {
-      await auth()
-        .signInWithPhoneNumber(formattedPhoneNumber)
-        .then((_confirmation) => {
-          setConfirmation(_confirmation);
-          setIsVisible(true);
-        });
+      window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
+        'recaptcha-container',
+        {
+          size: 'invisible',
+          callback: async function (response) {
+            // reCAPTCHA solved, allow signInWithPhoneNumber.
+            await auth()
+              .signInWithPhoneNumber(formattedPhoneNumber)
+              .then((_confirmation) => {
+                setConfirmation(_confirmation);
+                setIsVisible(true);
+              });
+          },
+        },
+      );
     } catch (err) {
       setIsLoading(false);
+      console.log(err);
       CustomErrorToast('An Error Occured !');
     }
   };

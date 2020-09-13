@@ -16,7 +16,7 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import auth from '@react-native-firebase/auth';
 import ReactNativeHaptic from 'react-native-haptic';
 
-import {UserDetailsContext} from '../../shared/Context';
+import {UserDetailsContext, TokenContext} from '../../shared/Context';
 import constants from '../../shared/constants';
 import {CustomErrorToast} from '../../shared/CustomToast';
 import globalStyles from '../../shared/GlobalStyles';
@@ -28,6 +28,7 @@ export default function LogIn({navigation}) {
   const {setUser} = useContext(UserDetailsContext);
   const [email, setemail] = useState('');
   const [password, setpassword] = useState('');
+  const {setToken} = useState(TokenContext);
   const [revealPassword, setRevealPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [onFocusPassword, setOnFocusPassword] = useState(false);
@@ -44,18 +45,17 @@ export default function LogIn({navigation}) {
               username: user.username,
               password: '89337133-17c9-42e3-9fef-78416a25651a',
             }).then((response) => {
-              console.log('[Login res]', response);
               if (response.err) {
                 setIsLoading(false);
                 ReactNativeHaptic.generate('notificationError');
                 CustomErrorToast('An Error Occured !');
               } else {
-                setIsLoading(false);
                 ReactNativeHaptic.generate('notificationSuccess');
                 storeToken(response.user._id, response.token).then(() => {
-                  storeToken(response.token);
+                  setToken(response.token);
                   storeUserData(response.user);
                   storeTheme('light');
+                  setIsLoading(false);
                   setUser(response.user);
                 });
               }

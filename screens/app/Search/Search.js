@@ -39,9 +39,7 @@ const Search = React.memo(({navigation}) => {
   }, []);
 
   const getRooms = () => {
-    console.log('[Staring get all rooms api call]');
     getAllRooms().then((data) => {
-      console.log('[Get all rooms]', data);
       setRooms(data);
       setloading(false);
       setRefreshing(false);
@@ -86,7 +84,6 @@ const Search = React.memo(({navigation}) => {
           setQuery(text);
           handleSearch(text);
         }}
-        autoFocus={true}
         iconColor="grey"
         icon={() => (
           <Ionicons name="search" size={25} color={constants.background2} />

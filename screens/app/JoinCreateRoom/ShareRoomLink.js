@@ -15,7 +15,6 @@ export default function ShareRoomLink({
   const [url, setUrl] = React.useState(null);
 
   React.useEffect(() => {
-    console.log('[Share Room Link room]', room.name);
     setUrl(`fluxroom://app/home/rooms/join/${room._id}`);
   }, []);
 

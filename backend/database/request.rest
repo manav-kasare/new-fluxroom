@@ -9,4 +9,7 @@ GET http://fluxroom-backend-beta.herokuapp.com/room/5f59e9460bfdd1cd48bed3c9
 ###
 GET https://fluxroom-backend-beta.herokuapp.com/getbyphone?phone=+918433802669
 
+###
+GET https://fluxroom-backend-beta.herokuapp.com/getbyemail?email=ilh35237@bcaoo.com
+
  

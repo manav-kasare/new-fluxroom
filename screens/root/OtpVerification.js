@@ -6,14 +6,18 @@ import {
   TouchableOpacity,
   ActivityIndicator,
 } from 'react-native';
-import ReactNativeHaptic from 'react-native-haptic';
 import auth from '@react-native-firebase/auth';
 import Modal from 'react-native-modal';
-
+import ReactNativeHaptic from 'react-native-haptic';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
 import globalStyles from '../../shared/GlobalStyles';
 import CustomToast, {CustomErrorToast} from '../../shared/CustomToast';
-import {ThemeContext, UserDetailsContext} from '../../shared/Context';
+import {
+  ThemeContext,
+  UserDetailsContext,
+  TokenContext,
+} from '../../shared/Context';
 import {getUserByPhone, loginUser} from '../../backend/database/apiCalls';
 import {storeToken} from '../../shared/KeyChain';
 import {storeUserData} from '../../shared/AsyncStore';
@@ -30,46 +34,51 @@ export default OtpVerification = ({
   const {setUser} = React.useContext(UserDetailsContext);
   const {constants} = React.useContext(ThemeContext);
   const [code, setCode] = React.useState(null);
+  const {setToken} = React.useContext(TokenContext);
   const [isLoadingCode, setIsLoadingCode] = React.useState(false);
   const [isLoadingResendCode, setIsLoadingResendCode] = React.useState(false);
 
   const confirmSignUp = async () => {
-    setIsLoadingCode(true);
+    // setIsLoadingCode(true);
     try {
       await confirmation.confirm(code).then((userInfo) => {
-        setIsLoadingCode(false);
         ReactNativeHaptic.generate('notificationSuccess');
         setIsVisible(false);
         if (userInfo.additionalUserInfo.isNewUser) {
+          setIsLoadingCode(false);
           navigation.navigate('SetUpProfile', {
             phoneNumber: phoneNumber,
             phoneData: userInfo,
           });
         } else {
-          getUserByPhone(phoneNumber).then((response) => {
+          const encodedPhoneNumber = phoneNumber.replace(/\+/gi, '%2B');
+          getUserByPhone(encodedPhoneNumber).then((user) => {
+            console.log('[Get user by phone]', user);
             loginUser({
-              username: response.username,
+              username: user.username,
               password: '89337133-17c9-42e3-9fef-78416a25651a',
-            }).then((_response) => {
-              if (_response.err) {
-                ReactNativeHaptic.generate('notificationError');
+            }).then((response) => {
+              console.log('[Login user]', response);
+              if (response.err) {
                 setIsLoadingCode(false);
-                setIsLoading(false);
-                CustomToast('An Error Occured');
+                ReactNativeHaptic.generate('notificationError');
+                CustomErrorToast('An Error Occured !');
               } else {
                 ReactNativeHaptic.generate('notificationSuccess');
-                storeToken(_response.user._id, _response.token);
-                setIsLoadingCode(false);
-                setIsLoading(false);
-                storeUserData(_response.user);
-                storeTheme('light');
-                setUser(_response.user);
+                storeToken(response.user._id, response.token).then(() => {
+                  storeToken(response.token);
+                  storeUserData(response.user);
+                  storeTheme('light');
+                  setIsLoadingCode(false);
+                  setUser(response.user);
+                });
               }
             });
           });
         }
       });
     } catch (error) {
+      console.log(error);
       ReactNativeHaptic.generate('notificationError');
       setIsLoadingCode(false);
       CustomErrorToast('Invalid Code !');

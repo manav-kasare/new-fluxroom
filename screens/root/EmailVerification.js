@@ -23,7 +23,6 @@ export default function EmailVerification({
     auth()
       .signInWithEmailAndPassword(user.email, user.password)
       .then((_userInfo) => {
-        console.log(_userInfo);
         if (_userInfo.user.emailVerified) {
           setLoading(false);
           setIsVisible(false);

@@ -2,7 +2,7 @@ import React from 'react';
 import {TouchableOpacity, ActivityIndicator} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {GoogleSignin, statusCodes} from '@react-native-community/google-signin';
-import {UserDetailsContext} from '../../shared/Context';
+import {UserDetailsContext, TokenContext} from '../../shared/Context';
 import auth from '@react-native-firebase/auth';
 import ReactNativeHaptic from 'react-native-haptic';
 
@@ -28,6 +28,7 @@ GoogleSignin.configure({
 
 export default function Google({navigation}) {
   const {setUser} = React.useContext(UserDetailsContext);
+  const {setToken} = React.useContext(TokenContext);
   const [loading, setLoading] = React.useState(false);
 
   const signIn = async () => {
@@ -41,9 +42,8 @@ export default function Google({navigation}) {
         auth()
           .signInWithCredential(googleCredential)
           .then((_userInfo) => {
-            console.log('[Google Sign in]', _userInfo);
-            setLoading(false);
             if (_userInfo.additionalUserInfo.isNewUser) {
+              setLoading(false);
               navigation.navigate('SetUpProfile', {
                 email: _userInfo.user.email,
                 googleData: _userInfo,
@@ -54,7 +54,6 @@ export default function Google({navigation}) {
                   username: response.username,
                   password: '89337133-17c9-42e3-9fef-78416a25651a',
                 }).then((_response) => {
-                  console.log('[_response]', _response);
                   if (_response.err) {
                     setLoading(false);
                     ReactNativeHaptic.generate('notificationError');
@@ -62,6 +61,7 @@ export default function Google({navigation}) {
                   } else {
                     ReactNativeHaptic.generate('notificationSuccess');
                     storeToken(_response.user._id, _response.token).then(() => {
+                      setToken(_response.token);
                       storeUserData(_response.user).then(() => {
                         storeTheme('light');
                         setUser(_response.user);

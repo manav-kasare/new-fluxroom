@@ -6,7 +6,7 @@ import {UserDetailsContext, ThemeContext} from '../../../shared/Context';
 import UserProfilePhoto from './UserProfilePhoto';
 
 export default function UserProfile({navigation}) {
-  const {constants, darkTheme} = React.useContext(ThemeContext);
+  const {constants} = React.useContext(ThemeContext);
 
   return (
     <SafeAreaView
@@ -59,7 +59,7 @@ const ProfileComponent = ({navigation}) => {
             color: 'white',
             fontWeight: '500',
             fontFamily: 'Helvetica Neue',
-            fontSize: 16,
+            fontSize: 20,
           }}>
           {user.username}
         </Text>
@@ -77,8 +77,8 @@ const ProfileComponent = ({navigation}) => {
             color: 'rgba(255,255,255,0.5)',
             fontWeight: '400',
             fontFamily: 'Helvetica Neue',
-            fontSize: 14,
-            marginRight: 50,
+            fontSize: 16,
+            marginRight: 40,
           }}>
           Description
         </Text>

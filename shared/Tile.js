@@ -13,7 +13,7 @@ const Tile = React.memo(
         <View
           style={{
             flex: 1,
-            height: constants.height * 0.1,
+            height: constants.height * 0.075,
             paddingLeft: 25,
             alignItems: 'center',
             flexDirection: 'row',
@@ -21,7 +21,7 @@ const Tile = React.memo(
             borderBottomColor: darkTheme ? 'transparent' : constants.lineColor,
             borderBottomWidth: 0.5,
           }}>
-          <CircleAvatar uri={uri} size={50} />
+          <CircleAvatar uri={uri} size={45} />
           <View style={{flexDirection: 'column'}}>
             <Text
               style={{

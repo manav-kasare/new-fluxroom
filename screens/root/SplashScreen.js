@@ -1,15 +1,22 @@
 import React from 'react';
 import {SafeAreaView, Text} from 'react-native';
-import {ThemeContext} from '../../shared/Context';
+import {getTheme} from '../../shared/AsyncStore';
 
 export default function SplashScreen() {
-  const {constants} = React.useContext(ThemeContext);
+  const [isDark, setIsDark] = React.useState(false);
+  React.useEffect(() => {
+    getTheme().then((theme) => {
+      if (theme === 'dark') {
+        setIsDark(true);
+      }
+    });
+  }, []);
 
   return (
     <SafeAreaView
       style={{
         flex: 1,
-        backgroundColor: constants.background1,
+        backgroundColor: isDark ? 'black' : 'white',
         alignItems: 'center',
         justifyContent: 'center',
       }}>
