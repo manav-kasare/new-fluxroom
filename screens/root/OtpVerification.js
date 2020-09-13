@@ -47,26 +47,25 @@ export default OtpVerification = ({
           });
         } else {
           getUserByPhone(phoneNumber).then((response) => {
-            console.log(response);
-            //   loginUser({
-            //     username: response.username,
-            //     password: '89337133-17c9-42e3-9fef-78416a25651a',
-            //   }).then((_response) => {
-            //     if (_response.err) {
-            //       ReactNativeHaptic.generate('notificationError');
-            //       setIsLoadingCode(false);
-            //       setIsLoading(false);
-            //       CustomToast('An Error Occured');
-            //     } else {
-            //       ReactNativeHaptic.generate('notificationSuccess');
-            //       storeToken(_response.user._id, _response.token);
-            //       setIsLoadingCode(false);
-            //       setIsLoading(false);
-            //       storeUserData(_response.user);
-            //       storeTheme('light');
-            //       setUser(_response.user);
-            //     }
-            //   });
+            loginUser({
+              username: response.username,
+              password: '89337133-17c9-42e3-9fef-78416a25651a',
+            }).then((_response) => {
+              if (_response.err) {
+                ReactNativeHaptic.generate('notificationError');
+                setIsLoadingCode(false);
+                setIsLoading(false);
+                CustomToast('An Error Occured');
+              } else {
+                ReactNativeHaptic.generate('notificationSuccess');
+                storeToken(_response.user._id, _response.token);
+                setIsLoadingCode(false);
+                setIsLoading(false);
+                storeUserData(_response.user);
+                storeTheme('light');
+                setUser(_response.user);
+              }
+            });
           });
         }
       });

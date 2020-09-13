@@ -87,8 +87,19 @@ export const getUserChatRooms = (id) => {
 };
 
 export const getUserByEmail = (email) => {
-  return fetch(`${url}/getbyemail?email=${email}`)
-    .then((response) => response.json())
+  const requestOptions = {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+  };
+
+  return fetch(`${url}/getbyemail?email=${email}`, requestOptions)
+    .then((response) => {
+      console.log('[Get user by email]', response);
+      return response.json();
+    })
     .then((responseJSON) => {
       return responseJSON;
     });

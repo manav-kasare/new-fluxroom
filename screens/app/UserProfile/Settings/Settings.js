@@ -5,16 +5,11 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import Entypo from 'react-native-vector-icons/Entypo';
-import auth from '@react-native-firebase/auth';
 
 import {ThemeContext} from '../../../../shared/Context';
 
 export default function Settings({navigation}) {
   const {darkTheme, toggleTheme, constants} = React.useContext(ThemeContext);
-  const {isEmailVerified, setIsEmailVerified} = React.useState(
-    auth().currentUser.emailVerified,
-  );
 
   const styles = {
     view: {
@@ -53,30 +48,6 @@ export default function Settings({navigation}) {
         backgroundColor: constants.background1,
       }}>
       <View style={{flex: 1, backgroundColor: constants.background1}}>
-        {isEmailVerified ? (
-          <></>
-        ) : (
-          <View style={[styles.view, {paddingLeft: 0}]}>
-            <TouchableOpacity onPress={() => {}} style={styles.view_touchable}>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  paddingLeft: 5,
-                }}>
-                <Text style={styles.view_text}>
-                  Please Verify your Email address
-                </Text>
-              </View>
-              <Ionicons
-                name="chevron-forward"
-                size={20}
-                color={constants.background2}
-              />
-            </TouchableOpacity>
-          </View>
-        )}
-
         <View style={styles.view}>
           <TouchableOpacity
             onPress={navigateAboutUsNavigator}

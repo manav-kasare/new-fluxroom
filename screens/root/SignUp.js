@@ -15,6 +15,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import ReactNativeHaptic from 'react-native-haptic';
 import auth from '@react-native-firebase/auth';
+import EmailVerification from './EmailVerification';
 
 import constants from '../../shared/constants';
 import CustomToast, {CustomErrorToast} from '../../shared/CustomToast';
@@ -25,6 +26,8 @@ export default function SignUp({navigation}) {
   const [revealPassword, setRevealPassword] = useState(false);
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const [userInfo, setUserInfo] = useState(null);
 
   const isPasswordValid = (q) => {
     return /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/.test(
@@ -37,11 +40,13 @@ export default function SignUp({navigation}) {
     Keyboard.dismiss();
     auth()
       .createUserWithEmailAndPassword(email, password)
-      .then((userInfo) => {
-        userInfo.user.sendEmailVerification().then(() => {
+      .then((_userInfo) => {
+        _userInfo.user.sendEmailVerification().then(() => {
           setIsLoading(false);
+          setUserInfo(_userInfo);
           ReactNativeHaptic.generate('notificationSuccess');
-          navigation.navigate('SetUpProfile', {email: email});
+          setIsVisible(true);
+          // navigation.navigate('SetUpProfile', {email: email});
         });
       })
       .catch((error) => {
@@ -74,6 +79,13 @@ export default function SignUp({navigation}) {
             height: constants.height,
             backgroundColor: 'white',
           }}>
+          <EmailVerification
+            isVisible={isVisible}
+            setIsVisible={setIsVisible}
+            navigation={navigation}
+            userInfo={userInfo}
+            user={{email: email, password: password}}
+          />
           <SafeAreaView
             style={{
               flex: 1,

@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, ActivityIndicator} from 'react-native';
 import Modal from 'react-native-modal';
-import auth from '@react-native-firebase/auth';
+import auth, {firebase} from '@react-native-firebase/auth';
 
 import {ThemeContext} from '../../shared/Context';
 import {CustomErrorToast} from '../../shared/CustomToast';
@@ -11,24 +11,30 @@ export default function EmailVerification({
   setIsVisible,
   navigation,
   userInfo,
-  email,
+  user,
 }) {
   const {constants} = React.useContext(ThemeContext);
   const [loading, setLoading] = React.useState(false);
   const [resendLoading, setResendLoading] = React.useState(false);
+  const [notVerifiedButton, setNotVerifiedButton] = React.useState(false);
 
   const checkVerification = async () => {
     setLoading(true);
-    const emailVerified = await auth().currentUser.emailVerified;
-    console.log('[Email Verified]', emailVerified);
-    if (emailVerified) {
-      setLoading(false);
-      setIsVisible(false);
-      navigation.navigate('SetUpProfile', {email: email});
-    } else {
-      setLoading(false);
-      CustomErrorToast('Email not verified');
-    }
+    auth()
+      .signInWithEmailAndPassword(user.email, user.password)
+      .then((_userInfo) => {
+        console.log(_userInfo);
+        if (_userInfo.user.emailVerified) {
+          setLoading(false);
+          setIsVisible(false);
+          navigation.navigate('SetUpProfile', {email: user.email});
+        } else {
+          setLoading(false);
+          setTimeout(() => {
+            setNotVerifiedButton(true);
+          }, 1000);
+        }
+      });
   };
 
   const resendEmail = async () => {
@@ -106,15 +112,27 @@ export default function EmailVerification({
             marginVertical: 5,
           }}
           onPress={checkVerification}>
-          <Text
-            style={{
-              color: 'white',
-              fontSize: 15,
-              letterSpacing: 1,
-              fontFamily: 'Helvetica',
-            }}>
-            Check
-          </Text>
+          {notVerifiedButton ? (
+            <Text
+              style={{
+                color: 'crimson',
+                fontSize: 15,
+                letterSpacing: 1,
+                fontFamily: 'Helvetica',
+              }}>
+              Not Verifed
+            </Text>
+          ) : (
+            <Text
+              style={{
+                color: 'white',
+                fontSize: 15,
+                letterSpacing: 1,
+                fontFamily: 'Helvetica',
+              }}>
+              Check
+            </Text>
+          )}
         </TouchableOpacity>
       )}
       {resendLoading ? (

@@ -11,6 +11,7 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
+import ReactNativeHaptic from 'react-native-haptic';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
@@ -183,7 +184,7 @@ export default function SetUpProfile({route}) {
           username: username,
           email: email,
           phone: email,
-          notificationID: 'sdjflksjfsjfjfklsjfb',
+          notificationID: fcmToken,
           description: description,
           profilePic: profilePhoto,
         }).then((response) => {
@@ -216,6 +217,7 @@ export default function SetUpProfile({route}) {
   };
 
   const handleSubmit = () => {
+    Keyboard.dismiss();
     if (email) {
       emailSignUp();
     } else if (phoneNumber) {
