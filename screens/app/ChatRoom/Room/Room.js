@@ -8,6 +8,7 @@ import {
   RefreshControl,
 } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import Entypo from 'react-native-vector-icons/Entypo';
 
 import RaisingHand from './RaisingHand';
 import ToggleMic from './ToggleMic';
@@ -18,6 +19,7 @@ import RoomAvatar from './RoomAvatar';
 import RoomHeader from './RoomHeader';
 import RoomUserOptions from './RoomUserOptions';
 import RoomAvatarLoading from './RoomAvatarLoading';
+import InviteToRoom from './InviteToRoom';
 
 const Room = ({route, navigation}) => {
   const {room} = route.params;
@@ -29,6 +31,7 @@ const Room = ({route, navigation}) => {
   const [isVisible, setIsVisible] = React.useState(false);
   const [refreshing, setRefreshing] = React.useState(false);
   const [loading, setLoading] = React.useState(true);
+  const [inviteModal, setInviteModal] = React.useState(false);
 
   React.useEffect(() => {
     setData();
@@ -53,6 +56,10 @@ const Room = ({route, navigation}) => {
     setIsVisible(!isVisible);
   };
 
+  const handleInvite = () => {
+    setInviteModal(true);
+  };
+
   return (
     <>
       <SafeAreaView
@@ -62,6 +69,11 @@ const Room = ({route, navigation}) => {
             ? constants.background3
             : constants.primary,
         }}>
+        <InviteToRoom
+          inviteModal={inviteModal}
+          setInviteModal={setInviteModal}
+          roomName={room.name}
+        />
         <StatusBar
           backgroundColor={
             darkTheme ? constants.background1 : constants.primary
@@ -89,7 +101,7 @@ const Room = ({route, navigation}) => {
                   />
                   <RoomAvatar
                     uri={item.profilePic}
-                    size={100}
+                    size={constants.width * 0.25}
                     name={item.username}
                   />
                 </TouchableOpacity>
@@ -122,18 +134,31 @@ const Room = ({route, navigation}) => {
                 someoneRaisingHand={someoneRaisingHand}
                 setSomeoneRaisingHand={setSomeoneRaisingHand}
               />
+              <TouchableOpacity
+                style={{
+                  width: 40,
+                  height: 40,
+                  borderRadius: 10,
+                  backgroundColor: constants.primary,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginHorizontal: 10,
+                }}
+                onPress={handleInvite}>
+                <Entypo size={30} color="white" name="plus" />
+              </TouchableOpacity>
             </View>
             <TouchableOpacity
               style={{
                 paddingVertical: 10,
                 paddingHorizontal: 20,
                 borderRadius: 10,
-                backgroundColor: 'crimson',
+                backgroundColor: '#ba0000',
                 alignItems: 'center',
                 justifyContent: 'center',
               }}
               onPress={anon}>
-              <FontAwesome5 name="phone-slash" color="white" size={20} />
+              <FontAwesome5 name="phone-slash" color="white" siz e={20} />
             </TouchableOpacity>
           </View>
         </View>

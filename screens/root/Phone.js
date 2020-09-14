@@ -9,7 +9,7 @@ import {
   Keyboard,
 } from 'react-native';
 import PhoneInput from 'react-native-phone-number-input';
-import auth, {firebase} from '@react-native-firebase/auth';
+import auth from '@react-native-firebase/auth';
 import * as RNLocalize from 'react-native-localize';
 
 import {ThemeContext} from '../../shared/Context';
@@ -31,21 +31,12 @@ export default function Phone({navigation}) {
     Keyboard.dismiss();
 
     try {
-      window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
-        'recaptcha-container',
-        {
-          size: 'invisible',
-          callback: async function (response) {
-            // reCAPTCHA solved, allow signInWithPhoneNumber.
-            await auth()
-              .signInWithPhoneNumber(formattedPhoneNumber)
-              .then((_confirmation) => {
-                setConfirmation(_confirmation);
-                setIsVisible(true);
-              });
-          },
-        },
-      );
+      await auth()
+        .signInWithPhoneNumber(formattedPhoneNumber)
+        .then((_confirmation) => {
+          setConfirmation(_confirmation);
+          setIsVisible(true);
+        });
     } catch (err) {
       setIsLoading(false);
       console.log(err);

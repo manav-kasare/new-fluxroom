@@ -23,6 +23,7 @@ import RecentSearch from './RecentSearch';
 import TilesLoading from '../ChatRoom/TilesLoading';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {storeUserData} from '../../../shared/AsyncStore';
+import JoinLoadingButton from './JoinLoadingButton';
 
 const Search = React.memo(({navigation}) => {
   const [rooms, setRooms] = useState(null);
@@ -152,11 +153,11 @@ const RenderTile = React.memo(({room, onPressTile, navigation}) => {
     setLoading(true);
     joinRoom(room._id, token).then((response) => {
       console.log('[Join Room Response]', response);
-      setUser(response);
-      setAlreadyJoined(true);
-      setLoading(false);
-      navigation.navigate('Room', {room: room});
-      storeUserData(response);
+      storeUserData(response).then(() => {
+        setLoading(false);
+        setUser(response);
+        navigation.navigate('Room', {room: room});
+      });
     });
   };
 
@@ -166,7 +167,7 @@ const RenderTile = React.memo(({room, onPressTile, navigation}) => {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        paddingRight: 30,
+        paddingRight: 15,
         backgroundColor: constants.background3,
         borderBottomColor: darkTheme ? 'transparent' : constants.lineColor,
         borderBottomWidth: 0.5,
@@ -178,44 +179,31 @@ const RenderTile = React.memo(({room, onPressTile, navigation}) => {
         onPressTile={onPressTile}
       />
       {loading ? (
-        <View
-          style={{
-            borderColor: 'grey',
-            borderWidth: 1,
-            width: 100,
-            height: 30,
-            alignItems: 'center',
-            justifyContent: 'center',
-            borderRadius: 5,
-          }}>
-          <ActivityIndicator size="small" color={constants.background2} />
-        </View>
+        <JoinLoadingButton />
       ) : alreadyJoined ? (
         <View
           style={{
-            borderColor: 'grey',
-            borderWidth: 1,
-            width: 100,
+            backgroundColor: '#0f6602',
+            width: 50,
             height: 30,
             alignItems: 'center',
             justifyContent: 'center',
             borderRadius: 5,
           }}>
-          <Text style={{color: constants.text1, fontSize: 10}}>Joined</Text>
+          <Text style={{color: 'white', fontSize: 10}}>Joined</Text>
         </View>
       ) : (
         <TouchableOpacity
           onPress={handleJoin}
           style={{
-            borderColor: 'grey',
-            borderWidth: 1,
-            width: 100,
+            backgroundColor: '#012470',
+            width: 50,
             height: 30,
             alignItems: 'center',
             justifyContent: 'center',
             borderRadius: 5,
           }}>
-          <Text style={{color: constants.text1, fontSize: 12}}>Join</Text>
+          <Text style={{color: 'white', fontSize: 12}}>Join</Text>
         </TouchableOpacity>
       )}
     </View>

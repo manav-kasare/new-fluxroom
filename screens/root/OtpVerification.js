@@ -39,7 +39,7 @@ export default OtpVerification = ({
   const [isLoadingResendCode, setIsLoadingResendCode] = React.useState(false);
 
   const confirmSignUp = async () => {
-    // setIsLoadingCode(true);
+    setIsLoadingCode(true);
     try {
       await confirmation.confirm(code).then((userInfo) => {
         ReactNativeHaptic.generate('notificationSuccess');
@@ -66,7 +66,7 @@ export default OtpVerification = ({
               } else {
                 ReactNativeHaptic.generate('notificationSuccess');
                 storeToken(response.user._id, response.token).then(() => {
-                  storeToken(response.token);
+                  setToken(response.token);
                   storeUserData(response.user);
                   storeTheme('light');
                   setIsLoadingCode(false);

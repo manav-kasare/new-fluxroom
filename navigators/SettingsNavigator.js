@@ -16,10 +16,6 @@ const AboutUsStack = new createStackNavigator();
 export default function SettingsNavigator() {
   const {constants} = React.useContext(ThemeContext);
 
-  const openDrawer = () => {
-    navigation.openDrawer();
-  };
-
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -32,7 +28,9 @@ export default function SettingsNavigator() {
           headerBackTitleVisible: false,
           headerTintColor: 'white',
           headerRight: () => (
-            <TouchableOpacity onPress={openDrawer} style={{marginRight: 15}}>
+            <TouchableOpacity
+              onPress={() => navigation.openDrawer()}
+              style={{marginRight: 15}}>
               <Ionicons name="md-menu" size={25} color="white" />
             </TouchableOpacity>
           ),

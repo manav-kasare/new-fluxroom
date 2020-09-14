@@ -10,7 +10,7 @@ export default function TilesLoading() {
 
   const styles = StyleSheet.create({
     tile: {
-      height: constants.height * 0.1,
+      height: 65,
       paddingLeft: 25,
       alignItems: 'center',
       flexDirection: 'row',

@@ -14,12 +14,12 @@ export default function RoomAvatar({size, uri, isHost, name}) {
 
   return (
     <View style={{marginVertical: 10}}>
-      {uri === undefined ? (
+      {uri === undefined || uri === null ? (
         <View
           style={{
             width: size,
             height: size,
-            borderRadius: 40,
+            borderRadius: 30,
             justifyContent: 'center',
             alignItems: 'center',
             backgroundColor: constants.primary,
@@ -32,7 +32,7 @@ export default function RoomAvatar({size, uri, isHost, name}) {
           style={{
             width: size,
             height: size,
-            borderRadius: 40,
+            borderRadius: 30,
             borderWidth: isHost ? 5 : 1,
             borderColor: isHost ? '#fcdf05' : 'grey',
           }}
@@ -43,14 +43,14 @@ export default function RoomAvatar({size, uri, isHost, name}) {
       <View style={{flexDirection: 'row', height: 20}}>
         <View
           style={{
-            width: 35,
-            height: 35,
+            width: 30,
+            height: 30,
             borderRadius: 10,
             backgroundColor: isSpeaking ? constants.primary : 'crimson',
             alignItems: 'center',
             justifyContent: 'center',
             position: 'relative',
-            bottom: 25,
+            bottom: 20,
           }}>
           {isSpeaking ? (
             <Ionicons size={20} color="white" name="ios-mic-outline" />
@@ -62,17 +62,17 @@ export default function RoomAvatar({size, uri, isHost, name}) {
         {handRaised ? (
           <View
             style={{
-              width: 35,
-              height: 35,
+              width: 30,
+              height: 30,
               borderRadius: 10,
               backgroundColor: constants.primary,
               alignItems: 'center',
               justifyContent: 'center',
               position: 'relative',
-              bottom: 25,
+              bottom: 20,
               left: 35,
             }}>
-            <MaterialCommunityIcons size={25} color="white" name="hand" />
+            <MaterialCommunityIcons size={20} color="white" name="hand" />
           </View>
         ) : (
           <></>

@@ -173,6 +173,28 @@ export const createRoom = (room) => {
     });
 };
 
+export const inviteUserToRoom = (username, roomName, token) => {
+  const requestOptions = {
+    method: 'PATCH',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  return fetch(
+    `${url}/invite?username=${username}&roomName=${roomName}`,
+    requestOptions,
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      return data;
+    });
+};
+
+export const removeFromInvitedToRooms = () => {};
+
 export const joinRoom = async (roomId, token) => {
   const requestOptions = {
     method: 'POST',
@@ -209,8 +231,6 @@ export const addUserToRoom = (token, roomId) => {
       return data;
     });
 };
-
-export const acceptInvitation = () => {};
 
 export const getChatroomInfo = (id) => {
   const requestOptions = {

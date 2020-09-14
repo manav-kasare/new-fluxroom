@@ -10,12 +10,16 @@ import {
 
 import CustomToast, {CustomErrorToast} from '../../../shared/CustomToast';
 import Tile from '../../../shared/Tile';
-import {joinRoom, acceptInvitation} from '../../../backend/database/apiCalls';
+import {
+  joinRoom,
+  removeFromInvitedToRooms,
+} from '../../../backend/database/apiCalls';
 import {
   UserDetailsContext,
   ThemeContext,
   TokenContext,
 } from '../../../shared/Context';
+import {LoadingAccept, LoadingReject} from './LoadingAcceptReject';
 
 const wait = (timeout) => {
   return new Promise((resolve) => {
@@ -23,10 +27,10 @@ const wait = (timeout) => {
   });
 };
 
-const Invitations = () => {
+const Invitations = ({navigation}) => {
   const {constants} = React.useContext(ThemeContext);
   const {user} = useContext(UserDetailsContext);
-  const {token} = useContext(TokenContext);
+
   const [invitations, setInvitations] = useState(null);
   const [refreshing, setRefreshing] = useState(false);
 
@@ -39,18 +43,6 @@ const Invitations = () => {
     setInvitations(user.invitedToRooms);
   }, [refreshing]);
 
-  const handleAccept = (_id) => {
-    joinRoom(_id, token).then((response) => {
-      if (response.error) {
-        CustomErrorToast('An Error Occured');
-      } else {
-        acceptInvitation();
-      }
-    });
-  };
-
-  const handleDecline = (_id) => {};
-
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: constants.background1}}>
       <FlatList
@@ -58,43 +50,7 @@ const Invitations = () => {
         keyExtractor={(index) => index.toString()}
         renderItem={({item}) => (
           <View>
-            <View
-              style={{
-                flexDirection: 'row',
-                marginLeft: 10,
-                marginBottom: 5,
-              }}>
-              <TouchableOpacity onPress={() => handleAccept(item._id)}>
-                <Text
-                  style={{
-                    fontSize: 18,
-                    color: 'dodgerblue',
-                    fontFamily: 'Helvetica',
-                  }}>
-                  Accept
-                </Text>
-              </TouchableOpacity>
-              <Text
-                style={{
-                  fontSize: 18,
-                  color: constants.text1,
-                  fontFamily: 'Helvetica',
-                  marginHorizontal: 5,
-                }}>
-                |
-              </Text>
-              <TouchableOpacity onPress={() => handleDecline(item._id)}>
-                <Text
-                  style={{
-                    fontSize: 18,
-                    color: 'crimson',
-                    fontFamily: 'Helvetica',
-                  }}>
-                  Decline
-                </Text>
-              </TouchableOpacity>
-            </View>
-            <RequestUserTile user={user} />
+            <RequestUserTile room={item} />
           </View>
         )}
         refreshControl={
@@ -109,14 +65,78 @@ const Invitations = () => {
   );
 };
 
-function RequestUserTile({user}) {
+function RequestUserTile({room}) {
+  const {constants, darkTheme} = React.useContext(ThemeContext);
+  const {token} = useContext(TokenContext);
+  const [loadingAccept, setLoadingAccept] = useState(false);
+  const [loadingReject, setLoadingReject] = useState(false);
+
+  const handleAccept = (room) => {
+    setLoadingAccept(true);
+    joinRoom(room._id, token).then((response) => {
+      if (response.error) {
+        setLoadingAccept(false);
+        CustomErrorToast('An Error Occured');
+      } else {
+        setLoadingAccept(false);
+        navigation.navigate('Room', {room: room});
+        removeFromInvitedToRooms();
+      }
+    });
+  };
+
+  const handleReject = (_id) => {
+    setLoadingReject(true);
+    removeFromInvitedToRooms();
+  };
+
   return (
-    <View style={{paddingVertical: 10}}>
+    <View
+      style={{
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        backgroundColor: constants.background3,
+        borderBottomColor: darkTheme ? 'transparent' : constants.lineColor,
+        borderBottomWidth: 0.5,
+      }}>
       <Tile
-        uri={details.profilePhoto}
-        heading={details.username}
-        subHeading={details.description}
+        uri={room.profilePic}
+        heading={room.name}
+        subHeading={room.description}
       />
+      <View style={{flexDirection: 'row'}}>
+        {loadingAccept ? (
+          <LoadingAccept />
+        ) : (
+          <TouchableOpacity
+            onPress={handleAccept}
+            style={{
+              width: 75,
+              height: 65,
+              backgroundColor: '#0f6602',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <Text style={{color: 'white'}}>Accept</Text>
+          </TouchableOpacity>
+        )}
+        <TouchableOpacity
+          onPress={handleReject}
+          style={{
+            width: 75,
+            height: 65,
+            backgroundColor: '#ba0000',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          {loadingReject ? (
+            <LoadingReject />
+          ) : (
+            <Text style={{color: 'white'}}>Decline</Text>
+          )}
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }

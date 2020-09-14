@@ -13,13 +13,13 @@ const Tile = React.memo(
         <View
           style={{
             flex: 1,
-            height: constants.height * 0.075,
+            height: 65,
             paddingLeft: 25,
             alignItems: 'center',
             flexDirection: 'row',
             backgroundColor: constants.background3,
             borderBottomColor: darkTheme ? 'transparent' : constants.lineColor,
-            borderBottomWidth: 0.5,
+            borderBottomWidth: 0.25,
           }}>
           <CircleAvatar uri={uri} size={45} />
           <View style={{flexDirection: 'column'}}>
@@ -27,8 +27,8 @@ const Tile = React.memo(
               style={{
                 color: constants.text1,
                 marginLeft: 15,
-                fontSize: 18,
-                fontWeight: '600',
+                fontSize: 20,
+                fontWeight: '500',
                 fontFamily: 'Helvetica Neue',
               }}>
               {heading}
@@ -37,8 +37,8 @@ const Tile = React.memo(
               style={{
                 color: 'grey',
                 marginLeft: 15,
-                fontSize: 14,
-                fontWeight: '400',
+                fontSize: 12,
+                fontWeight: '300',
                 fontFamily: 'Helvetica Neue',
               }}>
               {subHeading}
