@@ -17,7 +17,7 @@ import {
   TokenContext,
 } from '../../../shared/Context';
 import Tile from '../../../shared/Tile';
-import {getUserMe} from '../../../backend/database/apiCalls';
+import {getUserMe, getChatroomInfo} from '../../../backend/database/apiCalls';
 import TilesLoading from './TilesLoading';
 import {getToken} from '../../../shared/KeyChain';
 
@@ -97,6 +97,30 @@ const ChatRooms = ({navigation}) => {
 
 export default React.memo(ChatRooms);
 
+const RenderTile = React.memo(({item, navigation}) => {
+  const [room, setRoom] = React.useState(item);
+
+  React.useEffect(() => {
+    getChatroomInfo(room._id).then((response) => {
+      setRoom(response);
+    });
+  }, []);
+
+  const handleOnPressTile = () => {
+    navigation.navigate('Room', {room: room, setRoom: setRoom});
+  };
+
+  return (
+    <Tile
+      uri={room.profilePic === undefined ? undefined : room.profilePic}
+      heading={room.name}
+      subHeading={room.description}
+      onPressTile={handleOnPressTile}
+      onlineSpeakers="5"
+    />
+  );
+});
+
 const EmptyItem = React.memo(({navigation}) => {
   const {constants, darkTheme} = useContext(ThemeContext);
 
@@ -135,23 +159,5 @@ const EmptyItem = React.memo(({navigation}) => {
         <Text style={globalStyles.buttonText}>Find a Room</Text>
       </TouchableOpacity>
     </View>
-  );
-});
-
-const RenderTile = React.memo(({item, navigation}) => {
-  const [room, setRoom] = React.useState(item);
-
-  const handleOnPressTile = () => {
-    navigation.navigate('Room', {room: room, setRoom: setRoom});
-  };
-
-  return (
-    <Tile
-      uri={room.profilePic === undefined ? undefined : room.profilePic}
-      heading={room.name}
-      subHeading={room.description}
-      onPressTile={handleOnPressTile}
-      onlineSpeakers="5"
-    />
   );
 });
