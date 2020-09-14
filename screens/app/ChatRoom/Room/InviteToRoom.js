@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  TextInput,
-  FlatList,
-  Keyboard,
-} from 'react-native';
+import {View, Text, TouchableOpacity, FlatList, Keyboard} from 'react-native';
 import Modal from 'react-native-modal';
 import {Searchbar} from 'react-native-paper';
 import _ from 'lodash';
@@ -131,7 +124,6 @@ export default function InviteToRoom({inviteModal, setInviteModal, roomName}) {
 const SendInviteButton = ({user, roomName}) => {
   const [alreadyInvited, setAlreadyInvited] = React.useState(false);
   const {token} = React.useContext(TokenContext);
-  const {constants} = React.useContext(ThemeContext);
 
   React.useEffect(() => {
     const invitedToRooms = user.invitedToRooms;

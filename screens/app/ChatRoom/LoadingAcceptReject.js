@@ -31,7 +31,7 @@ export const LoadingAccept = () => {
       style={{
         width: 75,
         height: 65,
-        backgroundColor: '#ba0000',
+        backgroundColor: '#0f6602',
         opacity: opacity,
       }}
     />

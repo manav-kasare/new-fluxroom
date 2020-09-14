@@ -52,15 +52,6 @@ const Tile = React.memo(
                 flexDirection: 'row',
                 alignItems: 'center',
               }}>
-              <View
-                style={{
-                  width: 5,
-                  height: 5,
-                  borderRadius: 2.5,
-                  backgroundColor: 'green',
-                  marginHorizontal: 5,
-                }}
-              />
               <Text style={{color: 'green', fontSize: 12}}>
                 {onlineSpeakers} Online
               </Text>

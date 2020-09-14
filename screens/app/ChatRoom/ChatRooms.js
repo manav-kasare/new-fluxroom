@@ -10,6 +10,8 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
+console.disableYellowBox = true;
+
 import globalStyles from '../../../shared/GlobalStyles';
 import {
   UserDetailsContext,
@@ -20,6 +22,7 @@ import Tile from '../../../shared/Tile';
 import {getUserMe, getChatroomInfo} from '../../../backend/database/apiCalls';
 import TilesLoading from './TilesLoading';
 import {getToken} from '../../../shared/KeyChain';
+import {constant} from 'lodash';
 
 const ChatRooms = ({navigation}) => {
   const {setUser} = useContext(UserDetailsContext);
@@ -61,7 +64,8 @@ const ChatRooms = ({navigation}) => {
   return (
     <SafeAreaView
       style={{
-        flex: 1,
+        width: constants.width,
+        height: constants.height,
       }}>
       <StatusBar
         barStyle="light-content"
