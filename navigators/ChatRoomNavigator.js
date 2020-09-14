@@ -17,7 +17,7 @@ import InvitationsIcon from '../screens/app/ChatRoom/InvitationsIcon';
 const ChatRoomStack = createStackNavigator();
 
 export default function ChatRoomNavigator({route, navigation}) {
-  const {user, setUser} = React.useContext(UserDetailsContext);
+  const {user} = React.useContext(UserDetailsContext);
   const {constants, darkTheme} = React.useContext(ThemeContext);
 
   if (route.state && route.state.index > 0) {

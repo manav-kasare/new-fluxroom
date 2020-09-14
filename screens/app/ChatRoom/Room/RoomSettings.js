@@ -8,6 +8,7 @@ import {
   TextInput,
   Keyboard,
   Platform,
+  ActivityIndicator,
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Clipboard from '@react-native-community/clipboard';
@@ -25,6 +26,7 @@ export default function RoomSettings({route, navigation}) {
   const {constants} = React.useContext(ThemeContext);
   const [copiedText, setCopiedText] = useState('');
   const [descriptionFocus, setDescriptionFocus] = useState(false);
+  const [descriptionLoading, setDescriptionLoading] = useState(false);
   const link = `fluxroom://room/join/${room._id}`;
   const [_room, _setRoom] = useState(room);
 
@@ -117,13 +119,16 @@ export default function RoomSettings({route, navigation}) {
   const updateDescription = () => {
     Keyboard.dismiss();
     setDescriptionFocus(false);
+    setDescriptionLoading(true);
     updateRoom(token, room._id, {description: _room.description}).then(
       (response) => {
         if (response.message === 'Room updated') {
           setRoom({...room, description: _room.description});
           _setRoom({...room, description: _room.description});
+          setDescriptionLoading(false);
           CustomToast('Updated !');
         } else if (response.message === 'Room does not exist') {
+          setDescriptionLoading(false);
           CustomErrorToast('Room does not exist !');
         }
       },
@@ -195,12 +200,20 @@ export default function RoomSettings({route, navigation}) {
               value={_room.description}
               onChangeText={(text) => _setRoom({..._room, description: text})}
             />
-            <MaterialCommunityIcons
-              name="pencil"
-              style={{position: 'absolute', right: 20}}
-              color={constants.background2}
-              size={20}
-            />
+            {descriptionLoading ? (
+              <ActivityIndicator
+                size="small"
+                sstyle={{position: 'absolute', right: 20}}
+                color={constants.background2}
+              />
+            ) : (
+              <MaterialCommunityIcons
+                name="pencil"
+                style={{position: 'absolute', right: 20}}
+                color={constants.background2}
+                size={20}
+              />
+            )}
           </View>
         </View>
         <Text

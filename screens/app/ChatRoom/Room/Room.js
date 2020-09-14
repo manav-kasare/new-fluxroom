@@ -1,4 +1,4 @@
-import React, {useContext, useReducer} from 'react';
+import React, {useContext, useReducer, useState} from 'react';
 import {
   SafeAreaView,
   FlatList,
@@ -23,8 +23,8 @@ import InviteToRoom from './InviteToRoom';
 
 const Room = ({route, navigation}) => {
   const {room, setRoom} = route.params;
+  const [_room, _setRoom] = useState(room);
   const {constants, darkTheme} = React.useContext(ThemeContext);
-  const {user} = useContext(UserDetailsContext);
   const [members, setMembers] = React.useState(null);
   const [isSpeaking, setIsSpeaking] = React.useState(false);
   const [someoneRaisingHand, setSomeoneRaisingHand] = React.useState(false);
@@ -39,6 +39,8 @@ const Room = ({route, navigation}) => {
 
   const setData = () => {
     getChatroomInfo(room._id).then((response) => {
+      setRoom(response);
+      _setRoom(response);
       setMembers(response.listOfUsers);
       setLoading(false);
       setRefreshing(false);
@@ -80,7 +82,7 @@ const Room = ({route, navigation}) => {
           }
         />
         <View style={{backgroundColor: constants.background1, flex: 1}}>
-          <RoomHeader room={room} setRoom={setRoom} navigation={navigation} />
+          <RoomHeader room={_room} setRoom={_setRoom} navigation={navigation} />
           {loading ? (
             <RoomAvatarLoading />
           ) : (
