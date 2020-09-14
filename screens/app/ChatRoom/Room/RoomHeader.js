@@ -6,7 +6,7 @@ import Feather from 'react-native-vector-icons/Feather';
 import CircleAvatar from '../../../../shared/CircleAvatar';
 import {ThemeContext} from '../../../../shared/Context';
 
-export default function RoomHeader({navigation, room}) {
+export default function RoomHeader({navigation, room, setRoom}) {
   const {constants, darkTheme} = React.useContext(ThemeContext);
 
   const goBack = () => {
@@ -60,6 +60,7 @@ export default function RoomHeader({navigation, room}) {
         onPress={() =>
           navigation.navigate('RoomSettings', {
             room: room,
+            setRoom: setRoom,
           })
         }>
         <Feather name="menu" size={25} color="white" />

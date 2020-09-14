@@ -8,7 +8,7 @@ import CachedImage from '../../../../shared/CachedImage';
 import {ThemeContext} from '../../../../shared/Context';
 
 export default function RoomAvatar({size, uri, isHost, name}) {
-  const {constants} = React.useContext(ThemeContext);
+  const {constants, darkTheme} = React.useContext(ThemeContext);
   const [isSpeaking, setIsSpeaking] = React.useState(false);
   const [handRaised, setHandRaised] = React.useState(true);
 
@@ -22,8 +22,7 @@ export default function RoomAvatar({size, uri, isHost, name}) {
             borderRadius: 30,
             justifyContent: 'center',
             alignItems: 'center',
-            backgroundColor: constants.primary,
-            opacity: 0.75,
+            backgroundColor: darkTheme ? '#212121' : '#868489',
           }}>
           <FontAwesome5 name="user-alt" color="white" size={20} />
         </View>
@@ -46,7 +45,7 @@ export default function RoomAvatar({size, uri, isHost, name}) {
             width: 30,
             height: 30,
             borderRadius: 10,
-            backgroundColor: isSpeaking ? constants.primary : 'crimson',
+            backgroundColor: isSpeaking ? constants.primary : '#ba0000',
             alignItems: 'center',
             justifyContent: 'center',
             position: 'relative',

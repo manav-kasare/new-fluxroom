@@ -7,7 +7,6 @@ import Room from '../screens/app/ChatRoom/Room/Room';
 import Invitations from '../screens/app/ChatRoom/Invitations';
 import JoinRoomWithLink from '../screens/app/JoinCreateRoom/JoinRoomWithLink';
 import RoomSettings from '../screens/app/ChatRoom/Room/RoomSettings';
-import ChangeRoomSettings from '../screens/app/ChatRoom/Room/ChangeRoomSettings';
 import {
   UserDetailsContext,
   ThemeContext,
@@ -75,17 +74,6 @@ export default function ChatRoomNavigator({route, navigation}) {
         component={RoomSettings}
         options={{
           title: 'Settings',
-          headerStyle: constants.headerStyle,
-          headerTitleStyle: constants.headerText,
-          headerBackTitleVisible: false,
-          headerTintColor: 'white',
-        }}
-      />
-      <ChatRoomStack.Screen
-        name="ChangeRoomSettings"
-        component={ChangeRoomSettings}
-        options={{
-          title: 'Edit Settings',
           headerStyle: constants.headerStyle,
           headerTitleStyle: constants.headerText,
           headerBackTitleVisible: false,

@@ -22,7 +22,7 @@ import RoomAvatarLoading from './RoomAvatarLoading';
 import InviteToRoom from './InviteToRoom';
 
 const Room = ({route, navigation}) => {
-  const {room} = route.params;
+  const {room, setRoom} = route.params;
   const {constants, darkTheme} = React.useContext(ThemeContext);
   const {user} = useContext(UserDetailsContext);
   const [members, setMembers] = React.useState(null);
@@ -80,7 +80,7 @@ const Room = ({route, navigation}) => {
           }
         />
         <View style={{backgroundColor: constants.background1, flex: 1}}>
-          <RoomHeader room={room} navigation={navigation} />
+          <RoomHeader room={room} setRoom={setRoom} navigation={navigation} />
           {loading ? (
             <RoomAvatarLoading />
           ) : (
@@ -158,7 +158,7 @@ const Room = ({route, navigation}) => {
                 justifyContent: 'center',
               }}
               onPress={anon}>
-              <FontAwesome5 name="phone-slash" color="white" siz e={20} />
+              <FontAwesome5 name="phone-slash" color="white" size={16} />
             </TouchableOpacity>
           </View>
         </View>

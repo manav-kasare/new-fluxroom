@@ -80,7 +80,7 @@ const ChatRooms = ({navigation}) => {
           keyExtractor={(index) => index.toString()}
           ListEmptyComponent={() => <EmptyItem navigation={navigation} />}
           renderItem={({item}) => (
-            <RenderTile room={item} navigation={navigation} />
+            <RenderTile item={item} navigation={navigation} />
           )}
           refreshControl={
             <RefreshControl
@@ -138,9 +138,11 @@ const EmptyItem = React.memo(({navigation}) => {
   );
 });
 
-const RenderTile = React.memo(({room, navigation}) => {
+const RenderTile = React.memo(({item, navigation}) => {
+  const [room, setRoom] = React.useState(item);
+
   const handleOnPressTile = () => {
-    navigation.navigate('Room', {room: room});
+    navigation.navigate('Room', {room: room, setRoom: setRoom});
   };
 
   return (

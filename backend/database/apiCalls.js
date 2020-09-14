@@ -193,6 +193,24 @@ export const inviteUserToRoom = (username, roomName, token) => {
     });
 };
 
+export const updateRoom = (token, roomID, room) => {
+  const requestOptions = {
+    method: 'PATCH',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(room),
+  };
+
+  return fetch(`${url}/updateroom?roomID=${roomID}`, requestOptions)
+    .then((response) => response.json())
+    .then((data) => {
+      return data;
+    });
+};
+
 export const removeFromInvitedToRooms = () => {};
 
 export const joinRoom = async (roomId, token) => {
