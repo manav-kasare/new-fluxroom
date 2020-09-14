@@ -20,7 +20,7 @@ import {
 } from '../../shared/Context';
 import {getUserByPhone, loginUser} from '../../backend/database/apiCalls';
 import {storeToken} from '../../shared/KeyChain';
-import {storeUserData} from '../../shared/AsyncStore';
+import {storeUserData, storeTheme} from '../../shared/AsyncStore';
 
 export default OtpVerification = ({
   isVisible,

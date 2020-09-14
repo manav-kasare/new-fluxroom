@@ -37,6 +37,7 @@ Bugs:
     10. FCM Token while setting up profile.
     11. Can't get FCM Token on a real device.
     12. FIXED. Cant't fetch room by id while deep linking.
+    13. FIXED. App Crashes on 'Take photo' in image picker
 
     
 Extras:
