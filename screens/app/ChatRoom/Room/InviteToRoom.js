@@ -13,7 +13,6 @@ import _ from 'lodash';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import {ThemeContext, TokenContext} from '../../../../shared/Context';
-import globalStyles from '../../../../shared/GlobalStyles';
 import {
   getUsers,
   inviteUserToRoom,
@@ -34,9 +33,13 @@ export default function InviteToRoom({inviteModal, setInviteModal, roomName}) {
   }, []);
 
   const handleSearch = _.debounce((q) => {
-    setFilteredUsers(
-      _.filter(allUsers, (_user) => _.includes(_user.username, q)),
-    );
+    if (q === '') {
+      setFilteredUsers([]);
+    } else {
+      setFilteredUsers(
+        _.filter(allUsers, (_user) => _.includes(_user.username, q)),
+      );
+    }
   }, 250);
 
   return (
@@ -109,11 +112,14 @@ export default function InviteToRoom({inviteModal, setInviteModal, roomName}) {
               height: 50,
               paddingHorizontal: 25,
               alignItems: 'center',
+              justifyContent: 'space-between',
             }}>
-            <CircleAvatar uri={item.profilePic} size={30} />
-            <Text style={{marginLeft: 25, color: constants.text1}}>
-              {item.username}
-            </Text>
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              <CircleAvatar uri={item.profilePic} size={30} />
+              <Text style={{marginLeft: 25, color: constants.text1}}>
+                {item.username}
+              </Text>
+            </View>
             <SendInviteButton user={item} roomName={roomName} />
           </View>
         )}
@@ -148,31 +154,33 @@ const SendInviteButton = ({user, roomName}) => {
   };
 
   if (alreadyInvited) {
-    <View
-      style={{
-        borderColor: 'grey',
-        borderWidth: 1,
-        width: 100,
-        height: 30,
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: 5,
-      }}>
-      <Text style={{color: constants.text1, fontSize: 10}}>Invited</Text>
-    </View>;
+    return (
+      <View
+        style={{
+          backgroundColor: '#0f6602',
+          width: 50,
+          height: 30,
+          alignItems: 'center',
+          justifyContent: 'center',
+          borderRadius: 5,
+        }}>
+        <Text style={{color: 'white', fontSize: 10}}>Invited</Text>
+      </View>
+    );
   } else {
-    <TouchableOpacity
-      onPress={handleInvite}
-      style={{
-        borderColor: 'grey',
-        borderWidth: 1,
-        width: 100,
-        height: 30,
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: 5,
-      }}>
-      <Text style={{color: constants.text1, fontSize: 12}}>Join</Text>
-    </TouchableOpacity>;
+    return (
+      <TouchableOpacity
+        onPress={handleInvite}
+        style={{
+          backgroundColor: '#012470',
+          width: 50,
+          height: 30,
+          alignItems: 'center',
+          justifyContent: 'center',
+          borderRadius: 5,
+        }}>
+        <Text style={{color: 'white', fontSize: 12}}>Invite</Text>
+      </TouchableOpacity>
+    );
   }
 };
