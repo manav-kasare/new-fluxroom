@@ -1,6 +1,5 @@
 import React from 'react';
 import {Text, View, FlatList, StyleSheet, TouchableOpacity} from 'react-native';
-import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 console.disableYellowBox = true;
@@ -56,7 +55,7 @@ const ChatRoomRenderTile = ({item, navigation}) => {
     description: {
       color: 'grey',
       marginLeft: 15,
-      fontSize: 12,
+      fontSize: 14,
       fontWeight: '300',
       fontFamily: 'Helvetica Neue',
     },
@@ -76,39 +75,56 @@ const ChatRoomRenderTile = ({item, navigation}) => {
           />
           <View style={{flexDirection: 'column'}}>
             <Text style={styles.heading}>{room.name}</Text>
-            <Text style={styles.description}>{room.description}</Text>
+            <View style={{width: constants.width * 0.4}}>
+              {room.description.length <= 30 ? (
+                <Text style={styles.description}>{room.description}</Text>
+              ) : showRoomDetails ? (
+                <Text style={styles.description}>{room.description}</Text>
+              ) : (
+                <Text style={styles.description}>
+                  {room.description.substr(0, 30)}....
+                </Text>
+              )}
+            </View>
           </View>
-          <TouchableOpacity
-            onPress={toggleShowRoomDetails}
-            style={{position: 'absolute', right: 10}}>
-            {showRoomDetails ? (
-              <Ionicons
-                name="chevron-up"
-                size={24}
-                color={constants.background2}
-                style={styles.chevron}
-              />
-            ) : (
-              <Ionicons
-                name="chevron-down"
-                size={24}
-                style={styles.chevron}
-                color={constants.background2}
-              />
-            )}
-          </TouchableOpacity>
+          <View
+            style={{
+              position: 'absolute',
+              right: 5,
+              flexDirection: 'row',
+              alignItems: 'center',
+            }}>
+            <Text style={{color: 'grey', marginRight: 10}}>5</Text>
+            <TouchableOpacity onPress={toggleShowRoomDetails}>
+              {showRoomDetails ? (
+                <Ionicons
+                  name="chevron-up"
+                  size={24}
+                  color={constants.background2}
+                />
+              ) : (
+                <Ionicons
+                  name="chevron-down"
+                  size={24}
+                  color={constants.background2}
+                />
+              )}
+            </TouchableOpacity>
+          </View>
         </View>
         {showRoomDetails ? (
           <FlatList
             style={styles.listOfUsers}
+            ListHeaderComponent={() => (
+              <Text style={{color: 'green', fontWeight: '500'}}>
+                5 Speaking of 10
+              </Text>
+            )}
             scrollEnabled={false}
             data={listOfUsers}
             keyExtractor={(key, index) => index.toString()}
             renderItem={({item}) => (
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <Entypo name="mic" color={constants.background2} size={10} />
-                <Text style={{color: 'grey'}}>{item.username}</Text>
-              </View>
+              <Text style={{color: 'grey'}}>{item.username}</Text>
             )}
           />
         ) : (

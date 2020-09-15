@@ -21,7 +21,7 @@ import RoomAvatarLoading from './RoomAvatarLoading';
 import InviteToRoom from './InviteToRoom';
 
 const Room = ({route, navigation}) => {
-  const {room, setRoom} = route.params;
+  const {room} = route.params;
   const [_room, _setRoom] = useState(room);
   const {constants, darkTheme} = React.useContext(ThemeContext);
   const [members, setMembers] = React.useState(null);
@@ -39,7 +39,6 @@ const Room = ({route, navigation}) => {
 
   const setData = () => {
     getChatroomInfo(room._id).then((response) => {
-      setRoom(response);
       _setRoom(response);
       setMembers(response.listOfUsers);
       setLoading(false);

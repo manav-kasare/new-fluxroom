@@ -1,7 +1,6 @@
 import React, {useEffect, useContext, useState} from 'react';
 import {
   Text,
-  SafeAreaView,
   Image,
   View,
   FlatList,
@@ -20,7 +19,7 @@ import {
   TokenContext,
 } from '../../../shared/Context';
 import {getUserMe} from '../../../backend/database/apiCalls';
-import TilesLoading from './TilesLoading';
+import ChatRoomTilesLoading from './ChatRoomTilesLoading';
 import {getToken} from '../../../shared/KeyChain';
 import InvitationsIcon from './InvitationsIcon';
 import CreateRoom from '../JoinCreateRoom/CreateRoom';
@@ -93,13 +92,14 @@ const ChatRooms = ({navigation}) => {
       <CreateRoom
         isVisible={isCreateRoomModal}
         setIsVisible={setIsCreateRoomModal}
+        navigation={navigation}
       />
       <StatusBar
         barStyle="light-content"
         backgroundColor={constants.background1}
       />
       {loading ? (
-        <TilesLoading />
+        <ChatRoomTilesLoading />
       ) : (
         <FlatList
           style={{

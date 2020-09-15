@@ -44,10 +44,16 @@ export default function CreateRoom({navigation, isVisible, setIsVisible}) {
       } else {
         joinRoom(response.room._id, token).then((_response) => {
           setLoading(false);
-          setIsVisible(false);
-          navigation.navigate('Room', {room: response.room});
-          setUser(_response);
-          storeUserData(_response);
+          storeUserData(_response).then(() => {
+            setUser(_response);
+            navigation.navigate('Room', {room: response.room});
+            setIsVisible(false);
+            setRoom({
+              name: '',
+              description: '',
+              profilePic: undefined,
+            });
+          });
         });
       }
     });
@@ -85,6 +91,20 @@ export default function CreateRoom({navigation, isVisible, setIsVisible}) {
       hideModalContentWhileAnimating={true}
       deviceWidth={constants.width}
       deviceHeight={constants.height}
+      onModalHide={() => {
+        setRoom({
+          name: '',
+          description: '',
+          profilePic: undefined,
+        });
+      }}
+      onDismiss={() => {
+        setRoom({
+          name: '',
+          description: '',
+          profilePic: undefined,
+        });
+      }}
       style={{
         width: constants.width,
         borderTopLeftRadius: 15,
@@ -162,8 +182,7 @@ export default function CreateRoom({navigation, isVisible, setIsVisible}) {
                 fontFamily: 'Helvetica',
                 marginVertical: 10,
                 height: 45,
-                paddingHorizontal: 25,
-                color: 'black',
+                color: constants.text1,
                 borderRadius: 8,
                 backgroundColor: 'rgba(130,130,130, 0.1)',
               }}
@@ -172,54 +191,40 @@ export default function CreateRoom({navigation, isVisible, setIsVisible}) {
               value={room.name}
               onChangeText={(text) => setRoom({...room, name: text})}
             />
-            {room.name.length < 4 ? (
-              <Text
-                style={{
-                  fontFamily: 'Helvetica',
-                  color: 'crimson',
-                  marginLeft: 25,
-                }}>
-                At least 4 characters
-              </Text>
-            ) : (
-              <></>
-            )}
           </View>
         </View>
-        <View style={{marginTop: 25}}>
-          <TextInput
-            style={constants.input}
-            placeholder="Describe the topic briefly"
-            placeholderTextColor="grey"
-            value={room.description}
-            onChangeText={(text) => setRoom({...room, description: text})}
-          />
-          {loading ? (
-            <View style={{height: 50, marginVertical: 10, marginTop: 15}}>
-              <ActivityIndicator color={constants.background2} size="small" />
-            </View>
-          ) : (
-            <TouchableOpacity
+        <TextInput
+          style={constants.input}
+          placeholder="Describe the topic briefly"
+          placeholderTextColor="grey"
+          value={room.description}
+          onChangeText={(text) => setRoom({...room, description: text})}
+        />
+        {loading ? (
+          <View style={{height: 50, marginVertical: 10, marginTop: 15}}>
+            <ActivityIndicator color={constants.background2} size="small" />
+          </View>
+        ) : (
+          <TouchableOpacity
+            style={{
+              width: constants.width * 0.8,
+              height: 45,
+              backgroundColor: constants.primary,
+              justifyContent: 'center',
+              alignItems: 'center',
+              borderRadius: 8,
+              marginTop: 15,
+            }}
+            onPress={handleCreateRoom}>
+            <Text
               style={{
-                width: constants.width * 0.8,
-                height: 45,
-                backgroundColor: constants.primary,
-                justifyContent: 'center',
-                alignItems: 'center',
-                borderRadius: 8,
-                marginTop: 15,
-              }}
-              onPress={room.name.length > 3 ? handleCreateRoom : anon}>
-              <Text
-                style={{
-                  fontFamily: 'Helvetica',
-                  color: 'white',
-                }}>
-                Create Room
-              </Text>
-            </TouchableOpacity>
-          )}
-        </View>
+                fontFamily: 'Helvetica',
+                color: 'white',
+              }}>
+              Create Room
+            </Text>
+          </TouchableOpacity>
+        )}
       </>
     </Modal>
   );

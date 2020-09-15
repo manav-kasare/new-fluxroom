@@ -26,7 +26,6 @@ const SearchRenderTile = React.memo(({room, onPressTile, navigation}) => {
     setListOfUsers(room.listOfUsers);
     const rooms = user.joinedRooms;
     rooms.map((_room) => {
-      console.log('[Checking Room id]');
       if (_room._id === room._id) {
         setAlreadyJoined(true);
       }
@@ -52,7 +51,7 @@ const SearchRenderTile = React.memo(({room, onPressTile, navigation}) => {
   const styles = StyleSheet.create({
     tile: {
       width: constants.width,
-      paddingBottom: 20,
+      paddingVertical: 10,
       backgroundColor: constants.background3,
       borderBottomColor: darkTheme ? 'transparent' : constants.lineColor,
       borderBottomWidth: 0.25,
@@ -116,7 +115,17 @@ const SearchRenderTile = React.memo(({room, onPressTile, navigation}) => {
             />
             <View style={{flexDirection: 'column'}}>
               <Text style={styles.heading}>{room.name}</Text>
-              <Text style={styles.description}>{room.description}</Text>
+              <View style={{width: constants.width * 0.5}}>
+                {room.description.length <= 30 ? (
+                  <Text style={styles.description}>{room.description}</Text>
+                ) : showRoomDetails ? (
+                  <Text style={styles.description}>{room.description}</Text>
+                ) : (
+                  <Text style={styles.description}>
+                    {room.description.substr(0, 30)}....
+                  </Text>
+                )}
+              </View>
             </View>
           </View>
           {showRoomDetails ? (

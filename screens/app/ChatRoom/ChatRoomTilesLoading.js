@@ -5,37 +5,36 @@ import {ThemeContext} from '../../../shared/Context';
 import Animated, {Easing, useCode, set} from 'react-native-reanimated';
 import {loop, mix, useValue} from 'react-native-redash';
 
-export default function TilesLoading() {
+export default function ChatRoomTilesLoading() {
   const {constants, darkTheme} = React.useContext(ThemeContext);
 
   const styles = StyleSheet.create({
     tile: {
       width: constants.width * 0.9,
-      height: constants.height * 0.25,
       shadowOpacity: 0.1,
       shadowOffset: {width: 0.1, height: 0.1},
       borderRadius: 8,
       backgroundColor: constants.background3,
       alignSelf: 'center',
       marginVertical: 10,
-      padding: 25,
+      padding: 15,
     },
     avatar: {
-      width: 50,
-      height: 50,
-      borderRadius: 50 / 2,
+      width: 75,
+      height: 75,
+      borderRadius: 75 / 2,
       justifyContent: 'center',
       alignItems: 'center',
       backgroundColor: darkTheme ? '#1e1e1e' : '#dddddd',
     },
     heading: {
-      width: constants.width * 0.35,
+      width: constants.width * 0.2,
       height: 15,
       backgroundColor: darkTheme ? '#1e1e1e' : '#dddddd',
       marginLeft: 15,
     },
     subHeading: {
-      width: constants.width * 0.5,
+      width: constants.width * 0.3,
       height: 5,
       backgroundColor: darkTheme ? '#1e1e1e' : '#dddddd',
       marginLeft: 15,
@@ -45,18 +44,12 @@ export default function TilesLoading() {
       alignItems: 'center',
       flexDirection: 'row',
     },
-    listOfUsers: {
-      marginTop: 10,
-      marginLeft: 5,
-      height: 100,
-      width: 50,
-    },
-    user: {
-      width: constants.width * 0.3,
-      height: 5,
+    chevron: {
+      width: 20,
+      height: 20,
       backgroundColor: darkTheme ? '#1e1e1e' : '#dddddd',
-      marginLeft: 15,
-      marginTop: 10,
+      position: 'absolute',
+      right: 5,
     },
   });
 
@@ -91,12 +84,7 @@ export default function TilesLoading() {
             <Animated.View style={[styles.heading, {opacity}]} />
             <Animated.View style={[styles.subHeading, {opacity}]} />
           </View>
-        </View>
-        <View style={styles.listOfUsers}>
-          <View style={styles.user} />
-          <View style={styles.user} />
-          <View style={styles.user} />
-          <View style={styles.user} />
+          <Animated.View style={[styles.chevron, {opacity}]} />
         </View>
       </Animated.View>
 
@@ -107,12 +95,7 @@ export default function TilesLoading() {
             <Animated.View style={[styles.heading, {opacity}]} />
             <Animated.View style={[styles.subHeading, {opacity}]} />
           </View>
-        </View>
-        <View style={styles.listOfUsers}>
-          <View style={styles.user} />
-          <View style={styles.user} />
-          <View style={styles.user} />
-          <View style={styles.user} />
+          <Animated.View style={[styles.chevron, {opacity}]} />
         </View>
       </Animated.View>
 
@@ -123,12 +106,7 @@ export default function TilesLoading() {
             <Animated.View style={[styles.heading, {opacity}]} />
             <Animated.View style={[styles.subHeading, {opacity}]} />
           </View>
-        </View>
-        <View style={styles.listOfUsers}>
-          <View style={styles.user} />
-          <View style={styles.user} />
-          <View style={styles.user} />
-          <View style={styles.user} />
+          <Animated.View style={[styles.chevron, {opacity}]} />
         </View>
       </Animated.View>
     </View>
