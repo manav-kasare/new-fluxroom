@@ -7,8 +7,12 @@ import {
   RefreshControl,
   StatusBar,
   TouchableOpacity,
+  StyleSheet,
 } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
+import {Searchbar} from 'react-native-paper';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import _ from 'lodash';
 
 console.disableYellowBox = true;
 
@@ -25,13 +29,14 @@ import InvitationsIcon from './InvitationsIcon';
 import CreateRoom from '../JoinCreateRoom/CreateRoom';
 import ChatRoomRenderTile from './ChatRoomRenderTile';
 
-const ChatRooms = ({navigation}) => {
+export default function ChatRooms({navigation}) {
   const {user, setUser} = useContext(UserDetailsContext);
-  const {constants} = useContext(ThemeContext);
+  const {constants, darkTheme} = useContext(ThemeContext);
   const {token} = useContext(TokenContext);
-  const [chatRoomList, setChatRoomList] = useState([]);
+  const [chatRoomList, setChatRoomList] = useState(null);
   const [refreshing, setRefreshing] = useState(false);
   const [loading, setloading] = useState(true);
+  const [query, setQuery] = useState(null);
   const [isCreateRoomModal, setIsCreateRoomModal] = useState(false);
 
   useEffect(() => {
@@ -54,7 +59,7 @@ const ChatRooms = ({navigation}) => {
         </View>
       ),
     });
-  });
+  }, []);
 
   useEffect(() => {
     setData();
@@ -84,6 +89,12 @@ const ChatRooms = ({navigation}) => {
     }
   };
 
+  const listEmptyComponent = () => <EmptyItem navigation={navigation} />;
+
+  const renderItem = ({item}) => (
+    <ChatRoomRenderTile item={item} navigation={navigation} />
+  );
+
   return (
     <View
       style={{
@@ -106,28 +117,28 @@ const ChatRooms = ({navigation}) => {
             width: constants.width,
             flex: 1,
             backgroundColor: constants.background1,
-            paddingVertical: 10,
           }}
           data={chatRoomList}
-          keyExtractor={(index) => index.toString()}
-          ListEmptyComponent={() => <EmptyItem navigation={navigation} />}
-          renderItem={({item}) => (
-            <ChatRoomRenderTile item={item} navigation={navigation} />
-          )}
+          keyExtractor={(key, index) => index.toString()}
+          ListEmptyComponent={listEmptyComponent}
+          renderItem={renderItem}
           refreshControl={
             <RefreshControl
               refreshing={refreshing}
               onRefresh={onRefresh}
-              tintColor={constants.background2}
+              style={{
+                backgroundColor: darkTheme
+                  ? constants.background3
+                  : constants.primary,
+              }}
+              tintColor="white"
             />
           }
         />
       )}
     </View>
   );
-};
-
-export default React.memo(ChatRooms);
+}
 
 const EmptyItem = ({navigation}) => {
   const {constants, darkTheme} = useContext(ThemeContext);

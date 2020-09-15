@@ -55,8 +55,8 @@ const Search = React.memo(({navigation}) => {
     searchBar: {
       height: 50,
       backgroundColor: constants.background3,
-      borderBottomWidth: 1,
       borderBottomColor: constants.lineColor,
+      borderBottomWidth: 0.2,
       elevation: 0,
       shadowOpacity: 0,
     },
@@ -69,7 +69,6 @@ const Search = React.memo(({navigation}) => {
         backgroundColor: constants.background1,
       }}>
       <Searchbar
-        autoCapitalize="none"
         inputStyle={{color: constants.text1, fontSize: 15}}
         style={styles.searchBar}
         placeholder="What are you intrested in ?"
@@ -81,7 +80,7 @@ const Search = React.memo(({navigation}) => {
         }}
         iconColor="grey"
         icon={() => (
-          <Ionicons name="search" size={25} color={constants.background2} />
+          <Ionicons name="search" size={20} color={constants.background2} />
         )}
       />
       {loading ? (
