@@ -7,7 +7,6 @@ import {
   FlatList,
   RefreshControl,
   StatusBar,
-  StyleSheet,
   TouchableOpacity,
 } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -20,12 +19,12 @@ import {
   ThemeContext,
   TokenContext,
 } from '../../../shared/Context';
-import {getUserMe, getChatroomInfo} from '../../../backend/database/apiCalls';
+import {getUserMe} from '../../../backend/database/apiCalls';
 import TilesLoading from './TilesLoading';
 import {getToken} from '../../../shared/KeyChain';
-import CircleAvatar from '../../../shared/CircleAvatar';
 import InvitationsIcon from './InvitationsIcon';
 import CreateRoom from '../JoinCreateRoom/CreateRoom';
+import ChatRoomRenderTile from './ChatRoomRenderTile';
 
 const ChatRooms = ({navigation}) => {
   const {user, setUser} = useContext(UserDetailsContext);
@@ -87,7 +86,7 @@ const ChatRooms = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView
+    <View
       style={{
         flex: 1,
       }}>
@@ -107,13 +106,13 @@ const ChatRooms = ({navigation}) => {
             width: constants.width,
             flex: 1,
             backgroundColor: constants.background1,
-            paddingTop: 10,
+            paddingVertical: 10,
           }}
           data={chatRoomList}
           keyExtractor={(index) => index.toString()}
           ListEmptyComponent={() => <EmptyItem navigation={navigation} />}
           renderItem={({item}) => (
-            <RenderTile item={item} navigation={navigation} />
+            <ChatRoomRenderTile item={item} navigation={navigation} />
           )}
           refreshControl={
             <RefreshControl
@@ -124,96 +123,11 @@ const ChatRooms = ({navigation}) => {
           }
         />
       )}
-    </SafeAreaView>
+    </View>
   );
 };
 
 export default React.memo(ChatRooms);
-
-const RenderTile = React.memo(({item, navigation}) => {
-  const {constants} = React.useContext(ThemeContext);
-  const [room, setRoom] = React.useState(item);
-  const [listOfUsers, setListOfUsers] = React.useState([]);
-
-  React.useEffect(() => {
-    getChatroomInfo(room._id).then((response) => {
-      setRoom(response);
-      setListOfUsers(response.listOfUsers);
-    });
-  }, []);
-
-  const handleOnPressTile = () => {
-    navigation.navigate('Room', {room: room, setRoom: setRoom});
-  };
-
-  const styles = StyleSheet.create({
-    tile: {
-      width: constants.width * 0.9,
-      height: constants.height * 0.25,
-      shadowOpacity: 0.1,
-      shadowColor: 'grey',
-      shadowOffset: {width: 0.1, height: 0.1},
-      borderRadius: 8,
-      backgroundColor: constants.background3,
-      alignSelf: 'center',
-      marginVertical: 10,
-      padding: 15,
-    },
-    tileSmall: {
-      alignItems: 'center',
-      flexDirection: 'row',
-    },
-    heading: {
-      color: constants.text1,
-      marginLeft: 15,
-      fontSize: 20,
-      fontWeight: '500',
-      fontFamily: 'Helvetica Neue',
-    },
-    description: {
-      color: 'grey',
-      marginLeft: 15,
-      fontSize: 12,
-      fontWeight: '300',
-      fontFamily: 'Helvetica Neue',
-    },
-    listOfUsers: {
-      marginTop: 10,
-      marginLeft: 5,
-    },
-  });
-
-  return (
-    <TouchableOpacity onPress={handleOnPressTile}>
-      <View style={styles.tile}>
-        <View style={styles.tileSmall}>
-          <CircleAvatar
-            uri={room.profilePic === undefined ? undefined : room.profilePic}
-            size={75}
-          />
-          <View style={{flexDirection: 'column'}}>
-            <Text style={styles.heading}>{room.name}</Text>
-            <Text style={styles.description}>{room.description}</Text>
-          </View>
-        </View>
-        <View style={styles.listOfUsers}>
-          <FlatList
-            style={styles.listOfUsers}
-            scrollEnabled={false}
-            data={listOfUsers}
-            keyExtractor={(key, index) => index.toString()}
-            renderItem={({item}) => (
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <Entypo name="mic" color={constants.background2} size={10} />
-                <Text style={{color: 'grey'}}>{item.username}</Text>
-              </View>
-            )}
-          />
-        </View>
-      </View>
-    </TouchableOpacity>
-  );
-});
 
 const EmptyItem = ({navigation}) => {
   const {constants, darkTheme} = useContext(ThemeContext);

@@ -1,9 +1,9 @@
-import React, {useState, useEffect, useContext} from 'react';
-import {SafeAreaView, FlatList, StyleSheet, Text, View} from 'react-native';
+import React, {useState, useContext} from 'react';
+import {FlatList, StyleSheet, Text, View} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import _ from 'lodash';
 
-import {getAllRooms, joinRoom} from '../../../backend/database/apiCalls';
+import {joinRoom} from '../../../backend/database/apiCalls';
 import {
   ThemeContext,
   UserDetailsContext,
@@ -50,21 +50,13 @@ const SearchRenderTile = React.memo(({room, onPressTile, navigation}) => {
   };
 
   const styles = StyleSheet.create({
-    tile: showRoomDetails
-      ? {
-          width: constants.width,
-          paddingBottom: 20,
-          backgroundColor: constants.background3,
-          borderBottomColor: darkTheme ? 'transparent' : constants.lineColor,
-          borderBottomWidth: 0.25,
-        }
-      : {
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          paddingRight: 15,
-          backgroundColor: constants.background3,
-        },
+    tile: {
+      width: constants.width,
+      paddingBottom: 20,
+      backgroundColor: constants.background3,
+      borderBottomColor: darkTheme ? 'transparent' : constants.lineColor,
+      borderBottomWidth: 0.25,
+    },
     tileSmall: {
       width: constants.width,
       height: 65,
