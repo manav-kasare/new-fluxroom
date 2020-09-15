@@ -13,10 +13,10 @@ import {
 } from '../../../shared/Context';
 import Tile from '../../../shared/Tile';
 import RecentSearch from './RecentSearch';
-import TilesLoading from '../ChatRoom/TilesLoading';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {storeUserData} from '../../../shared/AsyncStore';
 import JoinLoadingButton from './JoinLoadingButton';
+import SearchTileLoading from './SearchTileLoading';
 
 const Search = React.memo(({navigation}) => {
   const [rooms, setRooms] = useState(null);
@@ -91,7 +91,7 @@ const Search = React.memo(({navigation}) => {
         }
       />
       {loading ? (
-        <TilesLoading />
+        <SearchTileLoading />
       ) : (
         <FlatList
           style={{flex: 1}}

@@ -86,10 +86,10 @@ export default function TilesLoading() {
     <View style={{flex: 1, backgroundColor: constants.background1}}>
       <Animated.View style={[styles.tile, {opacity}]}>
         <View style={styles.tileSmall}>
-          <View style={styles.avatar} />
+          <Animated.View style={[styles.avatar, {opacity}]} />
           <View>
-            <View style={styles.heading} />
-            <View style={styles.subHeading} />
+            <Animated.View style={[styles.heading, {opacity}]} />
+            <Animated.View style={[styles.subHeading, {opacity}]} />
           </View>
         </View>
         <View style={styles.listOfUsers}>
@@ -102,10 +102,10 @@ export default function TilesLoading() {
 
       <Animated.View style={[styles.tile, {opacity}]}>
         <View style={styles.tileSmall}>
-          <View style={styles.avatar} />
+          <Animated.View style={[styles.avatar, {opacity}]} />
           <View>
-            <View style={styles.heading} />
-            <View style={styles.subHeading} />
+            <Animated.View style={[styles.heading, {opacity}]} />
+            <Animated.View style={[styles.subHeading, {opacity}]} />
           </View>
         </View>
         <View style={styles.listOfUsers}>
@@ -118,10 +118,10 @@ export default function TilesLoading() {
 
       <Animated.View style={[styles.tile, {opacity}]}>
         <View style={styles.tileSmall}>
-          <View style={styles.avatar} />
+          <Animated.View style={[styles.avatar, {opacity}]} />
           <View>
-            <View style={styles.heading} />
-            <View style={styles.subHeading} />
+            <Animated.View style={[styles.heading, {opacity}]} />
+            <Animated.View style={[styles.subHeading, {opacity}]} />
           </View>
         </View>
         <View style={styles.listOfUsers}>
