@@ -1,27 +1,26 @@
 Todos: 
-    DONE 1. Email Verification
-    DONE 3. Add a camera option while setting images.
-    DONE 4.  Toggle Dark Theme
-    5. Audio Chat
-    6. Deep Linking
-    DONE 7. Async Storage(Login, Dark Theme)
-    8. Push Notifications
-    9. Recent Searches
-    10. Google, Facebook, Phone Auth
-
-done Sign up
-done Log in 
-done Google
-done Phone 
-done (not tested) Apple
-done Forgot Password
-done Sign Out
-Update Profile
-done Search
-done Create Room
-done Join Room
-done Testing Join Room Deep Links
-Testing Push Notifications
+    done Email Verification
+    done Add a camera option while setting images.
+    done  Toggle Dark Theme
+         Audio Chat
+         Deep Linking
+    done Async Storage(Login, Dark Theme)
+        Push Notifications
+        Recent Searches
+    done Google, Facebook, Phone Auth
+    done Sign up
+    done Log in 
+    done Google
+    done Phone 
+    done (not tested) Apple
+    done Forgot Password
+    done Sign Out
+        Update Profile
+    done Search
+    done Create Room
+    done Join Room
+    done Testing Join Room Deep Links
+        Testing Push Notifications
 
 
 Bugs: 
@@ -35,9 +34,8 @@ Bugs:
     8. FIXED. Can't send id in room object from Create Room to Share Room link.
     9. FIXED. Can't check if email is verified.
     10. FCM Token while setting up profile.
-    11. Can't get FCM Token on a real device.
-    12. FIXED. Cant't fetch room by id while deep linking.
-    13. FIXED. App Crashes on 'Take photo' in image picker
+    11. FIXED. Cant't fetch room by id while deep linking.
+    12. FIXED. App Crashes on 'Take photo' in image picker
 
     
 Extras:

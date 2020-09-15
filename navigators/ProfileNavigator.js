@@ -6,6 +6,7 @@ import Feather from 'react-native-vector-icons/Feather';
 import UserProfile from '../screens/app/UserProfile/UserProfile';
 import Issues from '../screens/app/UserProfile/Extras/Issues';
 import {ThemeContext} from '../shared/Context';
+import SettingsNavigator from './SettingsNavigator';
 
 const ProfileStack = createStackNavigator();
 
@@ -18,16 +19,12 @@ export default function ProfileNavigator({route, navigation}) {
     navigation.setOptions({tabBarVisible: true});
   }
 
-  const openDrawer = () => {
-    navigation.openDrawer();
-  };
-
   return (
     <ProfileStack.Navigator>
       <ProfileStack.Screen
         name="Profile"
         component={UserProfile}
-        options={({navigation}) => ({
+        options={{
           title: 'Profile',
           headerTitleAlign: 'left',
           headerStyle: {
@@ -44,20 +41,19 @@ export default function ProfileNavigator({route, navigation}) {
             fontFamily: 'Helvetica',
             color: 'white',
           },
-          headerRight: () => (
-            <TouchableOpacity
-              style={{
-                marginRight: 15,
-                width: 40,
-                height: 40,
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-              onPress={openDrawer}>
-              <Feather name="menu" size={20} color="white" />
-            </TouchableOpacity>
-          ),
-        })}
+        }}
+      />
+
+      <ProfileStack.Screen
+        name="Settings"
+        component={SettingsNavigator}
+        options={{
+          title: 'Settings',
+          headerStyle: constants.headerStyle,
+          headerTitleStyle: constants.headerText,
+          headerBackTitleVisible: false,
+          headerTintColor: 'white',
+        }}
       />
       <ProfileStack.Screen
         name="Issues"

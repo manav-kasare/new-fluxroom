@@ -1,5 +1,6 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
+import {View, TouchableOpacity, Text} from 'react-native';
 
 import FullPhoto from '../screens/app/ChatRoom/FullPhoto';
 import ChatRooms from '../screens/app/ChatRoom/ChatRooms';
@@ -31,7 +32,7 @@ export default function ChatRoomNavigator({route, navigation}) {
       <ChatRoomStack.Screen
         name="ChatRooms"
         component={ChatRooms}
-        options={({navigation}) => ({
+        options={{
           title: 'Fluxroom',
           headerTitleAlign: 'left',
           headerStyle: {
@@ -48,10 +49,7 @@ export default function ChatRoomNavigator({route, navigation}) {
             fontFamily: 'Helvetica',
             color: 'white',
           },
-          headerRight: () => (
-            <InvitationsIcon id={user._id} navigation={navigation} />
-          ),
-        })}
+        }}
       />
       <ChatRoomStack.Screen
         name="Room"

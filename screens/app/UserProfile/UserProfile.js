@@ -1,12 +1,36 @@
 import React from 'react';
 import {SafeAreaView, View, Text, TouchableOpacity} from 'react-native';
 import MatericalIcons from 'react-native-vector-icons/MaterialIcons';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import {UserDetailsContext, ThemeContext} from '../../../shared/Context';
 import UserProfilePhoto from './UserProfilePhoto';
 
 export default function UserProfile({navigation}) {
   const {constants} = React.useContext(ThemeContext);
+
+  const styles = {
+    view: {
+      width: constants.width,
+      height: 60,
+      backgroundColor: constants.background3,
+      paddingHorizontal: 25,
+      justifyContent: 'center',
+    },
+    view_text: {
+      color: constants.text1,
+      marginLeft: 25,
+      fontSize: 14,
+      fontWeight: '300',
+    },
+    view_touchable: {
+      flex: 1,
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+    },
+  };
 
   return (
     <SafeAreaView
@@ -16,6 +40,30 @@ export default function UserProfile({navigation}) {
         alignItems: 'center',
       }}>
       <ProfileComponent navigation={navigation} />
+      <View style={styles.view}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Settings')}
+          style={styles.view_touchable}>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              paddingLeft: 5,
+            }}>
+            <Ionicons
+              name="settings-sharp"
+              size={20}
+              color={constants.background2}
+            />
+            <Text style={styles.view_text}>Settings</Text>
+          </View>
+          <Ionicons
+            name="chevron-forward"
+            size={20}
+            color={constants.background2}
+          />
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 }

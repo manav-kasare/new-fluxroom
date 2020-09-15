@@ -48,11 +48,7 @@ const Invitations = ({navigation}) => {
       <FlatList
         data={invitations}
         keyExtractor={(index) => index.toString()}
-        renderItem={({item}) => (
-          <View>
-            <RequestUserTile room={item} />
-          </View>
-        )}
+        renderItem={({item}) => <RequestUserTile room={item} />}
         refreshControl={
           <RefreshControl
             refreshing={refreshing}

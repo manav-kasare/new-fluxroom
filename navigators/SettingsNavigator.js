@@ -27,13 +27,6 @@ export default function SettingsNavigator() {
           headerTitleStyle: constants.headerText,
           headerBackTitleVisible: false,
           headerTintColor: 'white',
-          headerRight: () => (
-            <TouchableOpacity
-              onPress={() => navigation.openDrawer()}
-              style={{marginRight: 15}}>
-              <Ionicons name="md-menu" size={25} color="white" />
-            </TouchableOpacity>
-          ),
         })}
       />
       <Stack.Screen

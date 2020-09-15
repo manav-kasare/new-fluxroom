@@ -13,12 +13,12 @@ import Onboard from '../screens/root/Onboard';
 import SetUpProfile from '../screens/root/SetUpProfile';
 import ForgotPassword from '../screens/root/ForgotPassword';
 import SplashScreen from '../screens/root/SplashScreen';
-import DrawerNavigator from './DrawerNavigator';
 import ForgotPasswordConfirmation from '../screens/root/ForgotPasswordConfirmation';
 import Phone from '../screens/root/Phone';
 import {getUserMe} from '../backend/database/apiCalls';
 import {getToken} from '../shared/KeyChain';
 import {storeUserData, getTheme} from '../shared/AsyncStore';
+import HomeNavigator from './HomeNavigator';
 
 const Stack = createStackNavigator();
 
@@ -65,8 +65,8 @@ export default function RootNavigator() {
       ) : (
         <Stack.Navigator>
           <Stack.Screen
-            name="DrawerNavigator"
-            component={DrawerNavigator}
+            name="Home"
+            component={HomeNavigator}
             options={{headerShown: false}}
           />
         </Stack.Navigator>

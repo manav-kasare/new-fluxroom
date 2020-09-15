@@ -1,12 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react';
-import {
-  SafeAreaView,
-  FlatList,
-  RefreshControl,
-  Text,
-  View,
-  ActivityIndicator,
-} from 'react-native';
+import {SafeAreaView, FlatList, RefreshControl, Text, View} from 'react-native';
 import {Searchbar} from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import _ from 'lodash';
@@ -78,7 +71,7 @@ const Search = React.memo(({navigation}) => {
           elevation: 0,
           shadowOpacity: 0,
         }}
-        placeholder="Search Username"
+        placeholder="What are you intrested in ?"
         placeholderTextColor="grey"
         value={query}
         onChangeText={(text) => {

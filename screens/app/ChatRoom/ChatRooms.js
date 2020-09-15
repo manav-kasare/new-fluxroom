@@ -7,6 +7,7 @@ import {
   FlatList,
   RefreshControl,
   StatusBar,
+  StyleSheet,
   TouchableOpacity,
 } from 'react-native';
 
@@ -18,19 +19,43 @@ import {
   ThemeContext,
   TokenContext,
 } from '../../../shared/Context';
-import Tile from '../../../shared/Tile';
 import {getUserMe, getChatroomInfo} from '../../../backend/database/apiCalls';
 import TilesLoading from './TilesLoading';
 import {getToken} from '../../../shared/KeyChain';
-import {constant} from 'lodash';
+import CircleAvatar from '../../../shared/CircleAvatar';
+import InvitationsIcon from './InvitationsIcon';
+import CreateRoom from '../JoinCreateRoom/CreateRoom';
 
 const ChatRooms = ({navigation}) => {
-  const {setUser} = useContext(UserDetailsContext);
+  const {user, setUser} = useContext(UserDetailsContext);
   const {constants} = useContext(ThemeContext);
   const {token} = useContext(TokenContext);
   const [chatRoomList, setChatRoomList] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
   const [loading, setloading] = useState(true);
+  const [isCreateRoomModal, setIsCreateRoomModal] = useState(false);
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <View
+          style={{flexDirection: 'row', alignItems: 'center', marginRight: 15}}>
+          <TouchableOpacity
+            onPress={() => setIsCreateRoomModal(true)}
+            style={{
+              height: 40,
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: 5,
+              marginRight: 20,
+            }}>
+            <Text style={{color: 'dodgerblue', fontSize: 18}}>Create room</Text>
+          </TouchableOpacity>
+          <InvitationsIcon id={user._id} navigation={navigation} />
+        </View>
+      ),
+    });
+  });
 
   useEffect(() => {
     setData();
@@ -64,9 +89,12 @@ const ChatRooms = ({navigation}) => {
   return (
     <SafeAreaView
       style={{
-        width: constants.width,
-        height: constants.height,
+        flex: 1,
       }}>
+      <CreateRoom
+        isVisible={isCreateRoomModal}
+        setIsVisible={setIsCreateRoomModal}
+      />
       <StatusBar
         barStyle="light-content"
         backgroundColor={constants.background1}
@@ -102,11 +130,14 @@ const ChatRooms = ({navigation}) => {
 export default React.memo(ChatRooms);
 
 const RenderTile = React.memo(({item, navigation}) => {
+  const {constants} = React.useContext(ThemeContext);
   const [room, setRoom] = React.useState(item);
+  const [listOfUsers, setListOfUsers] = React.useState([]);
 
   React.useEffect(() => {
     getChatroomInfo(room._id).then((response) => {
       setRoom(response);
+      setListOfUsers(response.listOfUsers);
     });
   }, []);
 
@@ -114,18 +145,72 @@ const RenderTile = React.memo(({item, navigation}) => {
     navigation.navigate('Room', {room: room, setRoom: setRoom});
   };
 
+  const styles = StyleSheet.create({
+    tile: {
+      width: constants.width * 0.9,
+      height: constants.height * 0.25,
+      shadowOpacity: 0.1,
+      shadowOffset: {width: 0.1, height: 0.1},
+      borderRadius: 8,
+      backgroundColor: constants.background3,
+      alignSelf: 'center',
+      marginVertical: 10,
+      padding: 25,
+    },
+    tileSmall: {
+      alignItems: 'center',
+      flexDirection: 'row',
+    },
+    heading: {
+      color: constants.text1,
+      marginLeft: 15,
+      fontSize: 20,
+      fontWeight: '500',
+      fontFamily: 'Helvetica Neue',
+    },
+    description: {
+      color: 'grey',
+      marginLeft: 15,
+      fontSize: 12,
+      fontWeight: '300',
+      fontFamily: 'Helvetica Neue',
+    },
+    listOfUsers: {
+      marginTop: 10,
+      marginLeft: 5,
+    },
+  });
+
   return (
-    <Tile
-      uri={room.profilePic === undefined ? undefined : room.profilePic}
-      heading={room.name}
-      subHeading={room.description}
-      onPressTile={handleOnPressTile}
-      onlineSpeakers="5"
-    />
+    <TouchableOpacity onPress={handleOnPressTile}>
+      <View style={styles.tile}>
+        <View style={styles.tileSmall}>
+          <CircleAvatar
+            uri={room.profilePic === undefined ? undefined : room.profilePic}
+            size={50}
+          />
+          <View style={{flexDirection: 'column'}}>
+            <Text style={styles.heading}>{room.name}</Text>
+            <Text style={styles.description}>{room.description}</Text>
+          </View>
+        </View>
+        <View style={styles.listOfUsers}>
+          <FlatList
+            style={styles.listOfUsers}
+            scrollEnabled={false}
+            data={listOfUsers}
+            keyExtractor={(key, index) => index.toString()}
+            renderItem={({item}) => (
+              <Text style={{color: 'grey'}}>{item.username}</Text>
+            )}
+          />
+        </View>
+      </View>
+    </TouchableOpacity>
   );
 });
 
-const EmptyItem = React.memo(({navigation}) => {
+const EmptyItem = ({navigation}) => {
   const {constants, darkTheme} = useContext(ThemeContext);
 
   const navigate = () => {
@@ -164,4 +249,4 @@ const EmptyItem = React.memo(({navigation}) => {
       </TouchableOpacity>
     </View>
   );
-});
+};

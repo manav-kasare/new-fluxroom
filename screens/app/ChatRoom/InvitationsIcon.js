@@ -21,39 +21,24 @@ export default function InvitationsIcon({navigation, id}) {
   };
 
   return (
-    <View
+    <TouchableOpacity
+      onPress={navigateInvitations}
       style={{
-        marginRight: 10,
-        width: 40,
-        height: 40,
-        borderRadius: 8,
+        width: 25,
+        height: 25,
+        borderRadius: 25 / 2,
         alignItems: 'center',
         justifyContent: 'center',
-        flexDirection: 'row',
+        backgroundColor: '#ba0000',
       }}>
-      <TouchableOpacity onPress={navigateInvitations}>
-        <Ionicons name="ios-notifications-outline" size={25} color="white" />
-      </TouchableOpacity>
-      <View
+      <Text
         style={{
-          width: 17,
-          height: 17,
-          borderRadius: 17 / 2,
-          alignItems: 'center',
-          justifyContent: 'center',
-          backgroundColor: 'crimson',
-          position: 'relative',
-          bottom: 10,
+          fontSize: 15,
+          color: 'white',
+          fontFamily: 'Helvetica',
         }}>
-        <Text
-          style={{
-            fontSize: 15,
-            color: 'white',
-            fontFamily: 'Helvetica',
-          }}>
-          {invitations}
-        </Text>
-      </View>
-    </View>
+        {invitations}
+      </Text>
+    </TouchableOpacity>
   );
 }
