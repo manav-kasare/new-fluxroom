@@ -37,7 +37,7 @@ const ProfileComponent = ({navigation}) => {
       color: 'white',
       marginLeft: 25,
       fontSize: 14,
-      fontWeight: '300',
+      fontWeight: '500',
     },
     view_touchable: {
       flex: 1,

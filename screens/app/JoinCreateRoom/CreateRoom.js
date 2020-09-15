@@ -178,7 +178,8 @@ export default function CreateRoom({navigation, isVisible, setIsVisible}) {
             <TextInput
               style={{
                 width: constants.width * 0.6,
-                marginLeft: 15,
+                marginHorizontal: 15,
+                paddingLeft: 10,
                 fontFamily: 'Helvetica',
                 marginVertical: 10,
                 height: 45,

@@ -182,7 +182,8 @@ export default function RoomSettings({route, navigation}) {
           <View
             style={{
               width: constants.width,
-              height: 50,
+              // height: 50,
+              paddingVertical: 15,
               marginTop: 30,
               backgroundColor: constants.background3,
               paddingLeft: 10,
@@ -191,10 +192,11 @@ export default function RoomSettings({route, navigation}) {
             }}>
             <Text style={{color: 'grey', marginRight: 25}}>Description</Text>
             <TextInput
+              multiline
               onFocus={() => setDescriptionFocus(true)}
               style={{
-                height: 40,
                 flex: 1,
+                marginRight: 75,
                 color: constants.text1,
               }}
               value={_room.description}
@@ -209,7 +211,10 @@ export default function RoomSettings({route, navigation}) {
             ) : (
               <MaterialCommunityIcons
                 name="pencil"
-                style={{position: 'absolute', right: 20}}
+                style={{
+                  position: 'absolute',
+                  right: 20,
+                }}
                 color={constants.background2}
                 size={20}
               />

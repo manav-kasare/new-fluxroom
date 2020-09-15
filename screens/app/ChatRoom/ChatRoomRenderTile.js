@@ -94,7 +94,7 @@ const ChatRoomRenderTile = ({item, navigation}) => {
               flexDirection: 'row',
               alignItems: 'center',
             }}>
-            <Text style={{color: 'grey', marginRight: 10}}>5</Text>
+            <Text style={{color: 'green', marginRight: 15}}>x</Text>
             <TouchableOpacity onPress={toggleShowRoomDetails}>
               {showRoomDetails ? (
                 <Ionicons
@@ -117,7 +117,7 @@ const ChatRoomRenderTile = ({item, navigation}) => {
             style={styles.listOfUsers}
             ListHeaderComponent={() => (
               <Text style={{color: 'green', fontWeight: '500'}}>
-                5 Speaking of 10
+                x Speaking of {item.listOfUsers.length}
               </Text>
             )}
             scrollEnabled={false}

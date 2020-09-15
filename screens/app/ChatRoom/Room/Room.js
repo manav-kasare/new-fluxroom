@@ -8,6 +8,7 @@ import {
   RefreshControl,
 } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import Feather from 'react-native-vector-icons/Feather';
 import Entypo from 'react-native-vector-icons/Entypo';
 
 import RaisingHand from './RaisingHand';
@@ -21,7 +22,7 @@ import RoomAvatarLoading from './RoomAvatarLoading';
 import InviteToRoom from './InviteToRoom';
 
 const Room = ({route, navigation}) => {
-  const {room} = route.params;
+  const {room, setRoom} = route.params;
   const [_room, _setRoom] = useState(room);
   const {constants, darkTheme} = React.useContext(ThemeContext);
   const [members, setMembers] = React.useState(null);
@@ -34,7 +35,21 @@ const Room = ({route, navigation}) => {
 
   React.useEffect(() => {
     setData();
-    navigation.setOptions({title: _room.name});
+    navigation.setOptions({
+      title: _room.name,
+      headerRight: () => (
+        <TouchableOpacity
+          style={{marginRight: 20}}
+          onPress={() =>
+            navigation.navigate('RoomSettings', {
+              room: room,
+              setRoom: setRoom,
+            })
+          }>
+          <Feather name="menu" size={25} color="white" />
+        </TouchableOpacity>
+      ),
+    });
   }, []);
 
   const setData = () => {
@@ -103,6 +118,7 @@ const Room = ({route, navigation}) => {
                     uri={item.profilePic}
                     size={constants.width * 0.25}
                     name={item.username}
+                    isHost={false}
                   />
                 </TouchableOpacity>
               )}

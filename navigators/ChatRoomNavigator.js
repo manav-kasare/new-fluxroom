@@ -1,7 +1,5 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import {View, TouchableOpacity, Text} from 'react-native';
-import Feather from 'react-native-vector-icons/Feather';
 
 import FullPhoto from '../screens/app/ChatRoom/FullPhoto';
 import ChatRooms from '../screens/app/ChatRoom/ChatRooms';
@@ -61,18 +59,6 @@ export default function ChatRoomNavigator({route, navigation}) {
           headerTitleStyle: constants.headerText,
           headerBackTitleVisible: false,
           headerTintColor: 'white',
-          headerRight: () => (
-            <TouchableOpacity
-              style={{marginRight: 20}}
-              onPress={() =>
-                navigation.navigate('RoomSettings', {
-                  room: room,
-                  setRoom: setRoom,
-                })
-              }>
-              <Feather name="menu" size={25} color="white" />
-            </TouchableOpacity>
-          ),
         })}
       />
       <ChatRoomStack.Screen

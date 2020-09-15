@@ -22,7 +22,6 @@ import {
   ThemeContext,
   TokenContext,
 } from '../../../shared/Context';
-import {LoadingAccept, LoadingReject} from './LoadingAcceptReject';
 
 const wait = (timeout) => {
   return new Promise((resolve) => {
@@ -213,6 +212,7 @@ function RequestUserTile({room}) {
           backgroundColor: '#0f6602',
           position: 'absolute',
           left: 0,
+          top: 0,
         }}
       />
       <View
@@ -222,6 +222,7 @@ function RequestUserTile({room}) {
           backgroundColor: '#ba0000',
           position: 'absolute',
           right: 0,
+          top: 0,
         }}
       />
     </View>

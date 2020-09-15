@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react';
-import {FlatList, StyleSheet, Text, View} from 'react-native';
+import {FlatList, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import _ from 'lodash';
 
@@ -9,9 +9,9 @@ import {
   UserDetailsContext,
   TokenContext,
 } from '../../../shared/Context';
-import {TouchableOpacity} from 'react-native-gesture-handler';
 import {storeUserData} from '../../../shared/AsyncStore';
 import CircleAvatar from '../../../shared/CircleAvatar';
+import JoinLoadingButton from './JoinLoadingButton';
 
 const SearchRenderTile = React.memo(({room, onPressTile, navigation}) => {
   const {constants, darkTheme} = useContext(ThemeContext);
@@ -69,11 +69,6 @@ const SearchRenderTile = React.memo(({room, onPressTile, navigation}) => {
       flexDirection: 'row',
       alignItems: 'center',
     },
-    chevron: {
-      width: 30,
-      height: 30,
-      marginRight: 20,
-    },
     heading: {
       color: constants.text1,
       marginLeft: 15,
@@ -92,6 +87,11 @@ const SearchRenderTile = React.memo(({room, onPressTile, navigation}) => {
       marginTop: 5,
       marginLeft: 25,
     },
+    tileRight: {
+      marginRight: 20,
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
     joinButton: {
       width: 50,
       height: 30,
@@ -102,12 +102,18 @@ const SearchRenderTile = React.memo(({room, onPressTile, navigation}) => {
       justifyContent: 'center',
       borderRadius: 5,
     },
+    noOfUsers: {
+      color: 'grey',
+      marginRight: 10,
+    },
   });
 
   return (
     <>
       <View style={styles.tile}>
-        <View style={styles.tileSmall}>
+        <TouchableOpacity
+          onPress={toggleShowRoomDetails}
+          style={styles.tileSmall}>
           <View style={styles.tileSmallLeft}>
             <CircleAvatar
               uri={room.profilePic === undefined ? undefined : room.profilePic}
@@ -128,32 +134,36 @@ const SearchRenderTile = React.memo(({room, onPressTile, navigation}) => {
               </View>
             </View>
           </View>
-          {showRoomDetails ? (
-            <TouchableOpacity onPress={toggleShowRoomDetails}>
+          <View style={styles.tileRight}>
+            <Text style={styles.noOfUsers}>
+              {room.listOfUsers.length} Members
+            </Text>
+            {showRoomDetails ? (
               <Ionicons
                 name="chevron-up"
                 size={24}
                 color={constants.background2}
-                style={styles.chevron}
               />
-            </TouchableOpacity>
-          ) : (
-            <TouchableOpacity onPress={toggleShowRoomDetails}>
+            ) : (
               <Ionicons
                 name="chevron-down"
                 size={24}
-                style={styles.chevron}
                 color={constants.background2}
               />
-            </TouchableOpacity>
-          )}
-        </View>
+            )}
+          </View>
+        </TouchableOpacity>
 
         {showRoomDetails ? (
           <View style={styles.listOfUsers}>
             <FlatList
               style={styles.listOfUsers}
               scrollEnabled={false}
+              ListHeaderComponent={() => (
+                <Text style={{color: 'green', fontWeight: '500'}}>
+                  x Speaking of {room.listOfUsers.length}
+                </Text>
+              )}
               data={listOfUsers}
               keyExtractor={(key, index) => index.toString()}
               renderItem={({item}) => (

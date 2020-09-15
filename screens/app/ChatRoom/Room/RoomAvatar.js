@@ -23,6 +23,8 @@ export default function RoomAvatar({size, uri, isHost, name}) {
             justifyContent: 'center',
             alignItems: 'center',
             backgroundColor: darkTheme ? '#212121' : '#868489',
+            borderWidth: isHost ? 5 : 0,
+            borderColor: isHost ? 'rgba(0, 255,0, 0.3)' : 'transparent',
           }}>
           <FontAwesome5 name="user-alt" color="white" size={20} />
         </View>
@@ -32,8 +34,8 @@ export default function RoomAvatar({size, uri, isHost, name}) {
             width: size,
             height: size,
             borderRadius: size * 0.4,
-            borderWidth: isHost ? 5 : 1,
-            borderColor: isHost ? '#fcdf05' : 'grey',
+            borderWidth: isHost ? 5 : 0,
+            borderColor: isHost ? 'green' : 'transparent',
           }}
           uri={uri}
         />

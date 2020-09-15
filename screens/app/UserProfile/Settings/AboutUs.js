@@ -20,7 +20,7 @@ export default function AboutUs({navigation}) {
       color: constants.text1,
       marginLeft: 25,
       fontSize: 14,
-      fontWeight: '300',
+      fontWeight: '500',
     },
     view_touchable: {
       flex: 1,
