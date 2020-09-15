@@ -13,9 +13,7 @@ import {
 } from '../../../shared/Context';
 import Tile from '../../../shared/Tile';
 import RecentSearch from './RecentSearch';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-import {storeUserData} from '../../../shared/AsyncStore';
-import JoinLoadingButton from './JoinLoadingButton';
+import SearchRenderTile from './SearchRenderTile';
 import SearchTileLoading from './SearchTileLoading';
 
 const Search = React.memo(({navigation}) => {
@@ -64,7 +62,7 @@ const Search = React.memo(({navigation}) => {
         autoCapitalize="none"
         inputStyle={{color: constants.text1, fontSize: 15}}
         style={{
-          height: 60,
+          height: 50,
           backgroundColor: constants.background3,
           borderBottomWidth: 1,
           borderBottomColor: constants.lineColor,
@@ -99,7 +97,7 @@ const Search = React.memo(({navigation}) => {
           renderItem={({item}) => {
             setModalItem(item);
             return (
-              <RenderTile
+              <SearchRenderTile
                 room={item}
                 navigation={navigation}
                 onPressTile={() => {
@@ -124,81 +122,3 @@ const Search = React.memo(({navigation}) => {
 });
 
 export default Search;
-
-const RenderTile = React.memo(({room, onPressTile, navigation}) => {
-  const {constants, darkTheme} = useContext(ThemeContext);
-  const {token} = useContext(TokenContext);
-  const {user, setUser} = useContext(UserDetailsContext);
-  const [loading, setLoading] = useState(false);
-  const [alreadyJoined, setAlreadyJoined] = useState(false);
-
-  React.useEffect(() => {
-    const rooms = user.joinedRooms;
-    rooms.map((_room) => {
-      console.log('[Checking Room id]');
-      if (_room._id === room._id) {
-        setAlreadyJoined(true);
-      }
-    });
-  }, []);
-
-  const handleJoin = () => {
-    setLoading(true);
-    joinRoom(room._id, token).then((response) => {
-      console.log('[Join Room Response]', response);
-      storeUserData(response).then(() => {
-        setLoading(false);
-        setUser(response);
-        navigation.navigate('Room', {room: room});
-      });
-    });
-  };
-
-  return (
-    <View
-      style={{
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        paddingRight: 15,
-        backgroundColor: constants.background3,
-        borderBottomColor: darkTheme ? 'transparent' : constants.lineColor,
-        borderBottomWidth: 0.5,
-      }}>
-      <Tile
-        uri={room.profilePic}
-        heading={room.name}
-        subHeading={room.description}
-        onPressTile={onPressTile}
-      />
-      {loading ? (
-        <JoinLoadingButton />
-      ) : alreadyJoined ? (
-        <View
-          style={{
-            backgroundColor: '#0f6602',
-            width: 50,
-            height: 30,
-            alignItems: 'center',
-            justifyContent: 'center',
-            borderRadius: 5,
-          }}>
-          <Text style={{color: 'white', fontSize: 10}}>Joined</Text>
-        </View>
-      ) : (
-        <TouchableOpacity
-          onPress={handleJoin}
-          style={{
-            backgroundColor: '#012470',
-            width: 50,
-            height: 30,
-            alignItems: 'center',
-            justifyContent: 'center',
-            borderRadius: 5,
-          }}>
-          <Text style={{color: 'white', fontSize: 12}}>Join</Text>
-        </TouchableOpacity>
-      )}
-    </View>
-  );
-});

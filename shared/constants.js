@@ -62,7 +62,7 @@ export const dark = {
   primary: '#4640C1',
   background1: '#0d0c0a',
   background2: '#f5f5f5',
-  background3: '#0f0f0f',
+  background3: '#141414',
   background4: 'rgba(81,81,81, 0.2)',
   lineColor: 'rgba(188,212,230, 0.2)',
   text1: 'white',
@@ -79,12 +79,12 @@ export const dark = {
   header: {
     width: WIDTH,
     height: 50,
-    backgroundColor: '#0f0f0f',
+    backgroundColor: '#141414',
     borderColor: 'transparent',
     elevation: 0,
   },
   headerStyle: {
-    backgroundColor: '#0f0f0f',
+    backgroundColor: '#141414',
     borderWidth: 0,
     borderColor: 'transparent',
     elevation: 0,

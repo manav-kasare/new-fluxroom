@@ -8,18 +8,33 @@ import {UserDetailsContext, ThemeContext} from '../../../shared/Context';
 import UserProfilePhoto from './UserProfilePhoto';
 
 export default function UserProfile({navigation}) {
-  const {constants} = React.useContext(ThemeContext);
+  const {constants, darkTheme} = React.useContext(ThemeContext);
+
+  return (
+    <SafeAreaView
+      style={{
+        flex: 1,
+        backgroundColor: constants.background1,
+        alignItems: 'center',
+      }}>
+      <ProfileComponent navigation={navigation} />
+    </SafeAreaView>
+  );
+}
+
+const ProfileComponent = ({navigation}) => {
+  const {user} = React.useContext(UserDetailsContext);
+  const {constants, darkTheme} = React.useContext(ThemeContext);
 
   const styles = {
     view: {
       width: constants.width,
       height: 60,
-      backgroundColor: constants.background3,
       paddingHorizontal: 25,
       justifyContent: 'center',
     },
     view_text: {
-      color: constants.text1,
+      color: 'white',
       marginLeft: 25,
       fontSize: 14,
       fontWeight: '300',
@@ -33,51 +48,11 @@ export default function UserProfile({navigation}) {
   };
 
   return (
-    <SafeAreaView
-      style={{
-        flex: 1,
-        backgroundColor: constants.background1,
-        alignItems: 'center',
-      }}>
-      <ProfileComponent navigation={navigation} />
-      <View style={styles.view}>
-        <TouchableOpacity
-          onPress={() => navigation.navigate('Settings')}
-          style={styles.view_touchable}>
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              paddingLeft: 5,
-            }}>
-            <Ionicons
-              name="settings-sharp"
-              size={20}
-              color={constants.background2}
-            />
-            <Text style={styles.view_text}>Settings</Text>
-          </View>
-          <Ionicons
-            name="chevron-forward"
-            size={20}
-            color={constants.background2}
-          />
-        </TouchableOpacity>
-      </View>
-    </SafeAreaView>
-  );
-}
-
-const ProfileComponent = ({navigation}) => {
-  const {user} = React.useContext(UserDetailsContext);
-  const {constants, darkTheme} = React.useContext(ThemeContext);
-
-  return (
     <View
       style={{
         alignItems: 'center',
         width: constants.width,
-        height: constants.height * 0.4,
+        paddingBottom: 25,
         borderBottomLeftRadius: 25,
         borderBottomRightRadius: 25,
         backgroundColor: darkTheme ? constants.background3 : constants.primary,
@@ -146,6 +121,22 @@ const ProfileComponent = ({navigation}) => {
           style={{position: 'absolute', right: 25}}
         />
       </TouchableOpacity>
+      <View style={styles.view}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Settings')}
+          style={styles.view_touchable}>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              paddingLeft: 5,
+            }}>
+            <Ionicons name="settings-sharp" size={20} color="white" />
+            <Text style={styles.view_text}>Settings</Text>
+          </View>
+          <Ionicons name="chevron-forward" size={20} color="white" />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };

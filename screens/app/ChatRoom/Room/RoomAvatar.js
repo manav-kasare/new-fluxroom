@@ -19,7 +19,7 @@ export default function RoomAvatar({size, uri, isHost, name}) {
           style={{
             width: size,
             height: size,
-            borderRadius: 30,
+            borderRadius: size * 0.4,
             justifyContent: 'center',
             alignItems: 'center',
             backgroundColor: darkTheme ? '#212121' : '#868489',
@@ -31,7 +31,7 @@ export default function RoomAvatar({size, uri, isHost, name}) {
           style={{
             width: size,
             height: size,
-            borderRadius: 30,
+            borderRadius: size * 0.4,
             borderWidth: isHost ? 5 : 1,
             borderColor: isHost ? '#fcdf05' : 'grey',
           }}

@@ -45,6 +45,7 @@ export default function CreateRoom({navigation, isVisible, setIsVisible}) {
         joinRoom(response.room._id, token).then((_response) => {
           setLoading(false);
           setIsVisible(false);
+          navigation.navigate('Room', {room: response.room});
           setUser(_response);
           storeUserData(_response);
         });
@@ -103,16 +104,26 @@ export default function CreateRoom({navigation, isVisible, setIsVisible}) {
         <View
           style={{
             backgroundColor: 'grey',
-            height: 5,
+            height: 3,
             width: 50,
             alignSelf: 'center',
             borderRadius: 10,
             position: 'absolute',
-            top: 10,
+            top: 5,
           }}
         />
+        <Text
+          style={{
+            color: constants.text1,
+            fontWeight: '500',
+            fontFamily: 'Helvetica Neue',
+            fontSize: 20,
+            marginTop: 20,
+          }}>
+          Create your own room
+        </Text>
         <View
-          style={{marginTop: 50, flexDirection: 'row', alignItems: 'center'}}>
+          style={{marginTop: 20, flexDirection: 'row', alignItems: 'center'}}>
           <TouchableOpacity
             style={{
               width: 75,
@@ -146,6 +157,7 @@ export default function CreateRoom({navigation, isVisible, setIsVisible}) {
           <View>
             <TextInput
               style={{
+                width: constants.width * 0.6,
                 marginLeft: 15,
                 fontFamily: 'Helvetica',
                 marginVertical: 10,

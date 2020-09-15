@@ -8,7 +8,7 @@ import CircleAvatar from '../../../shared/CircleAvatar';
 import {updateProfilePhoto} from '../../../backend/database/apiCalls';
 
 export default function UserProfilePhoto() {
-  const {user} = useContext(UserDetailsContext);
+  const {user, setUser} = useContext(UserDetailsContext);
   const {constants, darkTheme} = React.useContext(ThemeContext);
   const [profilePhoto, setProfilePhoto] = useState(user.profilePic);
 
@@ -28,11 +28,8 @@ export default function UserProfilePhoto() {
       } else if (response.error) {
         console.log('ImagePicker Error: ', response.error);
       } else {
-        updateProfilePhoto(user._id, response.uri).then((responseText) => {
-          if (responseText === 'success') {
-            setProfilePhoto(response.uri);
-          }
-        });
+        setProfilePhoto(response.uri);
+        setUser({...user, profilePic: response.uri});
       }
     });
   };

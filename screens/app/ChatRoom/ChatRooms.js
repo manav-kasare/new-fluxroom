@@ -10,6 +10,7 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
+import Entypo from 'react-native-vector-icons/Entypo';
 
 console.disableYellowBox = true;
 
@@ -49,7 +50,7 @@ const ChatRooms = ({navigation}) => {
               padding: 5,
               marginRight: 20,
             }}>
-            <Text style={{color: 'dodgerblue', fontSize: 18}}>Create room</Text>
+            <Entypo size={30} color="white" name="plus" />
           </TouchableOpacity>
           <InvitationsIcon id={user._id} navigation={navigation} />
         </View>
@@ -106,6 +107,7 @@ const ChatRooms = ({navigation}) => {
             width: constants.width,
             flex: 1,
             backgroundColor: constants.background1,
+            paddingTop: 10,
           }}
           data={chatRoomList}
           keyExtractor={(index) => index.toString()}
@@ -149,12 +151,13 @@ const RenderTile = React.memo(({item, navigation}) => {
       width: constants.width * 0.9,
       height: constants.height * 0.25,
       shadowOpacity: 0.1,
+      shadowColor: 'grey',
       shadowOffset: {width: 0.1, height: 0.1},
       borderRadius: 8,
       backgroundColor: constants.background3,
       alignSelf: 'center',
       marginVertical: 10,
-      padding: 25,
+      padding: 15,
     },
     tileSmall: {
       alignItems: 'center',
@@ -186,7 +189,7 @@ const RenderTile = React.memo(({item, navigation}) => {
         <View style={styles.tileSmall}>
           <CircleAvatar
             uri={room.profilePic === undefined ? undefined : room.profilePic}
-            size={50}
+            size={75}
           />
           <View style={{flexDirection: 'column'}}>
             <Text style={styles.heading}>{room.name}</Text>
@@ -200,7 +203,10 @@ const RenderTile = React.memo(({item, navigation}) => {
             data={listOfUsers}
             keyExtractor={(key, index) => index.toString()}
             renderItem={({item}) => (
-              <Text style={{color: 'grey'}}>{item.username}</Text>
+              <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                <Entypo name="mic" color={constants.background2} size={10} />
+                <Text style={{color: 'grey'}}>{item.username}</Text>
+              </View>
             )}
           />
         </View>

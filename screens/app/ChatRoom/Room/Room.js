@@ -16,7 +16,6 @@ import ToggleMic from './ToggleMic';
 import {getChatroomInfo} from '../../../../backend/database/apiCalls';
 import {UserDetailsContext, ThemeContext} from '../../../../shared/Context';
 import RoomAvatar from './RoomAvatar';
-import RoomHeader from './RoomHeader';
 import RoomUserOptions from './RoomUserOptions';
 import RoomAvatarLoading from './RoomAvatarLoading';
 import InviteToRoom from './InviteToRoom';
@@ -35,6 +34,7 @@ const Room = ({route, navigation}) => {
 
   React.useEffect(() => {
     setData();
+    navigation.setOptions({title: _room.name});
   }, []);
 
   const setData = () => {
@@ -82,7 +82,6 @@ const Room = ({route, navigation}) => {
           }
         />
         <View style={{backgroundColor: constants.background1, flex: 1}}>
-          <RoomHeader room={_room} setRoom={_setRoom} navigation={navigation} />
           {loading ? (
             <RoomAvatarLoading />
           ) : (
