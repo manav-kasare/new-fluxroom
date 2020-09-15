@@ -10,11 +10,15 @@ export default function TilesLoading() {
 
   const styles = StyleSheet.create({
     tile: {
-      height: 65,
-      paddingLeft: 25,
-      alignItems: 'center',
-      flexDirection: 'row',
+      width: constants.width * 0.9,
+      height: constants.height * 0.25,
+      shadowOpacity: 0.1,
+      shadowOffset: {width: 0.1, height: 0.1},
+      borderRadius: 8,
       backgroundColor: constants.background3,
+      alignSelf: 'center',
+      marginVertical: 10,
+      padding: 25,
     },
     avatar: {
       width: 50,
@@ -32,6 +36,23 @@ export default function TilesLoading() {
     },
     subHeading: {
       width: constants.width * 0.5,
+      height: 5,
+      backgroundColor: darkTheme ? '#1e1e1e' : '#dddddd',
+      marginLeft: 15,
+      marginTop: 10,
+    },
+    tileSmall: {
+      alignItems: 'center',
+      flexDirection: 'row',
+    },
+    listOfUsers: {
+      marginTop: 10,
+      marginLeft: 5,
+      height: 100,
+      width: 50,
+    },
+    user: {
+      width: constants.width * 0.3,
       height: 5,
       backgroundColor: darkTheme ? '#1e1e1e' : '#dddddd',
       marginLeft: 15,
@@ -64,24 +85,50 @@ export default function TilesLoading() {
   return (
     <View style={{flex: 1, backgroundColor: constants.background1}}>
       <Animated.View style={[styles.tile, {opacity}]}>
-        <View style={styles.avatar} />
-        <View>
-          <View style={styles.heading} />
-          <View style={styles.subHeading} />
+        <View style={styles.tileSmall}>
+          <View style={styles.avatar} />
+          <View>
+            <View style={styles.heading} />
+            <View style={styles.subHeading} />
+          </View>
+        </View>
+        <View style={styles.listOfUsers}>
+          <View style={styles.user} />
+          <View style={styles.user} />
+          <View style={styles.user} />
+          <View style={styles.user} />
         </View>
       </Animated.View>
+
       <Animated.View style={[styles.tile, {opacity}]}>
-        <View style={styles.avatar} />
-        <View>
-          <View style={styles.heading} />
-          <View style={styles.subHeading} />
+        <View style={styles.tileSmall}>
+          <View style={styles.avatar} />
+          <View>
+            <View style={styles.heading} />
+            <View style={styles.subHeading} />
+          </View>
+        </View>
+        <View style={styles.listOfUsers}>
+          <View style={styles.user} />
+          <View style={styles.user} />
+          <View style={styles.user} />
+          <View style={styles.user} />
         </View>
       </Animated.View>
+
       <Animated.View style={[styles.tile, {opacity}]}>
-        <View style={styles.avatar} />
-        <View>
-          <View style={styles.heading} />
-          <View style={styles.subHeading} />
+        <View style={styles.tileSmall}>
+          <View style={styles.avatar} />
+          <View>
+            <View style={styles.heading} />
+            <View style={styles.subHeading} />
+          </View>
+        </View>
+        <View style={styles.listOfUsers}>
+          <View style={styles.user} />
+          <View style={styles.user} />
+          <View style={styles.user} />
+          <View style={styles.user} />
         </View>
       </Animated.View>
     </View>

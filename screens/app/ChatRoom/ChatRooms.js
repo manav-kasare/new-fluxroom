@@ -71,7 +71,6 @@ const ChatRooms = ({navigation}) => {
       getToken().then((_token) => {
         getUserMe(_token).then((response) => {
           setChatRoomList(response.user.joinedRooms);
-          setloading(false);
           setUser(response.user);
           setRefreshing(false);
         });

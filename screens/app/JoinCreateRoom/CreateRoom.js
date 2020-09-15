@@ -1,13 +1,10 @@
 import React, {useState} from 'react';
 import {
-  SafeAreaView,
   View,
   TouchableOpacity,
   TextInput,
   Text,
   ActivityIndicator,
-  TouchableWithoutFeedback,
-  Keyboard,
 } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import ImagePicker from 'react-native-image-picker';
@@ -26,7 +23,6 @@ import {storeUserData} from '../../../shared/AsyncStore';
 export default function CreateRoom({navigation, isVisible, setIsVisible}) {
   const {token} = React.useContext(TokenContext);
   const {setUser} = React.useContext(UserDetailsContext);
-  const [roomId, setRoomId] = React.useState(null);
   const {constants, darkTheme} = React.useContext(ThemeContext);
   const [room, setRoom] = useState({
     name: '',
@@ -34,7 +30,6 @@ export default function CreateRoom({navigation, isVisible, setIsVisible}) {
     profilePic: undefined,
   });
   const [loading, setLoading] = useState(false);
-  const [shareRoom, setShareRoom] = useState({name: '', _id: ''});
 
   const handleCreateRoom = () => {
     setLoading(true);
@@ -47,10 +42,9 @@ export default function CreateRoom({navigation, isVisible, setIsVisible}) {
           CustomErrorToast('An Error Occured !');
         }
       } else {
-        setShareRoom(response.room);
         joinRoom(response.room._id, token).then((_response) => {
           setLoading(false);
-          setIsVisible(true);
+          setIsVisible(false);
           setUser(_response);
           storeUserData(_response);
         });
