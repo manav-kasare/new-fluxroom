@@ -160,7 +160,7 @@ const SearchRenderTile = React.memo(({room, onPressTile, navigation}) => {
               style={styles.listOfUsers}
               scrollEnabled={false}
               ListHeaderComponent={() => (
-                <Text style={{color: 'green', fontWeight: '500'}}>
+                <Text style={{color: 'green', fontWeight: '600'}}>
                   x Speaking of {room.listOfUsers.length}
                 </Text>
               )}

@@ -19,6 +19,7 @@ export default function TopRooms({allRooms, navigation}) {
           parseFloat(b.listOfUsersNumber) - parseFloat(a.listOfUsersNumber),
       ),
     );
+    setSortedRoomsList(_allRooms.slice(0, 10));
   }, []);
 
   const renderItem = ({item}) => (

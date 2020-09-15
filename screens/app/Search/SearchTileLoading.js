@@ -78,18 +78,10 @@ export default function SearchTileLoading() {
       height: 20,
       backgroundColor: darkTheme ? '#1e1e1e' : '#dddddd',
     },
-    topHeading: {
-      marginVertical: 10,
-      marginLeft: 25,
-      width: 100,
-      height: 30,
-      backgroundColor: darkTheme ? '#1e1e1e' : '#dddddd',
-    },
   });
 
   return (
     <View style={{flex: 1, backgroundColor: constants.background1}}>
-      <Animated.View style={[styles.topHeading, {opacity}]} />
       <View style={styles.tileSmall}>
         <View style={styles.tileSmallLeft}>
           <Animated.View style={[styles.avatar, {opacity}]} />
