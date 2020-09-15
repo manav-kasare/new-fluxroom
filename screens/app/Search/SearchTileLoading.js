@@ -38,49 +38,97 @@ export default function SearchTileLoading() {
       backgroundColor: darkTheme ? '#1e1e1e' : '#dddddd',
     },
     heading: {
-      width: constants.width * 0.35,
+      width: constants.width * 0.2,
       height: 15,
       backgroundColor: darkTheme ? '#1e1e1e' : '#dddddd',
       marginLeft: 15,
     },
     subHeading: {
-      width: constants.width * 0.5,
+      width: constants.width * 0.4,
       height: 5,
       backgroundColor: darkTheme ? '#1e1e1e' : '#dddddd',
       marginLeft: 15,
       marginTop: 10,
     },
     tileSmall: {
-      paddingTop: 10,
+      width: constants.width,
+      height: 65,
       paddingLeft: 25,
       alignItems: 'center',
       flexDirection: 'row',
+      justifyContent: 'space-between',
+    },
+    rightView: {
+      marginRight: 20,
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    tileSmallLeft: {
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    users: {
+      height: 10,
+      width: 25,
+      backgroundColor: darkTheme ? '#1e1e1e' : '#dddddd',
+      marginRight: 10,
+    },
+    chevron: {
+      width: 20,
+      height: 20,
+      backgroundColor: darkTheme ? '#1e1e1e' : '#dddddd',
+    },
+    topHeading: {
+      marginVertical: 10,
+      marginLeft: 25,
+      width: 100,
+      height: 30,
+      backgroundColor: darkTheme ? '#1e1e1e' : '#dddddd',
     },
   });
 
   return (
     <View style={{flex: 1, backgroundColor: constants.background1}}>
+      <Animated.View style={[styles.topHeading, {opacity}]} />
       <View style={styles.tileSmall}>
-        <Animated.View style={[styles.avatar, {opacity}]} />
-        <View>
-          <Animated.View style={[styles.heading, {opacity}]} />
-          <Animated.View style={[styles.subHeading, {opacity}]} />
+        <View style={styles.tileSmallLeft}>
+          <Animated.View style={[styles.avatar, {opacity}]} />
+          <View style={{flexDirection: 'column'}}>
+            <Animated.View style={[styles.heading, {opacity}]} />
+            <Animated.View style={[styles.subHeading, {opacity}]} />
+          </View>
+        </View>
+        <View style={styles.rightView}>
+          <Animated.View style={[styles.users, {opacity}]} />
+          <Animated.View style={[styles.chevron, {opacity}]} />
         </View>
       </View>
 
       <View style={styles.tileSmall}>
-        <Animated.View style={[styles.avatar, {opacity}]} />
-        <View>
-          <Animated.View style={[styles.heading, {opacity}]} />
-          <Animated.View style={[styles.subHeading, {opacity}]} />
+        <View style={styles.tileSmallLeft}>
+          <Animated.View style={[styles.avatar, {opacity}]} />
+          <View style={{flexDirection: 'column'}}>
+            <Animated.View style={[styles.heading, {opacity}]} />
+            <Animated.View style={[styles.subHeading, {opacity}]} />
+          </View>
+        </View>
+        <View style={styles.rightView}>
+          <Animated.View style={[styles.users, {opacity}]} />
+          <Animated.View style={[styles.chevron, {opacity}]} />
         </View>
       </View>
 
       <View style={styles.tileSmall}>
-        <Animated.View style={[styles.avatar, {opacity}]} />
-        <View>
-          <Animated.View style={[styles.heading, {opacity}]} />
-          <Animated.View style={[styles.subHeading, {opacity}]} />
+        <View style={styles.tileSmallLeft}>
+          <Animated.View style={[styles.avatar, {opacity}]} />
+          <View style={{flexDirection: 'column'}}>
+            <Animated.View style={[styles.heading, {opacity}]} />
+            <Animated.View style={[styles.subHeading, {opacity}]} />
+          </View>
+        </View>
+        <View style={styles.rightView}>
+          <Animated.View style={[styles.users, {opacity}]} />
+          <Animated.View style={[styles.chevron, {opacity}]} />
         </View>
       </View>
     </View>
