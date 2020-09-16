@@ -6,7 +6,8 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import ChatRoomNavigator from './ChatRoomNavigator';
 import ProfileNavigator from './ProfileNavigator';
 import {ThemeContext} from '../shared/Context';
-import SearchNavigator from './SearchNavigator';
+
+import Search from '../screens/app/Search/Search';
 
 const BottomTabs = createBottomTabNavigator();
 
@@ -29,18 +30,6 @@ export default function HomeNavigator() {
           borderTopColor: 'transparent',
         },
       }}
-      screenOptions={{
-        tabBarVisibilityAnimationConfig: {
-          show: {
-            animation: 'spring',
-            config: {
-              mass: 5,
-              damping: 1,
-              overshootClamping: true,
-            },
-          },
-        },
-      }}
       initialRouteName="Rooms">
       <BottomTabs.Screen
         name="Rooms"
@@ -53,7 +42,7 @@ export default function HomeNavigator() {
       />
       <BottomTabs.Screen
         name="Search"
-        component={SearchNavigator}
+        component={Search}
         options={{
           tabBarIcon: ({color}) => (
             <MaterialIcons name="search" size={30} color={color} />

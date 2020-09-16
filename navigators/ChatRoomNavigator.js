@@ -4,7 +4,6 @@ import {
   CardStyleInterpolators,
 } from '@react-navigation/stack';
 
-import FullPhoto from '../screens/app/ChatRoom/FullPhoto';
 import ChatRooms from '../screens/app/ChatRoom/ChatRooms';
 import Room from '../screens/app/ChatRoom/Room/Room';
 import Invitations from '../screens/app/ChatRoom/Invitations';
@@ -60,17 +59,6 @@ export default function ChatRoomNavigator({route, navigation}) {
         options={{
           cardStyleInterpolator:
             CardStyleInterpolators.forScaleFromCenterAndroid,
-          title: null,
-          headerStyle: constants.headerStyle,
-          headerTitleStyle: constants.headerText,
-          headerBackTitleVisible: false,
-          headerTintColor: 'white',
-        }}
-      />
-      <ChatRoomStack.Screen
-        name="FullPhoto"
-        component={FullPhoto}
-        options={{
           title: null,
           headerStyle: constants.headerStyle,
           headerTitleStyle: constants.headerText,

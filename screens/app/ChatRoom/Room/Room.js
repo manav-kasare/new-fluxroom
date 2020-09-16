@@ -6,13 +6,11 @@ import {
   TouchableOpacity,
   StatusBar,
   RefreshControl,
+  StyleSheet,
 } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import Feather from 'react-native-vector-icons/Feather';
 import Entypo from 'react-native-vector-icons/Entypo';
-
-import RaisingHand from './RaisingHand';
-import ToggleMic from './ToggleMic';
+import Feather from 'react-native-vector-icons/Feather';
 
 import {getChatroomInfo} from '../../../../backend/database/apiCalls';
 import {UserDetailsContext, ThemeContext} from '../../../../shared/Context';
@@ -20,6 +18,7 @@ import RoomAvatar from './RoomAvatar';
 import RoomUserOptions from './RoomUserOptions';
 import RoomAvatarLoading from './RoomAvatarLoading';
 import InviteToRoom from './InviteToRoom';
+import RoomBottomView from './RoomBottomView';
 
 const Room = ({route, navigation}) => {
   const {room, setRoom} = route.params;
@@ -66,25 +65,50 @@ const Room = ({route, navigation}) => {
     setData();
   };
 
-  const anon = () => {};
-
   const toggleVisible = () => {
     setIsVisible(!isVisible);
   };
 
-  const handleInvite = () => {
-    setInviteModal(true);
-  };
+  const renderItem = ({item}) => (
+    <TouchableOpacity onPress={toggleVisible}>
+      <RoomUserOptions isVisible={isVisible} setIsVisible={setIsVisible} />
+      <RoomAvatar
+        uri={item.profilePic}
+        size={constants.width * 0.25}
+        name={item.username}
+        isHost={false}
+      />
+    </TouchableOpacity>
+  );
+
+  const refreshControl = (
+    <RefreshControl
+      refreshing={refreshing}
+      onRefresh={onRefresh}
+      tintColor={constants.background2}
+    />
+  );
+
+  const styles = StyleSheet.create({
+    screen: {
+      flex: 1,
+      backgroundColor: darkTheme ? constants.background3 : constants.primary,
+    },
+    columnWrapperStyle: {
+      justifyContent: 'space-evenly',
+      width: constants.width,
+    },
+    flatList: {backgroundColor: constants.background1},
+    screenBottomView: {
+      width: constants.width,
+      height: 40,
+      backgroundColor: constants.background1,
+    },
+  });
 
   return (
     <>
-      <SafeAreaView
-        style={{
-          flex: 1,
-          backgroundColor: darkTheme
-            ? constants.background3
-            : constants.primary,
-        }}>
+      <SafeAreaView style={styles.screen}>
         <InviteToRoom
           inviteModal={inviteModal}
           setInviteModal={setInviteModal}
@@ -101,91 +125,24 @@ const Room = ({route, navigation}) => {
           ) : (
             <FlatList
               data={members}
-              style={{backgroundColor: constants.background1}}
-              columnWrapperStyle={{
-                justifyContent: 'space-evenly',
-                width: constants.width,
-              }}
+              style={styles.flatList}
+              columnWrapperStyle={styles.columnWrapperStyle}
               numColumns={3}
               keyExtractor={(item, index) => index.toString()}
-              renderItem={({item}) => (
-                <TouchableOpacity onPress={toggleVisible}>
-                  <RoomUserOptions
-                    isVisible={isVisible}
-                    setIsVisible={setIsVisible}
-                  />
-                  <RoomAvatar
-                    uri={item.profilePic}
-                    size={constants.width * 0.25}
-                    name={item.username}
-                    isHost={false}
-                  />
-                </TouchableOpacity>
-              )}
-              refreshControl={
-                <RefreshControl
-                  refreshing={refreshing}
-                  onRefresh={onRefresh}
-                  tintColor={constants.background2}
-                />
-              }
+              renderItem={renderItem}
+              refreshControl={refreshControl}
             />
           )}
-          <View
-            style={{
-              width: constants.width,
-              alignItems: 'center',
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              paddingVertical: 10,
-              paddingHorizontal: 25,
-              backgroundColor: 'transparent',
-            }}>
-            <View style={{flexDirection: 'row'}}>
-              <ToggleMic
-                isSpeaking={isSpeaking}
-                setIsSpeaking={setIsSpeaking}
-              />
-              <RaisingHand
-                someoneRaisingHand={someoneRaisingHand}
-                setSomeoneRaisingHand={setSomeoneRaisingHand}
-              />
-              <TouchableOpacity
-                style={{
-                  width: 40,
-                  height: 40,
-                  borderRadius: 10,
-                  backgroundColor: constants.primary,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginHorizontal: 10,
-                }}
-                onPress={handleInvite}>
-                <Entypo size={30} color="white" name="plus" />
-              </TouchableOpacity>
-            </View>
-            <TouchableOpacity
-              style={{
-                paddingVertical: 10,
-                paddingHorizontal: 20,
-                borderRadius: 10,
-                backgroundColor: '#ba0000',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-              onPress={anon}>
-              <FontAwesome5 name="phone-slash" color="white" size={16} />
-            </TouchableOpacity>
-          </View>
+          <RoomBottomView
+            isSpeaking={isSpeaking}
+            setIsSpeaking={setIsSpeaking}
+            someoneRaisingHand={someoneRaisingHand}
+            setSomeoneRaisingHand={setSomeoneRaisingHand}
+            setInviteModal={setInviteModal}
+          />
         </View>
       </SafeAreaView>
-      <View
-        style={{
-          width: constants.width,
-          height: 40,
-          backgroundColor: constants.background1,
-        }}
-      />
+      <View style={styles.screenBottomView} />
     </>
   );
 };
