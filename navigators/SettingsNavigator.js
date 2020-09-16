@@ -1,7 +1,8 @@
 import React from 'react';
-import {TouchableOpacity} from 'react-native';
-import {createStackNavigator} from '@react-navigation/stack';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import {
+  createStackNavigator,
+  CardStyleInterpolators,
+} from '@react-navigation/stack';
 
 import Settings from '../screens/app/UserProfile/Settings/Settings';
 import {ThemeContext} from '../shared/Context';
@@ -17,17 +18,22 @@ export default function SettingsNavigator() {
   const {constants} = React.useContext(ThemeContext);
 
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        gestureEnabled: true,
+        gestureDirection: 'horizontal',
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+      }}>
       <Stack.Screen
         name="Settings"
         component={Settings}
-        options={({navigation}) => ({
+        options={{
           title: 'Settings',
           headerStyle: constants.headerStyle,
           headerTitleStyle: constants.headerText,
           headerBackTitleVisible: false,
           headerTintColor: 'white',
-        })}
+        }}
       />
       <Stack.Screen
         name="AboutUsNavigator"
@@ -54,7 +60,12 @@ export default function SettingsNavigator() {
 const AboutUsStackNavigator = () => {
   const {constants} = React.useContext(ThemeContext);
   return (
-    <AboutUsStack.Navigator>
+    <AboutUsStack.Navigator
+      screenOptions={{
+        gestureEnabled: true,
+        gestureDirection: 'horizontal',
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+      }}>
       <AboutUsStack.Screen
         name="AboutUs"
         component={AboutUs}

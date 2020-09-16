@@ -3,7 +3,6 @@ import {
   createStackNavigator,
   CardStyleInterpolators,
 } from '@react-navigation/stack';
-import {Easing} from 'react-native-reanimated';
 
 import FullPhoto from '../screens/app/ChatRoom/FullPhoto';
 import ChatRooms from '../screens/app/ChatRoom/ChatRooms';
@@ -12,18 +11,6 @@ import Invitations from '../screens/app/ChatRoom/Invitations';
 import JoinRoomWithLink from '../screens/app/JoinCreateRoom/JoinRoomWithLink';
 import RoomSettings from '../screens/app/ChatRoom/Room/RoomSettings';
 import {ThemeContext} from '../shared/Context';
-
-const config = {
-  animation: 'spring',
-  config: {
-    stiffness: 500,
-    damping: 10000,
-    mass: 5,
-    overshootClamping: true,
-    restDisplacementThreshold: 0.01,
-    restSpeedThreshold: 0.01,
-  },
-};
 
 const ChatRoomStack = createStackNavigator();
 
@@ -43,10 +30,6 @@ export default function ChatRoomNavigator({route, navigation}) {
         gestureEnabled: true,
         gestureDirection: 'horizontal',
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-        transitionSpec: {
-          open: config,
-          close: config,
-        },
       }}
       headerMode="float">
       <ChatRoomStack.Screen
@@ -74,13 +57,15 @@ export default function ChatRoomNavigator({route, navigation}) {
       <ChatRoomStack.Screen
         name="Room"
         component={Room}
-        options={({navigation}) => ({
+        options={{
+          cardStyleInterpolator:
+            CardStyleInterpolators.forScaleFromCenterAndroid,
           title: null,
           headerStyle: constants.headerStyle,
           headerTitleStyle: constants.headerText,
           headerBackTitleVisible: false,
           headerTintColor: 'white',
-        })}
+        }}
       />
       <ChatRoomStack.Screen
         name="FullPhoto"

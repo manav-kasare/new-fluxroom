@@ -1,7 +1,8 @@
 import React from 'react';
-import {TouchableOpacity} from 'react-native';
-import {createStackNavigator} from '@react-navigation/stack';
-import Feather from 'react-native-vector-icons/Feather';
+import {
+  createStackNavigator,
+  CardStyleInterpolators,
+} from '@react-navigation/stack';
 
 import UserProfile from '../screens/app/UserProfile/UserProfile';
 import Issues from '../screens/app/UserProfile/Extras/Issues';
@@ -20,7 +21,13 @@ export default function ProfileNavigator({route, navigation}) {
   }
 
   return (
-    <ProfileStack.Navigator initialRouteName="Profile">
+    <ProfileStack.Navigator
+      initialRouteName="Profile"
+      screenOptions={{
+        gestureEnabled: true,
+        gestureDirection: 'horizontal',
+        cardStyleInterpolator: CardStyleInterpolators.forScaleFromCenterAndroid,
+      }}>
       <ProfileStack.Screen
         name="Profile"
         component={UserProfile}

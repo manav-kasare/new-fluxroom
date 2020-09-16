@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList, Text, View} from 'react-native';
+import {FlatList, Text, View, Animated} from 'react-native';
 
 import SearchRenderTile from './SearchRenderTile';
 import {ThemeContext} from '../../../shared/Context';
@@ -8,6 +8,45 @@ export default function TopRooms({allRooms, navigation}) {
   const {constants} = React.useContext(ThemeContext);
   const [sortedRoomsList, setSortedRoomsList] = React.useState([]);
   const [_allRooms, _setAllRooms] = React.useState([]);
+
+  const y = React.useRef(new Animated.Value(0)).current;
+  const width = React.useRef(new Animated.Value(0)).current;
+  const height = React.useRef(new Animated.Value(0)).current;
+
+  const translateY = y.interpolate({
+    inputRange: [0, 1],
+    outputRange: [constants.height, 0],
+  });
+
+  const scaleX = width.interpolate({
+    inputRange: [0, 0.67, 1],
+    outputRange: [1, 0.5, 1],
+  });
+
+  const scaleY = height.interpolate({
+    inputRange: [0, 0.67, 1],
+    outputRange: [1, 0.5, 1],
+  });
+
+  React.useEffect(() => {
+    Animated.parallel([
+      Animated.spring(y, {
+        toValue: 1,
+        damping: 1000,
+        useNativeDriver: true,
+      }),
+      Animated.spring(width, {
+        toValue: 1,
+        damping: 1000,
+        useNativeDriver: true,
+      }),
+      Animated.spring(height, {
+        toValue: 1,
+        damping: 1000,
+        useNativeDriver: true,
+      }),
+    ]).start();
+  }, []);
 
   React.useEffect(() => {
     allRooms.map((room) => {
@@ -23,7 +62,9 @@ export default function TopRooms({allRooms, navigation}) {
   }, []);
 
   const renderItem = ({item}) => (
-    <SearchRenderTile room={item} navigation={navigation} />
+    <Animated.View style={{transform: [{translateY}, {scaleX}, {scaleY}]}}>
+      <SearchRenderTile room={item} navigation={navigation} />
+    </Animated.View>
   );
 
   const listHeaderComponent = () => (

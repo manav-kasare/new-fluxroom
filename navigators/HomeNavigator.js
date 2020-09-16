@@ -29,6 +29,18 @@ export default function HomeNavigator() {
           borderTopColor: 'transparent',
         },
       }}
+      screenOptions={{
+        tabBarVisibilityAnimationConfig: {
+          show: {
+            animation: 'spring',
+            config: {
+              mass: 5,
+              damping: 1,
+              overshootClamping: true,
+            },
+          },
+        },
+      }}
       initialRouteName="Rooms">
       <BottomTabs.Screen
         name="Rooms"

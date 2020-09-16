@@ -44,14 +44,17 @@ const ChatRoomRenderTile = ({item, navigation}) => {
     Animated.parallel([
       Animated.spring(y, {
         toValue: 1,
+        damping: 500,
         useNativeDriver: true,
       }),
       Animated.spring(width, {
         toValue: 1,
+        damping: 500,
         useNativeDriver: true,
       }),
       Animated.spring(height, {
         toValue: 1,
+        damping: 500,
         useNativeDriver: true,
       }),
     ]).start();

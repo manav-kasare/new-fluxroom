@@ -24,9 +24,6 @@ import {getToken} from '../../../shared/KeyChain';
 import InvitationsIcon from './InvitationsIcon';
 import CreateRoom from '../JoinCreateRoom/CreateRoom';
 import ChatRoomRenderTile from './ChatRoomRenderTile';
-import Animated from 'react-native-reanimated';
-
-const AnimatedFlatlist = Animated.createAnimatedComponent(FlatList);
 
 export default function ChatRooms({navigation}) {
   const {user, setUser} = useContext(UserDetailsContext);
@@ -119,6 +116,7 @@ export default function ChatRooms({navigation}) {
           data={chatRoomList}
           keyExtractor={(key, index) => index.toString()}
           ListEmptyComponent={listEmptyComponent}
+          scroll
           renderItem={renderItem}
           refreshControl={
             <RefreshControl
