@@ -18,7 +18,7 @@ export default function HomeNavigator() {
     <BottomTabs.Navigator
       lazy={true}
       tabBarOptions={{
-        activeTintColor: '#4640C1',
+        activeTintColor: '#4b00d8',
         inactiveTintColor: 'grey',
         showLabel: false,
         keyboardHidesTabBar: true,

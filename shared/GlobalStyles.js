@@ -1,6 +1,5 @@
 import constants from './constants';
 export default {
-  gradient: ['#4640C1', '#6E34A1'],
   input: {
     alignItems: 'center',
     flexDirection: 'row',
@@ -30,7 +29,7 @@ export default {
   button: {
     width: constants.width * 0.8,
     height: 50,
-    backgroundColor: '#4640C1',
+    backgroundColor: '#4b00d8',
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 8,
@@ -39,7 +38,7 @@ export default {
   screenButton: {
     width: constants.width * 0.9,
     height: 50,
-    backgroundColor: '#4640C1',
+    backgroundColor: '#4b00d8',
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 8,

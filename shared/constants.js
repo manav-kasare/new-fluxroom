@@ -11,7 +11,7 @@ export default {
 };
 
 export const light = {
-  primary: '#4640C1',
+  primary: '#4b00d8',
   background1: '#f5f5f5',
   background2: '#0d0c0a',
   background3: 'white',
@@ -30,12 +30,12 @@ export const light = {
   header: {
     width: WIDTH,
     height: 50,
-    backgroundColor: '#4640C1',
+    backgroundColor: '#4b00d8',
     borderColor: 'transparent',
     elevation: 0,
   },
   headerStyle: {
-    backgroundColor: '#4640C1',
+    backgroundColor: '#4b00d8',
     borderWidth: 0,
     borderColor: 'transparent',
     elevation: 0,
@@ -59,7 +59,7 @@ export const light = {
 };
 
 export const dark = {
-  primary: '#4640C1',
+  primary: '#4b00d8',
   background1: '#0d0c0a',
   background2: '#f5f5f5',
   background3: '#141414',

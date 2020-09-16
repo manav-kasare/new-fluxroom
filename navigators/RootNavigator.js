@@ -4,7 +4,6 @@ import {
   createStackNavigator,
   CardStyleInterpolators,
 } from '@react-navigation/stack';
-import {Easing} from 'react-native-reanimated';
 
 import {
   UserDetailsContext,
@@ -35,14 +34,6 @@ const config = {
     overshootClamping: false,
     restDisplacementThreshold: 0.01,
     restSpeedThreshold: 0.01,
-  },
-};
-
-const closeConfig = {
-  animation: 'timing',
-  config: {
-    duration: 500,
-    easing: Easing.linear,
   },
 };
 
@@ -87,17 +78,7 @@ export default function RootNavigator() {
       {user === null || user === undefined ? (
         <AuthStackNavigator />
       ) : (
-        <Stack.Navigator
-          screenOptions={{
-            gestureEnabled: true,
-            gestureDirection: 'horizontal',
-            cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-            transitionSpec: {
-              open: config,
-              close: closeConfig,
-            },
-          }}
-          headerMode="float">
+        <Stack.Navigator>
           <Stack.Screen
             name="Home"
             component={HomeNavigator}
@@ -118,7 +99,7 @@ const AuthStackNavigator = () => {
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
         transitionSpec: {
           open: config,
-          close: closeConfig,
+          close: config,
         },
       }}
       headerMode="float">
@@ -133,7 +114,7 @@ const AuthStackNavigator = () => {
         options={{
           title: 'Log In',
           headerStyle: {
-            backgroundColor: '#4640C1',
+            backgroundColor: '#4b00d8',
             borderBottomWidth: 0,
             borderBottomColor: 'transparent',
             elevation: 0,
@@ -155,7 +136,7 @@ const AuthStackNavigator = () => {
         options={{
           title: 'LogIn with Phone Number',
           headerStyle: {
-            backgroundColor: '#4640C1',
+            backgroundColor: '#4b00d8',
             borderBottomWidth: 0,
             borderBottomColor: 'transparent',
             elevation: 0,
@@ -177,7 +158,7 @@ const AuthStackNavigator = () => {
         options={{
           title: 'Join Fluxroom',
           headerStyle: {
-            backgroundColor: '#4640C1',
+            backgroundColor: '#4b00d8',
             borderWidth: 0,
             borderColor: 'transparent',
             elevation: 0,
@@ -199,7 +180,7 @@ const AuthStackNavigator = () => {
         options={{
           title: 'Forgot Password',
           headerStyle: {
-            backgroundColor: '#4640C1',
+            backgroundColor: '#4b00d8',
             borderWidth: 0,
             borderColor: 'transparent',
             elevation: 0,
@@ -221,7 +202,7 @@ const AuthStackNavigator = () => {
         options={{
           title: 'Change Password',
           headerStyle: {
-            backgroundColor: '#4640C1',
+            backgroundColor: '#4b00d8',
             borderWidth: 0,
             borderColor: 'transparent',
             elevation: 0,
@@ -243,7 +224,7 @@ const AuthStackNavigator = () => {
         options={{
           title: 'Set Up your Profile',
           headerStyle: {
-            backgroundColor: '#4640C1',
+            backgroundColor: '#4b00d8',
             borderWidth: 0,
             borderColor: 'transparent',
             elevation: 0,

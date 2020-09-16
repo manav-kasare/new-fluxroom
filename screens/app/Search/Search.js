@@ -61,7 +61,7 @@ const Search = React.memo(({navigation}) => {
       shadowOpacity: 0,
     },
     headerStyle: {
-      backgroundColor: darkTheme ? constants.background3 : '#4640C1',
+      backgroundColor: darkTheme ? constants.background3 : '#4b00d8',
       borderWidth: 0,
       borderColor: 'transparent',
       elevation: 0,

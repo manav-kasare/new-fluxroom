@@ -104,7 +104,7 @@ export default function EmailVerification({
           style={{
             width: constants.width * 0.7,
             height: 50,
-            backgroundColor: '#4640C1',
+            backgroundColor: '#4b00d8',
             alignItems: 'center',
             justifyContent: 'center',
             borderRadius: 8,
@@ -150,7 +150,7 @@ export default function EmailVerification({
           style={{
             width: constants.width * 0.7,
             height: 50,
-            backgroundColor: '#4640C1',
+            backgroundColor: '#4b00d8',
             alignItems: 'center',
             justifyContent: 'center',
             borderRadius: 8,

@@ -78,8 +78,8 @@ const ChatRoomRenderTile = ({item, navigation}) => {
   const styles = StyleSheet.create({
     tile: {
       width: constants.width * 0.9,
-      shadowOpacity: 0.3,
-      shadowColor: '#898989',
+      shadowOpacity: 0.1,
+      shadowColor: 'black',
       shadowOffset: {width: 0.1, height: 0.1},
       borderRadius: 8,
       backgroundColor: constants.background3,

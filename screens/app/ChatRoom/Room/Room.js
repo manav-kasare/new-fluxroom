@@ -8,12 +8,10 @@ import {
   RefreshControl,
   StyleSheet,
 } from 'react-native';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import Entypo from 'react-native-vector-icons/Entypo';
 import Feather from 'react-native-vector-icons/Feather';
 
 import {getChatroomInfo} from '../../../../backend/database/apiCalls';
-import {UserDetailsContext, ThemeContext} from '../../../../shared/Context';
+import {ThemeContext} from '../../../../shared/Context';
 import RoomAvatar from './RoomAvatar';
 import RoomUserOptions from './RoomUserOptions';
 import RoomAvatarLoading from './RoomAvatarLoading';
@@ -21,7 +19,7 @@ import InviteToRoom from './InviteToRoom';
 import RoomBottomView from './RoomBottomView';
 
 const Room = ({route, navigation}) => {
-  const {room, setRoom} = route.params;
+  const {room} = route.params;
   const [_room, _setRoom] = useState(room);
   const {constants, darkTheme} = React.useContext(ThemeContext);
   const [members, setMembers] = React.useState(null);
@@ -70,7 +68,7 @@ const Room = ({route, navigation}) => {
   };
 
   const renderItem = ({item}) => (
-    <TouchableOpacity onPress={toggleVisible}>
+    <TouchableOpacity key={item._id} onPress={toggleVisible}>
       <RoomUserOptions isVisible={isVisible} setIsVisible={setIsVisible} />
       <RoomAvatar
         uri={item.profilePic}
@@ -128,7 +126,6 @@ const Room = ({route, navigation}) => {
               style={styles.flatList}
               columnWrapperStyle={styles.columnWrapperStyle}
               numColumns={3}
-              keyExtractor={(item, index) => index.toString()}
               renderItem={renderItem}
               refreshControl={refreshControl}
             />

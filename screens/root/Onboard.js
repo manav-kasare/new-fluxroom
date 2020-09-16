@@ -57,11 +57,11 @@ export default function Onboard({navigation}) {
       style={{
         width: constants.width,
         height: constants.height,
-        backgroundColor: '#4640C1',
+        backgroundColor: '#4b00d8',
         alignItems: 'center',
         paddingTop: 50,
       }}>
-      <StatusBar barStyle="light-content" backgroundColor="#4640C1" />
+      <StatusBar barStyle="light-content" backgroundColor="#4b00d8" />
       <Animated.View
         style={{
           opacity: timeAnimation,
@@ -120,7 +120,7 @@ export default function Onboard({navigation}) {
               width: 50,
               height: 50,
               borderRadius: 50 / 2,
-              backgroundColor: '#4640C1',
+              backgroundColor: '#4b00d8',
               alignItems: 'center',
               justifyContent: 'center',
             }}

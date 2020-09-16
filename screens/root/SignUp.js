@@ -89,7 +89,7 @@ export default function SignUp({navigation}) {
           <SafeAreaView
             style={{
               flex: 1,
-              backgroundColor: '#4640C1',
+              backgroundColor: '#4b00d8',
               alignItems: 'center',
               marginBottom: 50,
             }}>

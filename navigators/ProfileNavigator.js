@@ -35,7 +35,7 @@ export default function ProfileNavigator({route, navigation}) {
           title: 'Profile',
           headerTitleAlign: 'left',
           headerStyle: {
-            backgroundColor: darkTheme ? constants.background3 : '#4640C1',
+            backgroundColor: darkTheme ? constants.background3 : '#4b00d8',
             borderWidth: 0,
             borderColor: 'transparent',
             elevation: 0,
