@@ -9,12 +9,12 @@ import {
   StyleSheet,
 } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
+import {ActivityIndicator} from 'react-native-paper';
 
 import {getChatroomInfo} from '../../../../backend/database/apiCalls';
 import {ThemeContext} from '../../../../shared/Context';
 import RoomAvatar from './RoomAvatar';
 import RoomUserOptions from './RoomUserOptions';
-import RoomAvatarLoading from './RoomAvatarLoading';
 import InviteToRoom from './InviteToRoom';
 import RoomBottomView from './RoomBottomView';
 
@@ -27,11 +27,12 @@ const Room = ({route, navigation}) => {
   const [someoneRaisingHand, setSomeoneRaisingHand] = React.useState(false);
   const [isVisible, setIsVisible] = React.useState(false);
   const [refreshing, setRefreshing] = React.useState(false);
-  const [loading, setLoading] = React.useState(false);
+  const [loading, setLoading] = React.useState(true);
   const [inviteModal, setInviteModal] = React.useState(false);
 
   React.useEffect(() => {
     setMembers(room.listOfUsers);
+    setLoading(false);
   }, []);
 
   React.useEffect(() => {
@@ -105,6 +106,11 @@ const Room = ({route, navigation}) => {
       height: 40,
       backgroundColor: constants.background1,
     },
+    loading: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
   });
 
   return (
@@ -122,7 +128,9 @@ const Room = ({route, navigation}) => {
         />
         <View style={{backgroundColor: constants.background1, flex: 1}}>
           {loading ? (
-            <RoomAvatarLoading />
+            <View style={styles.loading}>
+              <ActivityIndicator color={constants.primary} animating={true} />
+            </View>
           ) : (
             <FlatList
               data={members}

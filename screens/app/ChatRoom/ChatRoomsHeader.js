@@ -1,6 +1,5 @@
 import React from 'react';
-import {Appbar} from 'react-native-paper';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 
 import {ThemeContext} from '../../../shared/Context';
@@ -13,29 +12,24 @@ export default function ChatRoomsHeader({
 }) {
   const {constants, darkTheme} = React.useContext(ThemeContext);
 
-  const createRoomIcon = () => <Entypo size={30} color="white" name="plus" />;
-
   const toggleCreateRoomModal = () => {
     setIsCreateRoomModal(true);
   };
 
-  const renderInvitationsIcon = () => (
-    <InvitationsIcon id={id} navigation={navigation} />
-  );
-
   const styles = StyleSheet.create({
     headerStyle: {
-      backgroundColor: darkTheme ? constants.background3 : '#4b00d8',
+      backgroundColor: darkTheme ? constants.background4 : constants.primary,
       borderWidth: 0,
       borderColor: 'transparent',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      paddingTop: 75,
+      paddingBottom: 25,
+      alignItems: 'center',
       elevation: 0,
       shadowOpacity: 0,
-      height: constants.height * 0.1,
       width: constants.width,
-    },
-    headerContentStyle: {
-      position: 'absolute',
-      left: 10,
+      paddingHorizontal: 25,
     },
     headerTitleStyle: {
       fontSize: 30,
@@ -44,32 +38,25 @@ export default function ChatRoomsHeader({
       color: 'white',
     },
     actions: {
-      position: 'absolute',
-      right: 15,
       flexDirection: 'row',
       alignItems: 'center',
+    },
+    createRoomAction: {
+      marginRight: 15,
     },
   });
 
   return (
-    <Appbar.Header style={styles.headerStyle}>
-      <Appbar.Content
-        title="Fluxroom"
-        titleStyle={styles.headerTitleStyle}
-        style={styles.headerContentStyle}
-      />
+    <View style={styles.headerStyle}>
+      <Text style={styles.headerTitleStyle}>Fluxroom</Text>
       <View style={styles.actions}>
-        <Appbar.Action
-          style={styles.createRoomAction}
-          icon={createRoomIcon}
+        <TouchableOpacity
           onPress={toggleCreateRoomModal}
-          animated={false}
-        />
-        <Appbar.Action
-          icon={renderInvitationsIcon}
-          onPress={toggleCreateRoomModal}
-        />
+          style={styles.createRoomAction}>
+          <Entypo size={30} color="white" name="plus" />
+        </TouchableOpacity>
+        <InvitationsIcon id={id} navigation={navigation} />
       </View>
-    </Appbar.Header>
+    </View>
   );
 }

@@ -1,13 +1,18 @@
-import React, {useState, useEffect, useContext} from 'react';
-import {SafeAreaView, FlatList, RefreshControl, StyleSheet} from 'react-native';
-import {Searchbar, Appbar} from 'react-native-paper';
+import React, {useState, useEffect} from 'react';
+import {
+  SafeAreaView,
+  FlatList,
+  RefreshControl,
+  StyleSheet,
+  View,
+} from 'react-native';
+import {Searchbar, Appbar, ActivityIndicator} from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import _ from 'lodash';
 
 import {getAllRooms} from '../../../backend/database/apiCalls';
 import {ThemeContext} from '../../../shared/Context';
 import SearchRenderTile from './SearchRenderTile';
-import SearchTileLoading from './SearchTileLoading';
 import TopRooms from './TopRooms';
 
 const Search = React.memo(({navigation}) => {
@@ -77,6 +82,11 @@ const Search = React.memo(({navigation}) => {
       fontWeight: '700',
       color: 'white',
     },
+    loading: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
   });
 
   return (
@@ -109,7 +119,9 @@ const Search = React.memo(({navigation}) => {
           )}
         />
         {loading ? (
-          <SearchTileLoading />
+          <View style={styles.loading}>
+            <ActivityIndicator color={constants.primary} animating={true} />
+          </View>
         ) : (
           <FlatList
             style={{flex: 1}}

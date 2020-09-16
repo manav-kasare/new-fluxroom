@@ -8,7 +8,7 @@ import {
   StatusBar,
   TouchableOpacity,
 } from 'react-native';
-import Entypo from 'react-native-vector-icons/Entypo';
+import {ActivityIndicator} from 'react-native-paper';
 
 console.disableYellowBox = true;
 
@@ -19,9 +19,7 @@ import {
   TokenContext,
 } from '../../../shared/Context';
 import {getUserMe} from '../../../backend/database/apiCalls';
-import ChatRoomTilesLoading from './ChatRoomTilesLoading';
 import {getToken} from '../../../shared/KeyChain';
-import InvitationsIcon from './InvitationsIcon';
 import CreateRoom from '../JoinCreateRoom/CreateRoom';
 import ChatRoomRenderTile from './ChatRoomRenderTile';
 import ChatRoomsHeader from './ChatRoomsHeader';
@@ -69,10 +67,23 @@ export default function ChatRooms({navigation}) {
     <ChatRoomRenderTile item={item} navigation={navigation} />
   );
 
+  const refreshControl = (
+    <RefreshControl
+      refreshing={refreshing}
+      onRefresh={onRefresh}
+      style={{
+        backgroundColor: darkTheme ? constants.background4 : constants.primary,
+      }}
+      tintColor="white"
+    />
+  );
+
   return (
     <View
       style={{
-        flex: 1,
+        width: constants.width,
+        height: constants.height,
+        backgroundColor: constants.background1,
       }}>
       <CreateRoom
         isVisible={isCreateRoomModal}
@@ -86,10 +97,12 @@ export default function ChatRooms({navigation}) {
       />
       <StatusBar
         barStyle="light-content"
-        backgroundColor={constants.background1}
+        backgroundColor={darkTheme ? constants.background3 : constants.primary}
       />
       {loading ? (
-        <ChatRoomTilesLoading />
+        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+          <ActivityIndicator color={constants.primary} animating={true} />
+        </View>
       ) : (
         <FlatList
           style={{
@@ -102,18 +115,7 @@ export default function ChatRooms({navigation}) {
           ListEmptyComponent={listEmptyComponent}
           scroll
           renderItem={renderItem}
-          refreshControl={
-            <RefreshControl
-              refreshing={refreshing}
-              onRefresh={onRefresh}
-              style={{
-                backgroundColor: darkTheme
-                  ? constants.background3
-                  : constants.primary,
-              }}
-              tintColor="white"
-            />
-          }
+          refreshControl={refreshControl}
         />
       )}
     </View>

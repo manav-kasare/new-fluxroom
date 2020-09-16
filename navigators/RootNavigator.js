@@ -21,7 +21,6 @@ import Phone from '../screens/root/Phone';
 import {getUserMe} from '../backend/database/apiCalls';
 import {getToken} from '../shared/KeyChain';
 import {storeUserData, getTheme} from '../shared/AsyncStore';
-import HomeNavigator from './HomeNavigator';
 import ChatRoomNavigator from './ChatRoomNavigator';
 
 const Stack = createStackNavigator();
