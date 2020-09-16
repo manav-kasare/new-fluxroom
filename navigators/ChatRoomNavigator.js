@@ -1,5 +1,9 @@
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
+import {
+  createStackNavigator,
+  CardStyleInterpolators,
+} from '@react-navigation/stack';
+import {Easing} from 'react-native-reanimated';
 
 import FullPhoto from '../screens/app/ChatRoom/FullPhoto';
 import ChatRooms from '../screens/app/ChatRoom/ChatRooms';
@@ -7,17 +11,23 @@ import Room from '../screens/app/ChatRoom/Room/Room';
 import Invitations from '../screens/app/ChatRoom/Invitations';
 import JoinRoomWithLink from '../screens/app/JoinCreateRoom/JoinRoomWithLink';
 import RoomSettings from '../screens/app/ChatRoom/Room/RoomSettings';
-import {
-  UserDetailsContext,
-  ThemeContext,
-  TokenContext,
-} from '../shared/Context';
-import InvitationsIcon from '../screens/app/ChatRoom/InvitationsIcon';
+import {ThemeContext} from '../shared/Context';
+
+const config = {
+  animation: 'spring',
+  config: {
+    stiffness: 500,
+    damping: 10000,
+    mass: 5,
+    overshootClamping: true,
+    restDisplacementThreshold: 0.01,
+    restSpeedThreshold: 0.01,
+  },
+};
 
 const ChatRoomStack = createStackNavigator();
 
 export default function ChatRoomNavigator({route, navigation}) {
-  const {user} = React.useContext(UserDetailsContext);
   const {constants, darkTheme} = React.useContext(ThemeContext);
 
   if (route.state && route.state.index > 0) {
@@ -27,7 +37,18 @@ export default function ChatRoomNavigator({route, navigation}) {
   }
 
   return (
-    <ChatRoomStack.Navigator initialRouteName="ChatRooms">
+    <ChatRoomStack.Navigator
+      initialRouteName="ChatRooms"
+      screenOptions={{
+        gestureEnabled: true,
+        gestureDirection: 'horizontal',
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+        transitionSpec: {
+          open: config,
+          close: config,
+        },
+      }}
+      headerMode="float">
       <ChatRoomStack.Screen
         name="ChatRooms"
         component={ChatRooms}

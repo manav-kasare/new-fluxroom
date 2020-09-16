@@ -21,38 +21,6 @@ const ChatRoomRenderTile = ({item, navigation}) => {
   const [showRoomDetails, setShowRoomDetails] = React.useState(false);
   const [listOfUsers, setListOfUsers] = React.useState([]);
 
-  React.useEffect(() => {
-    getChatroomInfo(room._id).then((response) => {
-      setRoom(response);
-      setListOfUsers(response.listOfUsers);
-    });
-  }, []);
-
-  React.useEffect(() => {
-    Animated.parallel([
-      Animated.spring(y, {
-        toValue: 1,
-        useNativeDriver: true,
-      }),
-      Animated.spring(width, {
-        toValue: 1,
-        useNativeDriver: true,
-      }),
-      Animated.spring(height, {
-        toValue: 1,
-        useNativeDriver: true,
-      }),
-    ]).start();
-  }, []);
-
-  const handleOnPressTile = () => {
-    navigation.navigate('Room', {room: room, setRoom: setRoom});
-  };
-
-  const toggleShowRoomDetails = () => {
-    setShowRoomDetails(!showRoomDetails);
-  };
-
   const y = React.useRef(new Animated.Value(0)).current;
   const width = React.useRef(new Animated.Value(0)).current;
   const height = React.useRef(new Animated.Value(0)).current;
@@ -71,6 +39,38 @@ const ChatRoomRenderTile = ({item, navigation}) => {
     inputRange: [0, 0.67, 1],
     outputRange: [1, 0.5, 1],
   });
+
+  React.useEffect(() => {
+    Animated.parallel([
+      Animated.spring(y, {
+        toValue: 1,
+        useNativeDriver: true,
+      }),
+      Animated.spring(width, {
+        toValue: 1,
+        useNativeDriver: true,
+      }),
+      Animated.spring(height, {
+        toValue: 1,
+        useNativeDriver: true,
+      }),
+    ]).start();
+  }, []);
+
+  React.useEffect(() => {
+    getChatroomInfo(room._id).then((response) => {
+      setRoom(response);
+      setListOfUsers(response.listOfUsers);
+    });
+  }, []);
+
+  const handleOnPressTile = () => {
+    navigation.navigate('Room', {room: room, setRoom: setRoom});
+  };
+
+  const toggleShowRoomDetails = () => {
+    setShowRoomDetails(!showRoomDetails);
+  };
 
   const styles = StyleSheet.create({
     tile: {

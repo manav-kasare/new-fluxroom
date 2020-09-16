@@ -1,6 +1,10 @@
 import React, {useEffect, useContext} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
+import {
+  createStackNavigator,
+  CardStyleInterpolators,
+} from '@react-navigation/stack';
+import {Easing} from 'react-native-reanimated';
 
 import {
   UserDetailsContext,
@@ -21,6 +25,26 @@ import {storeUserData, getTheme} from '../shared/AsyncStore';
 import HomeNavigator from './HomeNavigator';
 
 const Stack = createStackNavigator();
+
+const config = {
+  animation: 'spring',
+  config: {
+    stiffness: 500,
+    damping: 10000,
+    mass: 5,
+    overshootClamping: false,
+    restDisplacementThreshold: 0.01,
+    restSpeedThreshold: 0.01,
+  },
+};
+
+const closeConfig = {
+  animation: 'timing',
+  config: {
+    duration: 500,
+    easing: Easing.linear,
+  },
+};
 
 export default function RootNavigator() {
   const [splashScreen, setSplashScreen] = React.useState(true);
@@ -63,7 +87,17 @@ export default function RootNavigator() {
       {user === null || user === undefined ? (
         <AuthStackNavigator />
       ) : (
-        <Stack.Navigator>
+        <Stack.Navigator
+          screenOptions={{
+            gestureEnabled: true,
+            gestureDirection: 'horizontal',
+            cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+            transitionSpec: {
+              open: config,
+              close: closeConfig,
+            },
+          }}
+          headerMode="float">
           <Stack.Screen
             name="Home"
             component={HomeNavigator}
@@ -77,7 +111,17 @@ export default function RootNavigator() {
 
 const AuthStackNavigator = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        gestureEnabled: true,
+        gestureDirection: 'horizontal',
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+        transitionSpec: {
+          open: config,
+          close: closeConfig,
+        },
+      }}
+      headerMode="float">
       <Stack.Screen
         name="Onboard"
         component={Onboard}

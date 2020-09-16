@@ -53,12 +53,10 @@ export default OtpVerification = ({
         } else {
           const encodedPhoneNumber = phoneNumber.replace(/\+/gi, '%2B');
           getUserByPhone(encodedPhoneNumber).then((user) => {
-            console.log('[Get user by phone]', user);
             loginUser({
               username: user.username,
               password: '89337133-17c9-42e3-9fef-78416a25651a',
             }).then((response) => {
-              console.log('[Login user]', response);
               if (response.err) {
                 setIsLoadingCode(false);
                 ReactNativeHaptic.generate('notificationError');
@@ -78,7 +76,6 @@ export default OtpVerification = ({
         }
       });
     } catch (error) {
-      console.log(error);
       ReactNativeHaptic.generate('notificationError');
       setIsLoadingCode(false);
       CustomErrorToast('Invalid Code !');

@@ -20,6 +20,7 @@ export default function HomeNavigator() {
         activeTintColor: '#4640C1',
         inactiveTintColor: 'grey',
         showLabel: false,
+        keyboardHidesTabBar: true,
         style: {
           backgroundColor: constants.background3,
           borderTopWidth: 0,

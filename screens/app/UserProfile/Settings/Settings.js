@@ -1,15 +1,32 @@
 import React from 'react';
-import {SafeAreaView, View, TouchableOpacity, Text} from 'react-native';
+import {
+  SafeAreaView,
+  View,
+  TouchableOpacity,
+  Text,
+  ActivityIndicator,
+} from 'react-native';
 import {Switch} from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import auth from '@react-native-firebase/auth';
+import AsyncStorage from '@react-native-community/async-storage';
 
-import {ThemeContext} from '../../../../shared/Context';
+import {
+  UserDetailsContext,
+  TokenContext,
+  ThemeContext,
+} from '../../../../shared/Context';
+import {deleteToken} from '../../../../shared/KeyChain';
+import {logOutUser} from '../../../../backend/database/apiCalls';
 
 export default function Settings({navigation}) {
   const {darkTheme, toggleTheme, constants} = React.useContext(ThemeContext);
+  const {setUser} = React.useContext(UserDetailsContext);
+  const {token} = React.useContext(TokenContext);
+  const [loading, setLoading] = React.useState(false);
 
   const styles = {
     view: {
@@ -31,6 +48,19 @@ export default function Settings({navigation}) {
       alignItems: 'center',
       justifyContent: 'space-between',
     },
+  };
+
+  const signOut = () => {
+    setLoading(true);
+    auth()
+      .signOut()
+      .then(() => {
+        logOutUser(token);
+        deleteToken();
+        AsyncStorage.clear();
+        setLoading(false);
+        setUser(null);
+      });
   };
 
   const navigateAboutUsNavigator = () => {
@@ -129,6 +159,24 @@ export default function Settings({navigation}) {
               </Text>
             </View>
             <Ionicons name="chevron-forward" size={20} color="crimson" />
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.view}>
+          <TouchableOpacity style={styles.view_touchable} onPress={signOut}>
+            {loading ? (
+              <ActivityIndicator color={constants.backroung2} size="small" />
+            ) : (
+              <Text
+                style={{
+                  color: 'crimson',
+                  marginLeft: 25,
+                  fontSize: 14,
+                  fontWeight: '300',
+                }}>
+                Sign Out
+              </Text>
+            )}
           </TouchableOpacity>
         </View>
       </View>
