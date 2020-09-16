@@ -10,21 +10,22 @@ import Invitations from '../screens/app/ChatRoom/Invitations';
 import JoinRoomWithLink from '../screens/app/JoinCreateRoom/JoinRoomWithLink';
 import RoomSettings from '../screens/app/ChatRoom/Room/RoomSettings';
 import {ThemeContext} from '../shared/Context';
+import HomeNavigator from './HomeNavigator';
 
 const ChatRoomStack = createStackNavigator();
 
-export default function ChatRoomNavigator({route, navigation}) {
+export default function ChatRoomNavigator() {
   const {constants, darkTheme} = React.useContext(ThemeContext);
 
-  if (route.state && route.state.index > 0) {
-    navigation.setOptions({tabBarVisible: false});
-  } else {
-    navigation.setOptions({tabBarVisible: true});
-  }
+  // if (route.state && route.state.index > 0) {
+  //   navigation.setOptions({tabBarVisible: false});
+  // } else {
+  //   navigation.setOptions({tabBarVisible: true});
+  // }
 
   return (
     <ChatRoomStack.Navigator
-      initialRouteName="ChatRooms"
+      initialRouteName="Home"
       screenOptions={{
         gestureEnabled: true,
         gestureDirection: 'horizontal',
@@ -32,25 +33,10 @@ export default function ChatRoomNavigator({route, navigation}) {
       }}
       headerMode="float">
       <ChatRoomStack.Screen
-        name="ChatRooms"
-        component={ChatRooms}
+        name="Home"
+        component={HomeNavigator}
         options={{
-          title: 'Fluxroom',
-          headerTitleAlign: 'left',
-          headerStyle: {
-            backgroundColor: darkTheme ? constants.background3 : '#4b00d8',
-            borderWidth: 0,
-            borderColor: 'transparent',
-            elevation: 0,
-            shadowOpacity: 0,
-            height: 125,
-          },
-          headerTitleStyle: {
-            fontSize: 25,
-            fontWeight: '700',
-            fontFamily: 'Helvetica',
-            color: 'white',
-          },
+          headerShown: false,
         }}
       />
       <ChatRoomStack.Screen

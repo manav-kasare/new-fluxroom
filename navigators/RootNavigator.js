@@ -22,6 +22,7 @@ import {getUserMe} from '../backend/database/apiCalls';
 import {getToken} from '../shared/KeyChain';
 import {storeUserData, getTheme} from '../shared/AsyncStore';
 import HomeNavigator from './HomeNavigator';
+import ChatRoomNavigator from './ChatRoomNavigator';
 
 const Stack = createStackNavigator();
 
@@ -78,13 +79,7 @@ export default function RootNavigator() {
       {user === null || user === undefined ? (
         <AuthStackNavigator />
       ) : (
-        <Stack.Navigator>
-          <Stack.Screen
-            name="Home"
-            component={HomeNavigator}
-            options={{headerShown: false}}
-          />
-        </Stack.Navigator>
+        <ChatRoomNavigator />
       )}
     </NavigationContainer>
   );

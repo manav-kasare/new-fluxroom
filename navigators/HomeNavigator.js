@@ -8,6 +8,7 @@ import ProfileNavigator from './ProfileNavigator';
 import {ThemeContext} from '../shared/Context';
 
 import Search from '../screens/app/Search/Search';
+import ChatRooms from '../screens/app/ChatRoom/ChatRooms';
 
 const BottomTabs = createBottomTabNavigator();
 
@@ -32,8 +33,8 @@ export default function HomeNavigator() {
       }}
       initialRouteName="Rooms">
       <BottomTabs.Screen
-        name="Rooms"
-        component={ChatRoomNavigator}
+        name="ChatRooms"
+        component={ChatRooms}
         options={{
           tabBarIcon: ({color}) => (
             <Ionicons name="home" size={25} color={color} />

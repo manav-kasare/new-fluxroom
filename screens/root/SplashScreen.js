@@ -16,11 +16,19 @@ export default function SplashScreen() {
     <SafeAreaView
       style={{
         flex: 1,
-        backgroundColor: '#4b00d8',
+        backgroundColor: isDark ? 'black' : 'white',
         alignItems: 'center',
         justifyContent: 'center',
       }}>
-      <Text>F</Text>
+      <Text
+        style={{
+          color: isDark ? 'white' : 'black',
+          fontSize: 25,
+          letterSpacing: 2,
+          fontWeight: '800',
+        }}>
+        FLUXROOM
+      </Text>
     </SafeAreaView>
   );
 }

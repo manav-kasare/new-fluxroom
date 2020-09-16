@@ -27,11 +27,14 @@ const Room = ({route, navigation}) => {
   const [someoneRaisingHand, setSomeoneRaisingHand] = React.useState(false);
   const [isVisible, setIsVisible] = React.useState(false);
   const [refreshing, setRefreshing] = React.useState(false);
-  const [loading, setLoading] = React.useState(true);
+  const [loading, setLoading] = React.useState(false);
   const [inviteModal, setInviteModal] = React.useState(false);
 
   React.useEffect(() => {
-    setData();
+    setMembers(room.listOfUsers);
+  }, []);
+
+  React.useEffect(() => {
     navigation.setOptions({
       title: _room.name,
       headerRight: () => (

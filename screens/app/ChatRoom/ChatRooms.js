@@ -24,6 +24,7 @@ import {getToken} from '../../../shared/KeyChain';
 import InvitationsIcon from './InvitationsIcon';
 import CreateRoom from '../JoinCreateRoom/CreateRoom';
 import ChatRoomRenderTile from './ChatRoomRenderTile';
+import ChatRoomsHeader from './ChatRoomsHeader';
 
 export default function ChatRooms({navigation}) {
   const {user, setUser} = useContext(UserDetailsContext);
@@ -33,28 +34,6 @@ export default function ChatRooms({navigation}) {
   const [refreshing, setRefreshing] = useState(false);
   const [loading, setloading] = useState(true);
   const [isCreateRoomModal, setIsCreateRoomModal] = useState(false);
-
-  useEffect(() => {
-    navigation.setOptions({
-      headerRight: () => (
-        <View
-          style={{flexDirection: 'row', alignItems: 'center', marginRight: 15}}>
-          <TouchableOpacity
-            onPress={() => setIsCreateRoomModal(true)}
-            style={{
-              height: 40,
-              alignItems: 'center',
-              justifyContent: 'center',
-              padding: 5,
-              marginRight: 20,
-            }}>
-            <Entypo size={30} color="white" name="plus" />
-          </TouchableOpacity>
-          <InvitationsIcon id={user._id} navigation={navigation} />
-        </View>
-      ),
-    });
-  }, []);
 
   useEffect(() => {
     setData();
@@ -99,6 +78,11 @@ export default function ChatRooms({navigation}) {
         isVisible={isCreateRoomModal}
         setIsVisible={setIsCreateRoomModal}
         navigation={navigation}
+      />
+      <ChatRoomsHeader
+        id={user._id}
+        navigation={navigation}
+        setIsCreateRoomModal={setIsCreateRoomModal}
       />
       <StatusBar
         barStyle="light-content"
