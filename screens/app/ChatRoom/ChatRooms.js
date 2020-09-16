@@ -7,12 +7,8 @@ import {
   RefreshControl,
   StatusBar,
   TouchableOpacity,
-  StyleSheet,
 } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
-import {Searchbar} from 'react-native-paper';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import _ from 'lodash';
 
 console.disableYellowBox = true;
 
@@ -28,6 +24,9 @@ import {getToken} from '../../../shared/KeyChain';
 import InvitationsIcon from './InvitationsIcon';
 import CreateRoom from '../JoinCreateRoom/CreateRoom';
 import ChatRoomRenderTile from './ChatRoomRenderTile';
+import Animated from 'react-native-reanimated';
+
+const AnimatedFlatlist = Animated.createAnimatedComponent(FlatList);
 
 export default function ChatRooms({navigation}) {
   const {user, setUser} = useContext(UserDetailsContext);
@@ -36,7 +35,6 @@ export default function ChatRooms({navigation}) {
   const [chatRoomList, setChatRoomList] = useState(null);
   const [refreshing, setRefreshing] = useState(false);
   const [loading, setloading] = useState(true);
-  const [query, setQuery] = useState(null);
   const [isCreateRoomModal, setIsCreateRoomModal] = useState(false);
 
   useEffect(() => {

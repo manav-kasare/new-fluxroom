@@ -34,7 +34,7 @@ export default function TopRooms({allRooms, navigation}) {
         paddingLeft: 25,
         paddingVertical: 15,
       }}>
-      <Text style={{color: constants.text1, fontSize: 20, fontWeight: '500'}}>
+      <Text style={{color: constants.text1, fontSize: 22, fontWeight: '600'}}>
         Top Rooms
       </Text>
     </View>

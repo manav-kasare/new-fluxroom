@@ -1,5 +1,12 @@
 import React from 'react';
-import {Text, View, FlatList, StyleSheet, TouchableOpacity} from 'react-native';
+import {
+  Text,
+  View,
+  FlatList,
+  StyleSheet,
+  TouchableOpacity,
+  Animated,
+} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 console.disableYellowBox = true;
@@ -21,6 +28,23 @@ const ChatRoomRenderTile = ({item, navigation}) => {
     });
   }, []);
 
+  React.useEffect(() => {
+    Animated.parallel([
+      Animated.spring(y, {
+        toValue: 1,
+        useNativeDriver: true,
+      }),
+      Animated.spring(width, {
+        toValue: 1,
+        useNativeDriver: true,
+      }),
+      Animated.spring(height, {
+        toValue: 1,
+        useNativeDriver: true,
+      }),
+    ]).start();
+  }, []);
+
   const handleOnPressTile = () => {
     navigation.navigate('Room', {room: room, setRoom: setRoom});
   };
@@ -29,17 +53,38 @@ const ChatRoomRenderTile = ({item, navigation}) => {
     setShowRoomDetails(!showRoomDetails);
   };
 
+  const y = React.useRef(new Animated.Value(0)).current;
+  const width = React.useRef(new Animated.Value(0)).current;
+  const height = React.useRef(new Animated.Value(0)).current;
+
+  const translateY = y.interpolate({
+    inputRange: [0, 1],
+    outputRange: [constants.height, 0],
+  });
+
+  const scaleX = width.interpolate({
+    inputRange: [0, 0.67, 1],
+    outputRange: [1, 0.5, 1],
+  });
+
+  const scaleY = height.interpolate({
+    inputRange: [0, 0.67, 1],
+    outputRange: [1, 0.5, 1],
+  });
+
   const styles = StyleSheet.create({
     tile: {
       width: constants.width * 0.9,
-      shadowOpacity: 0.1,
-      shadowColor: 'grey',
+      shadowOpacity: 0.3,
+      shadowColor: '#898989',
       shadowOffset: {width: 0.1, height: 0.1},
       borderRadius: 8,
       backgroundColor: constants.background3,
       alignSelf: 'center',
       marginVertical: 10,
+      elevation: 1,
       padding: 15,
+      transform: [{translateY}, {scaleX}, {scaleY}],
     },
     tileSmall: {
       alignItems: 'center',
@@ -49,15 +94,13 @@ const ChatRoomRenderTile = ({item, navigation}) => {
       color: constants.text1,
       marginLeft: 15,
       fontSize: 20,
-      fontWeight: '500',
-      fontFamily: 'Helvetica Neue',
+      fontWeight: '600',
     },
     description: {
       color: 'grey',
       marginLeft: 15,
       fontSize: 14,
-      fontWeight: '300',
-      fontFamily: 'Helvetica Neue',
+      fontWeight: '400',
     },
     listOfUsers: {
       marginTop: 10,
@@ -67,7 +110,7 @@ const ChatRoomRenderTile = ({item, navigation}) => {
 
   return (
     <TouchableOpacity onPress={handleOnPressTile}>
-      <View style={styles.tile}>
+      <Animated.View style={styles.tile}>
         <View style={styles.tileSmall}>
           <CircleAvatar
             uri={room.profilePic === undefined ? undefined : room.profilePic}
@@ -90,12 +133,19 @@ const ChatRoomRenderTile = ({item, navigation}) => {
           <View
             style={{
               position: 'absolute',
-              right: 5,
+              right: 0,
               flexDirection: 'row',
               alignItems: 'center',
             }}>
             <Text style={{color: 'green', marginRight: 15}}>x</Text>
-            <TouchableOpacity onPress={toggleShowRoomDetails}>
+            <TouchableOpacity
+              onPress={toggleShowRoomDetails}
+              style={{
+                width: 40,
+                height: 40,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
               {showRoomDetails ? (
                 <Ionicons
                   name="chevron-up"
@@ -130,7 +180,7 @@ const ChatRoomRenderTile = ({item, navigation}) => {
         ) : (
           <></>
         )}
-      </View>
+      </Animated.View>
     </TouchableOpacity>
   );
 };

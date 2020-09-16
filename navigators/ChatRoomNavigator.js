@@ -27,7 +27,7 @@ export default function ChatRoomNavigator({route, navigation}) {
   }
 
   return (
-    <ChatRoomStack.Navigator initialRouteName="ChatRoom">
+    <ChatRoomStack.Navigator initialRouteName="ChatRooms">
       <ChatRoomStack.Screen
         name="ChatRooms"
         component={ChatRooms}

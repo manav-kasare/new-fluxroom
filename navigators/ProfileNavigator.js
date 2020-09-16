@@ -20,7 +20,7 @@ export default function ProfileNavigator({route, navigation}) {
   }
 
   return (
-    <ProfileStack.Navigator>
+    <ProfileStack.Navigator initialRouteName="Profile">
       <ProfileStack.Screen
         name="Profile"
         component={UserProfile}
