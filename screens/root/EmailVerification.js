@@ -59,14 +59,14 @@ export default function EmailVerification({
           {resendLoading ? (
             <ActivityIndicator color="#3f00a6" size="small" animating={true} />
           ) : (
-            <Button color="#3f00a6" onPress={resendEmail}>
+            <Button mode="text" color="#3f00a6" onPress={resendEmail}>
               Resend Email
             </Button>
           )}
           {loading ? (
             <ActivityIndicator color="#3f00a6" size="small" />
           ) : (
-            <Button color="#3f00a6" onPress={checkVerification}>
+            <Button mode="text" color="#3f00a6" onPress={checkVerification}>
               Check
             </Button>
           )}

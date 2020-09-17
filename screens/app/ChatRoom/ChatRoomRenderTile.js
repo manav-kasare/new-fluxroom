@@ -27,7 +27,7 @@ const ChatRoomRenderTile = ({item, navigation}) => {
 
   const translateY = y.interpolate({
     inputRange: [0, 1],
-    outputRange: [100, 0],
+    outputRange: [50, 0],
   });
 
   const scaleX = width.interpolate({
@@ -169,7 +169,7 @@ const ChatRoomRenderTile = ({item, navigation}) => {
           <FlatList
             style={styles.listOfUsers}
             ListHeaderComponent={() => (
-              <Text style={{color: 'green', fontWeight: '500'}}>
+              <Text style={{color: constants.text1, fontWeight: '500'}}>
                 x Speaking of {item.listOfUsers.length}
               </Text>
             )}
@@ -177,7 +177,9 @@ const ChatRoomRenderTile = ({item, navigation}) => {
             data={listOfUsers}
             keyExtractor={(key, index) => index.toString()}
             renderItem={({item}) => (
-              <Text style={{color: 'grey'}}>{item.username}</Text>
+              <Text style={{color: 'grey', fontSize: 16, fontWeight: '400'}}>
+                {item.username}
+              </Text>
             )}
           />
         ) : (

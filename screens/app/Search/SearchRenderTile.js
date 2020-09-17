@@ -1,7 +1,15 @@
 import React, {useState, useContext} from 'react';
-import {FlatList, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {
+  FlatList,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import _ from 'lodash';
+import {Button, ActivityIndicator} from 'react-native-paper';
 
 import {joinRoom} from '../../../backend/database/apiCalls';
 import {
@@ -12,6 +20,8 @@ import {
 import {storeUserData} from '../../../shared/AsyncStore';
 import CircleAvatar from '../../../shared/CircleAvatar';
 import JoinLoadingButton from './JoinLoadingButton';
+import {useTransition, mix} from 'react-native-redash';
+import Animated from 'react-native-reanimated';
 
 const SearchRenderTile = React.memo(({room, onPressTile, navigation}) => {
   const {constants, darkTheme} = useContext(ThemeContext);
@@ -21,6 +31,9 @@ const SearchRenderTile = React.memo(({room, onPressTile, navigation}) => {
   const [alreadyJoined, setAlreadyJoined] = useState(false);
   const [showRoomDetails, setShowRoomDetails] = useState(false);
   const [listOfUsers, setListOfUsers] = React.useState([]);
+
+  const transition = useTransition(showRoomDetails);
+  const height = mix(transition, 75, 100 + room.listOfUsers.length * 30);
 
   React.useEffect(() => {
     setListOfUsers(room.listOfUsers);
@@ -47,6 +60,12 @@ const SearchRenderTile = React.memo(({room, onPressTile, navigation}) => {
   const toggleShowRoomDetails = () => {
     setShowRoomDetails(!showRoomDetails);
   };
+
+  const renderSpeaker = ({item}) => (
+    <View style={styles.memberTile}>
+      <Text style={styles.memberName}>{item.username}</Text>
+    </View>
+  );
 
   const styles = StyleSheet.create({
     tile: {
@@ -87,33 +106,36 @@ const SearchRenderTile = React.memo(({room, onPressTile, navigation}) => {
       marginTop: 5,
       marginLeft: 25,
     },
-    tileRight: {
-      marginRight: 20,
-      flexDirection: 'row',
-      alignItems: 'center',
-    },
-    joinButton: {
-      width: 50,
-      height: 30,
-      position: 'absolute',
-      right: 25,
-      bottom: 15,
-      alignItems: 'center',
-      justifyContent: 'center',
-      borderRadius: 5,
-    },
     noOfUsers: {
       color: 'grey',
       marginRight: 10,
     },
+    memberTile: {
+      width: constants.width,
+      height: 30,
+      paddingLeft: 10,
+      justifyContent: 'center',
+    },
+    memberName: {
+      color: constants.text1,
+      marginVertical: 1,
+      fontSize: 18,
+      fontWeight: '500',
+    },
+    chevron: {
+      position: 'absolute',
+      right: 5,
+      bottom: 0,
+    },
+    joinRoomButton: {
+      marginRight: 15,
+    },
   });
 
   return (
-    <>
-      <View style={styles.tile}>
-        <TouchableOpacity
-          onPress={toggleShowRoomDetails}
-          style={styles.tileSmall}>
+    <TouchableWithoutFeedback onPress={toggleShowRoomDetails}>
+      <Animated.View style={[styles.tile, {height}]}>
+        <View style={styles.tileSmall}>
           <View style={styles.tileSmallLeft}>
             <CircleAvatar
               uri={room.profilePic === undefined ? undefined : room.profilePic}
@@ -134,66 +156,60 @@ const SearchRenderTile = React.memo(({room, onPressTile, navigation}) => {
               </View>
             </View>
           </View>
-          <View style={styles.tileRight}>
-            <Text style={styles.noOfUsers}>
-              {room.listOfUsers.length} Members
-            </Text>
-            {showRoomDetails ? (
-              <Ionicons
-                name="chevron-up"
-                size={24}
-                color={constants.background2}
+
+          <View style={styles.joinRoomButton}>
+            {loading ? (
+              <ActivityIndicator
+                color={constants.primary}
+                animating={true}
+                size="small"
               />
+            ) : alreadyJoined ? (
+              <Button
+                disabled={true}
+                mode="text"
+                color={constants.primary}
+                onPress={handleJoin}>
+                Joined
+              </Button>
+            ) : (
+              <Button
+                mode="text"
+                color={constants.primary}
+                onPress={handleJoin}>
+                Join
+              </Button>
+            )}
+          </View>
+
+          <View style={styles.chevron}>
+            {showRoomDetails ? (
+              <Ionicons name="chevron-up" size={18} color={constants.primary} />
             ) : (
               <Ionicons
                 name="chevron-down"
-                size={24}
-                color={constants.background2}
+                size={18}
+                color={constants.primary}
               />
             )}
           </View>
-        </TouchableOpacity>
+        </View>
 
         {showRoomDetails ? (
           <View style={styles.listOfUsers}>
             <FlatList
               style={styles.listOfUsers}
               scrollEnabled={false}
-              ListHeaderComponent={() => (
-                <Text style={{color: 'green', fontWeight: '600'}}>
-                  x Speaking of {room.listOfUsers.length}
-                </Text>
-              )}
               data={listOfUsers}
               keyExtractor={(key, index) => index.toString()}
-              renderItem={({item}) => (
-                <Text style={{color: 'grey'}}>{item.username}</Text>
-              )}
+              renderItem={renderSpeaker}
             />
           </View>
         ) : (
           <></>
         )}
-
-        {showRoomDetails ? (
-          loading ? (
-            <JoinLoadingButton />
-          ) : alreadyJoined ? (
-            <View style={[styles.joinButton, {backgroundColor: '#0f6602'}]}>
-              <Text style={{color: 'white', fontSize: 10}}>Joined</Text>
-            </View>
-          ) : (
-            <TouchableOpacity
-              onPress={handleJoin}
-              style={[styles.joinButton, {backgroundColor: '#012470'}]}>
-              <Text style={{color: 'white', fontSize: 12}}>Join</Text>
-            </TouchableOpacity>
-          )
-        ) : (
-          <></>
-        )}
-      </View>
-    </>
+      </Animated.View>
+    </TouchableWithoutFeedback>
   );
 });
 

@@ -15,7 +15,7 @@ export default function TopRooms({allRooms, navigation}) {
 
   const translateY = y.interpolate({
     inputRange: [0, 1],
-    outputRange: [100, 0],
+    outputRange: [50, 0],
   });
 
   const scaleX = width.interpolate({

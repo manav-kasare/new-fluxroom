@@ -18,7 +18,6 @@ export default {
     fontSize: 13,
     flex: 1,
     height: 50,
-    height: 50,
     paddingLeft: 10,
   },
   error: {
