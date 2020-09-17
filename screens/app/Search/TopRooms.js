@@ -15,17 +15,17 @@ export default function TopRooms({allRooms, navigation}) {
 
   const translateY = y.interpolate({
     inputRange: [0, 1],
-    outputRange: [constants.height, 0],
+    outputRange: [100, 0],
   });
 
   const scaleX = width.interpolate({
-    inputRange: [0, 0.67, 1],
-    outputRange: [1, 0.5, 1],
+    inputRange: [0.85, 1],
+    outputRange: [0.85, 1],
   });
 
   const scaleY = height.interpolate({
-    inputRange: [0, 0.67, 1],
-    outputRange: [1, 0.5, 1],
+    inputRange: [0.85, 1],
+    outputRange: [0.85, 1],
   });
 
   React.useEffect(() => {
