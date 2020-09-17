@@ -5,23 +5,28 @@ import {
   TouchableOpacity,
   Text,
   TextInput,
-  Keyboard,
   Image,
 } from 'react-native';
+import auth from '@react-native-firebase/auth';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import constants from '../../shared/constants';
 import globalStyles from '../../shared/GlobalStyles';
-// import {
-//   checkIfEmailIsRegistered,
-//   forgotPassword,
-// } from '../../backend/database/apiCalls';
+import {CustomToast} from '../../shared/CustomToast';
+import {ActivityIndicator} from 'react-native-paper';
 
-export default function ForgotPassword({navigation}) {
-  const [username, setUsername] = useState(null);
+export default function ForgotPassword() {
+  const [email, setEmail] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const forgotPassword = () => {
-    navigation.navigate('ForgotPasswordConfirmation', {username: username});
+    setLoading(true);
+    auth()
+      .sendPasswordResetEmail(email)
+      .then(() => {
+        setLoading(false);
+        CustomToast('Email Sent !');
+      });
   };
 
   return (
@@ -75,21 +80,29 @@ export default function ForgotPassword({navigation}) {
                   keyboardType="email-address"
                   placeholder="Registered Email Address or Phone Number"
                   placeholderTextColor="grey"
-                  value={username}
-                  onChangeText={(text) => setUsername(text)}
+                  value={email}
+                  onChangeText={(text) => setEmail(text)}
                 />
               </View>
               <TouchableOpacity
                 onPress={forgotPassword}
                 style={globalStyles.button}>
-                <Text
-                  style={{
-                    color: 'white',
-                    fontSize: 15,
-                    letterSpacing: 1,
-                  }}>
-                  Submit
-                </Text>
+                {loading ? (
+                  <ActivityIndicator
+                    color="white"
+                    size="small"
+                    animating={true}
+                  />
+                ) : (
+                  <Text
+                    style={{
+                      color: 'white',
+                      fontSize: 15,
+                      letterSpacing: 1,
+                    }}>
+                    Submit
+                  </Text>
+                )}
               </TouchableOpacity>
             </View>
           </View>

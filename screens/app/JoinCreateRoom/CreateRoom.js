@@ -1,11 +1,5 @@
 import React, {useState} from 'react';
-import {
-  View,
-  TouchableOpacity,
-  TextInput,
-  Text,
-  ActivityIndicator,
-} from 'react-native';
+import {View, TouchableOpacity, TextInput, Text} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import ImagePicker from 'react-native-image-picker';
 import Modal from 'react-native-modal';
@@ -19,6 +13,7 @@ import {
 import {CustomErrorToast} from '../../../shared/CustomToast';
 import CachedImage from '../../../shared/CachedImage';
 import {storeUserData} from '../../../shared/AsyncStore';
+import {ActivityIndicator} from 'react-native-paper';
 
 export default function CreateRoom({navigation, isVisible, setIsVisible}) {
   const {token} = React.useContext(TokenContext);
@@ -203,7 +198,7 @@ export default function CreateRoom({navigation, isVisible, setIsVisible}) {
         />
         {loading ? (
           <View style={{height: 50, marginVertical: 10, marginTop: 15}}>
-            <ActivityIndicator color={constants.background2} size="small" />
+            <ActivityIndicator color={constants.primary} animating={true} />
           </View>
         ) : (
           <TouchableOpacity

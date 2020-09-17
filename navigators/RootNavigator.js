@@ -16,7 +16,6 @@ import Onboard from '../screens/root/Onboard';
 import SetUpProfile from '../screens/root/SetUpProfile';
 import ForgotPassword from '../screens/root/ForgotPassword';
 import SplashScreen from '../screens/root/SplashScreen';
-import ForgotPasswordConfirmation from '../screens/root/ForgotPasswordConfirmation';
 import Phone from '../screens/root/Phone';
 import {getUserMe} from '../backend/database/apiCalls';
 import {getToken} from '../shared/KeyChain';
@@ -173,28 +172,6 @@ const AuthStackNavigator = () => {
         component={ForgotPassword}
         options={{
           title: 'Forgot Password',
-          headerStyle: {
-            backgroundColor: '#3f00a6',
-            borderWidth: 0,
-            borderColor: 'transparent',
-            elevation: 0,
-            shadowOpacity: 0,
-          },
-          headerTitleStyle: {
-            color: 'white',
-            fontSize: 20,
-            fontWeight: '300',
-            fontFamily: 'Helvetica',
-          },
-          headerTintColor: 'white',
-          headerBackTitleVisible: false,
-        }}
-      />
-      <Stack.Screen
-        name="ForgotPasswordConfirmation"
-        component={ForgotPasswordConfirmation}
-        options={{
-          title: 'Change Password',
           headerStyle: {
             backgroundColor: '#3f00a6',
             borderWidth: 0,

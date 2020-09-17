@@ -147,7 +147,7 @@ export default function Settings({navigation}) {
                   color: 'crimson',
                   marginLeft: 25,
                   fontSize: 14,
-                  fontWeight: '300',
+                  fontWeight: '500',
                 }}>
                 Delete Account
               </Text>
@@ -170,7 +170,7 @@ export default function Settings({navigation}) {
                   color: 'crimson',
                   marginLeft: 25,
                   fontSize: 14,
-                  fontWeight: '300',
+                  fontWeight: '500',
                 }}>
                 Sign Out
               </Text>

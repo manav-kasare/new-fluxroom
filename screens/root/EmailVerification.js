@@ -57,7 +57,7 @@ export default function EmailVerification({
         </Dialog.Content>
         <Dialog.Actions>
           {resendLoading ? (
-            <ActivityIndicator color="white" size="small" animating={true} />
+            <ActivityIndicator color="#3f00a6" size="small" animating={true} />
           ) : (
             <Button color="#3f00a6" onPress={resendEmail}>
               Resend Email

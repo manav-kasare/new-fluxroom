@@ -15,6 +15,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import ImagePicker from 'react-native-image-picker';
+import {ActivityIndicator} from 'react-native-paper';
 
 import {UserDetailsContext, TokenContext} from '../../shared/Context';
 import constants from '../../shared/constants';
@@ -25,7 +26,6 @@ import {storeToken} from '../../shared/KeyChain';
 import {storeUserData, storeTheme} from '../../shared/AsyncStore';
 import CachedImage from '../../shared/CachedImage';
 import {firebase} from '@react-native-firebase/messaging';
-import {ActivityIndicator} from 'react-native-paper';
 
 export default function SetUpProfile({route}) {
   const {setUser} = useContext(UserDetailsContext);
@@ -353,28 +353,19 @@ export default function SetUpProfile({route}) {
                   [ {description.length} / 150 ]
                 </Text>
               </View>
-              {loading ? (
-                <View
-                  style={{
-                    height: 50,
-                    width: constants.width * 0.8,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    marginBottom: 25,
-                  }}>
+              <TouchableOpacity
+                style={globalStyles.button}
+                onPress={isUsernameValid(username) ? handleSubmit : anon}>
+                {loading ? (
                   <ActivityIndicator
-                    color={constants.primary}
+                    color="white"
                     size="small"
                     animating={true}
                   />
-                </View>
-              ) : (
-                <TouchableOpacity
-                  style={globalStyles.button}
-                  onPress={isUsernameValid(username) ? handleSubmit : anon}>
+                ) : (
                   <Text style={globalStyles.buttonText}>Submit</Text>
-                </TouchableOpacity>
-              )}
+                )}
+              </TouchableOpacity>
             </View>
           </SafeAreaView>
         </View>

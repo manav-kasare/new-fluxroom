@@ -13,7 +13,7 @@ import * as RNLocalize from 'react-native-localize';
 
 import {ThemeContext} from '../../shared/Context';
 import globalStyles from '../../shared/GlobalStyles';
-import CustomToast, {CustomErrorToast} from '../../shared/CustomToast';
+import {CustomErrorToast} from '../../shared/CustomToast';
 import OtpVerifiaction from './OtpVerification';
 import {ActivityIndicator} from 'react-native-paper';
 
@@ -111,26 +111,13 @@ export default function Phone({navigation}) {
             }}
             flagButtonStyle={{backgroundColor: 'white'}}
           />
-          {isLoading ? (
-            <View
-              style={{
-                height: 50,
-                width: constants.width * 0.8,
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginBottom: 25,
-              }}>
-              <ActivityIndicator
-                color={constants.primary}
-                size="small"
-                animating={true}
-              />
-            </View>
-          ) : (
-            <TouchableOpacity style={globalStyles.button} onPress={signIn}>
+          <TouchableOpacity style={globalStyles.button} onPress={signIn}>
+            {isLoading ? (
+              <ActivityIndicator color="white" size="small" animating={true} />
+            ) : (
               <Text style={globalStyles.buttonText}>Get OTP</Text>
-            </TouchableOpacity>
-          )}
+            )}
+          </TouchableOpacity>
         </View>
       </SafeAreaView>
     </View>

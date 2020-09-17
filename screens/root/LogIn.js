@@ -6,7 +6,6 @@ import {
   TouchableOpacity,
   Keyboard,
   TouchableWithoutFeedback,
-  ActivityIndicator,
   Image,
   TextInput,
 } from 'react-native';
@@ -23,6 +22,7 @@ import globalStyles from '../../shared/GlobalStyles';
 import {loginUser, getUserByEmail} from '../../backend/database/apiCalls';
 import {storeToken} from '../../shared/KeyChain';
 import {storeUserData, storeTheme} from '../../shared/AsyncStore';
+import {ActivityIndicator} from 'react-native-paper';
 
 export default function LogIn({navigation}) {
   const {setUser} = useContext(UserDetailsContext);
@@ -126,9 +126,9 @@ export default function LogIn({navigation}) {
                 }}>
                 <View style={globalStyles.input}>
                   <MaterialCommunityIcons
-                    name="account"
+                    name="email"
                     size={24}
-                    color={constants.primary}
+                    color="#0d0c0a"
                   />
                   <TextInput
                     autoCapitalize="none"
@@ -173,19 +173,19 @@ export default function LogIn({navigation}) {
                     )}
                   </TouchableOpacity>
                 </View>
-                {isLoading ? (
-                  <View style={{height: 50, marginVertical: 10}}>
-                    <ActivityIndicator color="black" size="small" />
-                  </View>
-                ) : (
-                  <TouchableOpacity
-                    style={globalStyles.button}
-                    onPress={signIn}>
+                <TouchableOpacity style={globalStyles.button} onPress={signIn}>
+                  {isLoading ? (
+                    <ActivityIndicator
+                      color="white"
+                      size="small"
+                      animating={true}
+                    />
+                  ) : (
                     <Text style={globalStyles.buttonText}>
                       Log In to FluxRoom
                     </Text>
-                  </TouchableOpacity>
-                )}
+                  )}
+                </TouchableOpacity>
                 <TouchableOpacity
                   style={globalStyles.button}
                   onPress={navigateForgotPassword}>

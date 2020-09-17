@@ -7,6 +7,7 @@ import appleAuth, {
   AppleAuthRequestScope,
   AppleAuthRequestOperation,
 } from '@invertase/react-native-apple-authentication';
+import {ActivityIndicator} from 'react-native-paper';
 
 export default function Apple({navigation}) {
   const {setUser} = React.useContext(UserDetailsContext);

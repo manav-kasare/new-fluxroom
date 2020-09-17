@@ -7,7 +7,6 @@ import {
   TouchableOpacity,
   Keyboard,
   TouchableWithoutFeedback,
-  ActivityIndicator,
   Image,
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -20,6 +19,7 @@ import EmailVerification from './EmailVerification';
 import constants from '../../shared/constants';
 import CustomToast, {CustomErrorToast} from '../../shared/CustomToast';
 import globalStyles from '../../shared/GlobalStyles';
+import {ActivityIndicator} from 'react-native-paper';
 
 export default function SignUp({navigation}) {
   const [isLoading, setIsLoading] = useState(false);
@@ -167,30 +167,25 @@ export default function SignUp({navigation}) {
                 </TouchableOpacity>
               </View>
 
-              {isLoading ? (
-                <View
-                  style={{
-                    height: 50,
-                    width: constants.width * 0.8,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    marginBottom: 25,
-                  }}>
-                  <ActivityIndicator color="#0d0c0a" size="small" />
-                </View>
-              ) : (
-                <TouchableOpacity
-                  style={globalStyles.button}
-                  onPress={
-                    isPasswordValid(password)
-                      ? signUp
-                      : () => {
-                          CustomToast('Password Too Weak');
-                        }
-                  }>
+              <TouchableOpacity
+                style={globalStyles.button}
+                onPress={
+                  isPasswordValid(password)
+                    ? signUp
+                    : () => {
+                        CustomToast('Password Too Weak');
+                      }
+                }>
+                {isLoading ? (
+                  <ActivityIndicator
+                    color="white"
+                    size="small"
+                    animating={true}
+                  />
+                ) : (
                   <Text style={globalStyles.buttonText}>Sign Up</Text>
-                </TouchableOpacity>
-              )}
+                )}
+              </TouchableOpacity>
             </View>
           </SafeAreaView>
         </View>
