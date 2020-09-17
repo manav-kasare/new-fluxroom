@@ -8,7 +8,6 @@ import {
   TextInput,
   Keyboard,
   Platform,
-  ActivityIndicator,
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Clipboard from '@react-native-community/clipboard';
@@ -19,6 +18,7 @@ import {ThemeContext, TokenContext} from '../../../../shared/Context';
 import CircleAvatar from '../../../../shared/CircleAvatar';
 import {CustomErrorToast, CustomToast} from '../../../../shared/CustomToast';
 import {updateRoom} from '../../../../backend/database/apiCalls';
+import {ActivityIndicator} from 'react-native-paper';
 
 export default function RoomSettings({route, navigation}) {
   const {room, setRoom} = route.params;
@@ -204,9 +204,9 @@ export default function RoomSettings({route, navigation}) {
             />
             {descriptionLoading ? (
               <ActivityIndicator
+                color={constants.primary}
                 size="small"
-                sstyle={{position: 'absolute', right: 20}}
-                color={constants.background2}
+                animating={true}
               />
             ) : (
               <MaterialCommunityIcons

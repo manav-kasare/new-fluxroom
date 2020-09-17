@@ -96,7 +96,7 @@ const AuthStackNavigator = () => {
           close: config,
         },
       }}
-      headerMode="float">
+      headerMode="screen">
       <Stack.Screen
         name="Onboard"
         component={Onboard}
@@ -108,7 +108,7 @@ const AuthStackNavigator = () => {
         options={{
           title: 'Log In',
           headerStyle: {
-            backgroundColor: '#4b00d8',
+            backgroundColor: '#3f00a6',
             borderBottomWidth: 0,
             borderBottomColor: 'transparent',
             elevation: 0,
@@ -130,7 +130,7 @@ const AuthStackNavigator = () => {
         options={{
           title: 'LogIn with Phone Number',
           headerStyle: {
-            backgroundColor: '#4b00d8',
+            backgroundColor: '#3f00a6',
             borderBottomWidth: 0,
             borderBottomColor: 'transparent',
             elevation: 0,
@@ -152,7 +152,7 @@ const AuthStackNavigator = () => {
         options={{
           title: 'Join Fluxroom',
           headerStyle: {
-            backgroundColor: '#4b00d8',
+            backgroundColor: '#3f00a6',
             borderWidth: 0,
             borderColor: 'transparent',
             elevation: 0,
@@ -174,7 +174,7 @@ const AuthStackNavigator = () => {
         options={{
           title: 'Forgot Password',
           headerStyle: {
-            backgroundColor: '#4b00d8',
+            backgroundColor: '#3f00a6',
             borderWidth: 0,
             borderColor: 'transparent',
             elevation: 0,
@@ -196,7 +196,7 @@ const AuthStackNavigator = () => {
         options={{
           title: 'Change Password',
           headerStyle: {
-            backgroundColor: '#4b00d8',
+            backgroundColor: '#3f00a6',
             borderWidth: 0,
             borderColor: 'transparent',
             elevation: 0,
@@ -218,7 +218,7 @@ const AuthStackNavigator = () => {
         options={{
           title: 'Set Up your Profile',
           headerStyle: {
-            backgroundColor: '#4b00d8',
+            backgroundColor: '#3f00a6',
             borderWidth: 0,
             borderColor: 'transparent',
             elevation: 0,

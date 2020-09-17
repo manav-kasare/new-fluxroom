@@ -8,7 +8,6 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
   Keyboard,
-  ActivityIndicator,
 } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import ReactNativeHaptic from 'react-native-haptic';
@@ -26,6 +25,7 @@ import {storeToken} from '../../shared/KeyChain';
 import {storeUserData, storeTheme} from '../../shared/AsyncStore';
 import CachedImage from '../../shared/CachedImage';
 import {firebase} from '@react-native-firebase/messaging';
+import {ActivityIndicator} from 'react-native-paper';
 
 export default function SetUpProfile({route}) {
   const {setUser} = useContext(UserDetailsContext);
@@ -263,7 +263,7 @@ export default function SetUpProfile({route}) {
             style={{
               flex: 1,
               marginBottom: 50,
-              backgroundColor: '#4b00d8',
+              backgroundColor: '#3f00a6',
             }}>
             <Image
               style={{
@@ -293,7 +293,7 @@ export default function SetUpProfile({route}) {
                   borderRadius: 100 / 2,
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: profilePhoto === null ? '#4b00d8' : 'white',
+                  backgroundColor: profilePhoto === null ? '#3f00a6' : 'white',
                   marginBottom: 10,
                   borderWidth: 0.3,
                   borderColor: 'grey',
@@ -362,7 +362,11 @@ export default function SetUpProfile({route}) {
                     justifyContent: 'center',
                     marginBottom: 25,
                   }}>
-                  <ActivityIndicator color="#0d0c0a" size="small" />
+                  <ActivityIndicator
+                    color={constants.primary}
+                    size="small"
+                    animating={true}
+                  />
                 </View>
               ) : (
                 <TouchableOpacity

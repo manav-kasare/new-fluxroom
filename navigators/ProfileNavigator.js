@@ -26,7 +26,7 @@ export default function ProfileNavigator({route, navigation}) {
       screenOptions={{
         gestureEnabled: true,
         gestureDirection: 'horizontal',
-        cardStyleInterpolator: CardStyleInterpolators.forScaleFromCenterAndroid,
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
       }}>
       <ProfileStack.Screen
         name="Profile"
@@ -35,7 +35,9 @@ export default function ProfileNavigator({route, navigation}) {
           title: 'Profile',
           headerTitleAlign: 'left',
           headerStyle: {
-            backgroundColor: darkTheme ? constants.background3 : '#4b00d8',
+            backgroundColor: darkTheme
+              ? constants.background3
+              : constants.primary,
             borderWidth: 0,
             borderColor: 'transparent',
             elevation: 0,

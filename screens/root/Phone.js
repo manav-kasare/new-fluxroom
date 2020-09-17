@@ -5,7 +5,6 @@ import {
   Text,
   Image,
   SafeAreaView,
-  ActivityIndicator,
   Keyboard,
 } from 'react-native';
 import PhoneInput from 'react-native-phone-number-input';
@@ -16,6 +15,7 @@ import {ThemeContext} from '../../shared/Context';
 import globalStyles from '../../shared/GlobalStyles';
 import CustomToast, {CustomErrorToast} from '../../shared/CustomToast';
 import OtpVerifiaction from './OtpVerification';
+import {ActivityIndicator} from 'react-native-paper';
 
 export default function Phone({navigation}) {
   const [phoneNumber, setPhoneNumber] = React.useState(null);
@@ -54,7 +54,7 @@ export default function Phone({navigation}) {
       <SafeAreaView
         style={{
           flex: 1,
-          backgroundColor: '#4b00d8',
+          backgroundColor: '#3f00a6',
           alignItems: 'center',
           marginBottom: 50,
         }}>
@@ -120,7 +120,11 @@ export default function Phone({navigation}) {
                 justifyContent: 'center',
                 marginBottom: 25,
               }}>
-              <ActivityIndicator color="#0d0c0a" size="small" />
+              <ActivityIndicator
+                color={constants.primary}
+                size="small"
+                animating={true}
+              />
             </View>
           ) : (
             <TouchableOpacity style={globalStyles.button} onPress={signIn}>

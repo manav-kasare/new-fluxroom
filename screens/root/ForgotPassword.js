@@ -37,7 +37,7 @@ export default function ForgotPassword({navigation}) {
         <SafeAreaView
           style={{
             flex: 1,
-            backgroundColor: '#4b00d8',
+            backgroundColor: '#3f00a6',
             alignItems: 'center',
           }}>
           <View>

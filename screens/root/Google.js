@@ -1,5 +1,5 @@
 import React from 'react';
-import {TouchableOpacity, ActivityIndicator} from 'react-native';
+import {TouchableOpacity} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {GoogleSignin, statusCodes} from '@react-native-community/google-signin';
 import {UserDetailsContext, TokenContext} from '../../shared/Context';
@@ -10,6 +10,7 @@ import {getUserByEmail, loginUser} from '../../backend/database/apiCalls';
 import {storeToken} from '../../shared/KeyChain';
 import {storeUserData, storeTheme} from '../../shared/AsyncStore';
 import {CustomErrorToast} from '../../shared/CustomToast';
+import {ActivityIndicator} from 'react-native-paper';
 
 GoogleSignin.configure({
   scopes: [
@@ -96,12 +97,12 @@ export default function Google({navigation}) {
         width: 50,
         height: 50,
         borderRadius: 50 / 2,
-        backgroundColor: '#4b00d8',
+        backgroundColor: '#3f00a6',
         alignItems: 'center',
         justifyContent: 'center',
       }}>
       {loading ? (
-        <ActivityIndicator size="small" color="white" />
+        <ActivityIndicator color="white" size="small" animating={true} />
       ) : (
         <AntDesign name="google" size={25} color="white" />
       )}

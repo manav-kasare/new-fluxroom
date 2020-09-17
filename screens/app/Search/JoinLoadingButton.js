@@ -34,12 +34,13 @@ export default function JoinLoadingButton() {
     <Animated.View
       style={{
         backgroundColor: '#012470',
-        width: 50,
-        height: 30,
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: 5,
         opacity: opacity,
+        height: 30,
+        width: 50,
+        position: 'absolute',
+        right: 25,
+        bottom: 15,
+        borderRadius: 5,
       }}
     />
   );

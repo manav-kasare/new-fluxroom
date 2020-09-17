@@ -57,11 +57,11 @@ export default function Onboard({navigation}) {
       style={{
         width: constants.width,
         height: constants.height,
-        backgroundColor: '#4b00d8',
+        backgroundColor: '#3f00a6',
         alignItems: 'center',
         paddingTop: 50,
       }}>
-      <StatusBar barStyle="light-content" backgroundColor="#4b00d8" />
+      <StatusBar barStyle="light-content" backgroundColor="'#3f00a6'" />
       <Animated.View
         style={{
           opacity: timeAnimation,
@@ -112,15 +112,15 @@ export default function Onboard({navigation}) {
             marginVertical: 20,
             alignSelf: 'center',
           }}>
-          <Google navigation={navigation} />
           {Platform.OS === 'ios' ? <Apple navigation={navigation} /> : <></>}
+          <Google navigation={navigation} />
 
           <TouchableOpacity
             style={{
               width: 50,
               height: 50,
               borderRadius: 50 / 2,
-              backgroundColor: '#4b00d8',
+              backgroundColor: '#3f00a6',
               alignItems: 'center',
               justifyContent: 'center',
             }}

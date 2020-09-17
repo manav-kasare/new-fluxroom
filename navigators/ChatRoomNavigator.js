@@ -4,7 +4,6 @@ import {
   CardStyleInterpolators,
 } from '@react-navigation/stack';
 
-import ChatRooms from '../screens/app/ChatRoom/ChatRooms';
 import Room from '../screens/app/ChatRoom/Room/Room';
 import Invitations from '../screens/app/ChatRoom/Invitations';
 import JoinRoomWithLink from '../screens/app/JoinCreateRoom/JoinRoomWithLink';
@@ -14,14 +13,20 @@ import HomeNavigator from './HomeNavigator';
 
 const ChatRoomStack = createStackNavigator();
 
+const config = {
+  animation: 'spring',
+  config: {
+    stiffness: 500,
+    damping: 10000,
+    mass: 5,
+    overshootClamping: false,
+    restDisplacementThreshold: 0.01,
+    restSpeedThreshold: 0.01,
+  },
+};
+
 export default function ChatRoomNavigator() {
   const {constants, darkTheme} = React.useContext(ThemeContext);
-
-  // if (route.state && route.state.index > 0) {
-  //   navigation.setOptions({tabBarVisible: false});
-  // } else {
-  //   navigation.setOptions({tabBarVisible: true});
-  // }
 
   return (
     <ChatRoomStack.Navigator
@@ -30,8 +35,12 @@ export default function ChatRoomNavigator() {
         gestureEnabled: true,
         gestureDirection: 'horizontal',
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+        transitionSpec: {
+          open: config,
+          close: config,
+        },
       }}
-      headerMode="float">
+      headerMode="screen">
       <ChatRoomStack.Screen
         name="Home"
         component={HomeNavigator}
@@ -43,8 +52,6 @@ export default function ChatRoomNavigator() {
         name="Room"
         component={Room}
         options={{
-          cardStyleInterpolator:
-            CardStyleInterpolators.forScaleFromCenterAndroid,
           title: null,
           headerStyle: constants.headerStyle,
           headerTitleStyle: constants.headerText,

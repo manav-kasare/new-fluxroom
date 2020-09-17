@@ -7,7 +7,6 @@ import {
   Text,
   RefreshControl,
   StyleSheet,
-  ActivityIndicator,
 } from 'react-native';
 import {SwipeListView} from 'react-native-swipe-list-view';
 
@@ -22,6 +21,7 @@ import {
   ThemeContext,
   TokenContext,
 } from '../../../shared/Context';
+import {ActivityIndicator} from 'react-native-paper';
 
 const wait = (timeout) => {
   return new Promise((resolve) => {
@@ -91,7 +91,11 @@ const Invitations = ({navigation}) => {
         style={styles.backLeftBtn}
         onPress={() => handleAccept(rowMap, data.item.key, data)}>
         {loadingAccept ? (
-          <ActivityIndicator size="small" color="white" />
+          <ActivityIndicator
+            color={constants.primary}
+            size="small"
+            animating={true}
+          />
         ) : (
           <Text style={styles.backTextWhite}>Accept</Text>
         )}

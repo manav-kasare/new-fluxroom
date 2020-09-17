@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  View,
-  Text,
-  TouchableOpacity,
-  ActivityIndicator,
-} from 'react-native';
+import {SafeAreaView, View, Text, TouchableOpacity} from 'react-native';
 
 import {getChatroomInfo} from '../../../backend/database/apiCalls';
 import {
@@ -15,6 +9,7 @@ import {
 } from '../../../shared/Context';
 import {joinRoom} from '../../../backend/database/apiCalls';
 import {storeUserData} from '../../../shared/AsyncStore';
+import {ActivityIndicator} from 'react-native-paper';
 
 export default function JoinRoomWithLink({route, navigation}) {
   const {constants} = React.useContext(ThemeContext);
@@ -112,7 +107,11 @@ export default function JoinRoomWithLink({route, navigation}) {
                 alignItems: 'center',
                 justifyContent: 'center',
               }}>
-              <ActivityIndicator color={constants.background2} size="small" />
+              <ActivityIndicator
+                color={constants.primary}
+                size="small"
+                animating={true}
+              />
             </View>
           ) : (
             <TouchableOpacity

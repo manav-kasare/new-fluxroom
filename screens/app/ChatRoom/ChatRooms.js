@@ -108,6 +108,7 @@ export default function ChatRooms({navigation}) {
           style={{
             width: constants.width,
             flex: 1,
+            marginBottom: 75,
             backgroundColor: constants.background1,
           }}
           data={chatRoomList}

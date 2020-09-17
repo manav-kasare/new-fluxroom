@@ -68,7 +68,7 @@ const ChatRoomRenderTile = ({item, navigation}) => {
   }, []);
 
   const handleOnPressTile = () => {
-    navigation.navigate('Room', {room: room, setRoom: setRoom});
+    navigation.push('Room', {room: room, setRoom: setRoom});
   };
 
   const toggleShowRoomDetails = () => {

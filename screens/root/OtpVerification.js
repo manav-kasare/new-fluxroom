@@ -1,26 +1,23 @@
 import React from 'react';
-import {
-  View,
-  TextInput,
-  Text,
-  TouchableOpacity,
-  ActivityIndicator,
-} from 'react-native';
+import {View, TextInput, StyleSheet} from 'react-native';
 import auth from '@react-native-firebase/auth';
-import Modal from 'react-native-modal';
 import ReactNativeHaptic from 'react-native-haptic';
+import {
+  Button,
+  Paragraph,
+  Dialog,
+  Portal,
+  ActivityIndicator,
+} from 'react-native-paper';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import globalStyles from '../../shared/GlobalStyles';
-import CustomToast, {CustomErrorToast} from '../../shared/CustomToast';
-import {
-  ThemeContext,
-  UserDetailsContext,
-  TokenContext,
-} from '../../shared/Context';
+import {CustomErrorToast} from '../../shared/CustomToast';
+import {UserDetailsContext, TokenContext} from '../../shared/Context';
 import {getUserByPhone, loginUser} from '../../backend/database/apiCalls';
 import {storeToken} from '../../shared/KeyChain';
 import {storeUserData, storeTheme} from '../../shared/AsyncStore';
+import globalStyles from '../../shared/GlobalStyles';
+import constants from '../../shared/constants';
 
 export default OtpVerification = ({
   isVisible,
@@ -32,7 +29,6 @@ export default OtpVerification = ({
   setIsLoading,
 }) => {
   const {setUser} = React.useContext(UserDetailsContext);
-  const {constants} = React.useContext(ThemeContext);
   const [code, setCode] = React.useState(null);
   const {setToken} = React.useContext(TokenContext);
   const [isLoadingCode, setIsLoadingCode] = React.useState(false);
@@ -92,95 +88,155 @@ export default OtpVerification = ({
       });
   };
 
+  const styles = StyleSheet.create({
+    input: {
+      alignItems: 'center',
+      flexDirection: 'row',
+      height: 50,
+      borderRadius: 8,
+      paddingHorizontal: 10,
+      backgroundColor: 'white',
+      marginTop: 15,
+      marginHorizontal: 5,
+      borderRadius: 8,
+      borderColor: 'grey',
+      borderWidth: 0.3,
+    },
+  });
+
   return (
-    <Modal
-      isVisible={isVisible}
-      useNativeDriver={true}
-      hideModalContentWhileAnimating={true}
-      deviceWidth={constants.width}
-      deviceHeight={constants.height}
-      style={{
-        width: constants.width * 0.9,
-        borderRadius: 10,
-        position: 'absolute',
-        bottom: constants.height / 3,
-        backgroundColor: 'white',
-        alignItems: 'center',
-        justifyContent: 'space-around',
-        paddingVertical: 25,
-      }}
-      animationIn="fadeIn"
-      animationInTiming={500}
-      animationOut="fadeOut">
-      <View
-        style={{
-          backgroundColor: 'grey',
-          height: 5,
-          width: 50,
-          alignSelf: 'center',
-          borderRadius: 10,
-          position: 'absolute',
-          top: 10,
-        }}
-      />
-      <Text
-        style={{
-          color: 'black',
-          fontFamily: 'Helvetica Neue',
-          fontWeight: '400',
-        }}>
-        We have sent your code at {phoneNumber}
-      </Text>
-      <View style={globalStyles.input}>
-        <MaterialCommunityIcons
-          name="barcode"
-          size={18}
-          color={constants.primary}
-        />
-        <TextInput
-          keyboardType="number-pad"
-          style={globalStyles.textInput}
-          placeholder="Verification Code"
-          placeholderTextColor="grey"
-          value={code}
-          onChangeText={(text) => setCode(text)}
-          autoCapitalize="none"
-        />
-      </View>
-      {isLoadingCode ? (
-        <View
-          style={{
-            height: 50,
-            width: constants.width * 0.8,
-            alignItems: 'center',
-            justifyContent: 'center',
-            marginBottom: 25,
-          }}>
-          <ActivityIndicator color="#0d0c0a" size="small" />
-        </View>
-      ) : (
-        <TouchableOpacity style={globalStyles.button} onPress={confirmSignUp}>
-          <Text style={globalStyles.buttonText}>Verify Code</Text>
-        </TouchableOpacity>
-      )}
-      {isLoadingResendCode ? (
-        <View
-          style={{
-            height: 50,
-            width: constants.width * 0.8,
-            alignItems: 'center',
-            justifyContent: 'center',
-            marginBottom: 25,
-          }}>
-          <ActivityIndicator color="#0d0c0a" size="small" />
-        </View>
-      ) : (
-        <TouchableOpacity
-          style={globalStyles.button}
-          onPress={resendConfirmationCode}>
-          <Text style={globalStyles.buttonText}>Resend Code</Text>
-        </TouchableOpacity>
-      )}
-    </Modal>
+    <Portal>
+      <Dialog visible={isVisible} dismissable={false}>
+        <Dialog.Content>
+          <Paragraph style={{color: 'grey'}}>
+            We have sent you an email at phoneNumber
+          </Paragraph>
+          <View style={styles.input}>
+            <MaterialCommunityIcons
+              name="barcode"
+              size={18}
+              color={constants.primary}
+            />
+            <TextInput
+              keyboardType="number-pad"
+              style={globalStyles.textInput}
+              placeholder="Verification Code"
+              placeholderTextColor="grey"
+              value={code}
+              onChangeText={(text) => setCode(text)}
+              autoCapitalize="none"
+            />
+          </View>
+        </Dialog.Content>
+        <Dialog.Actions>
+          {isLoadingResendCode ? (
+            <ActivityIndicator color="#3f00a6" size="small" />
+          ) : (
+            <Button color="#3f00a6" onPress={resendConfirmationCode}>
+              Resend Code
+            </Button>
+          )}
+          {isLoadingCode ? (
+            <ActivityIndicator color="#3f00a6" size="small" />
+          ) : (
+            <Button color="#3f00a6" onPress={confirmSignUp}>
+              Verify
+            </Button>
+          )}
+        </Dialog.Actions>
+      </Dialog>
+    </Portal>
   );
+
+  // return (
+  //   <Modal
+  //     isVisible={isVisible}
+  //     useNativeDriver={true}
+  //     hideModalContentWhileAnimating={true}
+  //     deviceWidth={constants.width}
+  //     deviceHeight={constants.height}
+  //     style={{
+  //       width: constants.width * 0.9,
+  //       borderRadius: 10,
+  //       position: 'absolute',
+  //       bottom: constants.height / 3,
+  //       backgroundColor: 'white',
+  //       alignItems: 'center',
+  //       justifyContent: 'space-around',
+  //       paddingVertical: 25,
+  //     }}
+  //     animationIn="fadeIn"
+  //     animationInTiming={500}
+  //     animationOut="fadeOut">
+  //     <View
+  //       style={{
+  //         backgroundColor: 'grey',
+  //         height: 5,
+  //         width: 50,
+  //         alignSelf: 'center',
+  //         borderRadius: 10,
+  //         position: 'absolute',
+  //         top: 10,
+  //       }}
+  //     />
+  //     <Text
+  //       style={{
+  //         color: 'black',
+  //         fontFamily: 'Helvetica Neue',
+  //         fontWeight: '400',
+  //       }}>
+  //       We have sent your code at {phoneNumber}
+  //     </Text>
+  //     <View style={globalStyles.input}>
+  //       <MaterialCommunityIcons
+  //         name="barcode"
+  //         size={18}
+  //         color={constants.primary}
+  //       />
+  //       <TextInput
+  //         keyboardType="number-pad"
+  //         style={globalStyles.textInput}
+  //         placeholder="Verification Code"
+  //         placeholderTextColor="grey"
+  //         value={code}
+  //         onChangeText={(text) => setCode(text)}
+  //         autoCapitalize="none"
+  //       />
+  //     </View>
+  //     {isLoadingCode ? (
+  //       <View
+  //         style={{
+  //           height: 50,
+  //           width: constants.width * 0.8,
+  //           alignItems: 'center',
+  //           justifyContent: 'center',
+  //           marginBottom: 25,
+  //         }}>
+  //         <ActivityIndicator color="#0d0c0a" size="small" />
+  //       </View>
+  //     ) : (
+  //       <TouchableOpacity style={globalStyles.button} onPress={confirmSignUp}>
+  //         <Text style={globalStyles.buttonText}>Verify Code</Text>
+  //       </TouchableOpacity>
+  //     )}
+  //     {isLoadingResendCode ? (
+  //       <View
+  //         style={{
+  //           height: 50,
+  //           width: constants.width * 0.8,
+  //           alignItems: 'center',
+  //           justifyContent: 'center',
+  //           marginBottom: 25,
+  //         }}>
+  //         <ActivityIndicator color="#0d0c0a" size="small" />
+  //       </View>
+  //     ) : (
+  //       <TouchableOpacity
+  //         style={globalStyles.button}
+  //         onPress={resendConfirmationCode}>
+  //         <Text style={globalStyles.buttonText}>Resend Code</Text>
+  //       </TouchableOpacity>
+  //     )}
+  //   </Modal>
+  // );
 };

@@ -44,7 +44,6 @@ const Room = ({route, navigation}) => {
           onPress={() =>
             navigation.navigate('RoomSettings', {
               room: room,
-              setRoom: setRoom,
             })
           }>
           <Feather name="menu" size={25} color="white" />

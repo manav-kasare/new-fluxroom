@@ -29,7 +29,7 @@ export default {
   button: {
     width: constants.width * 0.8,
     height: 50,
-    backgroundColor: '#4b00d8',
+    backgroundColor: '#3f00a6',
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 8,
@@ -38,7 +38,7 @@ export default {
   screenButton: {
     width: constants.width * 0.9,
     height: 50,
-    backgroundColor: '#4b00d8',
+    backgroundColor: '#3f00a6',
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 8,

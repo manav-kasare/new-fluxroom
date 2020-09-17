@@ -1,12 +1,6 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  View,
-  TouchableOpacity,
-  Text,
-  ActivityIndicator,
-} from 'react-native';
-import {Switch} from 'react-native-paper';
+import {SafeAreaView, View, TouchableOpacity, Text} from 'react-native';
+import {Switch, ActivityIndicator} from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -165,7 +159,11 @@ export default function Settings({navigation}) {
         <View style={styles.view}>
           <TouchableOpacity style={styles.view_touchable} onPress={signOut}>
             {loading ? (
-              <ActivityIndicator color={constants.backroung2} size="small" />
+              <ActivityIndicator
+                color={constants.primary}
+                size="small"
+                animating={true}
+              />
             ) : (
               <Text
                 style={{

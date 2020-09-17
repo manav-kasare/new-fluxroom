@@ -74,7 +74,7 @@ export default function Apple({navigation}) {
         width: 50,
         height: 50,
         borderRadius: 50 / 2,
-        backgroundColor: '#4b00d8',
+        backgroundColor: '#3f00a6',
         alignItems: 'center',
         justifyContent: 'center',
       }}

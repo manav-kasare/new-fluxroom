@@ -3,12 +3,11 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import ChatRoomNavigator from './ChatRoomNavigator';
-import ProfileNavigator from './ProfileNavigator';
 import {ThemeContext} from '../shared/Context';
-
 import Search from '../screens/app/Search/Search';
 import ChatRooms from '../screens/app/ChatRoom/ChatRooms';
+import UserProfile from '../screens/app/UserProfile/UserProfile';
+import ProfileNavigator from './ProfileNavigator';
 
 const BottomTabs = createBottomTabNavigator();
 
@@ -19,7 +18,7 @@ export default function HomeNavigator() {
     <BottomTabs.Navigator
       lazy={true}
       tabBarOptions={{
-        activeTintColor: '#4b00d8',
+        activeTintColor: constants.primary,
         inactiveTintColor: 'grey',
         showLabel: false,
         keyboardHidesTabBar: true,
@@ -31,7 +30,7 @@ export default function HomeNavigator() {
           borderTopColor: 'transparent',
         },
       }}
-      initialRouteName="Rooms">
+      initialRouteName="ChatROoms">
       <BottomTabs.Screen
         name="ChatRooms"
         component={ChatRooms}
@@ -51,7 +50,7 @@ export default function HomeNavigator() {
         }}
       />
       <BottomTabs.Screen
-        name="UserProfile"
+        name="ProfileNavigator"
         component={ProfileNavigator}
         options={{
           tabBarIcon: ({color}) => (

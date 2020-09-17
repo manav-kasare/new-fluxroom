@@ -61,7 +61,7 @@ export default function ForgotPasswordConfirmation({route}) {
         <SafeAreaView
           style={{
             flex: 1,
-            backgroundColor: '#4b00d8',
+            backgroundColor: '#3f00a6',
             alignItems: 'center',
           }}>
           <Animated.View style={{transform: [{translateX: slideAnimationX}]}}>

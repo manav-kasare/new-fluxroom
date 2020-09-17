@@ -47,6 +47,10 @@ const ProfileComponent = ({navigation}) => {
     },
   };
 
+  const navigateToSettings = () => {
+    navigation.navigate('Settings');
+  };
+
   return (
     <View
       style={{
@@ -123,7 +127,7 @@ const ProfileComponent = ({navigation}) => {
       </TouchableOpacity>
       <View style={styles.view}>
         <TouchableOpacity
-          onPress={() => navigation.navigate('Settings')}
+          onPress={navigateToSettings}
           style={styles.view_touchable}>
           <View
             style={{
