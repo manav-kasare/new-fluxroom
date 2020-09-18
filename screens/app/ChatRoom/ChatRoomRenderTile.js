@@ -14,25 +14,45 @@ import Animated, {
   eq,
   set,
   interpolate,
-  Easing,
+  not,
 } from 'react-native-reanimated';
 
 console.disableYellowBox = true;
 
 import {ThemeContext} from '../../../shared/Context';
-import {getChatroomInfo} from '../../../backend/database/apiCalls';
 import CircleAvatar from '../../../shared/CircleAvatar';
-import {useValue, withTimingTransition} from 'react-native-redash';
+import {
+  useValue,
+  useTransition,
+  mix,
+  onGestureEvent,
+} from 'react-native-redash';
+import {TapGestureHandler, State} from 'react-native-gesture-handler';
 
 const ChatRoomRenderTile = ({item, navigation}) => {
   const {constants} = React.useContext(ThemeContext);
   const [room, setRoom] = React.useState(item);
-  const [showRoomDetails, setShowRoomDetails] = React.useState(false);
-  const [listOfUsers, setListOfUsers] = React.useState([]);
+  const [onPressIn, setOnPressIn] = React.useState(false);
 
   const opacityVal = useValue(0);
-  const opacity = withTimingTransition(opacityVal);
-  useCode(() => cond(eq(opacityVal, 0), set(opacityVal, 1)), []);
+  const opacity = useTransition(opacityVal);
+  useCode(() => cond(eq(opacityVal, 0), set(opacityVal, 1)), [opacityVal]);
+
+  const scaleTransition = useTransition(onPressIn);
+  const scale = mix(scaleTransition, 1, 0.9);
+
+  const showRoomDetails = useValue(0);
+  const state = useValue(State.UNDETERMINED);
+  const gestureHandler = onGestureEvent({state});
+  const transition = useTransition(showRoomDetails);
+  const height = mix(transition, 0, room.listOfUsers.length * 30);
+  const rotateZ = mix(transition, 0, Math.PI);
+
+  useCode(
+    () =>
+      cond(eq(state, State.END), set(showRoomDetails, not(showRoomDetails))),
+    [showRoomDetails, state],
+  );
 
   const translateY = interpolate(opacity, {
     inputRange: [0, 0.25, 1],
@@ -46,10 +66,6 @@ const ChatRoomRenderTile = ({item, navigation}) => {
       profilePic: item.profilePic,
       description: item.description,
     });
-  };
-
-  const toggleShowRoomDetails = () => {
-    setShowRoomDetails(!showRoomDetails);
   };
 
   const styles = StyleSheet.create({
@@ -88,9 +104,12 @@ const ChatRoomRenderTile = ({item, navigation}) => {
   });
 
   return (
-    <TouchableWithoutFeedback onPress={handleOnPressTile}>
+    <TouchableWithoutFeedback
+      onPress={handleOnPressTile}
+      onPressIn={() => setOnPressIn(true)}
+      onPressOut={() => setOnPressIn(false)}>
       <Animated.View
-        style={[styles.tile, {opacity, transform: [{translateY}]}]}>
+        style={[styles.tile, {opacity, transform: [{translateY, scale}]}]}>
         <View style={styles.tileSmall}>
           <CircleAvatar
             uri={item.profilePic === undefined ? undefined : item.profilePic}
@@ -119,30 +138,25 @@ const ChatRoomRenderTile = ({item, navigation}) => {
             }}>
             <Text style={{color: 'green', marginRight: 15}}>x</Text>
             <TouchableOpacity
-              onPress={toggleShowRoomDetails}
               style={{
                 width: 40,
                 height: 40,
                 alignItems: 'center',
                 justifyContent: 'center',
               }}>
-              {showRoomDetails ? (
-                <Ionicons
-                  name="chevron-up"
-                  size={24}
-                  color={constants.background2}
-                />
-              ) : (
-                <Ionicons
-                  name="chevron-down"
-                  size={24}
-                  color={constants.background2}
-                />
-              )}
+              <TapGestureHandler {...gestureHandler}>
+                <Animated.View style={{transform: [{rotateZ}]}}>
+                  <Ionicons
+                    name="chevron-down"
+                    size={24}
+                    color={constants.background2}
+                  />
+                </Animated.View>
+              </TapGestureHandler>
             </TouchableOpacity>
           </View>
         </View>
-        {showRoomDetails ? (
+        <Animated.View style={{height}}>
           <FlatList
             style={styles.listOfUsers}
             ListHeaderComponent={() => (
@@ -151,7 +165,7 @@ const ChatRoomRenderTile = ({item, navigation}) => {
               </Text>
             )}
             scrollEnabled={false}
-            data={listOfUsers}
+            data={item.listOfUsers}
             keyExtractor={(key, index) => index.toString()}
             renderItem={({item}) => (
               <Text style={{color: 'grey', fontSize: 16, fontWeight: '400'}}>
@@ -159,9 +173,7 @@ const ChatRoomRenderTile = ({item, navigation}) => {
               </Text>
             )}
           />
-        ) : (
-          <></>
-        )}
+        </Animated.View>
       </Animated.View>
     </TouchableWithoutFeedback>
   );

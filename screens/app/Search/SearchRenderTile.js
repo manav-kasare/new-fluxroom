@@ -9,8 +9,13 @@ import {
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import _ from 'lodash';
 import {Button, ActivityIndicator} from 'react-native-paper';
-import {mix, useTransition} from 'react-native-redash';
-import Animated from 'react-native-reanimated';
+import {
+  mix,
+  useTransition,
+  useValue,
+  onGestureEvent,
+} from 'react-native-redash';
+import Animated, {useCode, cond, not, eq, set} from 'react-native-reanimated';
 
 import {joinRoom} from '../../../backend/database/apiCalls';
 import {
@@ -20,6 +25,7 @@ import {
 } from '../../../shared/Context';
 import {storeUserData} from '../../../shared/AsyncStore';
 import CircleAvatar from '../../../shared/CircleAvatar';
+import {State, TapGestureHandler} from 'react-native-gesture-handler';
 
 const SearchRenderTile = React.memo(({room, navigation}) => {
   const {constants, darkTheme} = useContext(ThemeContext);
@@ -28,11 +34,19 @@ const SearchRenderTile = React.memo(({room, navigation}) => {
   const [loading, setLoading] = useState(false);
   const [alreadyJoined, setAlreadyJoined] = useState(false);
   const [listOfUsers, setListOfUsers] = React.useState([]);
-  const [showRoomDetails, setShowRoomDetails] = useState(false);
 
+  const showRoomDetails = useValue(0);
+  const state = useValue(State.UNDETERMINED);
+  const gestureHandler = onGestureEvent({state});
   const transition = useTransition(showRoomDetails);
   const height = mix(transition, 0, room.listOfUsers.length * 30);
   const rotateZ = mix(transition, 0, Math.PI);
+
+  useCode(
+    () =>
+      cond(eq(state, State.END), set(showRoomDetails, not(showRoomDetails))),
+    [showRoomDetails, state],
+  );
 
   React.useEffect(() => {
     setListOfUsers(room.listOfUsers);
@@ -136,8 +150,7 @@ const SearchRenderTile = React.memo(({room, navigation}) => {
   });
 
   return (
-    <TouchableWithoutFeedback
-      onPress={() => setShowRoomDetails(!showRoomDetails)}>
+    <TapGestureHandler {...gestureHandler}>
       <Animated.View style={styles.tile}>
         <View style={styles.tileSmall}>
           <View style={styles.tileSmallLeft}>
@@ -200,7 +213,7 @@ const SearchRenderTile = React.memo(({room, navigation}) => {
           />
         </Animated.View>
       </Animated.View>
-    </TouchableWithoutFeedback>
+    </TapGestureHandler>
   );
 });
 

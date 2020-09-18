@@ -18,7 +18,7 @@ const config = {
   config: {
     stiffness: 500,
     damping: 10000,
-    mass: 5,
+    mass: 2,
     overshootClamping: false,
     restDisplacementThreshold: 0.01,
     restSpeedThreshold: 0.01,
