@@ -21,14 +21,16 @@ import {updateRoom} from '../../../../backend/database/apiCalls';
 import {ActivityIndicator} from 'react-native-paper';
 
 export default function RoomSettings({route, navigation}) {
-  const {room, setRoom} = route.params;
+  const {description, id, profilePic} = route.params;
   const {token} = React.useContext(TokenContext);
   const {constants} = React.useContext(ThemeContext);
   const [copiedText, setCopiedText] = useState('');
   const [descriptionFocus, setDescriptionFocus] = useState(false);
   const [descriptionLoading, setDescriptionLoading] = useState(false);
   const link = `fluxroom://room/join/${room._id}`;
-  const [_room, _setRoom] = useState(room);
+
+  const [_description, _setDescription] = useState(description);
+  const [_profilePic, _setProfilePic] = useState(profilePic);
 
   useEffect(() => {
     if (descriptionFocus) {
@@ -74,7 +76,7 @@ export default function RoomSettings({route, navigation}) {
         ),
       });
     }
-  }, [descriptionFocus, _room]);
+  }, [descriptionFocus]);
 
   const goBack = () => {
     navigation.goBack();
@@ -83,7 +85,7 @@ export default function RoomSettings({route, navigation}) {
   const cancelEditing = () => {
     Keyboard.dismiss();
     setDescriptionFocus(false);
-    _setRoom(room);
+    _setDescription(description);
   };
 
   const pickImage = () => {
@@ -101,12 +103,11 @@ export default function RoomSettings({route, navigation}) {
       } else if (response.error) {
         CustomErrorToast('An Error Occured !');
       } else {
-        updateRoom(token, room._id, {
+        updateRoom(token, id, {
           profilePic: response.uri,
         }).then((_response) => {
           if (_response.message === 'Room updated') {
-            setRoom({...room, profilePic: response.uri});
-            _setRoom({...room, profilePic: response.uri});
+            _setProfilePic(response, uri);
             CustomToast('Updated !');
           } else if (_response.message === 'Room does not exist') {
             CustomErrorToast('Room does not exist !');
@@ -120,23 +121,19 @@ export default function RoomSettings({route, navigation}) {
     Keyboard.dismiss();
     setDescriptionFocus(false);
     setDescriptionLoading(true);
-    updateRoom(token, room._id, {description: _room.description}).then(
-      (response) => {
-        if (response.message === 'Room updated') {
-          setRoom({...room, description: _room.description});
-          _setRoom({...room, description: _room.description});
-          setDescriptionLoading(false);
-          CustomToast('Updated !');
-        } else if (response.message === 'Room does not exist') {
-          setDescriptionLoading(false);
-          CustomErrorToast('Room does not exist !');
-        }
-      },
-    );
+    updateRoom(token, id, {description: _description}).then((response) => {
+      if (response.message === 'Room updated') {
+        setDescriptionLoading(false);
+        CustomToast('Updated !');
+      } else if (response.message === 'Room does not exist') {
+        setDescriptionLoading(false);
+        CustomErrorToast('Room does not exist !');
+      }
+    });
   };
 
   const copyText = () => {
-    Clipboard.setString(`fluxroom://room/join/${room._id}`);
+    Clipboard.setString(`fluxroom://room/join/${id}`);
     fetchCopiedText();
   };
 
@@ -160,10 +157,7 @@ export default function RoomSettings({route, navigation}) {
               justifyContent: 'center',
             }}
             onPress={pickImage}>
-            <CircleAvatar
-              size={constants.height * 0.145}
-              uri={_room.profilePic}
-            />
+            <CircleAvatar size={constants.height * 0.145} uri={_profilePic} />
           </TouchableOpacity>
           <View
             style={{
@@ -199,8 +193,8 @@ export default function RoomSettings({route, navigation}) {
                 marginRight: 75,
                 color: constants.text1,
               }}
-              value={_room.description}
-              onChangeText={(text) => _setRoom({..._room, description: text})}
+              value={_description}
+              onChangeText={(text) => _setDescription(text)}
             />
             {descriptionLoading ? (
               <ActivityIndicator

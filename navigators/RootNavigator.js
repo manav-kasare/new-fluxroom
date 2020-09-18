@@ -107,7 +107,7 @@ const AuthStackNavigator = () => {
         options={{
           title: 'Log In',
           headerStyle: {
-            backgroundColor: '#3f00a6',
+            backgroundColor: '#6300f7',
             borderBottomWidth: 0,
             borderBottomColor: 'transparent',
             elevation: 0,
@@ -129,7 +129,7 @@ const AuthStackNavigator = () => {
         options={{
           title: 'LogIn with Phone Number',
           headerStyle: {
-            backgroundColor: '#3f00a6',
+            backgroundColor: '#6300f7',
             borderBottomWidth: 0,
             borderBottomColor: 'transparent',
             elevation: 0,
@@ -151,7 +151,7 @@ const AuthStackNavigator = () => {
         options={{
           title: 'Join Fluxroom',
           headerStyle: {
-            backgroundColor: '#3f00a6',
+            backgroundColor: '#6300f7',
             borderWidth: 0,
             borderColor: 'transparent',
             elevation: 0,
@@ -173,7 +173,7 @@ const AuthStackNavigator = () => {
         options={{
           title: 'Forgot Password',
           headerStyle: {
-            backgroundColor: '#3f00a6',
+            backgroundColor: '#6300f7',
             borderWidth: 0,
             borderColor: 'transparent',
             elevation: 0,
@@ -195,7 +195,7 @@ const AuthStackNavigator = () => {
         options={{
           title: 'Set Up your Profile',
           headerStyle: {
-            backgroundColor: '#3f00a6',
+            backgroundColor: '#6300f7',
             borderWidth: 0,
             borderColor: 'transparent',
             elevation: 0,

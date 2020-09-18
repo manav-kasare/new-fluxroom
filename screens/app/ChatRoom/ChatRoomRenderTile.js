@@ -5,15 +5,24 @@ import {
   FlatList,
   StyleSheet,
   TouchableOpacity,
-  Animated,
+  TouchableWithoutFeedback,
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import Animated, {
+  useCode,
+  cond,
+  eq,
+  set,
+  interpolate,
+  Easing,
+} from 'react-native-reanimated';
 
 console.disableYellowBox = true;
 
 import {ThemeContext} from '../../../shared/Context';
 import {getChatroomInfo} from '../../../backend/database/apiCalls';
 import CircleAvatar from '../../../shared/CircleAvatar';
+import {useValue, withTimingTransition} from 'react-native-redash';
 
 const ChatRoomRenderTile = ({item, navigation}) => {
   const {constants} = React.useContext(ThemeContext);
@@ -21,54 +30,17 @@ const ChatRoomRenderTile = ({item, navigation}) => {
   const [showRoomDetails, setShowRoomDetails] = React.useState(false);
   const [listOfUsers, setListOfUsers] = React.useState([]);
 
-  const y = React.useRef(new Animated.Value(0)).current;
-  const width = React.useRef(new Animated.Value(0)).current;
-  const height = React.useRef(new Animated.Value(0)).current;
+  const opacityVal = useValue(0);
+  const opacity = withTimingTransition(opacityVal);
+  useCode(() => cond(eq(opacityVal, 0), set(opacityVal, 1)), []);
 
-  const translateY = y.interpolate({
-    inputRange: [0, 1],
-    outputRange: [50, 0],
+  const translateY = interpolate(opacity, {
+    inputRange: [0, 0.25, 1],
+    outputRange: [50, 5, 0],
   });
-
-  const scaleX = width.interpolate({
-    inputRange: [0.85, 1],
-    outputRange: [0.85, 1],
-  });
-
-  const scaleY = height.interpolate({
-    inputRange: [0.85, 1],
-    outputRange: [0.85, 1],
-  });
-
-  React.useEffect(() => {
-    Animated.parallel([
-      Animated.spring(y, {
-        toValue: 1,
-        damping: 500,
-        useNativeDriver: true,
-      }),
-      Animated.spring(width, {
-        toValue: 1,
-        damping: 500,
-        useNativeDriver: true,
-      }),
-      Animated.spring(height, {
-        toValue: 1,
-        damping: 500,
-        useNativeDriver: true,
-      }),
-    ]).start();
-  }, []);
-
-  React.useEffect(() => {
-    getChatroomInfo(room._id).then((response) => {
-      setRoom(response);
-      setListOfUsers(response.listOfUsers);
-    });
-  }, []);
 
   const handleOnPressTile = () => {
-    navigation.push('Room', {room: room, setRoom: setRoom});
+    navigation.push('Room', {id: item._id, title: item.name});
   };
 
   const toggleShowRoomDetails = () => {
@@ -87,7 +59,6 @@ const ChatRoomRenderTile = ({item, navigation}) => {
       marginVertical: 10,
       elevation: 1,
       padding: 15,
-      transform: [{translateY}, {scaleX}, {scaleY}],
     },
     tileSmall: {
       alignItems: 'center',
@@ -112,23 +83,24 @@ const ChatRoomRenderTile = ({item, navigation}) => {
   });
 
   return (
-    <TouchableOpacity onPress={handleOnPressTile}>
-      <Animated.View style={styles.tile}>
+    <TouchableWithoutFeedback onPress={handleOnPressTile}>
+      <Animated.View
+        style={[styles.tile, {opacity, transform: [{translateY}]}]}>
         <View style={styles.tileSmall}>
           <CircleAvatar
-            uri={room.profilePic === undefined ? undefined : room.profilePic}
+            uri={item.profilePic === undefined ? undefined : item.profilePic}
             size={75}
           />
           <View style={{flexDirection: 'column'}}>
-            <Text style={styles.heading}>{room.name}</Text>
+            <Text style={styles.heading}>{item.name}</Text>
             <View style={{width: constants.width * 0.4}}>
-              {room.description.length <= 30 ? (
-                <Text style={styles.description}>{room.description}</Text>
+              {item.description.length <= 30 ? (
+                <Text style={styles.description}>{item.description}</Text>
               ) : showRoomDetails ? (
-                <Text style={styles.description}>{room.description}</Text>
+                <Text style={styles.description}>{item.description}</Text>
               ) : (
                 <Text style={styles.description}>
-                  {room.description.substr(0, 30)}....
+                  {item.description.substr(0, 30)}....
                 </Text>
               )}
             </View>
@@ -186,7 +158,7 @@ const ChatRoomRenderTile = ({item, navigation}) => {
           <></>
         )}
       </Animated.View>
-    </TouchableOpacity>
+    </TouchableWithoutFeedback>
   );
 };
 

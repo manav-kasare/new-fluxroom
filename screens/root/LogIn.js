@@ -91,7 +91,7 @@ export default function LogIn({navigation}) {
           <SafeAreaView
             style={{
               flex: 1,
-              backgroundColor: '#3f00a6',
+              backgroundColor: '#6300f7',
               alignItems: 'center',
               marginBottom: 50,
             }}>
@@ -108,7 +108,7 @@ export default function LogIn({navigation}) {
             </View>
             <View
               style={{
-                backgroundColor: '#3f00a6',
+                backgroundColor: '#6300f7',
                 borderTopRightRadius: 10,
                 borderTopLeftRadius: 10,
                 alignItems: 'center',

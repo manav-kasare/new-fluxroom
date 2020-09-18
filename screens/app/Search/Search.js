@@ -18,10 +18,11 @@ import TopRooms from './TopRooms';
 const Search = React.memo(({navigation}) => {
   const [rooms, setRooms] = useState(null);
   const [filteredRooms, setFilteredRooms] = useState(null);
-  const [query, setQuery] = useState(null);
+  const [query, setQuery] = useState('');
   const {constants, darkTheme} = React.useContext(ThemeContext);
   const [refreshing, setRefreshing] = useState(false);
   const [loading, setloading] = useState(true);
+  const [isSearching, setIsSeaching] = useState(false);
 
   useEffect(() => {
     getRooms();
@@ -104,6 +105,7 @@ const Search = React.memo(({navigation}) => {
           backgroundColor: constants.background1,
         }}>
         <Searchbar
+          onFocus={() => setIsSeaching(true)}
           inputStyle={{color: constants.text1, fontSize: 15}}
           style={styles.searchBar}
           placeholder="What are you intrested in ?"
@@ -122,13 +124,12 @@ const Search = React.memo(({navigation}) => {
           <View style={styles.loading}>
             <ActivityIndicator color={constants.primary} animating={true} />
           </View>
+        ) : !isSearching && query === '' ? (
+          <TopRooms allRooms={rooms} navigation={navigation} />
         ) : (
           <FlatList
             style={{flex: 1}}
             data={filteredRooms}
-            ListEmptyComponent={() => (
-              <TopRooms allRooms={rooms} navigation={navigation} />
-            )}
             renderItem={renderItem}
             refreshControl={refreshControl}
             keyExtractor={(index) => index.toString()}

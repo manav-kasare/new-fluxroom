@@ -9,45 +9,6 @@ export default function TopRooms({allRooms, navigation}) {
   const [sortedRoomsList, setSortedRoomsList] = React.useState([]);
   const [_allRooms, _setAllRooms] = React.useState([]);
 
-  const y = React.useRef(new Animated.Value(0)).current;
-  const width = React.useRef(new Animated.Value(0)).current;
-  const height = React.useRef(new Animated.Value(0)).current;
-
-  const translateY = y.interpolate({
-    inputRange: [0, 1],
-    outputRange: [50, 0],
-  });
-
-  const scaleX = width.interpolate({
-    inputRange: [0.85, 1],
-    outputRange: [0.85, 1],
-  });
-
-  const scaleY = height.interpolate({
-    inputRange: [0.85, 1],
-    outputRange: [0.85, 1],
-  });
-
-  React.useEffect(() => {
-    Animated.parallel([
-      Animated.spring(y, {
-        toValue: 1,
-        damping: 1000,
-        useNativeDriver: true,
-      }),
-      Animated.spring(width, {
-        toValue: 1,
-        damping: 1000,
-        useNativeDriver: true,
-      }),
-      Animated.spring(height, {
-        toValue: 1,
-        damping: 1000,
-        useNativeDriver: true,
-      }),
-    ]).start();
-  }, []);
-
   React.useEffect(() => {
     allRooms.map((room) => {
       _allRooms.push({...room, listOfUsersNumber: room.listOfUsers.length});
@@ -62,15 +23,14 @@ export default function TopRooms({allRooms, navigation}) {
   }, []);
 
   const renderItem = ({item}) => (
-    <Animated.View style={{transform: [{translateY}, {scaleX}, {scaleY}]}}>
-      <SearchRenderTile room={item} navigation={navigation} />
-    </Animated.View>
+    <SearchRenderTile room={item} navigation={navigation} />
   );
 
   const listHeaderComponent = () => (
     <View
       style={{
         width: constants.width,
+
         backgroundColor: constants.background3,
         paddingLeft: 25,
         paddingVertical: 15,
@@ -83,8 +43,9 @@ export default function TopRooms({allRooms, navigation}) {
 
   return (
     <FlatList
-      style={{flex: 1}}
+      style={{width: constants.width, height: 650}}
       ListHeaderComponent={listHeaderComponent}
+      bounces={false}
       data={sortedRoomsList}
       renderItem={renderItem}
       keyExtractor={(key, index) => index.toString()}

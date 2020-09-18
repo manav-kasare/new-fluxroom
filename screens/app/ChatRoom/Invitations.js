@@ -58,7 +58,7 @@ const Invitations = ({navigation}) => {
         CustomErrorToast('An Error Occured');
       } else {
         setLoadingAccept(false);
-        navigation.navigate('Room', {room: room});
+        navigation.navigate('Room', {id: room._id, title: room.name});
         removeFromInvitedToRooms();
       }
     });
@@ -183,7 +183,7 @@ function RequestUserTile({room}) {
         CustomErrorToast('An Error Occured');
       } else {
         setLoadingAccept(false);
-        navigation.navigate('Room', {room: room});
+        navigation.navigate('Room', {id: room._id, title: room.name});
         removeFromInvitedToRooms();
       }
     });

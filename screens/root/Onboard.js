@@ -51,11 +51,11 @@ export default function Onboard({navigation}) {
 
   return (
     <>
-      <StatusBar barStyle="light-content" backgroundColor="'#3f00a6'" />
+      <StatusBar barStyle="light-content" backgroundColor="'#6300f7'" />
       <View
         style={{
           flex: 1,
-          backgroundColor: '#3f00a6',
+          backgroundColor: '#6300f7',
           alignItems: 'center',
           justifyContent: 'space-between',
           paddingTop: 50,
@@ -114,7 +114,7 @@ export default function Onboard({navigation}) {
                 width: 50,
                 height: 50,
                 borderRadius: 50 / 2,
-                backgroundColor: '#3f00a6',
+                backgroundColor: '#6300f7',
                 alignItems: 'center',
                 justifyContent: 'center',
               }}

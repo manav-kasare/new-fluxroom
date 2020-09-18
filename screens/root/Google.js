@@ -97,7 +97,7 @@ export default function Google({navigation}) {
         width: 50,
         height: 50,
         borderRadius: 50 / 2,
-        backgroundColor: '#3f00a6',
+        backgroundColor: '#6300f7',
         alignItems: 'center',
         justifyContent: 'center',
       }}>

@@ -19,8 +19,13 @@ import InviteToRoom from './InviteToRoom';
 import RoomBottomView from './RoomBottomView';
 
 const Room = ({route, navigation}) => {
-  const {room} = route.params;
-  const [_room, _setRoom] = useState(room);
+  const {room, id, title} = route.params;
+  const [_room, _setRoom] = useState({
+    id: '',
+    name: '',
+    description: '',
+    profilePic: '',
+  });
   const {constants, darkTheme} = React.useContext(ThemeContext);
   const [members, setMembers] = React.useState(null);
   const [isSpeaking, setIsSpeaking] = React.useState(false);
@@ -31,19 +36,30 @@ const Room = ({route, navigation}) => {
   const [inviteModal, setInviteModal] = React.useState(false);
 
   React.useEffect(() => {
-    setMembers(room.listOfUsers);
-    setLoading(false);
+    getChatroomInfo(id).then((response) => {
+      console.log(response);
+      _setRoom({
+        id: id,
+        name: response.name,
+        description: response.description,
+        profilePic: response.profilePic,
+      });
+      setMembers(response.listOfUsers);
+      setLoading(false);
+    });
   }, []);
 
   React.useEffect(() => {
     navigation.setOptions({
-      title: _room.name,
+      title: title,
       headerRight: () => (
         <TouchableOpacity
           style={{marginRight: 20}}
           onPress={() =>
             navigation.navigate('RoomSettings', {
-              room: room,
+              id: _room.id,
+              profilePic: _room.profilePic,
+              description: _room.description,
             })
           }>
           <Feather name="menu" size={25} color="white" />
@@ -53,7 +69,7 @@ const Room = ({route, navigation}) => {
   }, []);
 
   const setData = () => {
-    getChatroomInfo(room._id).then((response) => {
+    getChatroomInfo(id).then((response) => {
       _setRoom(response);
       setMembers(response.listOfUsers);
       setLoading(false);
@@ -87,6 +103,7 @@ const Room = ({route, navigation}) => {
       refreshing={refreshing}
       onRefresh={onRefresh}
       tintColor={constants.background2}
+      size="small"
     />
   );
 
@@ -118,7 +135,7 @@ const Room = ({route, navigation}) => {
         <InviteToRoom
           inviteModal={inviteModal}
           setInviteModal={setInviteModal}
-          roomName={room.name}
+          roomName={_room.name}
         />
         <StatusBar
           backgroundColor={

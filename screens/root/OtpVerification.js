@@ -130,19 +130,19 @@ export default OtpVerification = ({
         </Dialog.Content>
         <Dialog.Actions>
           {isLoadingResendCode ? (
-            <ActivityIndicator color="#3f00a6" size="small" />
+            <ActivityIndicator color="#6300f7" size="small" />
           ) : (
             <Button
               mode="text"
-              color="#3f00a6"
+              color="#6300f7"
               onPress={resendConfirmationCode}>
               Resend Code
             </Button>
           )}
           {isLoadingCode ? (
-            <ActivityIndicator color="#3f00a6" size="small" />
+            <ActivityIndicator color="#6300f7" size="small" />
           ) : (
-            <Button mode="text" color="#3f00a6" onPress={confirmSignUp}>
+            <Button mode="text" color="#6300f7" onPress={confirmSignUp}>
               Verify
             </Button>
           )}

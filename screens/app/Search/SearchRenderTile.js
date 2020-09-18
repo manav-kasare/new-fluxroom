@@ -4,12 +4,13 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableOpacity,
   TouchableWithoutFeedback,
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import _ from 'lodash';
 import {Button, ActivityIndicator} from 'react-native-paper';
+import {mix, useTransition} from 'react-native-redash';
+import Animated from 'react-native-reanimated';
 
 import {joinRoom} from '../../../backend/database/apiCalls';
 import {
@@ -19,21 +20,19 @@ import {
 } from '../../../shared/Context';
 import {storeUserData} from '../../../shared/AsyncStore';
 import CircleAvatar from '../../../shared/CircleAvatar';
-import JoinLoadingButton from './JoinLoadingButton';
-import {useTransition, mix} from 'react-native-redash';
-import Animated from 'react-native-reanimated';
 
-const SearchRenderTile = React.memo(({room, onPressTile, navigation}) => {
+const SearchRenderTile = React.memo(({room, navigation}) => {
   const {constants, darkTheme} = useContext(ThemeContext);
   const {token} = useContext(TokenContext);
   const {user, setUser} = useContext(UserDetailsContext);
   const [loading, setLoading] = useState(false);
   const [alreadyJoined, setAlreadyJoined] = useState(false);
-  const [showRoomDetails, setShowRoomDetails] = useState(false);
   const [listOfUsers, setListOfUsers] = React.useState([]);
+  const [showRoomDetails, setShowRoomDetails] = useState(false);
 
   const transition = useTransition(showRoomDetails);
-  const height = mix(transition, 75, 100 + room.listOfUsers.length * 30);
+  const height = mix(transition, 0, room.listOfUsers.length * 30);
+  const rotateZ = mix(transition, 0, Math.PI);
 
   React.useEffect(() => {
     setListOfUsers(room.listOfUsers);
@@ -48,17 +47,12 @@ const SearchRenderTile = React.memo(({room, onPressTile, navigation}) => {
   const handleJoin = () => {
     setLoading(true);
     joinRoom(room._id, token).then((response) => {
-      console.log('[Join Room Response]', response);
       storeUserData(response).then(() => {
         setLoading(false);
         setUser(response);
-        navigation.navigate('Room', {room: room});
+        navigation.navigate('Room', {id: room._id, title: room.name});
       });
     });
-  };
-
-  const toggleShowRoomDetails = () => {
-    setShowRoomDetails(!showRoomDetails);
   };
 
   const renderSpeaker = ({item}) => (
@@ -67,12 +61,16 @@ const SearchRenderTile = React.memo(({room, onPressTile, navigation}) => {
     </View>
   );
 
+  const nothing = () => {};
+
   const styles = StyleSheet.create({
     tile: {
       width: constants.width,
       paddingVertical: 10,
       backgroundColor: constants.background3,
-      borderBottomColor: darkTheme ? 'transparent' : constants.lineColor,
+      borderBottomColor: darkTheme
+        ? 'rgba(255,255,255,0.1)'
+        : constants.lineColor,
       borderBottomWidth: 0.25,
     },
     tileSmall: {
@@ -128,13 +126,14 @@ const SearchRenderTile = React.memo(({room, onPressTile, navigation}) => {
       bottom: 0,
     },
     joinRoomButton: {
-      marginRight: 15,
+      marginRight: 25,
     },
   });
 
   return (
-    <TouchableWithoutFeedback onPress={toggleShowRoomDetails}>
-      <Animated.View style={[styles.tile, {height}]}>
+    <TouchableWithoutFeedback
+      onPress={() => setShowRoomDetails(!showRoomDetails)}>
+      <Animated.View style={styles.tile}>
         <View style={styles.tileSmall}>
           <View style={styles.tileSmallLeft}>
             <CircleAvatar
@@ -165,11 +164,7 @@ const SearchRenderTile = React.memo(({room, onPressTile, navigation}) => {
                 size="small"
               />
             ) : alreadyJoined ? (
-              <Button
-                disabled={true}
-                mode="text"
-                color={constants.primary}
-                onPress={handleJoin}>
+              <Button mode="text" color={constants.primary} onPress={nothing}>
                 Joined
               </Button>
             ) : (
@@ -182,32 +177,23 @@ const SearchRenderTile = React.memo(({room, onPressTile, navigation}) => {
             )}
           </View>
 
-          <View style={styles.chevron}>
-            {showRoomDetails ? (
-              <Ionicons name="chevron-up" size={18} color={constants.primary} />
-            ) : (
-              <Ionicons
-                name="chevron-down"
-                size={18}
-                color={constants.primary}
-              />
-            )}
-          </View>
-        </View>
-
-        {showRoomDetails ? (
-          <View style={styles.listOfUsers}>
-            <FlatList
-              style={styles.listOfUsers}
-              scrollEnabled={false}
-              data={listOfUsers}
-              keyExtractor={(key, index) => index.toString()}
-              renderItem={renderSpeaker}
+          <Animated.View style={[styles.chevron, {transform: [{rotateZ}]}]}>
+            <Ionicons
+              name="chevron-down"
+              size={20}
+              color={constants.background2}
             />
-          </View>
-        ) : (
-          <></>
-        )}
+          </Animated.View>
+        </View>
+        <Animated.View style={{height}}>
+          <FlatList
+            style={styles.listOfUsers}
+            scrollEnabled={false}
+            data={listOfUsers}
+            keyExtractor={(key, index) => index.toString()}
+            renderItem={renderSpeaker}
+          />
+        </Animated.View>
       </Animated.View>
     </TouchableWithoutFeedback>
   );
