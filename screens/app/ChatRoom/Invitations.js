@@ -58,7 +58,12 @@ const Invitations = ({navigation}) => {
         CustomErrorToast('An Error Occured');
       } else {
         setLoadingAccept(false);
-        navigation.navigate('Room', {id: room._id, title: room.name});
+        navigation.navigate('Room', {
+          id: room._id,
+          name: room.name,
+          profilePic: room.profilePic,
+          description: room.description,
+        });
         removeFromInvitedToRooms();
       }
     });
@@ -183,7 +188,12 @@ function RequestUserTile({room}) {
         CustomErrorToast('An Error Occured');
       } else {
         setLoadingAccept(false);
-        navigation.navigate('Room', {id: room._id, title: room.name});
+        navigation.navigate('Room', {
+          id: room._id,
+          name: room.name,
+          profilePic: room.profilePic,
+          description: room.description,
+        });
         removeFromInvitedToRooms();
       }
     });

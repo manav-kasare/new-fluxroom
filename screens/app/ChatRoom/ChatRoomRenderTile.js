@@ -40,7 +40,12 @@ const ChatRoomRenderTile = ({item, navigation}) => {
   });
 
   const handleOnPressTile = () => {
-    navigation.push('Room', {id: item._id, title: item.name});
+    navigation.push('Room', {
+      id: item._id,
+      name: item.name,
+      profilePic: item.profilePic,
+      description: item.description,
+    });
   };
 
   const toggleShowRoomDetails = () => {

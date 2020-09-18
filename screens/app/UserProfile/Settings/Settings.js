@@ -58,7 +58,7 @@ export default function Settings({navigation}) {
   };
 
   const navigateAboutUsNavigator = () => {
-    navigation.navigate('AboutUsNavigator');
+    navigation.navigate('AboutUs');
   };
 
   const navigateIssues = () => {

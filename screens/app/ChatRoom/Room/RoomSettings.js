@@ -27,14 +27,15 @@ export default function RoomSettings({route, navigation}) {
   const [copiedText, setCopiedText] = useState('');
   const [descriptionFocus, setDescriptionFocus] = useState(false);
   const [descriptionLoading, setDescriptionLoading] = useState(false);
-  const link = `fluxroom://room/join/${room._id}`;
+  const [loadingProfilePic, setLoadingProfilePic] = useState(false);
+  const link = `fluxroom://room/join/${id}`;
 
   const [_description, _setDescription] = useState(description);
   const [_profilePic, _setProfilePic] = useState(profilePic);
 
   useEffect(() => {
     if (descriptionFocus) {
-      if (room.description !== _room.description) {
+      if (_description !== description) {
         navigation.setOptions({
           headerRight: () => (
             <TouchableOpacity
@@ -103,11 +104,13 @@ export default function RoomSettings({route, navigation}) {
       } else if (response.error) {
         CustomErrorToast('An Error Occured !');
       } else {
+        setLoadingProfilePic(true);
         updateRoom(token, id, {
           profilePic: response.uri,
         }).then((_response) => {
+          setLoadingProfilePic(false);
           if (_response.message === 'Room updated') {
-            _setProfilePic(response, uri);
+            _setProfilePic(response.uri);
             CustomToast('Updated !');
           } else if (_response.message === 'Room does not exist') {
             CustomErrorToast('Room does not exist !');
@@ -171,7 +174,11 @@ export default function RoomSettings({route, navigation}) {
               bottom: 25,
               left: 25,
             }}>
-            <MaterialCommunityIcons size={20} color="white" name="camera" />
+            {loadingProfilePic ? (
+              <ActivityIndicator color="white" animating={true} />
+            ) : (
+              <MaterialCommunityIcons size={20} color="white" name="camera" />
+            )}
           </View>
           <View
             style={{

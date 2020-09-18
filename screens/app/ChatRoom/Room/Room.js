@@ -19,13 +19,7 @@ import InviteToRoom from './InviteToRoom';
 import RoomBottomView from './RoomBottomView';
 
 const Room = ({route, navigation}) => {
-  const {room, id, title} = route.params;
-  const [_room, _setRoom] = useState({
-    id: '',
-    name: '',
-    description: '',
-    profilePic: '',
-  });
+  const {id, name, profilePic, description} = route.params;
   const {constants, darkTheme} = React.useContext(ThemeContext);
   const [members, setMembers] = React.useState(null);
   const [isSpeaking, setIsSpeaking] = React.useState(false);
@@ -37,13 +31,6 @@ const Room = ({route, navigation}) => {
 
   React.useEffect(() => {
     getChatroomInfo(id).then((response) => {
-      console.log(response);
-      _setRoom({
-        id: id,
-        name: response.name,
-        description: response.description,
-        profilePic: response.profilePic,
-      });
       setMembers(response.listOfUsers);
       setLoading(false);
     });
@@ -51,22 +38,24 @@ const Room = ({route, navigation}) => {
 
   React.useEffect(() => {
     navigation.setOptions({
-      title: title,
+      title: name,
       headerRight: () => (
         <TouchableOpacity
           style={{marginRight: 20}}
-          onPress={() =>
-            navigation.navigate('RoomSettings', {
-              id: _room.id,
-              profilePic: _room.profilePic,
-              description: _room.description,
-            })
-          }>
+          onPress={navigateToSettings}>
           <Feather name="menu" size={25} color="white" />
         </TouchableOpacity>
       ),
     });
   }, []);
+
+  const navigateToSettings = () => {
+    navigation.navigate('RoomSettings', {
+      id: id,
+      profilePic: profilePic,
+      description: description,
+    });
+  };
 
   const setData = () => {
     getChatroomInfo(id).then((response) => {
@@ -135,7 +124,7 @@ const Room = ({route, navigation}) => {
         <InviteToRoom
           inviteModal={inviteModal}
           setInviteModal={setInviteModal}
-          roomName={_room.name}
+          roomName={name}
         />
         <StatusBar
           backgroundColor={

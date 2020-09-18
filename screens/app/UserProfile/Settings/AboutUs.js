@@ -6,7 +6,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import {ThemeContext} from '../../../../shared/Context';
 
 export default function AboutUs({navigation}) {
-  const {darkTheme, toggleTheme, constants} = React.useContext(ThemeContext);
+  const {constants} = React.useContext(ThemeContext);
 
   const styles = {
     view: {

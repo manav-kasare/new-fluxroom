@@ -7,7 +7,10 @@ import {
 import UserProfile from '../screens/app/UserProfile/UserProfile';
 import Issues from '../screens/app/UserProfile/Extras/Issues';
 import {ThemeContext} from '../shared/Context';
-import SettingsNavigator from './SettingsNavigator';
+import Settings from '../screens/app/UserProfile/Settings/Settings';
+import TermsOfService from '../screens/app/UserProfile/Settings/TermsOfService';
+import DataPolicy from '../screens/app/UserProfile/Settings/DataPolicy';
+import AboutUs from '../screens/app/UserProfile/Settings/AboutUs';
 
 const ProfileStack = createStackNavigator();
 
@@ -55,9 +58,42 @@ export default function ProfileNavigator({route, navigation}) {
 
       <ProfileStack.Screen
         name="Settings"
-        component={SettingsNavigator}
+        component={Settings}
         options={{
           title: 'Settings',
+          headerStyle: constants.headerStyle,
+          headerTitleStyle: constants.headerText,
+          headerBackTitleVisible: false,
+          headerTintColor: 'white',
+        }}
+      />
+      <ProfileStack.Screen
+        name="AboutUs"
+        component={AboutUs}
+        options={{
+          title: 'About Us',
+          headerStyle: constants.headerStyle,
+          headerTitleStyle: constants.headerText,
+          headerBackTitleVisible: false,
+          headerTintColor: 'white',
+        }}
+      />
+      <ProfileStack.Screen
+        name="DataPolicy"
+        component={DataPolicy}
+        options={{
+          title: 'Data Policy',
+          headerStyle: constants.headerStyle,
+          headerTitleStyle: constants.headerText,
+          headerBackTitleVisible: false,
+          headerTintColor: 'white',
+        }}
+      />
+      <ProfileStack.Screen
+        name="TermsOfService"
+        component={TermsOfService}
+        options={{
+          title: 'Terms Of Service',
           headerStyle: constants.headerStyle,
           headerTitleStyle: constants.headerText,
           headerBackTitleVisible: false,
@@ -68,7 +104,7 @@ export default function ProfileNavigator({route, navigation}) {
         name="Issues"
         component={Issues}
         options={{
-          title: 'Send us Feedback',
+          title: 'Issues',
           headerStyle: constants.headerStyle,
           headerTitleStyle: constants.headerText,
           headerBackTitleVisible: false,

@@ -49,7 +49,12 @@ export default function ShareRoomLink({
 
   const handleContinue = () => {
     setIsVisible(false);
-    navigation.navigate('Room', {id: room._id, title: room.name});
+    navigation.navigate('Room', {
+      id: room._id,
+      name: room.name,
+      profilePic: room.profilePic,
+      description: room.description,
+    });
   };
 
   return (

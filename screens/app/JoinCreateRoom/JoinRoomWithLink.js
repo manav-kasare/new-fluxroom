@@ -53,7 +53,12 @@ export default function JoinRoomWithLink({route, navigation}) {
     const rooms = user.joinedRooms;
     rooms.map((_room) => {
       if (_room._id === id) {
-        navigation.replace('Room', {id: _room._id, title: _room.name});
+        navigation.replace('Room', {
+          id: _room._id,
+          name: _room.name,
+          profilePic: _room.profilePic,
+          description: _room.description,
+        });
       }
     });
   };
@@ -64,7 +69,12 @@ export default function JoinRoomWithLink({route, navigation}) {
       setUser(response);
       setLoading(false);
       storeUserData(response);
-      navigation.replace('Room', {id: room._id, title: room.name});
+      navigation.replace('Room', {
+        id: room._id,
+        name: room.name,
+        profilePic: room.profilePic,
+        description: room.description,
+      });
     });
   };
 
