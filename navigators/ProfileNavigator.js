@@ -11,6 +11,7 @@ import Settings from '../screens/app/UserProfile/Settings/Settings';
 import TermsOfService from '../screens/app/UserProfile/Settings/TermsOfService';
 import DataPolicy from '../screens/app/UserProfile/Settings/DataPolicy';
 import AboutUs from '../screens/app/UserProfile/Settings/AboutUs';
+import HomeNavigator from './HomeNavigator';
 
 const ProfileStack = createStackNavigator();
 
@@ -30,7 +31,8 @@ export default function ProfileNavigator({route, navigation}) {
         gestureEnabled: true,
         gestureDirection: 'horizontal',
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-      }}>
+      }}
+      headerMode="screen">
       <ProfileStack.Screen
         name="Profile"
         component={UserProfile}
@@ -61,6 +63,9 @@ export default function ProfileNavigator({route, navigation}) {
         component={Settings}
         options={{
           title: 'Settings',
+          gestureDirection: 'vertical-inverted',
+          cardStyleInterpolator:
+            CardStyleInterpolators.forFadeFromBottomAndroid,
           headerStyle: constants.headerStyle,
           headerTitleStyle: constants.headerText,
           headerBackTitleVisible: false,

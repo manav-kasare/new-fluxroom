@@ -10,8 +10,7 @@ import {
 } from 'react-native';
 import {SwipeListView} from 'react-native-swipe-list-view';
 
-import CustomToast, {CustomErrorToast} from '../../../shared/CustomToast';
-import Tile from '../../../shared/Tile';
+import {CustomErrorToast} from '../../../shared/CustomToast';
 import {
   joinRoom,
   removeFromInvitedToRooms,
@@ -22,6 +21,7 @@ import {
   TokenContext,
 } from '../../../shared/Context';
 import {ActivityIndicator} from 'react-native-paper';
+import CircleAvatar from '../../../shared/CircleAvatar';
 
 const wait = (timeout) => {
   return new Promise((resolve) => {
@@ -244,3 +244,62 @@ function RequestUserTile({room}) {
 }
 
 export default React.memo(Invitations);
+
+const Tile = React.memo(
+  ({uri, onPressTile, heading, subHeading, onlineSpeakers}) => {
+    const {darkTheme, constants} = React.useContext(ThemeContext);
+
+    return (
+      <TouchableOpacity onPress={onPressTile}>
+        <View
+          style={{
+            flex: 1,
+            height: 65,
+            paddingLeft: 25,
+            alignItems: 'center',
+            flexDirection: 'row',
+            backgroundColor: constants.background3,
+          }}>
+          <CircleAvatar uri={uri} size={50} />
+          <View style={{flexDirection: 'column'}}>
+            <Text
+              style={{
+                color: constants.text1,
+                marginLeft: 15,
+                fontSize: 20,
+                fontWeight: '500',
+                fontFamily: 'Helvetica Neue',
+              }}>
+              {heading}
+            </Text>
+            <Text
+              style={{
+                color: 'grey',
+                marginLeft: 15,
+                fontSize: 13,
+                fontWeight: '400',
+                fontFamily: 'Helvetica Neue',
+              }}>
+              {subHeading}
+            </Text>
+          </View>
+          {onlineSpeakers ? (
+            <View
+              style={{
+                position: 'absolute',
+                right: 25,
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}>
+              <Text style={{color: 'green', fontSize: 12}}>
+                {onlineSpeakers} Online
+              </Text>
+            </View>
+          ) : (
+            <></>
+          )}
+        </View>
+      </TouchableOpacity>
+    );
+  },
+);
