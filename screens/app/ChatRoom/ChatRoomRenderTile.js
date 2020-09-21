@@ -9,13 +9,7 @@ import Animated, {
   set,
   interpolate,
   not,
-  Easing,
 } from 'react-native-reanimated';
-
-console.disableYellowBox = true;
-
-import {ThemeContext} from '../../../shared/Context';
-import CircleAvatar from '../../../shared/CircleAvatar';
 import {
   useValue,
   useTransition,
@@ -24,15 +18,24 @@ import {
 } from 'react-native-redash';
 import {TapGestureHandler, State} from 'react-native-gesture-handler';
 
+console.disableYellowBox = true;
+
+import {ThemeContext} from '../../../shared/Context';
+import CircleAvatar from '../../../shared/CircleAvatar';
+
 const ChatRoomRenderTile = ({item, navigation}) => {
   const {constants} = React.useContext(ThemeContext);
-  const [room, setRoom] = React.useState(item);
   const [onPressIn, setOnPressIn] = React.useState(false);
   const [navigate, setNavigate] = React.useState(false);
 
   const opacityVal = useValue(0);
   const opacity = useTransition(opacityVal);
   useCode(() => cond(eq(opacityVal, 0), set(opacityVal, 1)), [opacityVal]);
+
+  const translateY = interpolate(opacity, {
+    inputRange: [0, 0.25, 1],
+    outputRange: [50, 5, 0],
+  });
 
   const scaleTransition = useTransition(onPressIn);
   const scale = mix(scaleTransition, 1, 0.9);
@@ -41,7 +44,7 @@ const ChatRoomRenderTile = ({item, navigation}) => {
   const state = useValue(State.UNDETERMINED);
   const gestureHandler = onGestureEvent({state});
   const transition = useTransition(showRoomDetails);
-  const height = mix(transition, 0, room.listOfUsers.length * 30);
+  const height = mix(transition, 0, item.listOfUsers.length * 30);
   const rotateZ = mix(transition, 0, Math.PI);
 
   useCode(
@@ -49,11 +52,6 @@ const ChatRoomRenderTile = ({item, navigation}) => {
       cond(eq(state, State.END), set(showRoomDetails, not(showRoomDetails))),
     [showRoomDetails, state],
   );
-
-  const translateY = interpolate(opacity, {
-    inputRange: [0, 0.25, 1],
-    outputRange: [50, 5, 0],
-  });
 
   const handleOnPressTile = () => {
     setNavigate(!navigate);
@@ -85,7 +83,7 @@ const ChatRoomRenderTile = ({item, navigation}) => {
     heading: {
       color: constants.text1,
       marginLeft: 15,
-      fontSize: 20,
+      fontSize: 22,
       fontWeight: '600',
     },
     description: {
@@ -112,6 +110,7 @@ const ChatRoomRenderTile = ({item, navigation}) => {
             <CircleAvatar
               uri={item.profilePic === undefined ? undefined : item.profilePic}
               size={75}
+              type="room"
             />
             <View style={{flexDirection: 'column'}}>
               <Text style={styles.heading}>{item.name}</Text>

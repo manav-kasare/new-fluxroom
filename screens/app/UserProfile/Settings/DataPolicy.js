@@ -1,16 +1,10 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  View,
-  TouchableOpacity,
-  Text,
-  StyleSheet,
-} from 'react-native';
+import {SafeAreaView, View, Text, StyleSheet} from 'react-native';
 import {ThemeContext} from '../../../../shared/Context';
 import {ScrollView} from 'react-native-gesture-handler';
 
 export default function DataPolicy() {
-  const {constants} = React.useContext(ThemeContext);
+  const {constants, darkTheme} = React.useContext(ThemeContext);
 
   const styles = StyleSheet.create({
     view: {
@@ -52,13 +46,13 @@ export default function DataPolicy() {
     <SafeAreaView
       style={{
         flex: 1,
-        backgroundColor: constants.background1,
+        backgroundColor: darkTheme ? 'black' : 'white',
         alignItems: 'center',
       }}>
       <ScrollView style={{flex: 1, paddingTop: 25, paddingBottom: 50}}>
         <View style={styles.view}>
           <Text style={styles.headerText}>
-            ~ What information do we collect ?
+            What information do we collect ?
           </Text>
           <View style={styles.body}>
             <Text style={styles.subHeadingText}>
@@ -87,9 +81,7 @@ export default function DataPolicy() {
         </View>
 
         <View style={styles.view}>
-          <Text style={styles.headerText}>
-            ~ How do we use the information ?
-          </Text>
+          <Text style={styles.headerText}>How do we use the information ?</Text>
           <View style={styles.body}>
             <Text style={styles.subHeadingText}>- Personal Information :</Text>
             <Text style={styles.bodyText}>
@@ -109,7 +101,7 @@ export default function DataPolicy() {
 
         <View style={styles.view}>
           <Text style={styles.headerText}>
-            ~ How can I manage or delete my information that I shared ?
+            How can I manage or delete my information that I shared ?
           </Text>
           <View style={styles.body}>
             <Text style={styles.bodyText}>

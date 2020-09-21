@@ -8,6 +8,7 @@ import {
   TouchableWithoutFeedback,
   Image,
   TextInput,
+  Animated,
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -91,7 +92,7 @@ export default function LogIn({navigation}) {
           <SafeAreaView
             style={{
               flex: 1,
-              backgroundColor: '#6300f7',
+              backgroundColor: '#03449e',
               alignItems: 'center',
               marginBottom: 50,
             }}>
@@ -108,7 +109,7 @@ export default function LogIn({navigation}) {
             </View>
             <View
               style={{
-                backgroundColor: '#6300f7',
+                backgroundColor: '#03449e',
                 borderTopRightRadius: 10,
                 borderTopLeftRadius: 10,
                 alignItems: 'center',

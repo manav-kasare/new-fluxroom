@@ -9,7 +9,7 @@ import ReactNativeHaptic from 'react-native-haptic';
 import {getUserByEmail, loginUser} from '../../backend/database/apiCalls';
 import {storeToken} from '../../shared/KeyChain';
 import {storeUserData, storeTheme} from '../../shared/AsyncStore';
-import {CustomErrorToast} from '../../shared/CustomToast';
+import {CustomErrorToast, CustomToast} from '../../shared/CustomToast';
 import {ActivityIndicator} from 'react-native-paper';
 
 GoogleSignin.configure({
@@ -55,10 +55,12 @@ export default function Google({navigation}) {
                   username: response.username,
                   password: '89337133-17c9-42e3-9fef-78416a25651a',
                 }).then((_response) => {
+                  console.log(_response);
+                  1;
                   if (_response.err) {
                     setLoading(false);
                     ReactNativeHaptic.generate('notificationError');
-                    CustomToast('An Error Occured');
+                    CustomErrorToast('An Error Occured');
                   } else {
                     ReactNativeHaptic.generate('notificationSuccess');
                     storeToken(_response.user._id, _response.token).then(() => {
@@ -97,7 +99,7 @@ export default function Google({navigation}) {
         width: 50,
         height: 50,
         borderRadius: 50 / 2,
-        backgroundColor: '#6300f7',
+        backgroundColor: '#03449e',
         alignItems: 'center',
         justifyContent: 'center',
       }}>

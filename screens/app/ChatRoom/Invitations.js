@@ -3,12 +3,10 @@ import {
   SafeAreaView,
   View,
   FlatList,
-  TouchableOpacity,
   Text,
   RefreshControl,
   StyleSheet,
 } from 'react-native';
-import {SwipeListView} from 'react-native-swipe-list-view';
 
 import {CustomErrorToast} from '../../../shared/CustomToast';
 import {
@@ -20,7 +18,7 @@ import {
   ThemeContext,
   TokenContext,
 } from '../../../shared/Context';
-import {ActivityIndicator} from 'react-native-paper';
+import {ActivityIndicator, Button} from 'react-native-paper';
 import CircleAvatar from '../../../shared/CircleAvatar';
 
 const wait = (timeout) => {
@@ -70,61 +68,14 @@ const Invitations = ({navigation}) => {
   };
 
   const handleDecline = (rowMap, rowKey, room) => {
-    // removeFromInvitedToRooms().then(() => {
-    deleteRow(rowMap, rowKey);
-    // });
+    removeFromInvitedToRooms().then(() => {});
   };
-
-  const closeRow = (rowMap, rowKey) => {
-    if (rowMap[rowKey]) {
-      rowMap[rowKey].closeRow();
-    }
-  };
-
-  const deleteRow = (rowMap, rowKey) => {
-    closeRow(rowMap, rowKey);
-    const newData = [...invitations];
-    const prevIndex = invitations.findIndex((item) => item.key === rowKey);
-    console.log(prevIndex);
-    newData.splice(prevIndex, 1);
-    setInvitations(newData);
-  };
-
-  const renderHiddenItem = (data, rowMap) => (
-    <View style={[styles.rowBack, {backgroundColor: constants.background3}]}>
-      <TouchableOpacity
-        style={styles.backLeftBtn}
-        onPress={() => handleAccept(rowMap, data.item.key, data)}>
-        {loadingAccept ? (
-          <ActivityIndicator
-            color={constants.primary}
-            size="small"
-            animating={true}
-          />
-        ) : (
-          <Text style={styles.backTextWhite}>Accept</Text>
-        )}
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={styles.backRightBtn}
-        onPress={() => handleDecline(rowMap, data.item.key, data)}>
-        <Text style={styles.backTextWhite}>Decline</Text>
-      </TouchableOpacity>
-    </View>
-  );
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: constants.background1}}>
-      <SwipeListView
-        useFlatList={true}
+      <FlatList
         data={invitations}
-        leftOpenValue={75}
-        rightOpenValue={-75}
-        renderItem={(data) => <RequestUserTile room={data.item} />}
-        renderHiddenItem={renderHiddenItem}
-        previewRowKey={'0'}
-        previewOpenValue={-40}
-        previewOpenDelay={1000}
+        renderItem={(data) => <Tlie room={data.item} />}
         refreshControl={
           <RefreshControl
             refreshing={refreshing}
@@ -137,45 +88,8 @@ const Invitations = ({navigation}) => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: 'white',
-    flex: 1,
-  },
-  backTextWhite: {
-    color: 'white',
-  },
-  rowBack: {
-    alignItems: 'center',
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingLeft: 15,
-  },
-  backLeftBtn: {
-    backgroundColor: '#0f6602',
-    alignItems: 'center',
-    bottom: 0,
-    justifyContent: 'center',
-    position: 'absolute',
-    top: 0,
-    width: 75,
-    left: 0,
-  },
-  backRightBtn: {
-    alignItems: 'center',
-    bottom: 0,
-    backgroundColor: '#ba0000',
-    justifyContent: 'center',
-    position: 'absolute',
-    top: 0,
-    width: 75,
-    right: 0,
-  },
-});
-
-function RequestUserTile({room}) {
-  const {constants, darkTheme} = React.useContext(ThemeContext);
+function Tlie({room}) {
+  const {constants} = React.useContext(ThemeContext);
   const {token} = useContext(TokenContext);
   const [loadingAccept, setLoadingAccept] = useState(false);
   const [loadingReject, setLoadingReject] = useState(false);
@@ -199,107 +113,72 @@ function RequestUserTile({room}) {
     });
   };
 
-  const handleReject = (_id) => {
+  const handleDecline = (_id) => {
     setLoadingReject(true);
     removeFromInvitedToRooms();
   };
 
+  const styles = StyleSheet.compose({
+    tile: {
+      flex: 1,
+      height: 65,
+      paddingLeft: 25,
+      alignItems: 'center',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      backgroundColor: constants.background3,
+    },
+    heading: {
+      color: constants.text1,
+      marginLeft: 15,
+      fontSize: 20,
+      fontWeight: '500',
+      fontFamily: 'Helvetica Neue',
+    },
+    subHeading: {
+      color: 'grey',
+      marginLeft: 15,
+      fontSize: 13,
+      fontWeight: '400',
+      fontFamily: 'Helvetica Neue',
+    },
+  });
+
   return (
-    <View
-      style={{
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        backgroundColor: constants.background3,
-        borderBottomColor: darkTheme ? 'transparent' : constants.lineColor,
-        borderBottomWidth: 0.5,
-      }}>
-      <Tile
-        uri={room.profilePic}
-        heading={room.name}
-        subHeading={room.description}
-      />
-      <View
-        style={{
-          height: 65,
-          width: 5,
-          backgroundColor: '#0f6602',
-          position: 'absolute',
-          left: 0,
-          top: 0,
-        }}
-      />
-      <View
-        style={{
-          height: 65,
-          width: 5,
-          backgroundColor: '#ba0000',
-          position: 'absolute',
-          right: 0,
-          top: 0,
-        }}
-      />
+    <View style={styles.tile}>
+      <View style={{flexDirection: 'row'}}>
+        <CircleAvatar uri={room.profilePic} size={50} type="room" />
+        <View>
+          <Text style={styles.heading}>{room.name}</Text>
+          <Text style={styles.subHeading}>{room.name}</Text>
+        </View>
+      </View>
+      <View style={{flexDirection: 'row'}}>
+        {loadingAccept ? (
+          <ActivityIndicator
+            color={constants.primary}
+            animating={true}
+            size="small"
+          />
+        ) : (
+          <Button color={constants.primary} onPress={handleAccept}>
+            Accept
+          </Button>
+        )}
+        {loadingReject ? (
+          <ActivityIndicator
+            color={constants.primary}
+            animating={true}
+            size="small"
+          />
+        ) : (
+          <Button color={constants.primary} onPress={handleDecline}>
+            Decline
+          </Button>
+        )}
+      </View>
     </View>
   );
 }
 
 export default React.memo(Invitations);
-
-const Tile = React.memo(
-  ({uri, onPressTile, heading, subHeading, onlineSpeakers}) => {
-    const {darkTheme, constants} = React.useContext(ThemeContext);
-
-    return (
-      <TouchableOpacity onPress={onPressTile}>
-        <View
-          style={{
-            flex: 1,
-            height: 65,
-            paddingLeft: 25,
-            alignItems: 'center',
-            flexDirection: 'row',
-            backgroundColor: constants.background3,
-          }}>
-          <CircleAvatar uri={uri} size={50} />
-          <View style={{flexDirection: 'column'}}>
-            <Text
-              style={{
-                color: constants.text1,
-                marginLeft: 15,
-                fontSize: 20,
-                fontWeight: '500',
-                fontFamily: 'Helvetica Neue',
-              }}>
-              {heading}
-            </Text>
-            <Text
-              style={{
-                color: 'grey',
-                marginLeft: 15,
-                fontSize: 13,
-                fontWeight: '400',
-                fontFamily: 'Helvetica Neue',
-              }}>
-              {subHeading}
-            </Text>
-          </View>
-          {onlineSpeakers ? (
-            <View
-              style={{
-                position: 'absolute',
-                right: 25,
-                flexDirection: 'row',
-                alignItems: 'center',
-              }}>
-              <Text style={{color: 'green', fontSize: 12}}>
-                {onlineSpeakers} Online
-              </Text>
-            </View>
-          ) : (
-            <></>
-          )}
-        </View>
-      </TouchableOpacity>
-    );
-  },
-);

@@ -4,7 +4,7 @@ import {View, Text, SafeAreaView, ScrollView, StyleSheet} from 'react-native';
 import {ThemeContext} from '../../../../shared/Context';
 
 export default function TermsOfService() {
-  const {constants} = React.useContext(ThemeContext);
+  const {constants, darkTheme} = React.useContext(ThemeContext);
 
   const styles = StyleSheet.create({
     view: {
@@ -46,7 +46,7 @@ export default function TermsOfService() {
     <SafeAreaView
       style={{
         flex: 1,
-        backgroundColor: constants.background1,
+        backgroundColor: darkTheme ? 'black' : 'white',
         alignItems: 'center',
       }}>
       <ScrollView style={{flex: 1, paddingTop: 25, paddingBottom: 50}}>
@@ -62,9 +62,7 @@ export default function TermsOfService() {
           Fluxroom Terms of Service
         </Text>
         <View style={styles.view}>
-          <Text style={styles.headerText}>
-            ~ How can you use our services ?
-          </Text>
+          <Text style={styles.headerText}>How can you use our services ?</Text>
           <View style={styles.body}>
             <Text style={styles.bodyText}>
               You get access to our services on sigining up on the Fluxroom app.
@@ -72,7 +70,7 @@ export default function TermsOfService() {
           </View>
         </View>
         <View style={styles.view}>
-          <Text style={styles.headerText}>~ What services do we provide ?</Text>
+          <Text style={styles.headerText}>What services do we provide ?</Text>
           <View style={styles.body}>
             <Text style={styles.bodyText}>
               We concord on providing you our services. It includes our in app
@@ -88,7 +86,7 @@ export default function TermsOfService() {
         </View>
         <View style={styles.view}>
           <Text style={styles.headerText}>
-            ~ What you can't use Fluxroom for ?
+            What you can't use Fluxroom for ?
           </Text>
           <View style={styles.body}>
             <Text style={styles.bodyText}>
@@ -118,7 +116,7 @@ export default function TermsOfService() {
         </View>
         <View style={styles.view}>
           <Text style={styles.headerText}>
-            ~ What permissions do you give us ?
+            What permissions do you give us ?
           </Text>
           <View style={styles.body}>
             <Text style={styles.subHeadingText}>
@@ -174,7 +172,7 @@ export default function TermsOfService() {
         </View>
         <View style={styles.view}>
           <Text style={styles.headerText}>
-            ~ Who Is Responsible if Something Happens ?
+            Who Is Responsible if Something Happens ?
           </Text>
           <View style={styles.body}>
             <Text style={styles.bodyText}>

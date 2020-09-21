@@ -18,7 +18,7 @@ export default function ChatRoomsHeader({
 
   const styles = StyleSheet.create({
     headerStyle: {
-      backgroundColor: darkTheme ? constants.background4 : constants.primary,
+      backgroundColor: darkTheme ? constants.background1 : constants.primary,
       borderWidth: 0,
       borderColor: 'transparent',
       flexDirection: 'row',
@@ -34,7 +34,7 @@ export default function ChatRoomsHeader({
     headerTitleStyle: {
       fontSize: 30,
       fontWeight: '800',
-      fontFamily: 'Helvetica',
+      fontFamily: 'Arial Rounded MT Bold',
       color: 'white',
     },
     actions: {

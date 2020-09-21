@@ -72,7 +72,7 @@ export default function ChatRooms({navigation}) {
       refreshing={refreshing}
       onRefresh={onRefresh}
       style={{
-        backgroundColor: darkTheme ? constants.background4 : constants.primary,
+        backgroundColor: darkTheme ? constants.background1 : constants.primary,
       }}
       tintColor="white"
     />

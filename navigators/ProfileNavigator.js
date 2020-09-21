@@ -11,7 +11,6 @@ import Settings from '../screens/app/UserProfile/Settings/Settings';
 import TermsOfService from '../screens/app/UserProfile/Settings/TermsOfService';
 import DataPolicy from '../screens/app/UserProfile/Settings/DataPolicy';
 import AboutUs from '../screens/app/UserProfile/Settings/AboutUs';
-import HomeNavigator from './HomeNavigator';
 
 const ProfileStack = createStackNavigator();
 

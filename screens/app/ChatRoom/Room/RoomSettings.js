@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {
   SafeAreaView,
   View,
-  Image,
+  Share,
   Text,
   TouchableOpacity,
   TextInput,
@@ -10,7 +10,6 @@ import {
   Platform,
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Clipboard from '@react-native-community/clipboard';
 import ImagePicker from 'react-native-image-picker';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -24,7 +23,6 @@ export default function RoomSettings({route, navigation}) {
   const {description, id, profilePic} = route.params;
   const {token} = React.useContext(TokenContext);
   const {constants} = React.useContext(ThemeContext);
-  const [copiedText, setCopiedText] = useState('');
   const [descriptionFocus, setDescriptionFocus] = useState(false);
   const [descriptionLoading, setDescriptionLoading] = useState(false);
   const [loadingProfilePic, setLoadingProfilePic] = useState(false);
@@ -135,14 +133,33 @@ export default function RoomSettings({route, navigation}) {
     });
   };
 
-  const copyText = () => {
-    Clipboard.setString(`fluxroom://room/join/${id}`);
-    fetchCopiedText();
-  };
-
-  const fetchCopiedText = async () => {
-    const text = await Clipboard.getString();
-    setCopiedText(text);
+  const shareLink = () => {
+    Share.share(
+      {title: 'Room Link', url: link},
+      {
+        excludedActivityTypes: [
+          'com.apple.UIKit.activity.PostToWeibo',
+          'com.apple.UIKit.activity.Print',
+          'com.apple.UIKit.activity.AssignToContact',
+          'com.apple.UIKit.activity.SaveToCameraRoll',
+          'com.apple.UIKit.activity.AddToReadingList',
+          'com.apple.UIKit.activity.PostToFlickr',
+          'com.apple.UIKit.activity.PostToVimeo',
+          'com.apple.UIKit.activity.PostToTencentWeibo',
+          'com.apple.UIKit.activity.AirDrop',
+          'com.apple.UIKit.activity.OpenInIBooks',
+          'com.apple.UIKit.activity.MarkupAsPDF',
+          'com.apple.reminders.RemindersEditorExtension',
+          'com.apple.mobilenotes.SharingExtension',
+          'com.apple.mobileslideshow.StreamShareService',
+          'com.linkedin.LinkedIn.ShareExtension',
+          'pinterest.ShareExtension',
+          'com.google.GooglePlus.ShareExtension',
+          'com.tumblr.tumblr.Share-With-Tumblr',
+          'net.whatsapp.WhatsApp.ShareExtension', //WhatsApp
+        ],
+      },
+    );
   };
 
   return (
@@ -160,7 +177,11 @@ export default function RoomSettings({route, navigation}) {
               justifyContent: 'center',
             }}
             onPress={pickImage}>
-            <CircleAvatar size={constants.height * 0.145} uri={_profilePic} />
+            <CircleAvatar
+              size={constants.height * 0.145}
+              uri={_profilePic}
+              type="room"
+            />
           </TouchableOpacity>
           <View
             style={{
@@ -228,9 +249,8 @@ export default function RoomSettings({route, navigation}) {
             marginLeft: 10,
             marginVertical: 10,
             fontSize: 20,
-            color: 'grey',
           }}>
-          Copy Link
+          Share Link
         </Text>
         <TouchableOpacity
           style={{
@@ -241,7 +261,7 @@ export default function RoomSettings({route, navigation}) {
             alignItems: 'center',
             flexDirection: 'row',
           }}
-          onPress={copyText}>
+          onPress={shareLink}>
           <Text style={{color: 'grey'}}>{link}</Text>
         </TouchableOpacity>
       </View>

@@ -17,7 +17,7 @@ import auth from '@react-native-firebase/auth';
 import EmailVerification from './EmailVerification';
 
 import constants from '../../shared/constants';
-import CustomToast, {CustomErrorToast} from '../../shared/CustomToast';
+import {CustomErrorToast, CustomToast} from '../../shared/CustomToast';
 import globalStyles from '../../shared/GlobalStyles';
 import {ActivityIndicator} from 'react-native-paper';
 
@@ -89,7 +89,7 @@ export default function SignUp({navigation}) {
           <SafeAreaView
             style={{
               flex: 1,
-              backgroundColor: '#6300f7',
+              backgroundColor: '#03449e',
               alignItems: 'center',
               marginBottom: 50,
             }}>

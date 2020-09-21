@@ -43,7 +43,7 @@ export default function TopRooms({allRooms, navigation}) {
 
   return (
     <FlatList
-      style={{flex: 1}}
+      style={{flex: 1, height: 650}}
       ListHeaderComponent={listHeaderComponent}
       data={sortedRoomsList}
       renderItem={renderItem}

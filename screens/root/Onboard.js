@@ -14,11 +14,16 @@ import Animated, {
   eq,
   SpringUtils,
   interpolate,
+  Transition,
+  Transitioning,
+  Value,
 } from 'react-native-reanimated';
 import {
   useValue,
   withTimingTransition,
   withSpringTransition,
+  useTransition,
+  mix,
 } from 'react-native-redash';
 import Entypo from 'react-native-vector-icons/Entypo';
 
@@ -30,14 +35,8 @@ import Apple from './Apple';
 
 export default function Onboard({navigation}) {
   const time = useValue(0);
-  const scale = withTimingTransition(time);
-  useCode(() => cond(eq(time, 0), set(time, 1)), []);
-
-  const translateY = withSpringTransition(time, {
-    damping: 500,
-    mass: 5,
-    overshootClamping: false,
-  });
+  const opacity = useTransition(time);
+  useCode(() => cond(eq(time, 0), set(time, 1)), [time]);
 
   const navigatePhone = () => {
     navigation.navigate('Phone');
@@ -51,16 +50,16 @@ export default function Onboard({navigation}) {
 
   return (
     <>
-      <StatusBar barStyle="light-content" backgroundColor="'#6300f7'" />
+      <StatusBar barStyle="light-content" backgroundColor="'#03449e'" />
       <View
         style={{
           flex: 1,
-          backgroundColor: '#6300f7',
+          backgroundColor: '#03449e',
           alignItems: 'center',
           justifyContent: 'space-between',
           paddingTop: 50,
         }}>
-        <Animated.View style={{transform: [{scale}]}}>
+        <Animated.View style={{opacity}}>
           <Text
             style={{
               marginTop: 30,
@@ -74,13 +73,12 @@ export default function Onboard({navigation}) {
             FLUXROOM
           </Text>
         </Animated.View>
-        <Animated.View
+        <View
           style={{
             backgroundColor: 'white',
             width: constants.width,
             alignItems: 'center',
-            paddingTop: 50,
-            paddingBottom: 50,
+            paddingVertical: 50,
             borderTopLeftRadius: 15,
             borderTopRightRadius: 15,
           }}>
@@ -114,7 +112,7 @@ export default function Onboard({navigation}) {
                 width: 50,
                 height: 50,
                 borderRadius: 50 / 2,
-                backgroundColor: '#6300f7',
+                backgroundColor: '#03449e',
                 alignItems: 'center',
                 justifyContent: 'center',
               }}
@@ -122,7 +120,7 @@ export default function Onboard({navigation}) {
               <Entypo size={25} name="phone" color="white" />
             </TouchableOpacity>
           </View>
-        </Animated.View>
+        </View>
       </View>
     </>
   );

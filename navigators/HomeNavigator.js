@@ -6,7 +6,6 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {ThemeContext} from '../shared/Context';
 import Search from '../screens/app/Search/Search';
 import ChatRooms from '../screens/app/ChatRoom/ChatRooms';
-import UserProfile from '../screens/app/UserProfile/UserProfile';
 import ProfileNavigator from './ProfileNavigator';
 
 const BottomTabs = createBottomTabNavigator();

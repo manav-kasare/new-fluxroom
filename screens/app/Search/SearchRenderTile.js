@@ -203,7 +203,7 @@ const SearchRenderTile = React.memo(({room, navigation}) => {
             />
           </Animated.View>
         </View>
-        <Animated.View style={{height}}>
+        <Animated.View style={{height, opacity: showRoomDetails}}>
           <FlatList
             style={styles.listOfUsers}
             scrollEnabled={false}

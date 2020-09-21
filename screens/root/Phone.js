@@ -54,7 +54,7 @@ export default function Phone({navigation}) {
       <SafeAreaView
         style={{
           flex: 1,
-          backgroundColor: '#6300f7',
+          backgroundColor: '#03449e',
           alignItems: 'center',
           marginBottom: 50,
         }}>

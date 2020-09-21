@@ -34,7 +34,7 @@ export default function Settings({navigation}) {
       color: constants.text1,
       marginLeft: 25,
       fontSize: 14,
-      fontWeight: '500',
+      fontWeight: '400',
     },
     view_touchable: {
       flex: 1,

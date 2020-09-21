@@ -57,16 +57,16 @@ export default function EmailVerification({
         </Dialog.Content>
         <Dialog.Actions>
           {resendLoading ? (
-            <ActivityIndicator color="#6300f7" size="small" animating={true} />
+            <ActivityIndicator color="#03449e" size="small" animating={true} />
           ) : (
-            <Button mode="text" color="#6300f7" onPress={resendEmail}>
+            <Button mode="text" color="#03449e" onPress={resendEmail}>
               Resend Email
             </Button>
           )}
           {loading ? (
-            <ActivityIndicator color="#6300f7" size="small" />
+            <ActivityIndicator color="#03449e" size="small" />
           ) : (
-            <Button mode="text" color="#6300f7" onPress={checkVerification}>
+            <Button mode="text" color="#03449e" onPress={checkVerification}>
               Check
             </Button>
           )}

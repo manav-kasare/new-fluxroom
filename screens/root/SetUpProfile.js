@@ -263,7 +263,7 @@ export default function SetUpProfile({route}) {
             style={{
               flex: 1,
               marginBottom: 50,
-              backgroundColor: '#6300f7',
+              backgroundColor: '#03449e',
             }}>
             <Image
               style={{
@@ -293,7 +293,7 @@ export default function SetUpProfile({route}) {
                   borderRadius: 100 / 2,
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: profilePhoto === null ? '#6300f7' : 'white',
+                  backgroundColor: profilePhoto === null ? '#03449e' : 'white',
                   marginBottom: 10,
                   borderWidth: 0.3,
                   borderColor: 'grey',

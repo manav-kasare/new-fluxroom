@@ -217,6 +217,7 @@ export default function CreateRoom({navigation, isVisible, setIsVisible}) {
           </TouchableOpacity>
           <View>
             <TextInput
+              autoFocus={true}
               style={styles.nameInput}
               placeholder="What would you talk about ?"
               placeholderTextColor="grey"
