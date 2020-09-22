@@ -96,6 +96,18 @@ const ChatRoomRenderTile = ({item, navigation}) => {
       marginTop: 10,
       marginLeft: 5,
     },
+    tileSmallRight: {
+      position: 'absolute',
+      right: 0,
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    chevron: {
+      width: 40,
+      height: 40,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
   });
 
   return (
@@ -126,21 +138,9 @@ const ChatRoomRenderTile = ({item, navigation}) => {
                 )}
               </View>
             </View>
-            <View
-              style={{
-                position: 'absolute',
-                right: 0,
-                flexDirection: 'row',
-                alignItems: 'center',
-              }}>
+            <View style={styles.tileSmallRight}>
               <Text style={{color: 'green', marginRight: 15}}>x</Text>
-              <TouchableOpacity
-                style={{
-                  width: 40,
-                  height: 40,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}>
+              <TouchableOpacity style={styles.chevron}>
                 <TapGestureHandler {...gestureHandler}>
                   <Animated.View style={{transform: [{rotateZ}]}}>
                     <Ionicons

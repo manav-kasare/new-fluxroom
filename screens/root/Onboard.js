@@ -38,6 +38,11 @@ export default function Onboard({navigation}) {
   const opacity = useTransition(time);
   useCode(() => cond(eq(time, 0), set(time, 1)), [time]);
 
+  const translateY = interpolate(time, {
+    inputRange: [0, 1],
+    outputRange: [constants.height / 2, 0],
+  });
+
   const navigatePhone = () => {
     navigation.navigate('Phone');
   };
@@ -51,7 +56,7 @@ export default function Onboard({navigation}) {
   return (
     <>
       <StatusBar barStyle="light-content" backgroundColor="'#03449e'" />
-      <View
+      <Animated.View
         style={{
           flex: 1,
           backgroundColor: '#03449e',
@@ -62,7 +67,8 @@ export default function Onboard({navigation}) {
         <Animated.View style={{opacity}}>
           <Text
             style={{
-              marginTop: 30,
+              position: 'absolute',
+              top: 50,
               color: 'white',
               fontWeight: '800',
               fontSize: 30,
@@ -73,8 +79,9 @@ export default function Onboard({navigation}) {
             FLUXROOM
           </Text>
         </Animated.View>
-        <View
+        <Animated.View
           style={{
+            transform: [{translateY}],
             backgroundColor: 'white',
             width: constants.width,
             alignItems: 'center',
@@ -120,8 +127,8 @@ export default function Onboard({navigation}) {
               <Entypo size={25} name="phone" color="white" />
             </TouchableOpacity>
           </View>
-        </View>
-      </View>
+        </Animated.View>
+      </Animated.View>
     </>
   );
 }

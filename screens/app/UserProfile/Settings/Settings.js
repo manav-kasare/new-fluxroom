@@ -188,7 +188,7 @@ export default function Settings({navigation}) {
           paddingHorizontal: 25,
           justifyContent: 'space-around',
         }}>
-        <Text style={{color: 'grey', fontWeight: 'bold'}}>Dark Theme</Text>
+        <Text style={{color: 'grey', fontWeight: 'bold'}}>Dark Mode</Text>
         <Switch value={darkTheme} onValueChange={toggleTheme} />
       </View>
     </SafeAreaView>

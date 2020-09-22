@@ -208,7 +208,7 @@ const SearchRenderTile = React.memo(({room, navigation}) => {
             style={styles.listOfUsers}
             scrollEnabled={false}
             data={listOfUsers}
-            keyExtractor={(key, index) => index.toString()}
+            keyExtractor={(index) => index.toString()}
             renderItem={renderSpeaker}
           />
         </Animated.View>
