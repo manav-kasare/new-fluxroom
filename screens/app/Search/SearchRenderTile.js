@@ -1,11 +1,5 @@
 import React, {useState, useContext} from 'react';
-import {
-  FlatList,
-  StyleSheet,
-  Text,
-  View,
-  TouchableWithoutFeedback,
-} from 'react-native';
+import {FlatList, StyleSheet, Text, View} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import _ from 'lodash';
 import {Button, ActivityIndicator} from 'react-native-paper';
@@ -17,7 +11,7 @@ import {
 } from 'react-native-redash';
 import Animated, {useCode, cond, not, eq, set} from 'react-native-reanimated';
 
-import {joinRoom} from '../../../backend/database/apiCalls';
+import {joinRoom, getUserInfo} from '../../../backend/database/apiCalls';
 import {
   ThemeContext,
   UserDetailsContext,
@@ -27,13 +21,12 @@ import {storeUserData} from '../../../shared/AsyncStore';
 import CircleAvatar from '../../../shared/CircleAvatar';
 import {State, TapGestureHandler} from 'react-native-gesture-handler';
 
-const SearchRenderTile = React.memo(({room, navigation}) => {
+const SearchRenderTile = React.memo(({navigation, room}) => {
   const {constants, darkTheme} = useContext(ThemeContext);
   const {token} = useContext(TokenContext);
   const {user, setUser} = useContext(UserDetailsContext);
   const [loading, setLoading] = useState(false);
   const [alreadyJoined, setAlreadyJoined] = useState(false);
-  const [listOfUsers, setListOfUsers] = React.useState([]);
 
   const showRoomDetails = useValue(0);
   const state = useValue(State.UNDETERMINED);
@@ -49,10 +42,10 @@ const SearchRenderTile = React.memo(({room, navigation}) => {
   );
 
   React.useEffect(() => {
-    setListOfUsers(room.listOfUsers);
     const rooms = user.joinedRooms;
     rooms.map((_room) => {
-      if (_room._id === room._id) {
+      if (_room === room._id) {
+        console.log('Caught');
         setAlreadyJoined(true);
       }
     });
@@ -74,11 +67,7 @@ const SearchRenderTile = React.memo(({room, navigation}) => {
     });
   };
 
-  const renderSpeaker = ({item}) => (
-    <View style={styles.memberTile}>
-      <Text style={styles.memberName}>{item.username}</Text>
-    </View>
-  );
+  const renderSpeaker = ({item}) => <RenderSpeaker id={item} />;
 
   const nothing = () => {};
 
@@ -133,12 +122,7 @@ const SearchRenderTile = React.memo(({room, navigation}) => {
       paddingLeft: 10,
       justifyContent: 'center',
     },
-    memberName: {
-      color: constants.text1,
-      marginVertical: 1,
-      fontSize: 18,
-      fontWeight: '500',
-    },
+
     chevron: {
       position: 'absolute',
       right: 5,
@@ -207,7 +191,7 @@ const SearchRenderTile = React.memo(({room, navigation}) => {
           <FlatList
             style={styles.listOfUsers}
             scrollEnabled={false}
-            data={listOfUsers}
+            data={room.listOfUsers}
             keyExtractor={(index) => index.toString()}
             renderItem={renderSpeaker}
           />
@@ -216,5 +200,31 @@ const SearchRenderTile = React.memo(({room, navigation}) => {
     </TapGestureHandler>
   );
 });
+
+const RenderSpeaker = ({id}) => {
+  const {constants, darkTheme} = useContext(ThemeContext);
+  const [username, setUsername] = React.useState(null);
+
+  React.useEffect(() => {
+    getUserInfo(id).then((response) => {
+      setUsername(response.username);
+    });
+  }, []);
+
+  const styles = {
+    memberName: {
+      color: constants.text1,
+      marginVertical: 1,
+      fontSize: 18,
+      fontWeight: '500',
+    },
+  };
+
+  return (
+    <View style={styles.memberTile}>
+      <Text style={styles.memberName}>{username}</Text>
+    </View>
+  );
+};
 
 export default SearchRenderTile;

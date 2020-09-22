@@ -234,14 +234,12 @@ export default function CreateRoom({navigation, isVisible, setIsVisible}) {
           value={room.description}
           onChangeText={(text) => setRoom({...room, description: text})}
         />
-        {loading ? (
-          <View style={{height: 50, marginVertical: 10, marginTop: 15}}>
+        <TouchableOpacity
+          style={styles.submitButton}
+          onPress={verifyDescription}>
+          {loading ? (
             <ActivityIndicator color={constants.primary} animating={true} />
-          </View>
-        ) : (
-          <TouchableOpacity
-            style={styles.submitButton}
-            onPress={verifyDescription}>
+          ) : (
             <Text
               style={{
                 fontFamily: 'Helvetica',
@@ -249,8 +247,8 @@ export default function CreateRoom({navigation, isVisible, setIsVisible}) {
               }}>
               Create Room
             </Text>
-          </TouchableOpacity>
-        )}
+          )}
+        </TouchableOpacity>
       </>
     </Modal>
   );

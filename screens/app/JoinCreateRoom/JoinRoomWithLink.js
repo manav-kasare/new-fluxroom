@@ -107,36 +107,27 @@ export default function JoinRoomWithLink({route, navigation}) {
             }}>
             {room.name}
           </Text>
-          {loading ? (
-            <View
-              style={{
-                width: constants.width * 0.65,
-                height: 40,
-                flexDirection: 'row',
-                marginTop: 25,
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}>
+
+          <TouchableOpacity
+            style={{
+              width: constants.width * 0.65,
+              height: 40,
+              flexDirection: 'row',
+              marginTop: 25,
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderRadius: 8,
+              marginHorizontal: 10,
+              backgroundColor: constants.primary,
+            }}
+            onPress={handleJoinRoom}>
+            {loading ? (
               <ActivityIndicator
                 color={constants.primary}
                 size="small"
                 animating={true}
               />
-            </View>
-          ) : (
-            <TouchableOpacity
-              style={{
-                width: constants.width * 0.65,
-                height: 40,
-                flexDirection: 'row',
-                marginTop: 25,
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderRadius: 8,
-                marginHorizontal: 10,
-                backgroundColor: constants.primary,
-              }}
-              onPress={handleJoinRoom}>
+            ) : (
               <Text
                 style={{
                   fontFamily: 'Helvetica',
@@ -145,8 +136,8 @@ export default function JoinRoomWithLink({route, navigation}) {
                 }}>
                 Join Room
               </Text>
-            </TouchableOpacity>
-          )}
+            )}
+          </TouchableOpacity>
         </View>
       )}
     </SafeAreaView>

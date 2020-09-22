@@ -41,7 +41,7 @@ export default function RoomSettings({route, navigation}) {
               style={{marginRight: 25}}>
               <Text
                 style={{
-                  color: 'dodgerblue',
+                  color: 'white',
                   fontSize: 20,
                 }}>
                 Done
@@ -52,7 +52,7 @@ export default function RoomSettings({route, navigation}) {
             <TouchableOpacity onPress={cancelEditing} style={{marginLeft: 10}}>
               <Text
                 style={{
-                  color: 'dodgerblue',
+                  color: 'white',
                   fontSize: 20,
                 }}>
                 Cancel
@@ -75,7 +75,7 @@ export default function RoomSettings({route, navigation}) {
         ),
       });
     }
-  }, [descriptionFocus]);
+  }, [descriptionFocus, _description]);
 
   const goBack = () => {
     navigation.goBack();

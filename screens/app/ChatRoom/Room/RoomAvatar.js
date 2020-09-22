@@ -6,15 +6,31 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 import CachedImage from '../../../../shared/CachedImage';
 import {ThemeContext} from '../../../../shared/Context';
+import {getUserInfo} from '../../../../backend/database/apiCalls';
 
-export default function RoomAvatar({size, uri, isHost, name}) {
+export default function RoomAvatar({id, size, uri, isHost, name}) {
   const {constants, darkTheme} = React.useContext(ThemeContext);
   const [isSpeaking, setIsSpeaking] = React.useState(false);
   const [handRaised, setHandRaised] = React.useState(true);
+  const [user, setUser] = React.useState({
+    _id: '',
+    username: '',
+    profilePic: '',
+  });
+
+  React.useEffect(() => {
+    getUserInfo(id).then((response) => {
+      setUser({
+        ...user,
+        username: response.username,
+        profilePic: response.profilePic,
+      });
+    });
+  }, []);
 
   return (
     <View style={{marginVertical: 10}}>
-      {uri === undefined || uri === null ? (
+      {user.profilePic === undefined || user.profilePic === null ? (
         <View
           style={{
             width: size,
@@ -37,7 +53,7 @@ export default function RoomAvatar({size, uri, isHost, name}) {
             borderWidth: isHost ? 5 : 0,
             borderColor: isHost ? 'green' : 'transparent',
           }}
-          uri={uri}
+          uri={user.profilePic}
         />
       )}
 
@@ -87,7 +103,7 @@ export default function RoomAvatar({size, uri, isHost, name}) {
           fontFamily: 'Helvetica Neue',
           alignSelf: 'center',
         }}>
-        {name}
+        {user.username}
       </Text>
     </View>
   );

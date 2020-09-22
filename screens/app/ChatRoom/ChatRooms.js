@@ -49,14 +49,15 @@ export default function ChatRooms({navigation}) {
           setChatRoomList(response.user.joinedRooms);
           setUser(response.user);
           setRefreshing(false);
+          setloading(false);
         });
       });
     } else {
       getUserMe(token).then((response) => {
         setChatRoomList(response.user.joinedRooms);
-        setloading(false);
         setUser(response.user);
         setRefreshing(false);
+        setloading(false);
       });
     }
   };

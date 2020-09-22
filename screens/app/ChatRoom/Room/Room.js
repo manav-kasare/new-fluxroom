@@ -78,12 +78,7 @@ const Room = ({route, navigation}) => {
   const renderItem = ({item}) => (
     <TouchableOpacity key={item._id} onPress={toggleVisible}>
       <RoomUserOptions isVisible={isVisible} setIsVisible={setIsVisible} />
-      <RoomAvatar
-        uri={item.profilePic}
-        size={constants.width * 0.25}
-        name={item.username}
-        isHost={false}
-      />
+      <RoomAvatar id={item} size={constants.width * 0.25} isHost={false} />
     </TouchableOpacity>
   );
 
