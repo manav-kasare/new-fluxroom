@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList, Text, View, Animated} from 'react-native';
+import {FlatList, Text, View} from 'react-native';
 
 import SearchRenderTile from './SearchRenderTile';
 import {ThemeContext} from '../../../shared/Context';
@@ -10,6 +10,13 @@ export default function TopRooms({allRooms, navigation}) {
   const [_allRooms, _setAllRooms] = React.useState([]);
 
   React.useEffect(() => {
+    setData();
+    return () => {
+      _setAllRooms([]);
+    };
+  }, []);
+
+  const setData = () => {
     allRooms.map((room) => {
       _allRooms.push({...room, listOfUsersNumber: room.listOfUsers.length});
     });
@@ -20,12 +27,11 @@ export default function TopRooms({allRooms, navigation}) {
       ),
     );
     setSortedRoomsList(_allRooms.slice(0, 10));
-  }, []);
+  };
 
   const renderItem = ({item}) => (
     <SearchRenderTile room={item} navigation={navigation} />
   );
-
   const listHeaderComponent = () => (
     <View
       style={{

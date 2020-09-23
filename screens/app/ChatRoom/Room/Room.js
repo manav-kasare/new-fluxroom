@@ -21,7 +21,7 @@ import RoomBottomView from './RoomBottomView';
 const Room = ({route, navigation}) => {
   const {id, name, profilePic, description} = route.params;
   const {constants, darkTheme} = React.useContext(ThemeContext);
-  const [members, setMembers] = React.useState(null);
+  const [listOfUsers, setListOfUsers] = React.useState([]);
   const [isSpeaking, setIsSpeaking] = React.useState(false);
   const [someoneRaisingHand, setSomeoneRaisingHand] = React.useState(false);
   const [isVisible, setIsVisible] = React.useState(false);
@@ -31,7 +31,7 @@ const Room = ({route, navigation}) => {
 
   React.useEffect(() => {
     getChatroomInfo(id).then((response) => {
-      setMembers(response.listOfUsers);
+      setListOfUsers(response.listOfUsers);
       setLoading(false);
     });
   }, []);
@@ -60,7 +60,7 @@ const Room = ({route, navigation}) => {
   const setData = () => {
     getChatroomInfo(id).then((response) => {
       _setRoom(response);
-      setMembers(response.listOfUsers);
+      setListOfUsers(response.listOfUsers);
       setLoading(false);
       setRefreshing(false);
     });
@@ -120,6 +120,7 @@ const Room = ({route, navigation}) => {
           inviteModal={inviteModal}
           setInviteModal={setInviteModal}
           roomName={name}
+          listOfUsers={listOfUsers}
         />
         <StatusBar
           backgroundColor={
@@ -133,7 +134,7 @@ const Room = ({route, navigation}) => {
             </View>
           ) : (
             <FlatList
-              data={members}
+              data={listOfUsers}
               style={styles.flatList}
               columnWrapperStyle={styles.columnWrapperStyle}
               numColumns={3}

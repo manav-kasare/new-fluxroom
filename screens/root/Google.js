@@ -55,7 +55,6 @@ export default function Google({navigation}) {
                   username: response.username,
                   password: '89337133-17c9-42e3-9fef-78416a25651a',
                 }).then((_response) => {
-                  1;
                   if (_response.err) {
                     setLoading(false);
                     ReactNativeHaptic.generate('notificationError');

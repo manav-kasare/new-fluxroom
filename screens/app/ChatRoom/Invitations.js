@@ -12,6 +12,8 @@ import {CustomErrorToast} from '../../../shared/CustomToast';
 import {
   joinRoom,
   removeFromInvitedToRooms,
+  getChatroomInfo,
+  declineInvitation,
 } from '../../../backend/database/apiCalls';
 import {
   UserDetailsContext,
@@ -41,41 +43,18 @@ const Invitations = ({navigation}) => {
   }, []);
 
   useEffect(() => {
-    let invitedToRooms = [];
-    user.invitedToRooms.map((room) => {
-      invitedToRooms.push({...room, key: `${room._id}`});
+    user.invitedToRooms.map((id) => {
+      getChatroomInfo(id).then((response) => {
+        setInvitations([...invitations, response]);
+      });
     });
-    setInvitations(invitedToRooms);
   }, [refreshing]);
-
-  const handleAccept = (rowMap, rowKey, room) => {
-    setLoadingAccept(true);
-    joinRoom(room._id, token).then((response) => {
-      if (response.error) {
-        setLoadingAccept(false);
-        CustomErrorToast('An Error Occured');
-      } else {
-        setLoadingAccept(false);
-        navigation.navigate('Room', {
-          id: room._id,
-          name: room.name,
-          profilePic: room.profilePic,
-          description: room.description,
-        });
-        removeFromInvitedToRooms();
-      }
-    });
-  };
-
-  const handleDecline = (rowMap, rowKey, room) => {
-    removeFromInvitedToRooms().then(() => {});
-  };
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: constants.background1}}>
       <FlatList
         data={invitations}
-        renderItem={(data) => <Tlie room={data.item} />}
+        renderItem={({item}) => <Tlie room={item} navigation={navigation} />}
         refreshControl={
           <RefreshControl
             refreshing={refreshing}
@@ -88,13 +67,13 @@ const Invitations = ({navigation}) => {
   );
 };
 
-function Tlie({room}) {
+function Tlie({room, navigation}) {
   const {constants} = React.useContext(ThemeContext);
   const {token} = useContext(TokenContext);
   const [loadingAccept, setLoadingAccept] = useState(false);
   const [loadingReject, setLoadingReject] = useState(false);
 
-  const handleAccept = (room) => {
+  const handleAccept = () => {
     setLoadingAccept(true);
     joinRoom(room._id, token).then((response) => {
       if (response.error) {
@@ -108,14 +87,16 @@ function Tlie({room}) {
           profilePic: room.profilePic,
           description: room.description,
         });
-        removeFromInvitedToRooms();
+        declineInvitation(token, room.name);
       }
     });
   };
 
-  const handleDecline = (_id) => {
+  const handleDecline = () => {
     setLoadingReject(true);
-    removeFromInvitedToRooms();
+    declineInvitation(token, room.name).then(() => {
+      setLoadingReject(false);
+    });
   };
 
   const styles = StyleSheet.compose({

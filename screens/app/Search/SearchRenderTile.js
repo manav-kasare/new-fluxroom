@@ -45,7 +45,6 @@ const SearchRenderTile = React.memo(({navigation, room}) => {
     const rooms = user.joinedRooms;
     rooms.map((_room) => {
       if (_room === room._id) {
-        console.log('Caught');
         setAlreadyJoined(true);
       }
     });
@@ -57,6 +56,7 @@ const SearchRenderTile = React.memo(({navigation, room}) => {
       storeUserData(response).then(() => {
         setLoading(false);
         setUser(response);
+        setAlreadyJoined(true);
         navigation.navigate('Room', {
           id: room._id,
           name: room.name,

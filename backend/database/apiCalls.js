@@ -86,6 +86,14 @@ export const getUserChatRooms = (id) => {
   });
 };
 
+export const getUserByUsername = (username) => {
+  return fetch(`${url}/getbyusername?username=${username}`)
+    .then((response) => response.json())
+    .then((data) => {
+      return data;
+    });
+};
+
 export const getUserByEmail = (email) => {
   const requestOptions = {
     method: 'GET',
@@ -184,7 +192,7 @@ export const inviteUserToRoom = (username, roomName, token) => {
   };
 
   return fetch(
-    `${url}/invite?username=${username}&roomName=${roomName}`,
+    `${url}/sendinvite?username=${username}&roomname=${roomName}`,
     requestOptions,
   )
     .then((response) => response.json())
@@ -211,7 +219,22 @@ export const updateRoom = (token, roomID, room) => {
     });
 };
 
-export const removeFromInvitedToRooms = () => {};
+export const declineInvitation = (token, roomName) => {
+  const requestOptions = {
+    method: 'PATCH',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  return fetch(`${url}/declineinvite?roomname=${roomName}`, requestOptions)
+    .then((response) => response.json())
+    .then((data) => {
+      return data;
+    });
+};
 
 export const joinRoom = async (roomId, token) => {
   const requestOptions = {

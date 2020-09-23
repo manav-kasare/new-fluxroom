@@ -122,11 +122,7 @@ export default function JoinRoomWithLink({route, navigation}) {
             }}
             onPress={handleJoinRoom}>
             {loading ? (
-              <ActivityIndicator
-                color={constants.primary}
-                size="small"
-                animating={true}
-              />
+              <ActivityIndicator color="white" size="small" animating={true} />
             ) : (
               <Text
                 style={{

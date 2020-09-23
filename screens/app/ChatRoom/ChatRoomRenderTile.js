@@ -99,7 +99,7 @@ const ChatRoomRenderTile = ({item, navigation}) => {
     heading: {
       color: constants.text1,
       marginLeft: 15,
-      fontSize: 22,
+      fontSize: 20,
       fontWeight: '600',
     },
     description: {
@@ -193,7 +193,6 @@ const RenderSpeaker = ({id}) => {
   const [username, setUsername] = React.useState('');
 
   React.useEffect(() => {
-    console.log(id);
     getUserInfo(id).then((response) => {
       setUsername(response.username);
     });

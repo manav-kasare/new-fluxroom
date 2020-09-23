@@ -27,9 +27,9 @@ import {ActivityIndicator} from 'react-native-paper';
 
 export default function LogIn({navigation}) {
   const {setUser} = useContext(UserDetailsContext);
+  const {setToken} = useContext(TokenContext);
   const [email, setemail] = useState('');
   const [password, setpassword] = useState('');
-  const {setToken} = useState(TokenContext);
   const [revealPassword, setRevealPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [onFocusPassword, setOnFocusPassword] = useState(false);
@@ -40,28 +40,33 @@ export default function LogIn({navigation}) {
     try {
       await auth()
         .signInWithEmailAndPassword(email, password)
-        .then(() => {
-          getUserByEmail(email).then((user) => {
-            loginUser({
-              username: user.username,
-              password: '89337133-17c9-42e3-9fef-78416a25651a',
-            }).then((response) => {
-              if (response.err) {
-                setIsLoading(false);
-                ReactNativeHaptic.generate('notificationError');
-                CustomErrorToast('An Error Occured !');
-              } else {
-                ReactNativeHaptic.generate('notificationSuccess');
-                storeToken(response.user._id, response.token).then(() => {
-                  setToken(response.token);
-                  storeUserData(response.user);
-                  storeTheme('light');
+        .then((userInfo) => {
+          if (userInfo.user.emailVerified) {
+            getUserByEmail(email).then((user) => {
+              loginUser({
+                username: user.username,
+                password: '89337133-17c9-42e3-9fef-78416a25651a',
+              }).then((response) => {
+                if (response.err) {
                   setIsLoading(false);
-                  setUser(response.user);
-                });
-              }
+                  ReactNativeHaptic.generate('notificationError');
+                  CustomErrorToast('An Error Occured !');
+                } else {
+                  storeToken(response.user._id, response.token).then(() => {
+                    setToken(response.token);
+                    storeUserData(response.user).then(() => {
+                      storeTheme('light');
+                      setIsLoading(false);
+                      setUser(response.user);
+                      ReactNativeHaptic.generate('notificationSuccess');
+                    });
+                  });
+                }
+              });
             });
-          });
+          } else {
+            CustomErrorToast('Email not Verified !');
+          }
         });
     } catch (err) {
       setIsLoading(false);

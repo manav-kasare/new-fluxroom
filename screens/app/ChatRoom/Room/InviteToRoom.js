@@ -9,19 +9,39 @@ import {ThemeContext, TokenContext} from '../../../../shared/Context';
 import {
   getUsers,
   inviteUserToRoom,
+  getUserByUsername,
+  getUserInfo,
 } from '../../../../backend/database/apiCalls';
 import CircleAvatar from '../../../../shared/CircleAvatar';
 import {CustomErrorToast} from '../../../../shared/CustomToast';
 
-export default function InviteToRoom({inviteModal, setInviteModal, roomName}) {
+export default function InviteToRoom({
+  inviteModal,
+  setInviteModal,
+  roomName,
+  listOfUsers,
+}) {
   const {constants} = React.useContext(ThemeContext);
   const [query, setQuery] = React.useState(null);
-  const [allUsers, setAllUsers] = React.useState(null);
+  const [allUsers, setAllUsers] = React.useState([]);
   const [fileredUsers, setFilteredUsers] = React.useState(null);
 
   React.useEffect(() => {
-    getUsers().then((response) => {
-      setAllUsers(response);
+    getUsers().then((_allUsers) => {
+      let isMemberUser = false;
+      _allUsers.map((user) => {
+        listOfUsers.map((memberUser) => {
+          if (user._id === memberUser) {
+            isMemberUser = true;
+          }
+        });
+        if (isMemberUser === false) {
+          console.log(user.username);
+          setAllUsers([...allUsers, user]);
+        } else {
+          isMemberUser = false;
+        }
+      });
     });
   }, []);
 
@@ -136,6 +156,7 @@ const SendInviteButton = ({user, roomName}) => {
 
   const handleInvite = () => {
     inviteUserToRoom(user.username, roomName, token).then((response) => {
+      console.log(response);
       if (response.message === `Either room or user doesn't exist`) {
         Keyboard.dismiss();
         CustomErrorToast(`Either room or user does not exist`);

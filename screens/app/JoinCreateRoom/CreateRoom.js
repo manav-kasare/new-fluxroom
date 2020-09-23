@@ -238,7 +238,7 @@ export default function CreateRoom({navigation, isVisible, setIsVisible}) {
           style={styles.submitButton}
           onPress={verifyDescription}>
           {loading ? (
-            <ActivityIndicator color={constants.primary} animating={true} />
+            <ActivityIndicator color="white" animating={true} />
           ) : (
             <Text
               style={{
