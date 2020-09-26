@@ -414,14 +414,14 @@ PODS:
     - React
     - SDWebImage (~> 5.8)
     - SDWebImageWebPCoder (~> 0.6.1)
-  - RNFBApp (8.4.1):
+  - RNFBApp (8.4.3):
     - Firebase/CoreOnly (~> 6.30.0)
-    - React
-  - RNFBAuth (9.1.2):
+    - React-Core
+  - RNFBAuth (9.2.3):
     - Firebase/Auth (~> 6.30.0)
-    - React
+    - React-Core
     - RNFBApp
-  - RNFBMessaging (7.8.4):
+  - RNFBMessaging (7.8.6):
     - Firebase/Messaging (~> 6.30.0)
     - React
     - RNFBApp
@@ -477,6 +477,7 @@ DEPENDENCIES:
   - FlipperKit/SKIOSNetworkPlugin (~> 0.41.1)
   - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
+  - GoogleSignIn (~> 5.0.2)
   - Permission-Camera (from `../node_modules/react-native-permissions/ios/Camera.podspec`)
   - Permission-Microphone (from `../node_modules/react-native-permissions/ios/Microphone.podspec`)
   - Permission-Notifications (from `../node_modules/react-native-permissions/ios/Notifications.podspec`)
@@ -724,9 +725,9 @@ SPEC CHECKSUMS:
   RNCMaskedView: e5b99bc191945f157adeede68da9d424462de177
   RNCPushNotificationIOS: c625dde093c3c8351d4babd34285d772f551dc36
   RNFastImage: e19ba191922e7dab9d932a4d59d62d76660aa222
-  RNFBApp: e4321cad5dd23b43b3b4f0ca060300b9f85cb7a4
-  RNFBAuth: e0b72882353a6280f0885ca8011804cef3c33cc8
-  RNFBMessaging: f28096dc79edf6b0a094e95c265c7224122d051d
+  RNFBApp: a74d8259d827c8bf55100e759cffa2e50ba6fe30
+  RNFBAuth: ccae9605207f4a3bc6e03cd0adb5433872ef4418
+  RNFBMessaging: c69238917a8672f5aed2c8a6ee124efa8f962677
   RNGestureHandler: 8f09cd560f8d533eb36da5a6c5a843af9f056b38
   RNGoogleSignin: ccf71ee4b6cfd324fd788a41e457e2043838c0d9
   RNKeychain: b8e0711b959a19c5b057d1e970d3c83d159b6da5
@@ -740,6 +741,6 @@ SPEC CHECKSUMS:
   Yoga: 7740b94929bbacbddda59bf115b5317e9a161598
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 64f6eb38e0ae4267a6968136b4ef61bec9959fa5
+PODFILE CHECKSUM: 8f2673a1423431e1379af62d4228690e3aaf337b
 
 COCOAPODS: 1.9.3

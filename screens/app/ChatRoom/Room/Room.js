@@ -87,7 +87,7 @@ const Room = ({route, navigation}) => {
       refreshing={refreshing}
       onRefresh={onRefresh}
       tintColor={constants.background2}
-      size="small"
+      size={Platform.os === 'ios' ? 'small' : 'default'}
     />
   );
 

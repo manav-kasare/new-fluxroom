@@ -5,6 +5,7 @@ import {
   View,
   FlatList,
   RefreshControl,
+  Platform,
   StatusBar,
   TouchableOpacity,
 } from 'react-native';
@@ -76,6 +77,7 @@ export default function ChatRooms({navigation}) {
         backgroundColor: darkTheme ? constants.background1 : constants.primary,
       }}
       tintColor="white"
+      size={Platform.os === 'ios' ? 'small' : 'default'}
     />
   );
 

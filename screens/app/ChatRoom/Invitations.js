@@ -6,6 +6,7 @@ import {
   Text,
   RefreshControl,
   StyleSheet,
+  Platform,
 } from 'react-native';
 
 import {CustomErrorToast} from '../../../shared/CustomToast';
@@ -60,6 +61,7 @@ const Invitations = ({navigation}) => {
             refreshing={refreshing}
             onRefresh={onRefresh}
             tintColor={constants.background2}
+            size={Platform.os === 'ios' ? 'small' : 'default'}
           />
         }
       />

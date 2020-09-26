@@ -3,6 +3,7 @@ import {
   SafeAreaView,
   FlatList,
   RefreshControl,
+  Platform,
   StyleSheet,
   View,
 } from 'react-native';
@@ -54,6 +55,7 @@ const Search = React.memo(({navigation}) => {
       refreshing={refreshing}
       onRefresh={onRefresh}
       tintColor={constants.background2}
+      size={Platform.os === 'ios' ? 'small' : 'default'}
     />
   );
 

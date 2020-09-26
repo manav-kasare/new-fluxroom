@@ -26,7 +26,6 @@ export default OtpVerification = ({
   setConfirmation,
   phoneNumber,
   navigation,
-  setIsLoading,
 }) => {
   const {setUser} = React.useContext(UserDetailsContext);
   const [code, setCode] = React.useState(null);
