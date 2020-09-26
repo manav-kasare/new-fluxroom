@@ -36,7 +36,6 @@ export default function InviteToRoom({
           }
         });
         if (isMemberUser === false) {
-          console.log(user.username);
           setAllUsers([...allUsers, user]);
         } else {
           isMemberUser = false;
@@ -156,7 +155,6 @@ const SendInviteButton = ({user, roomName}) => {
 
   const handleInvite = () => {
     inviteUserToRoom(user.username, roomName, token).then((response) => {
-      console.log(response);
       if (response.message === `Either room or user doesn't exist`) {
         Keyboard.dismiss();
         CustomErrorToast(`Either room or user does not exist`);

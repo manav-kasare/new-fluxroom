@@ -1,5 +1,11 @@
 import React from 'react';
-import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+  SafeAreaView,
+} from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 
 import {ThemeContext} from '../../../shared/Context';
@@ -23,19 +29,18 @@ export default function ChatRoomsHeader({
       borderColor: 'transparent',
       flexDirection: 'row',
       justifyContent: 'space-between',
-      paddingTop: 75,
-      paddingBottom: 25,
+      height: 100,
       alignItems: 'center',
       elevation: 0,
       shadowOpacity: 0,
       width: constants.width,
-      paddingHorizontal: 25,
     },
     headerTitleStyle: {
       fontSize: 30,
       fontWeight: '800',
       fontFamily: 'Arial Rounded MT Bold',
       color: 'white',
+      marginLeft: 25,
     },
     actions: {
       flexDirection: 'row',
@@ -47,7 +52,7 @@ export default function ChatRoomsHeader({
   });
 
   return (
-    <View style={styles.headerStyle}>
+    <SafeAreaView style={styles.headerStyle}>
       <Text style={styles.headerTitleStyle}>Fluxroom</Text>
       <View style={styles.actions}>
         <TouchableOpacity
@@ -57,6 +62,6 @@ export default function ChatRoomsHeader({
         </TouchableOpacity>
         <InvitationsIcon id={id} navigation={navigation} />
       </View>
-    </View>
+    </SafeAreaView>
   );
 }

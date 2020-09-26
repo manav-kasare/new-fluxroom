@@ -32,7 +32,7 @@ const SearchRenderTile = React.memo(({navigation, room}) => {
   const state = useValue(State.UNDETERMINED);
   const gestureHandler = onGestureEvent({state});
   const transition = useTransition(showRoomDetails);
-  const height = mix(transition, 0, room.listOfUsers.length * 30);
+  const height = mix(transition, 0, room.listOfUsers.length * 20);
   const rotateZ = mix(transition, 0, Math.PI);
 
   useCode(

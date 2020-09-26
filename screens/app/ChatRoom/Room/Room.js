@@ -124,6 +124,7 @@ const Room = ({route, navigation}) => {
           listOfUsers={listOfUsers}
         />
         <StatusBar
+          barStyle="light-content"
           backgroundColor={
             darkTheme ? constants.background1 : constants.primary
           }
