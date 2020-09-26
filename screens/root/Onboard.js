@@ -55,7 +55,7 @@ export default function Onboard({navigation}) {
 
   return (
     <>
-      <StatusBar barStyle="light-content" backgroundColor="'#03449e'" />
+      <StatusBar barStyle="light-content" backgroundColor="#03449e" />
       <Animated.View
         style={{
           flex: 1,

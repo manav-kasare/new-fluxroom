@@ -1,10 +1,11 @@
-import React, {useContext, useReducer, useState} from 'react';
+import React from 'react';
 import {
   SafeAreaView,
   FlatList,
   View,
   TouchableOpacity,
   StatusBar,
+  Platform,
   RefreshControl,
   StyleSheet,
 } from 'react-native';
