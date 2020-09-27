@@ -31,9 +31,7 @@ class FCMService {
           this.requestPermission(onRegister);
         }
       })
-      .catch((error) => {
-        console.log('[FCMService] Permission rejected ', error);
-      });
+      .catch((error) => {});
   };
 
   getToken = (onRegister) => {
@@ -43,21 +41,15 @@ class FCMService {
         if (fcmToken) {
           onRegister(fcmToken);
         } else {
-          console.log('[FCMService] User does not have a device token');
         }
       })
-      .catch((error) => {
-        console.log('[FCMService] getToken rejected ', error);
-      });
+      .catch((error) => {});
   };
 
   deleteToken = () => {
-    console.log('[FCMService] deleteToken ');
     messaging()
       .deleteToken()
-      .catch((error) => {
-        console.log('[FCMService] Delete token error ', error);
-      });
+      .catch((error) => {});
   };
 
   requestPermission = (onRegister) => {
@@ -66,9 +58,7 @@ class FCMService {
       .then(() => {
         this.getToken(onRegister);
       })
-      .catch((error) => {
-        console.log('[FCMService] Request Permission rejected ', error);
-      });
+      .catch((error) => {});
   };
 
   createNotificationListeners = (
@@ -78,10 +68,6 @@ class FCMService {
   ) => {
     // When the application is running, but in the background
     messaging().onNotificationOpenedApp((remoteMessage) => {
-      console.log(
-        '[FCMService] onNotificationOpenedApp Notification caused app to open from background state:',
-        remoteMessage,
-      );
       if (remoteMessage) {
         const notification = remoteMessage.notification;
         onOpenNotification(notification);
@@ -93,11 +79,6 @@ class FCMService {
     messaging()
       .getInitialNotification()
       .then((remoteMessage) => {
-        console.log(
-          '[FCMService] getInitialNotification Notification caused app to open from quit state:',
-          remoteMessage,
-        );
-
         if (remoteMessage) {
           const notification = remoteMessage.notification;
           onOpenNotification(notification);
@@ -107,7 +88,6 @@ class FCMService {
 
     // Foreground state messages
     this.messageListener = messaging().onMessage(async (remoteMessage) => {
-      console.log('[FCMService] A new FCM message arrived!', remoteMessage);
       if (remoteMessage) {
         let notification = null;
         if (Platform.OS === 'ios') {
@@ -121,13 +101,13 @@ class FCMService {
 
     // Triggered when have new token
     messaging().onTokenRefresh((fcmToken) => {
-      console.log('[FCMService] New token refresh: ', fcmToken);
       onRegister(fcmToken);
     });
   };
 
-  sendNotification = async (data, regIds, title, body) => {
-    const FIREBASE_API_KEY = 'AIzaSyBa2hkYEw-PT_aymqDWcEckrIddU1fdaTc';
+  sendNotification = (data, regIds, title, body) => {
+    const FIREBASE_API_KEY =
+      'AAAASkvA66Y:APA91bH_KVzhPVBFyvLuqxl1O_9JVT7BZx34fC6IcIb4G0e0P1jJ7dd--xkf4r7Lq-7K9rfPoFda6RpMQCX_pGRo6d4WN9Ipr4uWXEjHEntUqeeB4v5jHvUQjnPMSZGhqpccdX2xCdtV';
     const message = {
       registration_ids: regIds,
       notification: {
@@ -143,7 +123,7 @@ class FCMService {
     };
 
     sendNotifactionFirebaseApi(message, FIREBASE_API_KEY).then((response) => {
-      console.log(response);
+      console.log('[Firebase notification API response]', response);
     });
   };
 

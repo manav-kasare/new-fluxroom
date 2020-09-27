@@ -20,7 +20,7 @@ export default function EmailVerification({
   const [loading, setLoading] = React.useState(false);
   const [resendLoading, setResendLoading] = React.useState(false);
 
-  const checkVerification = async () => {
+  const checkVerification = () => {
     setLoading(true);
     auth()
       .signInWithEmailAndPassword(user.email, user.password)
@@ -35,10 +35,10 @@ export default function EmailVerification({
       });
   };
 
-  const resendEmail = async () => {
+  const resendEmail = () => {
     setResendLoading(true);
     try {
-      await userInfo.user.sendEmailVerification.then(() => {
+      userInfo.user.sendEmailVerification.then(() => {
         setLoading(false);
       });
     } catch (err) {

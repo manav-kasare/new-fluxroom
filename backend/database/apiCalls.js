@@ -293,13 +293,13 @@ export const sendNotifactionFirebaseApi = (message, apiKey) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: 'key=' + apiKey,
+      Authorization: `key=${apiKey}`,
     },
     body: JSON.stringify(message),
   };
 
   return fetch('https://fcm.googleapis.com/fcm/send', requestOptions)
-    .then((response) => response.json())
+    .then((response) => response.text())
     .then((data) => {
       return data;
     });

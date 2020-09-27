@@ -4,13 +4,12 @@ import Modal from 'react-native-modal';
 import {Searchbar} from 'react-native-paper';
 import _ from 'lodash';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {ActivityIndicator} from 'react-native-paper';
 
 import {ThemeContext, TokenContext} from '../../../../shared/Context';
 import {
   getUsers,
   inviteUserToRoom,
-  getUserByUsername,
-  getUserInfo,
 } from '../../../../backend/database/apiCalls';
 import CircleAvatar from '../../../../shared/CircleAvatar';
 import {CustomErrorToast} from '../../../../shared/CustomToast';
@@ -28,19 +27,19 @@ export default function InviteToRoom({
 
   React.useEffect(() => {
     getUsers().then((_allUsers) => {
-      let isMemberUser = false;
-      _allUsers.map((user) => {
-        listOfUsers.map((memberUser) => {
-          if (user._id === memberUser) {
-            isMemberUser = true;
+      for (var i = 0; i < _allUsers.length; i++) {
+        let alreadyMember = false;
+        for (var j = 0; j < listOfUsers.length; j++) {
+          if (_allUsers[i]._id === listOfUsers[j]) {
+            alreadyMember = true;
           }
-        });
-        if (isMemberUser === false) {
-          setAllUsers([...allUsers, user]);
-        } else {
-          isMemberUser = false;
         }
-      });
+        if (alreadyMember) {
+          alreadyMember = false;
+        } else {
+          setAllUsers([...allUsers, _allUsers[i]]);
+        }
+      }
     });
   }, []);
 
@@ -53,6 +52,26 @@ export default function InviteToRoom({
       );
     }
   }, 250);
+
+  const renderItem = ({item}) => (
+    <View
+      style={{
+        flexDirection: 'row',
+        width: constants.width,
+        height: 50,
+        paddingHorizontal: 25,
+        alignItems: 'center',
+        justifyContent: 'space-between',
+      }}>
+      <View style={{flexDirection: 'row', alignItems: 'center'}}>
+        <CircleAvatar uri={item.profilePic} size={30} />
+        <Text style={{marginLeft: 25, color: constants.text1}}>
+          {item.username}
+        </Text>
+      </View>
+      <SendInviteButton user={item} roomName={roomName} />
+    </View>
+  );
 
   return (
     <Modal
@@ -116,25 +135,7 @@ export default function InviteToRoom({
         style={{marginTop: 15}}
         data={fileredUsers}
         keyExtractor={(key, index) => index.toString()}
-        renderItem={({item}) => (
-          <View
-            style={{
-              flexDirection: 'row',
-              width: constants.width,
-              height: 50,
-              paddingHorizontal: 25,
-              alignItems: 'center',
-              justifyContent: 'space-between',
-            }}>
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
-              <CircleAvatar uri={item.profilePic} size={30} />
-              <Text style={{marginLeft: 25, color: constants.text1}}>
-                {item.username}
-              </Text>
-            </View>
-            <SendInviteButton user={item} roomName={roomName} />
-          </View>
-        )}
+        renderItem={renderItem}
       />
     </Modal>
   );
