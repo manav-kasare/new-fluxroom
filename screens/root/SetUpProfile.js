@@ -10,7 +10,12 @@ import {
   Keyboard,
 } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
-import ReactNativeHaptic from 'react-native-haptic';
+import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
+
+const options = {
+  enableVibrateFallback: true,
+  ignoreAndroidSystemSettings: false,
+};
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
@@ -70,7 +75,7 @@ export default function SetUpProfile({route}) {
       }).then((response) => {
         if (response.error) {
           setLoading(false);
-          ReactNativeHaptic.generate('notificationError');
+          ReactNativeHapticFeedback.trigger('notificationError', options);
           if (response.error.code === 11000) {
             CustomErrorToast('Username Already taken');
           } else {
@@ -82,14 +87,14 @@ export default function SetUpProfile({route}) {
             storeTheme('light');
             storeUserData(response.user);
             setUser(response.user);
-            ReactNativeHaptic.generate('notificationSuccess');
+            ReactNativeHapticFeedback.trigger('notificationSuccess', options);
             setLoading(false);
           });
         }
       });
     } catch (e) {
       setLoading(false);
-      ReactNativeHaptic.generate('notificationError');
+      ReactNativeHapticFeedback.trigger('notificationError', options);
       CustomErrorToast('An Error Occured !');
     }
   };
@@ -106,7 +111,7 @@ export default function SetUpProfile({route}) {
         profilePic: profilePhoto,
       }).then((response) => {
         if (response.error) {
-          ReactNativeHaptic.generate('notificationError');
+          ReactNativeHapticFeedback.trigger('notificationError', options);
           setLoading(false);
           if (response.error.code === 11000) {
             CustomErrorToast('Username Already taken');
@@ -119,14 +124,14 @@ export default function SetUpProfile({route}) {
             storeUserData(response.user);
             storeTheme('light');
             setUser(response.user);
-            ReactNativeHaptic.generate('notificationSuccess');
+            ReactNativeHapticFeedback.trigger('notificationSuccess', options);
             setLoading(false);
           });
         }
       });
     } catch (e) {
       setLoading(false);
-      ReactNativeHaptic.generate('notificationError');
+      ReactNativeHapticFeedback.trigger('notificationError', options);
       CustomErrorToast('An Error Occured !');
     }
   };
@@ -144,7 +149,7 @@ export default function SetUpProfile({route}) {
         profilePic: profilePhoto,
       }).then((response) => {
         if (response.error) {
-          ReactNativeHaptic.generate('notificationError');
+          ReactNativeHapticFeedback.trigger('notificationError', options);
           setLoading(false);
           if (response.error.code === 11000) {
             CustomErrorToast('Username Already taken');
@@ -157,14 +162,14 @@ export default function SetUpProfile({route}) {
             storeUserData(response.user);
             storeTheme('light');
             setUser(response.user);
-            ReactNativeHaptic.generate('notificationSuccess');
+            ReactNativeHapticFeedback.trigger('notificationSuccess', options);
             setLoading(false);
           });
         }
       });
     } catch (e) {
       setLoading(false);
-      ReactNativeHaptic.generate('notificationError');
+      ReactNativeHapticFeedback.trigger('notificationError', options);
       CustomErrorToast('An Error Occured !');
     }
   };
@@ -186,7 +191,7 @@ export default function SetUpProfile({route}) {
           profilePic: profilePhoto,
         }).then((response) => {
           if (response.error) {
-            ReactNativeHaptic.generate('notificationError');
+            ReactNativeHapticFeedback.trigger('notificationError', options);
             setLoading(false);
             if (response.error.code === 11000) {
               CustomErrorToast('Username Already taken');
@@ -199,14 +204,14 @@ export default function SetUpProfile({route}) {
               setLoading(false);
               storeUserData(response.user);
               storeTheme('light');
-              ReactNativeHaptic.generate('notificationSuccess');
+              ReactNativeHapticFeedback.trigger('notificationSuccess', options);
               setUser(response.user);
             });
           }
         });
       } catch (e) {
         setLoading(false);
-        ReactNativeHaptic.generate('notificationError');
+        ReactNativeHapticFeedback.trigger('notificationError', options);
         CustomErrorToast('An Error Occured !');
       }
     }

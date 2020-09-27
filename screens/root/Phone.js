@@ -92,7 +92,7 @@ export default function Phone({navigation}) {
           <PhoneInput
             ref={phoneInput}
             defaultValue={phoneNumber}
-            defaultCode={RNLocalize.getCountry()}
+            defaultCode={RNLocalize.getLocales()[1].countryCode}
             onChangeText={(text) => {
               setPhoneNumber(text);
             }}
@@ -106,9 +106,10 @@ export default function Phone({navigation}) {
               borderWidth: 0.3,
               width: constants.width * 0.8,
               borderRadius: 8,
-              padding: 2,
+              padding: 0,
               backgroundColor: 'white',
             }}
+            textInputStyle={{color: 'black'}}
             flagButtonStyle={{backgroundColor: 'white'}}
           />
           <TouchableOpacity style={globalStyles.button} onPress={signIn}>

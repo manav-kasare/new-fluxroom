@@ -1,7 +1,12 @@
 import React from 'react';
 import {View, TextInput, StyleSheet} from 'react-native';
 import auth from '@react-native-firebase/auth';
-import ReactNativeHaptic from 'react-native-haptic';
+import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
+
+const options = {
+  enableVibrateFallback: true,
+  ignoreAndroidSystemSettings: false,
+};
 import {
   Button,
   Paragraph,
@@ -37,7 +42,7 @@ export default OtpVerification = ({
     setIsLoadingCode(true);
     try {
       await confirmation.confirm(code).then((userInfo) => {
-        ReactNativeHaptic.generate('notificationSuccess');
+        ReactNativeHapticFeedback.trigger('notificationSuccess', options);
         setIsVisible(false);
         if (userInfo.additionalUserInfo.isNewUser) {
           setIsLoadingCode(false);
@@ -54,10 +59,13 @@ export default OtpVerification = ({
             }).then((response) => {
               if (response.err) {
                 setIsLoadingCode(false);
-                ReactNativeHaptic.generate('notificationError');
+                ReactNativeHapticFeedback.trigger('notificationError', options);
                 CustomErrorToast('An Error Occured !');
               } else {
-                ReactNativeHaptic.generate('notificationSuccess');
+                ReactNativeHapticFeedback.trigger(
+                  'notificationSuccess',
+                  options,
+                );
                 storeToken(response.user._id, response.token).then(() => {
                   setToken(response.token);
                   storeUserData(response.user);
@@ -71,7 +79,7 @@ export default OtpVerification = ({
         }
       });
     } catch (error) {
-      ReactNativeHaptic.generate('notificationError');
+      ReactNativeHapticFeedback.trigger('notificationError', options);
       setIsLoadingCode(false);
       CustomErrorToast('Invalid Code !');
     }

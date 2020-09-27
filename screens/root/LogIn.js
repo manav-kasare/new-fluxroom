@@ -14,7 +14,12 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Entypo from 'react-native-vector-icons/Entypo';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import auth from '@react-native-firebase/auth';
-import ReactNativeHaptic from 'react-native-haptic';
+import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
+
+const options = {
+  enableVibrateFallback: true,
+  ignoreAndroidSystemSettings: false,
+};
 
 import {UserDetailsContext, TokenContext} from '../../shared/Context';
 import constants from '../../shared/constants';
@@ -49,7 +54,10 @@ export default function LogIn({navigation}) {
               }).then((response) => {
                 if (response.err) {
                   setIsLoading(false);
-                  ReactNativeHaptic.generate('notificationError');
+                  ReactNativeHapticFeedback.trigger(
+                    'notificationError',
+                    options,
+                  );
                   CustomErrorToast('An Error Occured !');
                 } else {
                   storeToken(response.user._id, response.token).then(() => {
@@ -58,7 +66,10 @@ export default function LogIn({navigation}) {
                       storeTheme('light');
                       setIsLoading(false);
                       setUser(response.user);
-                      ReactNativeHaptic.generate('notificationSuccess');
+                      ReactNativeHapticFeedback.trigger(
+                        'notificationSuccess',
+                        options,
+                      );
                     });
                   });
                 }
@@ -70,7 +81,7 @@ export default function LogIn({navigation}) {
         });
     } catch (err) {
       setIsLoading(false);
-      ReactNativeHaptic.generate('notificationError');
+      ReactNativeHapticFeedback.trigger('notificationError', options);
       CustomErrorToast('An Error Occured !');
     }
   };

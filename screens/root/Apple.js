@@ -8,6 +8,12 @@ import appleAuth, {
   AppleAuthRequestOperation,
 } from '@invertase/react-native-apple-authentication';
 import {ActivityIndicator} from 'react-native-paper';
+import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
+
+const options = {
+  enableVibrateFallback: true,
+  ignoreAndroidSystemSettings: false,
+};
 
 export default function Apple({navigation}) {
   const {setUser} = React.useContext(UserDetailsContext);
@@ -53,10 +59,13 @@ export default function Apple({navigation}) {
             }).then((_response) => {
               if (_response.err) {
                 setLoading(false);
-                ReactNativeHaptic.generate('notificationError');
+                ReactNativeHapticFeedback.trigger('notificationError', options);
                 CustomToast('An Error Occured');
               } else {
-                ReactNativeHaptic.generate('notificationSuccess');
+                ReactNativeHapticFeedback.trigger(
+                  'notificationSuccess',
+                  options,
+                );
                 storeToken(_response.user._id, _response.token);
                 storeUserData(_response.user);
                 storeTheme('light');

@@ -9,7 +9,11 @@ import {
 import Feather from 'react-native-vector-icons/Feather';
 import ImagePicker from 'react-native-image-picker';
 import Modal from 'react-native-modal';
-import ReactNativeHaptic from 'react-native-haptic';
+import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
+const options = {
+  enableVibrateFallback: true,
+  ignoreAndroidSystemSettings: false,
+};
 
 import {createRoom, joinRoom} from '../../../backend/database/apiCalls';
 import {
@@ -35,7 +39,7 @@ export default function CreateRoom({navigation, isVisible, setIsVisible}) {
 
   const verifyDescription = () => {
     if (room.description.length > 100) {
-      ReactNativeHaptic.generate('notificationError');
+      ReactNativeHapticFeedback.trigger('notificationError', options);
     } else {
       handleCreateRoom();
     }

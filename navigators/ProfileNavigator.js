@@ -31,7 +31,7 @@ export default function ProfileNavigator({route, navigation}) {
         gestureDirection: 'horizontal',
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
       }}
-      headerMode="screen">
+      headerMode="float">
       <ProfileStack.Screen
         name="Profile"
         component={UserProfile}
@@ -46,7 +46,7 @@ export default function ProfileNavigator({route, navigation}) {
             borderColor: 'transparent',
             elevation: 0,
             shadowOpacity: 0,
-            height: 125,
+            height: 100,
           },
           headerTitleStyle: {
             fontSize: 25,

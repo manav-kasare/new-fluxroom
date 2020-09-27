@@ -27,13 +27,6 @@ export const light = {
     fontFamily: 'Helvetica',
     color: 'white',
   },
-  header: {
-    width: WIDTH,
-    height: 50,
-    backgroundColor: '#03449e',
-    borderColor: 'transparent',
-    elevation: 0,
-  },
   headerStyle: {
     backgroundColor: '#03449e',
     borderWidth: 0,
@@ -76,16 +69,10 @@ export const dark = {
     fontWeight: '400',
     fontFamily: 'Helvetica',
   },
-  header: {
-    width: WIDTH,
-    height: 50,
-    backgroundColor: '#141414',
-    borderColor: 'transparent',
-    elevation: 0,
-  },
   headerStyle: {
     backgroundColor: '#141414',
     borderWidth: 0,
+    // height: 100,
     borderColor: 'transparent',
     elevation: 0,
     shadowOpacity: 0,

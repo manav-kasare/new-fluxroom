@@ -4,7 +4,12 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import {GoogleSignin, statusCodes} from '@react-native-community/google-signin';
 import {UserDetailsContext, TokenContext} from '../../shared/Context';
 import auth from '@react-native-firebase/auth';
-import ReactNativeHaptic from 'react-native-haptic';
+import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
+
+const options = {
+  enableVibrateFallback: true,
+  ignoreAndroidSystemSettings: false,
+};
 
 import {getUserByEmail, loginUser} from '../../backend/database/apiCalls';
 import {storeToken} from '../../shared/KeyChain';
@@ -37,12 +42,14 @@ export default function Google({navigation}) {
     try {
       await GoogleSignin.hasPlayServices();
       await GoogleSignin.signIn().then((userInfo) => {
+        console.log('[GoogleSignIn response]', userInfo);
         const googleCredential = auth.GoogleAuthProvider.credential(
           userInfo.idToken,
         );
         auth()
           .signInWithCredential(googleCredential)
           .then((_userInfo) => {
+            console.log('[Firebase response]', _userInfo);
             if (_userInfo.additionalUserInfo.isNewUser) {
               setLoading(false);
               navigation.navigate('SetUpProfile', {
@@ -55,12 +62,19 @@ export default function Google({navigation}) {
                   username: response.username,
                   password: '89337133-17c9-42e3-9fef-78416a25651a',
                 }).then((_response) => {
+                  console.log('[Mongo Response]', _response);
                   if (_response.err) {
                     setLoading(false);
-                    ReactNativeHaptic.generate('notificationError');
+                    ReactNativeHapticFeedback.trigger(
+                      'notificationError',
+                      options,
+                    );
                     CustomErrorToast('An Error Occured');
                   } else {
-                    ReactNativeHaptic.generate('notificationSuccess');
+                    ReactNativeHapticFeedback.trigger(
+                      'notificationSuccess',
+                      options,
+                    );
                     storeToken(_response.user._id, _response.token).then(() => {
                       setToken(_response.token);
                       storeUserData(_response.user).then(() => {
@@ -77,6 +91,7 @@ export default function Google({navigation}) {
       });
     } catch (error) {
       setLoading(false);
+
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         // user cancelled the login flow
       } else if (error.code === statusCodes.IN_PROGRESS) {
@@ -86,6 +101,7 @@ export default function Google({navigation}) {
         // play services not available or outdated
       } else {
         // some other error happened
+        CustomErrorToast('An Error Occured !');
       }
     }
   };

@@ -12,7 +12,12 @@ import {
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-import ReactNativeHaptic from 'react-native-haptic';
+import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
+
+const options = {
+  enableVibrateFallback: true,
+  ignoreAndroidSystemSettings: false,
+};
 import auth from '@react-native-firebase/auth';
 import EmailVerification from './EmailVerification';
 
@@ -44,14 +49,14 @@ export default function SignUp({navigation}) {
         _userInfo.user.sendEmailVerification().then(() => {
           setIsLoading(false);
           setUserInfo(_userInfo);
-          ReactNativeHaptic.generate('notificationSuccess');
+          ReactNativeHapticFeedback.trigger('notificationSuccess', options);
           setIsVisible(true);
           // navigation.navigate('SetUpProfile', {email: email});
         });
       })
       .catch((error) => {
         setIsLoading(false);
-        ReactNativeHaptic.generate('notificationError');
+        ReactNativeHapticFeedback.trigger('notificationError', options);
         if (error.code === 'auth/email-already-in-use') {
           CustomErrorToast('That email address is already in use!');
         }

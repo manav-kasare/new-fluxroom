@@ -60,7 +60,6 @@ const Room = ({route, navigation}) => {
 
   const setData = () => {
     getChatroomInfo(id).then((response) => {
-      _setRoom(response);
       setListOfUsers(response.listOfUsers);
       setLoading(false);
       setRefreshing(false);

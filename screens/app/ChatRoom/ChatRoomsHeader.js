@@ -43,6 +43,7 @@ export default function ChatRoomsHeader({
       marginLeft: 25,
     },
     actions: {
+      marginRight: 10,
       flexDirection: 'row',
       alignItems: 'center',
     },
