@@ -12,8 +12,6 @@ import {
 import {ActivityIndicator} from 'react-native-paper';
 import {useIsFocused} from '@react-navigation/native';
 
-console.disableYellowBox = true;
-
 import globalStyles from '../../../shared/GlobalStyles';
 import {
   UserDetailsContext,
@@ -35,8 +33,6 @@ export default function ChatRooms({navigation}) {
   const [loading, setloading] = useState(true);
   const [isCreateRoomModal, setIsCreateRoomModal] = useState(false);
   const isFocused = useIsFocused();
-
-  console.log(isFocused);
 
   useEffect(() => {
     setData();
@@ -78,7 +74,7 @@ export default function ChatRooms({navigation}) {
       refreshing={refreshing}
       onRefresh={onRefresh}
       style={{
-        backgroundColor: darkTheme ? constants.background3 : constants.primary,
+        backgroundColor: darkTheme ? constants.background1 : constants.primary,
       }}
       tintColor="white"
       size={Platform.os === 'ios' ? 'small' : 'default'}

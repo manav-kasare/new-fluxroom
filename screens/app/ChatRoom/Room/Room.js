@@ -13,7 +13,7 @@ import Feather from 'react-native-vector-icons/Feather';
 import {ActivityIndicator} from 'react-native-paper';
 
 import {getChatroomInfo} from '../../../../backend/database/apiCalls';
-import {ThemeContext} from '../../../../shared/Context';
+import {ThemeContext, UserDetailsContext} from '../../../../shared/Context';
 import RoomAvatar from './RoomAvatar';
 import RoomUserOptions from './RoomUserOptions';
 import InviteToRoom from './InviteToRoom';
@@ -22,6 +22,7 @@ import RoomBottomView from './RoomBottomView';
 const Room = ({route, navigation}) => {
   const {id, name, profilePic, description} = route.params;
   const {constants, darkTheme} = React.useContext(ThemeContext);
+  const {user} = React.useContext(UserDetailsContext);
   const [listOfUsers, setListOfUsers] = React.useState([]);
   const [isSpeaking, setIsSpeaking] = React.useState(false);
   const [someoneRaisingHand, setSomeoneRaisingHand] = React.useState(false);
@@ -76,7 +77,9 @@ const Room = ({route, navigation}) => {
   };
 
   const renderItem = ({item}) => (
-    <TouchableOpacity key={item._id} onPress={toggleVisible}>
+    <TouchableOpacity
+      key={item._id}
+      onPress={user._id !== item ? toggleVisible : () => {}}>
       <RoomUserOptions isVisible={isVisible} setIsVisible={setIsVisible} />
       <RoomAvatar id={item} size={constants.width * 0.25} isHost={false} />
     </TouchableOpacity>
