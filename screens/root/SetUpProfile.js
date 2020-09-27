@@ -277,7 +277,7 @@ export default function SetUpProfile({route}) {
                 height: constants.height * 0.2,
               }}
               resizeMode="contain"
-              source={require('/Users/manav/projects/fluxroom/assets/setup_profile.png')}
+              source={require('../../assets/setup_profile.png')}
             />
 
             <View

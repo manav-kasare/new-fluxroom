@@ -26,6 +26,8 @@ export default function Phone({navigation}) {
   const [isVisible, setIsVisible] = React.useState(false);
   const [confirmation, setConfirmation] = React.useState();
 
+  console.log(RNLocalize.getLocales());
+
   const signIn = async () => {
     setIsLoading(true);
     Keyboard.dismiss();
@@ -75,7 +77,7 @@ export default function Phone({navigation}) {
               height: constants.height * 0.2,
             }}
             resizeMode="contain"
-            source={require('/Users/manav/projects/fluxroom/assets/phone.png')}
+            source={require('../../assets/phone.png')}
           />
         </View>
         <View
@@ -92,7 +94,11 @@ export default function Phone({navigation}) {
           <PhoneInput
             ref={phoneInput}
             defaultValue={phoneNumber}
-            defaultCode={RNLocalize.getLocales()[1].countryCode}
+            defaultCode={
+              RNLocalize.getLocales().length > 1
+                ? RNLocalize.getLocales()[1].countryCode
+                : RNLocalize.getLocales()[0].countryCode
+            }
             onChangeText={(text) => {
               setPhoneNumber(text);
             }}

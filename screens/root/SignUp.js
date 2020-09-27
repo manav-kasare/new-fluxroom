@@ -106,7 +106,7 @@ export default function SignUp({navigation}) {
                   height: constants.height * 0.2,
                 }}
                 resizeMode="contain"
-                source={require('/Users/manav/projects/fluxroom/assets/contract.png')}
+                source={require('../../assets/contract.png')}
               />
             </View>
             <View

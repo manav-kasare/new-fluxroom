@@ -31,7 +31,7 @@ export default function ProfileNavigator({route, navigation}) {
         gestureDirection: 'horizontal',
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
       }}
-      headerMode="float">
+      headerMode="screen">
       <ProfileStack.Screen
         name="Profile"
         component={UserProfile}
@@ -69,6 +69,7 @@ export default function ProfileNavigator({route, navigation}) {
           headerTitleStyle: constants.headerText,
           headerBackTitleVisible: false,
           headerTintColor: 'white',
+          headerTitleAlign: 'center',
         }}
       />
       <ProfileStack.Screen
@@ -80,6 +81,7 @@ export default function ProfileNavigator({route, navigation}) {
           headerTitleStyle: constants.headerText,
           headerBackTitleVisible: false,
           headerTintColor: 'white',
+          headerTitleAlign: 'center',
         }}
       />
       <ProfileStack.Screen
@@ -91,6 +93,7 @@ export default function ProfileNavigator({route, navigation}) {
           headerTitleStyle: constants.headerText,
           headerBackTitleVisible: false,
           headerTintColor: 'white',
+          headerTitleAlign: 'center',
         }}
       />
       <ProfileStack.Screen
@@ -102,6 +105,7 @@ export default function ProfileNavigator({route, navigation}) {
           headerTitleStyle: constants.headerText,
           headerBackTitleVisible: false,
           headerTintColor: 'white',
+          headerTitleAlign: 'center',
         }}
       />
       <ProfileStack.Screen
@@ -113,6 +117,7 @@ export default function ProfileNavigator({route, navigation}) {
           headerTitleStyle: constants.headerText,
           headerBackTitleVisible: false,
           headerTintColor: 'white',
+          headerTitleAlign: 'center',
         }}
       />
     </ProfileStack.Navigator>

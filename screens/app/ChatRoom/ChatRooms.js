@@ -10,6 +10,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {ActivityIndicator} from 'react-native-paper';
+import {useIsFocused} from '@react-navigation/native';
 
 console.disableYellowBox = true;
 
@@ -33,6 +34,9 @@ export default function ChatRooms({navigation}) {
   const [refreshing, setRefreshing] = useState(false);
   const [loading, setloading] = useState(true);
   const [isCreateRoomModal, setIsCreateRoomModal] = useState(false);
+  const isFocused = useIsFocused();
+
+  console.log(isFocused);
 
   useEffect(() => {
     setData();
@@ -74,7 +78,7 @@ export default function ChatRooms({navigation}) {
       refreshing={refreshing}
       onRefresh={onRefresh}
       style={{
-        backgroundColor: darkTheme ? constants.background1 : constants.primary,
+        backgroundColor: darkTheme ? constants.background3 : constants.primary,
       }}
       tintColor="white"
       size={Platform.os === 'ios' ? 'small' : 'default'}
@@ -100,7 +104,13 @@ export default function ChatRooms({navigation}) {
       />
       <StatusBar
         barStyle="light-content"
-        backgroundColor={darkTheme ? constants.background3 : constants.primary}
+        backgroundColor={
+          darkTheme
+            ? isFocused
+              ? constants.background1
+              : constants.background3
+            : constants.primary
+        }
       />
       {loading ? (
         <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
@@ -143,7 +153,7 @@ const EmptyItem = ({navigation}) => {
       }}>
       <View style={{marginVertical: 50, alignItems: 'center'}}>
         <Image
-          source={require('/Users/manav/projects/fluxroom/assets/tree_swing.png')}
+          source={require('../../../assets/tree_swing.png')}
           style={{
             width: constants.width,
             height: constants.height * 0.2,

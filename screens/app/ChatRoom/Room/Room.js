@@ -125,7 +125,7 @@ const Room = ({route, navigation}) => {
         <StatusBar
           barStyle="light-content"
           backgroundColor={
-            darkTheme ? constants.background1 : constants.primary
+            darkTheme ? constants.background3 : constants.primary
           }
         />
         <View style={{backgroundColor: constants.background1, flex: 1}}>

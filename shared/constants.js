@@ -33,7 +33,6 @@ export const light = {
     borderColor: 'transparent',
     elevation: 0,
     shadowOpacity: 0,
-    height: 100,
   },
   input: {
     fontFamily: 'Helvetica',
@@ -72,7 +71,6 @@ export const dark = {
   headerStyle: {
     backgroundColor: '#141414',
     borderWidth: 0,
-    // height: 100,
     borderColor: 'transparent',
     elevation: 0,
     shadowOpacity: 0,

@@ -53,7 +53,7 @@ export default function ForgotPassword() {
                 marginVertical: 50,
               }}
               resizeMode="contain"
-              source={require('/Users/manav/projects/fluxroom/assets/forgot_password.png')}
+              source={require('../../assets/forgot_password.png')}
             />
           </View>
           <View

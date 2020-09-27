@@ -53,6 +53,7 @@ export default function ChatRoomNavigator() {
         component={Room}
         options={{
           title: null,
+          headerTitleAlign: 'center',
           headerStyle: constants.headerStyle,
           headerTitleStyle: constants.headerText,
           headerBackTitleVisible: false,
@@ -68,6 +69,7 @@ export default function ChatRoomNavigator() {
           headerTitleStyle: constants.headerText,
           headerBackTitleVisible: false,
           headerTintColor: 'white',
+          headerTitleAlign: 'center',
         }}
       />
       <ChatRoomStack.Screen
@@ -79,6 +81,7 @@ export default function ChatRoomNavigator() {
           headerTitleStyle: constants.headerText,
           headerBackTitleVisible: false,
           headerTintColor: 'white',
+          headerTitleAlign: 'center',
         })}
       />
       <ChatRoomStack.Screen
@@ -90,6 +93,7 @@ export default function ChatRoomNavigator() {
           headerTitleStyle: constants.headerText,
           headerBackTitleVisible: false,
           headerTintColor: 'white',
+          headerTitleAlign: 'center',
         }}
       />
     </ChatRoomStack.Navigator>

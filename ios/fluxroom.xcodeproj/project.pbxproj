@@ -18,7 +18,6 @@
 		2DCD954D1E0B4F2C00145EB5 /* fluxroomTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* fluxroomTests.m */; };
 		41F9785344881AF3F057A4E6 /* libPods-fluxroom-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AEB49E98B1FCE5A93FFEEDBD /* libPods-fluxroom-tvOSTests.a */; };
 		693EE99624FC2638003F8880 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 693EE99524FC2638003F8880 /* GoogleService-Info.plist */; };
-		69F40CA025208E4A00705D2B /* libRNReactNativeHapticFeedback.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 69F40C9B25208E2800705D2B /* libRNReactNativeHapticFeedback.a */; };
 		7DCE849DE2F9C9B310860450 /* libPods-fluxroom.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 77C8C7C367CDE6A499069A5A /* libPods-fluxroom.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		B3BE19C8834BFDE81B1E61D8 /* libPods-fluxroom-fluxroomTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 017C0225CB031D06218A21AC /* libPods-fluxroom-fluxroomTests.a */; };
@@ -38,13 +37,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
 			remoteInfo = "fluxroom-tvOS";
-		};
-		69F40C9A25208E2800705D2B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 69F40C9525208E2800705D2B /* RNReactNativeHapticFeedback.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = RNReactNativeHapticFeedback;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -66,7 +58,6 @@
 		3F694CEABC75128A55C950C3 /* Pods-fluxroom-fluxroomTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fluxroom-fluxroomTests.release.xcconfig"; path = "Target Support Files/Pods-fluxroom-fluxroomTests/Pods-fluxroom-fluxroomTests.release.xcconfig"; sourceTree = "<group>"; };
 		4940885238F9561CA901387E /* Pods-fluxroom-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fluxroom-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-fluxroom-tvOS/Pods-fluxroom-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		693EE99524FC2638003F8880 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		69F40C9525208E2800705D2B /* RNReactNativeHapticFeedback.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNReactNativeHapticFeedback.xcodeproj; path = "../node_modules/react-native-haptic-feedback/ios/RNReactNativeHapticFeedback.xcodeproj"; sourceTree = "<group>"; };
 		77C8C7C367CDE6A499069A5A /* libPods-fluxroom.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-fluxroom.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78A46B1B7C9E211D02341218 /* Pods-fluxroom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fluxroom.debug.xcconfig"; path = "Target Support Files/Pods-fluxroom/Pods-fluxroom.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = fluxroom/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -93,7 +84,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				69F40CA025208E4A00705D2B /* libRNReactNativeHapticFeedback.a in Frameworks */,
 				7DCE849DE2F9C9B310860450 /* libPods-fluxroom.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -161,18 +151,9 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		69F40C9625208E2800705D2B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				69F40C9B25208E2800705D2B /* libRNReactNativeHapticFeedback.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				69F40C9525208E2800705D2B /* RNReactNativeHapticFeedback.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -342,10 +323,6 @@
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
-				{
-					ProductGroup = 69F40C9625208E2800705D2B /* Products */;
-					ProjectRef = 69F40C9525208E2800705D2B /* RNReactNativeHapticFeedback.xcodeproj */;
-				},
 			);
 			projectRoot = "";
 			targets = (
@@ -358,13 +335,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		69F40C9B25208E2800705D2B /* libRNReactNativeHapticFeedback.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNReactNativeHapticFeedback.a;
-			remoteRef = 69F40C9A25208E2800705D2B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -678,6 +648,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/fluxroom.app/fluxroom";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+				);
 			};
 			name = Debug;
 		};
@@ -702,6 +675,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/fluxroom.app/fluxroom";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+				);
 			};
 			name = Release;
 		};
@@ -730,6 +706,9 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+				);
 			};
 			name = Debug;
 		};
@@ -756,6 +735,9 @@
 				PRODUCT_NAME = fluxroom;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+				);
 			};
 			name = Release;
 		};
@@ -787,6 +769,9 @@
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 10.0;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+				);
 			};
 			name = Debug;
 		};
@@ -818,6 +803,9 @@
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 10.0;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+				);
 			};
 			name = Release;
 		};
@@ -849,6 +837,9 @@
 				SDKROOT = appletvos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/fluxroom-tvOS.app/fluxroom-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+				);
 			};
 			name = Debug;
 		};
@@ -880,6 +871,9 @@
 				SDKROOT = appletvos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/fluxroom-tvOS.app/fluxroom-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+				);
 			};
 			name = Release;
 		};

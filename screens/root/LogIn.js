@@ -120,7 +120,7 @@ export default function LogIn({navigation}) {
                   marginVertical: 30,
                 }}
                 resizeMode="contain"
-                source={require('/Users/manav/projects/fluxroom/assets/receipt.png')}
+                source={require('../../assets/receipt.png')}
               />
             </View>
             <View

@@ -121,6 +121,7 @@ const AuthStackNavigator = () => {
           },
           headerTintColor: 'white',
           headerBackTitleVisible: false,
+          headerTitleAlign: 'center',
         }}
       />
       <Stack.Screen
@@ -143,6 +144,7 @@ const AuthStackNavigator = () => {
           },
           headerTintColor: 'white',
           headerBackTitleVisible: false,
+          headerTitleAlign: 'center',
         }}
       />
       <Stack.Screen
@@ -165,6 +167,7 @@ const AuthStackNavigator = () => {
           },
           headerTintColor: 'white',
           headerBackTitleVisible: false,
+          headerTitleAlign: 'center',
         }}
       />
       <Stack.Screen
@@ -187,6 +190,7 @@ const AuthStackNavigator = () => {
           },
           headerTintColor: 'white',
           headerBackTitleVisible: false,
+          headerTitleAlign: 'center',
         }}
       />
       <Stack.Screen
@@ -209,6 +213,7 @@ const AuthStackNavigator = () => {
           },
           headerTintColor: 'white',
           headerBackTitleVisible: false,
+          headerTitleAlign: 'center',
         }}
       />
     </Stack.Navigator>
