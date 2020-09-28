@@ -3,7 +3,6 @@ import {
   SafeAreaView,
   FlatList,
   View,
-  Text,
   TouchableOpacity,
   StatusBar,
   Platform,
@@ -19,7 +18,6 @@ import RoomAvatar from './RoomAvatar';
 import RoomUserOptions from './RoomUserOptions';
 import InviteToRoom from './InviteToRoom';
 import RoomBottomView from './RoomBottomView';
-import {fcmService} from '../../../../firebase/FCMService';
 
 const Room = ({route, navigation}) => {
   const {id} = route.params;
@@ -140,20 +138,6 @@ const Room = ({route, navigation}) => {
             darkTheme ? constants.background3 : constants.primary
           }
         />
-        <TouchableOpacity
-          onPress={() => {
-            fcmService.sendNotification(
-              {url: `fluxroom://room/${id}`},
-              [
-                'clUmuSVrR5KBeKENME1vlA:APA91bHHFSuHu1cLUIAh9XECqRaITbKb3SJS1o2UC4cdxaptry-5lwk7V3lEZWXrcVTbItX8nRSFokhr_fvH83SRJRgk6xERxRq2LUM_gF9mhK7wZwsOAv6U0jGDmGPmrPR1EQY-CS0j',
-                // 'eKs98_JQQhuICJizMootps:APA91bF5lOG48OzRp5ofCjJNFWqZmaNRGTOxlbztitfKDe0ZpTa4u2L93Guvupt7I5atO4USG8YOuj2ZAZ2XQ4La5DzBS55ZhP1_UbA7BhWmY1mOT_Oz1jzUG-cSwhd97qZCNErAVNTv',
-              ],
-              'Test',
-              'Notification Test',
-            );
-          }}>
-          <Text style={{fontSize: 25, color: 'white'}}>Send</Text>
-        </TouchableOpacity>
         <View style={{backgroundColor: constants.background1, flex: 1}}>
           {loading ? (
             <View style={styles.loading}>

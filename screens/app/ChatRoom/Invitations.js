@@ -8,83 +8,102 @@ import {
   StyleSheet,
   Platform,
 } from 'react-native';
+import {ActivityIndicator, Button} from 'react-native-paper';
 
 import {CustomErrorToast} from '../../../shared/CustomToast';
 import {
   joinRoom,
-  removeFromInvitedToRooms,
   getChatroomInfo,
   declineInvitation,
+  getUserMe,
 } from '../../../backend/database/apiCalls';
 import {
   UserDetailsContext,
   ThemeContext,
   TokenContext,
 } from '../../../shared/Context';
-import {ActivityIndicator, Button} from 'react-native-paper';
 import CircleAvatar from '../../../shared/CircleAvatar';
-
-const wait = (timeout) => {
-  return new Promise((resolve) => {
-    setTimeout(resolve, timeout);
-  });
-};
 
 const Invitations = ({navigation}) => {
   const {constants} = React.useContext(ThemeContext);
-  const {user} = useContext(UserDetailsContext);
-  const {token} = useContext(TokenContext);
-  const [invitations, setInvitations] = useState([]);
+  const {token} = React.useContext(TokenContext);
+  const {user, setUser} = useContext(UserDetailsContext);
   const [refreshing, setRefreshing] = useState(false);
-  const [loadingAccept, setLoadingAccept] = useState(false);
-
-  const onRefresh = useCallback(() => {
-    setRefreshing(true);
-    wait(2000).then(() => setRefreshing(false));
-  }, []);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    user.invitedToRooms.map((id) => {
-      getChatroomInfo(id).then((response) => {
-        setInvitations([...invitations, response]);
-      });
+    setLoading(true);
+    getUserInfo();
+  }, []);
+
+  const getUserInfo = () => {
+    getUserMe(token).then((response) => {
+      setUser(response.user);
+      setLoading(false);
+      setRefreshing(false);
     });
-  }, [refreshing]);
+  };
+
+  const onRefresh = () => {
+    setRefreshing(true);
+    getUserInfo();
+  };
+
+  const renderItem = ({item, index}) => (
+    <Tile id={item} navigation={navigation} index={index} />
+  );
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: constants.background1}}>
-      <FlatList
-        data={invitations}
-        renderItem={({item}) => <Tlie room={item} navigation={navigation} />}
-        refreshControl={
-          <RefreshControl
-            refreshing={refreshing}
-            onRefresh={onRefresh}
-            tintColor={constants.background2}
-            size={Platform.os === 'ios' ? 'small' : 'default'}
-          />
-        }
-      />
+      {loading ? (
+        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+          <ActivityIndicator color={constants.primary} animating={true} />
+        </View>
+      ) : (
+        <FlatList
+          data={user.invitedToRooms}
+          renderItem={renderItem}
+          refreshControl={
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={onRefresh}
+              tintColor={constants.background2}
+              size={Platform.os === 'ios' ? 'small' : 'default'}
+            />
+          }
+        />
+      )}
     </SafeAreaView>
   );
 };
 
-function Tlie({room, navigation}) {
+function Tile({id, navigation, index, setInvitations, invitations}) {
   const {constants} = React.useContext(ThemeContext);
   const {token} = useContext(TokenContext);
   const [loadingAccept, setLoadingAccept] = useState(false);
   const [loadingReject, setLoadingReject] = useState(false);
+  const [room, setRoom] = useState({
+    name: '',
+    description: '',
+    profilePic: '',
+  });
+
+  React.useEffect(() => {
+    getChatroomInfo(id).then((response) => {
+      setRoom({...room, ...response});
+    });
+  }, []);
 
   const handleAccept = () => {
     setLoadingAccept(true);
-    joinRoom(room._id, token).then((response) => {
+    joinRoom(id, token).then((response) => {
       if (response.error) {
         setLoadingAccept(false);
         CustomErrorToast('An Error Occured');
       } else {
         setLoadingAccept(false);
         navigation.navigate('Room', {
-          id: room._id,
+          id: id,
         });
         declineInvitation(token, room.name);
       }
@@ -93,7 +112,9 @@ function Tlie({room, navigation}) {
 
   const handleDecline = () => {
     setLoadingReject(true);
-    declineInvitation(token, room.name).then(() => {
+    declineInvitation(token, room.name).then((response) => {
+      console.log('[Decline Invitation]', response);
+      setInvitations(invitations.splice(index, 1));
       setLoadingReject(false);
     });
   };
@@ -111,14 +132,14 @@ function Tlie({room, navigation}) {
     heading: {
       color: constants.text1,
       marginLeft: 15,
-      fontSize: 20,
+      fontSize: 18,
       fontWeight: '500',
       fontFamily: 'Helvetica Neue',
     },
     subHeading: {
       color: 'grey',
       marginLeft: 15,
-      fontSize: 13,
+      fontSize: 12,
       fontWeight: '400',
       fontFamily: 'Helvetica Neue',
     },
@@ -128,9 +149,9 @@ function Tlie({room, navigation}) {
     <View style={styles.tile}>
       <View style={{flexDirection: 'row'}}>
         <CircleAvatar uri={room.profilePic} size={50} type="room" />
-        <View>
+        <View style={{width: constants.width * 0.4}}>
           <Text style={styles.heading}>{room.name}</Text>
-          <Text style={styles.subHeading}>{room.name}</Text>
+          <Text style={styles.subHeading}>{room.description}</Text>
         </View>
       </View>
       <View style={{flexDirection: 'row'}}>

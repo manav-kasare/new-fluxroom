@@ -15,6 +15,7 @@ export default function ChatRoomsHeader({
   id,
   navigation,
   setIsCreateRoomModal,
+  invitations,
 }) {
   const {constants, darkTheme} = React.useContext(ThemeContext);
 
@@ -61,7 +62,11 @@ export default function ChatRoomsHeader({
           style={styles.createRoomAction}>
           <Entypo size={30} color="white" name="plus" />
         </TouchableOpacity>
-        <InvitationsIcon id={id} navigation={navigation} />
+        <InvitationsIcon
+          id={id}
+          navigation={navigation}
+          invitations={invitations}
+        />
       </View>
     </SafeAreaView>
   );

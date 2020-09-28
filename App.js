@@ -1,5 +1,4 @@
 import React from 'react';
-import {Linking} from 'react-native';
 import {Provider as PaperProvider} from 'react-native-paper';
 import Toast from 'react-native-fast-toast';
 import Entypo from 'react-native-vector-icons/Entypo';

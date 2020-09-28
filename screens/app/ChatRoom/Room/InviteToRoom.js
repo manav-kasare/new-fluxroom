@@ -6,13 +6,18 @@ import _ from 'lodash';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {ActivityIndicator} from 'react-native-paper';
 
-import {ThemeContext, TokenContext} from '../../../../shared/Context';
+import {
+  ThemeContext,
+  TokenContext,
+  UserDetailsContext,
+} from '../../../../shared/Context';
 import {
   getUsers,
   inviteUserToRoom,
 } from '../../../../backend/database/apiCalls';
 import CircleAvatar from '../../../../shared/CircleAvatar';
 import {CustomErrorToast} from '../../../../shared/CustomToast';
+import {fcmService} from '../../../../firebase/FCMService';
 
 export default function InviteToRoom({
   inviteModal,
@@ -27,19 +32,7 @@ export default function InviteToRoom({
 
   React.useEffect(() => {
     getUsers().then((_allUsers) => {
-      for (var i = 0; i < _allUsers.length; i++) {
-        let alreadyMember = false;
-        for (var j = 0; j < listOfUsers.length; j++) {
-          if (_allUsers[i]._id === listOfUsers[j]) {
-            alreadyMember = true;
-          }
-        }
-        if (alreadyMember) {
-          alreadyMember = false;
-        } else {
-          setAllUsers([...allUsers, _allUsers[i]]);
-        }
-      }
+      setAllUsers(_allUsers);
     });
   }, []);
 
@@ -69,7 +62,7 @@ export default function InviteToRoom({
           {item.username}
         </Text>
       </View>
-      <SendInviteButton user={item} roomName={roomName} />
+      <SendInviteButton userProp={item} roomName={roomName} />
     </View>
   );
 
@@ -141,12 +134,13 @@ export default function InviteToRoom({
   );
 }
 
-const SendInviteButton = ({user, roomName}) => {
+const SendInviteButton = ({userProp, roomName}) => {
   const [alreadyInvited, setAlreadyInvited] = React.useState(false);
   const {token} = React.useContext(TokenContext);
+  const {user} = React.useContext(UserDetailsContext);
 
   React.useEffect(() => {
-    const invitedToRooms = user.invitedToRooms;
+    const invitedToRooms = userProp.invitedToRooms;
     invitedToRooms.map((room) => {
       if (room.name === roomName) {
         setAlreadyInvited(true);
@@ -155,14 +149,24 @@ const SendInviteButton = ({user, roomName}) => {
   }, []);
 
   const handleInvite = () => {
-    inviteUserToRoom(user.username, roomName, token).then((response) => {
+    inviteUserToRoom(userProp.username, roomName, token).then((response) => {
       if (response.message === `Either room or user doesn't exist`) {
         Keyboard.dismiss();
         CustomErrorToast(`Either room or user does not exist`);
       } else {
         setAlreadyInvited(true);
+        sendNotification();
       }
     });
+  };
+
+  const sendNotification = () => {
+    fcmService.sendNotification(
+      {url: `fluxroom://invitations`},
+      [userProp.notificationID],
+      roomName,
+      `${user.username} invited you !`,
+    );
   };
 
   if (alreadyInvited) {

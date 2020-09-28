@@ -46,6 +46,11 @@ export default function RootNavigator() {
   const {setToken} = React.useContext(TokenContext);
 
   React.useEffect(() => {
+    initializeUser();
+    initializeFCM();
+  }, []);
+
+  const initializeUser = () => {
     getToken().then((token) => {
       getUserMe(token).then((response) => {
         setUser(response.user);
@@ -54,28 +59,24 @@ export default function RootNavigator() {
           setSplashScreen(false);
           setToken(token);
           storeUserData(response.user);
-          initializeFCM();
         });
       });
     });
-  }, []);
+  };
 
   const initializeFCM = () => {
     fcmService.registerAppWithFCM();
     fcmService.register(onRegister, onNotification, onOpenNotification);
     localNotificationService.configure(onOpenNotification);
 
-    function onRegister(token) {
-      console.log('[On Register]', token);
-    }
+    function onRegister(token) {}
 
     function onNotification(notify) {
-      console.log('[On Nofication]', notify);
       const options = {
         soundName: 'default',
-        playSound: true, //,
-        largeIcon: 'logo', // add icon large for Android (Link: app/src/main/mipmap)
-        smallIcon: 'logo', // add icon small for Android (Link: app/src/main/mipmap)
+        playSound: true,
+        largeIcon: 'logo',
+        smallIcon: 'logo',
       };
       localNotificationService.showNotification(
         0,
@@ -87,9 +88,6 @@ export default function RootNavigator() {
     }
 
     async function onOpenNotification(data) {
-      console.log('[Opened Notification]', data);
-      const initialUrl = await Linking.getInitialURL();
-      console.log(initialUrl);
       await Linking.openURL(data.url);
     }
 
@@ -110,6 +108,10 @@ export default function RootNavigator() {
         Room: {
           path: '/room/:id',
           initialRouteName: 'Room',
+        },
+        Invitations: {
+          path: '/invitations',
+          initialRouteName: 'Invitations',
         },
       },
     },

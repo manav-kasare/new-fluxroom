@@ -32,6 +32,7 @@ export default function ChatRooms({navigation}) {
   const [refreshing, setRefreshing] = useState(false);
   const [loading, setloading] = useState(true);
   const [isCreateRoomModal, setIsCreateRoomModal] = useState(false);
+  const invitations = React.useRef(null);
   const isFocused = useIsFocused();
 
   useEffect(() => {
@@ -47,6 +48,7 @@ export default function ChatRooms({navigation}) {
     if (!token) {
       getToken().then((_token) => {
         getUserMe(_token).then((response) => {
+          invitations.current = response.user.invitedToRooms.length;
           setChatRoomList(response.user.joinedRooms);
           setUser(response.user);
           setRefreshing(false);
@@ -55,6 +57,7 @@ export default function ChatRooms({navigation}) {
       });
     } else {
       getUserMe(token).then((response) => {
+        invitations.current = response.user.invitedToRooms.length;
         setChatRoomList(response.user.joinedRooms);
         setUser(response.user);
         setRefreshing(false);
@@ -95,6 +98,7 @@ export default function ChatRooms({navigation}) {
       />
       <ChatRoomsHeader
         id={user._id}
+        invitations={invitations.current}
         navigation={navigation}
         setIsCreateRoomModal={setIsCreateRoomModal}
       />

@@ -1,21 +1,7 @@
-import React, {useState, useEffect} from 'react';
-import {TouchableOpacity, View, Text} from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import React from 'react';
+import {TouchableOpacity, Text} from 'react-native';
 
-import {getUserMe} from '../../../backend/database/apiCalls';
-import {TokenContext, UserDetailsContext} from '../../../shared/Context';
-
-export default function InvitationsIcon({navigation, id}) {
-  const {token} = React.useContext(TokenContext);
-  const {user} = React.useContext(UserDetailsContext);
-  const [invitations, setInvitations] = useState(user.invitedToRooms.length);
-
-  useEffect(() => {
-    getUserMe(token).then((response) => {
-      setInvitations(response.user.invitedToRooms.length);
-    });
-  }, []);
-
+export default function InvitationsIcon({navigation, invitations}) {
   const navigateInvitations = () => {
     navigation.navigate('Invitations');
   };

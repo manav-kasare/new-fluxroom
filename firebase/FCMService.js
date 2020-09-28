@@ -68,7 +68,6 @@ class FCMService {
   ) => {
     // When the application is running, but in the background
     messaging().onNotificationOpenedApp((remoteMessage) => {
-      console.log('[onNotificationOpenedApp]', remoteMessage);
       if (remoteMessage) {
         const notification = remoteMessage;
         onOpenNotification(notification);
@@ -80,7 +79,6 @@ class FCMService {
     messaging()
       .getInitialNotification()
       .then((remoteMessage) => {
-        console.log('[getInitialNotification]', remoteMessage);
         if (remoteMessage) {
           const notification = remoteMessage;
           onOpenNotification(notification);
@@ -90,7 +88,6 @@ class FCMService {
 
     // Foreground state messages
     this.messageListener = messaging().onMessage(async (remoteMessage) => {
-      console.log('[onMessage]', remoteMessage);
       if (remoteMessage) {
         if (Platform.OS === 'ios') {
           onNotification(remoteMessage.data);
@@ -123,9 +120,7 @@ class FCMService {
       data: data,
     };
 
-    sendNotifactionFirebaseApi(message, FIREBASE_API_KEY).then((response) => {
-      console.log('[Firebase notification API response]', response);
-    });
+    sendNotifactionFirebaseApi(message, FIREBASE_API_KEY);
   };
 
   unRegister = () => {
