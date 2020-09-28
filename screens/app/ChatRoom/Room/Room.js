@@ -145,8 +145,8 @@ const Room = ({route, navigation}) => {
             fcmService.sendNotification(
               {url: `fluxroom://room/${id}`},
               [
-                // 'clUmuSVrR5KBeKENME1vlA:APA91bHHFSuHu1cLUIAh9XECqRaITbKb3SJS1o2UC4cdxaptry-5lwk7V3lEZWXrcVTbItX8nRSFokhr_fvH83SRJRgk6xERxRq2LUM_gF9mhK7wZwsOAv6U0jGDmGPmrPR1EQY-CS0j',
-                'eKs98_JQQhuICJizMootps:APA91bF5lOG48OzRp5ofCjJNFWqZmaNRGTOxlbztitfKDe0ZpTa4u2L93Guvupt7I5atO4USG8YOuj2ZAZ2XQ4La5DzBS55ZhP1_UbA7BhWmY1mOT_Oz1jzUG-cSwhd97qZCNErAVNTv',
+                'clUmuSVrR5KBeKENME1vlA:APA91bHHFSuHu1cLUIAh9XECqRaITbKb3SJS1o2UC4cdxaptry-5lwk7V3lEZWXrcVTbItX8nRSFokhr_fvH83SRJRgk6xERxRq2LUM_gF9mhK7wZwsOAv6U0jGDmGPmrPR1EQY-CS0j',
+                // 'eKs98_JQQhuICJizMootps:APA91bF5lOG48OzRp5ofCjJNFWqZmaNRGTOxlbztitfKDe0ZpTa4u2L93Guvupt7I5atO4USG8YOuj2ZAZ2XQ4La5DzBS55ZhP1_UbA7BhWmY1mOT_Oz1jzUG-cSwhd97qZCNErAVNTv',
               ],
               'Test',
               'Notification Test',

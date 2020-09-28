@@ -21,6 +21,9 @@ import {getUserMe} from '../backend/database/apiCalls';
 import {getToken} from '../shared/KeyChain';
 import {storeUserData, getTheme} from '../shared/AsyncStore';
 import ChatRoomNavigator from './ChatRoomNavigator';
+import {fcmService} from '../firebase/FCMService';
+import {localNotificationService} from '../firebase/LocalNotificationService';
+import {Linking} from 'react-native';
 
 const Stack = createStackNavigator();
 
@@ -51,10 +54,50 @@ export default function RootNavigator() {
           setSplashScreen(false);
           setToken(token);
           storeUserData(response.user);
+          initializeFCM();
         });
       });
     });
   }, []);
+
+  const initializeFCM = () => {
+    fcmService.registerAppWithFCM();
+    fcmService.register(onRegister, onNotification, onOpenNotification);
+    localNotificationService.configure(onOpenNotification);
+
+    function onRegister(token) {
+      console.log('[On Register]', token);
+    }
+
+    function onNotification(notify) {
+      console.log('[On Nofication]', notify);
+      const options = {
+        soundName: 'default',
+        playSound: true, //,
+        largeIcon: 'logo', // add icon large for Android (Link: app/src/main/mipmap)
+        smallIcon: 'logo', // add icon small for Android (Link: app/src/main/mipmap)
+      };
+      localNotificationService.showNotification(
+        0,
+        notify.notification.title,
+        notify.notification.body,
+        notify.data,
+        options,
+      );
+    }
+
+    async function onOpenNotification(data) {
+      console.log('[Opened Notification]', data);
+      const initialUrl = await Linking.getInitialURL();
+      console.log(initialUrl);
+      await Linking.openURL(data.url);
+    }
+
+    return () => {
+      fcmService.unRegister();
+      localNotificationService.unregister();
+    };
+  };
 
   const deepLinking = {
     prefixes: ['fluxroom://', 'http://app.fluxroomapp.com'],

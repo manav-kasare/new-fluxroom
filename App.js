@@ -3,8 +3,6 @@ import {Linking} from 'react-native';
 import {Provider as PaperProvider} from 'react-native-paper';
 import Toast from 'react-native-fast-toast';
 import Entypo from 'react-native-vector-icons/Entypo';
-import {fcmService} from './firebase/FCMService';
-import {localNotificationService} from './firebase/LocalNotificationService';
 
 import RootNavigator from './navigators/RootNavigator';
 import {
@@ -25,44 +23,6 @@ function App() {
   React.useEffect(() => {
     // Here
     global['toast'] = toast.current;
-  }, []);
-
-  // Notifications
-  React.useEffect(() => {
-    fcmService.registerAppWithFCM();
-    fcmService.register(onRegister, onNotification, onOpenNotification);
-    localNotificationService.configure(onOpenNotification);
-
-    function onRegister(token) {
-      console.log('[On Register]', token);
-    }
-
-    function onNotification(notify) {
-      console.log('[On Nofication]', notify);
-      const options = {
-        soundName: 'default',
-        playSound: true, //,
-        largeIcon: 'logo', // add icon large for Android (Link: app/src/main/mipmap)
-        smallIcon: 'logo', // add icon small for Android (Link: app/src/main/mipmap)
-      };
-      localNotificationService.showNotification(
-        0,
-        notify.notification.title,
-        notify.notification.body,
-        notify.data,
-        options,
-      );
-    }
-
-    async function onOpenNotification(data) {
-      console.log('[Opened Notification]', data);
-      await Linking.openURL(data.url);
-    }
-
-    return () => {
-      fcmService.unRegister();
-      localNotificationService.unregister();
-    };
   }, []);
 
   return (
