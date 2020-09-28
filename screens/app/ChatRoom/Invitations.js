@@ -78,7 +78,7 @@ const Invitations = ({navigation}) => {
 };
 
 function Tile({id, navigation, index, setInvitations, invitations}) {
-  const {constants} = React.useContext(ThemeContext);
+  const {constants, darkTheme} = React.useContext(ThemeContext);
   const {token} = useContext(TokenContext);
   const [loadingAccept, setLoadingAccept] = useState(false);
   const [loadingReject, setLoadingReject] = useState(false);
@@ -119,15 +119,17 @@ function Tile({id, navigation, index, setInvitations, invitations}) {
     });
   };
 
-  const styles = StyleSheet.compose({
+  const styles = StyleSheet.create({
     tile: {
       flex: 1,
-      height: 65,
+      height: 75,
       paddingLeft: 25,
       alignItems: 'center',
       flexDirection: 'row',
       justifyContent: 'space-between',
-      backgroundColor: constants.background3,
+      backgroundColor: constants.background1,
+      borderBottomColor: darkTheme ? '#171717' : constants.lineColor,
+      borderBottomWidth: 0.2,
     },
     heading: {
       color: constants.text1,

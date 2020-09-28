@@ -36,8 +36,7 @@ export default function TopRooms({allRooms, navigation}) {
     <View
       style={{
         width: constants.width,
-
-        backgroundColor: constants.background3,
+        backgroundColor: constants.background1,
         paddingLeft: 25,
         paddingVertical: 15,
       }}>

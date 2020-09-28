@@ -72,11 +72,9 @@ const SearchRenderTile = React.memo(({navigation, room}) => {
     tile: {
       width: constants.width,
       paddingVertical: 10,
-      backgroundColor: constants.background3,
-      borderBottomColor: darkTheme
-        ? 'rgba(255,255,255,0.1)'
-        : constants.lineColor,
-      borderBottomWidth: 0.25,
+      backgroundColor: constants.background1,
+      borderBottomColor: darkTheme ? '#171717' : constants.lineColor,
+      borderBottomWidth: 0.2,
     },
     tileSmall: {
       width: constants.width,
@@ -85,7 +83,7 @@ const SearchRenderTile = React.memo(({navigation, room}) => {
       alignItems: 'center',
       flexDirection: 'row',
       justifyContent: 'space-between',
-      backgroundColor: constants.background3,
+      backgroundColor: constants.background1,
     },
     tileSmallLeft: {
       flexDirection: 'row',
