@@ -57,12 +57,16 @@ export default function RootNavigator() {
   }, []);
 
   const deepLinking = {
-    prefixes: ['fluxroom://', 'https://fluxroom.com'],
+    prefixes: ['fluxroom://', 'http://app.fluxroomapp.com'],
     config: {
       screens: {
         JoinRoomWithLink: {
-          path: 'room/join/:id',
+          path: '/join/:id',
           initialRouteName: 'JoinRoomWithLink',
+        },
+        Room: {
+          path: '/room/:id',
+          initialRouteName: 'Room',
         },
       },
     },

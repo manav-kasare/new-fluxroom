@@ -20,6 +20,7 @@ export default function JoinRoomWithLink({route, navigation}) {
   const [noRoomExists, setNoRoomExists] = React.useState(false);
   const [room, setRoom] = React.useState({
     name: '',
+    description: '',
   });
 
   React.useEffect(() => {
@@ -28,36 +29,24 @@ export default function JoinRoomWithLink({route, navigation}) {
   }, []);
 
   const getData = () => {
-    const requestOptions = {
-      method: 'GET',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-    };
-    return fetch(
-      `https://fluxroom-backend-beta.herokuapp.com/room/${id}`,
-      requestOptions,
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.message === 'No room with this ID exists') {
-          setNoRoomExists(true);
-        } else {
-          setRoom(data);
-        }
-      });
+    getChatroomInfo(id).then((response) => {
+      if (response.message === 'No room with this ID exists') {
+        setNoRoomExists(true);
+      } else {
+        setRoom({
+          ...room,
+          name: response.name,
+          description: response.description,
+        });
+      }
+    });
   };
 
   const checkIfAlreadyJoined = () => {
-    const rooms = user.joinedRooms;
-    rooms.map((_room) => {
-      if (_room._id === id) {
+    user.joinedRooms.map((_id) => {
+      if (_id === id) {
         navigation.replace('Room', {
-          id: _room._id,
-          name: _room.name,
-          profilePic: _room.profilePic,
-          description: _room.description,
+          id: id,
         });
       }
     });
@@ -65,17 +54,19 @@ export default function JoinRoomWithLink({route, navigation}) {
 
   const handleJoinRoom = () => {
     setLoading(true);
-    joinRoom(room._id, token).then((response) => {
-      setUser(response);
-      setLoading(false);
-      storeUserData(response);
-      navigation.replace('Room', {
-        id: room._id,
-        name: room.name,
-        profilePic: room.profilePic,
-        description: room.description,
+    joinRoom(id, token).then((response) => {
+      storeUserData(response).then(() => {
+        setUser(response);
+        setLoading(false);
+        navigation.replace('Room', {
+          id: id,
+        });
       });
     });
+  };
+
+  const handleClose = () => {
+    navigation.replace('Home');
   };
 
   return (
@@ -100,12 +91,19 @@ export default function JoinRoomWithLink({route, navigation}) {
           }}>
           <Text
             style={{
-              fontSize: 30,
+              fontSize: 20,
               color: constants.text1,
-              fontWeight: '700',
               marginBottom: 10,
             }}>
             {room.name}
+          </Text>
+          <Text
+            style={{
+              fontSize: 12,
+              color: 'grey',
+              marginBottom: 10,
+            }}>
+            {room.description}
           </Text>
 
           <TouchableOpacity
@@ -133,6 +131,29 @@ export default function JoinRoomWithLink({route, navigation}) {
                 Join Room
               </Text>
             )}
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={{
+              width: constants.width * 0.65,
+              height: 40,
+              flexDirection: 'row',
+              marginTop: 25,
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderRadius: 8,
+              marginHorizontal: 10,
+              backgroundColor: constants.primary,
+            }}
+            onPress={handleClose}>
+            <Text
+              style={{
+                fontFamily: 'Helvetica',
+                color: 'white',
+                fontSize: 15,
+              }}>
+              Close
+            </Text>
           </TouchableOpacity>
         </View>
       )}

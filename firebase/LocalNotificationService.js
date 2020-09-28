@@ -10,13 +10,15 @@ class LocalNotificationService {
       },
       onNotification: function (notification) {
         console.log('[LocalNotificationService] onNotification:', notification);
-        if (!notification?.data) {
-          return;
-        }
         notification.userInteraction = true;
-        onOpenNotification(
-          Platform.OS === 'ios' ? notification.data.item : notification.data,
-        );
+        if (notification.data.item) {
+          console.log('[If Clause]');
+          onOpenNotification(notification.data.item);
+        } else {
+          console.log('[Else Clause]');
+          console.log(notification.url);
+          onOpenNotification({url: notification.url});
+        }
 
         if (Platform.OS === 'ios') {
           // (required) Called when a remote is received or opened, or local notification is opened
@@ -50,11 +52,12 @@ class LocalNotificationService {
     PushNotification.unregister();
   };
 
-  showNotification = (id, title, message, data = {}, options = {}) => {
+  showNotification = (id, title, message, data, options = {}) => {
+    console.log('[Show Notification Data]', data, id, title, message);
     PushNotification.localNotification({
       /* Android Only Properties */
       ...this.buildAndroidNotification(id, title, message, data, options),
-      /* iOS and Android properties */
+      /* iOS only properties */
       ...this.buildIOSNotification(id, title, message, data, options),
       /* iOS and Android properties */
       title: title || '',
@@ -65,7 +68,8 @@ class LocalNotificationService {
     });
   };
 
-  buildAndroidNotification = (id, title, message, data = {}, options = {}) => {
+  buildAndroidNotification = (id, title, message, data, options = {}) => {
+    console.log('[Building..]');
     return {
       id: id,
       autoCancel: true,
@@ -81,7 +85,7 @@ class LocalNotificationService {
     };
   };
 
-  buildIOSNotification = (id, title, message, data = {}, options = {}) => {
+  buildIOSNotification = (id, title, message, data, options = {}) => {
     return {
       alertAction: options.alertAction || 'view',
       category: options.category || '',

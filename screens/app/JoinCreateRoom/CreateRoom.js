@@ -62,9 +62,6 @@ export default function CreateRoom({navigation, isVisible, setIsVisible}) {
             setUser(_response);
             navigation.navigate('Room', {
               id: response.room._id,
-              name: response.room.name,
-              profilePic: response.room.profilePic,
-              description: response.room.description,
             });
             setIsVisible(false);
             setRoom({

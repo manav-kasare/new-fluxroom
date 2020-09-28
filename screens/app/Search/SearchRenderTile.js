@@ -59,9 +59,6 @@ const SearchRenderTile = React.memo(({navigation, room}) => {
         setAlreadyJoined(true);
         navigation.navigate('Room', {
           id: room._id,
-          name: room.name,
-          profilePic: room.profilePic,
-          description: room.description,
         });
       });
     });

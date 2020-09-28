@@ -26,7 +26,7 @@ export default function RoomSettings({route, navigation}) {
   const [descriptionFocus, setDescriptionFocus] = useState(false);
   const [descriptionLoading, setDescriptionLoading] = useState(false);
   const [loadingProfilePic, setLoadingProfilePic] = useState(false);
-  const link = `fluxroom://room/join/${id}`;
+  const link = `fluxroom://join/${id}`;
 
   const [_description, _setDescription] = useState(description);
   const [_profilePic, _setProfilePic] = useState(profilePic);

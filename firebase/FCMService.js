@@ -68,8 +68,9 @@ class FCMService {
   ) => {
     // When the application is running, but in the background
     messaging().onNotificationOpenedApp((remoteMessage) => {
+      console.log('[onNotificationOpenedApp]', remoteMessage);
       if (remoteMessage) {
-        const notification = remoteMessage.notification;
+        const notification = remoteMessage;
         onOpenNotification(notification);
         // this.removeDeliveredNotification(notification.notificationId)
       }
@@ -79,8 +80,9 @@ class FCMService {
     messaging()
       .getInitialNotification()
       .then((remoteMessage) => {
+        console.log('[getInitialNotification]', remoteMessage);
         if (remoteMessage) {
-          const notification = remoteMessage.notification;
+          const notification = remoteMessage;
           onOpenNotification(notification);
           //  this.removeDeliveredNotification(notification.notificationId)
         }
@@ -88,14 +90,13 @@ class FCMService {
 
     // Foreground state messages
     this.messageListener = messaging().onMessage(async (remoteMessage) => {
+      console.log('[onMessage]', remoteMessage);
       if (remoteMessage) {
-        let notification = null;
         if (Platform.OS === 'ios') {
-          notification = remoteMessage.data.notification;
+          onNotification(remoteMessage.data);
         } else {
-          notification = remoteMessage.notification;
+          onNotification(remoteMessage);
         }
-        onNotification(notification);
       }
     });
 

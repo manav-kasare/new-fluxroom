@@ -1,4 +1,5 @@
 import React from 'react';
+import {Linking} from 'react-native';
 import {Provider as PaperProvider} from 'react-native-paper';
 import Toast from 'react-native-fast-toast';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -33,33 +34,32 @@ function App() {
     localNotificationService.configure(onOpenNotification);
 
     function onRegister(token) {
-      console.log('[App] onRegister: ', token);
+      console.log('[On Register]', token);
     }
 
     function onNotification(notify) {
-      console.log('[App] onNotification: ', notify);
+      console.log('[On Nofication]', notify);
       const options = {
         soundName: 'default',
         playSound: true, //,
-        // largeIcon: 'ic_launcher', // add icon large for Android (Link: app/src/main/mipmap)
-        // smallIcon: 'ic_launcher' // add icon small for Android (Link: app/src/main/mipmap)
+        largeIcon: 'logo', // add icon large for Android (Link: app/src/main/mipmap)
+        smallIcon: 'logo', // add icon small for Android (Link: app/src/main/mipmap)
       };
       localNotificationService.showNotification(
         0,
-        notify.title,
-        notify.body,
-        notify,
+        notify.notification.title,
+        notify.notification.body,
+        notify.data,
         options,
       );
     }
 
-    function onOpenNotification(notify) {
-      console.log('[App] onOpenNotification: ', notify);
-      alert('Open Notification: ' + notify.body);
+    async function onOpenNotification(data) {
+      console.log('[Opened Notification]', data);
+      await Linking.openURL(data.url);
     }
 
     return () => {
-      console.log('[App] unRegister');
       fcmService.unRegister();
       localNotificationService.unregister();
     };

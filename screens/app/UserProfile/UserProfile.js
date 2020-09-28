@@ -143,19 +143,6 @@ const ProfileComponent = ({navigation}) => {
           <Ionicons name="chevron-forward" size={20} color="white" />
         </TouchableOpacity>
       </View>
-      <TouchableOpacity
-        onPress={() => {
-          fcmService.sendNotification(
-            {link: 'fluxroom://room/join/'},
-            [
-              'clUmuSVrR5KBeKENME1vlA:APA91bHHFSuHu1cLUIAh9XECqRaITbKb3SJS1o2UC4cdxaptry-5lwk7V3lEZWXrcVTbItX8nRSFokhr_fvH83SRJRgk6xERxRq2LUM_gF9mhK7wZwsOAv6U0jGDmGPmrPR1EQY-CS0j',
-            ],
-            'Test',
-            'Send Notification Test',
-          );
-        }}>
-        <Text>Send</Text>
-      </TouchableOpacity>
     </View>
   );
 };

@@ -3,6 +3,7 @@ import {
   SafeAreaView,
   FlatList,
   View,
+  Text,
   TouchableOpacity,
   StatusBar,
   Platform,
@@ -18,12 +19,19 @@ import RoomAvatar from './RoomAvatar';
 import RoomUserOptions from './RoomUserOptions';
 import InviteToRoom from './InviteToRoom';
 import RoomBottomView from './RoomBottomView';
+import {fcmService} from '../../../../firebase/FCMService';
 
 const Room = ({route, navigation}) => {
-  const {id, name, profilePic, description} = route.params;
+  const {id} = route.params;
   const {constants, darkTheme} = React.useContext(ThemeContext);
   const {user} = React.useContext(UserDetailsContext);
-  const [listOfUsers, setListOfUsers] = React.useState([]);
+  const room = React.useRef({
+    _id: id,
+    name: null,
+    description: null,
+    profilePic: undefined,
+    listOfUsers: null,
+  });
   const [isSpeaking, setIsSpeaking] = React.useState(false);
   const [someoneRaisingHand, setSomeoneRaisingHand] = React.useState(false);
   const [isVisible, setIsVisible] = React.useState(false);
@@ -33,14 +41,15 @@ const Room = ({route, navigation}) => {
 
   React.useEffect(() => {
     getChatroomInfo(id).then((response) => {
-      setListOfUsers(response.listOfUsers);
+      room.current = {...room, ...response};
+      setHeader();
       setLoading(false);
     });
   }, []);
 
-  React.useEffect(() => {
+  const setHeader = () => {
     navigation.setOptions({
-      title: name,
+      title: room.current.name,
       headerRight: () => (
         <TouchableOpacity
           style={{marginRight: 20}}
@@ -49,19 +58,19 @@ const Room = ({route, navigation}) => {
         </TouchableOpacity>
       ),
     });
-  }, []);
+  };
 
   const navigateToSettings = () => {
     navigation.navigate('RoomSettings', {
       id: id,
-      profilePic: profilePic,
-      description: description,
+      profilePic: room.current.profilePic,
+      description: room.current.description,
     });
   };
 
   const setData = () => {
     getChatroomInfo(id).then((response) => {
-      setListOfUsers(response.listOfUsers);
+      room.current = {...room, ...response};
       setLoading(false);
       setRefreshing(false);
     });
@@ -122,8 +131,8 @@ const Room = ({route, navigation}) => {
         <InviteToRoom
           inviteModal={inviteModal}
           setInviteModal={setInviteModal}
-          roomName={name}
-          listOfUsers={listOfUsers}
+          roomName={room.current.name}
+          listOfUsers={room.current.listOfUsers}
         />
         <StatusBar
           barStyle="light-content"
@@ -131,6 +140,20 @@ const Room = ({route, navigation}) => {
             darkTheme ? constants.background3 : constants.primary
           }
         />
+        <TouchableOpacity
+          onPress={() => {
+            fcmService.sendNotification(
+              {url: `fluxroom://room/${id}`},
+              [
+                // 'clUmuSVrR5KBeKENME1vlA:APA91bHHFSuHu1cLUIAh9XECqRaITbKb3SJS1o2UC4cdxaptry-5lwk7V3lEZWXrcVTbItX8nRSFokhr_fvH83SRJRgk6xERxRq2LUM_gF9mhK7wZwsOAv6U0jGDmGPmrPR1EQY-CS0j',
+                'eKs98_JQQhuICJizMootps:APA91bF5lOG48OzRp5ofCjJNFWqZmaNRGTOxlbztitfKDe0ZpTa4u2L93Guvupt7I5atO4USG8YOuj2ZAZ2XQ4La5DzBS55ZhP1_UbA7BhWmY1mOT_Oz1jzUG-cSwhd97qZCNErAVNTv',
+              ],
+              'Test',
+              'Notification Test',
+            );
+          }}>
+          <Text style={{fontSize: 25, color: 'white'}}>Send</Text>
+        </TouchableOpacity>
         <View style={{backgroundColor: constants.background1, flex: 1}}>
           {loading ? (
             <View style={styles.loading}>
@@ -138,7 +161,7 @@ const Room = ({route, navigation}) => {
             </View>
           ) : (
             <FlatList
-              data={listOfUsers}
+              data={room.current.listOfUsers}
               style={styles.flatList}
               columnWrapperStyle={styles.columnWrapperStyle}
               numColumns={3}

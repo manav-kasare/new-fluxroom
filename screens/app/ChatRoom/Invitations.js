@@ -85,9 +85,6 @@ function Tlie({room, navigation}) {
         setLoadingAccept(false);
         navigation.navigate('Room', {
           id: room._id,
-          name: room.name,
-          profilePic: room.profilePic,
-          description: room.description,
         });
         declineInvitation(token, room.name);
       }

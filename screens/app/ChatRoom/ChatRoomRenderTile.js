@@ -71,9 +71,6 @@ const ChatRoomRenderTile = ({item, navigation}) => {
     setNavigate(!navigate);
     navigation.push('Room', {
       id: room._id,
-      name: room.name,
-      profilePic: room.profilePic,
-      description: room.description,
     });
   };
 
