@@ -53,6 +53,15 @@ const Invitations = ({navigation}) => {
     <Tile id={item} navigation={navigation} index={index} />
   );
 
+  const refreshControl = (
+    <RefreshControl
+      refreshing={refreshing}
+      onRefresh={onRefresh}
+      tintColor={constants.background2}
+      size={Platform.os === 'ios' ? 'small' : 'default'}
+    />
+  );
+
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: constants.background1}}>
       {loading ? (
@@ -63,14 +72,7 @@ const Invitations = ({navigation}) => {
         <FlatList
           data={user.invitedToRooms}
           renderItem={renderItem}
-          refreshControl={
-            <RefreshControl
-              refreshing={refreshing}
-              onRefresh={onRefresh}
-              tintColor={constants.background2}
-              size={Platform.os === 'ios' ? 'small' : 'default'}
-            />
-          }
+          refreshControl={refreshControl}
         />
       )}
     </SafeAreaView>
@@ -113,7 +115,6 @@ function Tile({id, navigation, index, setInvitations, invitations}) {
   const handleDecline = () => {
     setLoadingReject(true);
     declineInvitation(token, room.name).then((response) => {
-      console.log('[Decline Invitation]', response);
       setInvitations(invitations.splice(index, 1));
       setLoadingReject(false);
     });

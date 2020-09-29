@@ -130,7 +130,7 @@ const Room = ({route, navigation}) => {
           inviteModal={inviteModal}
           setInviteModal={setInviteModal}
           roomName={room.current.name}
-          listOfUsers={room.current.listOfUsers}
+          id={id}
         />
         <StatusBar
           barStyle="light-content"

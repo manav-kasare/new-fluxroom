@@ -26,8 +26,6 @@ export default function Phone({navigation}) {
   const [isVisible, setIsVisible] = React.useState(false);
   const [confirmation, setConfirmation] = React.useState();
 
-  console.log(RNLocalize.getLocales());
-
   const signIn = async () => {
     setIsLoading(true);
     Keyboard.dismiss();
@@ -41,7 +39,6 @@ export default function Phone({navigation}) {
         });
     } catch (err) {
       setIsLoading(false);
-      console.log(err);
       CustomErrorToast('An Error Occured !');
     }
   };

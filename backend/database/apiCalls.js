@@ -230,10 +230,7 @@ export const declineInvitation = (token, roomName) => {
   };
 
   return fetch(`${url}/declineinvite?roomname=${roomName}`, requestOptions)
-    .then((response) => {
-      console.log('[Decline API response]', response);
-      return response.json();
-    })
+    .then((response) => response.json())
     .then((data) => {
       return data;
     });

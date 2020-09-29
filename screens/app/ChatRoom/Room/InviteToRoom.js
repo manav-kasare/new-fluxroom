@@ -4,7 +4,6 @@ import Modal from 'react-native-modal';
 import {Searchbar} from 'react-native-paper';
 import _ from 'lodash';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {ActivityIndicator} from 'react-native-paper';
 
 import {
   ThemeContext,
@@ -14,6 +13,7 @@ import {
 import {
   getUsers,
   inviteUserToRoom,
+  getChatroomInfo,
 } from '../../../../backend/database/apiCalls';
 import CircleAvatar from '../../../../shared/CircleAvatar';
 import {CustomErrorToast} from '../../../../shared/CustomToast';
@@ -23,14 +23,18 @@ export default function InviteToRoom({
   inviteModal,
   setInviteModal,
   roomName,
-  listOfUsers,
+  id,
 }) {
   const {constants} = React.useContext(ThemeContext);
   const [query, setQuery] = React.useState(null);
   const [allUsers, setAllUsers] = React.useState([]);
   const [fileredUsers, setFilteredUsers] = React.useState(null);
+  const [listOfUsers, setListOfUsers] = React.useState(null);
 
   React.useEffect(() => {
+    getChatroomInfo(id).then((response) => {
+      setListOfUsers(response.listOfUsers);
+    });
     getUsers().then((_allUsers) => {
       setAllUsers(_allUsers);
     });
@@ -47,23 +51,12 @@ export default function InviteToRoom({
   }, 250);
 
   const renderItem = ({item}) => (
-    <View
-      style={{
-        flexDirection: 'row',
-        width: constants.width,
-        height: 50,
-        paddingHorizontal: 25,
-        alignItems: 'center',
-        justifyContent: 'space-between',
-      }}>
-      <View style={{flexDirection: 'row', alignItems: 'center'}}>
-        <CircleAvatar uri={item.profilePic} size={30} />
-        <Text style={{marginLeft: 25, color: constants.text1}}>
-          {item.username}
-        </Text>
-      </View>
-      <SendInviteButton userProp={item} roomName={roomName} />
-    </View>
+    <Tile
+      item={item}
+      roomName={roomName}
+      listOfUsers={listOfUsers}
+      roomId={id}
+    />
   );
 
   return (
@@ -134,18 +127,45 @@ export default function InviteToRoom({
   );
 }
 
-const SendInviteButton = ({userProp, roomName}) => {
+const Tile = ({item, roomName, listOfUsers, roomId}) => {
+  const {constants} = React.useContext(ThemeContext);
+
+  if (listOfUsers.indexOf(item._id) !== -1) {
+    return <></>;
+  } else {
+    return (
+      <View
+        style={{
+          flexDirection: 'row',
+          width: constants.width,
+          height: 50,
+          paddingHorizontal: 25,
+          alignItems: 'center',
+          justifyContent: 'space-between',
+        }}>
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <CircleAvatar uri={item.profilePic} size={30} />
+          <Text style={{marginLeft: 25, color: constants.text1}}>
+            {item.username}
+          </Text>
+        </View>
+        <SendInviteButton userProp={item} roomName={roomName} roomId={roomId} />
+      </View>
+    );
+  }
+};
+
+const SendInviteButton = ({userProp, roomName, roomId}) => {
   const [alreadyInvited, setAlreadyInvited] = React.useState(false);
   const {token} = React.useContext(TokenContext);
   const {user} = React.useContext(UserDetailsContext);
 
   React.useEffect(() => {
-    const invitedToRooms = userProp.invitedToRooms;
-    invitedToRooms.map((room) => {
-      if (room.name === roomName) {
-        setAlreadyInvited(true);
-      }
-    });
+    if (userProp.invitedToRooms.indexOf(roomId) !== -1) {
+      setAlreadyInvited(true);
+    } else {
+      setAlreadyInvited(false);
+    }
   }, []);
 
   const handleInvite = () => {

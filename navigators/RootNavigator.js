@@ -69,7 +69,7 @@ export default function RootNavigator() {
     fcmService.register(onRegister, onNotification, onOpenNotification);
     localNotificationService.configure(onOpenNotification);
 
-    function onRegister(token) {}
+    function onRegister() {}
 
     function onNotification(notify) {
       const options = {

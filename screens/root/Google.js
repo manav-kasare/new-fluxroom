@@ -42,14 +42,12 @@ export default function Google({navigation}) {
     try {
       await GoogleSignin.hasPlayServices();
       await GoogleSignin.signIn().then((userInfo) => {
-        console.log('[GoogleSignIn response]', userInfo);
         const googleCredential = auth.GoogleAuthProvider.credential(
           userInfo.idToken,
         );
         auth()
           .signInWithCredential(googleCredential)
           .then((_userInfo) => {
-            console.log('[Firebase response]', _userInfo);
             if (_userInfo.additionalUserInfo.isNewUser) {
               setLoading(false);
               navigation.navigate('SetUpProfile', {
@@ -62,7 +60,6 @@ export default function Google({navigation}) {
                   username: response.username,
                   password: '89337133-17c9-42e3-9fef-78416a25651a',
                 }).then((_response) => {
-                  console.log('[Mongo Response]', _response);
                   if (_response.err) {
                     setLoading(false);
                     ReactNativeHapticFeedback.trigger(
