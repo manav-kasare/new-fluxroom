@@ -1,7 +1,7 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, FlatList, Keyboard} from 'react-native';
+import {View, Text, FlatList, Keyboard} from 'react-native';
 import Modal from 'react-native-modal';
-import {Searchbar} from 'react-native-paper';
+import {Searchbar, Button} from 'react-native-paper';
 import _ from 'lodash';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -189,34 +189,19 @@ const SendInviteButton = ({userProp, roomName, roomId}) => {
     );
   };
 
+  const nothing = () => {};
+
   if (alreadyInvited) {
     return (
-      <View
-        style={{
-          backgroundColor: '#0f6602',
-          width: 50,
-          height: 30,
-          alignItems: 'center',
-          justifyContent: 'center',
-          borderRadius: 5,
-        }}>
-        <Text style={{color: 'white', fontSize: 10}}>Invited</Text>
-      </View>
+      <Button mode="text" color="#03449e" onPress={nothing}>
+        Invited
+      </Button>
     );
   } else {
     return (
-      <TouchableOpacity
-        onPress={handleInvite}
-        style={{
-          backgroundColor: '#012470',
-          width: 50,
-          height: 30,
-          alignItems: 'center',
-          justifyContent: 'center',
-          borderRadius: 5,
-        }}>
-        <Text style={{color: 'white', fontSize: 12}}>Invite</Text>
-      </TouchableOpacity>
+      <Button mode="text" color="#03449e" onPress={handleInvite}>
+        Invite
+      </Button>
     );
   }
 };

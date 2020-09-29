@@ -1,5 +1,4 @@
 import React from 'react';
-import {View} from 'react-native';
 import {ThemeContext} from '../../../shared/Context';
 
 import Animated, {Easing, useCode, set} from 'react-native-reanimated';

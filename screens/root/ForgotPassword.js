@@ -53,7 +53,7 @@ export default function ForgotPassword() {
                 marginVertical: 50,
               }}
               resizeMode="contain"
-              source={require('../../assets/forgot_password.png')}
+              source={require('../../assets/forgot_password.webp')}
             />
           </View>
           <View

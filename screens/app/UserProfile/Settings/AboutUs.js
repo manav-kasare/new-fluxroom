@@ -1,7 +1,6 @@
 import React from 'react';
 import {SafeAreaView, View, TouchableOpacity, Text} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import Entypo from 'react-native-vector-icons/Entypo';
 
 import {ThemeContext} from '../../../../shared/Context';
 

@@ -1,30 +1,13 @@
 import React from 'react';
-import {
-  Text,
-  TouchableOpacity,
-  View,
-  StatusBar,
-  Platform,
-  StyleSheet,
-} from 'react-native';
+import {Text, TouchableOpacity, View, StatusBar, Platform} from 'react-native';
 import Animated, {
   useCode,
   cond,
   set,
   eq,
-  SpringUtils,
   interpolate,
-  Transition,
-  Transitioning,
-  Value,
 } from 'react-native-reanimated';
-import {
-  useValue,
-  withTimingTransition,
-  withSpringTransition,
-  useTransition,
-  mix,
-} from 'react-native-redash';
+import {useValue, useTransition, mix} from 'react-native-redash';
 import Entypo from 'react-native-vector-icons/Entypo';
 
 import constants from '../../shared/constants';

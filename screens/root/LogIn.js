@@ -1,4 +1,4 @@
-import React, {useState, useContext, useEffect} from 'react';
+import React, {useState, useContext} from 'react';
 import {
   SafeAreaView,
   View,
@@ -8,7 +8,6 @@ import {
   TouchableWithoutFeedback,
   Image,
   TextInput,
-  Animated,
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -120,7 +119,7 @@ export default function LogIn({navigation}) {
                   marginVertical: 30,
                 }}
                 resizeMode="contain"
-                source={require('../../assets/receipt.png')}
+                source={require('../../assets/receipt.webp')}
               />
             </View>
             <View

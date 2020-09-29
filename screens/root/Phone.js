@@ -74,7 +74,7 @@ export default function Phone({navigation}) {
               height: constants.height * 0.2,
             }}
             resizeMode="contain"
-            source={require('../../assets/phone.png')}
+            source={require('../../assets/phone.webp')}
           />
         </View>
         <View

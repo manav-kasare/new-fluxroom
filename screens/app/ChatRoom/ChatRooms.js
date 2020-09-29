@@ -153,7 +153,7 @@ const EmptyItem = ({navigation}) => {
       }}>
       <View style={{marginVertical: 50, alignItems: 'center'}}>
         <Image
-          source={require('../../../assets/tree_swing.png')}
+          source={require('../../../assets/tree_swing.webp')}
           style={{
             width: constants.width,
             height: constants.height * 0.2,
