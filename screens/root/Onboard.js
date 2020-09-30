@@ -2,12 +2,17 @@ import React from 'react';
 import {Text, TouchableOpacity, View, StatusBar, Platform} from 'react-native';
 import Animated, {
   useCode,
-  cond,
   set,
   eq,
-  interpolate,
+  SpringUtils,
+  cond,
 } from 'react-native-reanimated';
-import {useValue, useTransition, mix} from 'react-native-redash';
+import {
+  useValue,
+  mix,
+  withSpringTransition,
+  withTimingTransition,
+} from 'react-native-redash';
 import Entypo from 'react-native-vector-icons/Entypo';
 
 import constants from '../../shared/constants';
@@ -18,13 +23,16 @@ import Apple from './Apple';
 
 export default function Onboard({navigation}) {
   const time = useValue(0);
-  const opacity = useTransition(time);
+  const opacityTransition = withTimingTransition(time, {duration: 500});
+  const opacity = mix(opacityTransition, 0, 1);
   useCode(() => cond(eq(time, 0), set(time, 1)), [time]);
 
-  const translateY = interpolate(time, {
-    inputRange: [0, 1],
-    outputRange: [constants.height / 2, 0],
+  const positionY = withSpringTransition(time, {
+    ...SpringUtils.makeDefaultConfig(),
+    overshootClamping: true,
+    damping: new Animated.Value(20),
   });
+  const translateY = mix(positionY, constants.height, 0);
 
   const navigatePhone = () => {
     navigation.navigate('Phone');
@@ -75,12 +83,12 @@ export default function Onboard({navigation}) {
           <TouchableOpacity
             style={globalStyles.screenButton}
             onPress={navigateSignUp}>
-            <Text style={globalStyles.buttonText}>Sign Up</Text>
+            <Text style={globalStyles.buttonText}>Sign Up with Email</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={globalStyles.screenButton}
             onPress={navigateLogin}>
-            <Text style={globalStyles.buttonText}>Log In</Text>
+            <Text style={globalStyles.buttonText}>Log In with Email</Text>
           </TouchableOpacity>
           <View
             style={{

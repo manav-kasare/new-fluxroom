@@ -14,6 +14,20 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import auth from '@react-native-firebase/auth';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
+import {ActivityIndicator} from 'react-native-paper';
+import Animated, {
+  useCode,
+  set,
+  eq,
+  SpringUtils,
+  cond,
+} from 'react-native-reanimated';
+import {
+  useValue,
+  mix,
+  withSpringTransition,
+  withTimingTransition,
+} from 'react-native-redash';
 
 const options = {
   enableVibrateFallback: true,
@@ -27,7 +41,6 @@ import globalStyles from '../../shared/GlobalStyles';
 import {loginUser, getUserByEmail} from '../../backend/database/apiCalls';
 import {storeToken} from '../../shared/KeyChain';
 import {storeUserData, storeTheme} from '../../shared/AsyncStore';
-import {ActivityIndicator} from 'react-native-paper';
 
 export default function LogIn({navigation}) {
   const {setUser} = useContext(UserDetailsContext);
@@ -37,6 +50,19 @@ export default function LogIn({navigation}) {
   const [revealPassword, setRevealPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [onFocusPassword, setOnFocusPassword] = useState(false);
+
+  const y = useValue(0);
+
+  const opacityTransition = withTimingTransition(y, {duration: 500});
+  const opacity = mix(opacityTransition, 0, 1);
+
+  const positionY = withSpringTransition(y, {
+    ...SpringUtils.makeDefaultConfig(),
+    overshootClamping: true,
+    damping: new Animated.Value(20),
+  });
+  const translateY = mix(positionY, constants.height, 0);
+  useCode(() => cond((eq(y, 0), set(y, 1))), [y]);
 
   const signIn = async () => {
     Keyboard.dismiss();
@@ -111,7 +137,7 @@ export default function LogIn({navigation}) {
               alignItems: 'center',
               marginBottom: 50,
             }}>
-            <View>
+            <Animated.View style={{opacity}}>
               <Image
                 style={{
                   width: constants.width,
@@ -121,13 +147,14 @@ export default function LogIn({navigation}) {
                 resizeMode="contain"
                 source={require('../../assets/receipt.webp')}
               />
-            </View>
-            <View
+            </Animated.View>
+            <Animated.View
               style={{
                 backgroundColor: '#03449e',
                 borderTopRightRadius: 10,
                 borderTopLeftRadius: 10,
                 alignItems: 'center',
+                transform: [{translateY}],
               }}>
               <View
                 style={{
@@ -208,7 +235,7 @@ export default function LogIn({navigation}) {
                   <Text style={globalStyles.buttonText}>Forgot Password ?</Text>
                 </TouchableOpacity>
               </View>
-            </View>
+            </Animated.View>
           </SafeAreaView>
         </View>
       </TouchableWithoutFeedback>

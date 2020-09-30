@@ -13,6 +13,19 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Entypo from 'react-native-vector-icons/Entypo';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
+import Animated, {
+  useCode,
+  set,
+  eq,
+  SpringUtils,
+  cond,
+} from 'react-native-reanimated';
+import {
+  useValue,
+  mix,
+  withSpringTransition,
+  withTimingTransition,
+} from 'react-native-redash';
 
 const options = {
   enableVibrateFallback: true,
@@ -34,6 +47,19 @@ export default function SignUp({navigation}) {
   const [isVisible, setIsVisible] = useState(false);
   const [userInfo, setUserInfo] = useState(null);
 
+  const y = useValue(0);
+
+  const opacityTransition = withTimingTransition(y, {duration: 500});
+  const opacity = mix(opacityTransition, 0, 1);
+
+  const positionY = withSpringTransition(y, {
+    ...SpringUtils.makeDefaultConfig(),
+    overshootClamping: true,
+    damping: new Animated.Value(20),
+  });
+  const translateY = mix(positionY, constants.height, 0);
+  useCode(() => cond((eq(y, 0), set(y, 1))), [y]);
+
   const isPasswordValid = (q) => {
     return /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/.test(
       q,
@@ -51,7 +77,6 @@ export default function SignUp({navigation}) {
           setUserInfo(_userInfo);
           ReactNativeHapticFeedback.trigger('notificationSuccess', options);
           setIsVisible(true);
-          // navigation.navigate('SetUpProfile', {email: email});
         });
       })
       .catch((error) => {
@@ -98,7 +123,7 @@ export default function SignUp({navigation}) {
               alignItems: 'center',
               marginBottom: 50,
             }}>
-            <View>
+            <Animated.View style={{opacity}}>
               <Image
                 style={{
                   width: constants.width,
@@ -108,8 +133,8 @@ export default function SignUp({navigation}) {
                 resizeMode="contain"
                 source={require('../../assets/contract.webp')}
               />
-            </View>
-            <View
+            </Animated.View>
+            <Animated.View
               style={{
                 flex: 1,
                 width: constants.width,
@@ -119,6 +144,7 @@ export default function SignUp({navigation}) {
                 backgroundColor: 'white',
                 borderTopRightRadius: 15,
                 borderTopLeftRadius: 15,
+                transform: [{translateY}],
               }}>
               <View style={globalStyles.input}>
                 <MaterialCommunityIcons
@@ -191,7 +217,7 @@ export default function SignUp({navigation}) {
                   <Text style={globalStyles.buttonText}>Sign Up</Text>
                 )}
               </TouchableOpacity>
-            </View>
+            </Animated.View>
           </SafeAreaView>
         </View>
       </TouchableWithoutFeedback>

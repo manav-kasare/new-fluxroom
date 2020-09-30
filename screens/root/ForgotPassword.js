@@ -14,10 +14,36 @@ import constants from '../../shared/constants';
 import globalStyles from '../../shared/GlobalStyles';
 import {CustomToast} from '../../shared/CustomToast';
 import {ActivityIndicator} from 'react-native-paper';
+import Animated, {
+  useCode,
+  set,
+  eq,
+  SpringUtils,
+  cond,
+} from 'react-native-reanimated';
+import {
+  useValue,
+  mix,
+  withSpringTransition,
+  withTimingTransition,
+} from 'react-native-redash';
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  const y = useValue(0);
+
+  const opacityTransition = withTimingTransition(y, {duration: 500});
+  const opacity = mix(opacityTransition, 0, 1);
+
+  const positionY = withSpringTransition(y, {
+    ...SpringUtils.makeDefaultConfig(),
+    overshootClamping: true,
+    damping: new Animated.Value(20),
+  });
+  const translateY = mix(positionY, constants.height, 0);
+  useCode(() => cond((eq(y, 0), set(y, 1))), [y]);
 
   const forgotPassword = () => {
     setLoading(true);
@@ -45,7 +71,7 @@ export default function ForgotPassword() {
             backgroundColor: '#03449e',
             alignItems: 'center',
           }}>
-          <View>
+          <Animated.View style={{opacity}}>
             <Image
               style={{
                 width: constants.width,
@@ -55,8 +81,8 @@ export default function ForgotPassword() {
               resizeMode="contain"
               source={require('../../assets/forgot_password.webp')}
             />
-          </View>
-          <View
+          </Animated.View>
+          <Animated.View
             style={{
               flex: 1,
               width: constants.width,
@@ -66,6 +92,7 @@ export default function ForgotPassword() {
               backgroundColor: 'white',
               borderTopRightRadius: 15,
               borderTopLeftRadius: 15,
+              transform: [{translateY}],
             }}>
             <View>
               <View style={globalStyles.input}>
@@ -105,7 +132,7 @@ export default function ForgotPassword() {
                 )}
               </TouchableOpacity>
             </View>
-          </View>
+          </Animated.View>
         </SafeAreaView>
       </View>
     </KeyboardAwareScrollView>
