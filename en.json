@@ -1,0 +1,70 @@
+{
+    "buttons": {
+        "signUpOnboard": "Sign Up With Email",
+        "logInOnboard": "Log In With Email",
+        "signUp": "Sign Up",
+        "logIn": "Log In",
+        "forogtPassword": "Forgot Password ?",
+        "getOTP": "Get OTP",
+        "createRoom": "Create Room",
+        "joinRoom": "Join",
+        "joinedRoom": "Joined",
+        "invite": "Invite",
+        "invited": "Invited",
+        "findRooms": "Find Rooms"
+    },
+    "placeholders": {
+        "email": "Email Address",
+        "username": "Username",
+        "description": "Description",
+        "password": "Password",
+        "code": "Verification code",
+        "seach": "What are you intrested in ?",
+        "roomName": "What would you talk about ?",
+        "roomDescription": "Describe in less than 100 characters",
+        "searchUsername": "Search Username",
+        "forgotPassword": "Registered email or phone number"
+    },
+    "screens": {
+        "signUp": "Join Fluxroom",
+        "logIn": "Log In",
+        "forgotPassword": "Forgot Password",
+        "setUpProfile": "Set up your profile",
+        "phone": "Sign In with phone number",
+        "fluxroom": "Fluxroom",
+        "findRooms": "Find Rooms",
+        "settings": "Settings",
+        "profile": "Profile",
+        "aboutUs": "About Us",
+        "dataPolicy": "Data Policy",
+        "termsOfService": "Terms of Service",
+        "invitations": "Invitations",
+        "issues": "Issues",
+        "createRoom": "Create your own room"
+    },
+    "chatRooms": {
+        "noRooms": "No Rooms :(",
+        "shareLink": "Share Link"
+    },
+    "settings": {
+        "aboutUs": "About Us",
+        "rateUs": "Rate Us",
+        "issues": "Did you face any issues ?",
+        "deleteAccount": "Delete Account",
+        "signOut": "Sign Out",
+        "darkMode": "Dark Mode",
+        "dataPolicy": "Data Policy",
+        "termsOfService": "Terms of Service",
+    },
+    "phoneVerification": {
+        "header": "We have sent you a code at",
+        "resend": "Resend Code",
+        "verify": "Verify"
+    },
+    "emailVerification": {
+        "header": "Please verify your email.",
+        "emailSent": "We have sent you an email at",
+        "resend": "Resend",
+        "verify": "Verify"
+    }
+}

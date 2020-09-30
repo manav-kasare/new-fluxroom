@@ -1,5 +1,12 @@
 import React from 'react';
-import {Text, TouchableOpacity, View, StatusBar, Platform} from 'react-native';
+import {
+  Text,
+  TouchableOpacity,
+  View,
+  StatusBar,
+  Platform,
+  Image,
+} from 'react-native';
 import Animated, {
   useCode,
   set,
@@ -23,7 +30,7 @@ import Apple from './Apple';
 
 export default function Onboard({navigation}) {
   const time = useValue(0);
-  const opacityTransition = withTimingTransition(time, {duration: 500});
+  const opacityTransition = withTimingTransition(time, {duration: 1000});
   const opacity = mix(opacityTransition, 0, 1);
   useCode(() => cond(eq(time, 0), set(time, 1)), [time]);
 
@@ -56,18 +63,24 @@ export default function Onboard({navigation}) {
           paddingTop: 50,
         }}>
         <Animated.View style={{opacity}}>
+          <Image
+            style={{
+              width: constants.width * 0.8,
+              height: 50,
+              marginTop: 50,
+            }}
+            resizeMode="cover"
+            source={require('../../assets/logoOnboard.webp')}
+          />
           <Text
             style={{
-              position: 'absolute',
-              top: 50,
-              color: 'white',
-              fontWeight: '800',
-              fontSize: 30,
-              letterSpacing: 2,
-              fontFamily: 'Helvetica Neue',
+              color: 'rgba(255,255,255,0.5)',
+              fontWeight: '400',
+              fontSize: 15,
               alignSelf: 'center',
+              marginTop: 10,
             }}>
-            FLUXROOM
+            Connect with anyone via audio !
           </Text>
         </Animated.View>
         <Animated.View

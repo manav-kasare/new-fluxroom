@@ -116,7 +116,7 @@ export default OtpVerification = ({
       <Dialog visible={isVisible} dismissable={false}>
         <Dialog.Content>
           <Paragraph style={{color: 'grey'}}>
-            We have sent you an email at phoneNumber
+            We have sent you a code at {phoneNumber}
           </Paragraph>
           <View style={styles.input}>
             <MaterialCommunityIcons
