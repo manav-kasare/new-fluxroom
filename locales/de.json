@@ -1,0 +1,100 @@
+{
+  "buttons" : {
+    "signUpOnboard" : "Melden Sie sich mit E-Mail an ",
+    "logInOnboard" : "Melden Sie Sich Mit E-Mail An ",
+    "signUp" : "Info ",
+    "logIn" : "Anmelden ",
+    "verify" : "Prüfen ",
+    "forgotPassword" : "Passwort vergessen? ",
+    "getOTP" : "OTP abrufen ",
+    "createRoom" : "Erstellen ",
+    "joinRoom" : "Verknüpfen ",
+    "joinedRoom" : "Verbunden ",
+    "invite" : "Einladen ",
+    "invited" : "Eingeladen ",
+    "findRoom" : "Finden Sie ein Zimmer ",
+    "done" : "Fertig ",
+    "cancel" : "Abbrechen ",
+    "close" : "Schließen ",
+    "submit" : "Übergeben ",
+    "resend" : "Erneut senden ",
+    "accept" : "Akzeptieren ",
+    "decline" : "Rückgang "
+  },
+  "placeholders" : {
+    "email" : "E-Mail-Adresse ",
+    "username" : "Benutzername ",
+    "issue" : "Problem ",
+    "description" : "Beschreibung ",
+    "password" : "Kennwort ",
+    "code" : "Prüfcode ",
+    "seach" : "In was sind Sie intrested? ",
+    "roomName" : "Worüber würden Sie reden? ",
+    "roomDescription" : "Beschreiben in weniger als 100 Zeichen ",
+    "searchUsername" : "Suchbenutzername ",
+    "forgotPassword" : "Registrierte E-Mail- oder Telefonnummer ",
+    "searchRooms" : "In was sind Sie intrested? "
+  },
+  "screens" : {
+    "signUp" : "Fluxroom verknüpfen ",
+    "logIn" : "Anmelden ",
+    "forgotPassword" : "Kennwort vergessen ",
+    "setUpProfile" : "Profil einrichten ",
+    "phone" : "Melden Sie sich mit der Telefonnummer an ",
+    "fluxroom" : "Fluxroom ",
+    "findRooms" : "Zimmer suchen ",
+    "settings" : "Einstellungen ",
+    "profile" : "Profil ",
+    "aboutUs" : "Über uns ",
+    "dataPolicy" : "Datenrichtlinie ",
+    "termsOfService" : "Bedingungen für den Service ",
+    "invitations" : "Einladungen ",
+    "issues" : "Probleme ",
+    "createRoom" : "Erstellen Sie Ihr eigenes Zimmer ",
+    "topRooms" : "Obere Räume "
+  },
+  "onboard" : {
+    "subHeading" : "Verbinden Sie mit jedem über Audio! "
+  },
+  "chatRooms" : {
+    "noRooms" : "Keine Zimmer: ( ",
+    "shareLink" : "Link freigeben ",
+    "reportUser" : "Berichtsbenutzer ",
+    "blockUser" : "Blockbenutzer ",
+    "noRoomExists" : "Kein Raum so existiert! "
+  },
+  "settings" : {
+    "aboutUs" : "Über uns ",
+    "rateUs" : "Bewerten Sie uns ",
+    "issues" : "Haben Sie Probleme mit sich? ",
+    "deleteAccount" : "Account löschen ",
+    "signOut" : "Abmelden ",
+    "darkMode" : "Dunkler Modus ",
+    "dataPolicy" : "Datenrichtlinie ",
+    "termsOfService" : "Bedingungen für den Service "
+  },
+  "otpVerification" : {
+    "heading" : "Wir haben Ihnen einen Code geschickt "
+  },
+  "emailVerification" : {
+    "heading" : "Bitte überprüfen Sie Ihre E-Mail. ",
+    "emailSent" : "Wir haben Ihnen eine E-Mail an "
+  },
+  "issues" : {
+    "heading" : "Welches Problem haben Sie mit sich gemacht? ",
+    "subHeading" : "Unser Team wird versuchen, sie in unserer besten Praxis zu beheben. "
+  },
+  "errors" : {
+    "anErrorOccured" : "Ein Fehler ist aufgetreten ",
+    "roomDoesNotExist" : "Raum ist nicht vorhanden   ",
+    "roomUserDoesNotExist" : "Zimmer oder Benutzer sind nicht vorhanden ",
+    "roomNameTaken" : "Raumname bereits Taken ",
+    "playServices" : "Spielservices nicht verfügbar ",
+    "emailVerification" : "E-Mail nicht verified ",
+    "invalidCode" : "Ungültiger Code ",
+    "unexpectedError" : "Ein unerwarteter Fehler ist aufgetreten ",
+    "usernameTaken" : "Benutzername bereits übernommen ",
+    "invalidEmail" : "Ungültige E-Mail-Adresse ",
+    "emailInUse" : "E-Mail bereits im Gebrauch"
+  }
+}

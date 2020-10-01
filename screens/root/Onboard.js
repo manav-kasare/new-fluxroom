@@ -68,7 +68,7 @@ export default function Onboard({navigation}) {
             style={{
               width: constants.width * 0.8,
               height: 50,
-              marginTop: 100,
+              marginTop: 50,
               alignSelf: 'center',
             }}
             resizeMode="cover"

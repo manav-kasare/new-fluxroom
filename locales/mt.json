@@ -1,0 +1,100 @@
+{
+  "buttons" : {
+    "signUpOnboard" : "Is-sinjal Sa L-email ",
+    "logInOnboard" : "Log F ' email ",
+    "signUp" : "Sinjal Up ",
+    "logIn" : "Log F ' ",
+    "verify" : "Verifika ",
+    "forgotPassword" : "Insejt Password? ",
+    "getOTP" : "Ikseb OTP ",
+    "createRoom" : "Oħloq ",
+    "joinRoom" : "Ingħaqad ",
+    "joinedRoom" : "Ingħaqad ",
+    "invite" : "Tistieden ",
+    "invited" : "Mistiedna ",
+    "findRoom" : "Sib kamra ",
+    "done" : "Magħmul ",
+    "cancel" : "Tħassir ",
+    "close" : "Agħlaq ",
+    "submit" : "Sottomissjoni ",
+    "resend" : "Reend ",
+    "accept" : "Aċċetta ",
+    "decline" : "Tnaqqis "
+  },
+  "placeholders" : {
+    "email" : "Indirizz Elettroniku ",
+    "username" : "Username ",
+    "issue" : "Ħarġa ",
+    "description" : "Deskrizzjoni ",
+    "password" : "Password ",
+    "code" : "Kodiċi tal-verifika ",
+    "seach" : "Liema huma inti intrmistrieħa f? ",
+    "roomName" : "What would you talk dwar? ",
+    "roomDescription" : "Iddeskrivi f'inqas minn 100 karattru ",
+    "searchUsername" : "Fittex username ",
+    "forgotPassword" : "Email jew numru tat-telefown reġistrati ",
+    "searchRooms" : "Liema huma inti intrmistrieħa f? "
+  },
+  "screens" : {
+    "signUp" : "Ingħaqad Fluxroom ",
+    "logIn" : "Log F ' ",
+    "forgotPassword" : "Insejt Password ",
+    "setUpProfile" : "Issettja l-profil tiegħek ",
+    "phone" : "Sinjal In-numru tat-telefon ",
+    "fluxroom" : "Fluxroom ",
+    "findRooms" : "Sib Kmamar ",
+    "settings" : "Settings ",
+    "profile" : "Profil ",
+    "aboutUs" : "Dwar Us ",
+    "dataPolicy" : "Politika dwar id-dejta ",
+    "termsOfService" : "Termini ta ' Servizz ",
+    "invitations" : "Stediniet ",
+    "issues" : "Kwistjonijiet ",
+    "createRoom" : "Oħloq kamra tiegħek stess ",
+    "topRooms" : "Kmamar Fuq "
+  },
+  "onboard" : {
+    "subHeading" : "Qabbad ma ' xi ħadd permezz awdjo! "
+  },
+  "chatRooms" : {
+    "noRooms" : "Ebda Kmamar: ( ",
+    "shareLink" : "Share Link ",
+    "reportUser" : "Rapport Utent ",
+    "blockUser" : "Utent Blokk ",
+    "noRoomExists" : "Ebda kamra bħal din teżisti! "
+  },
+  "settings" : {
+    "aboutUs" : "Dwar Us ",
+    "rateUs" : "Rata Us ",
+    "issues" : "Kont qed tiffaċċja xi kwistjonijiet? ",
+    "deleteAccount" : "Ħassar il-Kont ",
+    "signOut" : "Sinjal Out ",
+    "darkMode" : "Modalità Skura ",
+    "dataPolicy" : "Politika dwar id-dejta ",
+    "termsOfService" : "Termini ta ' Servizz "
+  },
+  "otpVerification" : {
+    "heading" : "Aħna bagħtu inti kodiċi fil- "
+  },
+  "emailVerification" : {
+    "heading" : "Jekk jogħġbok iċċekkja l-email tiegħek. ",
+    "emailSent" : "Aħna mibgħuta inti email fil- "
+  },
+  "issues" : {
+    "heading" : "X'kwistjoni għamlet wiċċek? ",
+    "subHeading" : "Tim tagħna se tipprova li tiffissa lilhom għall-prattika aħjar tagħna. "
+  },
+  "errors" : {
+    "anErrorOccured" : "Effett ta ' Żball ",
+    "roomDoesNotExist" : "Kamra ma teżistix   ",
+    "roomUserDoesNotExist" : "Jew kamra jew utent ma jeżistix ",
+    "roomNameTaken" : "Isem Kamra Diġà Meħuda ",
+    "playServices" : "Servizzi play mhux disponibbli ",
+    "emailVerification" : "Email mhux Verified ",
+    "invalidCode" : "Kodiċi Invalidu ",
+    "unexpectedError" : "Żball mhux mistenni li seħħ ",
+    "usernameTaken" : "Username Diġà Meħuda ",
+    "invalidEmail" : "Indirizz Email Invalidu ",
+    "emailInUse" : "Email diġà fl-użu"
+  }
+}

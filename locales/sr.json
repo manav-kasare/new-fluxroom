@@ -1,0 +1,100 @@
+{
+  "buttons" : {
+    "signUpOnboard" : "Пријавите се уз е-пошту ",
+    "logInOnboard" : "Пријавите се са е-поштом ",
+    "signUp" : "Упишите се ",
+    "logIn" : "Пријави се ",
+    "verify" : "Потврди ",
+    "forgotPassword" : "Заборавио лозинку? ",
+    "getOTP" : "Набавите OTP ",
+    "createRoom" : "Креирај ",
+    "joinRoom" : "Придружи се ",
+    "joinedRoom" : "Придружена ",
+    "invite" : "Позови ",
+    "invited" : "Позвано ",
+    "findRoom" : "Пронађи собу ",
+    "done" : "Учињено ",
+    "cancel" : "Откажи ",
+    "close" : "Затвори ",
+    "submit" : "Пошаљи ",
+    "resend" : "Поново пошаљи ",
+    "accept" : "Прихвати ",
+    "decline" : "Одбиј "
+  },
+  "placeholders" : {
+    "email" : "Адреса е-поште ",
+    "username" : "Корисничко име ",
+    "issue" : "Проблем ",
+    "description" : "Опис ",
+    "password" : "Лозинка ",
+    "code" : "Код верификације ",
+    "seach" : "Шта си ти интрестед у? ",
+    "roomName" : "О чему сте разговарали? ",
+    "roomDescription" : "Опишите у мање од 100 знакова ",
+    "searchUsername" : "Претражи корисничко име ",
+    "forgotPassword" : "Регистровани е-пошта или број телефона ",
+    "searchRooms" : "Шта си ти интрестед у? "
+  },
+  "screens" : {
+    "signUp" : "Придружите се луксузној соби ",
+    "logIn" : "Пријави се ",
+    "forgotPassword" : "Заборављено лозинку ",
+    "setUpProfile" : "Подесите профил ",
+    "phone" : "Пријавите се са бројем телефона ",
+    "fluxroom" : "Флукс-соба ",
+    "findRooms" : "Пронађи собе ",
+    "settings" : "Поставке ",
+    "profile" : "Профил ",
+    "aboutUs" : "О нама ",
+    "dataPolicy" : "Смернице података ",
+    "termsOfService" : "Услови услуге ",
+    "invitations" : "Позиви ",
+    "issues" : "Проблеми ",
+    "createRoom" : "Креирајте своју собу ",
+    "topRooms" : "Горње собе "
+  },
+  "onboard" : {
+    "subHeading" : "Повежите се са било ким преко звука! "
+  },
+  "chatRooms" : {
+    "noRooms" : "Нема соба: ( ",
+    "shareLink" : "Дели линк ",
+    "reportUser" : "Пријави корисника ",
+    "blockUser" : "Блокирај корисника ",
+    "noRoomExists" : "Ниједна соба не постоји! "
+  },
+  "settings" : {
+    "aboutUs" : "О нама ",
+    "rateUs" : "Оцени нас ",
+    "issues" : "Јеси ли се суочила са неким питањима? ",
+    "deleteAccount" : "Избриши налог ",
+    "signOut" : "Упишите се ",
+    "darkMode" : "Мрачни режим ",
+    "dataPolicy" : "Смернице података ",
+    "termsOfService" : "Услови услуге "
+  },
+  "otpVerification" : {
+    "heading" : "Послали смо вам шифру. "
+  },
+  "emailVerification" : {
+    "heading" : "Потврдите свој е-пошту. ",
+    "emailSent" : "Послали смо вам е-пошту на "
+  },
+  "issues" : {
+    "heading" : "Шта питање си лице? ",
+    "subHeading" : "Наш тим ће покушати да их поправи до наше најбоље праксе. "
+  },
+  "errors" : {
+    "anErrorOccured" : "Грешка у октајењу ",
+    "roomDoesNotExist" : "Соба не постоји   ",
+    "roomUserDoesNotExist" : "Или соба или корисник не постоји ",
+    "roomNameTaken" : "Име собе је већ заузето ",
+    "playServices" : "Услуге игре нису доступне ",
+    "emailVerification" : "Е-пошта није верификована ",
+    "invalidCode" : "Неважећи код ",
+    "unexpectedError" : "Дошло је до неочекиване грешке ",
+    "usernameTaken" : "Корисничко име је већ заузето ",
+    "invalidEmail" : "Неодговарајућа адреса е ",
+    "emailInUse" : "Е-пошта се већ користи"
+  }
+}

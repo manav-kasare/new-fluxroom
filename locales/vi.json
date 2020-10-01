@@ -1,0 +1,87 @@
+{
+  "buttons" : {
+    "signUpOnboard" : "Đăng Ký Với Email ",
+    "logInOnboard" : "Ðăng Nhập Với Email ",
+    "signUp" : "Đăng ký ",
+    "logIn" : "Ðăng nhập ",
+    "verify" : "Xác minh ",
+    "forgotPassword" : "Quên Mật Khẩu? ",
+    "getOTP" : "Lấy OTP ",
+    "createRoom" : "Tạo ",
+    "joinRoom" : "Tham gia ",
+    "joinedRoom" : "Tham gia ",
+    "invite" : "Mời ",
+    "invited" : "Được mời ",
+    "findRoom" : "Tìm một căn phòng ",
+    "done" : "Đã xong ",
+    "cancel" : "Hủy ",
+    "close" : "Đóng ",
+    "submit" : "Gửi ",
+    "resend" : "Gửi lại ",
+    "accept" : "Chấp nhận ",
+    "decline" : "Giảm dần "
+  },
+  "placeholders" : {
+    "email" : "Ðịa chỉ email ",
+    "username" : "Tên người dùng ",
+    "issue" : "Vấn đề ",
+    "description" : "Mô tả ",
+    "password" : "Mật khẩu ",
+    "code" : "Mã xác minh ",
+    "seach" : "Anh đang can dự vào cái gì? ",
+    "roomName" : "Anh sẽ nói gì? ",
+    "roomDescription" : "Mô tả trong ít hơn 100 ký tự ",
+    "searchUsername" : "Tên người dùng tìm kiếm ",
+    "forgotPassword" : "Số điện thoại hoặc email đã đăng ký ",
+    "searchRooms" : "Anh đang can dự vào cái gì? "
+  },
+  "screens" : {
+    "signUp" : "Nhập vào Fluxroom ",
+    "logIn" : "Ðăng nhập ",
+    "forgotPassword" : "Quên mật khẩu ",
+    "setUpProfile" : "Thiết lập cấu hình của bạn ",
+    "phone" : "Đăng nhập với số điện thoại ",
+    "fluxroom" : "Fluxroom ",
+    "findRooms" : "Tìm phòng ",
+    "settings" : "Thiết lập ",
+    "profile" : "Cấu hình ",
+    "aboutUs" : "Về chúng ta ",
+    "dataPolicy" : "Chính sách Dữ ",
+    "termsOfService" : "Ðiều khoản Dịch vụ ",
+    "invitations" : "Lời mời ",
+    "issues" : "Vấn đề ",
+    "createRoom" : "Tạo phòng riêng ",
+    "topRooms" : "Các Phòng Hàng Đầu "
+  },
+  "onboard" : {
+    "subHeading" : "Kết nối với bất cứ ai qua âm thanh "
+  },
+  "chatRooms" : {
+    "noRooms" : "Không có phòng: ( ",
+    "shareLink" : "Liên kết chung ",
+    "reportUser" : "Người dùng báo ",
+    "blockUser" : "Chặn người dùng ",
+    "noRoomExists" : "Không có phòng nào tồn tại! "
+  },
+  "settings" : {
+    "aboutUs" : "Về chúng ta ",
+    "rateUs" : "Đánh giá ",
+    "issues" : "Anh có gặp vấn đề gì không? ",
+    "deleteAccount" : "Xóa tài khoản ",
+    "signOut" : "Đăng xuất ",
+    "darkMode" : "Chế độ tối ",
+    "dataPolicy" : "Chính sách Dữ ",
+    "termsOfService" : "Ðiều khoản Dịch vụ "
+  },
+  "otpVerification" : {
+    "heading" : "Chúng tôi đã gửi cho anh một mật mã. "
+  },
+  "emailVerification" : {
+    "heading" : "Vui lòng xác minh email của bạn. ",
+    "emailSent" : "Chúng tôi đã gửi email cho bạn "
+  },
+  "issues" : {
+    "heading" : "Anh đã đối mặt với vấn đề gì? ",
+    "subHeading" : "Đội của chúng tôi sẽ cố gắng sửa chữa chúng để thực hành tốt nhất."
+  }
+}

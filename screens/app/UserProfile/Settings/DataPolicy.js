@@ -51,9 +51,7 @@ export default function DataPolicy() {
       }}>
       <ScrollView style={{flex: 1, paddingTop: 25, paddingBottom: 50}}>
         <View style={styles.view}>
-          <Text style={styles.headerText}>
-            What information do we collect ?
-          </Text>
+          <Text style={styles.headerText}></Text>
           <View style={styles.body}>
             <Text style={styles.subHeadingText}>
               - Information and content you provide :

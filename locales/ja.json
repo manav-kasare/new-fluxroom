@@ -1,0 +1,100 @@
+{
+  "buttons" : {
+    "signUpOnboard" : "E メールでサインアップ",
+    "logInOnboard" : "E メールでログイン",
+    "signUp" : "登録",
+    "logIn" : "ログイン",
+    "verify" : "検証",
+    "forgotPassword" : "パスワードを忘れたのか ?",
+    "getOTP" : "OTP の取得",
+    "createRoom" : "クリエイ作成",
+    "joinRoom" : "ジョイン",
+    "joinedRoom" : "結合済み",
+    "invite" : "招待者",
+    "invited" : "招待済み",
+    "findRoom" : "ルームの検索",
+    "done" : "ドーネ",
+    "cancel" : "キャンセル",
+    "close" : "クローズ",
+    "submit" : "送信",
+    "resend" : "再送",
+    "accept" : "アクセプト",
+    "decline" : "衰退"
+  },
+  "placeholders" : {
+    "email" : "メール・アドレス",
+    "username" : "ユーザー名",
+    "issue" : "発行",
+    "description" : "解説",
+    "password" : "パスワード",
+    "code" : "検証コード",
+    "seach" : "何にイントレットしてるの ?",
+    "roomName" : "何の話をしてるの ?",
+    "roomDescription" : "100 文字未満に記述",
+    "searchUsername" : "ユーザー名の検索",
+    "forgotPassword" : "登録済み E メールまたは電話番号",
+    "searchRooms" : "何にイントレットしてるの ?"
+  },
+  "screens" : {
+    "signUp" : "フラクルームに参加",
+    "logIn" : "ログイン",
+    "forgotPassword" : "パスワードを忘れた場合",
+    "setUpProfile" : "プロファイルのセットアップ",
+    "phone" : "電話番号でサインインする",
+    "fluxroom" : "流体",
+    "findRooms" : "会議室の検索",
+    "settings" : "設定",
+    "profile" : "プロフィール",
+    "aboutUs" : "弊社について",
+    "dataPolicy" : "データ・ポリシー",
+    "termsOfService" : "サービスの条件",
+    "invitations" : "インビテーション",
+    "issues" : "問題点",
+    "createRoom" : "独自のルームを作成する",
+    "topRooms" : "トップ・ルームズ"
+  },
+  "onboard" : {
+    "subHeading" : "誰かと音声で接続してください !"
+  },
+  "chatRooms" : {
+    "noRooms" : "ルームなし :(",
+    "shareLink" : "共有リンク",
+    "reportUser" : "レポート・ユーザー",
+    "blockUser" : "ブロック・ユーザー",
+    "noRoomExists" : "あんな部屋はない。"
+  },
+  "settings" : {
+    "aboutUs" : "弊社について",
+    "rateUs" : "レート・アス",
+    "issues" : "何か問題がありましたか。",
+    "deleteAccount" : "アカウントの削除",
+    "signOut" : "サインアウト",
+    "darkMode" : "ダーク・モード",
+    "dataPolicy" : "データ・ポリシー",
+    "termsOfService" : "サービスの条件"
+  },
+  "otpVerification" : {
+    "heading" : "私たちはあなたにコードを送った"
+  },
+  "emailVerification" : {
+    "heading" : "E メールを確認してください。",
+    "emailSent" : "あなたに E メールを送信しました"
+  },
+  "issues" : {
+    "heading" : "どのような問題に直面しましたか ?",
+    "subHeading" : "我々のチームはベスト・プラクティスに彼らを修正しようとするだろう。"
+  },
+  "errors" : {
+    "anErrorOccured" : "エラーが発生しました",
+    "roomDoesNotExist" : "ルームは存在しません ",
+    "roomUserDoesNotExist" : "ルームまたはユーザーが存在しません",
+    "roomNameTaken" : "部屋名は既に使用されています",
+    "playServices" : "使用できない再生サービス",
+    "emailVerification" : "E メールが検証され",
+    "invalidCode" : "無効なコード",
+    "unexpectedError" : "予期しないエラーが発生",
+    "usernameTaken" : "ユーザー名は既に使用されています",
+    "invalidEmail" : "無効なメール・アドレス",
+    "emailInUse" : "E メールは既に使用中"
+  }
+}

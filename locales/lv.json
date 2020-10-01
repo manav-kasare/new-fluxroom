@@ -1,0 +1,100 @@
+{
+  "buttons" : {
+    "signUpOnboard" : "Pierakstīties Ar E-pastu ",
+    "logInOnboard" : "Pieteikties Ar E-pastu ",
+    "signUp" : "Pierakstīties ",
+    "logIn" : "Ielogot ",
+    "verify" : "Pārbaudīt ",
+    "forgotPassword" : "Aizmirsu paroli? ",
+    "getOTP" : "Saņemiet OTP ",
+    "createRoom" : "Izveidot ",
+    "joinRoom" : "Pievienojies ",
+    "joinedRoom" : "Pievienojies ",
+    "invite" : "Uzaicināt ",
+    "invited" : "Uzaicināti ",
+    "findRoom" : "Atrast istabu ",
+    "done" : "Paveiktais ",
+    "cancel" : "Atcelt ",
+    "close" : "Aizvērt ",
+    "submit" : "Iesniedziet ",
+    "resend" : "Rezumēšana ",
+    "accept" : "Pieņemt ",
+    "decline" : "Samazināšanās "
+  },
+  "placeholders" : {
+    "email" : "Pasta adrese ",
+    "username" : "Lietotājvārds ",
+    "issue" : "Emisijas ",
+    "description" : "Apraksts ",
+    "password" : "Parole ",
+    "code" : "Verifikācijas kods ",
+    "seach" : "Ko tu negribi? ",
+    "roomName" : "Par ko tu runā? ",
+    "roomDescription" : "Aprakstiet mazāk nekā 100 rakstu zīmes ",
+    "searchUsername" : "Meklēt lietotājvārdu ",
+    "forgotPassword" : "Reģistrētā e-pasta adrese vai tālruņa numurs ",
+    "searchRooms" : "Ko tu negribi? "
+  },
+  "screens" : {
+    "signUp" : "Pievienojies Fluxroom ",
+    "logIn" : "Ielogot ",
+    "forgotPassword" : "Aizmirsu paroli ",
+    "setUpProfile" : "Izveidot savu profilu ",
+    "phone" : "Pierakstīties ar tālruņa numuru ",
+    "fluxroom" : "Fluxroom ",
+    "findRooms" : "Atrast istabas ",
+    "settings" : "Iestatījumi ",
+    "profile" : "Profils ",
+    "aboutUs" : "Par mums ",
+    "dataPolicy" : "Datu Politika ",
+    "termsOfService" : "Pakalpojumu noteikumi ",
+    "invitations" : "Uzaicinājumi ",
+    "issues" : "Jautājumi ",
+    "createRoom" : "Izveidot savu istabu ",
+    "topRooms" : "Augšējā istaba "
+  },
+  "onboard" : {
+    "subHeading" : "Savienojiet ar jebkuru, izmantojot audio! "
+  },
+  "chatRooms" : {
+    "noRooms" : "Nav istabas: ( ",
+    "shareLink" : "Akciju saite ",
+    "reportUser" : "Ziņot par lietotāju ",
+    "blockUser" : "Bloķēt lietotāja ",
+    "noRoomExists" : "Tāda nav! "
+  },
+  "settings" : {
+    "aboutUs" : "Par mums ",
+    "rateUs" : "Asv ",
+    "issues" : "Vai tev bija kādi jautājumi? ",
+    "deleteAccount" : "Dzēst kontu ",
+    "signOut" : "Pierakstīties ",
+    "darkMode" : "Tumšais režīms ",
+    "dataPolicy" : "Datu Politika ",
+    "termsOfService" : "Pakalpojumu noteikumi "
+  },
+  "otpVerification" : {
+    "heading" : "Mēs jums nosūtījām kodu "
+  },
+  "emailVerification" : {
+    "heading" : "Lūdzu, pārbaudiet savu e-pastu. ",
+    "emailSent" : "Mēs jums nosūtījām e-pastu "
+  },
+  "issues" : {
+    "heading" : "Kāds jautājums tev bija? ",
+    "subHeading" : "Mūsu komanda centīsies tās salabot ar mūsu labāko praksi. "
+  },
+  "errors" : {
+    "anErrorOccured" : "Izārstēta Kļūda ",
+    "roomDoesNotExist" : "Telpa nepastāv   ",
+    "roomUserDoesNotExist" : "Vai nu telpa, vai lietotājs neeksistē ",
+    "roomNameTaken" : "Istabas nosaukums Jau Taken ",
+    "playServices" : "Nav pieejami pakalpojumi ",
+    "emailVerification" : "E-pasts nav pārbaudīts ",
+    "invalidCode" : "Nederīgs kods ",
+    "unexpectedError" : "Negaidīta kļūdaina kļūda ",
+    "usernameTaken" : "Jau paņemts lietotājvārds ",
+    "invalidEmail" : "Nederīga e-pasta adrese ",
+    "emailInUse" : "E-pasts jau lieto"
+  }
+}

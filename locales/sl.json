@@ -1,0 +1,100 @@
+{
+  "buttons" : {
+    "signUpOnboard" : "Podpiši z elektronsko pošto ",
+    "logInOnboard" : "Prijavi se z elektronsko pošto ",
+    "signUp" : "Prijava ",
+    "logIn" : "Prijava ",
+    "verify" : "Preveri ",
+    "forgotPassword" : "Ali ste pozabili geslo? ",
+    "getOTP" : "Dobi OTP ",
+    "createRoom" : "Ustvari ",
+    "joinRoom" : "Pridruži se ",
+    "joinedRoom" : "Spojena ",
+    "invite" : "Povabi ",
+    "invited" : "Povabljeni ",
+    "findRoom" : "Najdite sobo ",
+    "done" : "Končano. ",
+    "cancel" : "Preklici ",
+    "close" : "Zapri ",
+    "submit" : "Predloži ",
+    "resend" : "Znova pošlji ",
+    "accept" : "Sprejmi ",
+    "decline" : "Zavrni "
+  },
+  "placeholders" : {
+    "email" : "Elektronski naslov ",
+    "username" : "Uporabniško ime ",
+    "issue" : "Težava ",
+    "description" : "Opis ",
+    "password" : "Geslo ",
+    "code" : "Koda za preverjanje ",
+    "seach" : "V kaj si se vtrel? ",
+    "roomName" : "O čem bi se pogovarjala? ",
+    "roomDescription" : "Opišite manj kot 100 znakov ",
+    "searchUsername" : "Preišči uporabniško ime ",
+    "forgotPassword" : "Registrirana elektronska pošta ali telefonska številka ",
+    "searchRooms" : "V kaj si se vtrel? "
+  },
+  "screens" : {
+    "signUp" : "Pridruži se Fluxroom ",
+    "logIn" : "Prijava ",
+    "forgotPassword" : "Pozabo geslo ",
+    "setUpProfile" : "Nastavitev profila ",
+    "phone" : "Prijavite se s telefonsko številko ",
+    "fluxroom" : "Fluksesoba ",
+    "findRooms" : "Najdi Sobe ",
+    "settings" : "Nastavitve ",
+    "profile" : "Profil ",
+    "aboutUs" : "O nas. ",
+    "dataPolicy" : "Načelo podatkov ",
+    "termsOfService" : "Pogoji storitve ",
+    "invitations" : "Vabila ",
+    "issues" : "Težave ",
+    "createRoom" : "Ustvarite svojo sobo ",
+    "topRooms" : "Zgornje Sobe "
+  },
+  "onboard" : {
+    "subHeading" : "Povesi se s kom preko avdio! "
+  },
+  "chatRooms" : {
+    "noRooms" : "Ni Sob: ( ",
+    "shareLink" : "Skupna raba povezave ",
+    "reportUser" : "Uporabnik poročila ",
+    "blockUser" : "Blokij uporabnika ",
+    "noRoomExists" : "Nobena soba ne obstaja! "
+  },
+  "settings" : {
+    "aboutUs" : "O nas. ",
+    "rateUs" : "Ocenite nas ",
+    "issues" : "Si se soočil s kakršnikoli vprašanji? ",
+    "deleteAccount" : "Izbriši račun ",
+    "signOut" : "Odjavite se ",
+    "darkMode" : "Temni način ",
+    "dataPolicy" : "Načelo podatkov ",
+    "termsOfService" : "Pogoji storitve "
+  },
+  "otpVerification" : {
+    "heading" : "Poslali smo vam kodo. "
+  },
+  "emailVerification" : {
+    "heading" : "Preverite elektronsko pošto. ",
+    "emailSent" : "Poslali smo vam e-pošto. "
+  },
+  "issues" : {
+    "heading" : "S čim si se soočil? ",
+    "subHeading" : "Naša ekipa jih bo poskusila popraviti na naši najboljši praksi. "
+  },
+  "errors" : {
+    "anErrorOccured" : "Ozdravljena Napaka ",
+    "roomDoesNotExist" : "Soba ne obstaja   ",
+    "roomUserDoesNotExist" : "Soba ali uporabnik ne obstaja ",
+    "roomNameTaken" : "Ime sobe je že Taken ",
+    "playServices" : "Predvaja ni na voljo ",
+    "emailVerification" : "E-pošta ni preverjena ",
+    "invalidCode" : "Neveljavna koda ",
+    "unexpectedError" : "Prišlo je do nepričakovane napake ",
+    "usernameTaken" : "Uporabniško Ime Je Že Zaseto ",
+    "invalidEmail" : "Neveljaven elektronski naslov ",
+    "emailInUse" : "Elektronska pošta je že v uporabi"
+  }
+}

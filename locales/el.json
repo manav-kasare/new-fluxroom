@@ -1,0 +1,100 @@
+{
+  "buttons" : {
+    "signUpOnboard" : "Εγγραφή Με Email ",
+    "logInOnboard" : "Σύνδεση Με Email ",
+    "signUp" : "Εγγραφή: ",
+    "logIn" : "Σύνδεση: ",
+    "verify" : "Επαλήθευση ",
+    "forgotPassword" : "Ξέχασες τον κωδικό? ",
+    "getOTP" : "Ανάκτηση OTP ",
+    "createRoom" : "Δημιουργία: ",
+    "joinRoom" : "Συμμετοχή: ",
+    "joinedRoom" : "' Ενταξη ",
+    "invite" : "Πρόσκληση: ",
+    "invited" : "Πρόσκληση: ",
+    "findRoom" : "Βρείτε ένα δωμάτιο. ",
+    "done" : "' Εγινε ",
+    "cancel" : "Ακύρωση. ",
+    "close" : "Κλείσιμο ",
+    "submit" : "Υποβολή: ",
+    "resend" : "Επαναφορά: ",
+    "accept" : "Δεκτή. ",
+    "decline" : "Απόρριψη "
+  },
+  "placeholders" : {
+    "email" : "Διεύθυνση email ",
+    "username" : "Όνομα χρήστη: ",
+    "issue" : "Έκδοση: ",
+    "description" : "Περιγραφή: ",
+    "password" : "Κωδικός πρόσβασης ",
+    "code" : "Κωδικός επαλήθευσης: ",
+    "seach" : "-Σε τι συνελήφθηκες; ",
+    "roomName" : "-Τι θα έλεγες; ",
+    "roomDescription" : "Περιγράψτε σε λιγότερους από 100 χαρακτήρες ",
+    "searchUsername" : "Όνομα χρήστη αναζήτησης ",
+    "forgotPassword" : "Εγγεγραμμένο email ή αριθμό τηλεφώνου ",
+    "searchRooms" : "-Σε τι συνελήφθηκες; "
+  },
+  "screens" : {
+    "signUp" : "Συμμετοχή στο Fluxroom ",
+    "logIn" : "Σύνδεση: ",
+    "forgotPassword" : "Ξεχάσατε τον κωδικό ",
+    "setUpProfile" : "Ρύθμιση του προφίλ σας ",
+    "phone" : "Σύνδεση με αριθμό τηλεφώνου ",
+    "fluxroom" : "Fluxroom ",
+    "findRooms" : "Εύρεση αιθουσών ",
+    "settings" : "Ρυθμίσεις: ",
+    "profile" : "Προφίλ: ",
+    "aboutUs" : "Για Μας. ",
+    "dataPolicy" : "Πολιτική δεδομένων: ",
+    "termsOfService" : "Όροι υπηρεσίας: ",
+    "invitations" : "-Προσκλήσεις ",
+    "issues" : "Εκδόσεις: ",
+    "createRoom" : "Δημιουργήστε το δικό σας δωμάτιο ",
+    "topRooms" : "Top δωμάτια "
+  },
+  "onboard" : {
+    "subHeading" : "Συνδέσου με οποιονδήποτε μέσω ήχου! "
+  },
+  "chatRooms" : {
+    "noRooms" : "Χωρίς Δωμάτια: ( ",
+    "shareLink" : "Σύνδεση κοινής χρήσης ",
+    "reportUser" : "Αναφορά χρήστη: ",
+    "blockUser" : "Χρήστης ενότητας. ",
+    "noRoomExists" : "Δεν υπάρχει χώρος! "
+  },
+  "settings" : {
+    "aboutUs" : "Για Μας. ",
+    "rateUs" : "(') ",
+    "issues" : "-Πρόσεξες κανένα πρόβλημα; ",
+    "deleteAccount" : "Διαγραφή λογαριασμού ",
+    "signOut" : "Υπογραφή: ",
+    "darkMode" : "Dark Mode ",
+    "dataPolicy" : "Πολιτική δεδομένων: ",
+    "termsOfService" : "Όροι υπηρεσίας: "
+  },
+  "otpVerification" : {
+    "heading" : "Σας στείλαμε έναν κωδικό. "
+  },
+  "emailVerification" : {
+    "heading" : "Επιβεβαιώστε το email σας. ",
+    "emailSent" : "Σας στείλαμε ένα email στο "
+  },
+  "issues" : {
+    "heading" : "-Τι πρόβλημα έχεις; ",
+    "subHeading" : "Η ομάδα μας θα προσπαθήσει να τα διορθώσει στην καλύτερη πρακτική μας. "
+  },
+  "errors" : {
+    "anErrorOccured" : "Παρουσιάστηκε Σφάλμα. ",
+    "roomDoesNotExist" : "Δεν υπάρχει χώρος.   ",
+    "roomUserDoesNotExist" : "Δεν υπάρχει χώρος ή χρήστης. ",
+    "roomNameTaken" : "Το όνομα αίθουσας έχει ήδη ληφθεί ",
+    "playServices" : "Μη διαθέσιμες υπηρεσίες Play ",
+    "emailVerification" : "Μη εξακρίβωση στοιχείων email ",
+    "invalidCode" : "Μη έγκυρος κωδικός ",
+    "unexpectedError" : "Παρουσιάστηκε μη αναμενόμενο σφάλμα. ",
+    "usernameTaken" : "Όνομα χρήστη ήδη ελήφθη ",
+    "invalidEmail" : "Μη έγκυρη διεύθυνση email ",
+    "emailInUse" : "Email ήδη σε χρήση"
+  }
+}

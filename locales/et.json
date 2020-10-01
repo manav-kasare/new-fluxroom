@@ -1,0 +1,100 @@
+{
+  "buttons" : {
+    "signUpOnboard" : "Kirjutage alla E-postiga ",
+    "logInOnboard" : "Logi sisse E-postiga ",
+    "signUp" : "Kirjuta alla ",
+    "logIn" : "Logi sisse ",
+    "verify" : "Kontrolli ",
+    "forgotPassword" : "Kas unustasid parooli? ",
+    "getOTP" : "Saada OTP ",
+    "createRoom" : "Loo ",
+    "joinRoom" : "Ühine ",
+    "joinedRoom" : "Liitunud ",
+    "invite" : "Kutsu ",
+    "invited" : "Kutsutud ",
+    "findRoom" : "Leia tuba. ",
+    "done" : "Tehtud ",
+    "cancel" : "Loobu ",
+    "close" : "Sulge ",
+    "submit" : "Esita ",
+    "resend" : "Uuesti ",
+    "accept" : "Nõustu ",
+    "decline" : "Langus "
+  },
+  "placeholders" : {
+    "email" : "Meiliaadress ",
+    "username" : "Kasutajanimi ",
+    "issue" : "Väljaandmine ",
+    "description" : "Kirjeldus ",
+    "password" : "Parool ",
+    "code" : "Kontrollikood ",
+    "seach" : "Mida te vahite? ",
+    "roomName" : "Millest sa räägid? ",
+    "roomDescription" : "Kirjeldada vähem kui 100 märki ",
+    "searchUsername" : "Otsingukasutajanimi ",
+    "forgotPassword" : "Registreeritud e-posti või telefoni number ",
+    "searchRooms" : "Mida te vahite? "
+  },
+  "screens" : {
+    "signUp" : "Liituge Fluxtoga ",
+    "logIn" : "Logi sisse ",
+    "forgotPassword" : "Unusta parool ",
+    "setUpProfile" : "Määra oma profiil ",
+    "phone" : "Sisselogimine telefoni numbriga ",
+    "fluxroom" : "Fluxroom ",
+    "findRooms" : "Otsi ruumid ",
+    "settings" : "Seadistused ",
+    "profile" : "Profiil ",
+    "aboutUs" : "Meist ",
+    "dataPolicy" : "Andmepoliitika ",
+    "termsOfService" : "Kasutustingimused ",
+    "invitations" : "Kutsed ",
+    "issues" : "Küsimused ",
+    "createRoom" : "Loo oma tuba ",
+    "topRooms" : "Ülaruumid "
+  },
+  "onboard" : {
+    "subHeading" : "Ühendage keegi audioga! "
+  },
+  "chatRooms" : {
+    "noRooms" : "Nr Tubasid: ( ",
+    "shareLink" : "Jaga viit ",
+    "reportUser" : "Aruande kasutaja ",
+    "blockUser" : "Ploki kasutaja ",
+    "noRoomExists" : "Sellist ruumi pole olemas! "
+  },
+  "settings" : {
+    "aboutUs" : "Meist ",
+    "rateUs" : "Hinda Meid ",
+    "issues" : "Kas sul oli probleeme? ",
+    "deleteAccount" : "Kustuta konto ",
+    "signOut" : "Kirjuta alla ",
+    "darkMode" : "Tume režiim ",
+    "dataPolicy" : "Andmepoliitika ",
+    "termsOfService" : "Kasutustingimused "
+  },
+  "otpVerification" : {
+    "heading" : "Me oleme sulle koodi saatnud. "
+  },
+  "emailVerification" : {
+    "heading" : "Palun kontrolli oma e-kirja. ",
+    "emailSent" : "Me oleme saatnud teile meili "
+  },
+  "issues" : {
+    "heading" : "Mis probleem sul oli? ",
+    "subHeading" : "Meie meeskond püüab neid parandada meie parimatele tavadele. "
+  },
+  "errors" : {
+    "anErrorOccured" : "Viga. ",
+    "roomDoesNotExist" : "Tuba ei ole olemas   ",
+    "roomUserDoesNotExist" : "Kas tuba või kasutaja ei ole olemas ",
+    "roomNameTaken" : "Toa nimi on juba võetud ",
+    "playServices" : "Esita teenused ei ole saadaval ",
+    "emailVerification" : "E-post pole kontrollitud ",
+    "invalidCode" : "Vigane kood ",
+    "unexpectedError" : "Esines ootamatu viga ",
+    "usernameTaken" : "Kasutajanimi on juba tehtud ",
+    "invalidEmail" : "Vigane e-posti aadress ",
+    "emailInUse" : "E-kiri on juba kasutusel"
+  }
+}

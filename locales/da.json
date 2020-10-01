@@ -1,0 +1,100 @@
+{
+  "buttons" : {
+    "signUpOnboard" : "Tilmeld dig med e-mail ",
+    "logInOnboard" : "Log på med e-mail ",
+    "signUp" : "Tilmeld dig ",
+    "logIn" : "Log på ",
+    "verify" : "Verificer ",
+    "forgotPassword" : "Glemt adgangskode? ",
+    "getOTP" : "Hent OTP ",
+    "createRoom" : "Opret ",
+    "joinRoom" : "Sammenkæd ",
+    "joinedRoom" : "Sammenkædet ",
+    "invite" : "Invitér ",
+    "invited" : "Inviteret ",
+    "findRoom" : "Find et lokale ",
+    "done" : "Udført ",
+    "cancel" : "Annullér ",
+    "close" : "Luk ",
+    "submit" : "Afsend ",
+    "resend" : "Send igen ",
+    "accept" : "Acceptér ",
+    "decline" : "Afvis "
+  },
+  "placeholders" : {
+    "email" : "E-mail ",
+    "username" : "Brugernavn ",
+    "issue" : "Udsted ",
+    "description" : "Beskrivelse ",
+    "password" : "Kodeord ",
+    "code" : "Verifikationskode ",
+    "seach" : "Hvad er du intresteret i? ",
+    "roomName" : "Hvad ville du tale om? ",
+    "roomDescription" : "Beskriv i mindre end 100 tegn ",
+    "searchUsername" : "Søg efter brugernavn ",
+    "forgotPassword" : "Registreret e-mail eller telefonnummer ",
+    "searchRooms" : "Hvad er du intresteret i? "
+  },
+  "screens" : {
+    "signUp" : "Deltag i Fluxroom ",
+    "logIn" : "Log på ",
+    "forgotPassword" : "Glemt adgangskode ",
+    "setUpProfile" : "Konfigurér din profil ",
+    "phone" : "Log på med telefonnummer ",
+    "fluxroom" : "Fluxroom ",
+    "findRooms" : "Søg efter lokaler ",
+    "settings" : "Indstillinger ",
+    "profile" : "Profil ",
+    "aboutUs" : "Om os ",
+    "dataPolicy" : "Datapolitik ",
+    "termsOfService" : "Vilkår for service ",
+    "invitations" : "Invitationer ",
+    "issues" : "Problemer ",
+    "createRoom" : "Opret dit eget lokale ",
+    "topRooms" : "Øverste lokaler "
+  },
+  "onboard" : {
+    "subHeading" : "Kommunikér med alle via lyd! "
+  },
+  "chatRooms" : {
+    "noRooms" : "Ingen lokaler: ( ",
+    "shareLink" : "Del link ",
+    "reportUser" : "Rapportbruger ",
+    "blockUser" : "Blokbruger ",
+    "noRoomExists" : "Der findes ikke et sådant rum! "
+  },
+  "settings" : {
+    "aboutUs" : "Om os ",
+    "rateUs" : "Vurdér os ",
+    "issues" : "Har du set nogen problemer? ",
+    "deleteAccount" : "Slet konto ",
+    "signOut" : "Log af ",
+    "darkMode" : "Mørk tilstand ",
+    "dataPolicy" : "Datapolitik ",
+    "termsOfService" : "Vilkår for service "
+  },
+  "otpVerification" : {
+    "heading" : "Vi har sendt dig en kode på "
+  },
+  "emailVerification" : {
+    "heading" : "Kontrollér e-mailen. ",
+    "emailSent" : "Vi har sendt dig en e-mail på "
+  },
+  "issues" : {
+    "heading" : "Hvilket problem har du i ansigtet? ",
+    "subHeading" : "Vores hold vil prøve at fikse dem til vores bedste praksis. "
+  },
+  "errors" : {
+    "anErrorOccured" : "Der er opstået en fejl ",
+    "roomDoesNotExist" : "Lokale findes ikke   ",
+    "roomUserDoesNotExist" : "Der findes ikke et lokale eller en bruger. ",
+    "roomNameTaken" : "Lokalenavn er allerede taget ",
+    "playServices" : "Afspil services er ikke tilgængelige ",
+    "emailVerification" : "E-mail er ikke verificeret ",
+    "invalidCode" : "Ugyldig kode ",
+    "unexpectedError" : "Der er opstået en uventet fejl ",
+    "usernameTaken" : "Brugernavn er allerede taget ",
+    "invalidEmail" : "Ugyldig e-mail-adresse ",
+    "emailInUse" : "E-mail er allerede i brug"
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "buttons" : {
+    "signUpOnboard" : "மின்னஞ்சல் சேமி ",
+    "logInOnboard" : "மின்னஞ்சல் மூலம் பதிவு ",
+    "signUp" : "QShortName ",
+    "logIn" : "பதிவேடு ",
+    "verify" : "சரிபார் ",
+    "forgotPassword" : "கடவுச்சொல்லை மாற்ற? ",
+    "getOTP" : "OTP பெறவும் ",
+    "createRoom" : "உருவாக்கு ",
+    "joinRoom" : "இணைப்பு ",
+    "joinedRoom" : "இணைப்பு ",
+    "invite" : "அழைப்பு ",
+    "invited" : "அழைப்பு ",
+    "findRoom" : "ஒரு அறையை தேடு ",
+    "done" : "டென்Name ",
+    "cancel" : "ரத்து செய் ",
+    "close" : "மூடு ",
+    "submit" : "துணை ",
+    "resend" : "முடிவு ",
+    "accept" : "ஏற்றுமதி செய் ",
+    "decline" : "குறுக்குவழி "
+  },
+  "placeholders" : {
+    "email" : "மின்னஞ்சல் முகவரி ",
+    "username" : "பயனர் பெயர் ",
+    "issue" : "_: % 1 ",
+    "description" : "விவரம் ",
+    "password" : "கடவுச்சொல் ",
+    "code" : "விரிவான குறியீடு ",
+    "seach" : "நீங்கள் என்ன செய்கிறீர்கள்? ",
+    "roomName" : "நீங்கள் என்ன பேச? ",
+    "roomDescription" : "100க்கும் குறைவான எழுத்துக்களில் Describe ",
+    "searchUsername" : "பயனர் பெயர் ",
+    "forgotPassword" : "பதிவு செய்யப்பட்ட மின்னஞ்சல் அல்லது தொலைபேசி எண் ",
+    "searchRooms" : "நீங்கள் என்ன செய்கிறீர்கள்? "
+  },
+  "screens" : {
+    "signUp" : "Fluxroom சேர் ",
+    "logIn" : "பதிவேடு ",
+    "forgotPassword" : "கடவுச்சொல் ",
+    "setUpProfile" : "உங்கள் பண்பை அமை ",
+    "phone" : "தொலைபேசி எண்ணுடன் குறி ",
+    "fluxroom" : "Fluxroom ",
+    "findRooms" : "உரையை தேடு ",
+    "settings" : "அமைப்புகள் ",
+    "profile" : "பண்பு ",
+    "aboutUs" : "@ title: window ",
+    "dataPolicy" : "தரவு கொள்கை ",
+    "termsOfService" : "சேவையகத்தின் நிலைகள் ",
+    "invitations" : "அழைப்பிதழ்கள் ",
+    "issues" : "விசைகள் ",
+    "createRoom" : "தங்களது அறையை உருவாக்கு ",
+    "topRooms" : "மேல் சுழல் "
+  },
+  "onboard" : {
+    "subHeading" : "ஒலி வழியாக யாருடன் இணை! "
+  },
+  "chatRooms" : {
+    "noRooms" : "ரூம்ஸ் இல்லை: ( ",
+    "shareLink" : "இணைப்பு ",
+    "reportUser" : "@ option: radio ",
+    "blockUser" : "பிளாக் பயனர் ",
+    "noRoomExists" : "அப்படி அப்படி இல்லை! "
+  },
+  "settings" : {
+    "aboutUs" : "@ title: window ",
+    "rateUs" : "Rate Us ",
+    "issues" : "நீங்கள் எந்த பிரச்சனையும் முகம்? ",
+    "deleteAccount" : "கணக்கை நீக்கு ",
+    "signOut" : "கையெழுத்து வெளியே ",
+    "darkMode" : "கறுப்பு வகை ",
+    "dataPolicy" : "தரவு கொள்கை ",
+    "termsOfService" : "சேவையகத்தின் நிலைகள் "
+  },
+  "otpVerification" : {
+    "heading" : "நாம் நீங்கள் ஒரு குறியீடு அனுப்பி வேண்டும் "
+  },
+  "emailVerification" : {
+    "heading" : "தயவு செய்து உங்கள் மின்னஞ்சலை சரிபார்க்கவும். ",
+    "emailSent" : "நாம் நீங்கள் ஒரு மின்னஞ்சல் அனுப்பி வேண்டும் "
+  },
+  "issues" : {
+    "heading" : "நீங்கள் என்ன பிரச்சனை செய்தது? ",
+    "subHeading" : "நமது அணி நமது சிறந்த நடைமுறை அவர்களை சரி செய்ய முயற்சிக்கும். "
+  },
+  "errors" : {
+    "anErrorOccured" : "ஒரு பிழை ஏற்பட்டுள்ளது ",
+    "roomDoesNotExist" : "குறும்படம் இல்லை   ",
+    "roomUserDoesNotExist" : "அறை அல்லது பயனர் இல்லை ",
+    "roomNameTaken" : "குறும்பட பெயர் ஏற்கனும் டெக்கென் ",
+    "playServices" : "விளையாட்டு சேவைகள் கிடைக்கவில்லை ",
+    "emailVerification" : "மின்னஞ்சல் மின்னஞ்சல் ",
+    "invalidCode" : "தவறான குறியீடு ",
+    "unexpectedError" : "எதிர்பாராத பிழை ஏற்பட்டது ",
+    "usernameTaken" : "Username Already Taken ",
+    "invalidEmail" : "செல்லாத மின்னஞ்சல் முகவரி ",
+    "emailInUse" : "மின்னஞ்சல் ஏற்கனவே பயன்பாடு"
+  }
+}

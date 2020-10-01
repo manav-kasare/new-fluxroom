@@ -1,0 +1,100 @@
+{
+  "buttons" : {
+    "signUpOnboard" : "Semnare cu e-mail ",
+    "logInOnboard" : "Logare Cu E-mail ",
+    "signUp" : "Semnare ",
+    "logIn" : "Logare ",
+    "verify" : "Verificare ",
+    "forgotPassword" : "Aţi uitat parola? ",
+    "getOTP" : "Obţinere OTP ",
+    "createRoom" : "Creare ",
+    "joinRoom" : "Unire ",
+    "joinedRoom" : "Alăturat ",
+    "invite" : "Invitare ",
+    "invited" : "Invitat ",
+    "findRoom" : "Găsiţi o cameră ",
+    "done" : "Făcut ",
+    "cancel" : "Anulare ",
+    "close" : "Închidere ",
+    "submit" : "Trimitere ",
+    "resend" : "Retrimitere ",
+    "accept" : "Acceptare ",
+    "decline" : "Declin "
+  },
+  "placeholders" : {
+    "email" : "Adresă e-mail ",
+    "username" : "Nume utilizator ",
+    "issue" : "Problemă ",
+    "description" : "Descriere ",
+    "password" : "Parolă ",
+    "code" : "Cod de verificare ",
+    "seach" : "Ce te mai intări? ",
+    "roomName" : "Despre ce aţi vorbi? ",
+    "roomDescription" : "Descrie în mai puţin de 100 de caractere ",
+    "searchUsername" : "Căutare nume utilizator ",
+    "forgotPassword" : "E-mail înregistrat sau număr de telefon ",
+    "searchRooms" : "Ce te mai intări? "
+  },
+  "screens" : {
+    "signUp" : "Join Fluxroom ",
+    "logIn" : "Logare ",
+    "forgotPassword" : "Parolă uitat ",
+    "setUpProfile" : "Setare profil ",
+    "phone" : "Semnare cu număr de telefon ",
+    "fluxroom" : "Fluxroom ",
+    "findRooms" : "Găsire camere ",
+    "settings" : "Setări ",
+    "profile" : "Profil ",
+    "aboutUs" : "Despre Noi ",
+    "dataPolicy" : "Politică de date ",
+    "termsOfService" : "Termeni de serviciu ",
+    "invitations" : "Invitaţii ",
+    "issues" : "Probleme ",
+    "createRoom" : "Creaţi-vă propria cameră ",
+    "topRooms" : "Camere de top "
+  },
+  "onboard" : {
+    "subHeading" : "Conectaţi-vă cu oricine prin audio! "
+  },
+  "chatRooms" : {
+    "noRooms" : "No Rooms: ( ",
+    "shareLink" : "Partajare legătură ",
+    "reportUser" : "Utilizator raport ",
+    "blockUser" : "Utilizator bloc ",
+    "noRoomExists" : "Nici o cameră nu există! "
+  },
+  "settings" : {
+    "aboutUs" : "Despre Noi ",
+    "rateUs" : "Rate us ",
+    "issues" : "V-aţi confruntat cu vreo problemă? ",
+    "deleteAccount" : "Ştergere cont ",
+    "signOut" : "Semnare ",
+    "darkMode" : "Mod întunecat ",
+    "dataPolicy" : "Politică de date ",
+    "termsOfService" : "Termeni de serviciu "
+  },
+  "otpVerification" : {
+    "heading" : "V-am trimis un cod la "
+  },
+  "emailVerification" : {
+    "heading" : "Vă rugăm să verificaţi e-mailul. ",
+    "emailSent" : "V-am trimis un e-mail la "
+  },
+  "issues" : {
+    "heading" : "Ce problemă ai făcut? ",
+    "subHeading" : "Echipa noastra va incerca sa le repare la cea mai buna practica a noastra. "
+  },
+  "errors" : {
+    "anErrorOccured" : "A apărut o eroare ",
+    "roomDoesNotExist" : "Camera nu există   ",
+    "roomUserDoesNotExist" : "Fie camera, fie utilizatorul nu există ",
+    "roomNameTaken" : "Nume cameră deja luat ",
+    "playServices" : "Servicii de joacă nu sunt disponibile ",
+    "emailVerification" : "E-mail nu este Verificat ",
+    "invalidCode" : "Cod invalid ",
+    "unexpectedError" : "A apărut o eroare neaşteptată ",
+    "usernameTaken" : "Nume utilizator deja luat ",
+    "invalidEmail" : "Adresă e-mail invalidă ",
+    "emailInUse" : "E-mail deja în uz"
+  }
+}

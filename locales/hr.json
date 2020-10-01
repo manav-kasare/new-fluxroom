@@ -1,0 +1,100 @@
+{
+  "buttons" : {
+    "signUpOnboard" : "Prijavite Se S e-mailom ",
+    "logInOnboard" : "Prijavite Se S E-Mailom ",
+    "signUp" : "Prijava ",
+    "logIn" : "Prijava ",
+    "verify" : "Provjeri ",
+    "forgotPassword" : "Zaboravili ste lozinku? ",
+    "getOTP" : "Get OTP ",
+    "createRoom" : "Stvori ",
+    "joinRoom" : "Pridruži se ",
+    "joinedRoom" : "Spojene ",
+    "invite" : "Pozovi ",
+    "invited" : "Pozvan ",
+    "findRoom" : "Nađi sobu. ",
+    "done" : "Gotovo. ",
+    "cancel" : "Otkaži ",
+    "close" : "Zatvori ",
+    "submit" : "Slanje ",
+    "resend" : "Ponovno pošalji ",
+    "accept" : "Prihvati ",
+    "decline" : "Odbij "
+  },
+  "placeholders" : {
+    "email" : "E-mail adresa ",
+    "username" : "Korisničko ime ",
+    "issue" : "Problem ",
+    "description" : "Opis: ",
+    "password" : "Lozinka ",
+    "code" : "Kod provjere ",
+    "seach" : "U što si se ustedio? ",
+    "roomName" : "O čemu bi ti pričao? ",
+    "roomDescription" : "Opišite u manje od 100 znakova ",
+    "searchUsername" : "Traženje imena korisnika ",
+    "forgotPassword" : "Registrirani broj e-pošte ili telefonski broj ",
+    "searchRooms" : "U što si se ustedio? "
+  },
+  "screens" : {
+    "signUp" : "Pridruži se Fluxroom ",
+    "logIn" : "Prijava ",
+    "forgotPassword" : "Zaboravna lozinka ",
+    "setUpProfile" : "Postavite svoj profil ",
+    "phone" : "Prijavite se s telefonima ",
+    "fluxroom" : "Fluxroom ",
+    "findRooms" : "Pronađi Sobe ",
+    "settings" : "Postavke ",
+    "profile" : "Profil ",
+    "aboutUs" : "O nama ",
+    "dataPolicy" : "Politika podataka ",
+    "termsOfService" : "Odredbe usluge ",
+    "invitations" : "Pozivnice ",
+    "issues" : "Problemi ",
+    "createRoom" : "Kreirajte vlastitu sobu ",
+    "topRooms" : "Gornje Sobe "
+  },
+  "onboard" : {
+    "subHeading" : "Povežite se s bilo kim putem zvuka! "
+  },
+  "chatRooms" : {
+    "noRooms" : "Nema Soba: ( ",
+    "shareLink" : "Veza dijeljenja ",
+    "reportUser" : "Korisnik izvještaja ",
+    "blockUser" : "Blokini korisnik ",
+    "noRoomExists" : "Nijedna soba ne postoji! "
+  },
+  "settings" : {
+    "aboutUs" : "O nama ",
+    "rateUs" : "Ocijeni nas ",
+    "issues" : "Jesi li se suočili s nekim problemima? ",
+    "deleteAccount" : "Izbriši račun ",
+    "signOut" : "Odjavite se ",
+    "darkMode" : "Tamni način ",
+    "dataPolicy" : "Politika podataka ",
+    "termsOfService" : "Odredbe usluge "
+  },
+  "otpVerification" : {
+    "heading" : "Poslali smo vam šifru. "
+  },
+  "emailVerification" : {
+    "heading" : "Molimo vas da provjerite vaš e-mail. ",
+    "emailSent" : "Poslali smo vam e-mail na "
+  },
+  "issues" : {
+    "heading" : "U čemu si se ti suočili? ",
+    "subHeading" : "Naš tim će pokušati da ih popravi na našem najboljem treningu. "
+  },
+  "errors" : {
+    "anErrorOccured" : "Pojavila se greška ",
+    "roomDoesNotExist" : "Soba ne postoji   ",
+    "roomUserDoesNotExist" : "Ili soba ili korisnik ne postoji ",
+    "roomNameTaken" : "Ime sobe je već Taken ",
+    "playServices" : "Usluge igre nisu dostupne ",
+    "emailVerification" : "E-mail nije provjerena ",
+    "invalidCode" : "Nevažeći kod ",
+    "unexpectedError" : "Dogodila se neočekivana greška ",
+    "usernameTaken" : "Korisničko Ime Je Već Zauzeto ",
+    "invalidEmail" : "Nevažeća e-mail adresa ",
+    "emailInUse" : "E-pošta se već koristi"
+  }
+}

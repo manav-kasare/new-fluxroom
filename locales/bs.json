@@ -1,0 +1,100 @@
+{
+  "buttons" : {
+    "signUpOnboard" : "Prijavi se sa e-mailom ",
+    "logInOnboard" : "Prijava S E-mailom ",
+    "signUp" : "Prijavi se ",
+    "logIn" : "Prijava ",
+    "verify" : "Provjeri ",
+    "forgotPassword" : "Zaboravili Ste Lozinku? ",
+    "getOTP" : "Dobijte OTP ",
+    "createRoom" : "Kreiraj ",
+    "joinRoom" : "Pridruži se ",
+    "joinedRoom" : "Pridružen ",
+    "invite" : "Pozovi ",
+    "invited" : "Pozvan ",
+    "findRoom" : "Nađi sobu. ",
+    "done" : "Završeno ",
+    "cancel" : "Otkaži ",
+    "close" : "Zatvori ",
+    "submit" : "Pošalji ",
+    "resend" : "Ponovno pošalji ",
+    "accept" : "Prihvati ",
+    "decline" : "Odbij "
+  },
+  "placeholders" : {
+    "email" : "Adresa e-pošte ",
+    "username" : "Korisničko ime ",
+    "issue" : "Problem ",
+    "description" : "Opis ",
+    "password" : "Lozinka ",
+    "code" : "Kod za provjeru ",
+    "seach" : "U što si se unio? ",
+    "roomName" : "O čemu bi ti pričao? ",
+    "roomDescription" : "Opišite u manje od 100 znakova ",
+    "searchUsername" : "Traži korisničko ime ",
+    "forgotPassword" : "Registrirana e-pošta ili broj telefona ",
+    "searchRooms" : "U što si se unio? "
+  },
+  "screens" : {
+    "signUp" : "Pridružite se Fluxo ",
+    "logIn" : "Prijava ",
+    "forgotPassword" : "Zaboravljena lozinka ",
+    "setUpProfile" : "Postavite svoj profil ",
+    "phone" : "Prijavite se sa telefonskim brojem ",
+    "fluxroom" : "Fluksroom. ",
+    "findRooms" : "Pronađi Sobe ",
+    "settings" : "Postavke ",
+    "profile" : "Profil ",
+    "aboutUs" : "O Nama ",
+    "dataPolicy" : "Politika podataka ",
+    "termsOfService" : "Uvjeti pružanja usluge ",
+    "invitations" : "Pozivnice ",
+    "issues" : "Problemi ",
+    "createRoom" : "Stvorite svoju sobu ",
+    "topRooms" : "Gornje Sobe "
+  },
+  "onboard" : {
+    "subHeading" : "Povežite se s bilo kim preko audio! "
+  },
+  "chatRooms" : {
+    "noRooms" : "Nema soba: ( ",
+    "shareLink" : "Dijeli vezu ",
+    "reportUser" : "Prijavi korisnika ",
+    "blockUser" : "Blokiraj korisnika ",
+    "noRoomExists" : "Nijedna soba takva ne postoji! "
+  },
+  "settings" : {
+    "aboutUs" : "O Nama ",
+    "rateUs" : "Ocijenite Nas ",
+    "issues" : "Jesi li se suočila sa nekim pitanjima? ",
+    "deleteAccount" : "Izbriši račun ",
+    "signOut" : "Odjava ",
+    "darkMode" : "Tamni način ",
+    "dataPolicy" : "Politika podataka ",
+    "termsOfService" : "Uvjeti pružanja usluge "
+  },
+  "otpVerification" : {
+    "heading" : "Poslali smo ti kod. "
+  },
+  "emailVerification" : {
+    "heading" : "Molim vas potvrdite svoj e-mail. ",
+    "emailSent" : "Poslali smo ti e-mail. "
+  },
+  "issues" : {
+    "heading" : "Koje pitanje si se suočio? ",
+    "subHeading" : "Naš tim će pokušati da ih popravi u našoj najboljoj praksi. "
+  },
+  "errors" : {
+    "anErrorOccured" : "Dogodila Se Greška ",
+    "roomDoesNotExist" : "Soba ne postoji.   ",
+    "roomUserDoesNotExist" : "Ili soba ili korisnik ne postoji ",
+    "roomNameTaken" : "Ime sobe je već zauzeto ",
+    "playServices" : "Igrajte usluge koje nisu dostupne ",
+    "emailVerification" : "E-mail nije verificiran ",
+    "invalidCode" : "Nevažeći kod ",
+    "unexpectedError" : "Dogodila se neočekivana greška ",
+    "usernameTaken" : "Korisničko Ime Je Već uzeto ",
+    "invalidEmail" : "Pogrešna adresa E-pošte ",
+    "emailInUse" : "E-pošta se već koristi"
+  }
+}

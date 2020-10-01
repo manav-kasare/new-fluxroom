@@ -83,5 +83,18 @@
     "issues": {
         "heading": "What issue did you face ?",
         "subHeading": "Our team will try to fix them to our best practice."
+    },
+    "errors": {
+        "anErrorOccured": "An Error Occured",
+        "roomDoesNotExist": "Room does not exist ",
+        "roomUserDoesNotExist": "Either room or user does not exist",
+        "roomNameTaken": "Room name Already Taken",
+        "playServices": "Play services not available",
+        "emailVerification": "Email not Verified",
+        "invalidCode": "Invalid Code",
+        "unexpectedError": "An unexpected error occured",
+        "usernameTaken": "Username Already Taken",
+        "invalidEmail": "Invalid Email Address",
+        "emailInUse": "Email already in use"
     }
 }

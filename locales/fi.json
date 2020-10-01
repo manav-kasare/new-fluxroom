@@ -1,0 +1,100 @@
+{
+  "buttons" : {
+    "signUpOnboard" : "Kirjoita Email: ",
+    "logInOnboard" : "Kirjaudu sisään Email ",
+    "signUp" : "Allekirjoitus ",
+    "logIn" : "Loki in ",
+    "verify" : "Tarkista ",
+    "forgotPassword" : "Unohdinko salasanan? ",
+    "getOTP" : "Hae OTP ",
+    "createRoom" : "Luo ",
+    "joinRoom" : "Liity ",
+    "joinedRoom" : "Liity ",
+    "invite" : "Inviitti ",
+    "invited" : "Kutsuttu ",
+    "findRoom" : "Etsi huone ",
+    "done" : "Tehty ",
+    "cancel" : "Peruuta ",
+    "close" : "Sulje ",
+    "submit" : "Lähetä ",
+    "resend" : "Resloppumaan ",
+    "accept" : "Hyväksy ",
+    "decline" : "Kansi "
+  },
+  "placeholders" : {
+    "email" : "Sähköpostiosoite ",
+    "username" : "Käyttäjätunnus ",
+    "issue" : "Ongelmaa ",
+    "description" : "Kuvaus ",
+    "password" : "Salasana ",
+    "code" : "Tarkastuskoodi ",
+    "seach" : "Mitä olet tehnyt? ",
+    "roomName" : "Mistä sinä puhuisit? ",
+    "roomDescription" : "Kuvaile alle 100 merkkiä ",
+    "searchUsername" : "Hae Username ",
+    "forgotPassword" : "Rekisteröity sähköposti tai puhelinnumero ",
+    "searchRooms" : "Mitä olet tehnyt? "
+  },
+  "screens" : {
+    "signUp" : "Liity Fluxaliin ",
+    "logIn" : "Loki in ",
+    "forgotPassword" : "Forgot-salasana ",
+    "setUpProfile" : "Aseta profiilisi ",
+    "phone" : "Allekirjoitus ja puhelinnumero ",
+    "fluxroom" : "Fluxia ",
+    "findRooms" : "Etsi Rooms ",
+    "settings" : "Asetukset ",
+    "profile" : "Profiili ",
+    "aboutUs" : "Tietoja meistä ",
+    "dataPolicy" : "Tietopolitiikka ",
+    "termsOfService" : "Palveluehdot ",
+    "invitations" : "Kutsut ",
+    "issues" : "Ongelmat ",
+    "createRoom" : "Luo oma huone ",
+    "topRooms" : "Ylähuoneet "
+  },
+  "onboard" : {
+    "subHeading" : "Yhdistä kenelle tahansa äänen kautta! "
+  },
+  "chatRooms" : {
+    "noRooms" : "Ei Roomia: ( ",
+    "shareLink" : "Jaa linkki ",
+    "reportUser" : "Raportin käyttäjä ",
+    "blockUser" : "Lohkon käyttäjä ",
+    "noRoomExists" : "Sellaista ei ole! "
+  },
+  "settings" : {
+    "aboutUs" : "Tietoja meistä ",
+    "rateUs" : "Rate U ",
+    "issues" : "Oliko sinulla ongelmia? ",
+    "deleteAccount" : "Poista tili ",
+    "signOut" : "Merkki ulos ",
+    "darkMode" : "Synkkä tila ",
+    "dataPolicy" : "Tietopolitiikka ",
+    "termsOfService" : "Palveluehdot "
+  },
+  "otpVerification" : {
+    "heading" : "Olemme lähettäneet teille koodin. "
+  },
+  "emailVerification" : {
+    "heading" : "Tarkista sähköpostiosoitteesi. ",
+    "emailSent" : "Olemme lähettäneet sinulle sähköpostia "
+  },
+  "issues" : {
+    "heading" : "Mikä sinua vaivaa? ",
+    "subHeading" : "Tiimimme yrittää korjata ne parhaillamme. "
+  },
+  "errors" : {
+    "anErrorOccured" : "Virhe käytössä ",
+    "roomDoesNotExist" : "Huone ei ole olemassa   ",
+    "roomUserDoesNotExist" : "Tilaa tai käyttäjää ei ole ",
+    "roomNameTaken" : "Huoneen nimi on jo otettu ",
+    "playServices" : "Pelaa ei ole käytettävissä ",
+    "emailVerification" : "Sähköposti ei ole todennettu ",
+    "invalidCode" : "Virheellinen koodi ",
+    "unexpectedError" : "On ilmennyt odottamaton virhe ",
+    "usernameTaken" : "Käyttäjätunnus on jo käytössä ",
+    "invalidEmail" : "Virheellinen sähköpostiosoite ",
+    "emailInUse" : "Sähköposti on jo käytössä"
+  }
+}

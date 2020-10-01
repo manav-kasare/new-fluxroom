@@ -1,0 +1,100 @@
+{
+  "buttons": {
+    "signUpOnboard": "ईमेल के साथ साइन अप करें ",
+    "logInOnboard": "ईमेल के साथ लॉग इन करें ",
+    "signUp": "साइन अप करें ",
+    "logIn": "लॉग इन ",
+    "verify": "सत्यापित करें ",
+    "forgotPassword": "पासवर्ड भूल गया? ",
+    "getOTP": "OTP प्राप्त करें ",
+    "createRoom": "बनाएँ ",
+    "joinRoom": "शामिल हों ",
+    "joinedRoom": "जुड़ गया ",
+    "invite": "निमंत्रित करें ",
+    "invited": "निमंत्रित ",
+    "findRoom": "एक कमरा ढूँढें ",
+    "done": "सम्पन्न ",
+    "cancel": "रद्द करें ",
+    "close": "बंद करें ",
+    "submit": "सबमिट ",
+    "resend": "पुनः समाप्त करें ",
+    "accept": "स्वीकार करना ",
+    "decline": "अस्वीकार "
+  },
+  "placeholders": {
+    "email": "ईमेल पता ",
+    "username": "उपयोक्ता नाम ",
+    "issue": "मुद्दा ",
+    "description": "वर्णन ",
+    "password": "पासवर्ड ",
+    "code": "सत्यापन कोड ",
+    "seach": "आप में क्या कर रहे हैं? ",
+    "roomName": "आप किस बारे में बात करेंगे? ",
+    "roomDescription": "100 से कम अक्षरों में वर्णन ",
+    "searchUsername": "उपयोक्ता नाम खोजें ",
+    "forgotPassword": "पंजीकृत ईमेल या फोन नंबर ",
+    "searchRooms": "आप में क्या कर रहे हैं? "
+  },
+  "screens": {
+    "signUp": "फेलरूम में शामिल हों ",
+    "logIn": "लॉग इन ",
+    "forgotPassword": "पासवर्ड भूल गया ",
+    "setUpProfile": "अपने प्रोफ़ाइल सेट करें ",
+    "phone": "फोन नंबर के साथ साइन इन करें ",
+    "fluxroom": "प्रवाह कक्ष ",
+    "findRooms": "कमरे का पता लगाएं ",
+    "settings": "विन्यास ",
+    "profile": "प्रोफाइल ",
+    "aboutUs": "हमारे बारे में ",
+    "dataPolicy": "आंकड़ा नीति ",
+    "termsOfService": "सेवा की शर्तें ",
+    "invitations": "न्यौते ",
+    "issues": "मुद्दे ",
+    "createRoom": "अपने कमरे का निर्माण करें ",
+    "topRooms": "टॉप रूम "
+  },
+  "onboard": {
+    "subHeading": "ऑडियो के माध्यम से किसी के साथ कनेक्ट! "
+  },
+  "chatRooms": {
+    "noRooms": "कोई कक्ष नहीं: ( ",
+    "shareLink": "लिंक साझा करें ",
+    "reportUser": "उपयोक्ता रिपोर्ट करें ",
+    "blockUser": "रोकें प्रयोक्ता ",
+    "noRoomExists": "ऐसा कोई कमरा नहीं है! "
+  },
+  "settings": {
+    "aboutUs": "हमारे बारे में ",
+    "rateUs": "दर-दर ",
+    "issues": "क्या आपको किसी मुद्दे का सामना करना पड़ा? ",
+    "deleteAccount": "खाता मिटाएँ ",
+    "signOut": "साइन आउट करें ",
+    "darkMode": "गहरा मोड ",
+    "dataPolicy": "आंकड़ा नीति ",
+    "termsOfService": "सेवा की शर्तें "
+  },
+  "otpVerification": {
+    "heading": "हमने तुम्हें एक कोड भेज दिया है "
+  },
+  "emailVerification": {
+    "heading": "कृपया अपना ईमेल सत्यापित करें. ",
+    "emailSent": "हम आप पर एक ईमेल भेजा है "
+  },
+  "issues": {
+    "heading": "आप किस मुद्दे का सामना कर रहे थे? ",
+    "subHeading": "हमारी टीम उन्हें हमारे बेहतरीन अभ्यास के लिए ठीक करने की कोशिश करेगी."
+  },
+  "errors": {
+    "anErrorOccured": "एक त्रुटि हुई",
+    "roomDoesNotExist": "कक्ष मौजूद नहीं है",
+    "roomUserDoesNotExist": "या तो कमरा या उपयोगकर्ता मौजूद नहीं है",
+    "roomNameTaken": "कक्ष का नाम पहले से ही लिया गया है",
+    "playServices": "प्ले सेवाएं उपलब्ध नहीं हैं",
+    "emailVerification": "ईमेल सत्यापित नहीं",
+    "invalidCode": "अमान्य कोड",
+    "unexpectedError": "एक अप्रत्याशित त्रुटि आई] लिया गया",
+    "usernameTaken": "अमान्य ईमेल पता",
+    "invalidEmail": "पहले से उपयोग में ईमेल",
+    "emailInUse": "कक्ष मौजूद नहीं है0"
+  }
+}

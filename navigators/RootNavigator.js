@@ -5,7 +5,7 @@ import {
   CardStyleInterpolators,
 } from '@react-navigation/stack';
 
-import il8n from '../locales/il8n';
+import il8n, {setLocale} from '../locales/il8n';
 import {
   UserDetailsContext,
   ThemeContext,
@@ -25,6 +25,7 @@ import ChatRoomNavigator from './ChatRoomNavigator';
 import {fcmService} from '../firebase/FCMService';
 import {localNotificationService} from '../firebase/LocalNotificationService';
 import {Linking} from 'react-native';
+import * as RNLocalize from 'react-native-localize';
 
 const Stack = createStackNavigator();
 
@@ -52,6 +53,7 @@ export default function RootNavigator() {
   }, []);
 
   const initializeUser = () => {
+    setLocale(RNLocalize.getLocales()[0].languageCode);
     getToken().then((token) => {
       getUserMe(token).then((response) => {
         setUser(response.user);

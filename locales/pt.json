@@ -1,0 +1,100 @@
+{
+  "buttons" : {
+    "signUpOnboard" : "Inscreva-Se Com O Email ",
+    "logInOnboard" : "Fazer Login Com Email ",
+    "signUp" : "Cadine Up ",
+    "logIn" : "Log Em ",
+    "verify" : "Verificar ",
+    "forgotPassword" : "Esqueceu a Senha? ",
+    "getOTP" : "Obter OTP ",
+    "createRoom" : "Criar ",
+    "joinRoom" : "Participar ",
+    "joinedRoom" : "Unidos ",
+    "invite" : "Convidar ",
+    "invited" : "Convidado ",
+    "findRoom" : "Encontre um quarto ",
+    "done" : "Feito ",
+    "cancel" : "Cancelar ",
+    "close" : "Fechar ",
+    "submit" : "Enviar ",
+    "resend" : "Reajuste ",
+    "accept" : "Aceitar ",
+    "decline" : "Declínio "
+  },
+  "placeholders" : {
+    "email" : "Endereço de e-mail ",
+    "username" : "Nome do usuário ",
+    "issue" : "Emissão ",
+    "description" : "Descrição ",
+    "password" : "Senha ",
+    "code" : "Código de verificação ",
+    "seach" : "No que você está intrestado? ",
+    "roomName" : "O que você falaria? ",
+    "roomDescription" : "Descrever em menos de 100 caracteres ",
+    "searchUsername" : "Pesquisar Nome de Usuário ",
+    "forgotPassword" : "E-mail registrado ou número de telefone ",
+    "searchRooms" : "No que você está intrestado? "
+  },
+  "screens" : {
+    "signUp" : "Ingresse no Fluxroom ",
+    "logIn" : "Log Em ",
+    "forgotPassword" : "Esqueceu a Senha ",
+    "setUpProfile" : "Configure seu perfil ",
+    "phone" : "Assinale com o número de telefone ",
+    "fluxroom" : "Fluxroom ",
+    "findRooms" : "Encontrar Quartos ",
+    "settings" : "Configurações ",
+    "profile" : "Perfil ",
+    "aboutUs" : "Sobre Nós ",
+    "dataPolicy" : "Política de Dados ",
+    "termsOfService" : "Termos de Serviço ",
+    "invitations" : "Convites ",
+    "issues" : "Questões ",
+    "createRoom" : "Crie seu próprio quarto ",
+    "topRooms" : "Salas De Cima "
+  },
+  "onboard" : {
+    "subHeading" : "Conecte-se com qualquer um via áudio "
+  },
+  "chatRooms" : {
+    "noRooms" : "Sem Salas: ( ",
+    "shareLink" : "Compartilhar Link ",
+    "reportUser" : "Usuário do Relatório ",
+    "blockUser" : "Usuário do Bloc ",
+    "noRoomExists" : "Nenhum quarto tal existe! "
+  },
+  "settings" : {
+    "aboutUs" : "Sobre Nós ",
+    "rateUs" : "Taxa Nós ",
+    "issues" : "Você enfrou alguma questão? ",
+    "deleteAccount" : "Excluir Conta ",
+    "signOut" : "Assinale Out ",
+    "darkMode" : "Modo escuro ",
+    "dataPolicy" : "Política de Dados ",
+    "termsOfService" : "Termos de Serviço "
+  },
+  "otpVerification" : {
+    "heading" : "Enviamos um código em "
+  },
+  "emailVerification" : {
+    "heading" : "Por favor, verifique seu e-mail. ",
+    "emailSent" : "Enviamos um e-mail para você "
+  },
+  "issues" : {
+    "heading" : "Que questão você enfrou? ",
+    "subHeading" : "Nossa equipe vai tentar corrigi-los para a nossa melhor prática. "
+  },
+  "errors" : {
+    "anErrorOccured" : "Um Erro Occurado ",
+    "roomDoesNotExist" : "Sala não existe   ",
+    "roomUserDoesNotExist" : "Qualquer espaço ou usuário não existe ",
+    "roomNameTaken" : "Nome do quarto já levado ",
+    "playServices" : "Serviços de play não disponíveis ",
+    "emailVerification" : "E-mail não Verificado ",
+    "invalidCode" : "Código inválido ",
+    "unexpectedError" : "Um erro inesperado ocorreu ",
+    "usernameTaken" : "Username Já Tirado ",
+    "invalidEmail" : "Endereço De Email Inválido ",
+    "emailInUse" : "E-mail já em uso"
+  }
+}

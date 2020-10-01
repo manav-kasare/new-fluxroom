@@ -1,0 +1,100 @@
+{
+  "buttons" : {
+    "signUpOnboard" : "Подписать с электронной почтой ",
+    "logInOnboard" : "Вход С Помощью Электронной Почты ",
+    "signUp" : "Подпись вверх ",
+    "logIn" : "Вход в систему ",
+    "verify" : "Проверить ",
+    "forgotPassword" : "Забыл пароль? ",
+    "getOTP" : "Получить OTP ",
+    "createRoom" : "Создать ",
+    "joinRoom" : "Присоединиться ",
+    "joinedRoom" : "Присоедин ",
+    "invite" : "Пригласить ",
+    "invited" : "Приглашен ",
+    "findRoom" : "Найти комнату ",
+    "done" : "Выполнено ",
+    "cancel" : "Отмена ",
+    "close" : "Закрыть ",
+    "submit" : "Передать ",
+    "resend" : "Повторная ",
+    "accept" : "Принять ",
+    "decline" : "Отклон "
+  },
+  "placeholders" : {
+    "email" : "Адрес электронной почты ",
+    "username" : "Имя пользователя ",
+    "issue" : "Проблема ",
+    "description" : "Описание ",
+    "password" : "Пароль ",
+    "code" : "Код проверки ",
+    "seach" : "Что ты вломился? ",
+    "roomName" : "О чем бы вы говорили? ",
+    "roomDescription" : "Описание менее чем 100 символов ",
+    "searchUsername" : "Имя пользователя поиска ",
+    "forgotPassword" : "Зарегистрированный адрес электронной почты или номер телефона ",
+    "searchRooms" : "Что ты вломился? "
+  },
+  "screens" : {
+    "signUp" : "Присоединиться к Fluxroom ",
+    "logIn" : "Вход в систему ",
+    "forgotPassword" : "Забыт пароль ",
+    "setUpProfile" : "Настройка профайла ",
+    "phone" : "Вход в систему с номером телефона ",
+    "fluxroom" : "Fluxroom ",
+    "findRooms" : "Найти комнаты ",
+    "settings" : "Параметры ",
+    "profile" : "Профиль ",
+    "aboutUs" : "О нас ",
+    "dataPolicy" : "Политика данных ",
+    "termsOfService" : "Условия службы ",
+    "invitations" : "Приглашения ",
+    "issues" : "Вопросы ",
+    "createRoom" : "Создание собственной комнаты ",
+    "topRooms" : "Верхние комнаты "
+  },
+  "onboard" : {
+    "subHeading" : "Подключитесь с кем угодно через аудио! "
+  },
+  "chatRooms" : {
+    "noRooms" : "Нет номеров: ( ",
+    "shareLink" : "Ссылка на совместно ",
+    "reportUser" : "Пользователь отчета ",
+    "blockUser" : "Заблокировать пользователя ",
+    "noRoomExists" : "Такого места нет! "
+  },
+  "settings" : {
+    "aboutUs" : "О нас ",
+    "rateUs" : "Скорость ",
+    "issues" : "У тебя были проблемы? ",
+    "deleteAccount" : "Удалить учетную запись ",
+    "signOut" : "Выйти из системы ",
+    "darkMode" : "Темный режим ",
+    "dataPolicy" : "Политика данных ",
+    "termsOfService" : "Условия службы "
+  },
+  "otpVerification" : {
+    "heading" : "Мы отправили тебе код в "
+  },
+  "emailVerification" : {
+    "heading" : "Проверьте электронную почту. ",
+    "emailSent" : "Мы отправили вам сообщение по электронной почте. "
+  },
+  "issues" : {
+    "heading" : "Какой вопрос вы столкнулись? ",
+    "subHeading" : "Наша команда постарается исправить их на нашу лучшую практику. "
+  },
+  "errors" : {
+    "anErrorOccured" : "Произошла ошибка ",
+    "roomDoesNotExist" : "Комната не существует   ",
+    "roomUserDoesNotExist" : "Либо комната, либо пользователь не существует ",
+    "roomNameTaken" : "Имя комнаты уже принято ",
+    "playServices" : "Игровые услуги недоступны ",
+    "emailVerification" : "Электронная почта не проверено ",
+    "invalidCode" : "Недопустимый код ",
+    "unexpectedError" : "Произошла непредвиденная ошибка ",
+    "usernameTaken" : "Имя пользователя уже занято ",
+    "invalidEmail" : "Недопустимый адрес электронной почты ",
+    "emailInUse" : "Электронная почта уже используется"
+  }
+}

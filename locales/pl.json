@@ -1,0 +1,100 @@
+{
+  "buttons" : {
+    "signUpOnboard" : "Zarejestruj się za pomocą wiadomości e-mail ",
+    "logInOnboard" : "Zaloguj z pocztą elektroniczną ",
+    "signUp" : "Zarejestruj się ",
+    "logIn" : "Zaloguj się ",
+    "verify" : "Weryfikuj ",
+    "forgotPassword" : "Nie pamiętasz hasła? ",
+    "getOTP" : "Pobierz OTP ",
+    "createRoom" : "Utwórz ",
+    "joinRoom" : "Dołącz ",
+    "joinedRoom" : "Połączono ",
+    "invite" : "Zapraszanie ",
+    "invited" : "Zaproszono ",
+    "findRoom" : "Znajdź pokój ",
+    "done" : "Gotowe ",
+    "cancel" : "Anuluj ",
+    "close" : "Zamknij ",
+    "submit" : "Wyślij ",
+    "resend" : "Wyślij ponownie ",
+    "accept" : "Akceptuj ",
+    "decline" : "Odrzuć "
+  },
+  "placeholders" : {
+    "email" : "Adres e-mail ",
+    "username" : "Nazwa użytkownika ",
+    "issue" : "Problem ",
+    "description" : "Opis ",
+    "password" : "Hasło ",
+    "code" : "Kod weryfikacyjny ",
+    "seach" : "Co masz zamiar zrobić? ",
+    "roomName" : "O czym byś mówił? ",
+    "roomDescription" : "Opisz w mniej niż 100 znakach ",
+    "searchUsername" : "Nazwa użytkownika wyszukiwania ",
+    "forgotPassword" : "Zarejestrowany adres e-mail lub numer telefonu ",
+    "searchRooms" : "Co masz zamiar zrobić? "
+  },
+  "screens" : {
+    "signUp" : "Dołącz do Fluxroom ",
+    "logIn" : "Zaloguj się ",
+    "forgotPassword" : "Nie pamiętam hasła ",
+    "setUpProfile" : "Konfigurowanie profilu ",
+    "phone" : "Zaloguj się z numerem telefonu ",
+    "fluxroom" : "Fluxroom ",
+    "findRooms" : "Znajdź pokoje ",
+    "settings" : "Ustawienia ",
+    "profile" : "Profil ",
+    "aboutUs" : "Informacje o nas ",
+    "dataPolicy" : "Strategia danych ",
+    "termsOfService" : "Warunki świadczenia usług ",
+    "invitations" : "Zaproszenia ",
+    "issues" : "Problemy ",
+    "createRoom" : "Tworzenie własnego pokoju ",
+    "topRooms" : "Pokoje górne "
+  },
+  "onboard" : {
+    "subHeading" : "Połącz się z kimkolwiek przez audio! "
+  },
+  "chatRooms" : {
+    "noRooms" : "Brak pokoi: ( ",
+    "shareLink" : "Udostępnij odsyłacz ",
+    "reportUser" : "Użytkownik raportu ",
+    "blockUser" : "Użytkownik blokowy ",
+    "noRoomExists" : "Żaden pokój taki nie istnieje! "
+  },
+  "settings" : {
+    "aboutUs" : "Informacje o nas ",
+    "rateUs" : "Stawka dla nas ",
+    "issues" : "Czy stałeś w obliczu jakichkolwiek problemów? ",
+    "deleteAccount" : "Usuń konto ",
+    "signOut" : "Wyloguj ",
+    "darkMode" : "Ciemny tryb ",
+    "dataPolicy" : "Strategia danych ",
+    "termsOfService" : "Warunki świadczenia usług "
+  },
+  "otpVerification" : {
+    "heading" : "Wysłaliśmy do Ciebie kod na "
+  },
+  "emailVerification" : {
+    "heading" : "Sprawdź pocztę elektroniczną. ",
+    "emailSent" : "Wysłaliśmy do Ciebie wiadomość e-mail o "
+  },
+  "issues" : {
+    "heading" : "W jakim celu się pan stawił? ",
+    "subHeading" : "Nasz zespół postara się naprawić je do naszej najlepszej praktyki. "
+  },
+  "errors" : {
+    "anErrorOccured" : "Wystąpił błąd ",
+    "roomDoesNotExist" : "Pokój nie istnieje   ",
+    "roomUserDoesNotExist" : "Albo pokój, albo użytkownik nie istnieje ",
+    "roomNameTaken" : "Nazwa pokoju już została podana ",
+    "playServices" : "Usługi odtwarzania nie są dostępne ",
+    "emailVerification" : "Wiadomość e-mail nie została zweryfikowana ",
+    "invalidCode" : "Niepoprawny kod ",
+    "unexpectedError" : "Wystąpił nieoczekiwany błąd ",
+    "usernameTaken" : "Nazwa użytkownika została już podjęta ",
+    "invalidEmail" : "Niepoprawny adres e-mail ",
+    "emailInUse" : "Wiadomość e-mail jest już używana"
+  }
+}

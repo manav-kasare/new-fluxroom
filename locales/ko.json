@@ -1,0 +1,100 @@
+{
+  "buttons" : {
+    "signUpOnboard" : "이메일 서명하기",
+    "logInOnboard" : "이메일로 로그인하기",
+    "signUp" : "Sign Up",
+    "logIn" : "로그인",
+    "verify" : "검증",
+    "forgotPassword" : "암호를 잊어버니?",
+    "getOTP" : "OTP 사용하기",
+    "createRoom" : "작성",
+    "joinRoom" : "결합",
+    "joinedRoom" : "결합됨",
+    "invite" : "초대",
+    "invited" : "초대받은",
+    "findRoom" : "룸 찾기",
+    "done" : "데이톤",
+    "cancel" : "취소",
+    "close" : "닫기",
+    "submit" : "제출",
+    "resend" : "결과",
+    "accept" : "승인",
+    "decline" : "감소"
+  },
+  "placeholders" : {
+    "email" : "이메일 주소",
+    "username" : "사용자 이름",
+    "issue" : "문제",
+    "description" : "설명",
+    "password" : "암호",
+    "code" : "검증 코드",
+    "seach" : "너는 무엇을 이해하고 있니?",
+    "roomName" : "무슨 얘기를 하시겠어요?",
+    "roomDescription" : "100자 미만으로 설명 가능",
+    "searchUsername" : "사용자 이름 검색",
+    "forgotPassword" : "등록된 전자 우편 또는 전화번호",
+    "searchRooms" : "너는 무엇을 이해하고 있니?"
+  },
+  "screens" : {
+    "signUp" : "플러스룸 결합",
+    "logIn" : "로그인",
+    "forgotPassword" : "비밀번호 찾기",
+    "setUpProfile" : "프로파일 설정하기",
+    "phone" : "전화번호로 로그인하기",
+    "fluxroom" : "플러스룸",
+    "findRooms" : "룸 찾기",
+    "settings" : "설정",
+    "profile" : "프로파일",
+    "aboutUs" : "Us에 대하여",
+    "dataPolicy" : "데이터 정책",
+    "termsOfService" : "서비스 이용 약관",
+    "invitations" : "초대장",
+    "issues" : "문제",
+    "createRoom" : "너의 방을 만들다",
+    "topRooms" : "탑 지붕"
+  },
+  "onboard" : {
+    "subHeading" : "오디오를 통해 누구와도 연결하십시오!"
+  },
+  "chatRooms" : {
+    "noRooms" : "미팅룸 없음: (",
+    "shareLink" : "공유 링크",
+    "reportUser" : "보고서 사용자",
+    "blockUser" : "블록 사용자",
+    "noRoomExists" : "이런 방은 없다!"
+  },
+  "settings" : {
+    "aboutUs" : "Us에 대하여",
+    "rateUs" : "요율",
+    "issues" : "무슨 일 있었어요?",
+    "deleteAccount" : "계정 삭제",
+    "signOut" : "로그아웃",
+    "darkMode" : "다크 모드",
+    "dataPolicy" : "데이터 정책",
+    "termsOfService" : "서비스 이용 약관"
+  },
+  "otpVerification" : {
+    "heading" : "우리는 당신에게 코드를 보냈다."
+  },
+  "emailVerification" : {
+    "heading" : "이메일을 확인해 주세요.",
+    "emailSent" : "우리는 당신에게 이메일을 보냈습니다."
+  },
+  "issues" : {
+    "heading" : "당신은 무슨 문제에 직면했습니까?",
+    "subHeading" : "우리 팀은 최선을 다하여 그들을 고치려고 노력할 것이다."
+  },
+  "errors" : {
+    "anErrorOccured" : "오류 발생",
+    "roomDoesNotExist" : "공간이 존재하지 않음 ",
+    "roomUserDoesNotExist" : "회의실 또는 사용자가 존재하지 않습니다.",
+    "roomNameTaken" : "룸 이름이 이미 고려되고 있습니다.",
+    "playServices" : "활동 서비스를 사용할 수 없음",
+    "emailVerification" : "확인되지 않은 이메일",
+    "invalidCode" : "잘못된 코드",
+    "unexpectedError" : "예기치 않은 오류 발생",
+    "usernameTaken" : "사용자 이름을 이미 고려",
+    "invalidEmail" : "올바르지 않은 이메일 주소",
+    "emailInUse" : "이미 사용 중인 이메일"
+  }
+}

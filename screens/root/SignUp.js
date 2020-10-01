@@ -84,11 +84,11 @@ export default function SignUp({navigation}) {
         setIsLoading(false);
         ReactNativeHapticFeedback.trigger('notificationError', options);
         if (error.code === 'auth/email-already-in-use') {
-          CustomErrorToast('That email address is already in use!');
+          CustomErrorToast('Email already in use');
         }
 
         if (error.code === 'auth/invalid-email') {
-          CustomErrorToast('That email address is invalid!');
+          CustomErrorToast('Invalid Email Address');
         }
 
         console.error(error);

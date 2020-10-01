@@ -1,0 +1,100 @@
+{
+  "buttons" : {
+    "signUpOnboard" : "ఈమెయిల్ తో సన్మాన్ చేయుము",
+    "logInOnboard" : "ఈ-మెయిల్ తో లాగ్",
+    "signUp" : "సాన్ అప్",
+    "logIn" : "లాగ్ లో",
+    "verify" : "Verify",
+    "forgotPassword" : "పాస్ వర్డ్?",
+    "getOTP" : "OTP పొందండి",
+    "createRoom" : "సృష్టించు",
+    "joinRoom" : "జొన్న",
+    "joinedRoom" : "జాయింట్",
+    "invite" : "ఆహ్వానం",
+    "invited" : "ఆహ్వానించబడినది",
+    "findRoom" : "ఒక గది కనుగొనుము",
+    "done" : "డాన్",
+    "cancel" : "రద్దు",
+    "close" : "మూసివేయుము",
+    "submit" : "సబ్మిట్",
+    "resend" : "పునర్వచనము",
+    "accept" : "అంగీకరించు",
+    "decline" : "(D) డక్లైన్"
+  },
+  "placeholders" : {
+    "email" : "ఈమెయిల్ చిరునామా",
+    "username" : "Username",
+    "issue" : "ముడి",
+    "description" : "వివరణ",
+    "password" : "సంకేతపదము",
+    "code" : "వీరిఫికేషన్ కోడ్",
+    "seach" : "మీరు లో ఏమిటి?",
+    "roomName" : "మీరు గురించి మాట్లాడటం ఏమిటి?",
+    "roomDescription" : "100 కంటే తక్కువ అక్షరాలలో Describe",
+    "searchUsername" : "(e) యూజర్పేరును శోధించుము",
+    "forgotPassword" : "రిజిస్టర్డ్ మెయిల్ లేదా ఫోన్ నంబర్",
+    "searchRooms" : "మీరు లో ఏమిటి?"
+  },
+  "screens" : {
+    "signUp" : "Fluxroom Join",
+    "logIn" : "లాగ్ లో",
+    "forgotPassword" : "పాస్ వర్డ్",
+    "setUpProfile" : "మీ ప్రొఫైల్ ను అమర్చు",
+    "phone" : "ఫోన్ నంబర్ తో సైన్",
+    "fluxroom" : "Fluxroom",
+    "findRooms" : "రోమ్ ను కనుగొనుము",
+    "settings" : "అమరిక",
+    "profile" : "ప్రొఫైల్",
+    "aboutUs" : "మనం గురించి",
+    "dataPolicy" : "డాటా విధానము",
+    "termsOfService" : "సేవల టెర్మిస్",
+    "invitations" : "ఆహ్వానములు",
+    "issues" : "ఇస్సులు",
+    "createRoom" : "మీ సొంత గది సృష్టించుము",
+    "topRooms" : "టాప్ రోమ్"
+  },
+  "onboard" : {
+    "subHeading" : "ఆడియో ద్వారా ఎవరితో కలుసుకోండి!"
+  },
+  "chatRooms" : {
+    "noRooms" : "ఏ రోమములు: (",
+    "shareLink" : "లింకు షేర్ లింకు",
+    "reportUser" : "యూజర్ రిపోర్ట్",
+    "blockUser" : "బ్లాక్ యూజర్",
+    "noRoomExists" : "ఇటువంటి గది లేదు!"
+  },
+  "settings" : {
+    "aboutUs" : "మనం గురించి",
+    "rateUs" : "దిగుమతి",
+    "issues" : "మీరు ఏ విషయాలను ముఖాముఖిగా తెలుసా?",
+    "deleteAccount" : "ఖాతా తొలగించుము",
+    "signOut" : "సాన్ అవుట్",
+    "darkMode" : "డార్క్ మోడ్",
+    "dataPolicy" : "డాటా విధానము",
+    "termsOfService" : "సేవల టెర్మిస్"
+  },
+  "otpVerification" : {
+    "heading" : "మేము మీరు ఒక కోడ్ పంపింది"
+  },
+  "emailVerification" : {
+    "heading" : "దయచేసి మీ మెయిల్ ను నిర్ధారించుము.",
+    "emailSent" : "మేము మీకు ఒక మెయిల్ పంపింది"
+  },
+  "issues" : {
+    "heading" : "మీరు ముఖం ఏమిటి?",
+    "subHeading" : "మా జట్టు వాటిని మన ఉత్తమ అభ్యాసానికి పరిష్కరిస్తుంది."
+  },
+  "errors" : {
+    "anErrorOccured" : "Name",
+    "roomDoesNotExist" : "Room లేదు ",
+    "roomUserDoesNotExist" : "గది లేదా వినియోగదారు లేదు.",
+    "roomNameTaken" : "Room name Already Taken",
+    "playServices" : "ప్లేయర్ సేవలు అందుబాటలేదు",
+    "emailVerification" : "మెయిల్ వేరుచేయబడలేదు",
+    "invalidCode" : "చెల్లని కోడ్",
+    "unexpectedError" : "ఒక ఊహించని దోషము",
+    "usernameTaken" : "Username Already Taken",
+    "invalidEmail" : "చెల్లని ఈమెయిల్ చిరునామా",
+    "emailInUse" : "ఈ-మెయిల్ ఇప్పటికే వాడుకలో"
+  }
+}

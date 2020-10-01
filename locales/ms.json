@@ -1,0 +1,100 @@
+{
+  "buttons" : {
+    "signUpOnboard" : "Tandatangan Dengan E-mel ",
+    "logInOnboard" : "Daftar Masuk Dengan E-mel ",
+    "signUp" : "Tanda Ke Atas ",
+    "logIn" : "Log Masuk ",
+    "verify" : "Sahkan ",
+    "forgotPassword" : "Lupa Kata Laluan? ",
+    "getOTP" : "Dapatkan OTP ",
+    "createRoom" : "Cipta ",
+    "joinRoom" : "Sertai ",
+    "joinedRoom" : "Sertai ",
+    "invite" : "Jemputan ",
+    "invited" : "Dijemput ",
+    "findRoom" : "Cari bilik. ",
+    "done" : "Selesai ",
+    "cancel" : "Batal ",
+    "close" : "Tutup ",
+    "submit" : "Hantar ",
+    "resend" : "Hantar Semula ",
+    "accept" : "Terima ",
+    "decline" : "Tolak "
+  },
+  "placeholders" : {
+    "email" : "Alamat Emel ",
+    "username" : "Namapengguna ",
+    "issue" : "Isu ",
+    "description" : "Huraian ",
+    "password" : "Katalaluan ",
+    "code" : "Kod pengesahan ",
+    "seach" : "Apa yang anda intrested dalam? ",
+    "roomName" : "Apa yang anda akan bercakap tentang? ",
+    "roomDescription" : "Gambarkan dalam kurang daripada 100 aksara ",
+    "searchUsername" : "Gelintar Nama Pengguna ",
+    "forgotPassword" : "E-mel berdaftar atau nombor telefon ",
+    "searchRooms" : "Apa yang anda intrested dalam? "
+  },
+  "screens" : {
+    "signUp" : "Gabung Bilik Fluxp ",
+    "logIn" : "Log Masuk ",
+    "forgotPassword" : "Terlupa Kata Laluan ",
+    "setUpProfile" : "Tetapkan profil anda ",
+    "phone" : "Daftar Masuk dengan nombor telefon ",
+    "fluxroom" : "Bilik Fluks ",
+    "findRooms" : "Cari Bilik ",
+    "settings" : "Tetapan ",
+    "profile" : "Profil ",
+    "aboutUs" : "Tentang Kami ",
+    "dataPolicy" : "Polisi Data ",
+    "termsOfService" : "Terma Perkhidmatan ",
+    "invitations" : "Jemputan ",
+    "issues" : "Isu ",
+    "createRoom" : "Cipta bilik sendiri. ",
+    "topRooms" : "Bilik Atas "
+  },
+  "onboard" : {
+    "subHeading" : "Sambung dengan sesiapa melalui audio! "
+  },
+  "chatRooms" : {
+    "noRooms" : "Tiada Bilik: ( ",
+    "shareLink" : "Kongsi Pautan ",
+    "reportUser" : "Lapor Pengguna ",
+    "blockUser" : "Sekat Pengguna ",
+    "noRoomExists" : "Tiada bilik yang wujud! "
+  },
+  "settings" : {
+    "aboutUs" : "Tentang Kami ",
+    "rateUs" : "Kadar Kami ",
+    "issues" : "Adakah anda menghadapi masalah apa-apa? ",
+    "deleteAccount" : "Padam Akaun ",
+    "signOut" : "Tanda Keluar ",
+    "darkMode" : "Mod Gelap ",
+    "dataPolicy" : "Polisi Data ",
+    "termsOfService" : "Terma Perkhidmatan "
+  },
+  "otpVerification" : {
+    "heading" : "Kami dah hantar kod pada awak. "
+  },
+  "emailVerification" : {
+    "heading" : "Sila sahkan e-mel anda. ",
+    "emailSent" : "Kami telah menghantar e-mel kepada anda pada "
+  },
+  "issues" : {
+    "heading" : "Apa masalah yang kamu hadapi? ",
+    "subHeading" : "Pasukan kami akan cuba untuk menetapkan mereka kepada amalan terbaik kita. "
+  },
+  "errors" : {
+    "anErrorOccured" : "Ralat Dipulihkan ",
+    "roomDoesNotExist" : "Bilik tidak wujud   ",
+    "roomUserDoesNotExist" : "Sama ada bilik atau pengguna tidak wujud ",
+    "roomNameTaken" : "Nama Bilik Sudah Taken ",
+    "playServices" : "Perkhidmatan main tidak tersedia ",
+    "emailVerification" : "Emel tidak disahkan ",
+    "invalidCode" : "Kod Tidak Sah ",
+    "unexpectedError" : "Ralat tidak dijangka berlaku ",
+    "usernameTaken" : "Nama Pengguna Telah Diambil ",
+    "invalidEmail" : "Alamat Emel Tidak Sah ",
+    "emailInUse" : "Emel sudah digunakan"
+  }
+}

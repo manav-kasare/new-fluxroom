@@ -1,0 +1,100 @@
+{
+  "buttons" : {
+    "signUpOnboard" : "ই-মেইল সহ স্বাক্ষর করুন ",
+    "logInOnboard" : "ই-মেইল সহ লগ-ইন ",
+    "signUp" : "স্বাক্ষর করো ",
+    "logIn" : "লগ ইন ",
+    "verify" : "ভেরিফাই ",
+    "forgotPassword" : "পাসওয়ার্ড ভুলে গেছে? ",
+    "getOTP" : "ওটিপি প্রাপ্ত ",
+    "createRoom" : "তৈরি করো ",
+    "joinRoom" : "যোগ দিন ",
+    "joinedRoom" : "Joined ",
+    "invite" : "আমন্ত্রণ ",
+    "invited" : "আমন্ত্রণ করা হয়েছে ",
+    "findRoom" : "একটি রুম খোঁজো ",
+    "done" : "Done ",
+    "cancel" : "বাতিল করো ",
+    "close" : "বন্ধ করো ",
+    "submit" : "সাবমিট ",
+    "resend" : "রিসেন্ড ",
+    "accept" : "গ্রহণ করুন ",
+    "decline" : "ডেকলাইন "
+  },
+  "placeholders" : {
+    "email" : "ই-মেইল ঠিকানা ",
+    "username" : "Username ",
+    "issue" : "ইস্যু ",
+    "description" : "বর্ণনা ",
+    "password" : "পাসওয়ার্ড ",
+    "code" : "ভেরিফিকেশন কোড ",
+    "seach" : "তুমি কি বিশ্রাম করছো? ",
+    "roomName" : "তুমি কি নিয়ে কথা বলবে? ",
+    "roomDescription" : "১০০ টিরও কম অক্ষরে বর্ণনা করা হবে ",
+    "searchUsername" : "অনুসন্ধানের নাম অনুসন্ধান ",
+    "forgotPassword" : "নিবন্ধিত ইমেইল অথবা ফোন নম্বর ",
+    "searchRooms" : "তুমি কি বিশ্রাম করছো? "
+  },
+  "screens" : {
+    "signUp" : "ফ্লাক্সরুমে যোগ দিন ",
+    "logIn" : "লগ ইন ",
+    "forgotPassword" : "পাসওয়ার্ড ফরওয়ার্ড করা হয়েছে ",
+    "setUpProfile" : "আপনার প্রোফাইল নির্ধারণ করুন ",
+    "phone" : "ফোন নাম্বার সহ স্বাক্ষর করুন ",
+    "fluxroom" : "ফ্লাক্সরুম ",
+    "findRooms" : "রুম খোঁজো ",
+    "settings" : "সেটিংস ",
+    "profile" : "প্রোফাইল ",
+    "aboutUs" : "আমাদের পরিচিতি ",
+    "dataPolicy" : "ডাটা পলিসি ",
+    "termsOfService" : "সার্ভিসের টার্ম ",
+    "invitations" : "আমন্ত্রণ ",
+    "issues" : "ইস্যু ",
+    "createRoom" : "নিজের রুম তৈরি করুন ",
+    "topRooms" : "উপরের রুম "
+  },
+  "onboard" : {
+    "subHeading" : "অডিও মাধ্যমে কারো সাথে যোগাযোগ করুন! "
+  },
+  "chatRooms" : {
+    "noRooms" : "কোন রুম নয়: ( ",
+    "shareLink" : "শেয়ার লিঙ্ক ",
+    "reportUser" : "ব্যবহারকারীর প্রতিবেদন ",
+    "blockUser" : "ব্লক ব্যবহারকারী ",
+    "noRoomExists" : "এমন কোন জায়গা নেই! "
+  },
+  "settings" : {
+    "aboutUs" : "আমাদের পরিচিতি ",
+    "rateUs" : "Rate Us ",
+    "issues" : "তুমি কি কোন সমস্যার মুখোমুখি হয়েছ? ",
+    "deleteAccount" : "অ্যাকাউন্ট মুছে ফেলুন ",
+    "signOut" : "সাইন আউট ",
+    "darkMode" : "ডার্ক মোড ",
+    "dataPolicy" : "ডাটা পলিসি ",
+    "termsOfService" : "সার্ভিসের টার্ম "
+  },
+  "otpVerification" : {
+    "heading" : "আমরা তোমাকে একটা কোড পাঠিয়েছি "
+  },
+  "emailVerification" : {
+    "heading" : "অনুগ্রহ করে আপনার ই-মেইল পরীক্ষা করুন. ",
+    "emailSent" : "আমরা আপনাকে একটি ইমেইল প্রেরণ করেছি "
+  },
+  "issues" : {
+    "heading" : "তুমি কি ইস্যু করেছিলে? ",
+    "subHeading" : "আমাদের টিম তাদেরকে আমাদের সেরা অনুশীলনে ঠিক করার চেষ্টা করবে. "
+  },
+  "errors" : {
+    "anErrorOccured" : "একটি ত্রুটি অক্সিড ",
+    "roomDoesNotExist" : "রুম বর্তমানে উপস্থিত নেই   ",
+    "roomUserDoesNotExist" : "ঘর অথবা ব্যবহারকারীর কোন অস্তিত্ব নেই ",
+    "roomNameTaken" : "রুম নাম Already Taken ",
+    "playServices" : "সার্ভিস পাওয়া যায়না ",
+    "emailVerification" : "ই-মেইল ভেরিফাইড নয় ",
+    "invalidCode" : "অবৈধ কোড ",
+    "unexpectedError" : "একটি অপ্রত্যাশিত ত্রুটি ঘটেছে ",
+    "usernameTaken" : "Username Already Taken ",
+    "invalidEmail" : "অবৈধ ই-মেইল ঠিকানা ",
+    "emailInUse" : "ই-মেইল ইতোমধ্যে ব্যবহার করা হবে"
+  }
+}

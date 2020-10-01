@@ -1,0 +1,100 @@
+{
+  "buttons" : {
+    "signUpOnboard" : "इमेल सँग साइन अप गर्नुहोस् ",
+    "logInOnboard" : "इमेल सँग लगइन गर्नुहोस् ",
+    "signUp" : "साइन अप ",
+    "logIn" : "लग इन गर्नुहोस् ",
+    "verify" : "रूजु गर्नुहोस् ",
+    "forgotPassword" : "पासवर्ड बिर्स्यो? ",
+    "getOTP" : "OTP प्राप्त गर्नुहोस् ",
+    "createRoom" : "सिर्जना गर्नुहोस् ",
+    "joinRoom" : "जडान गर्नुहोस् ",
+    "joinedRoom" : "जोइन्ड ",
+    "invite" : "आमन्त्रण गर्नुहोस् ",
+    "invited" : "आमन्त्रित ",
+    "findRoom" : "एउटा कोठा फेला पार्नुहोस् ",
+    "done" : "Done ",
+    "cancel" : "रद्द गर्नुहोस् ",
+    "close" : "बन्द गर्नुहोस् ",
+    "submit" : "सबमिट गर्नुहोस् ",
+    "resend" : "पुन: निरन्तरता ",
+    "accept" : "स्वीकार गर्नुहोस् ",
+    "decline" : "अस्वीकार गर्नुहोस् "
+  },
+  "placeholders" : {
+    "email" : "इमेल ठेगाना ",
+    "username" : "प्रयोगकर्ता नाम ",
+    "issue" : "मुद्दा ",
+    "description" : "वर्णन ",
+    "password" : "पासवर्ड ",
+    "code" : "भेरिफिकेशन कोड ",
+    "seach" : "तपाईँ के भन्नुहुन्छ? ",
+    "roomName" : "के कुरा गर्ने हो त? ",
+    "roomDescription" : "१०० भन्दा कम क्यारेक्टरहरूमा वर्णन गर्नुहोस् ",
+    "searchUsername" : "प्रयोगकर्ता नाम खोजी गर्नुहोस् ",
+    "forgotPassword" : "दर्ता गरिएको इमेल वा फोन नम्बर ",
+    "searchRooms" : "तपाईँ के भन्नुहुन्छ? "
+  },
+  "screens" : {
+    "signUp" : "फ्लक्सरुम जडान गर्नुहोस् ",
+    "logIn" : "लग इन गर्नुहोस् ",
+    "forgotPassword" : "पासवर्ड बिर्सनुहोस् ",
+    "setUpProfile" : "तपाईँको प्रोफाइल सेट गर्नुहोस् ",
+    "phone" : "फोन नम्बर सहित साइन इन गर्नुहोस् ",
+    "fluxroom" : "फ्लक्सरुम ",
+    "findRooms" : "रोम फेला पार्नुहोस् ",
+    "settings" : "सेटिङ ",
+    "profile" : "प्रोफाइल ",
+    "aboutUs" : "हाम्रो बारेमा ",
+    "dataPolicy" : "डेटा नीति ",
+    "termsOfService" : "सेवाका शर्तहरू ",
+    "invitations" : "निमन्त्रणा ",
+    "issues" : "मुद्दाहरू ",
+    "createRoom" : "आफ्नै कोठा सिर्जना गर्नुहोस् ",
+    "topRooms" : "माथिल्लो कोठा "
+  },
+  "onboard" : {
+    "subHeading" : "अडियो मार्फत कसैसँग जडान गर्नुहोस्! "
+  },
+  "chatRooms" : {
+    "noRooms" : "रोम छैन: ( ",
+    "shareLink" : "साझा लिङ्क ",
+    "reportUser" : "प्रतिवेदन प्रयोगकर्ता ",
+    "blockUser" : "ब्लक प्रयोगकर्ता ",
+    "noRoomExists" : "त्यस्तो कुनै कोठा यस्तो अवस्थित छैन! "
+  },
+  "settings" : {
+    "aboutUs" : "हाम्रो बारेमा ",
+    "rateUs" : "दर रेट ",
+    "issues" : "के तपाईंले कुनै पनि मुद्दाको सामना गर्नु भयो? ",
+    "deleteAccount" : "खाता मेट्नुहोस् ",
+    "signOut" : "साइन आउट ",
+    "darkMode" : "गाढा मोड ",
+    "dataPolicy" : "डेटा नीति ",
+    "termsOfService" : "सेवाका शर्तहरू "
+  },
+  "otpVerification" : {
+    "heading" : "हामीले तपाईँलाई एउटा कोड पठाएका छौं "
+  },
+  "emailVerification" : {
+    "heading" : "कृपया तपाईँको इमेल रुजु गर्नुहोस्. ",
+    "emailSent" : "हामीले तपाईँलाई इमेल पठाएका छौं "
+  },
+  "issues" : {
+    "heading" : "तपाईंले कुन मुद्दा झेल्नुभयो? ",
+    "subHeading" : "हाम्रो टिमले उनीहरूलाई हाम्रो सर्वश्रेष्ठ अभ्यासमा ठीक पार्ने प्रयास गर्नेछ. "
+  },
+  "errors" : {
+    "anErrorOccured" : "एउटा त्रुटि भयो ",
+    "roomDoesNotExist" : "कोठा अवस्थित छैन   ",
+    "roomUserDoesNotExist" : "या त कोठा वा प्रयोगकर्ता अवस्थित छैन ",
+    "roomNameTaken" : "कोठा नाम Already Taken ",
+    "playServices" : "प्ले सेवा उपलब्ध छैन ",
+    "emailVerification" : "इमेल गरिएको छैन ",
+    "invalidCode" : "अवैध कोड ",
+    "unexpectedError" : "एउटा अनपेक्षित त्रुटि उत्पन्न भयो ",
+    "usernameTaken" : "प्रयोगकर्ता नाम Already Taken ",
+    "invalidEmail" : "अवैध इमेल ठेगाना ",
+    "emailInUse" : "प्रयोगमा पहिले नै इमेल"
+  }
+}

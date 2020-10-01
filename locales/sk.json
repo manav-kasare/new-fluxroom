@@ -1,0 +1,100 @@
+{
+  "buttons" : {
+    "signUpOnboard" : "Prihlásiť sa e-mailom ",
+    "logInOnboard" : "Protokolovať s e-mailováciou ",
+    "signUp" : "Prihlásiť sa ",
+    "logIn" : "Prihlásiť sa ",
+    "verify" : "Overiť ",
+    "forgotPassword" : "Zabudli ste heslo? ",
+    "getOTP" : "Získať OTP ",
+    "createRoom" : "Vytvoriť ",
+    "joinRoom" : "Pripojiť ",
+    "joinedRoom" : "Spojené ",
+    "invite" : "Pozvať ",
+    "invited" : "Pozvaný ",
+    "findRoom" : "Nájsť miestnosť ",
+    "done" : "Hotovo ",
+    "cancel" : "Zrušiť ",
+    "close" : "Zatvoriť ",
+    "submit" : "Odoslať ",
+    "resend" : "Znova poslať ",
+    "accept" : "Akceptovať ",
+    "decline" : "Odmietnuť "
+  },
+  "placeholders" : {
+    "email" : "Emailová adresa ",
+    "username" : "Meno užívateľa ",
+    "issue" : "Problém ",
+    "description" : "Opis ",
+    "password" : "Heslo ",
+    "code" : "Overovací kód ",
+    "seach" : "V čom ste intrestne? ",
+    "roomName" : "O čom by si hovoril? ",
+    "roomDescription" : "Opíšte za menej ako 100 znakov ",
+    "searchUsername" : "Hľadať meno užívateľa ",
+    "forgotPassword" : "Registrovaný e-mail alebo telefónne číslo ",
+    "searchRooms" : "V čom ste intrestne? "
+  },
+  "screens" : {
+    "signUp" : "Pripojiť sa k Fluxroom ",
+    "logIn" : "Prihlásiť sa ",
+    "forgotPassword" : "Zabudli ste heslo ",
+    "setUpProfile" : "Nastavte svoj profil ",
+    "phone" : "Prihlásiť sa s telefónnou číslom ",
+    "fluxroom" : "Fluxroom ",
+    "findRooms" : "Nájsť miestnosti ",
+    "settings" : "Nastavenia ",
+    "profile" : "Profil ",
+    "aboutUs" : "Informácie o nás ",
+    "dataPolicy" : "Politika údajov ",
+    "termsOfService" : "Podmienky služby ",
+    "invitations" : "Pozvánky ",
+    "issues" : "Problémy ",
+    "createRoom" : "Vytvorte si svoju vlastnú miestnosť ",
+    "topRooms" : "Vrchné miestnosti "
+  },
+  "onboard" : {
+    "subHeading" : "Spojte sa s niekým prostredníctvom audio! "
+  },
+  "chatRooms" : {
+    "noRooms" : "Žiadne miestnosti: ( ",
+    "shareLink" : "Zdieľať odkaz ",
+    "reportUser" : "Užívateľ hlásenia ",
+    "blockUser" : "Blokovať užívateľa ",
+    "noRoomExists" : "Žiadna miestnosť neexistuje! "
+  },
+  "settings" : {
+    "aboutUs" : "Informácie o nás ",
+    "rateUs" : "Hodnoti ",
+    "issues" : "Čelil vám nejaké problémy? ",
+    "deleteAccount" : "Vymazať konto ",
+    "signOut" : "Odhlásiť ",
+    "darkMode" : "Tmavý režim ",
+    "dataPolicy" : "Politika údajov ",
+    "termsOfService" : "Podmienky služby "
+  },
+  "otpVerification" : {
+    "heading" : "Poslali sme ti kód. "
+  },
+  "emailVerification" : {
+    "heading" : "Skontrolujte svoj e-mail. ",
+    "emailSent" : "Poslali sme vám e-mail na "
+  },
+  "issues" : {
+    "heading" : "-Aký problém si čelil? ",
+    "subHeading" : "Náš tím sa bude snažiť, aby ich opravil podľa našich najlepších postupov. "
+  },
+  "errors" : {
+    "anErrorOccured" : "Nastala chyba ",
+    "roomDoesNotExist" : "Miestnosť neexistuje   ",
+    "roomUserDoesNotExist" : "Buď miestnosť alebo užívateľ neexistuje ",
+    "roomNameTaken" : "Názov miestnosti už je Taken ",
+    "playServices" : "Služby prehrávania nie sú dostupné ",
+    "emailVerification" : "E-mail nie je overený ",
+    "invalidCode" : "Neplatný kód ",
+    "unexpectedError" : "Nastala neočakávaná chyba ",
+    "usernameTaken" : "Meno užívateľa už prevzalo ",
+    "invalidEmail" : "Neplatná e-mailová adresa ",
+    "emailInUse" : "E-mail sa už používa"
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "buttons" : {
+    "signUpOnboard" : "הרשמה עם דואל ",
+    "logInOnboard" : "התחברות עם דואל ",
+    "signUp" : "הרשמה ",
+    "logIn" : "התחברות ",
+    "verify" : "אימות ",
+    "forgotPassword" : "שכחתם את הסיסמה? ",
+    "getOTP" : "קבלת OTP ",
+    "createRoom" : "יצירה ",
+    "joinRoom" : "צירוף ",
+    "joinedRoom" : "הצטרף ",
+    "invite" : "הזמנה ",
+    "invited" : "מוזמן ",
+    "findRoom" : "איתור חדר ",
+    "done" : "בוצע ",
+    "cancel" : "ביטול ",
+    "close" : "קרוב ",
+    "submit" : "הגשה ",
+    "resend" : "שליחה מחדש ",
+    "accept" : "קבלה ",
+    "decline" : "סירוב "
+  },
+  "placeholders" : {
+    "email" : "כתובת דוא \" ל ",
+    "username" : "שם משתמש ",
+    "issue" : "בעיה ",
+    "description" : "תיאור ",
+    "password" : "סיסמה ",
+    "code" : "קוד אימות ",
+    "seach" : "על מה אתה נכנס פנימה? ",
+    "roomName" : "על מה אתה היית מדבר? ",
+    "roomDescription" : "תארו פחות מ-100 תווים ",
+    "searchUsername" : "חיפוש שם משתמש ",
+    "forgotPassword" : "דוא \" ל רשום או מספר טלפון ",
+    "searchRooms" : "על מה אתה נכנס פנימה? "
+  },
+  "screens" : {
+    "signUp" : "הצטרפות לחדר Fהחדרים ",
+    "logIn" : "התחברות ",
+    "forgotPassword" : "שכחתם את הסיסמה ",
+    "setUpProfile" : "הגדרת הפרופיל שלכם ",
+    "phone" : "התחברות עם מספר טלפון ",
+    "fluxroom" : "חדר Fהחדרים ",
+    "findRooms" : "חיפוש חדרים ",
+    "settings" : "הגדרות ",
+    "profile" : "פרופיל ",
+    "aboutUs" : "אודותינו ",
+    "dataPolicy" : "מדיניות נתונים ",
+    "termsOfService" : "תנאי שירות ",
+    "invitations" : "הזמנות ",
+    "issues" : "בעיות ",
+    "createRoom" : "יצירת חדר משלכם ",
+    "topRooms" : "חדרים עליונים "
+  },
+  "onboard" : {
+    "subHeading" : "להתחבר עם כל אחד באמצעות שמע! "
+  },
+  "chatRooms" : {
+    "noRooms" : "אין חדרים: ( ",
+    "shareLink" : "שיתוף קישור ",
+    "reportUser" : "משתמש דוח ",
+    "blockUser" : "חסימת משתמש ",
+    "noRoomExists" : "לא קיים מקום כזה! "
+  },
+  "settings" : {
+    "aboutUs" : "אודותינו ",
+    "rateUs" : "דרג אותנו ",
+    "issues" : "האם אתה להתמודד עם כל בעיות? ",
+    "deleteAccount" : "מחיקת חשבון ",
+    "signOut" : "התנתקות ",
+    "darkMode" : "מצב כהה ",
+    "dataPolicy" : "מדיניות נתונים ",
+    "termsOfService" : "תנאי שירות "
+  },
+  "otpVerification" : {
+    "heading" : "יש לנו לשלוח לך קוד ב "
+  },
+  "emailVerification" : {
+    "heading" : "אמתו את הדואל שלכם. ",
+    "emailSent" : "שלחנו לך דוא \" ל ב - "
+  },
+  "issues" : {
+    "heading" : "על איזו בעיה הפנים שלך? ",
+    "subHeading" : "הצוות שלנו ינסה לתקן אותם לאימונים הטובים ביותר שלנו. "
+  },
+  "errors" : {
+    "anErrorOccured" : "אירעה שגיאה ",
+    "roomDoesNotExist" : "החדר אינו קיים.   ",
+    "roomUserDoesNotExist" : "החדר או המשתמש אינם קיימים. ",
+    "roomNameTaken" : "שם החדר כבר נלקח ",
+    "playServices" : "שירותי הרצה אינם זמינים ",
+    "emailVerification" : "דואל לא אומת ",
+    "invalidCode" : "קוד לא חוקי ",
+    "unexpectedError" : "אירעה שגיאה לא צפויה. ",
+    "usernameTaken" : "שם משתמש כבר נלקח ",
+    "invalidEmail" : "כתובת דואל לא חוקית ",
+    "emailInUse" : "הדוא \" ל כבר בשימוש"
+  }
+}

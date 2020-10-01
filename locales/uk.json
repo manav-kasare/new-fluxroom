@@ -1,0 +1,100 @@
+{
+  "buttons" : {
+    "signUpOnboard" : "Підписати З Електронною Поштою ",
+    "logInOnboard" : "Журнал З Електронною Поштою ",
+    "signUp" : "Підписати вгору ",
+    "logIn" : "Увійти до системи ",
+    "verify" : "Перевірити ",
+    "forgotPassword" : "Забули пароль? ",
+    "getOTP" : "Отримати OTP ",
+    "createRoom" : "Створити ",
+    "joinRoom" : "Приєднатися ",
+    "joinedRoom" : "Долучився ",
+    "invite" : "Запрошувати ",
+    "invited" : "Запрошено ",
+    "findRoom" : "Знайти кімнату ",
+    "done" : "Виконано ",
+    "cancel" : "Скасувати ",
+    "close" : "Закрити ",
+    "submit" : "Надіслати ",
+    "resend" : "Переробити ",
+    "accept" : "Прийняти ",
+    "decline" : "Відхилити "
+  },
+  "placeholders" : {
+    "email" : "Адреса електронної пошти ",
+    "username" : "Користувач ",
+    "issue" : "Проблема ",
+    "description" : "Опис ",
+    "password" : "Пароль ",
+    "code" : "Код перевірки ",
+    "seach" : "На що ти інтрестевся? ",
+    "roomName" : "Про що б ви говорили? ",
+    "roomDescription" : "Опис у менш ніж 100 символах ",
+    "searchUsername" : "Користувач пошуку ",
+    "forgotPassword" : "Зареєстрована адреса ел. пошти або телефону ",
+    "searchRooms" : "На що ти інтрестевся? "
+  },
+  "screens" : {
+    "signUp" : "Приєднатись до Flux ",
+    "logIn" : "Увійти до системи ",
+    "forgotPassword" : "Забуто пароль ",
+    "setUpProfile" : "Налаштувати ваш профіль ",
+    "phone" : "Підписувати з телефонним номером ",
+    "fluxroom" : "Fluxroom ",
+    "findRooms" : "Знайти кімнати ",
+    "settings" : "ПараметриName ",
+    "profile" : "Профіль ",
+    "aboutUs" : "Про нас ",
+    "dataPolicy" : "Правила обробки даних ",
+    "termsOfService" : "Умови служби ",
+    "invitations" : "Запрошення ",
+    "issues" : "Проблеми ",
+    "createRoom" : "Створіть власну кімнату ",
+    "topRooms" : "Верхні кімнати "
+  },
+  "onboard" : {
+    "subHeading" : "З ' єднатись з кимось через аудіо! "
+  },
+  "chatRooms" : {
+    "noRooms" : "Без кімнат: ( ",
+    "shareLink" : "Розділити посилання ",
+    "reportUser" : "Звіт користувача ",
+    "blockUser" : "Заблокувати користувач ",
+    "noRoomExists" : "Не існує такого місця! "
+  },
+  "settings" : {
+    "aboutUs" : "Про нас ",
+    "rateUs" : "Оцінити нас ",
+    "issues" : "У тебе були якісь проблеми? ",
+    "deleteAccount" : "Вилучити обліковий запис ",
+    "signOut" : "Підписати вихід ",
+    "darkMode" : "Темний режим ",
+    "dataPolicy" : "Правила обробки даних ",
+    "termsOfService" : "Умови служби "
+  },
+  "otpVerification" : {
+    "heading" : "Ми надіслали вам код. "
+  },
+  "emailVerification" : {
+    "heading" : "Будь ласка, перевір вашу пошту. ",
+    "emailSent" : "Ми надіслали вам електронну пошту. "
+  },
+  "issues" : {
+    "heading" : "Що з тобою сталося? ",
+    "subHeading" : "Наша команда спробує їх полагодити на нашу найкращу практику. "
+  },
+  "errors" : {
+    "anErrorOccured" : "Сталася помилка ",
+    "roomDoesNotExist" : "Кімната не існує   ",
+    "roomUserDoesNotExist" : "Або кімната, або користувач не існує ",
+    "roomNameTaken" : "Назва кімнати вже зайнято ",
+    "playServices" : "Служби гри недоступні ",
+    "emailVerification" : "Ел. пошта не була ",
+    "invalidCode" : "Некоректний код ",
+    "unexpectedError" : "Сталася несподівана помилка ",
+    "usernameTaken" : "Користувач вже зайнято ",
+    "invalidEmail" : "Некоректна адреса електронної пошти ",
+    "emailInUse" : "Ел. пошта вже використовується"
+  }
+}

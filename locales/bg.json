@@ -1,0 +1,100 @@
+{
+  "buttons" : {
+    "signUpOnboard" : "Влезте с имейл ",
+    "logInOnboard" : "Влезте с имейл ",
+    "signUp" : "Запишете се! ",
+    "logIn" : "Влезте. ",
+    "verify" : "Проверка: ",
+    "forgotPassword" : "Забравена парола? ",
+    "getOTP" : "Вземи OTP ",
+    "createRoom" : "Създаване: ",
+    "joinRoom" : "Присъедини се ",
+    "joinedRoom" : "Към ... ",
+    "invite" : "Покана: ",
+    "invited" : "Покана: ",
+    "findRoom" : "Намери стая. ",
+    "done" : "Съставено. ",
+    "cancel" : "Отмяна? ",
+    "close" : "Близо. ",
+    "submit" : "Подаване: ",
+    "resend" : "-Да. ",
+    "accept" : "Приемам. ",
+    "decline" : "Спад: "
+  },
+  "placeholders" : {
+    "email" : "Имейл адрес ",
+    "username" : "Потребителско име ",
+    "issue" : "Брой: ",
+    "description" : "Описание: ",
+    "password" : "Парола: ",
+    "code" : "Код на проверката ",
+    "seach" : "В какво си интретиран? ",
+    "roomName" : "За какво ще си говорите? ",
+    "roomDescription" : "Описание на по-малко от 100 символа ",
+    "searchUsername" : "Търсене на потребителско име ",
+    "forgotPassword" : "Регистриран имейл или телефонен номер ",
+    "searchRooms" : "В какво си интретиран? "
+  },
+  "screens" : {
+    "signUp" : "Присъедини се към Fluxroom ",
+    "logIn" : "Влезте. ",
+    "forgotPassword" : "Забравена парола ",
+    "setUpProfile" : "Настройване на Вашия профил ",
+    "phone" : "Регистрирай се с телефонен номер. ",
+    "fluxroom" : "Fluxroom ",
+    "findRooms" : "Намерете стаи ",
+    "settings" : "Настройки: ",
+    "profile" : "Профил: ",
+    "aboutUs" : "За нас. ",
+    "dataPolicy" : "Политика за данни ",
+    "termsOfService" : "Условия на услугата: ",
+    "invitations" : "Покани. ",
+    "issues" : "Въпроси: ",
+    "createRoom" : "Създайте собствена стая. ",
+    "topRooms" : "Топ стаи: "
+  },
+  "onboard" : {
+    "subHeading" : "Свържи се с някой чрез аудио! "
+  },
+  "chatRooms" : {
+    "noRooms" : "Няма стаи: ( ",
+    "shareLink" : "Споделяне на връзка ",
+    "reportUser" : "Отчет на потребител ",
+    "blockUser" : "Блок на потребител ",
+    "noRoomExists" : "Няма място такова! "
+  },
+  "settings" : {
+    "aboutUs" : "За нас. ",
+    "rateUs" : "Оцени ни. ",
+    "issues" : "Имаше ли някакви проблеми? ",
+    "deleteAccount" : "Изтриване на сметка ",
+    "signOut" : "Махай се! ",
+    "darkMode" : "Тъмен режим: ",
+    "dataPolicy" : "Политика за данни ",
+    "termsOfService" : "Условия на услугата: "
+  },
+  "otpVerification" : {
+    "heading" : "Изпратихме ви код. "
+  },
+  "emailVerification" : {
+    "heading" : "Проверете имейла си. ",
+    "emailSent" : "Изпратихме ви имейл. "
+  },
+  "issues" : {
+    "heading" : "Какъв ти е проблема? ",
+    "subHeading" : "Екипът ни ще се опита да ги поправи. "
+  },
+  "errors" : {
+    "anErrorOccured" : "Грешка, олекувана. ",
+    "roomDoesNotExist" : "Стаята не съществува.   ",
+    "roomUserDoesNotExist" : "Или стая, или потребител не съществува ",
+    "roomNameTaken" : "Име на стая вече е заето ",
+    "playServices" : "Не са достъпни услугите за игри ",
+    "emailVerification" : "Имейл не е проверен ",
+    "invalidCode" : "Невалиден код: ",
+    "unexpectedError" : "Възникна неочаквана грешка. ",
+    "usernameTaken" : "Потребителско име вече е взето ",
+    "invalidEmail" : "Невалиден имейл адрес ",
+    "emailInUse" : "Имейл вече се използва"
+  }
+}
