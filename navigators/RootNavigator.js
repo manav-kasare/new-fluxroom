@@ -5,6 +5,7 @@ import {
   CardStyleInterpolators,
 } from '@react-navigation/stack';
 
+import il8n from '../locales/il8n';
 import {
   UserDetailsContext,
   ThemeContext,
@@ -154,7 +155,7 @@ const AuthStackNavigator = () => {
         name="LogIn"
         component={LogIn}
         options={{
-          title: 'Log In',
+          title: il8n.t('screens.logIn'),
           headerStyle: {
             backgroundColor: '#03449e',
             borderBottomWidth: 0,
@@ -177,7 +178,7 @@ const AuthStackNavigator = () => {
         name="Phone"
         component={Phone}
         options={{
-          title: 'LogIn with Phone Number',
+          title: il8n.t('screens.phone'),
           headerStyle: {
             backgroundColor: '#03449e',
             borderBottomWidth: 0,
@@ -200,7 +201,7 @@ const AuthStackNavigator = () => {
         name="SignUp"
         component={SignUp}
         options={{
-          title: 'Join Fluxroom',
+          title: il8n.t('screens.signUp'),
           headerStyle: {
             backgroundColor: '#03449e',
             borderWidth: 0,
@@ -223,7 +224,7 @@ const AuthStackNavigator = () => {
         name="ForgotPassword"
         component={ForgotPassword}
         options={{
-          title: 'Forgot Password',
+          title: il8n.t('screens.forgotPassword'),
           headerStyle: {
             backgroundColor: '#03449e',
             borderWidth: 0,
@@ -246,7 +247,7 @@ const AuthStackNavigator = () => {
         name="SetUpProfile"
         component={SetUpProfile}
         options={{
-          title: 'Set Up your Profile',
+          title: il8n.t('screens.setUpProfile'),
           headerStyle: {
             backgroundColor: '#03449e',
             borderWidth: 0,

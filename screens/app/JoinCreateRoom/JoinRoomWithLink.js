@@ -10,6 +10,7 @@ import {
 import {joinRoom} from '../../../backend/database/apiCalls';
 import {storeUserData} from '../../../shared/AsyncStore';
 import {ActivityIndicator} from 'react-native-paper';
+import il8n from '../../../locales/il8n';
 
 export default function JoinRoomWithLink({route, navigation}) {
   const {constants} = React.useContext(ThemeContext);
@@ -128,7 +129,7 @@ export default function JoinRoomWithLink({route, navigation}) {
                   color: 'white',
                   fontSize: 15,
                 }}>
-                Join Room
+                {il8n.t('buttons.joinRoom')}
               </Text>
             )}
           </TouchableOpacity>
@@ -152,7 +153,7 @@ export default function JoinRoomWithLink({route, navigation}) {
                 color: 'white',
                 fontSize: 15,
               }}>
-              Close
+              {il8n.t('buttons.close')}
             </Text>
           </TouchableOpacity>
         </View>

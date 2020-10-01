@@ -21,6 +21,7 @@ import {
   withTimingTransition,
 } from 'react-native-redash';
 import Entypo from 'react-native-vector-icons/Entypo';
+import il8n from '../../locales/il8n';
 
 import constants from '../../shared/constants';
 import globalStyles from '../../shared/GlobalStyles';
@@ -67,7 +68,8 @@ export default function Onboard({navigation}) {
             style={{
               width: constants.width * 0.8,
               height: 50,
-              marginTop: 50,
+              marginTop: 100,
+              alignSelf: 'center',
             }}
             resizeMode="cover"
             source={require('../../assets/logoOnboard.webp')}
@@ -75,12 +77,13 @@ export default function Onboard({navigation}) {
           <Text
             style={{
               color: 'rgba(255,255,255,0.5)',
-              fontWeight: '400',
+              fontWeight: '300',
               fontSize: 15,
               alignSelf: 'center',
               marginTop: 10,
+              letterSpacing: 1,
             }}>
-            Connect with anyone via audio !
+            {il8n.t('onboard.subHeading')}
           </Text>
         </Animated.View>
         <Animated.View
@@ -96,12 +99,16 @@ export default function Onboard({navigation}) {
           <TouchableOpacity
             style={globalStyles.screenButton}
             onPress={navigateSignUp}>
-            <Text style={globalStyles.buttonText}>Sign Up with Email</Text>
+            <Text style={globalStyles.buttonText}>
+              {il8n.t('buttons.signUpOnboard')}
+            </Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={globalStyles.screenButton}
             onPress={navigateLogin}>
-            <Text style={globalStyles.buttonText}>Log In with Email</Text>
+            <Text style={globalStyles.buttonText}>
+              {il8n.t('buttons.logInOnboard')}
+            </Text>
           </TouchableOpacity>
           <View
             style={{

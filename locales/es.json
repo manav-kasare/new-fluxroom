@@ -1,0 +1,86 @@
+{
+    "buttons": {
+        "signUpOnboard": "Ingresa con e-mail",
+        "logInOnboard": "Iniciar sesión con correo electrónico",
+        "signUp": "Regístrate",
+        "logIn": "iniciar sesión",
+        "verify": "Verificar",
+        "forgotPassword": "Se te olvidó tu contraseña ?",
+        "getOTP": "Obtener OTP",
+        "createRoom": "Crear",
+        "joinRoom": "Unida",
+        "joinedRoom": "Joined",
+        "invite": "Invitación",
+        "invited": "Invitado",
+        "findRoom": "Encuentra una habitación",
+        "done": "Hecho",
+        "cancel": "Cancelar",
+        "close": "Cerca",
+        "submit": "Enviar",
+        "resend": "Reenviar",
+        "accept": "Aceptar",
+        "decline": "Disminución"
+    },
+    "placeholders": {
+        "email": "Dirección de correo electrónico",
+        "username": "Nombre de usuario",
+        "issue": "Problema",
+        "description": "Descripción",
+        "password": "Contraseña",
+        "code": "Código de verificación",
+        "roomName": "¿De qué hablarías?",
+        "roomDescription": "Describe en menos de 100 caracteres",
+        "searchUsername": "Buscar nombre de usuario",
+        "forgotPassword": "Correo electrónico o número de teléfono registrado",
+        "searchRooms": "En que estas interesado ?"
+    },
+    "screens": {
+        "signUp": "Únete a Fluxroom",
+        "logIn": "iniciar sesión",
+        "forgotPassword": "Se te olvidó tu contraseña",
+        "setUpProfile": "Configura tu perfil",
+        "phone": "Iniciar sesión con número de teléfono",
+        "fluxroom": "Fluxroom",
+        "findRooms": "Buscar habitaciones",
+        "settings": "Configuraciones",
+        "profile": "Perfil",
+        "aboutUs": "Sobre nosotras",
+        "dataPolicy": "Política de datos",
+        "termsOfService": "Términos de servicio",
+        "invitations": "Invitaciones",
+        "issues": "Cuestiones",
+        "createRoom": "Crea tu propia habitación",
+        "topRooms": "Mejores habitaciones"
+    },
+    "onboard": {
+        "subHeading": "¡Conéctate con cualquier persona a través del audio!"
+    },
+    "chatRooms": {
+        "noRooms": "No hay habitaciones :(",
+        "shareLink": "Compartir enlace",
+        "reportUser": "Reportar usuario",
+        "blockUser": "Bloquear usuario",
+        "noRoomExists": "¡No existe tal habitación!"
+    },
+    "settings": {
+        "aboutUs": "Sobre nosotras",
+        "rateUs": "Nos califica",
+        "issues": "¿Tuviste algún problema?",
+        "deleteAccount": "Borrar cuenta",
+        "signOut": "Desconectar",
+        "darkMode": "Modo oscuro",
+        "dataPolicy": "Política de datos",
+        "termsOfService": "Términos de servicio"
+    },
+    "otpVerification": {
+        "heading": "Te hemos enviado un código a"
+    },
+    "emailVerification": {
+        "heading": "Verifique su correo electrónico.",
+        "emailSent": "Le hemos enviado un correo electrónico a"
+    },
+    "issues": {
+        "heading": "¿Qué problema enfrentó?",
+        "subHeading": "Nuestro equipo intentará corregirlos según nuestras mejores prácticas."
+    }
+}

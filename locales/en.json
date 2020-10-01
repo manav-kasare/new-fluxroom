@@ -4,18 +4,27 @@
         "logInOnboard": "Log In With Email",
         "signUp": "Sign Up",
         "logIn": "Log In",
-        "forogtPassword": "Forgot Password ?",
+        "verify": "Verify",
+        "forgotPassword": "Forgot Password ?",
         "getOTP": "Get OTP",
-        "createRoom": "Create Room",
+        "createRoom": "Create",
         "joinRoom": "Join",
         "joinedRoom": "Joined",
         "invite": "Invite",
         "invited": "Invited",
-        "findRooms": "Find Rooms"
+        "findRoom": "Find a room",
+        "done": "Done",
+        "cancel": "Cancel",
+        "close": "Close",
+        "submit": "Submit",
+        "resend": "Resend",
+        "accept": "Accept",
+        "decline": "Decline"
     },
     "placeholders": {
         "email": "Email Address",
         "username": "Username",
+        "issue": "Issue",
         "description": "Description",
         "password": "Password",
         "code": "Verification code",
@@ -23,7 +32,8 @@
         "roomName": "What would you talk about ?",
         "roomDescription": "Describe in less than 100 characters",
         "searchUsername": "Search Username",
-        "forgotPassword": "Registered email or phone number"
+        "forgotPassword": "Registered email or phone number",
+        "searchRooms": "What are you intrested in ?"
     },
     "screens": {
         "signUp": "Join Fluxroom",
@@ -40,11 +50,18 @@
         "termsOfService": "Terms of Service",
         "invitations": "Invitations",
         "issues": "Issues",
-        "createRoom": "Create your own room"
+        "createRoom": "Create your own room",
+        "topRooms": "Top Rooms"
+    },
+    "onboard": {
+        "subHeading": "Connect with anyone via audio !"
     },
     "chatRooms": {
         "noRooms": "No Rooms :(",
-        "shareLink": "Share Link"
+        "shareLink": "Share Link",
+        "reportUser": "Report User",
+        "blockUser": "Block User",
+        "noRoomExists": "No room such exists !"
     },
     "settings": {
         "aboutUs": "About Us",
@@ -54,17 +71,17 @@
         "signOut": "Sign Out",
         "darkMode": "Dark Mode",
         "dataPolicy": "Data Policy",
-        "termsOfService": "Terms of Service",
+        "termsOfService": "Terms of Service"
     },
-    "phoneVerification": {
-        "header": "We have sent you a code at",
-        "resend": "Resend Code",
-        "verify": "Verify"
+    "otpVerification": {
+        "heading": "We have sent you a code at"
     },
     "emailVerification": {
-        "header": "Please verify your email.",
-        "emailSent": "We have sent you an email at",
-        "resend": "Resend",
-        "verify": "Verify"
+        "heading": "Please verify your email.",
+        "emailSent": "We have sent you an email at"
+    },
+    "issues": {
+        "heading": "What issue did you face ?",
+        "subHeading": "Our team will try to fix them to our best practice."
     }
 }

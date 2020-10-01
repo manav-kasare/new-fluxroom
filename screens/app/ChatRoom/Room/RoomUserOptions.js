@@ -5,6 +5,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import {ThemeContext} from '../../../../shared/Context';
+import il8n from '../../../../locales/il8n';
 
 export default function RoomUserOptions({isVisible, setIsVisible}) {
   const {constants} = React.useContext(ThemeContext);
@@ -68,7 +69,7 @@ export default function RoomUserOptions({isVisible, setIsVisible}) {
             marginLeft: 25,
             fontSize: 16,
           }}>
-          Report User
+          {il8n.t('chatRooms.reportUser')}
         </Text>
         <Ionicons
           name="chevron-forward"
@@ -98,7 +99,7 @@ export default function RoomUserOptions({isVisible, setIsVisible}) {
             marginLeft: 25,
             fontSize: 16,
           }}>
-          Block User
+          {il8n.t('chatRooms.blockUser')}
         </Text>
         <Ionicons
           name="chevron-forward"
@@ -115,7 +116,7 @@ export default function RoomUserOptions({isVisible, setIsVisible}) {
             alignSelf: 'center',
             marginTop: 10,
           }}>
-          Close
+          {il8n.t('buttons.close')}
         </Text>
       </TouchableOpacity>
     </Modal>

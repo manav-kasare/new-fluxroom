@@ -23,6 +23,7 @@ import {getToken} from '../../../shared/KeyChain';
 import CreateRoom from '../JoinCreateRoom/CreateRoom';
 import ChatRoomRenderTile from './ChatRoomRenderTile';
 import ChatRoomsHeader from './ChatRoomsHeader';
+import il8n from '../../../locales/il8n';
 
 export default function ChatRooms({navigation}) {
   const {user, setUser} = useContext(UserDetailsContext);
@@ -167,11 +168,13 @@ const EmptyItem = ({navigation}) => {
             fontSize: 20,
             fontWeight: '300',
           }}>
-          No Rooms :(
+          {il8n.t('chatRooms.noRooms')}
         </Text>
       </View>
       <TouchableOpacity style={globalStyles.button} onPress={navigate}>
-        <Text style={globalStyles.buttonText}>Find a Room</Text>
+        <Text style={globalStyles.buttonText}>
+          {il8n.t('buttons.findRoom')}
+        </Text>
       </TouchableOpacity>
     </View>
   );

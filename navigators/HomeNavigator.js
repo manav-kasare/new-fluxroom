@@ -3,6 +3,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
+import il8n from '../locales/il8n';
 import {ThemeContext} from '../shared/Context';
 import Search from '../screens/app/Search/Search';
 import ChatRooms from '../screens/app/ChatRoom/ChatRooms';

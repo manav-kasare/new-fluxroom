@@ -11,6 +11,7 @@ import Settings from '../screens/app/UserProfile/Settings/Settings';
 import TermsOfService from '../screens/app/UserProfile/Settings/TermsOfService';
 import DataPolicy from '../screens/app/UserProfile/Settings/DataPolicy';
 import AboutUs from '../screens/app/UserProfile/Settings/AboutUs';
+import il8n from '../locales/il8n';
 
 const ProfileStack = createStackNavigator();
 
@@ -36,7 +37,7 @@ export default function ProfileNavigator({route, navigation}) {
         name="Profile"
         component={UserProfile}
         options={{
-          title: 'Profile',
+          title: il8n.t('screens.profile'),
           headerTitleAlign: 'left',
           headerStyle: {
             backgroundColor: darkTheme
@@ -61,7 +62,7 @@ export default function ProfileNavigator({route, navigation}) {
         name="Settings"
         component={Settings}
         options={{
-          title: 'Settings',
+          title: il8n.t('screens.settings'),
           gestureDirection: 'vertical-inverted',
           cardStyleInterpolator:
             CardStyleInterpolators.forFadeFromBottomAndroid,
@@ -76,7 +77,7 @@ export default function ProfileNavigator({route, navigation}) {
         name="AboutUs"
         component={AboutUs}
         options={{
-          title: 'About Us',
+          title: il8n.t('screens.aboutUs'),
           headerStyle: constants.headerStyle,
           headerTitleStyle: constants.headerText,
           headerBackTitleVisible: false,
@@ -88,7 +89,7 @@ export default function ProfileNavigator({route, navigation}) {
         name="DataPolicy"
         component={DataPolicy}
         options={{
-          title: 'Data Policy',
+          title: il8n.t('screens.dataPolicy'),
           headerStyle: constants.headerStyle,
           headerTitleStyle: constants.headerText,
           headerBackTitleVisible: false,
@@ -100,7 +101,7 @@ export default function ProfileNavigator({route, navigation}) {
         name="TermsOfService"
         component={TermsOfService}
         options={{
-          title: 'Terms Of Service',
+          title: il8n.t('screens.termsOfService'),
           headerStyle: constants.headerStyle,
           headerTitleStyle: constants.headerText,
           headerBackTitleVisible: false,
@@ -112,7 +113,7 @@ export default function ProfileNavigator({route, navigation}) {
         name="Issues"
         component={Issues}
         options={{
-          title: 'Issues',
+          title: il8n.t('screens.issues'),
           headerStyle: constants.headerStyle,
           headerTitleStyle: constants.headerText,
           headerBackTitleVisible: false,

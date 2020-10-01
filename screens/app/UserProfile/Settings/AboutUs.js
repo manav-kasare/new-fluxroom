@@ -3,6 +3,7 @@ import {SafeAreaView, View, TouchableOpacity, Text} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import {ThemeContext} from '../../../../shared/Context';
+import il8n from '../../../../locales/il8n';
 
 export default function AboutUs({navigation}) {
   const {constants} = React.useContext(ThemeContext);
@@ -47,7 +48,9 @@ export default function AboutUs({navigation}) {
           <TouchableOpacity
             onPress={navigateDataPolicy}
             style={styles.view_touchable}>
-            <Text style={styles.view_text}>Data Policy</Text>
+            <Text style={styles.view_text}>
+              {il8n.t('settings.dataPolicy')}
+            </Text>
             <Ionicons
               name="chevron-forward"
               size={20}
@@ -59,7 +62,9 @@ export default function AboutUs({navigation}) {
           <TouchableOpacity
             onPress={navigateTermsOfService}
             style={styles.view_touchable}>
-            <Text style={styles.view_text}>Terms Of Service</Text>
+            <Text style={styles.view_text}>
+              {il8n.t('settings.termsOfService')}
+            </Text>
             <Ionicons
               name="chevron-forward"
               size={20}

@@ -12,12 +12,13 @@ import {
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import ImagePicker from 'react-native-image-picker';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {ActivityIndicator} from 'react-native-paper';
 
 import {ThemeContext, TokenContext} from '../../../../shared/Context';
 import CircleAvatar from '../../../../shared/CircleAvatar';
 import {CustomErrorToast, CustomToast} from '../../../../shared/CustomToast';
 import {updateRoom} from '../../../../backend/database/apiCalls';
-import {ActivityIndicator} from 'react-native-paper';
+import il8n from '../../../../locales/il8n';
 
 export default function RoomSettings({route, navigation}) {
   const {description, id, profilePic} = route.params;
@@ -44,7 +45,7 @@ export default function RoomSettings({route, navigation}) {
                   color: 'white',
                   fontSize: 20,
                 }}>
-                Done
+                {il8n.t('buttons.done')}
               </Text>
             </TouchableOpacity>
           ),
@@ -55,7 +56,7 @@ export default function RoomSettings({route, navigation}) {
                   color: 'white',
                   fontSize: 20,
                 }}>
-                Cancel
+                {il8n.t('buttons.cancel')}
               </Text>
             </TouchableOpacity>
           ),
@@ -212,7 +213,9 @@ export default function RoomSettings({route, navigation}) {
               alignItems: 'center',
               flexDirection: 'row',
             }}>
-            <Text style={{color: 'grey', marginRight: 25}}>Description</Text>
+            <Text style={{color: 'grey', marginRight: 25}}>
+              {il8n.t('placeholders.description')}
+            </Text>
             <TextInput
               multiline
               onFocus={() => setDescriptionFocus(true)}
@@ -250,7 +253,7 @@ export default function RoomSettings({route, navigation}) {
             marginVertical: 10,
             fontSize: 20,
           }}>
-          Share Link
+          {il8n.t('chatRooms.shareLink')}
         </Text>
         <TouchableOpacity
           style={{

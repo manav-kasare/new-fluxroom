@@ -28,6 +28,7 @@ import {
   withSpringTransition,
   withTimingTransition,
 } from 'react-native-redash';
+import il8n from '../../locales/il8n';
 
 const options = {
   enableVibrateFallback: true,
@@ -178,7 +179,7 @@ export default function LogIn({navigation}) {
                     textContentType="emailAddress"
                     keyboardType="email-address"
                     style={globalStyles.textInput}
-                    placeholder="Email Address"
+                    placeholder={il8n.t('placeholders.email')}
                     onChangeText={(text) => setemail(text)}
                     value={email}
                     placeholderTextColor="grey"
@@ -190,7 +191,7 @@ export default function LogIn({navigation}) {
                   <TextInput
                     secureTextEntry={revealPassword ? false : true}
                     style={globalStyles.textInput}
-                    placeholder="Password"
+                    placeholder={il8n.t('placeholders.password')}
                     onFocus={() => setOnFocusPassword(true)}
                     onChangeText={(text) => setpassword(text)}
                     value={password}
@@ -225,14 +226,16 @@ export default function LogIn({navigation}) {
                     />
                   ) : (
                     <Text style={globalStyles.buttonText}>
-                      Log In to FluxRoom
+                      {il8n.t('buttons.logIn')}
                     </Text>
                   )}
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={globalStyles.button}
                   onPress={navigateForgotPassword}>
-                  <Text style={globalStyles.buttonText}>Forgot Password ?</Text>
+                  <Text style={globalStyles.buttonText}>
+                    {il8n.t('buttons.forgotPassword')}
+                  </Text>
                 </TouchableOpacity>
               </View>
             </Animated.View>

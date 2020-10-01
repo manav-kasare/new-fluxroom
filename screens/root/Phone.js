@@ -29,6 +29,7 @@ import {ThemeContext} from '../../shared/Context';
 import globalStyles from '../../shared/GlobalStyles';
 import {CustomErrorToast} from '../../shared/CustomToast';
 import OtpVerifiaction from './OtpVerification';
+import il8n from '../../locales/il8n';
 
 export default function Phone({navigation}) {
   const [phoneNumber, setPhoneNumber] = React.useState(null);
@@ -146,7 +147,9 @@ export default function Phone({navigation}) {
             {isLoading ? (
               <ActivityIndicator color="white" size="small" animating={true} />
             ) : (
-              <Text style={globalStyles.buttonText}>Get OTP</Text>
+              <Text style={globalStyles.buttonText}>
+                {il8n.t('buttons.getOTP')}
+              </Text>
             )}
           </TouchableOpacity>
         </Animated.View>

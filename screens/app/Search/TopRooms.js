@@ -3,6 +3,7 @@ import {FlatList, Text, View} from 'react-native';
 
 import SearchRenderTile from './SearchRenderTile';
 import {ThemeContext} from '../../../shared/Context';
+import il8n from '../../../locales/il8n';
 
 export default function TopRooms({allRooms, navigation}) {
   const {constants} = React.useContext(ThemeContext);
@@ -41,7 +42,7 @@ export default function TopRooms({allRooms, navigation}) {
         paddingVertical: 15,
       }}>
       <Text style={{color: constants.text1, fontSize: 22, fontWeight: '600'}}>
-        Top Rooms
+        {il8n.t('screens.topRooms')}
       </Text>
     </View>
   );

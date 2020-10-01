@@ -26,6 +26,7 @@ import {
   withSpringTransition,
   withTimingTransition,
 } from 'react-native-redash';
+import il8n from '../../locales/il8n';
 
 const options = {
   enableVibrateFallback: true,
@@ -157,7 +158,7 @@ export default function SignUp({navigation}) {
                   keyboardType="email-address"
                   textContentType="emailAddress"
                   style={globalStyles.textInput}
-                  placeholder="Email Address"
+                  placeholder={il8n.t('placeholders.email')}
                   placeholderTextColor="grey"
                   onChangeText={(text) => setEmail(text)}
                   value={email}
@@ -176,7 +177,7 @@ export default function SignUp({navigation}) {
                   textContentType="password"
                   secureTextEntry={revealPassword ? false : true}
                   style={globalStyles.textInput}
-                  placeholder="Password"
+                  placeholder={il8n.t('placeholders.password')}
                   placeholderTextColor="grey"
                   onChangeText={(text) => setPassword(text)}
                   value={password}
@@ -214,7 +215,9 @@ export default function SignUp({navigation}) {
                     animating={true}
                   />
                 ) : (
-                  <Text style={globalStyles.buttonText}>Sign Up</Text>
+                  <Text style={globalStyles.buttonText}>
+                    {il8n.t('buttons.signUp')}
+                  </Text>
                 )}
               </TouchableOpacity>
             </Animated.View>

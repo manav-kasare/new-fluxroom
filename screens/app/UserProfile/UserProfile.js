@@ -1,13 +1,11 @@
 import React from 'react';
 import {SafeAreaView, View, Text, TouchableOpacity} from 'react-native';
 import MatericalIcons from 'react-native-vector-icons/MaterialIcons';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import {UserDetailsContext, ThemeContext} from '../../../shared/Context';
 import UserProfilePhoto from './UserProfilePhoto';
-import {sendNotifactionFirebaseApi} from '../../../backend/database/apiCalls';
-import {fcmService} from '../../../firebase/FCMService';
+import il8n from '../../../locales/il8n';
 
 export default function UserProfile({navigation}) {
   const {constants, darkTheme} = React.useContext(ThemeContext);
@@ -81,7 +79,7 @@ const ProfileComponent = ({navigation}) => {
             fontSize: 14,
             marginRight: 50,
           }}>
-          Username
+          {il8n.t('placeholders.username')}
         </Text>
         <Text
           style={{
@@ -109,7 +107,7 @@ const ProfileComponent = ({navigation}) => {
             fontSize: 16,
             marginRight: 40,
           }}>
-          Description
+          {il8n.t('placeholders.description')}
         </Text>
         <Text
           style={{
@@ -138,7 +136,7 @@ const ProfileComponent = ({navigation}) => {
               paddingLeft: 5,
             }}>
             <Ionicons name="settings-sharp" size={20} color="white" />
-            <Text style={styles.view_text}>Settings</Text>
+            <Text style={styles.view_text}>{il8n.t('screens.settings')}</Text>
           </View>
           <Ionicons name="chevron-forward" size={20} color="white" />
         </TouchableOpacity>

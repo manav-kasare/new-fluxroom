@@ -27,6 +27,7 @@ import {
   withSpringTransition,
   withTimingTransition,
 } from 'react-native-redash';
+import il8n from '../../locales/il8n';
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState(null);
@@ -105,7 +106,7 @@ export default function ForgotPassword() {
                   style={globalStyles.textInput}
                   textContentType="emailAddress"
                   keyboardType="email-address"
-                  placeholder="Registered Email Address or Phone Number"
+                  placeholder={il8n.t('placeholders.forgotPassword')}
                   placeholderTextColor="grey"
                   value={email}
                   onChangeText={(text) => setEmail(text)}
@@ -127,7 +128,7 @@ export default function ForgotPassword() {
                       fontSize: 15,
                       letterSpacing: 1,
                     }}>
-                    Submit
+                    {il8n.t('buttons.submit')}
                   </Text>
                 )}
               </TouchableOpacity>

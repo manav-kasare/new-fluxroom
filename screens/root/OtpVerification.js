@@ -15,6 +15,7 @@ import {
   ActivityIndicator,
 } from 'react-native-paper';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import il8n from '../../locales/il8n';
 
 import {CustomErrorToast} from '../../shared/CustomToast';
 import {UserDetailsContext, TokenContext} from '../../shared/Context';
@@ -116,7 +117,7 @@ export default OtpVerification = ({
       <Dialog visible={isVisible} dismissable={false}>
         <Dialog.Content>
           <Paragraph style={{color: 'grey'}}>
-            We have sent you a code at {phoneNumber}
+            {il8n.t('otpVerification.heading')} {phoneNumber}
           </Paragraph>
           <View style={styles.input}>
             <MaterialCommunityIcons
@@ -127,7 +128,7 @@ export default OtpVerification = ({
             <TextInput
               keyboardType="number-pad"
               style={globalStyles.textInput}
-              placeholder="Verification Code"
+              placeholder={il8n.t('placeholders.code')}
               placeholderTextColor="grey"
               value={code}
               onChangeText={(text) => setCode(text)}
@@ -143,14 +144,14 @@ export default OtpVerification = ({
               mode="text"
               color="#03449e"
               onPress={resendConfirmationCode}>
-              Resend Code
+              {il8n.t('buttons.resend')}
             </Button>
           )}
           {isLoadingCode ? (
             <ActivityIndicator color="#03449e" size="small" />
           ) : (
             <Button mode="text" color="#03449e" onPress={confirmSignUp}>
-              Verify
+              {il8n.t('buttons.verify')}
             </Button>
           )}
         </Dialog.Actions>

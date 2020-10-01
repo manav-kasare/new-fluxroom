@@ -9,6 +9,7 @@ import {
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {ThemeContext} from '../../../../shared/Context';
 import globalStyles from '../../../../shared/GlobalStyles';
+import il8n from '../../../../locales/il8n';
 
 export default function Issues() {
   const {constants, darkTheme} = React.useContext(ThemeContext);
@@ -26,15 +27,15 @@ export default function Issues() {
         }}>
         <View>
           <Text style={{color: constants.text1, marginTop: 50, fontSize: 20}}>
-            What issue did you face ?
+            {il8n.t('issues.heading')}
           </Text>
           <Text style={{color: 'grey', marginTop: 15}}>
-            Our team will try to fix them to our best practice.
+            {il8n.t('issues.subHeading')}
           </Text>
         </View>
         <TextInput
           multiline={true}
-          placeholder="Issue"
+          placeholder={il8n.t('placeholders.issue')}
           placeholderTextColor="grey"
           style={{
             width: constants.width * 0.8,
@@ -52,7 +53,9 @@ export default function Issues() {
           onChangeText={(text) => setIssue(text)}
         />
         <TouchableOpacity style={globalStyles.button}>
-          <Text style={globalStyles.buttonText}>Submit Issue</Text>
+          <Text style={globalStyles.buttonText}>
+            {il8n.t('buttons.submit')}
+          </Text>
         </TouchableOpacity>
       </SafeAreaView>
     </KeyboardAwareScrollView>

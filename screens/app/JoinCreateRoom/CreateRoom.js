@@ -14,6 +14,7 @@ const options = {
   enableVibrateFallback: true,
   ignoreAndroidSystemSettings: false,
 };
+import {ActivityIndicator} from 'react-native-paper';
 
 import {createRoom, joinRoom} from '../../../backend/database/apiCalls';
 import {
@@ -22,9 +23,9 @@ import {
   TokenContext,
 } from '../../../shared/Context';
 import {CustomErrorToast} from '../../../shared/CustomToast';
-import CachedImage from '../../../shared/CachedImage';
 import {storeUserData} from '../../../shared/AsyncStore';
-import {ActivityIndicator} from 'react-native-paper';
+import CachedImage from '../../../shared/CachedImage';
+import il8n from '../../../locales/il8n';
 
 export default function CreateRoom({navigation, isVisible, setIsVisible}) {
   const {token} = React.useContext(TokenContext);
@@ -204,7 +205,7 @@ export default function CreateRoom({navigation, isVisible, setIsVisible}) {
       animationOut="slideOutDown">
       <>
         <View style={styles.topLine} />
-        <Text style={styles.headingText}>Create your own room</Text>
+        <Text style={styles.headingText}>{il8n.t('screens.createRoom')}</Text>
         <View
           style={{marginTop: 20, flexDirection: 'row', alignItems: 'center'}}>
           <TouchableOpacity style={styles.image} onPress={pickImage}>
@@ -220,7 +221,7 @@ export default function CreateRoom({navigation, isVisible, setIsVisible}) {
             <TextInput
               autoFocus={true}
               style={styles.nameInput}
-              placeholder="What would you talk about ?"
+              placeholder={il8n.t('placeholders.roomName')}
               placeholderTextColor="grey"
               value={room.name}
               onChangeText={(text) => setRoom({...room, name: text})}
@@ -229,7 +230,7 @@ export default function CreateRoom({navigation, isVisible, setIsVisible}) {
         </View>
         <TextInput
           style={styles.descriptionInput}
-          placeholder="Describe in less than 100 characters."
+          placeholder={il8n.t('placeholders.roomDescription')}
           placeholderTextColor="grey"
           multiline
           value={room.description}
@@ -246,7 +247,7 @@ export default function CreateRoom({navigation, isVisible, setIsVisible}) {
                 fontFamily: 'Helvetica',
                 color: 'white',
               }}>
-              Create Room
+              {il8n.t('buttons.createRoom')}
             </Text>
           )}
         </TouchableOpacity>

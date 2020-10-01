@@ -4,6 +4,7 @@ import {
   CardStyleInterpolators,
 } from '@react-navigation/stack';
 
+import il8n from '../locales/il8n';
 import Room from '../screens/app/ChatRoom/Room/Room';
 import Invitations from '../screens/app/ChatRoom/Invitations';
 import JoinRoomWithLink from '../screens/app/JoinCreateRoom/JoinRoomWithLink';
@@ -64,7 +65,7 @@ export default function ChatRoomNavigator() {
         name="RoomSettings"
         component={RoomSettings}
         options={{
-          title: 'Settings',
+          title: il8n.t('screens.settings'),
           headerStyle: constants.headerStyle,
           headerTitleStyle: constants.headerText,
           headerBackTitleVisible: false,
@@ -76,7 +77,7 @@ export default function ChatRoomNavigator() {
         name="JoinRoomWithLink"
         component={JoinRoomWithLink}
         options={({navigation}) => ({
-          title: 'Join Room',
+          title: il8n.t('screens.joinRoom'),
           headerStyle: constants.headerStyle,
           headerTitleStyle: constants.headerText,
           headerBackTitleVisible: false,
@@ -88,7 +89,7 @@ export default function ChatRoomNavigator() {
         name="Invitations"
         component={Invitations}
         options={{
-          title: 'Invitations',
+          title: il8n.t('screens.invitations'),
           headerStyle: constants.headerStyle,
           headerTitleStyle: constants.headerText,
           headerBackTitleVisible: false,

@@ -7,6 +7,7 @@ import {
   Portal,
   ActivityIndicator,
 } from 'react-native-paper';
+import il8n from '../../locales/il8n';
 
 import {CustomErrorToast} from '../../shared/CustomToast';
 
@@ -45,14 +46,13 @@ export default function EmailVerification({
       CustomErrorToast('An Error Occured !');
     }
   };
-
   return (
     <Portal>
       <Dialog visible={isVisible} dismissable={false}>
-        <Dialog.Title>Please verify your email address</Dialog.Title>
+        <Dialog.Title>{il8n.t('emailVerification.heading')}</Dialog.Title>
         <Dialog.Content>
           <Paragraph style={{color: 'grey'}}>
-            We have sent you an email at {user.email}
+            {il8n.t('emailVerification.emailSent')} {user.email}
           </Paragraph>
         </Dialog.Content>
         <Dialog.Actions>
@@ -60,14 +60,14 @@ export default function EmailVerification({
             <ActivityIndicator color="#03449e" size="small" animating={true} />
           ) : (
             <Button mode="text" color="#03449e" onPress={resendEmail}>
-              Resend Email
+              {il8n.t('buttons.resend')}
             </Button>
           )}
           {loading ? (
             <ActivityIndicator color="#03449e" size="small" />
           ) : (
             <Button mode="text" color="#03449e" onPress={checkVerification}>
-              Check
+              {il8n.t('buttons.verify')}
             </Button>
           )}
         </Dialog.Actions>

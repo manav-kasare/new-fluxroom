@@ -15,6 +15,7 @@ import {
 } from '../../../../shared/Context';
 import {deleteToken} from '../../../../shared/KeyChain';
 import {logOutUser} from '../../../../backend/database/apiCalls';
+import il8n from '../../../../locales/il8n';
 
 export default function Settings({navigation}) {
   const {darkTheme, toggleTheme, constants} = React.useContext(ThemeContext);
@@ -87,7 +88,7 @@ export default function Settings({navigation}) {
                 size={20}
                 color={constants.background2}
               />
-              <Text style={styles.view_text}>About Us</Text>
+              <Text style={styles.view_text}>{il8n.t('settings.aboutUs')}</Text>
             </View>
             <Ionicons
               name="chevron-forward"
@@ -105,7 +106,7 @@ export default function Settings({navigation}) {
                 paddingLeft: 5,
               }}>
               <AntDesign name="star" size={20} color={constants.background2} />
-              <Text style={styles.view_text}>Rate Us</Text>
+              <Text style={styles.view_text}>{il8n.t('settings.rateUs')}</Text>
             </View>
             <Ionicons
               name="chevron-forward"
@@ -129,7 +130,7 @@ export default function Settings({navigation}) {
                 size={20}
                 color={constants.background2}
               />
-              <Text style={styles.view_text}>Did you face any issues ?</Text>
+              <Text style={styles.view_text}>{il8n.t('settings.issues')}</Text>
             </View>
             <Ionicons
               name="chevron-forward"
@@ -149,7 +150,7 @@ export default function Settings({navigation}) {
                   fontSize: 14,
                   fontWeight: '500',
                 }}>
-                Delete Account
+                {il8n.t('settings.deleteAccount')}
               </Text>
             </View>
             <Ionicons name="chevron-forward" size={20} color="crimson" />
@@ -172,7 +173,7 @@ export default function Settings({navigation}) {
                   fontSize: 14,
                   fontWeight: '500',
                 }}>
-                Sign Out
+                {il8n.t('settings.signOut')}
               </Text>
             )}
           </TouchableOpacity>
@@ -188,7 +189,9 @@ export default function Settings({navigation}) {
           paddingHorizontal: 25,
           justifyContent: 'space-around',
         }}>
-        <Text style={{color: 'grey', fontWeight: 'bold'}}>Dark Mode</Text>
+        <Text style={{color: 'grey', fontWeight: 'bold'}}>
+          {il8n.t('settings.darkMode')}
+        </Text>
         <Switch value={darkTheme} onValueChange={toggleTheme} />
       </View>
     </SafeAreaView>

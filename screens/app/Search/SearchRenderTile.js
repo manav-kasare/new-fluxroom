@@ -20,6 +20,7 @@ import {
 import {storeUserData} from '../../../shared/AsyncStore';
 import CircleAvatar from '../../../shared/CircleAvatar';
 import {State, TapGestureHandler} from 'react-native-gesture-handler';
+import il8n from '../../../locales/il8n';
 
 const SearchRenderTile = React.memo(({navigation, room}) => {
   const {constants, darkTheme} = useContext(ThemeContext);
@@ -162,14 +163,14 @@ const SearchRenderTile = React.memo(({navigation, room}) => {
               />
             ) : alreadyJoined ? (
               <Button mode="text" color={constants.primary} onPress={nothing}>
-                Joined
+                {il8n.t('buttons.joinedRoom')}
               </Button>
             ) : (
               <Button
                 mode="text"
                 color={constants.primary}
                 onPress={handleJoin}>
-                Join
+                {il8n.t('buttons.joinRoom')}
               </Button>
             )}
           </View>

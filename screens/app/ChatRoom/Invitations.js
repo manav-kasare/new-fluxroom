@@ -23,6 +23,7 @@ import {
   TokenContext,
 } from '../../../shared/Context';
 import CircleAvatar from '../../../shared/CircleAvatar';
+import il8n from '../../../locales/il8n';
 
 const Invitations = ({navigation}) => {
   const {constants} = React.useContext(ThemeContext);
@@ -166,7 +167,7 @@ function Tile({id, navigation, index, setInvitations, invitations}) {
           />
         ) : (
           <Button color={constants.primary} onPress={handleAccept}>
-            Accept
+            {il8n.t('buttons.accept')}
           </Button>
         )}
         {loadingReject ? (
@@ -177,7 +178,7 @@ function Tile({id, navigation, index, setInvitations, invitations}) {
           />
         ) : (
           <Button color={constants.primary} onPress={handleDecline}>
-            Decline
+            {il8n.t('buttons.decline')}
           </Button>
         )}
       </View>

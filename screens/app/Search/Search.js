@@ -15,6 +15,7 @@ import {getAllRooms} from '../../../backend/database/apiCalls';
 import {ThemeContext} from '../../../shared/Context';
 import SearchRenderTile from './SearchRenderTile';
 import TopRooms from './TopRooms';
+import il8n from '../../../locales/il8n';
 
 const Search = React.memo(({navigation}) => {
   const [rooms, setRooms] = useState(null);
@@ -98,7 +99,7 @@ const Search = React.memo(({navigation}) => {
         <Appbar.Content
           style={styles.headerContentStyle}
           titleStyle={styles.headerTitleStyle}
-          title="Find Rooms"
+          title={il8n.t('screens.findRooms')}
         />
       </Appbar.Header>
       <SafeAreaView
@@ -110,7 +111,7 @@ const Search = React.memo(({navigation}) => {
           onFocus={() => setIsSeaching(true)}
           inputStyle={{color: constants.text1, fontSize: 15}}
           style={styles.searchBar}
-          placeholder="What are you intrested in ?"
+          placeholder={il8n.t('placeholders.searchRooms')}
           placeholderTextColor="grey"
           value={query}
           onChangeText={(text) => {
