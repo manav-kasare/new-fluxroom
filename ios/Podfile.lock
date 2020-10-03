@@ -450,6 +450,8 @@ PODS:
   - RNGoogleSignin (4.0.3):
     - GoogleSignIn (~> 5.0.0)
     - React
+  - RNInAppBrowser (3.4.0):
+    - React
   - RNKeychain (6.2.0):
     - React
   - RNLocalize (1.4.1):
@@ -539,6 +541,7 @@ DEPENDENCIES:
   - "RNFBMessaging (from `../node_modules/@react-native-firebase/messaging`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - "RNGoogleSignin (from `../node_modules/@react-native-community/google-signin`)"
+  - RNInAppBrowser (from `../node_modules/react-native-inappbrowser-reborn`)
   - RNKeychain (from `../node_modules/react-native-keychain`)
   - RNLocalize (from `../node_modules/react-native-localize`)
   - RNPermissions (from `../node_modules/react-native-permissions`)
@@ -667,6 +670,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-gesture-handler"
   RNGoogleSignin:
     :path: "../node_modules/@react-native-community/google-signin"
+  RNInAppBrowser:
+    :path: "../node_modules/react-native-inappbrowser-reborn"
   RNKeychain:
     :path: "../node_modules/react-native-keychain"
   RNLocalize:
@@ -756,6 +761,7 @@ SPEC CHECKSUMS:
   RNFBMessaging: c69238917a8672f5aed2c8a6ee124efa8f962677
   RNGestureHandler: 8f09cd560f8d533eb36da5a6c5a843af9f056b38
   RNGoogleSignin: ccf71ee4b6cfd324fd788a41e457e2043838c0d9
+  RNInAppBrowser: 6097fbc6b09051b40a6a9ec22caf7af40b115ec0
   RNKeychain: b8e0711b959a19c5b057d1e970d3c83d159b6da5
   RNLocalize: c388679af021ddd6069c215f7fdd2acf4e77ede5
   RNPermissions: e29e449d948ba1c04f3bb3bede5c662667543c49

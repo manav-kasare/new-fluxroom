@@ -1,12 +1,63 @@
 import React from 'react';
-import {SafeAreaView, View, TouchableOpacity, Text} from 'react-native';
+import {
+  SafeAreaView,
+  View,
+  TouchableOpacity,
+  Text,
+  Linking,
+} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import InAppBrowser from 'react-native-inappbrowser-reborn';
 
 import {ThemeContext} from '../../../../shared/Context';
 import il8n from '../../../../locales/il8n';
 
 export default function AboutUs({navigation}) {
   const {constants} = React.useContext(ThemeContext);
+
+  const openLink = async () => {
+    try {
+      const url = 'https://www.google.com';
+      InAppBrowser.isAvailable().then((response) => {
+        console.log(response);
+      });
+      if (await InAppBrowser.isAvailable()) {
+        const result = await InAppBrowser.open(url, {
+          // iOS Properties
+          dismissButtonStyle: 'cancel',
+          preferredBarTintColor: '#453AA4',
+          preferredControlTintColor: 'white',
+          readerMode: false,
+          animated: true,
+          modalPresentationStyle: 'fullScreen',
+          modalTransitionStyle: 'partialCurl',
+          modalEnabled: true,
+          enableBarCollapsing: false,
+          // Android Properties
+          showTitle: true,
+          toolbarColor: '#6200EE',
+          secondaryToolbarColor: 'black',
+          enableUrlBarHiding: true,
+          enableDefaultShare: true,
+          forceCloseOnRedirection: false,
+          // Specify full animation resource identifier(package:anim/name)
+          // or only resource name(in case of animation bundled with app).
+          animations: {
+            startEnter: 'slide_in_right',
+            startExit: 'slide_out_left',
+            endEnter: 'slide_in_left',
+            endExit: 'slide_out_right',
+          },
+          headers: {
+            'my-custom-header': 'my custom header value',
+          },
+        });
+        alert(JSON.stringify(result));
+      } else Linking.openURL(url);
+    } catch (error) {
+      alert(error.message);
+    }
+  };
 
   const styles = {
     view: {
@@ -45,9 +96,7 @@ export default function AboutUs({navigation}) {
       }}>
       <View style={{flex: 1, backgroundColor: constants.background1}}>
         <View style={styles.view}>
-          <TouchableOpacity
-            onPress={navigateDataPolicy}
-            style={styles.view_touchable}>
+          <TouchableOpacity onPress={openLink} style={styles.view_touchable}>
             <Text style={styles.view_text}>
               {il8n.t('settings.dataPolicy')}
             </Text>

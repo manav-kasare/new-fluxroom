@@ -24,8 +24,8 @@ import Animated, {
 import {
   useValue,
   mix,
-  withSpringTransition,
-  withTimingTransition,
+  useSpringTransition,
+  useTimingTransition,
 } from 'react-native-redash';
 import il8n from '../../locales/il8n';
 
@@ -35,10 +35,10 @@ export default function ForgotPassword() {
 
   const y = useValue(0);
 
-  const opacityTransition = withTimingTransition(y, {duration: 500});
+  const opacityTransition = useTimingTransition(y, {duration: 500});
   const opacity = mix(opacityTransition, 0, 1);
 
-  const positionY = withSpringTransition(y, {
+  const positionY = useSpringTransition(y, {
     ...SpringUtils.makeDefaultConfig(),
     overshootClamping: true,
     damping: new Animated.Value(20),

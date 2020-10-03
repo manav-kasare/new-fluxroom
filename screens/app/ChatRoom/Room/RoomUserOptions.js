@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, TouchableOpacity} from 'react-native';
+import {Text, View, TouchableOpacity, StyleSheet} from 'react-native';
 import Modal from 'react-native-modal';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -9,10 +9,33 @@ import il8n from '../../../../locales/il8n';
 
 export default function RoomUserOptions({isVisible, setIsVisible}) {
   const {constants} = React.useContext(ThemeContext);
+  const [isFollowing, setIsFollowing] = React.useState(false);
 
-  const toggleVisible = () => {
-    setIsVisible(false);
-  };
+  const styles = StyleSheet.create({
+    modal: {
+      width: constants.width * 0.9,
+      borderRadius: 10,
+      alignSelf: 'center',
+      position: 'absolute',
+      justifyContent: 'flex-start',
+      paddingVertical: 30,
+      bottom: 0,
+      backgroundColor: constants.background1,
+    },
+    button: {
+      height: 50,
+      width: constants.width * 0.9,
+      flexDirection: 'row',
+      alignItems: 'center',
+      paddingLeft: 25,
+    },
+    buttonText: {
+      color: constants.text1,
+      fontFamily: 'Helvetica Neue',
+      marginLeft: 25,
+      fontSize: 16,
+    },
+  });
 
   return (
     <Modal
@@ -21,21 +44,11 @@ export default function RoomUserOptions({isVisible, setIsVisible}) {
       hideModalContentWhileAnimating={true}
       deviceWidth={constants.width}
       deviceHeight={constants.height}
-      style={{
-        width: constants.width * 0.9,
-        borderRadius: 10,
-        alignSelf: 'center',
-        position: 'absolute',
-        justifyContent: 'flex-start',
-        paddingTop: 30,
-        bottom: 0,
-        height: constants.height * 0.25,
-        backgroundColor: constants.background1,
-      }}
+      style={styles.modal}
       animationIn="slideInUp"
       animationInTiming={500}
       animationOut="slideOutDown"
-      onBackButtonPress={() => setIsVisible(false)}
+      onBackdropPress={() => setIsVisible(false)}
       swipeDirection="down">
       <View
         style={{
@@ -48,29 +61,39 @@ export default function RoomUserOptions({isVisible, setIsVisible}) {
           top: 10,
         }}
       />
-      <TouchableOpacity
-        style={{
-          height: 50,
-          width: constants.width * 0.9,
-          flexDirection: 'row',
-          alignItems: 'center',
-          paddingLeft: 25,
-          marginVertical: 10,
-        }}>
-        <FontAwesome5
-          name="user-plus"
-          size={18}
-          color={constants.background2}
-        />
-        <Text
-          style={{
-            color: constants.text1,
-            fontFamily: 'Helvetica Neue',
-            marginLeft: 25,
-            fontSize: 16,
-          }}>
-          {il8n.t('chatRooms.reportUser')}
-        </Text>
+      {isFollowing ? (
+        <TouchableOpacity style={styles.button}>
+          <FontAwesome5
+            name="user-minus"
+            size={18}
+            color={constants.background2}
+          />
+          <Text style={styles.buttonText}>{il8n.t('chatRooms.unFollow')}</Text>
+          <Ionicons
+            name="chevron-forward"
+            size={20}
+            color={constants.background2}
+            style={{position: 'absolute', right: 20}}
+          />
+        </TouchableOpacity>
+      ) : (
+        <TouchableOpacity style={styles.button}>
+          <FontAwesome5
+            name="user-plus"
+            size={18}
+            color={constants.background2}
+          />
+          <Text style={styles.buttonText}>{il8n.t('chatRooms.follow')}</Text>
+          <Ionicons
+            name="chevron-forward"
+            size={20}
+            color={constants.background2}
+            style={{position: 'absolute', right: 20}}
+          />
+        </TouchableOpacity>
+      )}
+      <TouchableOpacity style={styles.button}>
+        <Text style={styles.buttonText}>{il8n.t('chatRooms.reportUser')}</Text>
         <Ionicons
           name="chevron-forward"
           size={20}
@@ -78,46 +101,15 @@ export default function RoomUserOptions({isVisible, setIsVisible}) {
           style={{position: 'absolute', right: 20}}
         />
       </TouchableOpacity>
-      <TouchableOpacity
-        style={{
-          height: 30,
-          width: constants.width * 0.9,
-          flexDirection: 'row',
-          alignItems: 'center',
-          paddingLeft: 25,
-          marginVertical: 10,
-        }}>
-        <FontAwesome5
-          name="user-slash"
-          size={18}
-          color={constants.background2}
-        />
-        <Text
-          style={{
-            color: constants.text1,
-            fontFamily: 'Helvetica Neue',
-            marginLeft: 25,
-            fontSize: 16,
-          }}>
-          {il8n.t('chatRooms.blockUser')}
-        </Text>
+
+      <TouchableOpacity style={styles.button}>
+        <Text style={styles.buttonText}>{il8n.t('chatRooms.blockUser')}</Text>
         <Ionicons
           name="chevron-forward"
           size={20}
           color={constants.background2}
           style={{position: 'absolute', right: 20}}
         />
-      </TouchableOpacity>
-      <TouchableOpacity onPress={toggleVisible}>
-        <Text
-          style={{
-            color: 'dodgerblue',
-            fontSize: 18,
-            alignSelf: 'center',
-            marginTop: 10,
-          }}>
-          {il8n.t('buttons.close')}
-        </Text>
       </TouchableOpacity>
     </Modal>
   );

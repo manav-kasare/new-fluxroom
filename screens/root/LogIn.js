@@ -23,10 +23,9 @@ import Animated, {
   cond,
 } from 'react-native-reanimated';
 import {
-  useValue,
   mix,
-  withSpringTransition,
-  withTimingTransition,
+  useTimingTransition,
+  useSpringTransition,
 } from 'react-native-redash';
 import il8n from '../../locales/il8n';
 
@@ -52,12 +51,12 @@ export default function LogIn({navigation}) {
   const [isLoading, setIsLoading] = useState(false);
   const [onFocusPassword, setOnFocusPassword] = useState(false);
 
-  const y = useValue(0);
+  const y = new Animated.Value(0);
 
-  const opacityTransition = withTimingTransition(y, {duration: 500});
+  const opacityTransition = useTimingTransition(y, {duration: 500});
   const opacity = mix(opacityTransition, 0, 1);
 
-  const positionY = withSpringTransition(y, {
+  const positionY = useSpringTransition(y, {
     ...SpringUtils.makeDefaultConfig(),
     overshootClamping: true,
     damping: new Animated.Value(20),

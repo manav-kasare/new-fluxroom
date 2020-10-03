@@ -17,8 +17,8 @@ import Animated, {
 import {
   useValue,
   mix,
-  withSpringTransition,
-  withTimingTransition,
+  useSpringTransition,
+  useTimingTransition,
 } from 'react-native-redash';
 import Entypo from 'react-native-vector-icons/Entypo';
 import il8n from '../../locales/il8n';
@@ -31,11 +31,11 @@ import Apple from './Apple';
 
 export default function Onboard({navigation}) {
   const time = useValue(0);
-  const opacityTransition = withTimingTransition(time, {duration: 1000});
+  const opacityTransition = useTimingTransition(time, {duration: 1000});
   const opacity = mix(opacityTransition, 0, 1);
   useCode(() => cond(eq(time, 0), set(time, 1)), [time]);
 
-  const positionY = withSpringTransition(time, {
+  const positionY = useSpringTransition(time, {
     ...SpringUtils.makeDefaultConfig(),
     overshootClamping: true,
     damping: new Animated.Value(20),

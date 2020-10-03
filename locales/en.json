@@ -61,7 +61,9 @@
         "shareLink": "Share Link",
         "reportUser": "Report User",
         "blockUser": "Block User",
-        "noRoomExists": "No room such exists !"
+        "noRoomExists": "No room such exists !",
+        "follow": "Follow",
+        "unFollow": "Unfollow"
     },
     "settings": {
         "aboutUs": "About Us",
