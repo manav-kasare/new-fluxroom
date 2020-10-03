@@ -17,7 +17,11 @@ export default function Issues() {
 
   return (
     <KeyboardAwareScrollView
-      style={{width: constants.width, height: constants.height}}>
+      style={{
+        width: constants.width,
+        height: constants.height,
+        backgroundColor: constants.background1,
+      }}>
       <SafeAreaView
         style={{
           width: constants.width,

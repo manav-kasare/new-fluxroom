@@ -1,5 +1,5 @@
-import React, {useContext, useState, useEffect} from 'react';
-import {TouchableOpacity, View, Image} from 'react-native';
+import React, {useContext, useState} from 'react';
+import {TouchableOpacity, View} from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 

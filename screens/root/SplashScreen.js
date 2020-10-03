@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView, Text} from 'react-native';
+import {SafeAreaView, Image} from 'react-native';
 import {getTheme} from '../../shared/AsyncStore';
 
 export default function SplashScreen() {
@@ -20,15 +20,11 @@ export default function SplashScreen() {
         alignItems: 'center',
         justifyContent: 'center',
       }}>
-      <Text
-        style={{
-          color: isDark ? 'white' : 'black',
-          fontSize: 25,
-          letterSpacing: 2,
-          fontWeight: '800',
-        }}>
-        FLUXROOM
-      </Text>
+      {isDark ? (
+        <Image source={require('../../assets/whiteOnBlack.webp')} />
+      ) : (
+        <Image source={require('../../assets/blueOnWhite.webp')} />
+      )}
     </SafeAreaView>
   );
 }

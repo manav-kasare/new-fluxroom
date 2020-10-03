@@ -31,8 +31,8 @@ export default function AboutUs() {
           enableBarCollapsing: false,
           // Android Properties
           showTitle: true,
-          toolbarColor: '#6200EE',
-          secondaryToolbarColor: 'black',
+          toolbarColor: darkTheme ? 'black' : 'white',
+          secondaryToolbarColor: 'dodgerblue',
           enableUrlBarHiding: true,
           enableDefaultShare: true,
           forceCloseOnRedirection: false,

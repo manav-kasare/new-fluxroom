@@ -71,6 +71,7 @@ export default function ForgotPassword() {
             flex: 1,
             backgroundColor: '#03449e',
             alignItems: 'center',
+            marginBottom: 50,
           }}>
           <Animated.View style={{opacity}}>
             <Image
