@@ -1,100 +1,100 @@
 {
-  "buttons" : {
-    "signUpOnboard" : "انهاء الاتصال باستخدام البريد الالكتروني ",
-    "logInOnboard" : "بدء الاتصال بالبريد الالكتروني ",
-    "signUp" : "تسجيل المستخدم ",
-    "logIn" : "بدء الاتصال ",
-    "verify" : "التحقق ",
-    "forgotPassword" : "هل نسيت كلمة السرية ؟ ",
-    "getOTP" : "احضار OTP ",
-    "createRoom" : "تكوين ",
-    "joinRoom" : "الربط ",
-    "joinedRoom" : "تم الربط ",
-    "invite" : "دعوة ",
-    "invited" : "تم دعوته ",
-    "findRoom" : "العثور على غرفة ",
-    "done" : "اتمام ",
-    "cancel" : "الغاء ",
-    "close" : "اغلاق ",
-    "submit" : "احالة ",
-    "resend" : "اعادة الانتهاء ",
-    "accept" : "قبول ",
-    "decline" : "رفض "
+  "buttons": {
+    "signUpOnboard": "انهاء الاتصال باستخدام البريد الالكتروني ",
+    "logInOnboard": "بدء الاتصال بالبريد الالكتروني ",
+    "signUp": "تسجيل المستخدم ",
+    "logIn": "بدء الاتصال ",
+    "verify": "التحقق ",
+    "forgotPassword": "هل نسيت كلمة السرية ؟ ",
+    "getOTP": "احضار OTP ",
+    "createRoom": "تكوين ",
+    "joinRoom": "الربط ",
+    "joinedRoom": "تم الربط ",
+    "invite": "دعوة ",
+    "invited": "تم دعوته ",
+    "findRoom": "العثور على غرفة ",
+    "done": "اتمام ",
+    "cancel": "الغاء ",
+    "close": "اغلاق ",
+    "submit": "احالة ",
+    "resend": "اعادة الانتهاء ",
+    "accept": "قبول ",
+    "decline": "رفض "
   },
-  "placeholders" : {
-    "email" : "عنوان البريد الالكتروني ",
-    "username" : "اسم المستخدم ",
-    "issue" : "اصدار ",
-    "description" : "الوصف ",
-    "password" : "كلمة السرية ",
-    "code" : "كود التحقق ",
-    "seach" : "ما الذي قمت بتأثرين فيه ؟ ",
-    "roomName" : "ما الذي تتحدث عنه ؟ ",
-    "roomDescription" : "قم بوصف بأقل من 100 حرف ",
-    "searchUsername" : "البحث عن اسم المستخدم ",
-    "forgotPassword" : "رقم التليفون أو البريد الالكتروني المسجل ",
-    "searchRooms" : "ما الذي قمت بتأثرين فيه ؟ "
+  "placeholders": {
+    "email": "عنوان البريد الالكتروني ",
+    "username": "اسم المستخدم ",
+    "issue": "اصدار ",
+    "description": "الوصف ",
+    "password": "كلمة السرية ",
+    "code": "كود التحقق ",
+    "seach": "ما الذي قمت بتأثرين فيه ؟ ",
+    "roomName": "ما الذي تتحدث عنه ؟ ",
+    "roomDescription": "قم بوصف بأقل من 100 حرف ",
+    "searchUsername": "البحث عن اسم المستخدم ",
+    "forgotPassword": "رقم التليفون أو البريد الالكتروني المسجل ",
+    "searchRooms": "ما الذي قمت بتأثرين فيه ؟ "
   },
-  "screens" : {
-    "signUp" : "الانضمام الى Fالرفاهية ",
-    "logIn" : "بدء الاتصال ",
-    "forgotPassword" : "نسيت كلمة السرية ",
-    "setUpProfile" : "اعداد ملف المواصفات الخاص بك ",
-    "phone" : "تسجيل الدخول برقم التليفون ",
-    "fluxroom" : "فخمة ",
-    "findRooms" : "ايجاد غرف ",
-    "settings" : "المحددات ",
-    "profile" : "ملف مواصفات ",
-    "aboutUs" : "نبذة عنا ",
-    "dataPolicy" : "طرق البيانات ",
-    "termsOfService" : "شروط الخدمة ",
-    "invitations" : "الدعوات ",
-    "issues" : "الاصدارات ",
-    "createRoom" : "تكوين الغرفة الخاصة بك ",
-    "topRooms" : "الغرف العلوية "
+  "screens": {
+    "signUp": "الانضمام الى Fالرفاهية ",
+    "logIn": "بدء الاتصال ",
+    "forgotPassword": "نسيت كلمة السرية ",
+    "setUpProfile": "اعداد ملف المواصفات الخاص بك ",
+    "phone": "تسجيل الدخول برقم التليفون ",
+    "fluxroom": "فخمة ",
+    "findRooms": "ايجاد غرف ",
+    "settings": "المحددات ",
+    "profile": "ملف مواصفات ",
+    "aboutUs": "نبذة عنا ",
+    "privacyPolicy": "طرق البيانات ",
+    "termsOfService": "شروط الخدمة ",
+    "invitations": "الدعوات ",
+    "issues": "الاصدارات ",
+    "createRoom": "تكوين الغرفة الخاصة بك ",
+    "topRooms": "الغرف العلوية "
   },
-  "onboard" : {
-    "subHeading" : "! التواصل مع أي شخص عن طريق الصوت "
+  "onboard": {
+    "subHeading": "! التواصل مع أي شخص عن طريق الصوت "
   },
-  "chatRooms" : {
-    "noRooms" : "لا توجد غرف : ( ",
-    "shareLink" : "وصلة مشاركة ",
-    "reportUser" : "مستخدم التقرير ",
-    "blockUser" : "اقفال المستخدم ",
-    "noRoomExists" : "لا توجد مساحة من هذا القبيل ! "
+  "chatRooms": {
+    "noRooms": "لا توجد غرف : ( ",
+    "shareLink": "وصلة مشاركة ",
+    "reportUser": "مستخدم التقرير ",
+    "blockUser": "اقفال المستخدم ",
+    "noRoomExists": "لا توجد مساحة من هذا القبيل ! "
   },
-  "settings" : {
-    "aboutUs" : "نبذة عنا ",
-    "rateUs" : "تقييم Us ",
-    "issues" : "هل واجهت أي مشاكل ؟ ",
-    "deleteAccount" : "حذف حساب ",
-    "signOut" : "تسجيل الخروج ",
-    "darkMode" : "نمط داكن ",
-    "dataPolicy" : "طرق البيانات ",
-    "termsOfService" : "شروط الخدمة "
+  "settings": {
+    "aboutUs": "نبذة عنا ",
+    "rateUs": "تقييم Us ",
+    "issues": "هل واجهت أي مشاكل ؟ ",
+    "deleteAccount": "حذف حساب ",
+    "signOut": "تسجيل الخروج ",
+    "darkMode": "نمط داكن ",
+    "privacyPolicy": "طرق البيانات ",
+    "termsOfService": "شروط الخدمة "
   },
-  "otpVerification" : {
-    "heading" : "لقد أرسلنا لك شفرة "
+  "otpVerification": {
+    "heading": "لقد أرسلنا لك شفرة "
   },
-  "emailVerification" : {
-    "heading" : "رجاء التحقق من البريد الالكتروني الخاص بك. ",
-    "emailSent" : "لقد أرسلنا لك رسالة بالبريد الإلكتروني "
+  "emailVerification": {
+    "heading": "رجاء التحقق من البريد الالكتروني الخاص بك. ",
+    "emailSent": "لقد أرسلنا لك رسالة بالبريد الإلكتروني "
   },
-  "issues" : {
-    "heading" : "ما هي القضية التي واجهتها ؟ ",
-    "subHeading" : "فريقنا سيحاول إصلاحهم إلى أفضل ممارساتنا "
+  "issues": {
+    "heading": "ما هي القضية التي واجهتها ؟ ",
+    "subHeading": "فريقنا سيحاول إصلاحهم إلى أفضل ممارساتنا "
   },
-  "errors" : {
-    "anErrorOccured" : "حدث خطأ ",
-    "roomDoesNotExist" : "الغرفة غير موجودة   ",
-    "roomUserDoesNotExist" : "اما أنه غير موجود بالغرفة أو بالمستخدم ",
-    "roomNameTaken" : "تم أخذ اسم القاعة بالفعل ",
-    "playServices" : "خدمات التشغيل غير متاحة ",
-    "emailVerification" : "لم يتم التحقق من البريد الالكتروني ",
-    "invalidCode" : "كود غير صحيح ",
-    "unexpectedError" : "حدث خطأ غير متوقع ",
-    "usernameTaken" : "اسم المستخدم الذي تم أخذه بالفعل ",
-    "invalidEmail" : "عنوان بريد الكتروني غير صحيح ",
-    "emailInUse" : "يتم استخدام البريد الالكتروني بالفعل"
+  "errors": {
+    "anErrorOccured": "حدث خطأ ",
+    "roomDoesNotExist": "الغرفة غير موجودة   ",
+    "roomUserDoesNotExist": "اما أنه غير موجود بالغرفة أو بالمستخدم ",
+    "roomNameTaken": "تم أخذ اسم القاعة بالفعل ",
+    "playServices": "خدمات التشغيل غير متاحة ",
+    "emailVerification": "لم يتم التحقق من البريد الالكتروني ",
+    "invalidCode": "كود غير صحيح ",
+    "unexpectedError": "حدث خطأ غير متوقع ",
+    "usernameTaken": "اسم المستخدم الذي تم أخذه بالفعل ",
+    "invalidEmail": "عنوان بريد الكتروني غير صحيح ",
+    "emailInUse": "يتم استخدام البريد الالكتروني بالفعل"
   }
 }

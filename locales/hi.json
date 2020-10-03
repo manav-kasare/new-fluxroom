@@ -46,7 +46,7 @@
     "settings": "विन्यास ",
     "profile": "प्रोफाइल ",
     "aboutUs": "हमारे बारे में ",
-    "dataPolicy": "आंकड़ा नीति ",
+    "privacyPolicy": "आंकड़ा नीति ",
     "termsOfService": "सेवा की शर्तें ",
     "invitations": "न्यौते ",
     "issues": "मुद्दे ",
@@ -70,7 +70,7 @@
     "deleteAccount": "खाता मिटाएँ ",
     "signOut": "साइन आउट करें ",
     "darkMode": "गहरा मोड ",
-    "dataPolicy": "आंकड़ा नीति ",
+    "privacyPolicy": "आंकड़ा नीति ",
     "termsOfService": "सेवा की शर्तें "
   },
   "otpVerification": {

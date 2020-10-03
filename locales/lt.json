@@ -1,100 +1,100 @@
 {
-  "buttons" : {
-    "signUpOnboard" : "Užsiregistruoti El. Paštu ",
-    "logInOnboard" : "Prisijungti Elektroniniu Paštu ",
-    "signUp" : "Pasirašyti ",
-    "logIn" : "Prisijungti ",
-    "verify" : "Patikrinti ",
-    "forgotPassword" : "Pamiršai Slaptažodį? ",
-    "getOTP" : "Gauti OTP ",
-    "createRoom" : "Sukurti ",
-    "joinRoom" : "Prisijungti ",
-    "joinedRoom" : "Prisijungta ",
-    "invite" : "Kviečiame ",
-    "invited" : "Kviečiama ",
-    "findRoom" : "Rasti kambarį ",
-    "done" : "Priimta ",
-    "cancel" : "Atšaukti ",
-    "close" : "Užverti ",
-    "submit" : "Pateikti ",
-    "resend" : "Perparduoti ",
-    "accept" : "Priimti ",
-    "decline" : "Smukimas "
+  "buttons": {
+    "signUpOnboard": "Užsiregistruoti El. Paštu ",
+    "logInOnboard": "Prisijungti Elektroniniu Paštu ",
+    "signUp": "Pasirašyti ",
+    "logIn": "Prisijungti ",
+    "verify": "Patikrinti ",
+    "forgotPassword": "Pamiršai Slaptažodį? ",
+    "getOTP": "Gauti OTP ",
+    "createRoom": "Sukurti ",
+    "joinRoom": "Prisijungti ",
+    "joinedRoom": "Prisijungta ",
+    "invite": "Kviečiame ",
+    "invited": "Kviečiama ",
+    "findRoom": "Rasti kambarį ",
+    "done": "Priimta ",
+    "cancel": "Atšaukti ",
+    "close": "Užverti ",
+    "submit": "Pateikti ",
+    "resend": "Perparduoti ",
+    "accept": "Priimti ",
+    "decline": "Smukimas "
   },
-  "placeholders" : {
-    "email" : "E. pašto adresas ",
-    "username" : "Naudotojo vardas ",
-    "issue" : "2 straipsnis ",
-    "description" : "Prekių aprašymas ",
-    "password" : "Slaptažodis ",
-    "code" : "Patikros kodas ",
-    "seach" : "Ką tu sutinkat? ",
-    "roomName" : "Apie ką tu kalbi? ",
-    "roomDescription" : "Apibūdinkite mažiau kaip 100 ženklų ",
-    "searchUsername" : "Naudotojo vardas ",
-    "forgotPassword" : "Registruotas el. paštas arba telefono numeris ",
-    "searchRooms" : "Ką tu sutinkat? "
+  "placeholders": {
+    "email": "E. pašto adresas ",
+    "username": "Naudotojo vardas ",
+    "issue": "2 straipsnis ",
+    "description": "Prekių aprašymas ",
+    "password": "Slaptažodis ",
+    "code": "Patikros kodas ",
+    "seach": "Ką tu sutinkat? ",
+    "roomName": "Apie ką tu kalbi? ",
+    "roomDescription": "Apibūdinkite mažiau kaip 100 ženklų ",
+    "searchUsername": "Naudotojo vardas ",
+    "forgotPassword": "Registruotas el. paštas arba telefono numeris ",
+    "searchRooms": "Ką tu sutinkat? "
   },
-  "screens" : {
-    "signUp" : "Prisijungti prie Fluxroom ",
-    "logIn" : "Prisijungti ",
-    "forgotPassword" : "Pamiršo slaptažodį ",
-    "setUpProfile" : "Nustatykite savo profilį ",
-    "phone" : "Pasirašyti su telefono numeriu ",
-    "fluxroom" : "Fluxode ",
-    "findRooms" : "Ieškoti Kambarių ",
-    "settings" : "Nustatymai ",
-    "profile" : "Profilis ",
-    "aboutUs" : "Apie mus ",
-    "dataPolicy" : "Duomenų politika ",
-    "termsOfService" : "Paslaugų teikimo sąlygos ",
-    "invitations" : "Kvietimai ",
-    "issues" : "Klausimai ",
-    "createRoom" : "Sukurti savo kambarį ",
-    "topRooms" : "Viršus kambariai "
+  "screens": {
+    "signUp": "Prisijungti prie Fluxroom ",
+    "logIn": "Prisijungti ",
+    "forgotPassword": "Pamiršo slaptažodį ",
+    "setUpProfile": "Nustatykite savo profilį ",
+    "phone": "Pasirašyti su telefono numeriu ",
+    "fluxroom": "Fluxode ",
+    "findRooms": "Ieškoti Kambarių ",
+    "settings": "Nustatymai ",
+    "profile": "Profilis ",
+    "aboutUs": "Apie mus ",
+    "privacyPolicy": "Duomenų politika ",
+    "termsOfService": "Paslaugų teikimo sąlygos ",
+    "invitations": "Kvietimai ",
+    "issues": "Klausimai ",
+    "createRoom": "Sukurti savo kambarį ",
+    "topRooms": "Viršus kambariai "
   },
-  "onboard" : {
-    "subHeading" : "Susisiekti su bet kuo per garso! "
+  "onboard": {
+    "subHeading": "Susisiekti su bet kuo per garso! "
   },
-  "chatRooms" : {
-    "noRooms" : "Nėra Kambarių: ( ",
-    "shareLink" : "Bendrinimo sąsaja ",
-    "reportUser" : "Pranešti Vartotojui ",
-    "blockUser" : "Blokuoti naudotoją ",
-    "noRoomExists" : "Tokio kambario nėra! "
+  "chatRooms": {
+    "noRooms": "Nėra Kambarių: ( ",
+    "shareLink": "Bendrinimo sąsaja ",
+    "reportUser": "Pranešti Vartotojui ",
+    "blockUser": "Blokuoti naudotoją ",
+    "noRoomExists": "Tokio kambario nėra! "
   },
-  "settings" : {
-    "aboutUs" : "Apie mus ",
-    "rateUs" : "Įkainiai ",
-    "issues" : "Ar jūs susidūrėte su visais klausimais? ",
-    "deleteAccount" : "Pašalinti paskyrą ",
-    "signOut" : "Išrašyti ",
-    "darkMode" : "Tamsi veiksena ",
-    "dataPolicy" : "Duomenų politika ",
-    "termsOfService" : "Paslaugų teikimo sąlygos "
+  "settings": {
+    "aboutUs": "Apie mus ",
+    "rateUs": "Įkainiai ",
+    "issues": "Ar jūs susidūrėte su visais klausimais? ",
+    "deleteAccount": "Pašalinti paskyrą ",
+    "signOut": "Išrašyti ",
+    "darkMode": "Tamsi veiksena ",
+    "privacyPolicy": "Duomenų politika ",
+    "termsOfService": "Paslaugų teikimo sąlygos "
   },
-  "otpVerification" : {
-    "heading" : "Mes išsiuntėme tau kodą. "
+  "otpVerification": {
+    "heading": "Mes išsiuntėme tau kodą. "
   },
-  "emailVerification" : {
-    "heading" : "Prašome patikrinti savo elektroninio pašto adresą. ",
-    "emailSent" : "Mes išsiuntėme jums el. laišką "
+  "emailVerification": {
+    "heading": "Prašome patikrinti savo elektroninio pašto adresą. ",
+    "emailSent": "Mes išsiuntėme jums el. laišką "
   },
-  "issues" : {
-    "heading" : "Koks tavo veidas? ",
-    "subHeading" : "Mūsų komanda bandys jas nustatyti pagal mūsų geriausią praktiką. "
+  "issues": {
+    "heading": "Koks tavo veidas? ",
+    "subHeading": "Mūsų komanda bandys jas nustatyti pagal mūsų geriausią praktiką. "
   },
-  "errors" : {
-    "anErrorOccured" : "Klaida, vytintas ",
-    "roomDoesNotExist" : "Kambarys neegzistuoja   ",
-    "roomUserDoesNotExist" : "Arba kambarys, arba naudotojas neegzistuoja ",
-    "roomNameTaken" : "Kambario pavadinimas Jau Takenas ",
-    "playServices" : "Žaisti paslaugas, kurių nėra ",
-    "emailVerification" : "E. paštas nepatvirtinti ",
-    "invalidCode" : "Neteisingas kodas ",
-    "unexpectedError" : "Įvyko netikėta klaida ",
-    "usernameTaken" : "Naudotojo vardas jau buvo ",
-    "invalidEmail" : "Neteisingas e. pašto adresas ",
-    "emailInUse" : "El. paštas jau naudojamas"
+  "errors": {
+    "anErrorOccured": "Klaida, vytintas ",
+    "roomDoesNotExist": "Kambarys neegzistuoja   ",
+    "roomUserDoesNotExist": "Arba kambarys, arba naudotojas neegzistuoja ",
+    "roomNameTaken": "Kambario pavadinimas Jau Takenas ",
+    "playServices": "Žaisti paslaugas, kurių nėra ",
+    "emailVerification": "E. paštas nepatvirtinti ",
+    "invalidCode": "Neteisingas kodas ",
+    "unexpectedError": "Įvyko netikėta klaida ",
+    "usernameTaken": "Naudotojo vardas jau buvo ",
+    "invalidEmail": "Neteisingas e. pašto adresas ",
+    "emailInUse": "El. paštas jau naudojamas"
   }
 }

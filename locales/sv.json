@@ -1,100 +1,100 @@
 {
-  "buttons" : {
-    "signUpOnboard" : "Signera med e-post ",
-    "logInOnboard" : "Logga in med e-post ",
-    "signUp" : "Registrera dig ",
-    "logIn" : "Logga in ",
-    "verify" : "Verifiera ",
-    "forgotPassword" : "Har du glömt lösenordet? ",
-    "getOTP" : "Hämta OTP ",
-    "createRoom" : "Skapa ",
-    "joinRoom" : "Gå med ",
-    "joinedRoom" : "Koppfotade ",
-    "invite" : "Bjud in ",
-    "invited" : "Inbjuden ",
-    "findRoom" : "Hitta ett rum. ",
-    "done" : "Gjort ",
-    "cancel" : "Avbryt ",
-    "close" : "Stängning ",
-    "submit" : "Skicka in ",
-    "resend" : "Skicka om ",
-    "accept" : "Acceptera ",
-    "decline" : "Avböje "
+  "buttons": {
+    "signUpOnboard": "Signera med e-post ",
+    "logInOnboard": "Logga in med e-post ",
+    "signUp": "Registrera dig ",
+    "logIn": "Logga in ",
+    "verify": "Verifiera ",
+    "forgotPassword": "Har du glömt lösenordet? ",
+    "getOTP": "Hämta OTP ",
+    "createRoom": "Skapa ",
+    "joinRoom": "Gå med ",
+    "joinedRoom": "Koppfotade ",
+    "invite": "Bjud in ",
+    "invited": "Inbjuden ",
+    "findRoom": "Hitta ett rum. ",
+    "done": "Gjort ",
+    "cancel": "Avbryt ",
+    "close": "Stängning ",
+    "submit": "Skicka in ",
+    "resend": "Skicka om ",
+    "accept": "Acceptera ",
+    "decline": "Avböje "
   },
-  "placeholders" : {
-    "email" : "E-postadress ",
-    "username" : "Användarnamn ",
-    "issue" : "Utfärda ",
-    "description" : "Beskrivning ",
-    "password" : "Lösenord ",
-    "code" : "Verifieringskod ",
-    "seach" : "Vad är du intrestad i? ",
-    "roomName" : "Vad skulle du prata om? ",
-    "roomDescription" : "Beskriv mindre än 100 tecken ",
-    "searchUsername" : "Sökanvändarnamn ",
-    "forgotPassword" : "Registrerat mejladress eller telefonnummer ",
-    "searchRooms" : "Vad är du intrestad i? "
+  "placeholders": {
+    "email": "E-postadress ",
+    "username": "Användarnamn ",
+    "issue": "Utfärda ",
+    "description": "Beskrivning ",
+    "password": "Lösenord ",
+    "code": "Verifieringskod ",
+    "seach": "Vad är du intrestad i? ",
+    "roomName": "Vad skulle du prata om? ",
+    "roomDescription": "Beskriv mindre än 100 tecken ",
+    "searchUsername": "Sökanvändarnamn ",
+    "forgotPassword": "Registrerat mejladress eller telefonnummer ",
+    "searchRooms": "Vad är du intrestad i? "
   },
-  "screens" : {
-    "signUp" : "Gå med i Fluxroom ",
-    "logIn" : "Logga in ",
-    "forgotPassword" : "Glöde lösenordet ",
-    "setUpProfile" : "Konfigurera din profil ",
-    "phone" : "Logga in med telefonnummer ",
-    "fluxroom" : "Fluxroom ",
-    "findRooms" : "Sök efter rum ",
-    "settings" : "Inställningar ",
-    "profile" : "Profil ",
-    "aboutUs" : "Om oss ",
-    "dataPolicy" : "Datapolicy ",
-    "termsOfService" : "Tjänstestymer ",
-    "invitations" : "Inbjudningar ",
-    "issues" : "Frågor ",
-    "createRoom" : "Skapa ditt eget rum ",
-    "topRooms" : "Roomstolar "
+  "screens": {
+    "signUp": "Gå med i Fluxroom ",
+    "logIn": "Logga in ",
+    "forgotPassword": "Glöde lösenordet ",
+    "setUpProfile": "Konfigurera din profil ",
+    "phone": "Logga in med telefonnummer ",
+    "fluxroom": "Fluxroom ",
+    "findRooms": "Sök efter rum ",
+    "settings": "Inställningar ",
+    "profile": "Profil ",
+    "aboutUs": "Om oss ",
+    "privacyPolicy": "privacyPolicy ",
+    "termsOfService": "Tjänstestymer ",
+    "invitations": "Inbjudningar ",
+    "issues": "Frågor ",
+    "createRoom": "Skapa ditt eget rum ",
+    "topRooms": "Roomstolar "
   },
-  "onboard" : {
-    "subHeading" : "Anslut med alla via ljud! "
+  "onboard": {
+    "subHeading": "Anslut med alla via ljud! "
   },
-  "chatRooms" : {
-    "noRooms" : "Inga rum: ( ",
-    "shareLink" : "Dela länk ",
-    "reportUser" : "Rapportanvändare ",
-    "blockUser" : "Blockanvändare ",
-    "noRoomExists" : "Det finns inte plats! "
+  "chatRooms": {
+    "noRooms": "Inga rum: ( ",
+    "shareLink": "Dela länk ",
+    "reportUser": "Rapportanvändare ",
+    "blockUser": "Blockanvändare ",
+    "noRoomExists": "Det finns inte plats! "
   },
-  "settings" : {
-    "aboutUs" : "Om oss ",
-    "rateUs" : "Förena oss ",
-    "issues" : "Har du några problem? ",
-    "deleteAccount" : "Ta bort konto ",
-    "signOut" : "Logga ut ",
-    "darkMode" : "Mörkt läge ",
-    "dataPolicy" : "Datapolicy ",
-    "termsOfService" : "Tjänstestymer "
+  "settings": {
+    "aboutUs": "Om oss ",
+    "rateUs": "Förena oss ",
+    "issues": "Har du några problem? ",
+    "deleteAccount": "Ta bort konto ",
+    "signOut": "Logga ut ",
+    "darkMode": "Mörkt läge ",
+    "privacyPolicy": "privacyPolicy ",
+    "termsOfService": "Tjänstestymer "
   },
-  "otpVerification" : {
-    "heading" : "Vi har skickat en kod till er. "
+  "otpVerification": {
+    "heading": "Vi har skickat en kod till er. "
   },
-  "emailVerification" : {
-    "heading" : "Verifiera din mejl. ",
-    "emailSent" : "Vi har skickat ett mejl till dig. "
+  "emailVerification": {
+    "heading": "Verifiera din mejl. ",
+    "emailSent": "Vi har skickat ett mejl till dig. "
   },
-  "issues" : {
-    "heading" : "-Vad har du för problem? ",
-    "subHeading" : "Vårt lag kommer att försöka fixa dem till vår bästa träning. "
+  "issues": {
+    "heading": "-Vad har du för problem? ",
+    "subHeading": "Vårt lag kommer att försöka fixa dem till vår bästa träning. "
   },
-  "errors" : {
-    "anErrorOccured" : "Ett fel inträffade ",
-    "roomDoesNotExist" : "Rummet finns inte   ",
-    "roomUserDoesNotExist" : "Antingen rum eller användare finns inte ",
-    "roomNameTaken" : "Rumsnamn Redan Taget ",
-    "playServices" : "Speltjänster är inte tillgängliga ",
-    "emailVerification" : "Mejl inte verifierad ",
-    "invalidCode" : "Ogiltig kod ",
-    "unexpectedError" : "Ett oväntat fel inträffade ",
-    "usernameTaken" : "Användarnamn redan Taget ",
-    "invalidEmail" : "Ogiltig mejladress ",
-    "emailInUse" : "Mejl som redan används"
+  "errors": {
+    "anErrorOccured": "Ett fel inträffade ",
+    "roomDoesNotExist": "Rummet finns inte   ",
+    "roomUserDoesNotExist": "Antingen rum eller användare finns inte ",
+    "roomNameTaken": "Rumsnamn Redan Taget ",
+    "playServices": "Speltjänster är inte tillgängliga ",
+    "emailVerification": "Mejl inte verifierad ",
+    "invalidCode": "Ogiltig kod ",
+    "unexpectedError": "Ett oväntat fel inträffade ",
+    "usernameTaken": "Användarnamn redan Taget ",
+    "invalidEmail": "Ogiltig mejladress ",
+    "emailInUse": "Mejl som redan används"
   }
 }

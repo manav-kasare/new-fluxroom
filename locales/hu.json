@@ -1,100 +1,100 @@
 {
-  "buttons" : {
-    "signUpOnboard" : "Bejelentkezés e-mail segítségével ",
-    "logInOnboard" : "Bejelentkezés e-mail segítségével ",
-    "signUp" : "Bejelentkezés ",
-    "logIn" : "Bejelentkezés ",
-    "verify" : "Ellenőrzés ",
-    "forgotPassword" : "Elfelejtette a jelszót? ",
-    "getOTP" : "OTP lekérése ",
-    "createRoom" : "Hozza létre ",
-    "joinRoom" : "Csatlakozás ",
-    "joinedRoom" : "Csatlakozott ",
-    "invite" : "Befektetés ",
-    "invited" : "Meghívva ",
-    "findRoom" : "Keress egy szobát. ",
-    "done" : "Kész ",
-    "cancel" : "Mégse ",
-    "close" : "Bezárás ",
-    "submit" : "Elküldés ",
-    "resend" : "Átállás ",
-    "accept" : "Elfogadás ",
-    "decline" : "Dekline "
+  "buttons": {
+    "signUpOnboard": "Bejelentkezés e-mail segítségével ",
+    "logInOnboard": "Bejelentkezés e-mail segítségével ",
+    "signUp": "Bejelentkezés ",
+    "logIn": "Bejelentkezés ",
+    "verify": "Ellenőrzés ",
+    "forgotPassword": "Elfelejtette a jelszót? ",
+    "getOTP": "OTP lekérése ",
+    "createRoom": "Hozza létre ",
+    "joinRoom": "Csatlakozás ",
+    "joinedRoom": "Csatlakozott ",
+    "invite": "Befektetés ",
+    "invited": "Meghívva ",
+    "findRoom": "Keress egy szobát. ",
+    "done": "Kész ",
+    "cancel": "Mégse ",
+    "close": "Bezárás ",
+    "submit": "Elküldés ",
+    "resend": "Átállás ",
+    "accept": "Elfogadás ",
+    "decline": "Dekline "
   },
-  "placeholders" : {
-    "email" : "E-mail cím ",
-    "username" : "Felhasználónév ",
-    "issue" : "Kiadás ",
-    "description" : "Leírás ",
-    "password" : "Jelszó ",
-    "code" : "Ellenőrzési kód ",
-    "seach" : "Mi az, amiben benne vagy? ",
-    "roomName" : "Te meg miről beszélsz? ",
-    "roomDescription" : "100 karakternél kisebb betűkkel írja le ",
-    "searchUsername" : "Keresés felhasználónév ",
-    "forgotPassword" : "Regisztrált e-mail vagy telefonszám ",
-    "searchRooms" : "Mi az, amiben benne vagy? "
+  "placeholders": {
+    "email": "E-mail cím ",
+    "username": "Felhasználónév ",
+    "issue": "Kiadás ",
+    "description": "Leírás ",
+    "password": "Jelszó ",
+    "code": "Ellenőrzési kód ",
+    "seach": "Mi az, amiben benne vagy? ",
+    "roomName": "Te meg miről beszélsz? ",
+    "roomDescription": "100 karakternél kisebb betűkkel írja le ",
+    "searchUsername": "Keresés felhasználónév ",
+    "forgotPassword": "Regisztrált e-mail vagy telefonszám ",
+    "searchRooms": "Mi az, amiben benne vagy? "
   },
-  "screens" : {
-    "signUp" : "Csatlakozás a Fluxroom ",
-    "logIn" : "Bejelentkezés ",
-    "forgotPassword" : "Elfelejtett jelszó ",
-    "setUpProfile" : "Állítsa be a profilt ",
-    "phone" : "Bejelentkezés a telefonszámmal ",
-    "fluxroom" : "Fluxroom ",
-    "findRooms" : "Szobák keresése ",
-    "settings" : "Beállítások ",
-    "profile" : "Profil ",
-    "aboutUs" : "Rólunk ",
-    "dataPolicy" : "Adatpolitika ",
-    "termsOfService" : "Szolgáltatási feltételek ",
-    "invitations" : "Meghívások ",
-    "issues" : "Kibocsátások ",
-    "createRoom" : "Saját szoba létrehozása ",
-    "topRooms" : "Felső szobák "
+  "screens": {
+    "signUp": "Csatlakozás a Fluxroom ",
+    "logIn": "Bejelentkezés ",
+    "forgotPassword": "Elfelejtett jelszó ",
+    "setUpProfile": "Állítsa be a profilt ",
+    "phone": "Bejelentkezés a telefonszámmal ",
+    "fluxroom": "Fluxroom ",
+    "findRooms": "Szobák keresése ",
+    "settings": "Beállítások ",
+    "profile": "Profil ",
+    "aboutUs": "Rólunk ",
+    "privacyPolicy": "Adatpolitika ",
+    "termsOfService": "Szolgáltatási feltételek ",
+    "invitations": "Meghívások ",
+    "issues": "Kibocsátások ",
+    "createRoom": "Saját szoba létrehozása ",
+    "topRooms": "Felső szobák "
   },
-  "onboard" : {
-    "subHeading" : "Kapcsolj valakivel a hangon keresztül! "
+  "onboard": {
+    "subHeading": "Kapcsolj valakivel a hangon keresztül! "
   },
-  "chatRooms" : {
-    "noRooms" : "Nem Szobák: ( ",
-    "shareLink" : "Hivatkozás megosztása ",
-    "reportUser" : "Jelentés felhasználó ",
-    "blockUser" : "Felhasználó blokk ",
-    "noRoomExists" : "Nincs ilyen hely! "
+  "chatRooms": {
+    "noRooms": "Nem Szobák: ( ",
+    "shareLink": "Hivatkozás megosztása ",
+    "reportUser": "Jelentés felhasználó ",
+    "blockUser": "Felhasználó blokk ",
+    "noRoomExists": "Nincs ilyen hely! "
   },
-  "settings" : {
-    "aboutUs" : "Rólunk ",
-    "rateUs" : "CPU-k ",
-    "issues" : "Szembe került bármilyen problémával? ",
-    "deleteAccount" : "Fiók törlése ",
-    "signOut" : "Kijelentkezés ",
-    "darkMode" : "Sötét mód ",
-    "dataPolicy" : "Adatpolitika ",
-    "termsOfService" : "Szolgáltatási feltételek "
+  "settings": {
+    "aboutUs": "Rólunk ",
+    "rateUs": "CPU-k ",
+    "issues": "Szembe került bármilyen problémával? ",
+    "deleteAccount": "Fiók törlése ",
+    "signOut": "Kijelentkezés ",
+    "darkMode": "Sötét mód ",
+    "privacyPolicy": "Adatpolitika ",
+    "termsOfService": "Szolgáltatási feltételek "
   },
-  "otpVerification" : {
-    "heading" : "Küldtünk neked egy kódot. "
+  "otpVerification": {
+    "heading": "Küldtünk neked egy kódot. "
   },
-  "emailVerification" : {
-    "heading" : "Ellenőrizze az e-mail címét. ",
-    "emailSent" : "Küldtünk neked egy e-mailt. "
+  "emailVerification": {
+    "heading": "Ellenőrizze az e-mail címét. ",
+    "emailSent": "Küldtünk neked egy e-mailt. "
   },
-  "issues" : {
-    "heading" : "Milyen problémával nézett szembe? ",
-    "subHeading" : "A csapatunk megpróbálja majd a legjobb gyakorlatba hozni őket. "
+  "issues": {
+    "heading": "Milyen problémával nézett szembe? ",
+    "subHeading": "A csapatunk megpróbálja majd a legjobb gyakorlatba hozni őket. "
   },
-  "errors" : {
-    "anErrorOccured" : "Hiba történt ",
-    "roomDoesNotExist" : "A szoba nem létezik   ",
-    "roomUserDoesNotExist" : "A helyiség vagy felhasználó nem létezik ",
-    "roomNameTaken" : "Helynév már Taken ",
-    "playServices" : "A Play szolgáltatások nem érhetők el ",
-    "emailVerification" : "E-mail nem hitelesített ",
-    "invalidCode" : "Érvénytelen kód ",
-    "unexpectedError" : "Váratlan hiba történt ",
-    "usernameTaken" : "Felhasználónév már Taken ",
-    "invalidEmail" : "Érvénytelen e-mail cím ",
-    "emailInUse" : "Az e-mail már használatban van"
+  "errors": {
+    "anErrorOccured": "Hiba történt ",
+    "roomDoesNotExist": "A szoba nem létezik   ",
+    "roomUserDoesNotExist": "A helyiség vagy felhasználó nem létezik ",
+    "roomNameTaken": "Helynév már Taken ",
+    "playServices": "A Play szolgáltatások nem érhetők el ",
+    "emailVerification": "E-mail nem hitelesített ",
+    "invalidCode": "Érvénytelen kód ",
+    "unexpectedError": "Váratlan hiba történt ",
+    "usernameTaken": "Felhasználónév már Taken ",
+    "invalidEmail": "Érvénytelen e-mail cím ",
+    "emailInUse": "Az e-mail már használatban van"
   }
 }

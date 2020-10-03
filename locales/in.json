@@ -1,87 +1,87 @@
 {
-  "buttons" : {
-    "signUpOnboard" : "Sign Up Dengan Email ",
-    "logInOnboard" : "Login Dengan Email ",
-    "signUp" : "Sign Up ",
-    "logIn" : "Log Masuk ",
-    "verify" : "Verifikasi ",
-    "forgotPassword" : "Lupa Sandi? ",
-    "getOTP" : "Dapatkan OTP ",
-    "createRoom" : "Buat ",
-    "joinRoom" : "Bergabunglah ",
-    "joinedRoom" : "Bergabung dengan ",
-    "invite" : "Undang ",
-    "invited" : "Diundang ",
-    "findRoom" : "Cari sebuah kamar. ",
-    "done" : "Selesai ",
-    "cancel" : "Batalkan ",
-    "close" : "Tutup ",
-    "submit" : "Kirim ",
-    "resend" : "Resend ",
-    "accept" : "Terima ",
-    "decline" : "Penurunan "
+  "buttons": {
+    "signUpOnboard": "Sign Up Dengan Email ",
+    "logInOnboard": "Login Dengan Email ",
+    "signUp": "Sign Up ",
+    "logIn": "Log Masuk ",
+    "verify": "Verifikasi ",
+    "forgotPassword": "Lupa Sandi? ",
+    "getOTP": "Dapatkan OTP ",
+    "createRoom": "Buat ",
+    "joinRoom": "Bergabunglah ",
+    "joinedRoom": "Bergabung dengan ",
+    "invite": "Undang ",
+    "invited": "Diundang ",
+    "findRoom": "Cari sebuah kamar. ",
+    "done": "Selesai ",
+    "cancel": "Batalkan ",
+    "close": "Tutup ",
+    "submit": "Kirim ",
+    "resend": "Resend ",
+    "accept": "Terima ",
+    "decline": "Penurunan "
   },
-  "placeholders" : {
-    "email" : "Alamat Email: ",
-    "username" : "Nama pengguna ",
-    "issue" : "Masalah ",
-    "description" : "Deskripsi ",
-    "password" : "Kata Sandi ",
-    "code" : "Kode verifikasi ",
-    "seach" : "Apa yang Anda intrestasi di? ",
-    "roomName" : "Apa yang akan kau bicarakan? ",
-    "roomDescription" : "Jelaskan dalam kurang dari 100 karakter ",
-    "searchUsername" : "Cari Nama Pengguna ",
-    "forgotPassword" : "Email atau nomor telepon yang terdaftar ",
-    "searchRooms" : "Apa yang Anda intrestasi di? "
+  "placeholders": {
+    "email": "Alamat Email: ",
+    "username": "Nama pengguna ",
+    "issue": "Masalah ",
+    "description": "Deskripsi ",
+    "password": "Kata Sandi ",
+    "code": "Kode verifikasi ",
+    "seach": "Apa yang Anda intrestasi di? ",
+    "roomName": "Apa yang akan kau bicarakan? ",
+    "roomDescription": "Jelaskan dalam kurang dari 100 karakter ",
+    "searchUsername": "Cari Nama Pengguna ",
+    "forgotPassword": "Email atau nomor telepon yang terdaftar ",
+    "searchRooms": "Apa yang Anda intrestasi di? "
   },
-  "screens" : {
-    "signUp" : "Gabung Fluxroom ",
-    "logIn" : "Log Masuk ",
-    "forgotPassword" : "Lupa Sandi ",
-    "setUpProfile" : "Atur profil Anda ",
-    "phone" : "Sign In dengan nomor telepon ",
-    "fluxroom" : "Fluxroom ",
-    "findRooms" : "Cari Kamar ",
-    "settings" : "Pengaturan ",
-    "profile" : "Profil ",
-    "aboutUs" : "Tentang Kami ",
-    "dataPolicy" : "Kebijakan Data ",
-    "termsOfService" : "Syarat-syarat Layanan ",
-    "invitations" : "Undangan ",
-    "issues" : "Masalah ",
-    "createRoom" : "Membuat kamar Anda sendiri ",
-    "topRooms" : "Kamar Atas "
+  "screens": {
+    "signUp": "Gabung Fluxroom ",
+    "logIn": "Log Masuk ",
+    "forgotPassword": "Lupa Sandi ",
+    "setUpProfile": "Atur profil Anda ",
+    "phone": "Sign In dengan nomor telepon ",
+    "fluxroom": "Fluxroom ",
+    "findRooms": "Cari Kamar ",
+    "settings": "Pengaturan ",
+    "profile": "Profil ",
+    "aboutUs": "Tentang Kami ",
+    "privacyPolicy": "Kebijakan Data ",
+    "termsOfService": "Syarat-syarat Layanan ",
+    "invitations": "Undangan ",
+    "issues": "Masalah ",
+    "createRoom": "Membuat kamar Anda sendiri ",
+    "topRooms": "Kamar Atas "
   },
-  "onboard" : {
-    "subHeading" : "Hubungkan dengan siapa pun via audio! "
+  "onboard": {
+    "subHeading": "Hubungkan dengan siapa pun via audio! "
   },
-  "chatRooms" : {
-    "noRooms" : "Tidak Ada Kamar: ( ",
-    "shareLink" : "Bagi Tautan ",
-    "reportUser" : "Laporan Pengguna ",
-    "blockUser" : "Blok Pengguna ",
-    "noRoomExists" : "Tidak ada ruang seperti itu! "
+  "chatRooms": {
+    "noRooms": "Tidak Ada Kamar: ( ",
+    "shareLink": "Bagi Tautan ",
+    "reportUser": "Laporan Pengguna ",
+    "blockUser": "Blok Pengguna ",
+    "noRoomExists": "Tidak ada ruang seperti itu! "
   },
-  "settings" : {
-    "aboutUs" : "Tentang Kami ",
-    "rateUs" : "Laju Kami ",
-    "issues" : "Apa kau menghadapi masalah? ",
-    "deleteAccount" : "Hapus Akun ",
-    "signOut" : "Tanda Keluar ",
-    "darkMode" : "Mode Gelap ",
-    "dataPolicy" : "Kebijakan Data ",
-    "termsOfService" : "Syarat-syarat Layanan "
+  "settings": {
+    "aboutUs": "Tentang Kami ",
+    "rateUs": "Laju Kami ",
+    "issues": "Apa kau menghadapi masalah? ",
+    "deleteAccount": "Hapus Akun ",
+    "signOut": "Tanda Keluar ",
+    "darkMode": "Mode Gelap ",
+    "privacyPolicy": "Kebijakan Data ",
+    "termsOfService": "Syarat-syarat Layanan "
   },
-  "otpVerification" : {
-    "heading" : "Kami telah mengirimkan kode pada Anda "
+  "otpVerification": {
+    "heading": "Kami telah mengirimkan kode pada Anda "
   },
-  "emailVerification" : {
-    "heading" : "Mohon verifikasi email Anda. ",
-    "emailSent" : "Kami telah mengirimkan email kepada Anda. "
+  "emailVerification": {
+    "heading": "Mohon verifikasi email Anda. ",
+    "emailSent": "Kami telah mengirimkan email kepada Anda. "
   },
-  "issues" : {
-    "heading" : "Masalah apa yang kau hadapi? ",
-    "subHeading" : "Tim kami akan mencoba untuk memperbaiki mereka untuk latihan terbaik kami."
+  "issues": {
+    "heading": "Masalah apa yang kau hadapi? ",
+    "subHeading": "Tim kami akan mencoba untuk memperbaiki mereka untuk latihan terbaik kami."
   }
 }

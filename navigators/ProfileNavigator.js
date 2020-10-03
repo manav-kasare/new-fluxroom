@@ -8,8 +8,6 @@ import UserProfile from '../screens/app/UserProfile/UserProfile';
 import Issues from '../screens/app/UserProfile/Extras/Issues';
 import {ThemeContext} from '../shared/Context';
 import Settings from '../screens/app/UserProfile/Settings/Settings';
-import TermsOfService from '../screens/app/UserProfile/Settings/TermsOfService';
-import DataPolicy from '../screens/app/UserProfile/Settings/DataPolicy';
 import AboutUs from '../screens/app/UserProfile/Settings/AboutUs';
 import il8n from '../locales/il8n';
 
@@ -78,30 +76,6 @@ export default function ProfileNavigator({route, navigation}) {
         component={AboutUs}
         options={{
           title: il8n.t('screens.aboutUs'),
-          headerStyle: constants.headerStyle,
-          headerTitleStyle: constants.headerText,
-          headerBackTitleVisible: false,
-          headerTintColor: 'white',
-          headerTitleAlign: 'center',
-        }}
-      />
-      <ProfileStack.Screen
-        name="DataPolicy"
-        component={DataPolicy}
-        options={{
-          title: il8n.t('screens.dataPolicy'),
-          headerStyle: constants.headerStyle,
-          headerTitleStyle: constants.headerText,
-          headerBackTitleVisible: false,
-          headerTintColor: 'white',
-          headerTitleAlign: 'center',
-        }}
-      />
-      <ProfileStack.Screen
-        name="TermsOfService"
-        component={TermsOfService}
-        options={{
-          title: il8n.t('screens.termsOfService'),
           headerStyle: constants.headerStyle,
           headerTitleStyle: constants.headerText,
           headerBackTitleVisible: false,

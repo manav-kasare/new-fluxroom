@@ -1,100 +1,100 @@
 {
-  "buttons" : {
-    "signUpOnboard" : "විද්යුත් තැපෑල සමඟ අත්සන් කරන්න",
-    "logInOnboard" : "විද්යුත් තැපෑලට පිවිසෙන්න",
-    "signUp" : "අත්සන් කරන්න",
-    "logIn" : "සටහන් කරන්න",
-    "verify" : "Verify",
-    "forgotPassword" : "මුරපදය අමතක කරන්න?",
-    "getOTP" : "OTPName",
-    "createRoom" : "නිර්මාණය කරන්න",
-    "joinRoom" : "Join",
-    "joinedRoom" : "Joined",
-    "invite" : "ආරාධනා කරන්න",
-    "invited" : "ආරාධනා",
-    "findRoom" : "කාමරයක් සොයාගන්න",
-    "done" : "Done",
-    "cancel" : "අවලංගු කරන්න",
-    "close" : "@ action: inbutton",
-    "submit" : "Submit",
-    "resend" : "ප්රතිසංස්කරන",
-    "accept" : "පිළිගන්න",
-    "decline" : "සැකිල්ල:"
+  "buttons": {
+    "signUpOnboard": "විද්යුත් තැපෑල සමඟ අත්සන් කරන්න",
+    "logInOnboard": "විද්යුත් තැපෑලට පිවිසෙන්න",
+    "signUp": "අත්සන් කරන්න",
+    "logIn": "සටහන් කරන්න",
+    "verify": "Verify",
+    "forgotPassword": "මුරපදය අමතක කරන්න?",
+    "getOTP": "OTPName",
+    "createRoom": "නිර්මාණය කරන්න",
+    "joinRoom": "Join",
+    "joinedRoom": "Joined",
+    "invite": "ආරාධනා කරන්න",
+    "invited": "ආරාධනා",
+    "findRoom": "කාමරයක් සොයාගන්න",
+    "done": "Done",
+    "cancel": "අවලංගු කරන්න",
+    "close": "@ action: inbutton",
+    "submit": "Submit",
+    "resend": "ප්රතිසංස්කරන",
+    "accept": "පිළිගන්න",
+    "decline": "සැකිල්ල:"
   },
-  "placeholders" : {
-    "email" : "විද්යුත් තැපැල් ලිපිනය",
-    "username" : "Username",
-    "issue" : "Issue",
-    "description" : "විස්තරය",
-    "password" : "මුරපදය",
-    "code" : "වර්ණාවලි කේතය",
-    "seach" : "ඔයා මොනවද මේ ගැන අදහස් කරන්නේ?",
-    "roomName" : "ඔයා මොනවා ගැනද කතා කරන්නේ?",
-    "roomDescription" : "අකුරු 100 ට වඩා අඩුවෙන් විස්තර කරන්න",
-    "searchUsername" : "Username",
-    "forgotPassword" : "ලියාපදිංචි විද්යුත් තැපෑල හෝ දුරකථන අංකය",
-    "searchRooms" : "ඔයා මොනවද මේ ගැන අදහස් කරන්නේ?"
+  "placeholders": {
+    "email": "විද්යුත් තැපැල් ලිපිනය",
+    "username": "Username",
+    "issue": "Issue",
+    "description": "විස්තරය",
+    "password": "මුරපදය",
+    "code": "වර්ණාවලි කේතය",
+    "seach": "ඔයා මොනවද මේ ගැන අදහස් කරන්නේ?",
+    "roomName": "ඔයා මොනවා ගැනද කතා කරන්නේ?",
+    "roomDescription": "අකුරු 100 ට වඩා අඩුවෙන් විස්තර කරන්න",
+    "searchUsername": "Username",
+    "forgotPassword": "ලියාපදිංචි විද්යුත් තැපෑල හෝ දුරකථන අංකය",
+    "searchRooms": "ඔයා මොනවද මේ ගැන අදහස් කරන්නේ?"
   },
-  "screens" : {
-    "signUp" : "Fluxroom",
-    "logIn" : "සටහන් කරන්න",
-    "forgotPassword" : "මුරපදය අමතක කරන්න",
-    "setUpProfile" : "ඔබේ පැතිකඩ සකසන්න",
-    "phone" : "දුරකථන අංකය සමග අත්සන් කරන්න",
-    "fluxroom" : "Fluxroom",
-    "findRooms" : "රෝම් සොයන්න",
-    "settings" : "සැකසුම්",
-    "profile" : "පැතිකඩ",
-    "aboutUs" : "අපි ගැන",
-    "dataPolicy" : "දත්ත ප්රතිපත්තිය",
-    "termsOfService" : "සේවා නියුක්තිය",
-    "invitations" : "ආරාධනා (I)",
-    "issues" : "ප්රශ්න",
-    "createRoom" : "ඔබේ කාමරය නිර්මාණය කරන්න",
-    "topRooms" : "ඉහළ රූම්"
+  "screens": {
+    "signUp": "Fluxroom",
+    "logIn": "සටහන් කරන්න",
+    "forgotPassword": "මුරපදය අමතක කරන්න",
+    "setUpProfile": "ඔබේ පැතිකඩ සකසන්න",
+    "phone": "දුරකථන අංකය සමග අත්සන් කරන්න",
+    "fluxroom": "Fluxroom",
+    "findRooms": "රෝම් සොයන්න",
+    "settings": "සැකසුම්",
+    "profile": "පැතිකඩ",
+    "aboutUs": "අපි ගැන",
+    "privacyPolicy": "දත්ත ප්රතිපත්තිය",
+    "termsOfService": "සේවා නියුක්තිය",
+    "invitations": "ආරාධනා (I)",
+    "issues": "ප්රශ්න",
+    "createRoom": "ඔබේ කාමරය නිර්මාණය කරන්න",
+    "topRooms": "ඉහළ රූම්"
   },
-  "onboard" : {
-    "subHeading" : "ඕඩියෝ හරහා කාත් එක්කවත් සම්බන්ධ වෙන්න!"
+  "onboard": {
+    "subHeading": "ඕඩියෝ හරහා කාත් එක්කවත් සම්බන්ධ වෙන්න!"
   },
-  "chatRooms" : {
-    "noRooms" : "රූම් නෑ: (",
-    "shareLink" : "@ action: inmenu",
-    "reportUser" : "වාර්ථා පරිශීලක",
-    "blockUser" : "බ්ලොක් පරිශීලක",
-    "noRoomExists" : "මේ වගේ කාමරයක් නෑ!"
+  "chatRooms": {
+    "noRooms": "රූම් නෑ: (",
+    "shareLink": "@ action: inmenu",
+    "reportUser": "වාර්ථා පරිශීලක",
+    "blockUser": "බ්ලොක් පරිශීලක",
+    "noRoomExists": "මේ වගේ කාමරයක් නෑ!"
   },
-  "settings" : {
-    "aboutUs" : "අපි ගැන",
-    "rateUs" : "Rate Us",
-    "issues" : "ඔයා මොකක් හරි ප්රශ්නෙකට මුහුණ දුන්නද?",
-    "deleteAccount" : "ගිණුම මකන්න",
-    "signOut" : "අත්සන් කරන්න",
-    "darkMode" : "අඳුරු ආකාරය",
-    "dataPolicy" : "දත්ත ප්රතිපත්තිය",
-    "termsOfService" : "සේවා නියුක්තිය"
+  "settings": {
+    "aboutUs": "අපි ගැන",
+    "rateUs": "Rate Us",
+    "issues": "ඔයා මොකක් හරි ප්රශ්නෙකට මුහුණ දුන්නද?",
+    "deleteAccount": "ගිණුම මකන්න",
+    "signOut": "අත්සන් කරන්න",
+    "darkMode": "අඳුරු ආකාරය",
+    "privacyPolicy": "දත්ත ප්රතිපත්තිය",
+    "termsOfService": "සේවා නියුක්තිය"
   },
-  "otpVerification" : {
-    "heading" : "අපි ඔයාට කේතයක් එවලා තියෙනවා"
+  "otpVerification": {
+    "heading": "අපි ඔයාට කේතයක් එවලා තියෙනවා"
   },
-  "emailVerification" : {
-    "heading" : "කරුණාකර ඔබේ ඊමේල් එක තහවුරු කරන්න.",
-    "emailSent" : "අපි ඔයාට ඊමේල් එකක් එවලා තියෙනවා"
+  "emailVerification": {
+    "heading": "කරුණාකර ඔබේ ඊමේල් එක තහවුරු කරන්න.",
+    "emailSent": "අපි ඔයාට ඊමේල් එකක් එවලා තියෙනවා"
   },
-  "issues" : {
-    "heading" : "මොන ප්රශ්නෙද?",
-    "subHeading" : "අපේ කණ්ඩායම ඒවා අපේ උපරිම පුහුණුවකට හසුකර ගැනීමට උත්සාහ කරයි."
+  "issues": {
+    "heading": "මොන ප්රශ්නෙද?",
+    "subHeading": "අපේ කණ්ඩායම ඒවා අපේ උපරිම පුහුණුවකට හසුකර ගැනීමට උත්සාහ කරයි."
   },
-  "errors" : {
-    "anErrorOccured" : "An Error Ocසනීප",
-    "roomDoesNotExist" : "කාමරය නොපවතී ",
-    "roomUserDoesNotExist" : "එක්කෝ කාමරය හෝ පරිශීලක පවතින්නේ නැත",
-    "roomNameTaken" : "කාමර නාමය Already Taken",
-    "playServices" : "වාදන සේවාවන් නොපවතී",
-    "emailVerification" : "ඊමේල් නොමැති විද්යුත් තැපෑල",
-    "invalidCode" : "සාවද්ය සංකේතය",
-    "unexpectedError" : "අනපේක්ෂිත දෝෂයක්",
-    "usernameTaken" : "Username Already Taken",
-    "invalidEmail" : "සාවද්ය විද්යුත් තැපැල් ලිපිනය",
-    "emailInUse" : "දැනට භාවිතයේ ඇති විද්යුත් තැපෑල"
+  "errors": {
+    "anErrorOccured": "An Error Ocසනීප",
+    "roomDoesNotExist": "කාමරය නොපවතී ",
+    "roomUserDoesNotExist": "එක්කෝ කාමරය හෝ පරිශීලක පවතින්නේ නැත",
+    "roomNameTaken": "කාමර නාමය Already Taken",
+    "playServices": "වාදන සේවාවන් නොපවතී",
+    "emailVerification": "ඊමේල් නොමැති විද්යුත් තැපෑල",
+    "invalidCode": "සාවද්ය සංකේතය",
+    "unexpectedError": "අනපේක්ෂිත දෝෂයක්",
+    "usernameTaken": "Username Already Taken",
+    "invalidEmail": "සාවද්ය විද්යුත් තැපැල් ලිපිනය",
+    "emailInUse": "දැනට භාවිතයේ ඇති විද්යුත් තැපෑල"
   }
 }

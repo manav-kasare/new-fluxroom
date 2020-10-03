@@ -1,100 +1,100 @@
 {
-  "buttons" : {
-    "signUpOnboard" : "使用电子邮件注册",
-    "logInOnboard" : "使用电子邮件登录",
-    "signUp" : "注册",
-    "logIn" : "登录",
-    "verify" : "验证",
-    "forgotPassword" : "忘记密码 ?",
-    "getOTP" : "获取 OTP",
-    "createRoom" : "创建",
-    "joinRoom" : "加入",
-    "joinedRoom" : "加入",
-    "invite" : "邀请",
-    "invited" : "已邀请",
-    "findRoom" : "找个房间",
-    "done" : "好了",
-    "cancel" : "取消",
-    "close" : "关闭",
-    "submit" : "提交",
-    "resend" : "雷什德",
-    "accept" : "接受",
-    "decline" : "拒绝"
+  "buttons": {
+    "signUpOnboard": "使用电子邮件注册",
+    "logInOnboard": "使用电子邮件登录",
+    "signUp": "注册",
+    "logIn": "登录",
+    "verify": "验证",
+    "forgotPassword": "忘记密码 ?",
+    "getOTP": "获取 OTP",
+    "createRoom": "创建",
+    "joinRoom": "加入",
+    "joinedRoom": "加入",
+    "invite": "邀请",
+    "invited": "已邀请",
+    "findRoom": "找个房间",
+    "done": "好了",
+    "cancel": "取消",
+    "close": "关闭",
+    "submit": "提交",
+    "resend": "雷什德",
+    "accept": "接受",
+    "decline": "拒绝"
   },
-  "placeholders" : {
-    "email" : "电子邮件地址",
-    "username" : "用户名",
-    "issue" : "问题",
-    "description" : "描述",
-    "password" : "密码",
-    "code" : "验证代码",
-    "seach" : "你在干什么",
-    "roomName" : "你说什么",
-    "roomDescription" : "用少于 100 个字符描述",
-    "searchUsername" : "搜索用户名",
-    "forgotPassword" : "注册的电子邮件或电话号码",
-    "searchRooms" : "你在干什么"
+  "placeholders": {
+    "email": "电子邮件地址",
+    "username": "用户名",
+    "issue": "问题",
+    "description": "描述",
+    "password": "密码",
+    "code": "验证代码",
+    "seach": "你在干什么",
+    "roomName": "你说什么",
+    "roomDescription": "用少于 100 个字符描述",
+    "searchUsername": "搜索用户名",
+    "forgotPassword": "注册的电子邮件或电话号码",
+    "searchRooms": "你在干什么"
   },
-  "screens" : {
-    "signUp" : "加入 Fluxroom",
-    "logIn" : "登录",
-    "forgotPassword" : "忘记密码",
-    "setUpProfile" : "设置概要文件",
-    "phone" : "使用电话号码登录",
-    "fluxroom" : "弗卢克斯科",
-    "findRooms" : "查找房间",
-    "settings" : "设置",
-    "profile" : "个人档案",
-    "aboutUs" : "关于我们",
-    "dataPolicy" : "数据策略",
-    "termsOfService" : "服务条款",
-    "invitations" : "邀请函",
-    "issues" : "问题",
-    "createRoom" : "创建自己的房间",
-    "topRooms" : "顶级房间"
+  "screens": {
+    "signUp": "加入 Fluxroom",
+    "logIn": "登录",
+    "forgotPassword": "忘记密码",
+    "setUpProfile": "设置概要文件",
+    "phone": "使用电话号码登录",
+    "fluxroom": "弗卢克斯科",
+    "findRooms": "查找房间",
+    "settings": "设置",
+    "profile": "个人档案",
+    "aboutUs": "关于我们",
+    "privacyPolicy": "数据策略",
+    "termsOfService": "服务条款",
+    "invitations": "邀请函",
+    "issues": "问题",
+    "createRoom": "创建自己的房间",
+    "topRooms": "顶级房间"
   },
-  "onboard" : {
-    "subHeading" : "通过音频连接任何人 !"
+  "onboard": {
+    "subHeading": "通过音频连接任何人 !"
   },
-  "chatRooms" : {
-    "noRooms" : "无房间 : (",
-    "shareLink" : "共享链接",
-    "reportUser" : "报告用户",
-    "blockUser" : "块用户",
-    "noRoomExists" : "不存在这样的空间 !"
+  "chatRooms": {
+    "noRooms": "无房间 : (",
+    "shareLink": "共享链接",
+    "reportUser": "报告用户",
+    "blockUser": "块用户",
+    "noRoomExists": "不存在这样的空间 !"
   },
-  "settings" : {
-    "aboutUs" : "关于我们",
-    "rateUs" : "费率单位",
-    "issues" : "你有什么问题吗",
-    "deleteAccount" : "删除帐户",
-    "signOut" : "注销",
-    "darkMode" : "暗方式",
-    "dataPolicy" : "数据策略",
-    "termsOfService" : "服务条款"
+  "settings": {
+    "aboutUs": "关于我们",
+    "rateUs": "费率单位",
+    "issues": "你有什么问题吗",
+    "deleteAccount": "删除帐户",
+    "signOut": "注销",
+    "darkMode": "暗方式",
+    "privacyPolicy": "数据策略",
+    "termsOfService": "服务条款"
   },
-  "otpVerification" : {
-    "heading" : "我们给你发了个密码"
+  "otpVerification": {
+    "heading": "我们给你发了个密码"
   },
-  "emailVerification" : {
-    "heading" : "请验证您的电子邮件。",
-    "emailSent" : "我们给你发邮件了"
+  "emailVerification": {
+    "heading": "请验证您的电子邮件。",
+    "emailSent": "我们给你发邮件了"
   },
-  "issues" : {
-    "heading" : "你面对什么问题",
-    "subHeading" : "我们的团队会尝试将他们固定到我们的最佳实践中。"
+  "issues": {
+    "heading": "你面对什么问题",
+    "subHeading": "我们的团队会尝试将他们固定到我们的最佳实践中。"
   },
-  "errors" : {
-    "anErrorOccured" : "发生错误",
-    "roomDoesNotExist" : "房间不存在 ",
-    "roomUserDoesNotExist" : "房间或用户不存在",
-    "roomNameTaken" : "已执行的会议室名称",
-    "playServices" : "播放服务不可用",
-    "emailVerification" : "未验证电子邮件",
-    "invalidCode" : "无效代码",
-    "unexpectedError" : "发生意外错误",
-    "usernameTaken" : "已执行用户名",
-    "invalidEmail" : "电子邮件地址无效",
-    "emailInUse" : "电子邮件已在使用中"
+  "errors": {
+    "anErrorOccured": "发生错误",
+    "roomDoesNotExist": "房间不存在 ",
+    "roomUserDoesNotExist": "房间或用户不存在",
+    "roomNameTaken": "已执行的会议室名称",
+    "playServices": "播放服务不可用",
+    "emailVerification": "未验证电子邮件",
+    "invalidCode": "无效代码",
+    "unexpectedError": "发生意外错误",
+    "usernameTaken": "已执行用户名",
+    "invalidEmail": "电子邮件地址无效",
+    "emailInUse": "电子邮件已在使用中"
   }
 }

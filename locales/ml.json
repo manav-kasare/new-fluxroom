@@ -1,100 +1,100 @@
 {
-  "buttons" : {
-    "signUpOnboard" : "ഈമെയില് ഉപയോഗിച്ച് ഒപ്പ് ചെയ്യുക",
-    "logInOnboard" : "ഈമെയില് കൊണ്ട് ലോഗ് ചെയ്യുക",
-    "signUp" : "ഒപ്പ് വെക്കുക",
-    "logIn" : "ലോഗ് ചെയ്യുക",
-    "verify" : "വേര്തിരിക്കുക",
-    "forgotPassword" : "അടയാളവാക്കു് മറന്നോ?",
-    "getOTP" : "OTP ലഭ്യമാക്കുക",
-    "createRoom" : "സൃഷ്ടിക്കുക",
-    "joinRoom" : "ജോയിന്",
-    "joinedRoom" : "ജോയ്ഡ്",
-    "invite" : "ക്ഷണിക്കുകName",
-    "invited" : "ക്ഷണിക്കപ്പെട്ടിരിക്കുന്നു",
-    "findRoom" : "ഒരു മുറി കണ്ടെത്തുക",
-    "done" : "Done",
-    "cancel" : "റദ്ദാക്കുക",
-    "close" : "അടയ്ക്കുക",
-    "submit" : "സബ്മിറ്റ്",
-    "resend" : "പുനരാരണം",
-    "accept" : "സ്വീകരണം",
-    "decline" : "ഡിക്ലൈന്"
+  "buttons": {
+    "signUpOnboard": "ഈമെയില് ഉപയോഗിച്ച് ഒപ്പ് ചെയ്യുക",
+    "logInOnboard": "ഈമെയില് കൊണ്ട് ലോഗ് ചെയ്യുക",
+    "signUp": "ഒപ്പ് വെക്കുക",
+    "logIn": "ലോഗ് ചെയ്യുക",
+    "verify": "വേര്തിരിക്കുക",
+    "forgotPassword": "അടയാളവാക്കു് മറന്നോ?",
+    "getOTP": "OTP ലഭ്യമാക്കുക",
+    "createRoom": "സൃഷ്ടിക്കുക",
+    "joinRoom": "ജോയിന്",
+    "joinedRoom": "ജോയ്ഡ്",
+    "invite": "ക്ഷണിക്കുകName",
+    "invited": "ക്ഷണിക്കപ്പെട്ടിരിക്കുന്നു",
+    "findRoom": "ഒരു മുറി കണ്ടെത്തുക",
+    "done": "Done",
+    "cancel": "റദ്ദാക്കുക",
+    "close": "അടയ്ക്കുക",
+    "submit": "സബ്മിറ്റ്",
+    "resend": "പുനരാരണം",
+    "accept": "സ്വീകരണം",
+    "decline": "ഡിക്ലൈന്"
   },
-  "placeholders" : {
-    "email" : "ഈമെയില് വിലാസം",
-    "username" : "ഉപയോജനം",
-    "issue" : "ഇസ്പ്രേസ്",
-    "description" : "വിവരണം",
-    "password" : "അടയാളവാക്കു്",
-    "code" : "വെരിയിഫിക്കേഷന് കോഡ്",
-    "seach" : "നീയെന്തിനാ ഇത്ര ശ്രമിക്കുന്നത്?",
-    "roomName" : "നീ എന്തിനെക്കുറിച്ചാണ് സംസാരിക്കുന്നത്?",
-    "roomDescription" : "നൂറിലധികം അക്ഷരങ്ങളില് ഡിസ്ക് ചെയ്യുക",
-    "searchUsername" : "ഉപയോജനം തെരയുക",
-    "forgotPassword" : "റജിസ്റ്റഡ് ഈമെയില് അല്ലെങ്കില് ഫോണ് നമ്പര്",
-    "searchRooms" : "നീയെന്തിനാ ഇത്ര ശ്രമിക്കുന്നത്?"
+  "placeholders": {
+    "email": "ഈമെയില് വിലാസം",
+    "username": "ഉപയോജനം",
+    "issue": "ഇസ്പ്രേസ്",
+    "description": "വിവരണം",
+    "password": "അടയാളവാക്കു്",
+    "code": "വെരിയിഫിക്കേഷന് കോഡ്",
+    "seach": "നീയെന്തിനാ ഇത്ര ശ്രമിക്കുന്നത്?",
+    "roomName": "നീ എന്തിനെക്കുറിച്ചാണ് സംസാരിക്കുന്നത്?",
+    "roomDescription": "നൂറിലധികം അക്ഷരങ്ങളില് ഡിസ്ക് ചെയ്യുക",
+    "searchUsername": "ഉപയോജനം തെരയുക",
+    "forgotPassword": "റജിസ്റ്റഡ് ഈമെയില് അല്ലെങ്കില് ഫോണ് നമ്പര്",
+    "searchRooms": "നീയെന്തിനാ ഇത്ര ശ്രമിക്കുന്നത്?"
   },
-  "screens" : {
-    "signUp" : "ഫ്ലൂക്സ്മുറിയില് ചേരുക",
-    "logIn" : "ലോഗ് ചെയ്യുക",
-    "forgotPassword" : "അടയാളവാക്കു് മറയ്ക്കുക",
-    "setUpProfile" : "നിങ്ങളുടെ പ്രൊഫൈല് സജ്ജമാക്കുക",
-    "phone" : "ഫോണ് നമ്പറില് ഒപ്പിടൂ",
-    "fluxroom" : "ഫ്ലൂക്സ്മുറി",
-    "findRooms" : "റോമുകള് കണ്ടുപിടിക്കുക",
-    "settings" : "സജ്ജീകരണങ്ങള്",
-    "profile" : "പ്രൊഫൈല്",
-    "aboutUs" : "ഞങ്ങളെക്കുറിച്ചുള്ള",
-    "dataPolicy" : "ഡേറ്റാ പോളിസി",
-    "termsOfService" : "സേവനത്തിന്റെ ഭരണം",
-    "invitations" : "ക്ഷണങ്ങള്",
-    "issues" : "ഇസ്സുസ്",
-    "createRoom" : "സ്വന്തം മുറി ഉണ്ടാക്കുക",
-    "topRooms" : "മുകളിലെ റൂമുകള്"
+  "screens": {
+    "signUp": "ഫ്ലൂക്സ്മുറിയില് ചേരുക",
+    "logIn": "ലോഗ് ചെയ്യുക",
+    "forgotPassword": "അടയാളവാക്കു് മറയ്ക്കുക",
+    "setUpProfile": "നിങ്ങളുടെ പ്രൊഫൈല് സജ്ജമാക്കുക",
+    "phone": "ഫോണ് നമ്പറില് ഒപ്പിടൂ",
+    "fluxroom": "ഫ്ലൂക്സ്മുറി",
+    "findRooms": "റോമുകള് കണ്ടുപിടിക്കുക",
+    "settings": "സജ്ജീകരണങ്ങള്",
+    "profile": "പ്രൊഫൈല്",
+    "aboutUs": "ഞങ്ങളെക്കുറിച്ചുള്ള",
+    "privacyPolicy": "ഡേറ്റാ പോളിസി",
+    "termsOfService": "സേവനത്തിന്റെ ഭരണം",
+    "invitations": "ക്ഷണങ്ങള്",
+    "issues": "ഇസ്സുസ്",
+    "createRoom": "സ്വന്തം മുറി ഉണ്ടാക്കുക",
+    "topRooms": "മുകളിലെ റൂമുകള്"
   },
-  "onboard" : {
-    "subHeading" : "ഓഡിയോ വഴി ആരോടെങ്കിലും ബന്ധപ്പെടുക!"
+  "onboard": {
+    "subHeading": "ഓഡിയോ വഴി ആരോടെങ്കിലും ബന്ധപ്പെടുക!"
   },
-  "chatRooms" : {
-    "noRooms" : "റോമുകൾ ഇല്ല: (",
-    "shareLink" : "ലിങ്ക് ഷെയര് ചെയ്യുക",
-    "reportUser" : "ഉപയോക്താവു് അറിയിപ്പു്",
-    "blockUser" : "ഉപയോക്താവു് തടയുക",
-    "noRoomExists" : "ഇങ്ങനെയൊരു റൂം ഇല്ല!"
+  "chatRooms": {
+    "noRooms": "റോമുകൾ ഇല്ല: (",
+    "shareLink": "ലിങ്ക് ഷെയര് ചെയ്യുക",
+    "reportUser": "ഉപയോക്താവു് അറിയിപ്പു്",
+    "blockUser": "ഉപയോക്താവു് തടയുക",
+    "noRoomExists": "ഇങ്ങനെയൊരു റൂം ഇല്ല!"
   },
-  "settings" : {
-    "aboutUs" : "ഞങ്ങളെക്കുറിച്ചുള്ള",
-    "rateUs" : "Rate Us",
-    "issues" : "എന്തെങ്കിലും പ്രശ്നം ഉണ്ടോ?",
-    "deleteAccount" : "അക്കൌണ്ട് മായ്ക്കുക",
-    "signOut" : "ഒപ്പ് വെക്കുക",
-    "darkMode" : "ഇരുണ്ട ദശ",
-    "dataPolicy" : "ഡേറ്റാ പോളിസി",
-    "termsOfService" : "സേവനത്തിന്റെ ഭരണം"
+  "settings": {
+    "aboutUs": "ഞങ്ങളെക്കുറിച്ചുള്ള",
+    "rateUs": "Rate Us",
+    "issues": "എന്തെങ്കിലും പ്രശ്നം ഉണ്ടോ?",
+    "deleteAccount": "അക്കൌണ്ട് മായ്ക്കുക",
+    "signOut": "ഒപ്പ് വെക്കുക",
+    "darkMode": "ഇരുണ്ട ദശ",
+    "privacyPolicy": "ഡേറ്റാ പോളിസി",
+    "termsOfService": "സേവനത്തിന്റെ ഭരണം"
   },
-  "otpVerification" : {
-    "heading" : "ഞങ്ങള് നിങ്ങളെ ഒരു കോഡ് അയച്ചിട്ടുണ്ട്."
+  "otpVerification": {
+    "heading": "ഞങ്ങള് നിങ്ങളെ ഒരു കോഡ് അയച്ചിട്ടുണ്ട്."
   },
-  "emailVerification" : {
-    "heading" : "ദയവായി നിങ്ങളുടെ ഈമെയില് പരിശോധിക്കൂ.",
-    "emailSent" : "ഞങ്ങള് നിങ്ങളെ ഒരു ഈമെയില് അയച്ചിട്ടുണ്ട്."
+  "emailVerification": {
+    "heading": "ദയവായി നിങ്ങളുടെ ഈമെയില് പരിശോധിക്കൂ.",
+    "emailSent": "ഞങ്ങള് നിങ്ങളെ ഒരു ഈമെയില് അയച്ചിട്ടുണ്ട്."
   },
-  "issues" : {
-    "heading" : "എന്താ പ്രശ്നം?",
-    "subHeading" : "നമ്മുടെ ടീം നമ്മുടെ മികച്ച പരിശീലനത്തേക്ക് അവരെ പരിഹരിക്കാന് ശ്രമിക്കാം."
+  "issues": {
+    "heading": "എന്താ പ്രശ്നം?",
+    "subHeading": "നമ്മുടെ ടീം നമ്മുടെ മികച്ച പരിശീലനത്തേക്ക് അവരെ പരിഹരിക്കാന് ശ്രമിക്കാം."
   },
-  "errors" : {
-    "anErrorOccured" : "ഒരു പിശകു്",
-    "roomDoesNotExist" : "റൂം നിലവിലില്ല ",
-    "roomUserDoesNotExist" : "ഒന്നുകില് റൂം അല്ലെങ്കില് ഉപയോക്താവ് നിലവിലില്ല",
-    "roomNameTaken" : "റൂം പേരു്",
-    "playServices" : "സേവനങ്ങള് ലഭ്യമല്ല",
-    "emailVerification" : "മെയില് വെറിവ് ചെയ്യുവാന്",
-    "invalidCode" : "അസാധുവായ കോഡ്",
-    "unexpectedError" : "അപ്രതീക്ഷിതമായ പിശകു് സംഭവിച്ചിരിക്കുന്നു",
-    "usernameTaken" : "Username Already Taken",
-    "invalidEmail" : "അസാധുവായ ഈമെയില് വിലാസം",
-    "emailInUse" : "ഉപയോഗത്തില് ഈമെയില് ഇമെയില്"
+  "errors": {
+    "anErrorOccured": "ഒരു പിശകു്",
+    "roomDoesNotExist": "റൂം നിലവിലില്ല ",
+    "roomUserDoesNotExist": "ഒന്നുകില് റൂം അല്ലെങ്കില് ഉപയോക്താവ് നിലവിലില്ല",
+    "roomNameTaken": "റൂം പേരു്",
+    "playServices": "സേവനങ്ങള് ലഭ്യമല്ല",
+    "emailVerification": "മെയില് വെറിവ് ചെയ്യുവാന്",
+    "invalidCode": "അസാധുവായ കോഡ്",
+    "unexpectedError": "അപ്രതീക്ഷിതമായ പിശകു് സംഭവിച്ചിരിക്കുന്നു",
+    "usernameTaken": "Username Already Taken",
+    "invalidEmail": "അസാധുവായ ഈമെയില് വിലാസം",
+    "emailInUse": "ഉപയോഗത്തില് ഈമെയില് ഇമെയില്"
   }
 }

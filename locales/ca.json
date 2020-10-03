@@ -1,100 +1,100 @@
 {
-  "buttons" : {
-    "signUpOnboard" : "Registeu-vos amb el correu electrònic   ",
-    "logInOnboard" : "Inicia Sessió Amb Correu Electrònic   ",
-    "signUp" : "Registra't   ",
-    "logIn" : "Inicia sessió   ",
-    "verify" : "Verificar   ",
-    "forgotPassword" : "Oblido contrasenya?   ",
-    "getOTP" : "Obtenir OTP   ",
-    "createRoom" : "Crear   ",
-    "joinRoom" : "Unió   ",
-    "joinedRoom" : "Units   ",
-    "invite" : "Invitació   ",
-    "invited" : "Convidat   ",
-    "findRoom" : "Trobar una habitació   ",
-    "done" : "Fet   ",
-    "cancel" : "Cancel-   ",
-    "close" : "Tancament   ",
-    "submit" : "Presentar   ",
-    "resend" : "Resend   ",
-    "accept" : "Accepta   ",
-    "decline" : "Disminució   "
+  "buttons": {
+    "signUpOnboard": "Registeu-vos amb el correu electrònic   ",
+    "logInOnboard": "Inicia Sessió Amb Correu Electrònic   ",
+    "signUp": "Registra't   ",
+    "logIn": "Inicia sessió   ",
+    "verify": "Verificar   ",
+    "forgotPassword": "Oblido contrasenya?   ",
+    "getOTP": "Obtenir OTP   ",
+    "createRoom": "Crear   ",
+    "joinRoom": "Unió   ",
+    "joinedRoom": "Units   ",
+    "invite": "Invitació   ",
+    "invited": "Convidat   ",
+    "findRoom": "Trobar una habitació   ",
+    "done": "Fet   ",
+    "cancel": "Cancel-   ",
+    "close": "Tancament   ",
+    "submit": "Presentar   ",
+    "resend": "Resend   ",
+    "accept": "Accepta   ",
+    "decline": "Disminució   "
   },
-  "placeholders" : {
-    "email" : "Adreça electrònica   ",
-    "username" : "Nom   ",
-    "issue" : "Assumpte   ",
-    "description" : "Descripció   ",
-    "password" : "Contrasenya   ",
-    "code" : "Codi de verificació   ",
-    "seach" : "En què estàs entradetat?   ",
-    "roomName" : "De què parlaria vostè?   ",
-    "roomDescription" : "Descriure en menys de 100 caràcters   ",
-    "searchUsername" : "Nom d'usuari   ",
-    "forgotPassword" : "Correu electrònic registrat o número de telèfon   ",
-    "searchRooms" : "En què estàs entradetat?   "
+  "placeholders": {
+    "email": "Adreça electrònica   ",
+    "username": "Nom   ",
+    "issue": "Assumpte   ",
+    "description": "Descripció   ",
+    "password": "Contrasenya   ",
+    "code": "Codi de verificació   ",
+    "seach": "En què estàs entradetat?   ",
+    "roomName": "De què parlaria vostè?   ",
+    "roomDescription": "Descriure en menys de 100 caràcters   ",
+    "searchUsername": "Nom d'usuari   ",
+    "forgotPassword": "Correu electrònic registrat o número de telèfon   ",
+    "searchRooms": "En què estàs entradetat?   "
   },
-  "screens" : {
-    "signUp" : "Join Fluxroom   ",
-    "logIn" : "Inicia sessió   ",
-    "forgotPassword" : "Contrasenya oblidada   ",
-    "setUpProfile" : "Configura el seu perfil   ",
-    "phone" : "Inicia sessió amb número de telèfon   ",
-    "fluxroom" : "Fluxroom   ",
-    "findRooms" : "Cerca sales   ",
-    "settings" : "Configuració   ",
-    "profile" : "Perfil   ",
-    "aboutUs" : "Quant a Nosaltres   ",
-    "dataPolicy" : "Política de dades   ",
-    "termsOfService" : "Condicions de servei   ",
-    "invitations" : "Invitacions   ",
-    "issues" : "Qüestions   ",
-    "createRoom" : "Crear la seva pròpia habitació   ",
-    "topRooms" : "Sales superiors   "
+  "screens": {
+    "signUp": "Join Fluxroom   ",
+    "logIn": "Inicia sessió   ",
+    "forgotPassword": "Contrasenya oblidada   ",
+    "setUpProfile": "Configura el seu perfil   ",
+    "phone": "Inicia sessió amb número de telèfon   ",
+    "fluxroom": "Fluxroom   ",
+    "findRooms": "Cerca sales   ",
+    "settings": "Configuració   ",
+    "profile": "Perfil   ",
+    "aboutUs": "Quant a Nosaltres   ",
+    "privacyPolicy": "Política de dades   ",
+    "termsOfService": "Condicions de servei   ",
+    "invitations": "Invitacions   ",
+    "issues": "Qüestions   ",
+    "createRoom": "Crear la seva pròpia habitació   ",
+    "topRooms": "Sales superiors   "
   },
-  "onboard" : {
-    "subHeading" : "Connecta't amb qualsevol persona a través   "
+  "onboard": {
+    "subHeading": "Connecta't amb qualsevol persona a través   "
   },
-  "chatRooms" : {
-    "noRooms" : "No Habitacions: (   ",
-    "shareLink" : "Enllaç compartit   ",
-    "reportUser" : "Usuari de l'informe   ",
-    "blockUser" : "Usuari de bloc   ",
-    "noRoomExists" : "No hi ha lloc tal!   "
+  "chatRooms": {
+    "noRooms": "No Habitacions: (   ",
+    "shareLink": "Enllaç compartit   ",
+    "reportUser": "Usuari de l'informe   ",
+    "blockUser": "Usuari de bloc   ",
+    "noRoomExists": "No hi ha lloc tal!   "
   },
-  "settings" : {
-    "aboutUs" : "Quant a Nosaltres   ",
-    "rateUs" : "Rate Us   ",
-    "issues" : "T' enfrontes a algun problema?   ",
-    "deleteAccount" : "Suprimir compte   ",
-    "signOut" : "Signe de sortida   ",
-    "darkMode" : "Mode fosc   ",
-    "dataPolicy" : "Política de dades   ",
-    "termsOfService" : "Condicions de servei   "
+  "settings": {
+    "aboutUs": "Quant a Nosaltres   ",
+    "rateUs": "Rate Us   ",
+    "issues": "T' enfrontes a algun problema?   ",
+    "deleteAccount": "Suprimir compte   ",
+    "signOut": "Signe de sortida   ",
+    "darkMode": "Mode fosc   ",
+    "privacyPolicy": "Política de dades   ",
+    "termsOfService": "Condicions de servei   "
   },
-  "otpVerification" : {
-    "heading" : "Li hem enviat un codi a   "
+  "otpVerification": {
+    "heading": "Li hem enviat un codi a   "
   },
-  "emailVerification" : {
-    "heading" : "Si us plau, comproveu el vostre correu electrònic.   ",
-    "emailSent" : "Li hem enviat un correu electrònic a   "
+  "emailVerification": {
+    "heading": "Si us plau, comproveu el vostre correu electrònic.   ",
+    "emailSent": "Li hem enviat un correu electrònic a   "
   },
-  "issues" : {
-    "heading" : "Quin problema et vas enfrontar?   ",
-    "subHeading" : "El nostre equip tractarà d'arreglar-los a la nostra millor pràctica.   "
+  "issues": {
+    "heading": "Quin problema et vas enfrontar?   ",
+    "subHeading": "El nostre equip tractarà d'arreglar-los a la nostra millor pràctica.   "
   },
-  "errors" : {
-    "anErrorOccured" : "S'ha produït un error   ",
-    "roomDoesNotExist" : "La sala no existeix     ",
-    "roomUserDoesNotExist" : "La sala o l'usuari no existeixen   ",
-    "roomNameTaken" : "Nom de sala ja pres   ",
-    "playServices" : "Serveis de reproducció no disponibles   ",
-    "emailVerification" : "Correu electrònic no verificat   ",
-    "invalidCode" : "Codi no vàlid   ",
-    "unexpectedError" : "S'ha produït un error inesperat   ",
-    "usernameTaken" : "Nom d'usuari ja pres   ",
-    "invalidEmail" : "Adreça de correu no vàlida   ",
-    "emailInUse" : "Correu electrònic ja en ús"
+  "errors": {
+    "anErrorOccured": "S'ha produït un error   ",
+    "roomDoesNotExist": "La sala no existeix     ",
+    "roomUserDoesNotExist": "La sala o l'usuari no existeixen   ",
+    "roomNameTaken": "Nom de sala ja pres   ",
+    "playServices": "Serveis de reproducció no disponibles   ",
+    "emailVerification": "Correu electrònic no verificat   ",
+    "invalidCode": "Codi no vàlid   ",
+    "unexpectedError": "S'ha produït un error inesperat   ",
+    "usernameTaken": "Nom d'usuari ja pres   ",
+    "invalidEmail": "Adreça de correu no vàlida   ",
+    "emailInUse": "Correu electrònic ja en ús"
   }
 }

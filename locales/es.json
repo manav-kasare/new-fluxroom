@@ -1,100 +1,100 @@
 {
-  "buttons" : {
-    "signUpOnboard" : "Regístrese Con El Correo Electrónico ",
-    "logInOnboard" : "Iniciar Sesión Con Correo Electrónico ",
-    "signUp" : "Regístrate ",
-    "logIn" : "Iniciar sesión ",
-    "verify" : "Verificar ",
-    "forgotPassword" : "¿Olvidó contraseña? ",
-    "getOTP" : "Obtener OTP ",
-    "createRoom" : "Crear ",
-    "joinRoom" : "Unión ",
-    "joinedRoom" : "Unidos ",
-    "invite" : "Invitación ",
-    "invited" : "Invitado ",
-    "findRoom" : "Encontrar una habitación ",
-    "done" : "Hecho ",
-    "cancel" : "Cancelar ",
-    "close" : "Cierre ",
-    "submit" : "Presentar ",
-    "resend" : "Resend ",
-    "accept" : "Aceptar ",
-    "decline" : "Disminución "
+  "buttons": {
+    "signUpOnboard": "Regístrese Con El Correo Electrónico ",
+    "logInOnboard": "Iniciar Sesión Con Correo Electrónico ",
+    "signUp": "Regístrate ",
+    "logIn": "Iniciar sesión ",
+    "verify": "Verificar ",
+    "forgotPassword": "¿Olvidó contraseña? ",
+    "getOTP": "Obtener OTP ",
+    "createRoom": "Crear ",
+    "joinRoom": "Unión ",
+    "joinedRoom": "Unidos ",
+    "invite": "Invitación ",
+    "invited": "Invitado ",
+    "findRoom": "Encontrar una habitación ",
+    "done": "Hecho ",
+    "cancel": "Cancelar ",
+    "close": "Cierre ",
+    "submit": "Presentar ",
+    "resend": "Resend ",
+    "accept": "Aceptar ",
+    "decline": "Disminución "
   },
-  "placeholders" : {
-    "email" : "Dirección electrónica ",
-    "username" : "Nombre ",
-    "issue" : "Asunto ",
-    "description" : "Descripción ",
-    "password" : "Contraseña ",
-    "code" : "Código de verificación ",
-    "seach" : "¿En qué estás entradeado? ",
-    "roomName" : "¿De qué hablaría usted? ",
-    "roomDescription" : "Describir en menos de 100 caracteres ",
-    "searchUsername" : "Nombre de usuario ",
-    "forgotPassword" : "Correo electrónico registrado o número de teléfono ",
-    "searchRooms" : "¿En qué estás entradeado? "
+  "placeholders": {
+    "email": "Dirección electrónica ",
+    "username": "Nombre ",
+    "issue": "Asunto ",
+    "description": "Descripción ",
+    "password": "Contraseña ",
+    "code": "Código de verificación ",
+    "seach": "¿En qué estás entradeado? ",
+    "roomName": "¿De qué hablaría usted? ",
+    "roomDescription": "Describir en menos de 100 caracteres ",
+    "searchUsername": "Nombre de usuario ",
+    "forgotPassword": "Correo electrónico registrado o número de teléfono ",
+    "searchRooms": "¿En qué estás entradeado? "
   },
-  "screens" : {
-    "signUp" : "Join Fluxroom ",
-    "logIn" : "Iniciar sesión ",
-    "forgotPassword" : "Contraseña olvidada ",
-    "setUpProfile" : "Configurar su perfil ",
-    "phone" : "Iniciar sesión con número de teléfono ",
-    "fluxroom" : "Fluxroom ",
-    "findRooms" : "Buscar salas ",
-    "settings" : "Configuración ",
-    "profile" : "Perfil ",
-    "aboutUs" : "Acerca de Nosotros ",
-    "dataPolicy" : "Política de datos ",
-    "termsOfService" : "Condiciones de servicio ",
-    "invitations" : "Invitaciones ",
-    "issues" : "Cuestiones ",
-    "createRoom" : "Crear su propia habitación ",
-    "topRooms" : "Salas superiores "
+  "screens": {
+    "signUp": "Join Fluxroom ",
+    "logIn": "Iniciar sesión ",
+    "forgotPassword": "Contraseña olvidada ",
+    "setUpProfile": "Configurar su perfil ",
+    "phone": "Iniciar sesión con número de teléfono ",
+    "fluxroom": "Fluxroom ",
+    "findRooms": "Buscar salas ",
+    "settings": "Configuración ",
+    "profile": "Perfil ",
+    "aboutUs": "Acerca de Nosotros ",
+    "privacyPolicy": "Política de datos ",
+    "termsOfService": "Condiciones de servicio ",
+    "invitations": "Invitaciones ",
+    "issues": "Cuestiones ",
+    "createRoom": "Crear su propia habitación ",
+    "topRooms": "Salas superiores "
   },
-  "onboard" : {
-    "subHeading" : "¡Conéctate con cualquier persona a través "
+  "onboard": {
+    "subHeading": "¡Conéctate con cualquier persona a través "
   },
-  "chatRooms" : {
-    "noRooms" : "No Habitaciones: ( ",
-    "shareLink" : "Enlace compartido ",
-    "reportUser" : "Usuario de informe ",
-    "blockUser" : "Usuario de bloque ",
-    "noRoomExists" : "¡No hay lugar tal! "
+  "chatRooms": {
+    "noRooms": "No Habitaciones: ( ",
+    "shareLink": "Enlace compartido ",
+    "reportUser": "Usuario de informe ",
+    "blockUser": "Usuario de bloque ",
+    "noRoomExists": "¡No hay lugar tal! "
   },
-  "settings" : {
-    "aboutUs" : "Acerca de Nosotros ",
-    "rateUs" : "Rate Us ",
-    "issues" : "¿Te enfrentaste a algún problema? ",
-    "deleteAccount" : "Suprimir cuenta ",
-    "signOut" : "Signo de salida ",
-    "darkMode" : "Modo oscuro ",
-    "dataPolicy" : "Política de datos ",
-    "termsOfService" : "Condiciones de servicio "
+  "settings": {
+    "aboutUs": "Acerca de Nosotros ",
+    "rateUs": "Rate Us ",
+    "issues": "¿Te enfrentaste a algún problema? ",
+    "deleteAccount": "Suprimir cuenta ",
+    "signOut": "Signo de salida ",
+    "darkMode": "Modo oscuro ",
+    "privacyPolicy": "Política de datos ",
+    "termsOfService": "Condiciones de servicio "
   },
-  "otpVerification" : {
-    "heading" : "Le hemos enviado un código en "
+  "otpVerification": {
+    "heading": "Le hemos enviado un código en "
   },
-  "emailVerification" : {
-    "heading" : "Por favor, verifique su correo electrónico. ",
-    "emailSent" : "Le hemos enviado un correo electrónico en "
+  "emailVerification": {
+    "heading": "Por favor, verifique su correo electrónico. ",
+    "emailSent": "Le hemos enviado un correo electrónico en "
   },
-  "issues" : {
-    "heading" : "¿Qué problema te enfrentaste? ",
-    "subHeading" : "Nuestro equipo tratará de arreglarlos a nuestra mejor práctica. "
+  "issues": {
+    "heading": "¿Qué problema te enfrentaste? ",
+    "subHeading": "Nuestro equipo tratará de arreglarlos a nuestra mejor práctica. "
   },
-  "errors" : {
-    "anErrorOccured" : "Se Ha Producido Un Error ",
-    "roomDoesNotExist" : "La sala no existe   ",
-    "roomUserDoesNotExist" : "La sala o el usuario no existen ",
-    "roomNameTaken" : "Nombre de sala ya tomado ",
-    "playServices" : "Servicios de reproducción no disponibles ",
-    "emailVerification" : "Correo electrónico no verificado ",
-    "invalidCode" : "Código no válido ",
-    "unexpectedError" : "Se ha producido un error inesperado ",
-    "usernameTaken" : "Nombre de usuario ya tomado ",
-    "invalidEmail" : "Dirección de correo no válida ",
-    "emailInUse" : "Correo electrónico ya en uso"
+  "errors": {
+    "anErrorOccured": "Se Ha Producido Un Error ",
+    "roomDoesNotExist": "La sala no existe   ",
+    "roomUserDoesNotExist": "La sala o el usuario no existen ",
+    "roomNameTaken": "Nombre de sala ya tomado ",
+    "playServices": "Servicios de reproducción no disponibles ",
+    "emailVerification": "Correo electrónico no verificado ",
+    "invalidCode": "Código no válido ",
+    "unexpectedError": "Se ha producido un error inesperado ",
+    "usernameTaken": "Nombre de usuario ya tomado ",
+    "invalidEmail": "Dirección de correo no válida ",
+    "emailInUse": "Correo electrónico ya en uso"
   }
 }

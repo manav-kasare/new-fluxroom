@@ -1,100 +1,100 @@
 {
-  "buttons" : {
-    "signUpOnboard" : "Sínigh Suas Le Ríomhphost ",
-    "logInOnboard" : "Logáil Isteach Le Ríomhphost ",
-    "signUp" : "Sínigh Suas ",
-    "logIn" : "Logáil Isteach ",
-    "verify" : "Fíordheimhniú ",
-    "forgotPassword" : "Dearmad Focal Faire? ",
-    "getOTP" : "Faigh OTP ",
-    "createRoom" : "Cruthaigh ",
-    "joinRoom" : "Comhrá ",
-    "joinedRoom" : "Chuaigh isteach ",
-    "invite" : "Lorg ",
-    "invited" : "@ info ",
-    "findRoom" : "Aimsigh seomra ",
-    "done" : "Críochnaithe ",
-    "cancel" : "Cealaigh ",
-    "close" : "Dún ",
-    "submit" : "Seol ",
-    "resend" : "& Críochnaigh ",
-    "accept" : "Glacadh le ",
-    "decline" : "Diúltaigh "
+  "buttons": {
+    "signUpOnboard": "Sínigh Suas Le Ríomhphost ",
+    "logInOnboard": "Logáil Isteach Le Ríomhphost ",
+    "signUp": "Sínigh Suas ",
+    "logIn": "Logáil Isteach ",
+    "verify": "Fíordheimhniú ",
+    "forgotPassword": "Dearmad Focal Faire? ",
+    "getOTP": "Faigh OTP ",
+    "createRoom": "Cruthaigh ",
+    "joinRoom": "Comhrá ",
+    "joinedRoom": "Chuaigh isteach ",
+    "invite": "Lorg ",
+    "invited": "@ info ",
+    "findRoom": "Aimsigh seomra ",
+    "done": "Críochnaithe ",
+    "cancel": "Cealaigh ",
+    "close": "Dún ",
+    "submit": "Seol ",
+    "resend": "& Críochnaigh ",
+    "accept": "Glacadh le ",
+    "decline": "Diúltaigh "
   },
-  "placeholders" : {
-    "email" : "Seoladh Ríomhphoist: ",
-    "username" : "Ainm úsáideora ",
-    "issue" : "Eagrán ",
-    "description" : "Cur Síos ",
-    "password" : "Focal faire ",
-    "code" : "Cód fíoraithe ",
-    "seach" : "Cad atá tú intreáilte i? ",
-    "roomName" : "Cad a bheadh tú ag caint faoi? ",
-    "roomDescription" : "Cur síos ar níos lú ná 100 carachtair ",
-    "searchUsername" : "Cuardaigh ainm úsáideora ",
-    "forgotPassword" : "Ríomhphost cláraithe nó uimhir theileafóin ",
-    "searchRooms" : "Cad atá tú intreáilte i? "
+  "placeholders": {
+    "email": "Seoladh Ríomhphoist: ",
+    "username": "Ainm úsáideora ",
+    "issue": "Eagrán ",
+    "description": "Cur Síos ",
+    "password": "Focal faire ",
+    "code": "Cód fíoraithe ",
+    "seach": "Cad atá tú intreáilte i? ",
+    "roomName": "Cad a bheadh tú ag caint faoi? ",
+    "roomDescription": "Cur síos ar níos lú ná 100 carachtair ",
+    "searchUsername": "Cuardaigh ainm úsáideora ",
+    "forgotPassword": "Ríomhphost cláraithe nó uimhir theileafóin ",
+    "searchRooms": "Cad atá tú intreáilte i? "
   },
-  "screens" : {
-    "signUp" : "Téigh go dtí an tSeinnc ",
-    "logIn" : "Logáil Isteach ",
-    "forgotPassword" : "Dífuair Focal Faire ",
-    "setUpProfile" : "Socraigh suas do phróifíl ",
-    "phone" : "Sínigh Isteach le líon teileafóin ",
-    "fluxroom" : "Luxseomra ",
-    "findRooms" : "Aimsigh Seomraí ",
-    "settings" : "Socruithe ",
-    "profile" : "Próifíl ",
-    "aboutUs" : "Timpeall Orainn ",
-    "dataPolicy" : "Polasaí Sonraí ",
-    "termsOfService" : "Téarmaí na Seirbhíse ",
-    "invitations" : "Cuireadh ",
-    "issues" : "Saincheisteanna ",
-    "createRoom" : "Cruthaigh do chuid seomra féin ",
-    "topRooms" : "Seomraí BarraName "
+  "screens": {
+    "signUp": "Téigh go dtí an tSeinnc ",
+    "logIn": "Logáil Isteach ",
+    "forgotPassword": "Dífuair Focal Faire ",
+    "setUpProfile": "Socraigh suas do phróifíl ",
+    "phone": "Sínigh Isteach le líon teileafóin ",
+    "fluxroom": "Luxseomra ",
+    "findRooms": "Aimsigh Seomraí ",
+    "settings": "Socruithe ",
+    "profile": "Próifíl ",
+    "aboutUs": "Timpeall Orainn ",
+    "privacyPolicy": "Polasaí Sonraí ",
+    "termsOfService": "Téarmaí na Seirbhíse ",
+    "invitations": "Cuireadh ",
+    "issues": "Saincheisteanna ",
+    "createRoom": "Cruthaigh do chuid seomra féin ",
+    "topRooms": "Seomraí BarraName "
   },
-  "onboard" : {
-    "subHeading" : "Ceangail le haon duine trí fuaime! "
+  "onboard": {
+    "subHeading": "Ceangail le haon duine trí fuaime! "
   },
-  "chatRooms" : {
-    "noRooms" : "Gan Seomraí: ( ",
-    "shareLink" : "Comhroinn Nasc ",
-    "reportUser" : "Úsáideoir Tuairisc ",
-    "blockUser" : "Úsáideoir bloc ",
-    "noRoomExists" : "Níl aon seomra ann! "
+  "chatRooms": {
+    "noRooms": "Gan Seomraí: ( ",
+    "shareLink": "Comhroinn Nasc ",
+    "reportUser": "Úsáideoir Tuairisc ",
+    "blockUser": "Úsáideoir bloc ",
+    "noRoomExists": "Níl aon seomra ann! "
   },
-  "settings" : {
-    "aboutUs" : "Timpeall Orainn ",
-    "rateUs" : "Ráta Dúinn ",
-    "issues" : "An raibh tú aghaidh ar aon saincheisteanna? ",
-    "deleteAccount" : "Scrios Cuntas ",
-    "signOut" : "Sínigh Amach ",
-    "darkMode" : "Mód Dorcha ",
-    "dataPolicy" : "Polasaí Sonraí ",
-    "termsOfService" : "Téarmaí na Seirbhíse "
+  "settings": {
+    "aboutUs": "Timpeall Orainn ",
+    "rateUs": "Ráta Dúinn ",
+    "issues": "An raibh tú aghaidh ar aon saincheisteanna? ",
+    "deleteAccount": "Scrios Cuntas ",
+    "signOut": "Sínigh Amach ",
+    "darkMode": "Mód Dorcha ",
+    "privacyPolicy": "Polasaí Sonraí ",
+    "termsOfService": "Téarmaí na Seirbhíse "
   },
-  "otpVerification" : {
-    "heading" : "Táimid tar éis duit cód a sheoladh ag "
+  "otpVerification": {
+    "heading": "Táimid tar éis duit cód a sheoladh ag "
   },
-  "emailVerification" : {
-    "heading" : "Fíoraigh do ríomhphost le do thoil. ",
-    "emailSent" : "Táimid tar éis duit r-phost a sheoladh ag "
+  "emailVerification": {
+    "heading": "Fíoraigh do ríomhphost le do thoil. ",
+    "emailSent": "Táimid tar éis duit r-phost a sheoladh ag "
   },
-  "issues" : {
-    "heading" : "Cén cheist a rinne tú aghaidh? ",
-    "subHeading" : "Beidh ár bhfoireann iarracht chun iad a shocrú ar ár gcleachtas is fearr. "
+  "issues": {
+    "heading": "Cén cheist a rinne tú aghaidh? ",
+    "subHeading": "Beidh ár bhfoireann iarracht chun iad a shocrú ar ár gcleachtas is fearr. "
   },
-  "errors" : {
-    "anErrorOccured" : "@ info: info ",
-    "roomDoesNotExist" : "Níl an seomra ann   ",
-    "roomUserDoesNotExist" : "Níl seomra nó úsáideoir ann ",
-    "roomNameTaken" : "Ainm an tseomra atá tógtha cheana cheana ",
-    "playServices" : "Seinn seirbhísí nach bhfuil ar fáil ",
-    "emailVerification" : "Ríomhphost nach bhfuil á fhíorú ",
-    "invalidCode" : "Cód Neamhbhailí ",
-    "unexpectedError" : "Earráid gan súil leis ",
-    "usernameTaken" : "Ainm Úsáideora cheana ",
-    "invalidEmail" : "Seoladh Neamhbhailí Ríomhphoist ",
-    "emailInUse" : "Ríomhphost cheana féin in úsáid"
+  "errors": {
+    "anErrorOccured": "@ info: info ",
+    "roomDoesNotExist": "Níl an seomra ann   ",
+    "roomUserDoesNotExist": "Níl seomra nó úsáideoir ann ",
+    "roomNameTaken": "Ainm an tseomra atá tógtha cheana cheana ",
+    "playServices": "Seinn seirbhísí nach bhfuil ar fáil ",
+    "emailVerification": "Ríomhphost nach bhfuil á fhíorú ",
+    "invalidCode": "Cód Neamhbhailí ",
+    "unexpectedError": "Earráid gan súil leis ",
+    "usernameTaken": "Ainm Úsáideora cheana ",
+    "invalidEmail": "Seoladh Neamhbhailí Ríomhphoist ",
+    "emailInUse": "Ríomhphost cheana féin in úsáid"
   }
 }

@@ -1,100 +1,100 @@
 {
-  "buttons" : {
-    "signUpOnboard" : "Registrer deg med e-post ",
-    "logInOnboard" : "Logg inn med e-post ",
-    "signUp" : "Registrer deg ",
-    "logIn" : "Logg inn ",
-    "verify" : "Verifiser ",
-    "forgotPassword" : "Glemt passord? ",
-    "getOTP" : "Hent OTP ",
-    "createRoom" : "Lag ",
-    "joinRoom" : "Kombiner ",
-    "joinedRoom" : "Kombinert ",
-    "invite" : "Inviter ",
-    "invited" : "Invitert ",
-    "findRoom" : "Finn et rom ",
-    "done" : "Ferdig ",
-    "cancel" : "Annuller ",
-    "close" : "Lukk ",
-    "submit" : "Send ",
-    "resend" : "Omsend ",
-    "accept" : "Godta ",
-    "decline" : "Avslå "
+  "buttons": {
+    "signUpOnboard": "Registrer deg med e-post ",
+    "logInOnboard": "Logg inn med e-post ",
+    "signUp": "Registrer deg ",
+    "logIn": "Logg inn ",
+    "verify": "Verifiser ",
+    "forgotPassword": "Glemt passord? ",
+    "getOTP": "Hent OTP ",
+    "createRoom": "Lag ",
+    "joinRoom": "Kombiner ",
+    "joinedRoom": "Kombinert ",
+    "invite": "Inviter ",
+    "invited": "Invitert ",
+    "findRoom": "Finn et rom ",
+    "done": "Ferdig ",
+    "cancel": "Annuller ",
+    "close": "Lukk ",
+    "submit": "Send ",
+    "resend": "Omsend ",
+    "accept": "Godta ",
+    "decline": "Avslå "
   },
-  "placeholders" : {
-    "email" : "E-postadresse for e-post ",
-    "username" : "Brukernavn ",
-    "issue" : "Utsted ",
-    "description" : "Beskrivelse ",
-    "password" : "Passord ",
-    "code" : "Verifisering av kode ",
-    "seach" : "Hva er du intrestet i? ",
-    "roomName" : "Hva ville du snakke om? ",
-    "roomDescription" : "Beskriv på mindre enn 100 tegn ",
-    "searchUsername" : "Søk i brukernavn ",
-    "forgotPassword" : "Registrert e-post eller telefonnummer ",
-    "searchRooms" : "Hva er du intrestet i? "
+  "placeholders": {
+    "email": "E-postadresse for e-post ",
+    "username": "Brukernavn ",
+    "issue": "Utsted ",
+    "description": "Beskrivelse ",
+    "password": "Passord ",
+    "code": "Verifisering av kode ",
+    "seach": "Hva er du intrestet i? ",
+    "roomName": "Hva ville du snakke om? ",
+    "roomDescription": "Beskriv på mindre enn 100 tegn ",
+    "searchUsername": "Søk i brukernavn ",
+    "forgotPassword": "Registrert e-post eller telefonnummer ",
+    "searchRooms": "Hva er du intrestet i? "
   },
-  "screens" : {
-    "signUp" : "Kombiner Fluktrom ",
-    "logIn" : "Logg inn ",
-    "forgotPassword" : "Glemt passord ",
-    "setUpProfile" : "Sett opp profilen din ",
-    "phone" : "Meld deg på med telefonnummer ",
-    "fluxroom" : "Fluksuriom ",
-    "findRooms" : "Finn rom ",
-    "settings" : "Innstillinger ",
-    "profile" : "Profil ",
-    "aboutUs" : "Om oss ",
-    "dataPolicy" : "Policy for data ",
-    "termsOfService" : "Betingelser for tjeneste ",
-    "invitations" : "Innkallinger ",
-    "issues" : "Problemer ",
-    "createRoom" : "Opprett ditt eget rom ",
-    "topRooms" : "Topp rom "
+  "screens": {
+    "signUp": "Kombiner Fluktrom ",
+    "logIn": "Logg inn ",
+    "forgotPassword": "Glemt passord ",
+    "setUpProfile": "Sett opp profilen din ",
+    "phone": "Meld deg på med telefonnummer ",
+    "fluxroom": "Fluksuriom ",
+    "findRooms": "Finn rom ",
+    "settings": "Innstillinger ",
+    "profile": "Profil ",
+    "aboutUs": "Om oss ",
+    "privacyPolicy": "Policy for data ",
+    "termsOfService": "Betingelser for tjeneste ",
+    "invitations": "Innkallinger ",
+    "issues": "Problemer ",
+    "createRoom": "Opprett ditt eget rom ",
+    "topRooms": "Topp rom "
   },
-  "onboard" : {
-    "subHeading" : "Koble til med hvem som helst via lyd! "
+  "onboard": {
+    "subHeading": "Koble til med hvem som helst via lyd! "
   },
-  "chatRooms" : {
-    "noRooms" : "Ingen rom: ( ",
-    "shareLink" : "Del kobling ",
-    "reportUser" : "Rapport bruker ",
-    "blockUser" : "Blokker bruker ",
-    "noRoomExists" : "Det finnes ikke rom som finnes! "
+  "chatRooms": {
+    "noRooms": "Ingen rom: ( ",
+    "shareLink": "Del kobling ",
+    "reportUser": "Rapport bruker ",
+    "blockUser": "Blokker bruker ",
+    "noRoomExists": "Det finnes ikke rom som finnes! "
   },
-  "settings" : {
-    "aboutUs" : "Om oss ",
-    "rateUs" : "Vurder oss ",
-    "issues" : "-Har du ansiktet noen problemer? ",
-    "deleteAccount" : "Slett konto ",
-    "signOut" : "Logg ut ",
-    "darkMode" : "Mørk modus ",
-    "dataPolicy" : "Policy for data ",
-    "termsOfService" : "Betingelser for tjeneste "
+  "settings": {
+    "aboutUs": "Om oss ",
+    "rateUs": "Vurder oss ",
+    "issues": "-Har du ansiktet noen problemer? ",
+    "deleteAccount": "Slett konto ",
+    "signOut": "Logg ut ",
+    "darkMode": "Mørk modus ",
+    "privacyPolicy": "Policy for data ",
+    "termsOfService": "Betingelser for tjeneste "
   },
-  "otpVerification" : {
-    "heading" : "Vi har sendt deg en kode på "
+  "otpVerification": {
+    "heading": "Vi har sendt deg en kode på "
   },
-  "emailVerification" : {
-    "heading" : "Vennligst verifiser din e-post. ",
-    "emailSent" : "Vi har sendt deg en e-post på "
+  "emailVerification": {
+    "heading": "Vennligst verifiser din e-post. ",
+    "emailSent": "Vi har sendt deg en e-post på "
   },
-  "issues" : {
-    "heading" : "Hvilket tema har du ansiktet til? ",
-    "subHeading" : "Vårt lag vil prøve å fikse dem til vår beste praksis. "
+  "issues": {
+    "heading": "Hvilket tema har du ansiktet til? ",
+    "subHeading": "Vårt lag vil prøve å fikse dem til vår beste praksis. "
   },
-  "errors" : {
-    "anErrorOccured" : "En feil Ockureres ",
-    "roomDoesNotExist" : "Rommet finnes ikke   ",
-    "roomUserDoesNotExist" : "Enten rom eller bruker finnes ikke ",
-    "roomNameTaken" : "Romnavnet Allerede utført ",
-    "playServices" : "Play-tjenester ikke tilgjengelig ",
-    "emailVerification" : "E-post ikke verifisert ",
-    "invalidCode" : "Ugyldig kode ",
-    "unexpectedError" : "En uventet feil oppstod ",
-    "usernameTaken" : "Brukernavn allerede tatt ",
-    "invalidEmail" : "Ugyldig e-postadresse ",
-    "emailInUse" : "E-post allerede i bruk"
+  "errors": {
+    "anErrorOccured": "En feil Ockureres ",
+    "roomDoesNotExist": "Rommet finnes ikke   ",
+    "roomUserDoesNotExist": "Enten rom eller bruker finnes ikke ",
+    "roomNameTaken": "Romnavnet Allerede utført ",
+    "playServices": "Play-tjenester ikke tilgjengelig ",
+    "emailVerification": "E-post ikke verifisert ",
+    "invalidCode": "Ugyldig kode ",
+    "unexpectedError": "En uventet feil oppstod ",
+    "usernameTaken": "Brukernavn allerede tatt ",
+    "invalidEmail": "Ugyldig e-postadresse ",
+    "emailInUse": "E-post allerede i bruk"
   }
 }

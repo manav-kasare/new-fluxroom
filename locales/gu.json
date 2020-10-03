@@ -1,100 +1,100 @@
 {
-  "buttons" : {
-    "signUpOnboard" : "ઈ-મેઈલ સાથે સહી કરો ",
-    "logInOnboard" : "ઇમેઇલ સાથે લોગ કરો ",
-    "signUp" : "સહી કરો ",
-    "logIn" : "પ્રવેશમાં ",
-    "verify" : "ચકાસણી કરો ",
-    "forgotPassword" : "પાસવર્ડ ભૂલી ગયો? ",
-    "getOTP" : "OTP ને મેળવો ",
-    "createRoom" : "બનાવો ",
-    "joinRoom" : "જોડાવો ",
-    "joinedRoom" : "જોડાયેલ ",
-    "invite" : "આમંત્રણ આપો ",
-    "invited" : "આમંત્રિત થયેલ ",
-    "findRoom" : "રુમ શોધો ",
-    "done" : "Done ",
-    "cancel" : "રદ કરો ",
-    "close" : "બંધ કરો ",
-    "submit" : "Submit ",
-    "resend" : "પુનઃઅંત કરો ",
-    "accept" : "સ્વીકારો ",
-    "decline" : "નક્કી કરો "
+  "buttons": {
+    "signUpOnboard": "ઈ-મેઈલ સાથે સહી કરો ",
+    "logInOnboard": "ઇમેઇલ સાથે લોગ કરો ",
+    "signUp": "સહી કરો ",
+    "logIn": "પ્રવેશમાં ",
+    "verify": "ચકાસણી કરો ",
+    "forgotPassword": "પાસવર્ડ ભૂલી ગયો? ",
+    "getOTP": "OTP ને મેળવો ",
+    "createRoom": "બનાવો ",
+    "joinRoom": "જોડાવો ",
+    "joinedRoom": "જોડાયેલ ",
+    "invite": "આમંત્રણ આપો ",
+    "invited": "આમંત્રિત થયેલ ",
+    "findRoom": "રુમ શોધો ",
+    "done": "Done ",
+    "cancel": "રદ કરો ",
+    "close": "બંધ કરો ",
+    "submit": "Submit ",
+    "resend": "પુનઃઅંત કરો ",
+    "accept": "સ્વીકારો ",
+    "decline": "નક્કી કરો "
   },
-  "placeholders" : {
-    "email" : "ઈ-મેઈલ સરનામું ",
-    "username" : "વપરાશકર્તાનામ ",
-    "issue" : "અટકાવો ",
-    "description" : "વર્ણન ",
-    "password" : "પાસવર્ડ ",
-    "code" : "ચકાસણી કોડ ",
-    "seach" : "તમે શું ઈચ્છો છો? ",
-    "roomName" : "તમે શું વિશે વાત કરીશું? ",
-    "roomDescription" : "૧૦૦ કરતાં ઓછા અક્ષરોમાં વર્ણન કરો ",
-    "searchUsername" : "વપરાશકર્તાને શોધો ",
-    "forgotPassword" : "રજીસ્ટર થયેલ ઇમેઇલ અથવા ફોન નંબર ",
-    "searchRooms" : "તમે શું ઈચ્છો છો? "
+  "placeholders": {
+    "email": "ઈ-મેઈલ સરનામું ",
+    "username": "વપરાશકર્તાનામ ",
+    "issue": "અટકાવો ",
+    "description": "વર્ણન ",
+    "password": "પાસવર્ડ ",
+    "code": "ચકાસણી કોડ ",
+    "seach": "તમે શું ઈચ્છો છો? ",
+    "roomName": "તમે શું વિશે વાત કરીશું? ",
+    "roomDescription": "૧૦૦ કરતાં ઓછા અક્ષરોમાં વર્ણન કરો ",
+    "searchUsername": "વપરાશકર્તાને શોધો ",
+    "forgotPassword": "રજીસ્ટર થયેલ ઇમેઇલ અથવા ફોન નંબર ",
+    "searchRooms": "તમે શું ઈચ્છો છો? "
   },
-  "screens" : {
-    "signUp" : "Fluxroom સાથે જોડાવ ",
-    "logIn" : "પ્રવેશમાં ",
-    "forgotPassword" : "પાસવર્ડ ભૂલી ગયો ",
-    "setUpProfile" : "તમારી રૂપરેખા સુયોજિત કરો ",
-    "phone" : "ફોન નંબર સાથે સહી કરો ",
-    "fluxroom" : "Fluxroom ",
-    "findRooms" : "રુમોને શોધો ",
-    "settings" : "સુયોજનો ",
-    "profile" : "રૂપરેખા ",
-    "aboutUs" : "અUs વિશે ",
-    "dataPolicy" : "માહિતી નિતી ",
-    "termsOfService" : "સેવા ની ચર્ચા ",
-    "invitations" : "આમંત્રણો ",
-    "issues" : "Issues ",
-    "createRoom" : "તમારી પોતાની રુમ બનાવો ",
-    "topRooms" : "ઉપરની રોમસ "
+  "screens": {
+    "signUp": "Fluxroom સાથે જોડાવ ",
+    "logIn": "પ્રવેશમાં ",
+    "forgotPassword": "પાસવર્ડ ભૂલી ગયો ",
+    "setUpProfile": "તમારી રૂપરેખા સુયોજિત કરો ",
+    "phone": "ફોન નંબર સાથે સહી કરો ",
+    "fluxroom": "Fluxroom ",
+    "findRooms": "રુમોને શોધો ",
+    "settings": "સુયોજનો ",
+    "profile": "રૂપરેખા ",
+    "aboutUs": "અUs વિશે ",
+    "privacyPolicy": "માહિતી નિતી ",
+    "termsOfService": "સેવા ની ચર્ચા ",
+    "invitations": "આમંત્રણો ",
+    "issues": "Issues ",
+    "createRoom": "તમારી પોતાની રુમ બનાવો ",
+    "topRooms": "ઉપરની રોમસ "
   },
-  "onboard" : {
-    "subHeading" : "ઓડિયો મારફતે કોઇપણ સાથે જોડાવો! "
+  "onboard": {
+    "subHeading": "ઓડિયો મારફતે કોઇપણ સાથે જોડાવો! "
   },
-  "chatRooms" : {
-    "noRooms" : "કોઈ રોમ નથી: ( ",
-    "shareLink" : "કડી વહેંચો ",
-    "reportUser" : "વપરાશકર્તા અહેવાલ આપો ",
-    "blockUser" : "બ્લોક વપરાશકર્તા ",
-    "noRoomExists" : "કોઈ પણ જગ્યા આવી નથી! "
+  "chatRooms": {
+    "noRooms": "કોઈ રોમ નથી: ( ",
+    "shareLink": "કડી વહેંચો ",
+    "reportUser": "વપરાશકર્તા અહેવાલ આપો ",
+    "blockUser": "બ્લોક વપરાશકર્તા ",
+    "noRoomExists": "કોઈ પણ જગ્યા આવી નથી! "
   },
-  "settings" : {
-    "aboutUs" : "અUs વિશે ",
-    "rateUs" : "Rate Us ",
-    "issues" : "તમે કોઇપણ મુદ્દાઓ ચલાવ્યા હતા? ",
-    "deleteAccount" : "ખાતું કાઢી નાંખો ",
-    "signOut" : "સાઇન બહાર નીકળો ",
-    "darkMode" : "ઘાટ સ્થિતિ ",
-    "dataPolicy" : "માહિતી નિતી ",
-    "termsOfService" : "સેવા ની ચર્ચા "
+  "settings": {
+    "aboutUs": "અUs વિશે ",
+    "rateUs": "Rate Us ",
+    "issues": "તમે કોઇપણ મુદ્દાઓ ચલાવ્યા હતા? ",
+    "deleteAccount": "ખાતું કાઢી નાંખો ",
+    "signOut": "સાઇન બહાર નીકળો ",
+    "darkMode": "ઘાટ સ્થિતિ ",
+    "privacyPolicy": "માહિતી નિતી ",
+    "termsOfService": "સેવા ની ચર્ચા "
   },
-  "otpVerification" : {
-    "heading" : "અમે તમને કોડ મોકલેલ છે "
+  "otpVerification": {
+    "heading": "અમે તમને કોડ મોકલેલ છે "
   },
-  "emailVerification" : {
-    "heading" : "મહેરબાની કરીને તમારા ઇમેઇલને ચકાસો. ",
-    "emailSent" : "અમે તમને ઇમેઇલ મોકલ્યા છે "
+  "emailVerification": {
+    "heading": "મહેરબાની કરીને તમારા ઇમેઇલને ચકાસો. ",
+    "emailSent": "અમે તમને ઇમેઇલ મોકલ્યા છે "
   },
-  "issues" : {
-    "heading" : "તમે મુસાફરી કરી શકો છો? ",
-    "subHeading" : "અમારો ટીમ તેમને અમારા શ્રેષ્ઠિત પ્રેક્ટિસ માટે સુધારવાનો પ્રયત્ન કરશે. "
+  "issues": {
+    "heading": "તમે મુસાફરી કરી શકો છો? ",
+    "subHeading": "અમારો ટીમ તેમને અમારા શ્રેષ્ઠિત પ્રેક્ટિસ માટે સુધારવાનો પ્રયત્ન કરશે. "
   },
-  "errors" : {
-    "anErrorOccured" : "ક્ષતિ અવગણેલ છે ",
-    "roomDoesNotExist" : "રુમ અસ્તિત્વમાં નથી   ",
-    "roomUserDoesNotExist" : "ક્યાં તો રુમ અથવા વપરાશકર્તા અસ્તિત્વમાં નથી ",
-    "roomNameTaken" : "રુમ નામ એ Already Taken ",
-    "playServices" : "વગાડવાની સેવાઓ ઉપલબ્ધ નથી ",
-    "emailVerification" : "ઈ-મેઈલ ચકાસેલ નથી ",
-    "invalidCode" : "અયોગ્ય કોડ ",
-    "unexpectedError" : "અનિચ્છનીય ભૂલ ઉદ્ભવી ",
-    "usernameTaken" : "Username Already Taken ",
-    "invalidEmail" : "અયોગ્ય ઈ-મેઈલ સરનામું ",
-    "emailInUse" : "ઇમેઇલ પહેલેથી જ વપરાશમાં છે"
+  "errors": {
+    "anErrorOccured": "ક્ષતિ અવગણેલ છે ",
+    "roomDoesNotExist": "રુમ અસ્તિત્વમાં નથી   ",
+    "roomUserDoesNotExist": "ક્યાં તો રુમ અથવા વપરાશકર્તા અસ્તિત્વમાં નથી ",
+    "roomNameTaken": "રુમ નામ એ Already Taken ",
+    "playServices": "વગાડવાની સેવાઓ ઉપલબ્ધ નથી ",
+    "emailVerification": "ઈ-મેઈલ ચકાસેલ નથી ",
+    "invalidCode": "અયોગ્ય કોડ ",
+    "unexpectedError": "અનિચ્છનીય ભૂલ ઉદ્ભવી ",
+    "usernameTaken": "Username Already Taken ",
+    "invalidEmail": "અયોગ્ય ઈ-મેઈલ સરનામું ",
+    "emailInUse": "ઇમેઇલ પહેલેથી જ વપરાશમાં છે"
   }
 }

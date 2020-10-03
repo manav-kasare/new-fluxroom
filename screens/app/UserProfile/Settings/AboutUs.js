@@ -12,25 +12,21 @@ import InAppBrowser from 'react-native-inappbrowser-reborn';
 import {ThemeContext} from '../../../../shared/Context';
 import il8n from '../../../../locales/il8n';
 
-export default function AboutUs({navigation}) {
-  const {constants} = React.useContext(ThemeContext);
+export default function AboutUs() {
+  const {constants, darkTheme} = React.useContext(ThemeContext);
 
-  const openLink = async () => {
+  const openLink = async (url) => {
     try {
-      const url = 'https://www.google.com';
-      InAppBrowser.isAvailable().then((response) => {
-        console.log(response);
-      });
       if (await InAppBrowser.isAvailable()) {
         const result = await InAppBrowser.open(url, {
           // iOS Properties
           dismissButtonStyle: 'cancel',
-          preferredBarTintColor: '#453AA4',
-          preferredControlTintColor: 'white',
+          preferredBarTintColor: darkTheme ? 'black' : 'white',
+          preferredControlTintColor: 'dodgerblue',
           readerMode: false,
           animated: true,
           modalPresentationStyle: 'fullScreen',
-          modalTransitionStyle: 'partialCurl',
+          modalTransitionStyle: 'coverVertical',
           modalEnabled: true,
           enableBarCollapsing: false,
           // Android Properties
@@ -52,7 +48,6 @@ export default function AboutUs({navigation}) {
             'my-custom-header': 'my custom header value',
           },
         });
-        alert(JSON.stringify(result));
       } else Linking.openURL(url);
     } catch (error) {
       alert(error.message);
@@ -81,13 +76,6 @@ export default function AboutUs({navigation}) {
     },
   };
 
-  const navigateDataPolicy = () => {
-    navigation.navigate('DataPolicy');
-  };
-  const navigateTermsOfService = () => {
-    navigation.navigate('TermsOfService');
-  };
-
   return (
     <SafeAreaView
       style={{
@@ -96,9 +84,13 @@ export default function AboutUs({navigation}) {
       }}>
       <View style={{flex: 1, backgroundColor: constants.background1}}>
         <View style={styles.view}>
-          <TouchableOpacity onPress={openLink} style={styles.view_touchable}>
+          <TouchableOpacity
+            onPress={() =>
+              openLink('https://www.fluxroomapp.com/privacyPolicy')
+            }
+            style={styles.view_touchable}>
             <Text style={styles.view_text}>
-              {il8n.t('settings.dataPolicy')}
+              {il8n.t('settings.privacyPolicy')}
             </Text>
             <Ionicons
               name="chevron-forward"
@@ -109,7 +101,9 @@ export default function AboutUs({navigation}) {
         </View>
         <View style={styles.view}>
           <TouchableOpacity
-            onPress={navigateTermsOfService}
+            onPress={() =>
+              openLink('https://www.fluxroomapp.com/termsOfService')
+            }
             style={styles.view_touchable}>
             <Text style={styles.view_text}>
               {il8n.t('settings.termsOfService')}

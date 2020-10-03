@@ -1,87 +1,87 @@
 {
-  "buttons" : {
-    "signUpOnboard" : "E-postayla Birlikte Oturum ",
-    "logInOnboard" : "E-postayla Oturum Aç ",
-    "signUp" : "Oturum Açın ",
-    "logIn" : "Oturum Aç ",
-    "verify" : "Doğrula ",
-    "forgotPassword" : "Parolayı mı Unuttunuz? ",
-    "getOTP" : "OTP ' yi Al ",
-    "createRoom" : "Oluştur ",
-    "joinRoom" : "Katıl ",
-    "joinedRoom" : "Birleştirilen ",
-    "invite" : "Davet Et ",
-    "invited" : "Davet Edildi ",
-    "findRoom" : "Bir oda bulun ",
-    "done" : "Bitti ",
-    "cancel" : "İptal ",
-    "close" : "Kapat ",
-    "submit" : "Gönder ",
-    "resend" : "Yeniden Gönder ",
-    "accept" : "Kabul Et ",
-    "decline" : "Reddet "
+  "buttons": {
+    "signUpOnboard": "E-postayla Birlikte Oturum ",
+    "logInOnboard": "E-postayla Oturum Aç ",
+    "signUp": "Oturum Açın ",
+    "logIn": "Oturum Aç ",
+    "verify": "Doğrula ",
+    "forgotPassword": "Parolayı mı Unuttunuz? ",
+    "getOTP": "OTP ' yi Al ",
+    "createRoom": "Oluştur ",
+    "joinRoom": "Katıl ",
+    "joinedRoom": "Birleştirilen ",
+    "invite": "Davet Et ",
+    "invited": "Davet Edildi ",
+    "findRoom": "Bir oda bulun ",
+    "done": "Bitti ",
+    "cancel": "İptal ",
+    "close": "Kapat ",
+    "submit": "Gönder ",
+    "resend": "Yeniden Gönder ",
+    "accept": "Kabul Et ",
+    "decline": "Reddet "
   },
-  "placeholders" : {
-    "email" : "Eposta Adresi ",
-    "username" : "Kullanıcı Adı ",
-    "issue" : "Sorun ",
-    "description" : "Açıklama ",
-    "password" : "Parola ",
-    "code" : "Doğrulama kodu ",
-    "seach" : "Ne içine giriyorsun? ",
-    "roomName" : "Sen ne hakkında konuşursun? ",
-    "roomDescription" : "100 karakterden kısa bir süre içinde açıkla ",
-    "searchUsername" : "Arama Kullanıcı Adı ",
-    "forgotPassword" : "Kayıtlı e-posta ya da telefon numarası ",
-    "searchRooms" : "Ne içine giriyorsun? "
+  "placeholders": {
+    "email": "Eposta Adresi ",
+    "username": "Kullanıcı Adı ",
+    "issue": "Sorun ",
+    "description": "Açıklama ",
+    "password": "Parola ",
+    "code": "Doğrulama kodu ",
+    "seach": "Ne içine giriyorsun? ",
+    "roomName": "Sen ne hakkında konuşursun? ",
+    "roomDescription": "100 karakterden kısa bir süre içinde açıkla ",
+    "searchUsername": "Arama Kullanıcı Adı ",
+    "forgotPassword": "Kayıtlı e-posta ya da telefon numarası ",
+    "searchRooms": "Ne içine giriyorsun? "
   },
-  "screens" : {
-    "signUp" : "Fluxroom 'a katıl ",
-    "logIn" : "Oturum Aç ",
-    "forgotPassword" : "Parolayı Unuttum ",
-    "setUpProfile" : "Profilinizi ayarlayın ",
-    "phone" : "Telefon numarası ile oturum aç ",
-    "fluxroom" : "Akıcı Oda ",
-    "findRooms" : "Odaları Bul ",
-    "settings" : "Ayarlar ",
-    "profile" : "Profil ",
-    "aboutUs" : "Hakkımızda ",
-    "dataPolicy" : "Veri İlkesi ",
-    "termsOfService" : "Hizmet Koşulları ",
-    "invitations" : "Davetler ",
-    "issues" : "Sorunlar ",
-    "createRoom" : "Kendi odanızı oluşturun ",
-    "topRooms" : "Üst Odalar "
+  "screens": {
+    "signUp": "Fluxroom 'a katıl ",
+    "logIn": "Oturum Aç ",
+    "forgotPassword": "Parolayı Unuttum ",
+    "setUpProfile": "Profilinizi ayarlayın ",
+    "phone": "Telefon numarası ile oturum aç ",
+    "fluxroom": "Akıcı Oda ",
+    "findRooms": "Odaları Bul ",
+    "settings": "Ayarlar ",
+    "profile": "Profil ",
+    "aboutUs": "Hakkımızda ",
+    "privacyPolicy": "Veri İlkesi ",
+    "termsOfService": "Hizmet Koşulları ",
+    "invitations": "Davetler ",
+    "issues": "Sorunlar ",
+    "createRoom": "Kendi odanızı oluşturun ",
+    "topRooms": "Üst Odalar "
   },
-  "onboard" : {
-    "subHeading" : "Ses yoluyla herkesle bağlantı kurun! "
+  "onboard": {
+    "subHeading": "Ses yoluyla herkesle bağlantı kurun! "
   },
-  "chatRooms" : {
-    "noRooms" : "Odalar Yok: ( ",
-    "shareLink" : "Bağlantıyı Paylaş ",
-    "reportUser" : "Rapor Kullanıcısı ",
-    "blockUser" : "Blok Kullanıcısı ",
-    "noRoomExists" : "Böyle bir oda yok! "
+  "chatRooms": {
+    "noRooms": "Odalar Yok: ( ",
+    "shareLink": "Bağlantıyı Paylaş ",
+    "reportUser": "Rapor Kullanıcısı ",
+    "blockUser": "Blok Kullanıcısı ",
+    "noRoomExists": "Böyle bir oda yok! "
   },
-  "settings" : {
-    "aboutUs" : "Hakkımızda ",
-    "rateUs" : "Bize Oranla ",
-    "issues" : "Herhangi bir sorunla karşıladın mı? ",
-    "deleteAccount" : "Hesabı Sil ",
-    "signOut" : "Oturumu Kapat ",
-    "darkMode" : "Koyu Kip ",
-    "dataPolicy" : "Veri İlkesi ",
-    "termsOfService" : "Hizmet Koşulları "
+  "settings": {
+    "aboutUs": "Hakkımızda ",
+    "rateUs": "Bize Oranla ",
+    "issues": "Herhangi bir sorunla karşıladın mı? ",
+    "deleteAccount": "Hesabı Sil ",
+    "signOut": "Oturumu Kapat ",
+    "darkMode": "Koyu Kip ",
+    "privacyPolicy": "Veri İlkesi ",
+    "termsOfService": "Hizmet Koşulları "
   },
-  "otpVerification" : {
-    "heading" : "Size bir kod gönderdik. "
+  "otpVerification": {
+    "heading": "Size bir kod gönderdik. "
   },
-  "emailVerification" : {
-    "heading" : "Lütfen e-postanızı doğrulayın. ",
-    "emailSent" : "Size bir e-posta gönderdik: "
+  "emailVerification": {
+    "heading": "Lütfen e-postanızı doğrulayın. ",
+    "emailSent": "Size bir e-posta gönderdik: "
   },
-  "issues" : {
-    "heading" : "-Ne konusuyorsun? ",
-    "subHeading" : "takımımız bunları en iyi antrenmanlarımıza düzeltmeye çalışacaktır."
+  "issues": {
+    "heading": "-Ne konusuyorsun? ",
+    "subHeading": "takımımız bunları en iyi antrenmanlarımıza düzeltmeye çalışacaktır."
   }
 }

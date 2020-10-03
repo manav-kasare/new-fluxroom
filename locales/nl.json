@@ -1,100 +1,100 @@
 {
-  "buttons" : {
-    "signUpOnboard" : "Aanmelden met e-mail ",
-    "logInOnboard" : "Aanmelden met e-mail ",
-    "signUp" : "Aanmelden ",
-    "logIn" : "Aanmelden ",
-    "verify" : "Controleren ",
-    "forgotPassword" : "Wachtwoord vergeten? ",
-    "getOTP" : "OTP ophalen ",
-    "createRoom" : "Maken ",
-    "joinRoom" : "Samenvoegen ",
-    "joinedRoom" : "Samengevoegd ",
-    "invite" : "Uitnodigen ",
-    "invited" : "Uitgenodigd ",
-    "findRoom" : "Zoek een kamer ",
-    "done" : "Gereed ",
-    "cancel" : "Annuleren ",
-    "close" : "Sluiten ",
-    "submit" : "Verzenden ",
-    "resend" : "Opnieuw verzenden ",
-    "accept" : "Accepteren ",
-    "decline" : "Afwijzen "
+  "buttons": {
+    "signUpOnboard": "Aanmelden met e-mail ",
+    "logInOnboard": "Aanmelden met e-mail ",
+    "signUp": "Aanmelden ",
+    "logIn": "Aanmelden ",
+    "verify": "Controleren ",
+    "forgotPassword": "Wachtwoord vergeten? ",
+    "getOTP": "OTP ophalen ",
+    "createRoom": "Maken ",
+    "joinRoom": "Samenvoegen ",
+    "joinedRoom": "Samengevoegd ",
+    "invite": "Uitnodigen ",
+    "invited": "Uitgenodigd ",
+    "findRoom": "Zoek een kamer ",
+    "done": "Gereed ",
+    "cancel": "Annuleren ",
+    "close": "Sluiten ",
+    "submit": "Verzenden ",
+    "resend": "Opnieuw verzenden ",
+    "accept": "Accepteren ",
+    "decline": "Afwijzen "
   },
-  "placeholders" : {
-    "email" : "E-mailadres ",
-    "username" : "Gebruikersnaam ",
-    "issue" : "Afgifte ",
-    "description" : "Omschrijving ",
-    "password" : "Wachtwoord ",
-    "code" : "Verificatiecode ",
-    "seach" : "Wat zit je in? ",
-    "roomName" : "Waar heb je het over? ",
-    "roomDescription" : "Geef een beschrijving van minder dan 100 tekens ",
-    "searchUsername" : "Gebruikersnaam zoeken ",
-    "forgotPassword" : "Geregistreerde e-mail of telefoonnummer ",
-    "searchRooms" : "Wat zit je in? "
+  "placeholders": {
+    "email": "E-mailadres ",
+    "username": "Gebruikersnaam ",
+    "issue": "Afgifte ",
+    "description": "Omschrijving ",
+    "password": "Wachtwoord ",
+    "code": "Verificatiecode ",
+    "seach": "Wat zit je in? ",
+    "roomName": "Waar heb je het over? ",
+    "roomDescription": "Geef een beschrijving van minder dan 100 tekens ",
+    "searchUsername": "Gebruikersnaam zoeken ",
+    "forgotPassword": "Geregistreerde e-mail of telefoonnummer ",
+    "searchRooms": "Wat zit je in? "
   },
-  "screens" : {
-    "signUp" : "Deelnemen aan Fluxroom ",
-    "logIn" : "Aanmelden ",
-    "forgotPassword" : "Wachtwoord vergeten ",
-    "setUpProfile" : "Profiel instellen ",
-    "phone" : "Aanmelden met telefoonnummer ",
-    "fluxroom" : "Fluxroom ",
-    "findRooms" : "Ruimten zoeken ",
-    "settings" : "Instellingen ",
-    "profile" : "Profiel ",
-    "aboutUs" : "Over ons ",
-    "dataPolicy" : "Gegevensbeleid ",
-    "termsOfService" : "Servicevoorwaarden ",
-    "invitations" : "Uitnodigingen ",
-    "issues" : "Problemen ",
-    "createRoom" : "Eigen ruimte maken ",
-    "topRooms" : "Bovenste kamers "
+  "screens": {
+    "signUp": "Deelnemen aan Fluxroom ",
+    "logIn": "Aanmelden ",
+    "forgotPassword": "Wachtwoord vergeten ",
+    "setUpProfile": "Profiel instellen ",
+    "phone": "Aanmelden met telefoonnummer ",
+    "fluxroom": "Fluxroom ",
+    "findRooms": "Ruimten zoeken ",
+    "settings": "Instellingen ",
+    "profile": "Profiel ",
+    "aboutUs": "Over ons ",
+    "privacyPolicy": "Gegevensbeleid ",
+    "termsOfService": "Servicevoorwaarden ",
+    "invitations": "Uitnodigingen ",
+    "issues": "Problemen ",
+    "createRoom": "Eigen ruimte maken ",
+    "topRooms": "Bovenste kamers "
   },
-  "onboard" : {
-    "subHeading" : "Verbind met iedereen via audio! "
+  "onboard": {
+    "subHeading": "Verbind met iedereen via audio! "
   },
-  "chatRooms" : {
-    "noRooms" : "Geen kamers: ( ",
-    "shareLink" : "Koppeling delen ",
-    "reportUser" : "Rapportgebruiker ",
-    "blockUser" : "Gebruiker blokkeren ",
-    "noRoomExists" : "Er bestaat geen ruimte! "
+  "chatRooms": {
+    "noRooms": "Geen kamers: ( ",
+    "shareLink": "Koppeling delen ",
+    "reportUser": "Rapportgebruiker ",
+    "blockUser": "Gebruiker blokkeren ",
+    "noRoomExists": "Er bestaat geen ruimte! "
   },
-  "settings" : {
-    "aboutUs" : "Over ons ",
-    "rateUs" : "Ons tarief ",
-    "issues" : "Heb je problemen gezien? ",
-    "deleteAccount" : "Account wissen ",
-    "signOut" : "Afmelden ",
-    "darkMode" : "Donkere modus ",
-    "dataPolicy" : "Gegevensbeleid ",
-    "termsOfService" : "Servicevoorwaarden "
+  "settings": {
+    "aboutUs": "Over ons ",
+    "rateUs": "Ons tarief ",
+    "issues": "Heb je problemen gezien? ",
+    "deleteAccount": "Account wissen ",
+    "signOut": "Afmelden ",
+    "darkMode": "Donkere modus ",
+    "privacyPolicy": "Gegevensbeleid ",
+    "termsOfService": "Servicevoorwaarden "
   },
-  "otpVerification" : {
-    "heading" : "We hebben je een code gestuurd. "
+  "otpVerification": {
+    "heading": "We hebben je een code gestuurd. "
   },
-  "emailVerification" : {
-    "heading" : "Controleer uw e-mail. ",
-    "emailSent" : "Wij hebben u een e-mail gestuurd op "
+  "emailVerification": {
+    "heading": "Controleer uw e-mail. ",
+    "emailSent": "Wij hebben u een e-mail gestuurd op "
   },
-  "issues" : {
-    "heading" : "Wat voor probleem heb je gezien? ",
-    "subHeading" : "Ons team zal proberen ze op te lossen voor onze beste praktijk. "
+  "issues": {
+    "heading": "Wat voor probleem heb je gezien? ",
+    "subHeading": "Ons team zal proberen ze op te lossen voor onze beste praktijk. "
   },
-  "errors" : {
-    "anErrorOccured" : "Er Is Een Fout Opgetreden ",
-    "roomDoesNotExist" : "Ruimte bestaat niet   ",
-    "roomUserDoesNotExist" : "Er bestaat geen ruimte of gebruiker ",
-    "roomNameTaken" : "Naam van ruimte is al bezet ",
-    "playServices" : "Speeldiensten niet beschikbaar ",
-    "emailVerification" : "E-mail niet gecontroleerd ",
-    "invalidCode" : "Ongeldige code ",
-    "unexpectedError" : "Er is een onvoorziene fout opgetreden ",
-    "usernameTaken" : "Gebruikersnaam is al bezet ",
-    "invalidEmail" : "Ongeldig e-mailadres ",
-    "emailInUse" : "E-mail al in gebruik"
+  "errors": {
+    "anErrorOccured": "Er Is Een Fout Opgetreden ",
+    "roomDoesNotExist": "Ruimte bestaat niet   ",
+    "roomUserDoesNotExist": "Er bestaat geen ruimte of gebruiker ",
+    "roomNameTaken": "Naam van ruimte is al bezet ",
+    "playServices": "Speeldiensten niet beschikbaar ",
+    "emailVerification": "E-mail niet gecontroleerd ",
+    "invalidCode": "Ongeldige code ",
+    "unexpectedError": "Er is een onvoorziene fout opgetreden ",
+    "usernameTaken": "Gebruikersnaam is al bezet ",
+    "invalidEmail": "Ongeldig e-mailadres ",
+    "emailInUse": "E-mail al in gebruik"
   }
 }

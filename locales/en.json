@@ -46,7 +46,7 @@
         "settings": "Settings",
         "profile": "Profile",
         "aboutUs": "About Us",
-        "dataPolicy": "Data Policy",
+        "privacyPolicy": "Privacy Policy",
         "termsOfService": "Terms of Service",
         "invitations": "Invitations",
         "issues": "Issues",
@@ -72,7 +72,7 @@
         "deleteAccount": "Delete Account",
         "signOut": "Sign Out",
         "darkMode": "Dark Mode",
-        "dataPolicy": "Data Policy",
+        "privacyPolicy": "Privacy Policy",
         "termsOfService": "Terms of Service"
     },
     "otpVerification": {

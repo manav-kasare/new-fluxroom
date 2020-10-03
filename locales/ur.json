@@ -1,100 +1,100 @@
 {
-  "buttons" : {
-    "signUpOnboard" : "ای میل کے ساتھ سائن کریں ",
-    "logInOnboard" : "ای میل کے ساتھ ",
-    "signUp" : "سائن اپ کریں ",
-    "logIn" : "لہو میں ",
-    "verify" : "Verify ",
-    "forgotPassword" : "بھول گئے پاس ورڈ? ",
-    "getOTP" : "OTP حاصل کریں ",
-    "createRoom" : "بنائیں ",
-    "joinRoom" : "Join ",
-    "joinedRoom" : "Joined ",
-    "invite" : "دعوت دی ",
-    "invited" : "کی دعوت دی ",
-    "findRoom" : "ایک کمرہ تلاش کریں ",
-    "done" : "Done ",
-    "cancel" : "منسوخ ",
-    "close" : "بند ",
-    "submit" : "تفرق۔ ",
-    "resend" : "گونج ",
-    "accept" : "قبول کر ",
-    "decline" : "ڈیلائن "
+  "buttons": {
+    "signUpOnboard": "ای میل کے ساتھ سائن کریں ",
+    "logInOnboard": "ای میل کے ساتھ ",
+    "signUp": "سائن اپ کریں ",
+    "logIn": "لہو میں ",
+    "verify": "Verify ",
+    "forgotPassword": "بھول گئے پاس ورڈ? ",
+    "getOTP": "OTP حاصل کریں ",
+    "createRoom": "بنائیں ",
+    "joinRoom": "Join ",
+    "joinedRoom": "Joined ",
+    "invite": "دعوت دی ",
+    "invited": "کی دعوت دی ",
+    "findRoom": "ایک کمرہ تلاش کریں ",
+    "done": "Done ",
+    "cancel": "منسوخ ",
+    "close": "بند ",
+    "submit": "تفرق۔ ",
+    "resend": "گونج ",
+    "accept": "قبول کر ",
+    "decline": "ڈیلائن "
   },
-  "placeholders" : {
-    "email" : "ای میل ایڈریس ",
-    "username" : "یوسینام ",
-    "issue" : "مسئلہ ",
-    "description" : "وضح ",
-    "password" : "پاس ورڈ ",
-    "code" : "ویراپن کوڈ ",
-    "seach" : "کیا آپ میں گرفتار کر رہے ہیں? ",
-    "roomName" : "آپ کس بارے میں بات کریں گے? ",
-    "roomDescription" : "100 سے بھی کم حروف میں بیان ",
-    "searchUsername" : "سرچ یوسینام ",
-    "forgotPassword" : "رجسٹرڈ ای میل یا فون نمبر ",
-    "searchRooms" : "کیا آپ میں گرفتار کر رہے ہیں? "
+  "placeholders": {
+    "email": "ای میل ایڈریس ",
+    "username": "یوسینام ",
+    "issue": "مسئلہ ",
+    "description": "وضح ",
+    "password": "پاس ورڈ ",
+    "code": "ویراپن کوڈ ",
+    "seach": "کیا آپ میں گرفتار کر رہے ہیں? ",
+    "roomName": "آپ کس بارے میں بات کریں گے? ",
+    "roomDescription": "100 سے بھی کم حروف میں بیان ",
+    "searchUsername": "سرچ یوسینام ",
+    "forgotPassword": "رجسٹرڈ ای میل یا فون نمبر ",
+    "searchRooms": "کیا آپ میں گرفتار کر رہے ہیں? "
   },
-  "screens" : {
-    "signUp" : "Join Fluxroom ",
-    "logIn" : "لہو میں ",
-    "forgotPassword" : "بھول گئے پاس ورڈ ",
-    "setUpProfile" : "اپنا پروفائل سیٹ کریں ",
-    "phone" : "فون نمبر کے ساتھ میں سائن کریں ",
-    "fluxroom" : "فیلیروم ",
-    "findRooms" : "Rooms کی تلاش ",
-    "settings" : "سیٹنگز ",
-    "profile" : "پروفا ",
-    "aboutUs" : "ہمارے بارے میں ",
-    "dataPolicy" : "ڈیٹا پالیسی ",
-    "termsOfService" : "سروس کی شرائط ",
-    "invitations" : "نقل و حرکت ",
-    "issues" : "مسائل ",
-    "createRoom" : "اپنا کمرہ بنائیں ",
-    "topRooms" : "اوپر Rooms "
+  "screens": {
+    "signUp": "Join Fluxroom ",
+    "logIn": "لہو میں ",
+    "forgotPassword": "بھول گئے پاس ورڈ ",
+    "setUpProfile": "اپنا پروفائل سیٹ کریں ",
+    "phone": "فون نمبر کے ساتھ میں سائن کریں ",
+    "fluxroom": "فیلیروم ",
+    "findRooms": "Rooms کی تلاش ",
+    "settings": "سیٹنگز ",
+    "profile": "پروفا ",
+    "aboutUs": "ہمارے بارے میں ",
+    "privacyPolicy": "ڈیٹا پالیسی ",
+    "termsOfService": "سروس کی شرائط ",
+    "invitations": "نقل و حرکت ",
+    "issues": "مسائل ",
+    "createRoom": "اپنا کمرہ بنائیں ",
+    "topRooms": "اوپر Rooms "
   },
-  "onboard" : {
-    "subHeading" : "آڈیو کے مادھیم سے کسی کے ساتھ کنیکٹ! "
+  "onboard": {
+    "subHeading": "آڈیو کے مادھیم سے کسی کے ساتھ کنیکٹ! "
   },
-  "chatRooms" : {
-    "noRooms" : "کوئی Rooms ( ",
-    "shareLink" : "شیئر لنک ",
-    "reportUser" : "رپورٹ صارف ",
-    "blockUser" : "بلاک صارف ",
-    "noRoomExists" : "ایسا کوئی بھی کمرہ نہیں ہے! "
+  "chatRooms": {
+    "noRooms": "کوئی Rooms ( ",
+    "shareLink": "شیئر لنک ",
+    "reportUser": "رپورٹ صارف ",
+    "blockUser": "بلاک صارف ",
+    "noRoomExists": "ایسا کوئی بھی کمرہ نہیں ہے! "
   },
-  "settings" : {
-    "aboutUs" : "ہمارے بارے میں ",
-    "rateUs" : "ہم Rate کریں ",
-    "issues" : "آپ کو کسی بھی مدعوں کا سامنا? ",
-    "deleteAccount" : "حذف اکاؤنٹ ",
-    "signOut" : "سائن ان کریں ",
-    "darkMode" : "ڈارک موڈ ",
-    "dataPolicy" : "ڈیٹا پالیسی ",
-    "termsOfService" : "سروس کی شرائط "
+  "settings": {
+    "aboutUs": "ہمارے بارے میں ",
+    "rateUs": "ہم Rate کریں ",
+    "issues": "آپ کو کسی بھی مدعوں کا سامنا? ",
+    "deleteAccount": "حذف اکاؤنٹ ",
+    "signOut": "سائن ان کریں ",
+    "darkMode": "ڈارک موڈ ",
+    "privacyPolicy": "ڈیٹا پالیسی ",
+    "termsOfService": "سروس کی شرائط "
   },
-  "otpVerification" : {
-    "heading" : "ہم نے آپ کو ایک کوڈ بھیجا ہے "
+  "otpVerification": {
+    "heading": "ہم نے آپ کو ایک کوڈ بھیجا ہے "
   },
-  "emailVerification" : {
-    "heading" : "براہ مہربانی اپنی ای میل کی تصدیق کریں. ",
-    "emailSent" : "ہم نے آپ کو ایک ای میل بھیجا ہے "
+  "emailVerification": {
+    "heading": "براہ مہربانی اپنی ای میل کی تصدیق کریں. ",
+    "emailSent": "ہم نے آپ کو ایک ای میل بھیجا ہے "
   },
-  "issues" : {
-    "heading" : "کس مسئلے کا سامنا کیا? ",
-    "subHeading" : "ہماری ٹیم ان کو اپنے بہترین پریکٹس کے لئے ٹھیک کرنے کی کوشش کرے گی. "
+  "issues": {
+    "heading": "کس مسئلے کا سامنا کیا? ",
+    "subHeading": "ہماری ٹیم ان کو اپنے بہترین پریکٹس کے لئے ٹھیک کرنے کی کوشش کرے گی. "
   },
-  "errors" : {
-    "anErrorOccured" : "ایک غلطی ",
-    "roomDoesNotExist" : "کمرہ موجود نہیں ہوتا   ",
-    "roomUserDoesNotExist" : "یا تو کمرہ یا یوزر موجود نہیں ہوتا. ",
-    "roomNameTaken" : "کمرہ نام پہلے سے لے کر ",
-    "playServices" : "پلے بیک سپورٹ دستیاب نہیں ",
-    "emailVerification" : "ای میل Verified نہیں ",
-    "invalidCode" : "ضابطہ اخلاق ",
-    "unexpectedError" : "ایک غیر متوقع غلطی سامنے آگئی ",
-    "usernameTaken" : "یوسینام پہلے سے لے کر ",
-    "invalidEmail" : "درست ای میل ایڈریس ",
-    "emailInUse" : "ای میل پہلے ہی استعمال میں"
+  "errors": {
+    "anErrorOccured": "ایک غلطی ",
+    "roomDoesNotExist": "کمرہ موجود نہیں ہوتا   ",
+    "roomUserDoesNotExist": "یا تو کمرہ یا یوزر موجود نہیں ہوتا. ",
+    "roomNameTaken": "کمرہ نام پہلے سے لے کر ",
+    "playServices": "پلے بیک سپورٹ دستیاب نہیں ",
+    "emailVerification": "ای میل Verified نہیں ",
+    "invalidCode": "ضابطہ اخلاق ",
+    "unexpectedError": "ایک غیر متوقع غلطی سامنے آگئی ",
+    "usernameTaken": "یوسینام پہلے سے لے کر ",
+    "invalidEmail": "درست ای میل ایڈریس ",
+    "emailInUse": "ای میل پہلے ہی استعمال میں"
   }
 }

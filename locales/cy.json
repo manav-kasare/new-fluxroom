@@ -1,100 +1,100 @@
 {
-  "buttons" : {
-    "signUpOnboard" : "Llofnodi Gyda E-bost ",
-    "logInOnboard" : "Mewngofnodi Gyda E-bost ",
-    "signUp" : "Llofnodi i Fyny ",
-    "logIn" : "Mewngofnodi ",
-    "verify" : "Gwirio ",
-    "forgotPassword" : "Wedi anghofio Cyfrinair? ",
-    "getOTP" : "Estyn OTP ",
-    "createRoom" : "Creu ",
-    "joinRoom" : "Ymuno ",
-    "joinedRoom" : "Wedi ymuno ",
-    "invite" : "Gwahodd ",
-    "invited" : "Gwahoddwyd ",
-    "findRoom" : "Canfod ystafell ",
-    "done" : "Wedi gorffen ",
-    "cancel" : "Diddymu ",
-    "close" : "Cau ",
-    "submit" : "Cyflwyno ",
-    "resend" : "Ail-osod ",
-    "accept" : "Derbyn ",
-    "decline" : "Dirywiad "
+  "buttons": {
+    "signUpOnboard": "Llofnodi Gyda E-bost ",
+    "logInOnboard": "Mewngofnodi Gyda E-bost ",
+    "signUp": "Llofnodi i Fyny ",
+    "logIn": "Mewngofnodi ",
+    "verify": "Gwirio ",
+    "forgotPassword": "Wedi anghofio Cyfrinair? ",
+    "getOTP": "Estyn OTP ",
+    "createRoom": "Creu ",
+    "joinRoom": "Ymuno ",
+    "joinedRoom": "Wedi ymuno ",
+    "invite": "Gwahodd ",
+    "invited": "Gwahoddwyd ",
+    "findRoom": "Canfod ystafell ",
+    "done": "Wedi gorffen ",
+    "cancel": "Diddymu ",
+    "close": "Cau ",
+    "submit": "Cyflwyno ",
+    "resend": "Ail-osod ",
+    "accept": "Derbyn ",
+    "decline": "Dirywiad "
   },
-  "placeholders" : {
-    "email" : "Cyfeiriad Ebost ",
-    "username" : "Enw defnyddiwr ",
-    "issue" : "Pwnc ",
-    "description" : "Disgrifiad ",
-    "password" : "Cyfrinair ",
-    "code" : "Cod dilysu ",
-    "seach" : "Beth yr ydych yn ei ddweud? ",
-    "roomName" : "Beth fyddech chi'n sôn amdano? ",
-    "roomDescription" : "Disgrifiwch mewn llai na 100 nod ",
-    "searchUsername" : "Chwilio Enw Defnyddiwr ",
-    "forgotPassword" : "E-bost cofrestredig neu rif ffôn ",
-    "searchRooms" : "Beth yr ydych yn ei ddweud? "
+  "placeholders": {
+    "email": "Cyfeiriad Ebost ",
+    "username": "Enw defnyddiwr ",
+    "issue": "Pwnc ",
+    "description": "Disgrifiad ",
+    "password": "Cyfrinair ",
+    "code": "Cod dilysu ",
+    "seach": "Beth yr ydych yn ei ddweud? ",
+    "roomName": "Beth fyddech chi'n sôn amdano? ",
+    "roomDescription": "Disgrifiwch mewn llai na 100 nod ",
+    "searchUsername": "Chwilio Enw Defnyddiwr ",
+    "forgotPassword": "E-bost cofrestredig neu rif ffôn ",
+    "searchRooms": "Beth yr ydych yn ei ddweud? "
   },
-  "screens" : {
-    "signUp" : "Ymuno â Flwle ",
-    "logIn" : "Mewngofnodi ",
-    "forgotPassword" : "Wedi anghofio Cyfrinair ",
-    "setUpProfile" : "Gosod eich proffil ",
-    "phone" : "Mewngofnodi gyda rhif ffôn ",
-    "fluxroom" : "Fflwxystafell ",
-    "findRooms" : "Canfod yr ystafelloedd ",
-    "settings" : "Gosodiadau ",
-    "profile" : "Proffil ",
-    "aboutUs" : "Amdanom Ni ",
-    "dataPolicy" : "Polisi Data ",
-    "termsOfService" : "Telerau Gwasanaeth ",
-    "invitations" : "Gwahoddiadau ",
-    "issues" : "Materion ",
-    "createRoom" : "Creu eich ystafell eich hun ",
-    "topRooms" : "Ystafelloedd Brig "
+  "screens": {
+    "signUp": "Ymuno â Flwle ",
+    "logIn": "Mewngofnodi ",
+    "forgotPassword": "Wedi anghofio Cyfrinair ",
+    "setUpProfile": "Gosod eich proffil ",
+    "phone": "Mewngofnodi gyda rhif ffôn ",
+    "fluxroom": "Fflwxystafell ",
+    "findRooms": "Canfod yr ystafelloedd ",
+    "settings": "Gosodiadau ",
+    "profile": "Proffil ",
+    "aboutUs": "Amdanom Ni ",
+    "privacyPolicy": "Polisi Data ",
+    "termsOfService": "Telerau Gwasanaeth ",
+    "invitations": "Gwahoddiadau ",
+    "issues": "Materion ",
+    "createRoom": "Creu eich ystafell eich hun ",
+    "topRooms": "Ystafelloedd Brig "
   },
-  "onboard" : {
-    "subHeading" : "Cysylltu ag unrhyw un drwy sain! "
+  "onboard": {
+    "subHeading": "Cysylltu ag unrhyw un drwy sain! "
   },
-  "chatRooms" : {
-    "noRooms" : "Dim ystafelloedd: ( ",
-    "shareLink" : "Rhannu Cyswllt ",
-    "reportUser" : "Adroddiad ",
-    "blockUser" : "Rhwystro Defnyddiwr ",
-    "noRoomExists" : "Does dim ystafell o'r fath yn bodoli! "
+  "chatRooms": {
+    "noRooms": "Dim ystafelloedd: ( ",
+    "shareLink": "Rhannu Cyswllt ",
+    "reportUser": "Adroddiad ",
+    "blockUser": "Rhwystro Defnyddiwr ",
+    "noRoomExists": "Does dim ystafell o'r fath yn bodoli! "
   },
-  "settings" : {
-    "aboutUs" : "Amdanom Ni ",
-    "rateUs" : "Cyfradd Ni ",
-    "issues" : "A oeddech yn wynebu unrhyw faterion? ",
-    "deleteAccount" : "Dileu Cyfrif ",
-    "signOut" : "Mewngofnodi ",
-    "darkMode" : "Modd tywyll ",
-    "dataPolicy" : "Polisi Data ",
-    "termsOfService" : "Telerau Gwasanaeth "
+  "settings": {
+    "aboutUs": "Amdanom Ni ",
+    "rateUs": "Cyfradd Ni ",
+    "issues": "A oeddech yn wynebu unrhyw faterion? ",
+    "deleteAccount": "Dileu Cyfrif ",
+    "signOut": "Mewngofnodi ",
+    "darkMode": "Modd tywyll ",
+    "privacyPolicy": "Polisi Data ",
+    "termsOfService": "Telerau Gwasanaeth "
   },
-  "otpVerification" : {
-    "heading" : "Yr ydym wedi anfon cod atoch "
+  "otpVerification": {
+    "heading": "Yr ydym wedi anfon cod atoch "
   },
-  "emailVerification" : {
-    "heading" : "Gwiriwch eich e-bost. ",
-    "emailSent" : "Yr ydym wedi anfon e-bost atoch chi "
+  "emailVerification": {
+    "heading": "Gwiriwch eich e-bost. ",
+    "emailSent": "Yr ydym wedi anfon e-bost atoch chi "
   },
-  "issues" : {
-    "heading" : "Pa fater yr oeddech yn ei wynebu? ",
-    "subHeading" : "Bydd ein tîm yn ceisio eu datrys i'n harferion gorau. "
+  "issues": {
+    "heading": "Pa fater yr oeddech yn ei wynebu? ",
+    "subHeading": "Bydd ein tîm yn ceisio eu datrys i'n harferion gorau. "
   },
-  "errors" : {
-    "anErrorOccured" : "Digwyddodd Gwall ",
-    "roomDoesNotExist" : "Nid yw'r ystafell yn bodoli   ",
-    "roomUserDoesNotExist" : "Nid yw'r naill ystafell neu'r defnyddiwr yn bodoli ",
-    "roomNameTaken" : "Name ",
-    "playServices" : "Nid yw gwasanaethau chwarae ar gael ",
-    "emailVerification" : "Ebost ddim ",
-    "invalidCode" : "Cod Annilys ",
-    "unexpectedError" : "Digwyddodd gwall annisgwyl ",
-    "usernameTaken" : "Enw defnyddiwr yn Barod ",
-    "invalidEmail" : "Cyfeiriad Ebost Annilys ",
-    "emailInUse" : "Ebost wedi ei ddefnyddio eisoes"
+  "errors": {
+    "anErrorOccured": "Digwyddodd Gwall ",
+    "roomDoesNotExist": "Nid yw'r ystafell yn bodoli   ",
+    "roomUserDoesNotExist": "Nid yw'r naill ystafell neu'r defnyddiwr yn bodoli ",
+    "roomNameTaken": "Name ",
+    "playServices": "Nid yw gwasanaethau chwarae ar gael ",
+    "emailVerification": "Ebost ddim ",
+    "invalidCode": "Cod Annilys ",
+    "unexpectedError": "Digwyddodd gwall annisgwyl ",
+    "usernameTaken": "Enw defnyddiwr yn Barod ",
+    "invalidEmail": "Cyfeiriad Ebost Annilys ",
+    "emailInUse": "Ebost wedi ei ddefnyddio eisoes"
   }
 }

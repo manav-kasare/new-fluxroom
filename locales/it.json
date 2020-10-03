@@ -1,100 +1,100 @@
 {
-  "buttons" : {
-    "signUpOnboard" : "Registrati Con Email ",
-    "logInOnboard" : "Accedi Con Email ",
-    "signUp" : "Firma Up ",
-    "logIn" : "Log In ",
-    "verify" : "Verifica ",
-    "forgotPassword" : "Password dimenticata? ",
-    "getOTP" : "Ottire OTP ",
-    "createRoom" : "Crea ",
-    "joinRoom" : "Join ",
-    "joinedRoom" : "Unito ",
-    "invite" : "Invito ",
-    "invited" : "Invitato ",
-    "findRoom" : "Trova una stanza ",
-    "done" : "Fatto ",
-    "cancel" : "Annulla ",
-    "close" : "Chiudi ",
-    "submit" : "Invia ",
-    "resend" : "Reinvio ",
-    "accept" : "Accetta ",
-    "decline" : "Calo "
+  "buttons": {
+    "signUpOnboard": "Registrati Con Email ",
+    "logInOnboard": "Accedi Con Email ",
+    "signUp": "Firma Up ",
+    "logIn": "Log In ",
+    "verify": "Verifica ",
+    "forgotPassword": "Password dimenticata? ",
+    "getOTP": "Ottire OTP ",
+    "createRoom": "Crea ",
+    "joinRoom": "Join ",
+    "joinedRoom": "Unito ",
+    "invite": "Invito ",
+    "invited": "Invitato ",
+    "findRoom": "Trova una stanza ",
+    "done": "Fatto ",
+    "cancel": "Annulla ",
+    "close": "Chiudi ",
+    "submit": "Invia ",
+    "resend": "Reinvio ",
+    "accept": "Accetta ",
+    "decline": "Calo "
   },
-  "placeholders" : {
-    "email" : "Indirizzo email ",
-    "username" : "Username ",
-    "issue" : "Rilascio ",
-    "description" : "Descrizione ",
-    "password" : "Password ",
-    "code" : "Codice di verifica ",
-    "seach" : "In cosa sei intredito? ",
-    "roomName" : "Di cosa parleresti? ",
-    "roomDescription" : "Descrivi in meno di 100 caratteri ",
-    "searchUsername" : "Ricerca Username ",
-    "forgotPassword" : "Email registrata o numero di telefono ",
-    "searchRooms" : "In cosa sei intredito? "
+  "placeholders": {
+    "email": "Indirizzo email ",
+    "username": "Username ",
+    "issue": "Rilascio ",
+    "description": "Descrizione ",
+    "password": "Password ",
+    "code": "Codice di verifica ",
+    "seach": "In cosa sei intredito? ",
+    "roomName": "Di cosa parleresti? ",
+    "roomDescription": "Descrivi in meno di 100 caratteri ",
+    "searchUsername": "Ricerca Username ",
+    "forgotPassword": "Email registrata o numero di telefono ",
+    "searchRooms": "In cosa sei intredito? "
   },
-  "screens" : {
-    "signUp" : "Unire Fluxroom ",
-    "logIn" : "Log In ",
-    "forgotPassword" : "Password dimenticata ",
-    "setUpProfile" : "Imposta il tuo profilo ",
-    "phone" : "Firma In con il numero di telefono ",
-    "fluxroom" : "Fluxroom ",
-    "findRooms" : "Trova Rooms ",
-    "settings" : "Impostazioni ",
-    "profile" : "Profilo ",
-    "aboutUs" : "Informazioni su Noi ",
-    "dataPolicy" : "Politica dei dati ",
-    "termsOfService" : "Termini di servizio ",
-    "invitations" : "Inviti ",
-    "issues" : "Problematiche ",
-    "createRoom" : "Crea la tua stanza ",
-    "topRooms" : "Top Rooms "
+  "screens": {
+    "signUp": "Unire Fluxroom ",
+    "logIn": "Log In ",
+    "forgotPassword": "Password dimenticata ",
+    "setUpProfile": "Imposta il tuo profilo ",
+    "phone": "Firma In con il numero di telefono ",
+    "fluxroom": "Fluxroom ",
+    "findRooms": "Trova Rooms ",
+    "settings": "Impostazioni ",
+    "profile": "Profilo ",
+    "aboutUs": "Informazioni su Noi ",
+    "privacyPolicy": "Politica dei dati ",
+    "termsOfService": "Termini di servizio ",
+    "invitations": "Inviti ",
+    "issues": "Problematiche ",
+    "createRoom": "Crea la tua stanza ",
+    "topRooms": "Top Rooms "
   },
-  "onboard" : {
-    "subHeading" : "Collega con chiunque via audio! "
+  "onboard": {
+    "subHeading": "Collega con chiunque via audio! "
   },
-  "chatRooms" : {
-    "noRooms" : "No Rooms: ( ",
-    "shareLink" : "Link di condivisione ",
-    "reportUser" : "Utente report ",
-    "blockUser" : "Blocco utente ",
-    "noRoomExists" : "Nessuna stanza esiste! "
+  "chatRooms": {
+    "noRooms": "No Rooms: ( ",
+    "shareLink": "Link di condivisione ",
+    "reportUser": "Utente report ",
+    "blockUser": "Blocco utente ",
+    "noRoomExists": "Nessuna stanza esiste! "
   },
-  "settings" : {
-    "aboutUs" : "Informazioni su Noi ",
-    "rateUs" : "Velocità U ",
-    "issues" : "Hai affrontato qualche problema? ",
-    "deleteAccount" : "Elimina account ",
-    "signOut" : "Firma fuori ",
-    "darkMode" : "Modalità dark ",
-    "dataPolicy" : "Politica dei dati ",
-    "termsOfService" : "Termini di servizio "
+  "settings": {
+    "aboutUs": "Informazioni su Noi ",
+    "rateUs": "Velocità U ",
+    "issues": "Hai affrontato qualche problema? ",
+    "deleteAccount": "Elimina account ",
+    "signOut": "Firma fuori ",
+    "darkMode": "Modalità dark ",
+    "privacyPolicy": "Politica dei dati ",
+    "termsOfService": "Termini di servizio "
   },
-  "otpVerification" : {
-    "heading" : "Ti abbiamo inviato un codice a "
+  "otpVerification": {
+    "heading": "Ti abbiamo inviato un codice a "
   },
-  "emailVerification" : {
-    "heading" : "Si prega di verificare la tua email. ",
-    "emailSent" : "Ti abbiamo inviato una mail a "
+  "emailVerification": {
+    "heading": "Si prega di verificare la tua email. ",
+    "emailSent": "Ti abbiamo inviato una mail a "
   },
-  "issues" : {
-    "heading" : "Che problema hai affrontato? ",
-    "subHeading" : "La nostra squadra cercherà di fissarle alla nostra migliore pratica. "
+  "issues": {
+    "heading": "Che problema hai affrontato? ",
+    "subHeading": "La nostra squadra cercherà di fissarle alla nostra migliore pratica. "
   },
-  "errors" : {
-    "anErrorOccured" : "Un errore occuo ",
-    "roomDoesNotExist" : "La stanza non esiste   ",
-    "roomUserDoesNotExist" : "La stanza o l'utente non esiste ",
-    "roomNameTaken" : "Nome stanza Già Preso ",
-    "playServices" : "Servizi di gioco non disponibili ",
-    "emailVerification" : "Email non verificata ",
-    "invalidCode" : "Codice non valido ",
-    "unexpectedError" : "Si è verificato un errore imprevisto ",
-    "usernameTaken" : "Username Già Preso ",
-    "invalidEmail" : "Indirizzo Email non valido ",
-    "emailInUse" : "Email già in uso"
+  "errors": {
+    "anErrorOccured": "Un errore occuo ",
+    "roomDoesNotExist": "La stanza non esiste   ",
+    "roomUserDoesNotExist": "La stanza o l'utente non esiste ",
+    "roomNameTaken": "Nome stanza Già Preso ",
+    "playServices": "Servizi di gioco non disponibili ",
+    "emailVerification": "Email non verificata ",
+    "invalidCode": "Codice non valido ",
+    "unexpectedError": "Si è verificato un errore imprevisto ",
+    "usernameTaken": "Username Già Preso ",
+    "invalidEmail": "Indirizzo Email non valido ",
+    "emailInUse": "Email già in uso"
   }
 }
