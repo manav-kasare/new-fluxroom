@@ -10,6 +10,7 @@ import {ThemeContext} from '../shared/Context';
 import Settings from '../screens/app/UserProfile/Settings/Settings';
 import AboutUs from '../screens/app/UserProfile/Settings/AboutUs';
 import il8n from '../locales/il8n';
+import BlockedUsers from '../screens/app/UserProfile/Settings/BlockedUsers';
 
 const ProfileStack = createStackNavigator();
 
@@ -88,6 +89,18 @@ export default function ProfileNavigator({route, navigation}) {
         component={Issues}
         options={{
           title: il8n.t('screens.issues'),
+          headerStyle: constants.headerStyle,
+          headerTitleStyle: constants.headerText,
+          headerBackTitleVisible: false,
+          headerTintColor: 'white',
+          headerTitleAlign: 'center',
+        }}
+      />
+      <ProfileStack.Screen
+        name="BlockedUsers"
+        component={BlockedUsers}
+        options={{
+          title: il8n.t('screens.blockedUsers'),
           headerStyle: constants.headerStyle,
           headerTitleStyle: constants.headerText,
           headerBackTitleVisible: false,

@@ -6,7 +6,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import _ from 'lodash';
 import {List, Button} from 'react-native-paper';
 
-import {ThemeContext} from '../../../shared/Context';
+import {ThemeContext, UserDetailsContext} from '../../../shared/Context';
 import {getUsers} from '../../../backend/database/apiCalls';
 import CircleAvatar from '../../../shared/CircleAvatar';
 
@@ -111,6 +111,7 @@ export default function FindPeople({navigation}) {
       </View>
       <View style={{flex: 1}}>
         <FlatList
+          keyExtractor={(index) => index.toString()}
           data={filteredUsers}
           style={{flex: 1, width: constants.width}}
           renderItem={renderItem}
@@ -122,15 +123,21 @@ export default function FindPeople({navigation}) {
 
 const RenderTile = ({item}) => {
   const {constants} = React.useContext(ThemeContext);
+  const {user} = React.useContext(UserDetailsContext);
   const [loading, setLoading] = React.useState(false);
 
   const handleRequest = () => {};
 
-  const friendRequestButton = () => loading ? <ActivityIndicator color={constants.primary}  animating={true} /> : (
-    <Button color={constants.primary} onPress={handleRequest}>
-      Request
-    </Button>
-  );
+  const friendRequestButton = () =>
+    loading ? (
+      <ActivityIndicator color={constants.primary} animating={true} />
+    ) : (
+      <Button color={constants.primary} onPress={handleRequest}>
+        Request
+      </Button>
+    );
+
+  const renderPhoto = () => <CircleAvatar uri={item.profilePic} size={50} />;
 
   const styles = StyleSheet.create({
     title: {
@@ -143,14 +150,18 @@ const RenderTile = ({item}) => {
     },
   });
 
-  return (
-    <List.Item
-      title={item.username}
-      titleStyle={styles.title}
-      left={() => <CircleAvatar uri={item.profilePic} size={50} />}
-      description={item.description}
-      descriptionStyle={styles.description}
-      right={friendRequestButton}
-    />
-  );
+  if (user._id !== item._id) {
+    return (
+      <List.Item
+        title={item.username}
+        titleStyle={styles.title}
+        left={renderPhoto}
+        description={item.description}
+        descriptionStyle={styles.description}
+        right={friendRequestButton}
+      />
+    );
+  } else {
+    return <></>;
+  }
 };

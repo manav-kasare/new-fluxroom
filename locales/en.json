@@ -51,7 +51,8 @@
         "invitations": "Invitations",
         "issues": "Issues",
         "createRoom": "Create your own room",
-        "popularRooms": "Popular Rooms"
+        "popularRooms": "Popular Rooms",
+        "blockedUsers": "Blocked Users"
     },
     "onboard": {
         "subHeading": "Connect with anyone via audio !"

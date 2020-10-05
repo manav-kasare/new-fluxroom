@@ -4,6 +4,7 @@ import {Switch, ActivityIndicator} from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Entypo from 'react-native-vector-icons/Entypo';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import auth from '@react-native-firebase/auth';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -66,6 +67,10 @@ export default function Settings({navigation}) {
     navigation.navigate('Issues');
   };
 
+  const navigateBlockedUsers = () => {
+    navigation.navigate('BlockedUsers');
+  };
+
   return (
     <SafeAreaView
       style={{
@@ -97,6 +102,7 @@ export default function Settings({navigation}) {
             />
           </TouchableOpacity>
         </View>
+
         <View style={styles.view}>
           <TouchableOpacity style={styles.view_touchable}>
             <View
@@ -115,6 +121,30 @@ export default function Settings({navigation}) {
             />
           </TouchableOpacity>
         </View>
+
+        <View style={styles.view}>
+          <TouchableOpacity
+            style={styles.view_touchable}
+            onPress={navigateBlockedUsers}>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                paddingLeft: 5,
+              }}>
+              <Entypo name="block" size={20} color={constants.background2} />
+              <Text style={styles.view_text}>
+                {il8n.t('screens.blockedUsers')}
+              </Text>
+            </View>
+            <Ionicons
+              name="chevron-forward"
+              size={20}
+              color={constants.background2}
+            />
+          </TouchableOpacity>
+        </View>
+
         <View style={styles.view}>
           <TouchableOpacity
             onPress={navigateIssues}
@@ -139,6 +169,7 @@ export default function Settings({navigation}) {
             />
           </TouchableOpacity>
         </View>
+
         <View style={styles.view}>
           <TouchableOpacity style={styles.view_touchable}>
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
