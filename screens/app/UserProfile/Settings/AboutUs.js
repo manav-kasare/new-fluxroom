@@ -22,7 +22,7 @@ export default function AboutUs() {
           // iOS Properties
           dismissButtonStyle: 'cancel',
           preferredBarTintColor: darkTheme ? 'black' : 'white',
-          preferredControlTintColor: 'dodgerblue',
+          preferredControlTintColor: constants.primary,
           readerMode: false,
           animated: true,
           modalPresentationStyle: 'fullScreen',
@@ -32,7 +32,7 @@ export default function AboutUs() {
           // Android Properties
           showTitle: true,
           toolbarColor: darkTheme ? 'black' : 'white',
-          secondaryToolbarColor: 'dodgerblue',
+          secondaryToolbarColor: constants.primary,
           enableUrlBarHiding: true,
           enableDefaultShare: true,
           forceCloseOnRedirection: false,

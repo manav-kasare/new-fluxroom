@@ -23,6 +23,7 @@ console.disableYellowBox = true;
 import {ThemeContext} from '../../../shared/Context';
 import CircleAvatar from '../../../shared/CircleAvatar';
 import {getChatroomInfo, getUserInfo} from '../../../backend/database/apiCalls';
+import CachedImage from '../../../shared/CachedImage';
 
 const ChatRoomRenderTile = ({item, navigation}) => {
   const {constants} = React.useContext(ThemeContext);
@@ -35,6 +36,7 @@ const ChatRoomRenderTile = ({item, navigation}) => {
     profilePic: '',
     listOfUsers: [],
   });
+  const [formattedListOfUsers, setFormattedListOfUsers] = React.useState([]);
 
   const opacityVal = useValue(0);
   const opacity = useTransition(opacityVal);
@@ -52,7 +54,7 @@ const ChatRoomRenderTile = ({item, navigation}) => {
   const state = useValue(State.UNDETERMINED);
   const gestureHandler = onGestureEvent({state});
   const transition = useTransition(showRoomDetails);
-  const height = mix(transition, 0, room.listOfUsers.length * 25);
+  const height = mix(transition, 0, constants.height * 0.15);
   const rotateZ = mix(transition, 0, Math.PI);
 
   useCode(
@@ -64,6 +66,7 @@ const ChatRoomRenderTile = ({item, navigation}) => {
   React.useEffect(() => {
     getChatroomInfo(item).then((response) => {
       setRoom(response);
+      setFormattedListOfUsers(response.listOfUsers.slice(0, 4));
     });
   }, []);
 
@@ -75,6 +78,23 @@ const ChatRoomRenderTile = ({item, navigation}) => {
   };
 
   const renderSpeaker = ({item}) => <RenderSpeaker id={item} />;
+
+  const renderFooter = () =>
+    room.listOfUsers.length > 4 ? (
+      <View
+        style={{
+          height: 50,
+          width: 50,
+          borderRadius: 20,
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: constants.primary,
+        }}>
+        <Text style={{color: 'white'}}>+{room.listOfUsers.length - 4}</Text>
+      </View>
+    ) : (
+      <></>
+    );
 
   const styles = StyleSheet.create({
     tile: {
@@ -166,18 +186,21 @@ const ChatRoomRenderTile = ({item, navigation}) => {
               </TouchableOpacity>
             </View>
           </View>
-          <Animated.View style={{height}}>
+          <Animated.View
+            style={{
+              height,
+            }}>
+            <Text style={{marginVertical: 5, color: constants.text1}}>
+              3 Speaking
+            </Text>
             <FlatList
               style={styles.listOfUsers}
-              ListHeaderComponent={() => (
-                <Text style={{color: constants.text1, fontWeight: '500'}}>
-                  x Speaking of {room.listOfUsers.length}
-                </Text>
-              )}
+              horizontal={true}
               scrollEnabled={false}
-              data={room.listOfUsers}
+              data={formattedListOfUsers}
               keyExtractor={(key, index) => index.toString()}
               renderItem={renderSpeaker}
+              ListFooterComponent={renderFooter}
             />
           </Animated.View>
         </Animated.View>
@@ -187,18 +210,34 @@ const ChatRoomRenderTile = ({item, navigation}) => {
 };
 
 const RenderSpeaker = ({id}) => {
-  const [username, setUsername] = React.useState('');
+  const [profilePic, setProfilePic] = React.useState('');
 
   React.useEffect(() => {
     getUserInfo(id).then((response) => {
-      setUsername(response.username);
+      setProfilePic(response.profilePic);
     });
   }, []);
 
   return (
-    <Text style={{color: 'grey', fontSize: 16, fontWeight: '400'}}>
-      {username}
-    </Text>
+    <View
+      style={{
+        height: 50,
+        width: 50,
+        borderRadius: 20,
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}>
+      <CachedImage
+        style={{
+          height: 50,
+          width: 50,
+          borderRadius: 20,
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+        uri={profilePic}
+      />
+    </View>
   );
 };
 

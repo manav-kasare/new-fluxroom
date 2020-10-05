@@ -6,7 +6,7 @@ import {ThemeContext} from '../../../shared/Context';
 import il8n from '../../../locales/il8n';
 
 export default function TopRooms({allRooms, navigation}) {
-  const {constants} = React.useContext(ThemeContext);
+  const {constants, darkTheme} = React.useContext(ThemeContext);
   const [sortedRoomsList, setSortedRoomsList] = React.useState([]);
   const [_allRooms, _setAllRooms] = React.useState([]);
 
@@ -37,12 +37,14 @@ export default function TopRooms({allRooms, navigation}) {
     <View
       style={{
         width: constants.width,
-        backgroundColor: constants.background1,
+        backgroundColor: darkTheme
+          ? constants.background1
+          : constants.background3,
         paddingLeft: 25,
         paddingVertical: 15,
       }}>
-      <Text style={{color: constants.text1, fontSize: 22, fontWeight: '600'}}>
-        {il8n.t('screens.topRooms')}
+      <Text style={{color: constants.text1, fontSize: 22, fontWeight: '700'}}>
+        {il8n.t('screens.popularRooms')}
       </Text>
     </View>
   );

@@ -42,7 +42,7 @@
         "setUpProfile": "Set up your profile",
         "phone": "Sign In with phone number",
         "fluxroom": "Fluxroom",
-        "findRooms": "Find Rooms",
+        "discover": "Discover Rooms",
         "settings": "Settings",
         "profile": "Profile",
         "aboutUs": "About Us",
@@ -51,7 +51,7 @@
         "invitations": "Invitations",
         "issues": "Issues",
         "createRoom": "Create your own room",
-        "topRooms": "Top Rooms"
+        "popularRooms": "Popular Rooms"
     },
     "onboard": {
         "subHeading": "Connect with anyone via audio !"
@@ -63,7 +63,9 @@
         "blockUser": "Block User",
         "noRoomExists": "No room such exists !",
         "follow": "Follow",
-        "unFollow": "Unfollow"
+        "unFollow": "Unfollow",
+        "inviteToSpeak": "Invite to Speak",
+        "moveToAudience": "Move to Audience"
     },
     "settings": {
         "aboutUs": "About Us",

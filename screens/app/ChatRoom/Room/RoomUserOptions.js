@@ -10,6 +10,8 @@ import il8n from '../../../../locales/il8n';
 export default function RoomUserOptions({isVisible, setIsVisible}) {
   const {constants} = React.useContext(ThemeContext);
   const [isFollowing, setIsFollowing] = React.useState(false);
+  const [moderator, setModerator] = React.useState(true);
+  const [alreadySpeaker, setAlreadySpeaker] = React.useState(false);
 
   const styles = StyleSheet.create({
     modal: {
@@ -61,6 +63,45 @@ export default function RoomUserOptions({isVisible, setIsVisible}) {
           top: 10,
         }}
       />
+      {moderator ? (
+        alreadySpeaker ? (
+          <TouchableOpacity style={styles.button}>
+            <FontAwesome5
+              name="microphone-slash"
+              size={18}
+              color={constants.background2}
+            />
+            <Text style={styles.buttonText}>
+              {il8n.t('chatRooms.moveToAudience')}
+            </Text>
+            <Ionicons
+              name="chevron-forward"
+              size={20}
+              color={constants.background2}
+              style={{position: 'absolute', right: 20}}
+            />
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity style={styles.button}>
+            <FontAwesome5
+              name="microphone"
+              size={18}
+              color={constants.background2}
+            />
+            <Text style={styles.buttonText}>
+              {il8n.t('chatRooms.inviteToSpeak')}
+            </Text>
+            <Ionicons
+              name="chevron-forward"
+              size={20}
+              color={constants.background2}
+              style={{position: 'absolute', right: 20}}
+            />
+          </TouchableOpacity>
+        )
+      ) : (
+        <></>
+      )}
       {isFollowing ? (
         <TouchableOpacity style={styles.button}>
           <FontAwesome5

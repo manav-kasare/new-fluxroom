@@ -21,6 +21,7 @@ import {storeUserData} from '../../../shared/AsyncStore';
 import CircleAvatar from '../../../shared/CircleAvatar';
 import {State, TapGestureHandler} from 'react-native-gesture-handler';
 import il8n from '../../../locales/il8n';
+import CachedImage from '../../../shared/CachedImage';
 
 const SearchRenderTile = React.memo(({navigation, room}) => {
   const {constants, darkTheme} = useContext(ThemeContext);
@@ -28,12 +29,15 @@ const SearchRenderTile = React.memo(({navigation, room}) => {
   const {user, setUser} = useContext(UserDetailsContext);
   const [loading, setLoading] = useState(false);
   const [alreadyJoined, setAlreadyJoined] = useState(false);
+  const [formattedListOfUsers, setFormattedListOfUsers] = React.useState(
+    room.listOfUsers.slice(0, 4),
+  );
 
   const showRoomDetails = useValue(0);
   const state = useValue(State.UNDETERMINED);
   const gestureHandler = onGestureEvent({state});
   const transition = useTransition(showRoomDetails);
-  const height = mix(transition, 0, room.listOfUsers.length * 25);
+  const height = mix(transition, 0, constants.height * 0.15);
   const rotateZ = mix(transition, 0, Math.PI);
 
   useCode(
@@ -67,13 +71,32 @@ const SearchRenderTile = React.memo(({navigation, room}) => {
 
   const renderSpeaker = ({item}) => <RenderSpeaker id={item} />;
 
+  const renderFooter = () =>
+    room.listOfUsers.length > 4 ? (
+      <View
+        style={{
+          height: 50,
+          width: 50,
+          borderRadius: 20,
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: constants.primary,
+        }}>
+        <Text style={{color: 'white'}}>+{room.listOfUsers.length - 4}</Text>
+      </View>
+    ) : (
+      <></>
+    );
+
   const nothing = () => {};
 
   const styles = StyleSheet.create({
     tile: {
       width: constants.width,
       paddingVertical: 10,
-      backgroundColor: constants.background1,
+      backgroundColor: darkTheme
+        ? constants.background1
+        : constants.background3,
       borderBottomColor: darkTheme ? '#171717' : constants.lineColor,
       borderBottomWidth: 0.2,
     },
@@ -84,7 +107,9 @@ const SearchRenderTile = React.memo(({navigation, room}) => {
       alignItems: 'center',
       flexDirection: 'row',
       justifyContent: 'space-between',
-      backgroundColor: constants.background1,
+      backgroundColor: darkTheme
+        ? constants.background1
+        : constants.background3,
     },
     tileSmallLeft: {
       flexDirection: 'row',
@@ -183,13 +208,24 @@ const SearchRenderTile = React.memo(({navigation, room}) => {
             />
           </Animated.View>
         </View>
-        <Animated.View style={{height, opacity: showRoomDetails}}>
+        <Animated.View
+          style={{
+            height,
+            opacity: showRoomDetails,
+            paddingLeft: 50,
+          }}>
+          <Text
+            style={{marginVertical: 5, color: constants.text1, maringLeft: 25}}>
+            3 Speaking
+          </Text>
           <FlatList
             style={styles.listOfUsers}
+            horizontal={true}
             scrollEnabled={false}
-            data={room.listOfUsers}
-            keyExtractor={(index) => index.toString()}
+            data={formattedListOfUsers}
+            keyExtractor={(key, index) => index.toString()}
             renderItem={renderSpeaker}
+            ListFooterComponent={renderFooter}
           />
         </Animated.View>
       </Animated.View>
@@ -198,27 +234,33 @@ const SearchRenderTile = React.memo(({navigation, room}) => {
 });
 
 const RenderSpeaker = ({id}) => {
-  const {constants, darkTheme} = useContext(ThemeContext);
-  const [username, setUsername] = React.useState(null);
+  const [profilePic, setProfilePic] = React.useState('');
 
   React.useEffect(() => {
     getUserInfo(id).then((response) => {
-      setUsername(response.username);
+      setProfilePic(response.profilePic);
     });
   }, []);
 
-  const styles = {
-    memberName: {
-      color: constants.text1,
-      marginVertical: 1,
-      fontSize: 18,
-      fontWeight: '500',
-    },
-  };
-
   return (
-    <View style={styles.memberTile}>
-      <Text style={styles.memberName}>{username}</Text>
+    <View
+      style={{
+        height: 50,
+        width: 50,
+        borderRadius: 20,
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}>
+      <CachedImage
+        style={{
+          height: 50,
+          width: 50,
+          borderRadius: 20,
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+        uri={profilePic}
+      />
     </View>
   );
 };

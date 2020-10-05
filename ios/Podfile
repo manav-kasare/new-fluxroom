@@ -15,6 +15,7 @@ target 'fluxroom' do
   pod 'Permission-PhotoLibrary', :path => "#{permissions_path}/PhotoLibrary.podspec"
   pod 'GoogleSignIn', '~> 5.0.2'
   pod 'Firebase/Analytics'
+  pod 'react-native-contacts', :path => '../node_modules/react-native-contacts'
 
   pod 'DoubleConversion', :podspec => '../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec'
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'

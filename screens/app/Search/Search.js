@@ -99,7 +99,7 @@ const Search = React.memo(({navigation}) => {
         <Appbar.Content
           style={styles.headerContentStyle}
           titleStyle={styles.headerTitleStyle}
-          title={il8n.t('screens.findRooms')}
+          title={il8n.t('screens.discover')}
         />
       </Appbar.Header>
       <SafeAreaView

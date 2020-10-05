@@ -1,17 +1,22 @@
 import React from 'react';
+import {View} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import il8n from '../locales/il8n';
-import {ThemeContext} from '../shared/Context';
+import {ThemeContext, UserDetailsContext} from '../shared/Context';
 import Search from '../screens/app/Search/Search';
 import ChatRooms from '../screens/app/ChatRoom/ChatRooms';
 import ProfileNavigator from './ProfileNavigator';
+import CircleAvatar from '../shared/CircleAvatar';
+import PeopleNavigator from './PeopleNavigator';
 
 const BottomTabs = createBottomTabNavigator();
 
 export default function HomeNavigator() {
+  const {user} = React.useContext(UserDetailsContext);
   const {constants} = React.useContext(ThemeContext);
 
   return (
@@ -50,12 +55,34 @@ export default function HomeNavigator() {
         }}
       />
       <BottomTabs.Screen
+        name="People"
+        component={PeopleNavigator}
+        options={{
+          tabBarIcon: ({color}) => (
+            <FontAwesome5 name="users" size={20} color={color} />
+          ),
+        }}
+      />
+      <BottomTabs.Screen
         name="ProfileNavigator"
         component={ProfileNavigator}
         options={{
-          tabBarIcon: ({color}) => (
-            <MaterialIcons name="person" size={30} color={color} />
-          ),
+          tabBarIcon: ({color}) =>
+            user.profilePic === undefined ? (
+              <MaterialIcons name="person" size={30} color={color} />
+            ) : (
+              <View
+                style={{
+                  height: 31,
+                  width: 31,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  borderRadius: 15,
+                  backgroundColor: 'grey',
+                }}>
+                <CircleAvatar uri={user.profilePic} size={30} />
+              </View>
+            ),
         }}
       />
     </BottomTabs.Navigator>
