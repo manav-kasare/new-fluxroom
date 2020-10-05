@@ -1,13 +1,29 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import {Appbar} from 'react-native-paper';
-
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
-import {createStackNavigator} from '@react-navigation/stack';
+import {
+  createStackNavigator,
+  CardStyleInterpolators,
+} from '@react-navigation/stack';
+
 import FindPeople from '../screens/app/People/FindPeople';
 import Friends from '../screens/app/People/Friends';
 import {ThemeContext} from '../shared/Context';
 import ContactsList from '../screens/app/People/ContactsList';
+import FriendRequests from '../screens/app/People/FriendRequests';
+
+const config = {
+  animation: 'spring',
+  config: {
+    stiffness: 500,
+    damping: 10000,
+    mass: 2,
+    overshootClamping: false,
+    restDisplacementThreshold: 0.01,
+    restSpeedThreshold: 0.01,
+  },
+};
 
 const Tab = createMaterialTopTabNavigator();
 const Stack = createStackNavigator();
@@ -30,7 +46,7 @@ export default function PeopleNavigator() {
       borderColor: 'transparent',
       elevation: 0,
       shadowOpacity: 0,
-      height: 100,
+      height: 50,
     },
     headerContentStyle: {
       position: 'absolute',
@@ -60,7 +76,7 @@ export default function PeopleNavigator() {
             backgroundColor: constants.background3,
           },
         }}>
-        <Tab.Screen name="Friends" component={Friends} />
+        <Tab.Screen name="Friends" component={FriendsNavigator} />
         <Tab.Screen
           name="FindPeople"
           component={FindPeopleNavigator}
@@ -71,10 +87,61 @@ export default function PeopleNavigator() {
   );
 }
 
+const FriendsNavigator = () => {
+  const {constants, darkTheme} = React.useContext(ThemeContext);
+  return (
+    <Stack.Navigator
+      initialRouteName="Friends"
+      screenOptions={{
+        gestureEnabled: true,
+        gestureDirection: 'horizontal',
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+        transitionSpec: {
+          open: config,
+          close: config,
+        },
+      }}>
+      <Stack.Screen
+        name="Friends"
+        component={Friends}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="FriendRequests"
+        component={FriendRequests}
+        options={{
+          headerStatusBarHeight: 0,
+          title: 'Friend Requests',
+          headerStyle: {
+            backgroundColor: constants.background3,
+            borderWidth: darkTheme ? 0 : 0.2,
+            borderColor: constants.lineColor,
+            elevation: 0,
+            shadowOpacity: 0,
+          },
+          headerBackTitleVisible: false,
+          headerTintColor: constants.text1,
+          headerTitleAlign: 'center',
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
+
 const FindPeopleNavigator = () => {
   const {constants, darkTheme} = React.useContext(ThemeContext);
   return (
-    <Stack.Navigator initialRouteName="FindPeople">
+    <Stack.Navigator
+      initialRouteName="FindPeople"
+      screenOptions={{
+        gestureEnabled: true,
+        gestureDirection: 'horizontal',
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+        transitionSpec: {
+          open: config,
+          close: config,
+        },
+      }}>
       <Stack.Screen
         name="FindPeople"
         component={FindPeople}

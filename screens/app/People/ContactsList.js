@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, FlatList, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, FlatList, } from 'react-native';
 import Contacts from 'react-native-contacts';
 import {List} from 'react-native-paper';
 

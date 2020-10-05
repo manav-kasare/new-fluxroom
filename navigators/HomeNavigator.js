@@ -71,17 +71,7 @@ export default function HomeNavigator() {
             user.profilePic === undefined ? (
               <MaterialIcons name="person" size={30} color={color} />
             ) : (
-              <View
-                style={{
-                  height: 31,
-                  width: 31,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  borderRadius: 15,
-                  backgroundColor: 'grey',
-                }}>
-                <CircleAvatar uri={user.profilePic} size={30} />
-              </View>
+              <CircleAvatar uri={user.profilePic} size={30} />
             ),
         }}
       />

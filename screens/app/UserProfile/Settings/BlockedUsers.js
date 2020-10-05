@@ -12,7 +12,6 @@ import {getUserMe} from '../../../../backend/database/apiCalls';
 export default function BlockedUsers() {
   const {constants} = React.useContext(ThemeContext);
   const {token} = React.useContext(TokenContext);
-  const {user} = React.useContext(UserDetailsContext);
   const [blockeUsers, setBlockedUsers] = React.useState([]);
 
   React.useEffect(() => {
