@@ -35,7 +35,7 @@ import {firebase} from '@react-native-firebase/messaging';
 export default function SetUpProfile({route}) {
   const {setUser} = useContext(UserDetailsContext);
   const {setToken} = useContext(TokenContext);
-  const {email, phoneNumber, googleData, phoneData, appleData} = route.params;
+  const {phoneNumber, phoneData} = route.params;
   const [username, setUsername] = useState('');
   const [description, setDescription] = useState('');
   const [profilePhoto, setProfilePhoto] = useState(null);
@@ -43,9 +43,6 @@ export default function SetUpProfile({route}) {
   const [fcmToken, setFcmToken] = useState(null);
 
   React.useEffect(() => {
-    if (googleData) {
-      setProfilePhoto(googleData.user.photoURL);
-    }
     getFCMToken();
   }, []);
 
@@ -62,86 +59,11 @@ export default function SetUpProfile({route}) {
     return /^[a-z0-9_-]{3,15}$/.test(q);
   };
 
-  const googleSignUp = () => {
-    try {
-      createUser({
-        username: username,
-        email: email,
-        phone: email,
-        notificationID: fcmToken,
-        googleData: googleData,
-        description: description,
-        profilePic: profilePhoto,
-      }).then((response) => {
-        if (response.error) {
-          setLoading(false);
-          ReactNativeHapticFeedback.trigger('notificationError', options);
-          if (response.error.code === 11000) {
-            CustomErrorToast('Username Already taken');
-          } else {
-            CustomErrorToast('An unexpected error occured');
-          }
-        } else {
-          storeToken(response.user._id, response.token[0].token).then(() => {
-            setToken(response.token[0].token);
-            storeTheme('light');
-            storeUserData(response.user);
-            setUser(response.user);
-            ReactNativeHapticFeedback.trigger('notificationSuccess', options);
-            setLoading(false);
-          });
-        }
-      });
-    } catch (e) {
-      setLoading(false);
-      ReactNativeHapticFeedback.trigger('notificationError', options);
-      CustomErrorToast('An Error Occured !');
-    }
-  };
-
-  const appleSignUp = () => {
-    try {
-      createUser({
-        username: username,
-        email: email,
-        phone: email,
-        notificationID: fcmToken,
-        appleData: appleData,
-        description: description,
-        profilePic: profilePhoto,
-      }).then((response) => {
-        if (response.error) {
-          ReactNativeHapticFeedback.trigger('notificationError', options);
-          setLoading(false);
-          if (response.error.code === 11000) {
-            CustomErrorToast('Username Already taken');
-          } else {
-            CustomErrorToast('An unexpected error occured');
-          }
-        } else {
-          storeToken(response.user._id, response.token[0].token).then(() => {
-            setToken(response.token[0].token);
-            storeUserData(response.user);
-            storeTheme('light');
-            setUser(response.user);
-            ReactNativeHapticFeedback.trigger('notificationSuccess', options);
-            setLoading(false);
-          });
-        }
-      });
-    } catch (e) {
-      setLoading(false);
-      ReactNativeHapticFeedback.trigger('notificationError', options);
-      CustomErrorToast('An Error Occured !');
-    }
-  };
-
   const phoneSignUp = () => {
     setLoading(true);
     try {
       createUser({
         username: username,
-        email: phoneNumber,
         phone: phoneNumber,
         notificationID: fcmToken,
         phoneData: phoneData,
@@ -174,56 +96,8 @@ export default function SetUpProfile({route}) {
     }
   };
 
-  const emailSignUp = () => {
-    setLoading(true);
-    if (googleData) {
-      googleSignUp();
-    } else if (appleData) {
-      appleSignUp();
-    } else {
-      try {
-        createUser({
-          username: username,
-          email: email,
-          phone: email,
-          notificationID: fcmToken,
-          description: description,
-          profilePic: profilePhoto,
-        }).then((response) => {
-          if (response.error) {
-            ReactNativeHapticFeedback.trigger('notificationError', options);
-            setLoading(false);
-            if (response.error.code === 11000) {
-              CustomErrorToast('Username Already taken');
-            } else {
-              CustomErrorToast('An unexpected error occured');
-            }
-          } else {
-            storeToken(response.user._id, response.token[0].token).then(() => {
-              setToken(response.token[0].token);
-              setLoading(false);
-              storeUserData(response.user);
-              storeTheme('light');
-              ReactNativeHapticFeedback.trigger('notificationSuccess', options);
-              setUser(response.user);
-            });
-          }
-        });
-      } catch (e) {
-        setLoading(false);
-        ReactNativeHapticFeedback.trigger('notificationError', options);
-        CustomErrorToast('An Error Occured !');
-      }
-    }
-  };
-
   const handleSubmit = () => {
-    Keyboard.dismiss();
-    if (email) {
-      emailSignUp();
-    } else if (phoneNumber) {
-      phoneSignUp();
-    }
+    phoneSignUp();
   };
 
   const pickImage = () => {

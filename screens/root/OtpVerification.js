@@ -1,38 +1,50 @@
 import React from 'react';
-import {View, TextInput, StyleSheet} from 'react-native';
+import {
+  TouchableOpacity,
+  View,
+  Text,
+  Image,
+  SafeAreaView,
+  Keyboard,
+  TextInput,
+} from 'react-native';
 import auth from '@react-native-firebase/auth';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 const options = {
   enableVibrateFallback: true,
   ignoreAndroidSystemSettings: false,
 };
+import Animated, {
+  useCode,
+  set,
+  eq,
+  SpringUtils,
+  cond,
+} from 'react-native-reanimated';
 import {
-  Button,
-  Paragraph,
-  Dialog,
-  Portal,
-  ActivityIndicator,
-} from 'react-native-paper';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+  useValue,
+  mix,
+  useSpringTransition,
+  useTimingTransition,
+} from 'react-native-redash';
+import {ActivityIndicator} from 'react-native-paper';
+
+import {
+  ThemeContext,
+  UserDetailsContext,
+  TokenContext,
+} from '../../shared/Context';
+import globalStyles from '../../shared/GlobalStyles';
+import {CustomErrorToast} from '../../shared/CustomToast';
 import il8n from '../../locales/il8n';
 
-import {CustomErrorToast} from '../../shared/CustomToast';
-import {UserDetailsContext, TokenContext} from '../../shared/Context';
-import {getUserByPhone, loginUser} from '../../backend/database/apiCalls';
-import {storeToken} from '../../shared/KeyChain';
-import {storeUserData, storeTheme} from '../../shared/AsyncStore';
-import globalStyles from '../../shared/GlobalStyles';
-import constants from '../../shared/constants';
-
-export default OtpVerification = ({
-  isVisible,
-  confirmation,
-  setIsVisible,
-  setConfirmation,
-  phoneNumber,
-  navigation,
-}) => {
+export default function OtpVerification({route, navigation}) {
+  const {constants} = React.useContext(ThemeContext);
+  const {confirmation, phoneNumber} = route.params;
+  const [_confirmation, setConfirmation] = React.useState(confirmation);
   const {setUser} = React.useContext(UserDetailsContext);
   const [code, setCode] = React.useState(null);
   const {setToken} = React.useContext(TokenContext);
@@ -40,9 +52,10 @@ export default OtpVerification = ({
   const [isLoadingResendCode, setIsLoadingResendCode] = React.useState(false);
 
   const confirmSignUp = async () => {
+    Keyboard.dismiss();
     setIsLoadingCode(true);
     try {
-      await confirmation.confirm(code).then((userInfo) => {
+      await _confirmation.confirm(code).then((userInfo) => {
         ReactNativeHapticFeedback.trigger('notificationSuccess', options);
         setIsVisible(false);
         if (userInfo.additionalUserInfo.isNewUser) {
@@ -80,6 +93,7 @@ export default OtpVerification = ({
         }
       });
     } catch (error) {
+      console.log('[Error]', error);
       ReactNativeHapticFeedback.trigger('notificationError', options);
       setIsLoadingCode(false);
       CustomErrorToast('Invalid Code !');
@@ -90,72 +104,115 @@ export default OtpVerification = ({
     setIsLoadingResendCode(true);
     await auth()
       .signInWithPhoneNumber(phoneNumber)
-      .then((_confirmation) => {
-        setConfirmation(_confirmation);
+      .then((response) => {
+        setConfirmation(response);
         setIsLoadingResendCode(false);
       });
   };
 
-  const styles = StyleSheet.create({
-    input: {
-      alignItems: 'center',
-      flexDirection: 'row',
-      height: 50,
-      borderRadius: 8,
-      paddingHorizontal: 10,
-      backgroundColor: 'white',
-      marginTop: 15,
-      marginHorizontal: 5,
-      borderRadius: 8,
-      borderColor: 'grey',
-      borderWidth: 0.3,
-    },
+  const y = useValue(0);
+
+  const opacityTransition = useTimingTransition(y, {duration: 500});
+  const opacity = mix(opacityTransition, 0, 1);
+
+  const positionY = useSpringTransition(y, {
+    ...SpringUtils.makeDefaultConfig(),
+    overshootClamping: true,
+    damping: new Animated.Value(20),
   });
+  const translateY = mix(positionY, constants.height, 0);
+  useCode(() => cond((eq(y, 0), set(y, 1))), [y]);
 
   return (
-    <Portal>
-      <Dialog visible={isVisible} dismissable={false}>
-        <Dialog.Content>
-          <Paragraph style={{color: 'grey'}}>
-            {il8n.t('otpVerification.heading')} {phoneNumber}
-          </Paragraph>
-          <View style={styles.input}>
-            <MaterialCommunityIcons
-              name="barcode"
-              size={18}
-              color={constants.primary}
+    <KeyboardAwareScrollView
+      style={{width: constants.width, height: constants.height}}
+      keyboardShouldPersistTaps="handled">
+      <View
+        style={{
+          width: constants.width,
+          height: constants.height,
+          backgroundColor: 'white',
+        }}>
+        <SafeAreaView
+          style={{
+            flex: 1,
+            backgroundColor: '#03449e',
+            alignItems: 'center',
+            marginBottom: 50,
+          }}>
+          <Animated.View style={{opacity}}>
+            <Image
+              style={{
+                width: constants.width,
+                marginVertical: 30,
+                height: constants.height * 0.2,
+              }}
+              resizeMode="contain"
+              source={require('../../assets/phone.webp')}
             />
-            <TextInput
-              keyboardType="number-pad"
-              style={globalStyles.textInput}
-              placeholder={il8n.t('placeholders.code')}
-              placeholderTextColor="grey"
-              value={code}
-              onChangeText={(text) => setCode(text)}
-              autoCapitalize="none"
-            />
-          </View>
-        </Dialog.Content>
-        <Dialog.Actions>
-          {isLoadingResendCode ? (
-            <ActivityIndicator color="#03449e" size="small" />
-          ) : (
-            <Button
-              mode="text"
-              color="#03449e"
+          </Animated.View>
+          <Animated.View
+            style={{
+              flex: 1,
+              width: constants.width,
+              alignItems: 'center',
+              justifyContent: 'flex-start',
+              paddingTop: 50,
+              backgroundColor: 'white',
+              borderTopRightRadius: 15,
+              borderTopLeftRadius: 15,
+              transform: [{translateY}],
+            }}>
+            <View style={globalStyles.input}>
+              <MaterialCommunityIcons
+                name="barcode"
+                size={18}
+                color={constants.primary}
+              />
+              <TextInput
+                keyboardType="number-pad"
+                style={globalStyles.textInput}
+                placeholder={il8n.t('placeholders.code')}
+                placeholderTextColor="grey"
+                value={code}
+                onChangeText={(text) => setCode(text)}
+                autoCapitalize="none"
+              />
+            </View>
+            <TouchableOpacity
+              style={globalStyles.button}
+              onPress={confirmSignUp}>
+              {isLoadingCode ? (
+                <ActivityIndicator
+                  color="white"
+                  size="small"
+                  animating={true}
+                />
+              ) : (
+                <Text style={globalStyles.buttonText}>
+                  {il8n.t('buttons.verify')}
+                </Text>
+              )}
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={globalStyles.button}
               onPress={resendConfirmationCode}>
-              {il8n.t('buttons.resend')}
-            </Button>
-          )}
-          {isLoadingCode ? (
-            <ActivityIndicator color="#03449e" size="small" />
-          ) : (
-            <Button mode="text" color="#03449e" onPress={confirmSignUp}>
-              {il8n.t('buttons.verify')}
-            </Button>
-          )}
-        </Dialog.Actions>
-      </Dialog>
-    </Portal>
+              {isLoadingResendCode ? (
+                <ActivityIndicator
+                  color="white"
+                  size="small"
+                  animating={true}
+                />
+              ) : (
+                <Text style={globalStyles.buttonText}>
+                  {il8n.t('buttons.resend')}
+                </Text>
+              )}
+            </TouchableOpacity>
+          </Animated.View>
+        </SafeAreaView>
+      </View>
+    </KeyboardAwareScrollView>
   );
-};
+}

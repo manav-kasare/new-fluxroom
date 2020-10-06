@@ -91,11 +91,7 @@ class FCMService {
     this.messageListener = messaging().onMessage(async (remoteMessage) => {
       console.log('[On Message]', remoteMessage);
       if (remoteMessage) {
-        if (Platform.OS === 'ios') {
-          onNotification(remoteMessage);
-        } else {
-          onNotification(remoteMessage);
-        }
+        onNotification(remoteMessage);
       }
     });
 

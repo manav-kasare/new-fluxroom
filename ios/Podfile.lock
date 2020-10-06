@@ -157,9 +157,9 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (6.7.2):
     - GoogleUtilities/Logger
-  - GTMAppAuth (1.0.0):
-    - AppAuth/Core (~> 1.0)
-    - GTMSessionFetcher (~> 1.1)
+  - GTMAppAuth (1.1.0):
+    - AppAuth/Core (~> 1.4)
+    - GTMSessionFetcher (~> 1.4)
   - GTMSessionFetcher (1.4.0):
     - GTMSessionFetcher/Full (= 1.4.0)
   - GTMSessionFetcher/Core (1.4.0)
@@ -424,8 +424,6 @@ PODS:
     - React-Core (= 0.63.2)
     - React-cxxreact (= 0.63.2)
     - React-jsi (= 0.63.2)
-  - RNAppleAuthentication (1.1.2):
-    - React
   - RNCAsyncStorage (1.11.0):
     - React
   - RNCMaskedView (0.1.6):
@@ -449,9 +447,6 @@ PODS:
     - RNFBApp
   - RNGestureHandler (1.6.1):
     - React
-  - RNGoogleSignin (4.0.3):
-    - GoogleSignIn (~> 5.0.0)
-    - React
   - RNInAppBrowser (3.4.0):
     - React
   - RNKeychain (6.2.0):
@@ -468,9 +463,9 @@ PODS:
     - React
   - RNVectorIcons (7.0.0):
     - React
-  - SDWebImage (5.9.1):
-    - SDWebImage/Core (= 5.9.1)
-  - SDWebImage/Core (5.9.1)
+  - SDWebImage (5.9.2):
+    - SDWebImage/Core (= 5.9.2)
+  - SDWebImage/Core (5.9.2)
   - SDWebImageWebPCoder (0.6.1):
     - libwebp (~> 1.0)
     - SDWebImage/Core (~> 5.7)
@@ -534,7 +529,6 @@ DEPENDENCIES:
   - React-RCTText (from `../node_modules/react-native/Libraries/Text`)
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
-  - "RNAppleAuthentication (from `../node_modules/@invertase/react-native-apple-authentication`)"
   - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
   - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
   - "RNCPushNotificationIOS (from `../node_modules/@react-native-community/push-notification-ios`)"
@@ -543,7 +537,6 @@ DEPENDENCIES:
   - "RNFBAuth (from `../node_modules/@react-native-firebase/auth`)"
   - "RNFBMessaging (from `../node_modules/@react-native-firebase/messaging`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
-  - "RNGoogleSignin (from `../node_modules/@react-native-community/google-signin`)"
   - RNInAppBrowser (from `../node_modules/react-native-inappbrowser-reborn`)
   - RNKeychain (from `../node_modules/react-native-keychain`)
   - RNLocalize (from `../node_modules/react-native-localize`)
@@ -655,8 +648,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/Libraries/Vibration"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
-  RNAppleAuthentication:
-    :path: "../node_modules/@invertase/react-native-apple-authentication"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-community/async-storage"
   RNCMaskedView:
@@ -673,8 +664,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-firebase/messaging"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
-  RNGoogleSignin:
-    :path: "../node_modules/@react-native-community/google-signin"
   RNInAppBrowser:
     :path: "../node_modules/react-native-inappbrowser-reborn"
   RNKeychain:
@@ -723,7 +712,7 @@ SPEC CHECKSUMS:
   GoogleDataTransport: 672fb0ce96fe7f7f31d43672fca62ad2c9c86f7b
   GoogleSignIn: 7137d297ddc022a7e0aa4619c86d72c909fa7213
   GoogleUtilities: 7f2f5a07f888cdb145101d6042bc4422f57e70b3
-  GTMAppAuth: 4deac854479704f348309e7b66189e604cf5e01e
+  GTMAppAuth: 197a8dabfea5d665224aa00d17f164fc2248dab9
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
   libwebp: 946cb3063cea9236285f7e9a8505d806d30e07f3
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
@@ -757,7 +746,6 @@ SPEC CHECKSUMS:
   React-RCTText: 1b6773e776e4b33f90468c20fe3b16ca3e224bb8
   React-RCTVibration: 4d2e726957f4087449739b595f107c0d4b6c2d2d
   ReactCommon: a0a1edbebcac5e91338371b72ffc66aa822792ce
-  RNAppleAuthentication: 473b2c076f1a48a537610580a168c1fb6d0a90c6
   RNCAsyncStorage: db711e29e5e0500d9bd21aa0c2e397efa45302b1
   RNCMaskedView: e5b99bc191945f157adeede68da9d424462de177
   RNCPushNotificationIOS: c625dde093c3c8351d4babd34285d772f551dc36
@@ -766,7 +754,6 @@ SPEC CHECKSUMS:
   RNFBAuth: ccae9605207f4a3bc6e03cd0adb5433872ef4418
   RNFBMessaging: c69238917a8672f5aed2c8a6ee124efa8f962677
   RNGestureHandler: 8f09cd560f8d533eb36da5a6c5a843af9f056b38
-  RNGoogleSignin: ccf71ee4b6cfd324fd788a41e457e2043838c0d9
   RNInAppBrowser: 6097fbc6b09051b40a6a9ec22caf7af40b115ec0
   RNKeychain: b8e0711b959a19c5b057d1e970d3c83d159b6da5
   RNLocalize: c388679af021ddd6069c215f7fdd2acf4e77ede5
@@ -775,7 +762,7 @@ SPEC CHECKSUMS:
   RNReanimated: 4e102df74a9674fa943e05f97f3362b6e44d0b48
   RNScreens: 0e91da98ab26d5d04c7b59a9b6bd694124caf88c
   RNVectorIcons: da6fe858f5a65d7bbc3379540a889b0b12aa5976
-  SDWebImage: a990c053fff71e388a10f3357edb0be17929c9c5
+  SDWebImage: 0b42b8719ab0c5257177d5894306e8a336b21cbb
   SDWebImageWebPCoder: d0dac55073088d24b2ac1b191a71a8f8d0adac21
   Yoga: 7740b94929bbacbddda59bf115b5317e9a161598
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a

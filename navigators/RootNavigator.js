@@ -11,13 +11,10 @@ import {
   ThemeContext,
   TokenContext,
 } from '../shared/Context';
-import LogIn from '../screens/root/LogIn';
-import SignUp from '../screens/root/SignUp';
 import Onboard from '../screens/root/Onboard';
 import SetUpProfile from '../screens/root/SetUpProfile';
-import ForgotPassword from '../screens/root/ForgotPassword';
 import SplashScreen from '../screens/root/SplashScreen';
-import Phone from '../screens/root/Phone';
+import OtpVerification from '../screens/root/OtpVerification';
 import {getUserMe} from '../backend/database/apiCalls';
 import {getToken} from '../shared/KeyChain';
 import {storeUserData, getTheme} from '../shared/AsyncStore';
@@ -26,7 +23,6 @@ import {fcmService} from '../firebase/FCMService';
 import {localNotificationService} from '../firebase/LocalNotificationService';
 import {Linking} from 'react-native';
 import * as RNLocalize from 'react-native-localize';
-import {not} from 'react-native-reanimated';
 
 const Stack = createStackNavigator();
 
@@ -157,83 +153,14 @@ const AuthStackNavigator = () => {
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="LogIn"
-        component={LogIn}
+        name="OtpVerification"
+        component={OtpVerification}
         options={{
-          title: il8n.t('screens.logIn'),
+          title: 'Verify OTP',
           headerStyle: {
             backgroundColor: '#03449e',
             borderBottomWidth: 0,
             borderBottomColor: 'transparent',
-            elevation: 0,
-            shadowOpacity: 0,
-          },
-          headerTitleStyle: {
-            color: 'white',
-            fontSize: 20,
-            fontWeight: '300',
-            fontFamily: 'Helvetica',
-          },
-          headerTintColor: 'white',
-          headerBackTitleVisible: false,
-          headerTitleAlign: 'center',
-        }}
-      />
-      <Stack.Screen
-        name="Phone"
-        component={Phone}
-        options={{
-          title: il8n.t('screens.phone'),
-          headerStyle: {
-            backgroundColor: '#03449e',
-            borderBottomWidth: 0,
-            borderBottomColor: 'transparent',
-            elevation: 0,
-            shadowOpacity: 0,
-          },
-          headerTitleStyle: {
-            color: 'white',
-            fontSize: 20,
-            fontWeight: '300',
-            fontFamily: 'Helvetica',
-          },
-          headerTintColor: 'white',
-          headerBackTitleVisible: false,
-          headerTitleAlign: 'center',
-        }}
-      />
-      <Stack.Screen
-        name="SignUp"
-        component={SignUp}
-        options={{
-          title: il8n.t('screens.signUp'),
-          headerStyle: {
-            backgroundColor: '#03449e',
-            borderWidth: 0,
-            borderColor: 'transparent',
-            elevation: 0,
-            shadowOpacity: 0,
-          },
-          headerTitleStyle: {
-            color: 'white',
-            fontSize: 20,
-            fontWeight: '300',
-            fontFamily: 'Helvetica',
-          },
-          headerTintColor: 'white',
-          headerBackTitleVisible: false,
-          headerTitleAlign: 'center',
-        }}
-      />
-      <Stack.Screen
-        name="ForgotPassword"
-        component={ForgotPassword}
-        options={{
-          title: il8n.t('screens.forgotPassword'),
-          headerStyle: {
-            backgroundColor: '#03449e',
-            borderWidth: 0,
-            borderColor: 'transparent',
             elevation: 0,
             shadowOpacity: 0,
           },
