@@ -26,6 +26,7 @@ import {fcmService} from '../firebase/FCMService';
 import {localNotificationService} from '../firebase/LocalNotificationService';
 import {Linking} from 'react-native';
 import * as RNLocalize from 'react-native-localize';
+import {not} from 'react-native-reanimated';
 
 const Stack = createStackNavigator();
 
@@ -75,6 +76,7 @@ export default function RootNavigator() {
     function onRegister() {}
 
     function onNotification(notify) {
+      console.log('[On Notification]', notify);
       const options = {
         soundName: 'default',
         playSound: true,
@@ -91,6 +93,7 @@ export default function RootNavigator() {
     }
 
     async function onOpenNotification(data) {
+      console.log('[On Open Notification]', data);
       await Linking.openURL(data.url);
     }
 

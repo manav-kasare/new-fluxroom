@@ -20,62 +20,72 @@ export default function Apple({navigation}) {
   const [loading, setLoading] = React.useState(false);
 
   const signIn = async () => {
-    // Start the sign-in request
-    const appleAuthRequestResponse = await appleAuth.performRequest({
-      requestedOperation: AppleAuthRequestOperation.LOGIN,
-      requestedScopes: [
-        AppleAuthRequestScope.EMAIL,
-        AppleAuthRequestScope.FULL_NAME,
-      ],
-    });
-
-    // Ensure Apple returned a user identityToken
-    if (!appleAuthRequestResponse.identityToken) {
-      throw 'Apple Sign-In failed - no identify token returned';
-    }
-
-    // Create a Firebase credential from the response
-    const {identityToken, nonce} = appleAuthRequestResponse;
-    const appleCredential = auth.AppleAuthProvider.credential(
-      identityToken,
-      nonce,
-    );
-
-    // Sign the user in with the credential
-    auth()
-      .signInWithCredential(appleCredential)
-      .then((userInfo) => {
-        setLoading(false);
-        if (userInfo.additionalUserInfo.isNewUser) {
-          navigation.navigate('SetUpProfile', {
-            email: userInfo.user.email,
-            appleData: userInfo,
-          });
-        } else {
-          getUserByEmail(userInfo.user.email).then((response) => {
-            loginUser({
-              username: response.username,
-              password: '89337133-17c9-42e3-9fef-78416a25651a',
-            }).then((_response) => {
-              if (_response.err) {
-                setLoading(false);
-                ReactNativeHapticFeedback.trigger('notificationError', options);
-                CustomToast('An Error Occured');
-              } else {
-                ReactNativeHapticFeedback.trigger(
-                  'notificationSuccess',
-                  options,
-                );
-                storeToken(_response.user._id, _response.token);
-                storeUserData(_response.user);
-                storeTheme('light');
-                setLoading(false);
-                setUser(_response.user);
-              }
-            });
-          });
-        }
+    setLoading(true);
+    try {
+      // Start the sign-in request
+      const appleAuthRequestResponse = await appleAuth.performRequest({
+        requestedOperation: AppleAuthRequestOperation.LOGIN,
+        requestedScopes: [
+          AppleAuthRequestScope.EMAIL,
+          AppleAuthRequestScope.FULL_NAME,
+        ],
       });
+      console.log('[Apple Auth Response]', appleAuthRequestResponse);
+
+      // Ensure Apple returned a user identityToken
+      if (!appleAuthRequestResponse.identityToken) {
+        throw 'Apple Sign-In failed - no identify token returned';
+      }
+
+      // Create a Firebase credential from the response
+      const {identityToken, nonce} = appleAuthRequestResponse;
+      const appleCredential = auth.AppleAuthProvider.credential(
+        identityToken,
+        nonce,
+      );
+
+      // Sign the user in with the credential
+      auth()
+        .signInWithCredential(appleCredential)
+        .then((userInfo) => {
+          console.log('[Apple Sign In With Credentials]', userInfo);
+          if (userInfo.additionalUserInfo.isNewUser) {
+            setLoading(false).navigation.navigate('SetUpProfile', {
+              email: userInfo.user.email,
+              appleData: userInfo,
+            });
+          } else {
+            getUserByEmail(userInfo.user.email).then((response) => {
+              loginUser({
+                username: response.username,
+                password: '89337133-17c9-42e3-9fef-78416a25651a',
+              }).then((_response) => {
+                if (_response.err) {
+                  setLoading(false);
+                  ReactNativeHapticFeedback.trigger(
+                    'notificationError',
+                    options,
+                  );
+                  CustomToast('An Error Occured');
+                } else {
+                  ReactNativeHapticFeedback.trigger(
+                    'notificationSuccess',
+                    options,
+                  );
+                  storeToken(_response.user._id, _response.token);
+                  storeUserData(_response.user);
+                  storeTheme('light');
+                  setLoading(false);
+                  setUser(_response.user);
+                }
+              });
+            });
+          }
+        });
+    } catch (err) {
+      console.log('[Error]', err);
+      setLoading(false);
+    }
   };
 
   return (

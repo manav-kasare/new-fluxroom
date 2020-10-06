@@ -38,6 +38,7 @@ class FCMService {
     messaging()
       .getToken()
       .then((fcmToken) => {
+        console.log('[Get Token]', fcmToken);
         if (fcmToken) {
           onRegister(fcmToken);
         } else {
@@ -88,9 +89,10 @@ class FCMService {
 
     // Foreground state messages
     this.messageListener = messaging().onMessage(async (remoteMessage) => {
+      console.log('[On Message]', remoteMessage);
       if (remoteMessage) {
         if (Platform.OS === 'ios') {
-          onNotification(remoteMessage.data);
+          onNotification(remoteMessage);
         } else {
           onNotification(remoteMessage);
         }
@@ -104,6 +106,7 @@ class FCMService {
   };
 
   sendNotification = (data, regIds, title, body) => {
+    console.log('[Send Notification]');
     const FIREBASE_API_KEY =
       'AAAASkvA66Y:APA91bH_KVzhPVBFyvLuqxl1O_9JVT7BZx34fC6IcIb4G0e0P1jJ7dd--xkf4r7Lq-7K9rfPoFda6RpMQCX_pGRo6d4WN9Ipr4uWXEjHEntUqeeB4v5jHvUQjnPMSZGhqpccdX2xCdtV';
     const message = {

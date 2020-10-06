@@ -57,7 +57,7 @@ export default function RoomAvatar({id, size, uri, isHost, name}) {
         />
       )}
 
-      <View style={{flexDirection: 'row', height: 20}}>
+      {/* <View style={{flexDirection: 'row', height: 20}}>
         <View
           style={{
             width: 30,
@@ -94,12 +94,13 @@ export default function RoomAvatar({id, size, uri, isHost, name}) {
         ) : (
           <></>
         )}
-      </View>
+      </View> */}
       <Text
         style={{
           color: constants.text1,
           fontSize: 16,
           fontWeight: '500',
+          marginTop: 10,
           fontFamily: 'Helvetica Neue',
           alignSelf: 'center',
         }}>

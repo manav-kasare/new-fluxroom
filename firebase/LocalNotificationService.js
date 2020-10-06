@@ -7,6 +7,7 @@ class LocalNotificationService {
     PushNotification.configure({
       onRegister: function () {},
       onNotification: function (notification) {
+        console.log('[On Notification COnfigure]', notification);
         notification.userInteraction = true;
         if (notification.data.item) {
           onOpenNotification(notification.data.item);
@@ -35,6 +36,7 @@ class LocalNotificationService {
   };
 
   showNotification = (id, title, message, data, options = {}) => {
+    console.log('[Show Notification]', title);
     PushNotification.localNotification({
       ...this.buildAndroidNotification(id, title, message, data, options),
       ...this.buildIOSNotification(id, title, message, data, options),
@@ -63,6 +65,7 @@ class LocalNotificationService {
   };
 
   buildIOSNotification = (id, title, message, data, options = {}) => {
+    console.log('[Building IOS Notificaiton]', title);
     return {
       alertAction: options.alertAction || 'view',
       category: options.category || '',

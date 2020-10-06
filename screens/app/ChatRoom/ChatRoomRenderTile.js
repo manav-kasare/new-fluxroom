@@ -189,6 +189,7 @@ const ChatRoomRenderTile = ({item, navigation}) => {
           <Animated.View
             style={{
               height,
+              opacity: showRoomDetails,
             }}>
             <Text style={{marginVertical: 5, color: constants.text1}}>
               3 Speaking
