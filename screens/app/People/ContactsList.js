@@ -25,7 +25,16 @@ export default function ContactsList({navigation}) {
     });
   }, []);
 
-  const renderItem = ({item}) => <ContactTile item={item} />;
+  const renderItem = ({item}) => {
+    if (
+      item.phoneNumbers[0] === undefined ||
+      item.phoneNumbers[0].number === undefined
+    ) {
+      return <></>;
+    } else {
+      return <ContactTile item={item.phoneNumbers[0].number} />;
+    }
+  };
 
   return (
     <View
@@ -42,14 +51,9 @@ export default function ContactsList({navigation}) {
 
 const ContactTile = ({item}) => {
   const [isUser, setIsUser] = React.useState(true);
-  const [phoneNumber, setPhoneNumber] = React.useState(
-    item.phoneNumbers[0].number === undefined
-      ? undefined
-      : item.phoneNumbers[0].number,
-  );
+  const [phoneNumber, setPhoneNumber] = React.useState(item);
 
   React.useEffect(() => {
-    console.log(item.phoneNumbers);
     if (phoneNumber[0] !== '+') {
       setPhoneNumber(dialingCode + phoneNumber);
     }
@@ -65,8 +69,7 @@ const ContactTile = ({item}) => {
 
   return isUser ? (
     <List.Item
-      title={item.givenName}
-      description={phoneNumber}
+      title={phoneNumber}
       titleStyle={{color: 'white'}}
       descriptionStyle={{color: 'white'}}
     />
