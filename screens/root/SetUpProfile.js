@@ -32,7 +32,7 @@ import {storeUserData, storeTheme} from '../../shared/AsyncStore';
 import CachedImage from '../../shared/CachedImage';
 import {firebase} from '@react-native-firebase/messaging';
 
-export default function SetUpProfile({route}) {
+export default function SetUpProfile({route, navigation}) {
   const {setUser} = useContext(UserDetailsContext);
   const {setToken} = useContext(TokenContext);
   const {phoneNumber, phoneData} = route.params;
@@ -70,6 +70,7 @@ export default function SetUpProfile({route}) {
         description: description,
         profilePic: profilePhoto,
       }).then((response) => {
+        console.log('[Create User response]', response);
         if (response.error) {
           ReactNativeHapticFeedback.trigger('notificationError', options);
           setLoading(false);
@@ -79,6 +80,10 @@ export default function SetUpProfile({route}) {
             CustomErrorToast('An unexpected error occured');
           }
         } else {
+          navigation.navigate('NewUserDarkTheme', {
+            user: response.user,
+            token: response.token[0].token,
+          });
           storeToken(response.user._id, response.token[0].token).then(() => {
             setToken(response.token[0].token);
             storeUserData(response.user);

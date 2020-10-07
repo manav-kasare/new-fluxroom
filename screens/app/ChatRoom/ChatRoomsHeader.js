@@ -38,8 +38,7 @@ export default function ChatRoomsHeader({
     },
     headerTitleStyle: {
       fontSize: 30,
-      fontWeight: '800',
-      fontFamily: 'Arial Rounded MT Bold',
+      fontWeight: '700',
       color: 'white',
       marginLeft: 25,
     },
@@ -55,7 +54,7 @@ export default function ChatRoomsHeader({
 
   return (
     <SafeAreaView style={styles.headerStyle}>
-      <Text style={styles.headerTitleStyle}>Fluxroom</Text>
+      <Text style={styles.headerTitleStyle}>Rooms</Text>
       <View style={styles.actions}>
         <TouchableOpacity
           onPress={toggleCreateRoomModal}

@@ -40,6 +40,9 @@ import {
 import globalStyles from '../../shared/GlobalStyles';
 import {CustomErrorToast} from '../../shared/CustomToast';
 import il8n from '../../locales/il8n';
+import {getUserByPhone, loginUser} from '../../backend/database/apiCalls';
+import {storeToken} from '../../shared/KeyChain';
+import {storeUserData, storeTheme} from '../../shared/AsyncStore';
 
 export default function OtpVerification({route, navigation}) {
   const {constants} = React.useContext(ThemeContext);
@@ -56,8 +59,8 @@ export default function OtpVerification({route, navigation}) {
     setIsLoadingCode(true);
     try {
       await _confirmation.confirm(code).then((userInfo) => {
+        console.log('[UserInfo]', userInfo);
         ReactNativeHapticFeedback.trigger('notificationSuccess', options);
-        setIsVisible(false);
         if (userInfo.additionalUserInfo.isNewUser) {
           setIsLoadingCode(false);
           navigation.navigate('SetUpProfile', {
@@ -72,6 +75,7 @@ export default function OtpVerification({route, navigation}) {
               password: '89337133-17c9-42e3-9fef-78416a25651a',
             }).then((response) => {
               if (response.err) {
+                console.log('[Error]', response.err);
                 setIsLoadingCode(false);
                 ReactNativeHapticFeedback.trigger('notificationError', options);
                 CustomErrorToast('An Error Occured !');
