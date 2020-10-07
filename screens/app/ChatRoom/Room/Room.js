@@ -13,10 +13,7 @@ import {
 import Feather from 'react-native-vector-icons/Feather';
 import {ActivityIndicator, Button} from 'react-native-paper';
 
-import {
-  getChatroomInfo,
-  sendNotifactionFirebaseApi,
-} from '../../../../backend/database/apiCalls';
+import {getChatroomInfo} from '../../../../backend/database/apiCalls';
 import {ThemeContext, UserDetailsContext} from '../../../../shared/Context';
 import RoomAvatar from './RoomAvatar';
 import RoomUserOptions from './RoomUserOptions';

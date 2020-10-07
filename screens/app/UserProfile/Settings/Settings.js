@@ -28,14 +28,13 @@ export default function Settings({navigation}) {
     view: {
       width: constants.width,
       height: 60,
-      backgroundColor: constants.background3,
       paddingHorizontal: 25,
       justifyContent: 'center',
     },
     view_text: {
       color: constants.text1,
       marginLeft: 25,
-      fontSize: 14,
+      fontSize: 16,
       fontWeight: '400',
     },
     view_touchable: {
@@ -77,7 +76,32 @@ export default function Settings({navigation}) {
         flex: 1,
         backgroundColor: constants.background1,
       }}>
-      <View style={{flex: 1, backgroundColor: constants.background1}}>
+      <View style={{flex: 1}}>
+        <View style={styles.view}>
+          <TouchableOpacity
+            style={styles.view_touchable}
+            onPress={navigateBlockedUsers}>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                paddingLeft: 5,
+              }}>
+              <View style={{width: 25}}>
+                <Entypo name="block" size={20} color={constants.background2} />
+              </View>
+              <Text style={styles.view_text}>
+                {il8n.t('screens.blockedUsers')}
+              </Text>
+            </View>
+            <Ionicons
+              name="chevron-forward"
+              size={20}
+              color={constants.background2}
+            />
+          </TouchableOpacity>
+        </View>
+
         <View style={styles.view}>
           <TouchableOpacity
             onPress={navigateAboutUsNavigator}
@@ -88,11 +112,13 @@ export default function Settings({navigation}) {
                 alignItems: 'center',
                 paddingLeft: 5,
               }}>
-              <FontAwesome5
-                name="info"
-                size={20}
-                color={constants.background2}
-              />
+              <View style={{width: 25}}>
+                <FontAwesome5
+                  name="info"
+                  size={20}
+                  color={constants.background2}
+                />
+              </View>
               <Text style={styles.view_text}>{il8n.t('settings.aboutUs')}</Text>
             </View>
             <Ionicons
@@ -111,31 +137,14 @@ export default function Settings({navigation}) {
                 alignItems: 'center',
                 paddingLeft: 5,
               }}>
-              <AntDesign name="star" size={20} color={constants.background2} />
+              <View style={{width: 25}}>
+                <AntDesign
+                  name="star"
+                  size={20}
+                  color={constants.background2}
+                />
+              </View>
               <Text style={styles.view_text}>{il8n.t('settings.rateUs')}</Text>
-            </View>
-            <Ionicons
-              name="chevron-forward"
-              size={20}
-              color={constants.background2}
-            />
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.view}>
-          <TouchableOpacity
-            style={styles.view_touchable}
-            onPress={navigateBlockedUsers}>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                paddingLeft: 5,
-              }}>
-              <Entypo name="block" size={20} color={constants.background2} />
-              <Text style={styles.view_text}>
-                {il8n.t('screens.blockedUsers')}
-              </Text>
             </View>
             <Ionicons
               name="chevron-forward"
@@ -155,11 +164,13 @@ export default function Settings({navigation}) {
                 alignItems: 'center',
                 paddingLeft: 5,
               }}>
-              <MaterialCommunityIcons
-                name="emoticon-frown"
-                size={20}
-                color={constants.background2}
-              />
+              <View style={{width: 25}}>
+                <MaterialCommunityIcons
+                  name="emoticon-frown"
+                  size={20}
+                  color={constants.background2}
+                />
+              </View>
               <Text style={styles.view_text}>{il8n.t('settings.issues')}</Text>
             </View>
             <Ionicons
@@ -173,7 +184,9 @@ export default function Settings({navigation}) {
         <View style={styles.view}>
           <TouchableOpacity style={styles.view_touchable}>
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
-              <FontAwesome5 name="user-alt-slash" size={18} color="crimson" />
+              <View style={{width: 25}}>
+                <FontAwesome5 name="user-alt-slash" size={18} color="crimson" />
+              </View>
               <Text
                 style={{
                   color: 'crimson',

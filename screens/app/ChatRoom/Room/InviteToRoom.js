@@ -182,7 +182,7 @@ const SendInviteButton = ({userProp, roomName, roomId}) => {
 
   const sendNotification = () => {
     fcmService.sendNotification(
-      {url: `fluxroom://invitations`},
+      {url: `fluxroom://invitations`, id: roomId},
       [userProp.notificationID],
       roomName,
       `${user.username} invited you !`,

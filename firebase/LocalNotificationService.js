@@ -48,7 +48,7 @@ class LocalNotificationService {
           title={title}
           token={token}
           description={message}
-          roomID={data._id}
+          roomId={data.id}
         />
       ),
     });

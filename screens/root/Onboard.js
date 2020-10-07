@@ -119,11 +119,7 @@ export default function Onboard({navigation}) {
             <PhoneInput
               ref={phoneInput}
               defaultValue={phoneNumber}
-              defaultCode={
-                RNLocalize.getLocales().length > 1
-                  ? RNLocalize.getLocales()[1].countryCode
-                  : RNLocalize.getLocales()[0].countryCode
-              }
+              defaultCode={RNLocalize.getCountry}
               onChangeText={(text) => {
                 setPhoneNumber(text);
               }}

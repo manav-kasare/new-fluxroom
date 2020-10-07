@@ -14,21 +14,21 @@ import {Notifier} from 'react-native-notifier';
 export default function CustomNotification({
   title,
   description,
-  roomID,
+  roomId,
   token,
 }) {
   const [loading, setLoading] = React.useState(false);
 
   const handleAccept = () => {
     setLoading(true);
-    joinRoom(roomID, token).then(async (response) => {
+    joinRoom(roomId, token).then(async (response) => {
       if (response.error) {
         setLoading(false);
         CustomErrorToast('An Error Occured');
       } else {
         setLoading(false);
-        await Linking.openURL(`fluxroom://room/${roomID}`);
-        declineInvitation(token, roomID);
+        await Linking.openURL(`fluxroom://room/${roomId}`);
+        declineInvitation(token, roomId);
       }
     });
   };
