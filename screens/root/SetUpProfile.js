@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
   Keyboard,
+  Appearance,
 } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
@@ -32,7 +33,9 @@ import {storeUserData, storeTheme} from '../../shared/AsyncStore';
 import CachedImage from '../../shared/CachedImage';
 import {firebase} from '@react-native-firebase/messaging';
 
-export default function SetUpProfile({route, navigation}) {
+const colorScheme = Appearance.getColorScheme();
+
+export default function SetUpProfile({route}) {
   const {setUser} = useContext(UserDetailsContext);
   const {setToken} = useContext(TokenContext);
   const {phoneNumber, phoneData} = route.params;
@@ -80,14 +83,10 @@ export default function SetUpProfile({route, navigation}) {
             CustomErrorToast('An unexpected error occured');
           }
         } else {
-          navigation.navigate('NewUserDarkTheme', {
-            user: response.user,
-            token: response.token[0].token,
-          });
           storeToken(response.user._id, response.token[0].token).then(() => {
             setToken(response.token[0].token);
             storeUserData(response.user);
-            storeTheme('light');
+            storeTheme(colorScheme);
             setUser(response.user);
             ReactNativeHapticFeedback.trigger('notificationSuccess', options);
             setLoading(false);
