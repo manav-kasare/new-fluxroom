@@ -24,6 +24,8 @@ import InviteToRoom from './InviteToRoom';
 import RoomBottomView from './RoomBottomView';
 import ModeratorsList from './ModeratorsList';
 import {fcmService} from '../../../../firebase/FCMService';
+import ListenersList from './ListenersList';
+import OtherSpeakersList from './OtherSpeakersList';
 
 const Room = ({route, navigation}) => {
   const {id} = route.params;
@@ -144,37 +146,25 @@ const Room = ({route, navigation}) => {
             darkTheme ? constants.background3 : constants.primary
           }
         />
-        <Button
-          onPress={() => {
-            fcmService.sendNotification(
-              {},
-              [
-                'ewqwoQv1ekWXi9JwcGnQeV:APA91bF0HbtGdb8BTB9ciX7VkEL9IJrB87igPiBi1A1ks9laGlusVNgF8B4_zYGoYCKM-LM6ydFQLo5fHW2ujCVxgVHCMz8hBp7J3s68b_qf_-WiFkhOLsWFJVB9Ihrx3MuW6yRTQo_W',
-                // 'clUmuSVrR5KBeKENME1vlA:APA91bHHFSuHu1cLUIAh9XECqRaITbKb3SJS1o2UC4cdxaptry-5lwk7V3lEZWXrcVTbItX8nRSFokhr_fvH83SRJRgk6xERxRq2LUM_gF9mhK7wZwsOAv6U0jGDmGPmrPR1EQY-CS0j',
-              ],
-              'Test',
-              'This is a test notification',
-            );
-          }}>
-          Send
-        </Button>
         <View style={{backgroundColor: constants.background1, flex: 1}}>
-          <ScrollView style={{flex: 1}}>
-            <ModeratorsList />
-          </ScrollView>
           {loading ? (
             <View style={styles.loading}>
               <ActivityIndicator color={constants.primary} animating={true} />
             </View>
           ) : (
-            <FlatList
-              data={room.current.listOfUsers}
-              style={styles.flatList}
-              columnWrapperStyle={styles.columnWrapperStyle}
-              numColumns={4}
-              renderItem={renderItem}
-              refreshControl={refreshControl}
-            />
+            <ScrollView style={{flex: 1}}>
+              <ModeratorsList users={room.current.listOfUsers} />
+              <OtherSpeakersList users={room.current.listOfUsers} />
+              <ListenersList listenersProp={room.current.listOfUsers} />
+            </ScrollView>
+            // <FlatList
+            //   data={room.current.listOfUsers}
+            //   style={styles.flatList}
+            //   columnWrapperStyle={styles.columnWrapperStyle}
+            //   numColumns={4}
+            //   renderItem={renderItem}
+            //   refreshControl={refreshControl}
+            // />
           )}
           <RoomBottomView
             isSpeaking={isSpeaking}

@@ -5,9 +5,9 @@ import {ThemeContext, UserDetailsContext} from '../../../../shared/Context';
 import RoomUserOptions from './RoomUserOptions';
 import RoomAvatar from './RoomAvatar';
 
-export default function ModeratorsList({isVisible, setIsVisible, users}) {
+export default function OtherSpeakersList({isVisible, setIsVisible, users}) {
   const {constants, darkTheme} = React.useContext(ThemeContext);
-  const [moderators, setModerators] = React.useState(users);
+  const [otherSpeakers, setOtherSpeakers] = React.useState(users);
   const {user} = React.useContext(UserDetailsContext);
 
   const toggleVisible = () => {
@@ -41,10 +41,10 @@ export default function ModeratorsList({isVisible, setIsVisible, users}) {
   return (
     <View style={styles.container}>
       <Text style={{color: constants.text1, fontSize: 25, fontWeight: '700'}}>
-        Moderators
+        Other Speakers
       </Text>
       <FlatList
-        data={moderators}
+        data={otherSpeakers}
         numColumns={4}
         renderItem={renderItem}
         style={styles.flatList}
