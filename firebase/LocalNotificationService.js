@@ -1,6 +1,9 @@
+import React from 'react';
 import PushNotification from 'react-native-push-notification';
 import PushNotificationIOS from '@react-native-community/push-notification-ios';
 import {Platform} from 'react-native';
+import {Notifier} from 'react-native-notifier';
+import CustomNotification from './CustomNotification';
 
 class LocalNotificationService {
   configure = (onOpenNotification) => {
@@ -35,17 +38,29 @@ class LocalNotificationService {
     PushNotification.unregister();
   };
 
-  showNotification = (id, title, message, data, options = {}) => {
-    console.log('[Show Notification]', title);
-    PushNotification.localNotification({
-      ...this.buildAndroidNotification(id, title, message, data, options),
-      ...this.buildIOSNotification(id, title, message, data, options),
-      title: title || '',
-      message: message || '',
-      playSound: options.playSound || false,
-      soundName: options.soundName || 'default',
-      userInteraction: false,
+  showNotification = (id, title, message, data, token, options = {}) => {
+    Notifier.showNotification({
+      title: title,
+      description: message,
+      duration: 0,
+      Component: () => (
+        <CustomNotification
+          title={title}
+          token={token}
+          description={message}
+          roomID={data._id}
+        />
+      ),
     });
+    // PushNotification.localNotification({
+    //   ...this.buildAndroidNotification(id, title, message, data, options),
+    //   ...this.buildIOSNotification(id, title, message, data, options),
+    //   title: title || '',
+    //   message: message || '',
+    //   playSound: options.playSound || false,
+    //   soundName: options.soundName || 'default',
+    //   userInteraction: false,
+    // });
   };
 
   buildAndroidNotification = (id, title, message, data, options = {}) => {

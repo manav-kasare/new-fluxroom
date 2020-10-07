@@ -42,7 +42,7 @@ export default function RootNavigator() {
   const [splashScreen, setSplashScreen] = React.useState(true);
   const {user, setUser} = useContext(UserDetailsContext);
   const {setData} = useContext(ThemeContext);
-  const {setToken} = React.useContext(TokenContext);
+  const {token, setToken} = React.useContext(TokenContext);
 
   React.useEffect(() => {
     initializeUser();
@@ -84,6 +84,7 @@ export default function RootNavigator() {
         notify.notification.title,
         notify.notification.body,
         notify.data,
+        token,
         options,
       );
     }

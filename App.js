@@ -2,6 +2,7 @@ import React from 'react';
 import {Provider as PaperProvider} from 'react-native-paper';
 import Toast from 'react-native-fast-toast';
 import Entypo from 'react-native-vector-icons/Entypo';
+import { NotifierWrapper } from 'react-native-notifier';
 
 import RootNavigator from './navigators/RootNavigator';
 import {
@@ -25,7 +26,7 @@ function App() {
   }, []);
 
   return (
-    <>
+    <NotifierWrapper>
       <TokenContextProvider>
         <ThemeProvider>
           <UserDetailsContext.Provider value={userDetailsValue}>
@@ -40,7 +41,7 @@ function App() {
         successIcon={<Entypo name="check" color="white" size={20} />}
         dangerIcon={<Entypo name="cross" color="white" size={20} />}
       />
-    </>
+    </NotifierWrapper>
   );
 }
 
